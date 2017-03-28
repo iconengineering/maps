@@ -1,0 +1,47 @@
+---
+layout: default-map
+title: Test map
+version: v0.32.1
+script: massey.js
+---
+
+<li class="no-padding">
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">Basemap<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <form id="menu">
+          <p class="narrow">
+            <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot'/>
+            <label for="test1">Satellite</label>
+          </p>
+          <p class="narrow">
+            <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" checked/>
+            <label for="test2">Light</label>
+          </p>
+        </form>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Layers<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <p>
+          <input name="outfalls" type="checkbox" id="outfalls" class="layer-off" onclick="toggleSmooth('outfalls','line-opacity',1)"/>
+          <label for="outfalls" class="valign">Outfalls</label>
+        </p>
+        <p>
+          <input name="outfalls" type="checkbox" id="outfalls" class="layer-off" onclick="toggleSmooth('outfalls','line-opacity',1)"/>
+          <label for="outfalls" class="valign">Outfalls</label>
+        </p>
+        <p>
+          <input name="outfalls" type="checkbox" id="outfalls" class="layer-off" onclick="toggleSmooth('outfalls','line-opacity',1)"/>
+          <label for="outfalls" class="valign">Outfalls</label>
+        </p>
+        <p>
+          <input name="outfalls" type="checkbox" id="outfalls" class="layer-off" onclick="toggleSmooth('outfalls','line-opacity',1)"/>
+          <label for="outfalls" class="valign">Outfalls</label>
+        </p>
+      </div>
+    </li>
+  </ul>
+</li>

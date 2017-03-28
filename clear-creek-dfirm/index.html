@@ -1,0 +1,51 @@
+---
+layout: default-map
+title: Clear Creek and Jeffco DFIRM Update
+version: v0.34.0
+script: clear-creek-dfirm.js
+---
+
+<li class="no-padding">
+  <ul class="collapsible" data-collapsible="expandable">
+    <li>
+      <a class="collapsible-header white">Basemap<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <form id="menu">
+          <p class="narrow">
+            <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
+            <label for="test1">Satellite</label>
+          </p>
+          <p class="narrow">
+            <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd"/>
+            <label for="test2">Light</label>
+          </p>
+        </form>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header white">Layers<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <p>
+          <input name="changes" type="checkbox" id="changes" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
+          <label for="changes" class="valign">Changes</label>
+        </p>
+        <p>
+          <input name="bfe" type="checkbox" id="bfe" class="layer-off" onclick="toggleFour('cc-bfe','cc-bfeLabels','jc-bfe','jc-bfeLabels')"/>
+          <label for="bfe" class="valign">BFEs</label>
+        </p>
+        <p>
+          <input name="xs" type="checkbox" id="xs" class="layer-off" onclick="toggleFour('cc-xs','cc-xsLabels','jc-xs','jc-xsLabels')"/>
+          <label for="xs" class="valign">Cross Sections</label>
+        </p>
+        <p>
+          <input name="structures" type="checkbox" id="structures" class="layer-off" onclick="toggleTwo('cc-structures','jc-structures')"/>
+          <label for="structures" class="valign">Structures</label>
+        </p>
+        <p>
+          <input name="streams" type="checkbox" id="streams" class="layer-off" onclick="toggleFour('cc-streams','cc-streamsLabels','jc-streams','jc-streamsLabels')"/>
+          <label for="streams" class="valign">Streams</label>
+        </p>
+      </div>
+    </li>
+  </ul>
+</li>

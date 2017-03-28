@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>{{ page.title }}</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{base}}/assets/css/materialize.css">
+    <script src="{{base}}/assets/js/toggleLayer.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/{{ page.version }}/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/{{ page.version }}/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:64px; bottom:0; width: 100vw;z-index:-1;}
+        .side-nav {background-color: rgba(255,255,255,0); margin-top: 70px; box-shadow: none;padding-left: 6px!important;}
+        @media only screen and (max-width : 992px) {
+          #map{ width: 100vw; left: 0; top: 56px;}
+          .side-nav {background-color: #fff; margin-top: 0px;}
+        }
+    </style>
+</head>
+
+{% for extra_css in page.extra-css %}
+<link rel="stylesheet" type="text/css" href="{{ extra_css }}"/>
+{% endfor %}
+
+<body>
+
+{% for extra_js in page.extra-js %}
+  <script src="{{ extra_js }}"></script>
+{% endfor %}
+
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" class="brand-logo center hide-on-small-and-down">{{ page.title }}</a>
+    </div>
+  </nav>
+  <ul id="slide-out" class="side-nav fixed">
+    <a href="#" class="brand-logo center hide-on-med-and-up">{{ page.title }}</a>
+
+    {{ content }}
+
+  </ul>
+</header>
+<div id='map'></div>
+
+<script src='{{ page.script }}'></script>
+<script>
+$('.button-collapse').sideNav({
+    menuWidth: 300, // Default is 300
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: false // Choose whether you can drag to open on touch screens
+  }
+);
+
+$('.collapsible').collapsible();
+</script>
+
+</body>
+</html>
