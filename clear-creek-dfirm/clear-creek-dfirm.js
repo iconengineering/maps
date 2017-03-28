@@ -2,10 +2,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    zoom: 15,
+    style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
+    zoom: 11,
     hash: true,
-    center: [-105.122176, 39.564758]
+    center: [-105.4073, 39.7768]
 });
 
 var layerList = document.getElementById('menu');
@@ -68,8 +68,8 @@ map.on('style.load', function () {
             property: 'change',
             type: 'categorical',
             stops: [
-                ['FT', '#00bcd4'],
-                ['TF', '#ffeb3b']
+                ['FT', '#ffeb3b'],
+                ['TF', '#1de9b6']
                 ]
         }
       }
@@ -220,8 +220,8 @@ map.on('style.load', function () {
               property: 'change',
               type: 'categorical',
               stops: [
-                  ['FT', '#00bcd4'],
-                  ['TF', '#ffeb3b']
+                  ['FT', '#ffeb3b'],
+                  ['TF', '#1de9b6']
                   ]
           }
         }
@@ -337,5 +337,19 @@ map.on('style.load', function () {
           'text-halo-width': 1
         }
     });
+
+});
+
+document.getElementById('clearcreek').addEventListener('click', function() {
+
+  var bbox = [[-105.7, 39.7], [-105.47, 39.78]];
+  map.fitBounds(bbox, { padding: 10 });
+
+});
+
+document.getElementById('jeffco').addEventListener('click', function() {
+
+  var bbox = [[-105.24, 39.75], [-105.12, 39.87]];
+  map.fitBounds(bbox, { padding: 10 });
 
 });

@@ -24,6 +24,12 @@
         body { margin:0; padding:0; }
         #map { position:absolute; top:64px; bottom:0; width: 100vw;z-index:-1;}
         .side-nav {background-color: rgba(255,255,255,0); margin-top: 70px; box-shadow: none;padding-left: 6px!important;}
+        .collapsible-header {font-size: 16px !important;}
+        .collection.with-header .collection-header {
+          padding: 10px 20px !important;
+        }
+        .collection.with-header .collection-item {padding: 10px .5em !important; line-height: 21px !important;}
+        .collection.with-header .collection-item a {height: auto !important; line-height: 21px !important; padding: 0 4px !important;}
         @media only screen and (max-width : 992px) {
           #map{ width: 100vw; left: 0; top: 56px;}
           .side-nav {background-color: #fff; margin-top: 0px;}
@@ -45,7 +51,7 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-      <a href="#" class="brand-logo center hide-on-small-and-down">{{ page.title }}</a>
+      <a href="#" class="brand-logo right hide-on-small-and-down">{{ page.title }}</a>
     </div>
   </nav>
   <ul id="slide-out" class="side-nav fixed">

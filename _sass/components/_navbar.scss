@@ -62,7 +62,7 @@ nav {
     color: $navbar-font-color;
     display: inline-block;
     font-size: $navbar-brand-font-size;
-    padding: 0;
+    padding: 0 .5em;
     white-space: nowrap;
 
     &.center {
@@ -88,7 +88,7 @@ nav {
 
     &.right {
       right: 0.5rem;
-      padding: 0;
+      padding: 0 1em;
     }
 
     i,
