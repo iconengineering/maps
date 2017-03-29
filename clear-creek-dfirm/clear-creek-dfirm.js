@@ -353,3 +353,5 @@ document.getElementById('jeffco').addEventListener('click', function() {
   map.fitBounds(bbox, { padding: 10 });
 
 });
+
+map.addControl(new mapboxgl.NavigationControl(), 'top-right');
