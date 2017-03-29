@@ -68,8 +68,8 @@ map.on('style.load', function () {
             property: 'change',
             type: 'categorical',
             stops: [
-                ['FT', '#ffeb3b'],
-                ['TF', '#1de9b6']
+                ['FT', '#F57B7B'],
+                ['TF', '#A5F57B']
                 ]
         }
       }
@@ -220,8 +220,8 @@ map.on('style.load', function () {
               property: 'change',
               type: 'categorical',
               stops: [
-                  ['FT', '#ffeb3b'],
-                  ['TF', '#1de9b6']
+                  ['FT', '#F57B7B'],
+                  ['TF', '#A5F57B']
                   ]
           }
         }
