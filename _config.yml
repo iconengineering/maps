@@ -20,5 +20,3 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 exclude: [node_modules, gulpfile.js, pixelarity, package.json]
-
-theme: jekyll-theme-minimal
