@@ -1,0 +1,165 @@
+---
+layout: map
+title: Coal Creek
+script: assets/maps/ccc-tin.js
+---
+<style>
+#menu {
+			position: absolute;
+			bottom: 2em;
+			right: 1em;
+			z-index:99;
+			background: #fff;
+			padding: 10px;
+	}
+.bar {
+  fill: #69D2E7;
+}
+
+.bar:hover {
+  fill: #1B55C0;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font: 1em;
+		font-style: bold;
+    background: white;
+    border: 0px;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.d3-tip {
+	font-size: .9em;
+  line-height: 1;
+  padding: 5px 10px;
+  background: rgba(250, 250, 250, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(250, 250, 250, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+.x.axis line {
+  stroke: #ddd;
+}
+
+.x.axis path {
+  fill: none;
+  stroke: #ddd;
+}
+
+input[type=range] {
+    background: #1B55C0;
+    margin-top: -16px;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #1B55C0;
+  stroke-width: 3;
+  cursor: col-resize;
+}
+
+.draggy {
+  fill: #1B55C0;
+}
+
+.indicator {
+  cursor: col-resize;
+  stroke: #1B55C0;
+  stroke-width: 5;
+}
+
+
+.line {
+    fill: none;
+    stroke-width: 2.5px;
+		stroke: #69D2E7;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    border-radius: 5px;
+}
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://rawgit.com/MasterMaps/d3-slider/master/d3.slider.js"></script>
+<script src="//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js"></script>
+<link rel='stylesheet' href='https://rawgit.com/MasterMaps/d3-slider/master/d3.slider.css' type='text/css' />
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+
+<!-- Header -->
+	<header id="header">
+    <h1><a href="http://iconeng.com" target="blank">ICON <span>Engineering, Inc.</span></a></h1>
+    <nav id="nav">
+      <ul>
+				<li><a href="#"><h1 style="left:0">North Greeley & Downtown</h1></a></li>
+        <li><a href="{{site.url}}/greeley/ngd-map/index.html">Home</a></li>
+				<li>
+					<a href="#" class="button submenu fa-angle-down">Layers</a>
+					<ul id="navButtons">
+						<li id="depth" class="display"><a href="#" id="depthM" class="display" onclick="toggleSeven('depth', 'depthMobile', 'flowDepth2', 'flowDepth3', 'flowDepth4', 'flowDepth5', 'flowDepth6', 'flowDepth7', 'flowDepth8')">Flow Depth</a></li>
+					</ul>
+				</li>
+      </ul>
+    </nav>
+  </header>
+
+	<div id="legendContainer">
+		<div id="legend" class='my-legend'>
+		<div id="slider"></div>
+		<div id="sliderText">V1</div>
+		<h6>Legend</h6>
+		<div class='legend-scale'>
+			<div class="legend-item">Flow Depth (ft)</div>
+		  <ul class='legend-labels'>
+		    <li><span style='background:#ffffcc;'></span>.25 - .5</li>
+		    <li><span style='background:#c7e9b4;'></span>.5 - 1</li>
+		    <li><span style='background:#7fcdbb;'></span>1 - 1.5</li>
+		    <li><span style='background:#41b6c4;'></span>1.5 - 2</li>
+		    <li><span style='background:#1d91c0;'></span>2 - 3</li>
+		    <li><span style='background:#225ea8;'></span>3 - 4</li>
+		    <li><span style='background:#0c2c84;'></span>4+</li>
+		  </ul>
+		</div>
+		<div class='legend-source'>Source: <a href="http://www.iconeng.com">ICON Engineering</a></div>
+		</div>
+	</div>
+
+<div id="map"></div>

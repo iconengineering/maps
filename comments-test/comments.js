@@ -66,7 +66,9 @@ var draw = new MapboxDraw({
         trash: true
     }
 });
+
 map.addControl(draw);
+map.addControl(new mapboxgl.GeolocateControl());
 
 map.on('draw.create', function() {
   console.log("Draw!");

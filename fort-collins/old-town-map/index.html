@@ -1,0 +1,121 @@
+---
+layout: map
+title: Fort Collins - Old Town
+script: assets/maps/old-town.js
+---
+<style>
+#menu {
+			position: absolute;
+			bottom: 2em;
+			right: 1em;
+			z-index:99;
+			background: #fff;
+			padding: 10px;
+	}
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+
+<!-- Header -->
+	<header id="header">
+    <h1><a href="{{site.url}}/index.html">ICON <span>Engineering, Inc.</span></a></h1>
+    <nav id="nav">
+      <ul>
+				<li><a href="#"><h1 style="left:0">Old Town</h1></a></li>
+        <li><a href="{{site.url}}/index.html">Home</a></li>
+				<li>
+					<a href="#" class="button submenu fa-angle-down">Layers</a>
+					<ul id="navButtons">
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>Base Layers</a>
+							<ul>
+								<li id="contour" class="display"><a href="#" id="contourM" class="display" onclick="toggleThree('contour', 'contourMobile', '5ftContours', '5ftLabels', '1ftContours')">Contours</a></li>
+								<li id="floodplain" class="display"><a href="#" id="floodplainM" class="display" onclick="toggleThree('floodplain', 'floodplainMobile', 'floodplain-high', 'floodplain-medium', 'floodplain-floodway')">City Floodplain</a></li>
+								<li id="stormwater" class=""><a href="#" id="stormwaterM" class="" onclick="toggleThree('stormwater', 'stormwaterMobile', 'stormwater', 'intake', 'manhole')">Stormwater System</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>FLO-2D Source Files</a>
+							<ul>
+								<li id="infiltration" class=""><a id="infiltrationM" href="#" class="" onclick="toggleLayer('infiltration','infiltrationMobile','infil')">Infiltration</a></li>
+								<li id="nValue" class=""><a id="nValueM" href="#" class="" onclick="toggleFour('nValue','nValueMobile','nValue1','nValue2','nValue3','nValue4')">nValue</a></li>
+								<li id="inflow" class=""><a href="#" id="inflowM" class="" onclick="toggleLayer('inflow', 'inflowMobile', 'inflow')">Inflow Points</a></li>
+								<li id="outflows" class=""><a href="#" id="outflowsM" class="" onclick="toggleLayer('outflows', 'outflowsMobile', 'outflows')">Outflows</a></li>
+								<li id="xs" class=""><a href="#" id="xsM" class="" onclick="toggleTwo('xs', 'xsMobile', 'xsLine','xsLabel')">Rain-on-Grid XS</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>2003 Master Plan</a>
+							<ul>
+								<li id="basins" class=""><a id="basinsM" href="#" class="" onclick="toggleLayer('basins','basinsMobile','subbasins')">Basins</a></li>
+								<li id="oldRouting" class=""><a id="oldRoutingM" href="#" class="" onclick="toggleThree('oldRouting','oldRoutingMobile','2003conduits','2003junctions','2003junctionLabels')">Routing</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>2016 Update</a>
+							<ul>
+								<li id="newBasins" class=""><a id="newBasinsM" href="#" class="" onclick="toggleTwo('newBasins','newBasinsMobile','2016basins','2016basinsLines')">Basins</a></li>
+								<li id="newRouting" class=""><a id="newRoutingM" href="#" class="" onclick="toggleThree('newRouting','newRoutingMobile','2016junctions','2016conduits','2016junctionLabels')">Routing</a></li>
+								<li id="newTransects" class=""><a id="newTransectsM" href="#" class="" onclick="toggleLayer('newTransects','newTransectsMobile','2016transects')">Transects</a></li>
+								<li id="newXs" class=""><a id="newXsM" href="#" class="" onclick="toggleTwo('newXs','newXsMobile','2016xs','2016xsLabels')">FLO-2D XS</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>Rain on Grid</a>
+							<ul>
+								<li id="rog-depth" class=""><a id="rog-depthM" href="#" class="" onclick="toggleFourteen('rog-depth','rog-depthMobile','rog-flowDepth2','rog-flowDepth3', 'rog-flowDepth4','rog-flowDepth5','rog-flowDepth6','rog-flowDepth7','rog-flowDepth8','rog-flowDepth2O','rog-flowDepth3O','rog-flowDepth4O','rog-flowDepth5O','rog-flowDepth6O','rog-flowDepth7O','rog-flowDepth8O')">Flow Depth</a></li>
+								<li id="rog-velocity" class=""><a id="rog-velocityM" href="#" class="" onclick="toggleSeven('rog-velocity','rog-velocityMobile','rog-velocity2','rog-velocity3', 'rog-velocity4','rog-velocity5','rog-velocity6','rog-velocity7','rog-velocity8')">Velocity</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>Magnolia/Locust</a>
+							<ul>
+								<li id="magloc-depth" class=""><a id="magloc-depthM" href="#" class="" onclick="toggleFourteen('magloc-depth','magloc-depthMobile','magloc-flowDepth2','magloc-flowDepth3', 'magloc-flowDepth4','magloc-flowDepth5','magloc-flowDepth6','magloc-flowDepth7','magloc-flowDepth8','magloc-flowDepth2O','magloc-flowDepth3O', 'magloc-flowDepth4O','magloc-flowDepth5O','magloc-flowDepth6O','magloc-flowDepth7O','magloc-flowDepth8O')">Flow Depth</a></li>
+								<li id="magloc-velocity" class=""><a id="magloc-velocityM" href="#" class="" onclick="toggleSeven('magloc-velocity','magloc-velocityMobile','magloc-velocity2','magloc-velocity3', 'magloc-velocity4','magloc-velocity5','magloc-velocity6','magloc-velocity7','magloc-velocity8')">Velocity</a></li>
+								<li id="magloc" class=""><a id="maglocM" href="#" class="" onclick="toggleTwo('magloc','maglocMobile','magloc','magst')">Alternative</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>Tributary Area</a>
+							<ul>
+								<li id="rmTrib" class=""><a href="#" id="rmTribM" class="" onclick="toggleLayer('rmTrib', 'rmTribMobile', 'rmTrib')">Riverside/Mulberry</a></li>
+								<li id="locTrib" class=""><a href="#" id="locTribM" class="" onclick="toggleLayer('locTrib', 'locTribMobile', 'locTrib')">Locust</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+      </ul>
+    </nav>
+  </header>
+
+	<div id='menu'>
+	    <input id='basic' type='radio' name='rtoggle' value='cihxv74vo00oynpm48wsujwo3'>
+	    <label for='basic'>Satellite</label>
+	    <input id='light' type='radio' name='rtoggle' value='cikh67rk8004n9vkouhls14s4' checked='checked'>
+	    <label for='light'>Light</label>
+	</div>
+
+	<div id="legendContainer">
+		<div id="legend" class='my-legend'>
+		<h6>Legend</h6>
+		<div class='legend-scale'>
+			<div class="legend-item">Flow Depth (ft)</div>
+		  <ul class='legend-labels'>
+		    <li><span style='background:#ffffcc;'></span>.25 - .5</li>
+		    <li><span style='background:#c7e9b4;'></span>.5 - 1</li>
+		    <li><span style='background:#7fcdbb;'></span>1 - 1.5</li>
+		    <li><span style='background:#41b6c4;'></span>1.5 - 2</li>
+		    <li><span style='background:#1d91c0;'></span>2 - 3</li>
+		    <li><span style='background:#225ea8;'></span>3 - 4</li>
+		    <li><span style='background:#0c2c84;'></span>4+</li>
+		  </ul>
+			<br />
+			<ul class='legend-labels'>
+		    <li><span style='background:#ffffb2;'></span></li>
+		    <li><span style='background:#fed976;'></span></li>
+		    <li><span style='background:#feb24c;'></span></li>
+		    <li><span style='background:#fd8d3c;'></span></li>
+		    <li><span style='background:#fc4e2a;'></span></li>
+		    <li><span style='background:#e31a1c;'></span></li>
+		    <li><span style='background:#b10026;'></span></li>
+		  </ul>
+			<div class="legend-item">Velocity (fps)</div>
+		</div>
+		<div class='legend-source'>Source: <a href="http://www.iconeng.com">ICON Engineering</a></div>
+		</div>
+	</div>
+
+<div id="map"></div>

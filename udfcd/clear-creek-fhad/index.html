@@ -1,0 +1,160 @@
+---
+layout: map
+title: Clear Creek FHAD
+script: assets/maps/clear-creek-fhad.js
+---
+<style>
+#menu {
+			position: absolute;
+			bottom: 2em;
+			right: 1em;
+			z-index:99;
+			background: #fff;
+			padding: 10px;
+	}
+.bar {
+  fill: #69D2E7;
+}
+
+.bar:hover {
+  fill: #1B55C0;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font: 1em;
+		font-style: bold;
+    background: white;
+    border: 0px;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.d3-tip {
+	font-size: .9em;
+  line-height: 1;
+  padding: 5px 10px;
+  background: rgba(250, 250, 250, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(250, 250, 250, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+
+<!-- Header -->
+	<header id="header">
+    <h1><a href="{{site.url}}/index.html">ICON <span>Engineering, Inc.</span></a></h1>
+    <nav id="nav">
+      <ul>
+				<li><a href="#"><h1 style="left:0">Clear Creek FHAD</h1></a></li>
+        <li><a href="{{site.url}}/index.html">Home</a></li>
+				<li>
+					<a href="#" class="button submenu fa-angle-down">Layers</a>
+					<ul id="navButtons">
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>Ayers FHAD</a>
+							<ul>
+								<li id="ayersXS" class=""><a href="#" id="ayersXSM" class="" onclick="toggleLayer('ayersXS', 'ayersXSMobile','ayersXS')">Cross Sections</a></li>
+								<li id="ayersRiver" class=""><a href="#" id="ayersRiverM" class="" onclick="toggleLayer('ayersRiver', 'ayersRiverMobile', 'ayersRiver')">Centerline</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>ICON FHAD</a>
+							<ul>
+								<li id="iconXS" class=""><a href="#" id="iconXSM" class="" onclick="toggleLayer('iconXS', 'iconXSMobile','iconXS')">Cross Sections</a></li>
+								<li id="iconRiver" class=""><a href="#" id="iconRiverM" class="" onclick="toggleLayer('iconRiver', 'iconRiverMobile', 'iconRiver')">Centerline</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="fa fa-angle-left fa-fw"></i>New FHAD</a>
+							<ul>
+								<li id="newXS" class=""><a href="#" id="newXSM" class="" onclick="toggleLayer('newXS', 'newXSMobile','newXS')">Cross Sections</a></li>
+								<li id="newRiver" class="display"><a href="#" id="newRiverM" class="display" onclick="toggleLayer('newRiver', 'newRiverMobile', 'newRiver')">Centerline</a></li>
+							</ul>
+						</li>
+						<li id="contours" class="display"><a href="#" id="contoursM" class="display" onclick="toggleThree('contours', 'contoursMobile', '5ftContours', '1ftContours', '5ftLabels')">Contours</a></li>
+						<li id="bridges" class=""><a href="#" id="bridgesM" class="" onclick="toggleTwo('bridges', 'bridgesMobile','newBridge','revBridge')">Bridges</a></li>
+						<li id="cities" class=""><a href="#" id="citiesM" class="" onclick="toggleFour('cities', 'citiesMobile','citiesBounds','golden','arvada','wheatRidge')">Cities</a></li>
+						<li id="counties" class=""><a href="#" id="countiesM" class="" onclick="toggleLayer('counties', 'countiesMobile','counties')">Counties</a></li>
+						<li id="prerasXS" class=""><a href="#" id="prerasXSM" class="" onclick="toggleLayer('prerasXS', 'prerasXSMobile','prerasXS')">PreRAS Cross Sections</a></li>
+						<li id="100yr" class="display"><a href="#" id="100yrM" class="display" onclick="toggleLayer('100yr', '100yrMobile','100yr')">100-Year Floodplain</a></li>
+					</ul>
+				</li>
+      </ul>
+    </nav>
+  </header>
+
+	<div id='menu'>
+	    <input id='basic' type='radio' name='rtoggle' value='cihxv74vo00oynpm48wsujwo3'>
+	    <label for='basic'>Satellite</label>
+	    <input id='light' type='radio' name='rtoggle' value='cikh67rk8004n9vkouhls14s4' checked='checked'>
+	    <label for='light'>Light</label>
+	</div>
+
+<div id="legendContainer">
+	<div id="legend" class='my-legend'>
+		<h6>Legend</h6>
+			<div class='legend-scale2'>
+				<div class="legend-item"><b>Clear Creek FHAD</b></div>
+					<ul class='legend-labels2'>
+						<li><i class="fa fa-minus fa-lg" style="color:#00FFFF;"></i>&nbsp; New/Revised Cross Sections</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#20b2ac;"></i>&nbsp; New Stream Centerline</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#ff00ff;"></i>&nbsp; PreRAS Cross Sections</li>
+					</ul>
+				<div class="legend-item"><b>Ayers FHAD</b></div>
+					<ul class='legend-labels2'>
+						<li><i class="fa fa-minus fa-lg" style="color:#8B0000;"></i>&nbsp; Cross Sections</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#B00038;"></i>&nbsp; Stream Centerline</li>
+					</ul>
+				<div class="legend-item"><b>Icon FHAD</b></div>
+					<ul class='legend-labels2'>
+						<li><i class="fa fa-minus fa-lg" style="color:#C69300;"></i>&nbsp; Cross Sections</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#FFCA2E;"></i>&nbsp; Stream Centerline</li>
+					</ul>
+				<div class="legend-item"><b>Bridges</b></div>
+					<ul class='legend-labels2'>
+						<li><i class="fa fa-circle fa-lg" style="color:#09C2FF;"></i>&nbsp; Revised</li>
+						<li><i class="fa fa-circle fa-lg" style="color:#C908FF;"></i>&nbsp; New</li>
+					</ul>
+			</div>
+				<div class='legend-source'>Source: <a href="http://www.iconeng.com">ICON Engineering</a></div>
+	</div>
+</div>
+
+<div id="map"></div>

@@ -1,0 +1,45 @@
+---
+layout: map
+title: Cherry Hills Village Bridle Paths
+script: assets/maps/chv-trails.js
+---
+<style>
+#menu {
+			position: absolute;
+			bottom: 2em;
+			right: 1em;
+			z-index:99;
+			background: #fff;
+			padding: 10px;
+	}
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+
+<!-- Header -->
+	<header id="header">
+    <h1><a href="{{site.url}}/index.html">ICON <span>Engineering, Inc.</span></a></h1>
+    <nav id="nav">
+      <ul>
+				<li><a href="#"><h1 style="left:0">CHV - Trail Inventory</h1></a></li>
+        <li><a href="{{site.url}}/index.html">Home</a></li>
+				<li>
+					<a href="#" class="button submenu fa-angle-down">Layers</a>
+					<ul id="navButtons">
+						<li id="parcels" class="display"><a id="parcelsM" href="#" class="display" onclick="toggleTwo('parcels','parcelsMobile','parcels','parcels-line')">Parcels</a></li>
+						<li id="trails" class="display"><a id="trailsM" href="#" class="display" onclick="toggleTwo('trails','trailsMobile','trails', 'trails-line')">Digitized Paths</a></li>
+					</ul>
+				</li>
+      </ul>
+    </nav>
+  </header>
+
+	<div id="legendContainer">
+		<div id="legend" class='my-legend'>
+		<h6>Legend</h6>
+
+		<div class='legend-source'>Source: <a href="http://www.iconeng.com">ICON Engineering</a></div>
+		</div>
+	</div>
+
+<div id="map"></div>
