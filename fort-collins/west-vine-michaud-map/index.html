@@ -1,68 +1,69 @@
 ---
-layout: map
+layout: default-map
 title: Fort Collins - West Vine Michaud
-script: assets/maps/westvine-michaud.js
+version: v0.34.0
+script: westvine-michaud.js
 ---
-<style>
-#menu {
-			position: absolute;
-			bottom: 2em;
-			right: 1em;
-			z-index:99;
-			background: #fff;
-			padding: 10px;
-	}
-</style>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
-
-<!-- Header -->
-	<header id="header">
-    <h1><a href="{{site.url}}/index.html">ICON <span>Engineering, Inc.</span></a></h1>
-    <nav id="nav">
-      <ul>
-				<li><a href="#"><h1 style="left:0">West Vine & Michaud</h1></a></li>
-        <li><a href="{{site.url}}/index.html">Home</a></li>
-				<li>
-					<a href="#" class="button submenu fa-angle-down">Layers</a>
-					<ul id="navButtons">
-						<li id="contours" class=""><a id="contoursM" href="#" class="" onclick="toggleSix('contours','contoursMobile','mcb-1ftContours','wvb-5ftContours','wvb-5ftLabels','mcb-1ftContours','mcb-5ftContours','mcb-5ftLabels')">Contours</a></li>
-						<li id="canals" class=""><a href="#" id="canalsM" class="" onclick="toggleTwo('canals', 'canalsMobile', 'canals', 'canalLabels')">Canals</a></li>
-						<li id="xs" class=""><a id="xsM" href="#" class="" onclick="toggleTwo('xs','xsMobile','xs','xsLabels')">Cross Sections</a></li>
-						<li style="background-color:#ADD8E6;"><a href="#">West Vine</a>
-							<ul>
-								<li id="wvb-basins" class="display"><a id="wvb-basinsM" href="#" class="display" onclick="toggleFour('wvb-basins','wvb-basinsMobile','wvb-basins', 'wvb-basins-borders','wvb-basinMarker', 'wvb-basinLabel')">Basins</a></li>
-								<li id="wvb-route" class=""><a href="#" id="wvb-routeM" class="" onclick="toggleFour('wvb-route', 'wvb-routeMobile', 'wvb-routing', 'wvb-routing2', 'wvb-routingLabels', 'wvb-routingArrows')">Routing Elements</a></li>
-								<li id="wvb-junctions" class="display"><a id="wvb-junctionsM" href="#" class="display" onclick="toggleLayer('wvb-junctions','wvb-junctionsMobile','wvb-junctions')">Junctions</a></li>
-								<li id="wvb-spills" class=""><a id="wvb-spillsM" href="#" class="" onclick="toggleTwo('wvb-spills','wvb-spillsMobile','wvb-spills', 'wvb-spillLabels')">Spill Flows</a></li>
-							</ul>
-						</li>
-						<li style="background-color:#ff7f7f;"><a href="#">Michaud</a>
-							<ul>
-								<li id="mcb-basins" class="display"><a id="mcb-basinsM" href="#" class="display" onclick="toggleFour('mcb-basins','mcb-basinsMobile','mcb-basins', 'mcb-basins-borders', 'mcb-basinMarker', 'mcb-basinLabel')">Basins</a></li>
-								<li id="mcb-route" class=""><a href="#" id="mcb-routeM" class="" onclick="toggleFour('mcb-route', 'mcb-routeMobile', 'mcb-routing', 'mcb-routing2', 'mcb-routingLabels', 'mcb-routingArrows')">Routing Elements</a></li>
-								<li id="mcb-junctions" class="display"><a id="mcb-junctionsM" href="#" class="display" onclick="toggleLayer('mcb-junctions','mcb-junctionsMobile','mcb-junctions')">Junctions</a></li>
-								<li id="mcb-spills" class=""><a id="mcb-spillsM" href="#" class="" onclick="toggleTwo('mcb-spills','mcb-spillsMobile','mcb-spills', 'mcb-spillLabels')">Spill Flows</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-      </ul>
-    </nav>
-  </header>
-
-	<div id='menu'>
-	    <input id='basic' type='radio' name='rtoggle' value='cihxv74vo00oynpm48wsujwo3' checked='checked'>
-	    <label for='basic'>Satellite</label>
-	    <input id='light' type='radio' name='rtoggle' value='cikh67rk8004n9vkouhls14s4'>
-	    <label for='light'>Light</label>
-	</div>
-
-	<div id="legendContainer">
-		<div id="legend" class='my-legend'>
-		<h6>Legend</h6>
-		<div class='legend-source'>Source: <a href="http://www.iconeng.com">ICON Engineering</a></div>
-		</div>
-	</div>
-
-<div id="map"></div>
+<li class="no-padding">
+  <ul class="collapsible" data-collapsible="expandable">
+    <li>
+      <a class="collapsible-header white">Layers<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <p>
+          <input name="contour" type="checkbox" id="contour" class="layer-off" onclick="toggleSix('mcb-1ftContours','wvb-5ftContours','wvb-5ftLabels','mcb-1ftContours','mcb-5ftContours','mcb-5ftLabels')">
+					<label for='contour' class="valign">Contours</label>
+        </p>
+        <p>
+          <input name="centerline" type="checkbox" id="centerline" class="layer-off" onclick="toggleTwo('canals', 'canalLabels')">
+					<label for="centerline" class="valign">Canals</label>
+        </p>
+				<p>
+					<input name="xs" type="checkbox" id="xs" class="layer-off" onclick="toggleTwo('xs', 'xsLabels')">
+					<label for="xs" class="valign">Cross Sections</label>
+				</p>
+      </div>
+    </li>
+		<li>
+      <a class="collapsible-header indigo white-text">West Vine<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <p>
+          <input name="wvb-basins" type="checkbox" id="wvb-basins" class="layer-on" onclick="toggleFour('wvb-basins', 'wvb-basins-borders','wvb-basinMarker', 'wvb-basinLabel')" checked>
+					<label for='wvb-basins' class="valign">Basins</label>
+        </p>
+        <p>
+          <input name="wvb-route" type="checkbox" id="wvb-route" class="layer-off" onclick="toggleFour('wvb-routing', 'wvb-routing2', 'wvb-routingLabels', 'wvb-routingArrows')">
+					<label for="wvb-route" class="valign">Routing Elements</label>
+        </p>
+				<p>
+					<input name="wvb-junctions" type="checkbox" id="wvb-junctions" class="layer-on" onclick="toggleLayer('wvb-junctions')" checked>
+					<label for="wvb-junctions" class="valign">Junctions</label>
+				</p>
+				<p>
+					<input name="wvb-spills" type="checkbox" id="wvb-spills" class="layer-off" onclick="toggleTwo('wvb-spills', 'wvb-spillLabels')">
+					<label for="wvb-spills" class="valign">Spill Flows</label>
+				</p>
+      </div>
+    </li>
+		<li>
+      <a class="collapsible-header red white-text">Michaud<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <p>
+          <input name="mcb-basins" type="checkbox" id="mcb-basins" class="layer-on" onclick="toggleFour('mcb-basins', 'mcb-basins-borders','mcb-basinMarker', 'mcb-basinLabel')" checked>
+					<label for='mcb-basins' class="valign">Basins</label>
+        </p>
+        <p>
+          <input name="mcb-route" type="checkbox" id="mcb-route" class="layer-off" onclick="toggleFour('mcb-routing', 'mcb-routing2', 'mcb-routingLabels', 'mcb-routingArrows')">
+					<label for="mcb-route" class="valign">Routing Elements</label>
+        </p>
+				<p>
+					<input name="mcb-junctions" type="checkbox" id="mcb-junctions" class="layer-on" onclick="toggleLayer('mcb-junctions')" checked>
+					<label for="mcb-junctions" class="valign">Junctions</label>
+				</p>
+				<p>
+					<input name="mcb-spills" type="checkbox" id="mcb-spills" class="layer-off" onclick="toggleTwo('mcb-spills', 'mcb-spillLabels')">
+					<label for="mcb-spills" class="valign">Spill Flows</label>
+				</p>
+      </div>
+    </li>
+  </ul>
+</li>
