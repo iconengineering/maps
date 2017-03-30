@@ -2,12 +2,26 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 15,
     center: [-105.122176, 39.564758]
 });
 
-map.on('load', function () {
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.value;
+    map.setStyle('mapbox://styles/iconeng/' + layerId);
+    $('.layer-off').prop('checked', false);
+    $('.layer-on').prop('checked', true);
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+
+map.on('style.load', function () {
     map.addSource('golfcourse', {
         type: 'raster',
         url: 'mapbox://iconeng.DeerCreekCC',
@@ -16,7 +30,10 @@ map.on('load', function () {
     map.addLayer({
         'id': 'DeerCreekCC',
         'type': 'raster',
-        'source': 'golfcourse'
+        'source': 'golfcourse',
+        'layout': {
+          'visibility': 'visible'
+        }
     });
 
     map.addSource('contours', {
@@ -30,6 +47,7 @@ map.on('load', function () {
         'source-layer': 'deercreek_1ft_contours_CLIP',
         'filter': ['all', ['==', 'Index', 1]],
         'layout': {
+            'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
         },
@@ -47,6 +65,7 @@ map.on('load', function () {
         'source-layer': 'deercreek_1ft_contours_CLIP',
         'filter': ['all', ['>=', 'Index', 5],['<=', 'Index', 10]],
         'layout': {
+            'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
         },
@@ -64,6 +83,7 @@ map.on('load', function () {
         'source-layer': 'deercreek_1ft_contours_CLIP',
         'filter': ['all', ['>=', 'Index', 5],['<=', 'Index', 10]],
         'layout': {
+            'visibility': 'visible',
           'symbol-placement': 'line',
           'text-field': '{Label}',
           'text-size': {
@@ -160,6 +180,9 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'effectivesfha',
         'source-layer': 'Massey_Effective_Floodplain',
+        'layout': {
+            'visibility': 'visible'
+          },
         'paint': {
             'fill-opacity': 0.4,
             'fill-color': '#EDE04B',
@@ -305,7 +328,6 @@ map.on('load', function () {
     });
     map.addLayer({
         'id': 'grading',
-        'interactive': true,
         'type': 'line',
         'source': 'grading',
         'source-layer': 'Massey_Proposed_Grading',

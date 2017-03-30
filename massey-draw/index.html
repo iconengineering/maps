@@ -1,0 +1,59 @@
+---
+layout: default-map
+title: Massey Draw
+version: v0.34.0
+script: massey.js
+---
+
+<li class="no-padding">
+  <ul class="collapsible" data-collapsible="expandable">
+    <li>
+      <a class="collapsible-header white">Basemap<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <form id="menu">
+          <p class="narrow">
+            <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
+            <label for="test1">Satellite</label>
+          </p>
+          <p class="narrow">
+            <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd"/>
+            <label for="test2">Light</label>
+          </p>
+        </form>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header white">Layers<i class="material-icons">arrow_drop_down</i></a>
+      <div class="collapsible-body">
+        <p>
+          <input name="golfCourse" type="checkbox" id="golfCourse" class="layer-on" onclick="toggleLayer('DeerCreekCC')" checked/>
+          <label for="golfCourse" class="valign">Deer Creek CC</label>
+        </p>
+        <p>
+          <input name="contours" type="checkbox" id="contours" class="layer-on" onclick="toggleThree('1ftContours','5ftContours','5ftLabels')" checked/>
+          <label for="contours" class="valign">Contours</label>
+        </p>
+        <p>
+          <input name="efFp" type="checkbox" id="efFp" class="layer-on" onclick="toggleLayer('effectivesfha')" checked/>
+          <label for="efFp" class="valign">Effective Floodplain</label>
+        </p>
+        <p>
+          <input name="proFp" type="checkbox" id="proFp" class="layer-off" onclick="toggleThree('proposedfw','proposed500','proposed100')"/>
+          <label for="proFp" class="valign">Proposed Floodplain</label>
+        </p>
+        <p>
+          <input name="proIm" type="checkbox" id="proIm" class="layer-off" onclick="toggleFour('culvert-case','culvert','bridges','grading')"/>
+          <label for="proIm" class="valign">Proposed Improvements</label>
+        </p>
+        <p>
+          <input name="depth" type="checkbox" id="depth" class="layer-off" onclick="toggleThree('flowDepth','xs19','xs19Labels')"/>
+          <label for="depth" class="valign">Existing Flow Depth</label>
+        </p>
+        <p>
+          <input name="parcels" type="checkbox" id="parcels" class="layer-off" onclick="toggleLayer('parcels')"/>
+          <label for="parcels" class="valign">Impacted Parcels</label>
+        </p>
+      </div>
+    </li>
+  </ul>
+</li>
