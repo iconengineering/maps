@@ -10,44 +10,6 @@ var map = new mapboxgl.Map({
     center: [-105.27, 40]
 });
 
-var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
-
-function switchLayer(layer) {
-    var layerId = layer.target.value;
-    map.setStyle('mapbox://styles/iconeng/' + layerId);
-    document.getElementById('contour').className = 'display';
-    document.getElementById('contourMobile').className = 'link depth-1 display';
-    document.getElementById('route').className = 'display';
-    document.getElementById('routeMobile').className = 'link depth-1 display';
-    document.getElementById('junctions').className = 'display';
-    document.getElementById('junctionsMobile').className = 'link depth-1 display';
-    document.getElementById('centerline').className = 'display';
-    document.getElementById('centerlineMobile').className = 'link depth-1 display';
-    document.getElementById('flooding').className = '';
-    document.getElementById('floodingMobile').className = 'link depth-1';
-    document.getElementById('exBasins').className = '';
-    document.getElementById('exBasinsMobile').className = 'link depth-1';
-    document.getElementById('efBasins').className = '';
-    document.getElementById('efBasinsMobile').className = 'link depth-1';
-    document.getElementById('hhz').className = '';
-    document.getElementById('hhzMobile').className = 'link depth-1';
-    document.getElementById('floodDepth').className = '';
-    document.getElementById('floodDepthMobile').className = 'link depth-1';
-    document.getElementById('depth').className = '';
-    document.getElementById('depthMobile').className = 'link depth-1';
-    document.getElementById('velocity').className = '';
-    document.getElementById('velocityMobile').className = 'link depth-1';
-    document.getElementById('crossSection').className = '';
-    document.getElementById('crossSectionMobile').className = 'link depth-1';
-    document.getElementById('prevCenterline').className = '';
-    document.getElementById('prevCenterlineMobile').className = 'link depth-1';
-}
-
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].onclick = switchLayer;
-}
-
 map.on('style.load', function () {
 
     map.addSource('sbk-hydraulics', {
@@ -75,6 +37,7 @@ map.on('style.load', function () {
         'source': '5ftContours',
         'source-layer': 'SBK_COB_2013_5ft_Contours',
         'layout': {
+          'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
         },
@@ -99,6 +62,7 @@ map.on('style.load', function () {
         'source': '1ftContours',
         'source-layer': 'SBK_COB_2013_1ft_Contours_',
         'layout': {
+          'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
         },
@@ -241,6 +205,7 @@ map.on('style.load', function () {
         'source': '5ftContours',
         'source-layer': 'SBK_COB_2013_5ft_Contours',
         'layout': {
+          'visibility': 'visible',
           'symbol-placement': 'line',
           'text-field': '{CONTOUR}',
           'text-size': {
@@ -307,8 +272,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#ffffcc',
             'fill-opacity': 0.6
         }
@@ -324,8 +287,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#c7e9b4',
             'fill-opacity': 0.6
         }
@@ -341,8 +302,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#7fcdbb',
             'fill-opacity': 0.6
         }
@@ -358,8 +317,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#41b6c4',
             'fill-opacity': 0.6
         }
@@ -375,8 +332,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#1d91c0',
             'fill-opacity': 0.6
         }
@@ -392,8 +347,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#225ea8',
             'fill-opacity': 0.6
         }
@@ -409,8 +362,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#0c2c84',
             'fill-opacity': 0.6
         }
@@ -427,8 +378,6 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': {
-            'line-width': 0,
-            'line-opacity':0,
             'fill-color': '#0c2c84',
             'fill-opacity': 0.75
         }
@@ -554,6 +503,7 @@ map.on('style.load', function () {
         'source': 'routing',
         'source-layer': 'sbk_swmm_routing',
         'layout': {
+          'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
         },
@@ -571,6 +521,7 @@ map.on('style.load', function () {
         'source': 'routing',
         'source-layer': 'sbk_swmm_routing',
         'layout': {
+          'visibility': 'visible',
           'symbol-placement': 'line',
           'text-field': '{SWMM_ID} ({Q_100_YR}cfs)',
           'text-size': {
@@ -660,6 +611,7 @@ map.on('style.load', function () {
         'source': 'sbk-hydraulics-101416',
         'source-layer': 'River_Stationing',
         'layout': {
+          'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
         },
@@ -683,6 +635,7 @@ map.on('style.load', function () {
         'source-layer': 'sbk_swmm_node',
         'filter': ['all', ['in', 'Type', 'Design Point']],
         'layout': {
+          'visibility': 'visible',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
@@ -690,8 +643,6 @@ map.on('style.load', function () {
                 "base": 1.5
             },
            "icon-image": "triangle-c",
-           "icon-halo-color": '#000000',
-           "icon-halo-width":1,
            "text-field": "{SWMM_ID} ({Q_100_Rout}cfs)",
            'text-max-width': 3,
            "text-font": ["Lato Regular", "Arial Unicode MS Bold"],
@@ -715,6 +666,7 @@ map.on('style.load', function () {
         'source-layer': 'sbk_swmm_node',
         'filter': ['all', ['in', 'Type', 'Diversion']],
         'layout': {
+          'visibility': 'visible',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
@@ -722,8 +674,6 @@ map.on('style.load', function () {
                 "base": 1.5
             },
            "icon-image": "diamond-c",
-           "icon-halo-color": '#000000',
-           "icon-halo-width":1,
            "text-field": "{SWMM_ID} ({Q_100_Rout}cfs)",
            'text-max-width': 3,
            "text-font": ["Lato Regular", "Arial Unicode MS Bold"],
@@ -747,6 +697,7 @@ map.on('style.load', function () {
         'source-layer': 'sbk_swmm_node',
         'filter': ['all', ['in', 'Type', 'Outfall', 'Pipe Outfall']],
         'layout': {
+          'visibility': 'visible',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
@@ -754,8 +705,6 @@ map.on('style.load', function () {
                 "base": 1.5
             },
            "icon-image": "triangle2-c",
-           "icon-halo-color": '#000000',
-           "icon-halo-width":1,
            "text-field": "{SWMM_ID} ({Q_100_Rout}cfs)",
            'text-max-width': 3,
            "text-font": ["Lato Regular", "Arial Unicode MS Bold"],
@@ -774,171 +723,47 @@ map.on('style.load', function () {
 
 }); //end style load
 
-function toggleLayer(id, id2, layer) {
-
-        var visibility = map.getLayoutProperty(layer, 'visibility');
-
-        if (visibility === 'visible') {
-            map.setLayoutProperty(layer, 'visibility', 'none');
-            document.getElementById(id).className = '';
-            document.getElementById(id2).className = 'link depth-1';
-        } else {
-            document.getElementById(id).className = 'display';
-            document.getElementById(id2).className = 'link depth-1 display';
-            map.setLayoutProperty(layer, 'visibility', 'visible');
-        }
-    };
-
-function toggleTwo(id, id2, layer, layer2) {
-
-        var visibility = map.getLayoutProperty(layer, 'visibility');
-
-        if (visibility === 'visible') {
-            map.setLayoutProperty(layer, 'visibility', 'none');
-            map.setLayoutProperty(layer2, 'visibility', 'none');
-            document.getElementById(id).className = '';
-            document.getElementById(id2).className = 'link depth-1';
-        } else {
-            document.getElementById(id).className = 'display';
-            document.getElementById(id2).className = 'link depth-1 display';
-            map.setLayoutProperty(layer, 'visibility', 'visible');
-            map.setLayoutProperty(layer2, 'visibility', 'visible');
-        }
-    };
-
-    function toggleThree(id, id2, layer, layer2, layer3) {
-
-            var visibility = map.getLayoutProperty(layer, 'visibility');
-
-            if (visibility === 'visible') {
-                map.setLayoutProperty(layer, 'visibility', 'none');
-                map.setLayoutProperty(layer2, 'visibility', 'none');
-                map.setLayoutProperty(layer3, 'visibility', 'none');
-                document.getElementById(id).className = '';
-                document.getElementById(id2).className = 'link depth-1';
-            } else {
-                document.getElementById(id).className = 'display';
-                document.getElementById(id2).className = 'link depth-1 display';
-                map.setLayoutProperty(layer, 'visibility', 'visible');
-                map.setLayoutProperty(layer2, 'visibility', 'visible');
-                map.setLayoutProperty(layer3, 'visibility', 'visible');
-            }
-        };
-
-function toggleSix(id, id2, layer, layer2, layer3, layer4, layer5, layer6) {
-
-        var visibility = map.getLayoutProperty(layer, 'visibility');
-
-        if (visibility === 'visible') {
-            map.setLayoutProperty(layer, 'visibility', 'none');
-            map.setLayoutProperty(layer2, 'visibility', 'none');
-            map.setLayoutProperty(layer3, 'visibility', 'none');
-            map.setLayoutProperty(layer4, 'visibility', 'none');
-            map.setLayoutProperty(layer5, 'visibility', 'none');
-            map.setLayoutProperty(layer6, 'visibility', 'none');
-            document.getElementById(id).className = '';
-            document.getElementById(id2).className = 'link depth-1';
-        } else {
-            document.getElementById(id).className = 'display';
-            document.getElementById(id2).className = 'link depth-1 display';
-            map.setLayoutProperty(layer, 'visibility', 'visible');
-            map.setLayoutProperty(layer2, 'visibility', 'visible');
-            map.setLayoutProperty(layer3, 'visibility', 'visible');
-            map.setLayoutProperty(layer4, 'visibility', 'visible');
-            map.setLayoutProperty(layer5, 'visibility', 'visible');
-            map.setLayoutProperty(layer6, 'visibility', 'visible');
-        }
-    };
-
-function toggleSeven(id, id2, layer, layer2, layer3, layer4, layer5, layer6, layer7) {
-
-        var visibility = map.getLayoutProperty(layer, 'visibility');
-
-        if (visibility === 'visible') {
-            map.setLayoutProperty(layer, 'visibility', 'none');
-            map.setLayoutProperty(layer2, 'visibility', 'none');
-            map.setLayoutProperty(layer3, 'visibility', 'none');
-            map.setLayoutProperty(layer4, 'visibility', 'none');
-            map.setLayoutProperty(layer5, 'visibility', 'none');
-            map.setLayoutProperty(layer6, 'visibility', 'none');
-            map.setLayoutProperty(layer7, 'visibility', 'none');
-            document.getElementById(id).className = '';
-            document.getElementById(id2).className = 'link depth-1';
-        } else {
-            document.getElementById(id).className = 'display';
-            document.getElementById(id2).className = 'link depth-1 display';
-            map.setLayoutProperty(layer, 'visibility', 'visible');
-            map.setLayoutProperty(layer2, 'visibility', 'visible');
-            map.setLayoutProperty(layer3, 'visibility', 'visible');
-            map.setLayoutProperty(layer4, 'visibility', 'visible');
-            map.setLayoutProperty(layer5, 'visibility', 'visible');
-            map.setLayoutProperty(layer6, 'visibility', 'visible');
-            map.setLayoutProperty(layer7, 'visibility', 'visible');
-        }
-    };
-
-// When a click event occurs near a marker icon, open a popup at the location of
-// the feature, with description HTML from its properties.
 map.on('click', function (e) {
-    map.featuresAt(e.point, {layer: ['designPoints','diversions','outfalls'], radius: 10, includeGeometry: true}, function (err, features) {
-      if (err) throw err;
-      var feature = features[0];
+  var features = map.queryRenderedFeatures(e.point, { layers: ['designPoints','diversions','outfalls','flowDepth2','flowDepth3', 'flowDepth4', 'flowDepth5', 'flowDepth6', 'flowDepth7', 'flowDepth8','xsExtended','shallowFlood','xs2d'] });
+  if (!features.length) {
+      return;
+  }
 
-        var tooltip = new mapboxgl.Popup()
+  var feature = features[0];
+  var id = feature.layer.id
+
+  if (id == 'designPoints' || id == 'diversions' || id == 'outfalls'){
+
+        var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML('Type: ' + feature.properties.Type + '<br />' +
                       feature.properties.Q_100_Rout + ' cfs')
             .addTo(map);
-    });
-});
 
-map.on('click', function (e) {
-    map.featuresAt(e.point, {layer: ['flowDepth2','flowDepth3', 'flowDepth4', 'flowDepth5', 'flowDepth6', 'flowDepth7', 'flowDepth8'], radius: 10, includeGeometry: true}, function (err, features) {
-      if (err) throw err;
-      var feature = features[0];
-        //  document.getElementById('features').innerHTML = 'Elevation: ' + feature.properties.ELEVATION;
+  } else if (id == 'flowDepth2' || id == 'flowDepth3' || id == 'flowDepth4' || id == 'flowDepth5' || id == 'flowDepth6' || id == 'flowDepth7' || id == 'flowDepth8'){
 
-        var tooltip = new mapboxgl.Popup()
+        var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML('Depth: ' + feature.properties.Var + ' ft')
             .addTo(map);
-    });
-});
 
-map.on('click', function (e) {
-    map.featuresAt(e.point, {layer: ['xsExtended'], radius: 10, includeGeometry: true}, function (err, features) {
-      if (err) throw err;
-      var feature = features[0];
-        //  document.getElementById('features').innerHTML = 'Elevation: ' + feature.properties.ELEVATION;
+  } else if (id == 'xsExtended'){
 
-        var tooltip = new mapboxgl.Popup()
+        var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML('Vert Left: ' + feature.properties.Vert_Left + ' ft<br />' +
                     'Vert Right: ' + feature.properties.Vert_Right + ' ft<br />')
             .addTo(map);
-    });
-});
 
-map.on('click', function (e) {
-    map.featuresAt(e.point, {layer: ['shallowFlood'], radius: 10, includeGeometry: true}, function (err, features) {
-      if (err) throw err;
-      var feature = features[0];
-        //  document.getElementById('features').innerHTML = 'Elevation: ' + feature.properties.ELEVATION;
+  } else if (id == 'shallowFlood'){
 
-        var tooltip = new mapboxgl.Popup()
+        var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML('ID: ' + feature.properties.Id + '<br />' +
                     '2D Depth: ' + feature.properties.Depth + ' ft<br />')
             .addTo(map);
-    });
-});
 
-// When a click event occurs near a marker icon, open a popup at the location of
-// the feature, with description HTML from its properties.
-map.on('click', function (e) {
-    map.featuresAt(e.point, {layer: ['xs2d'], radius: 5, includeGeometry: true}, function (err, features) {
-      if (err) throw err;
-      var feature = features[0];
+  } else if (id == "xs2d"){
 
       var data = [{name: "10yr", value: feature.properties.INC_010_YR},
                   {name: "25yr", value: feature.properties.INC_025_YR},
@@ -947,18 +772,11 @@ map.on('click', function (e) {
                   {name: "500yr", value: feature.properties.INC_500_YR}];
 
 
-
-        var tooltip = new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .addTo(map);
-
               var margin = {top: 20, right: 20, bottom: 30, left: 40},
                   width = 200 - margin.left - margin.right,
                   height = 200 - margin.top - margin.bottom;
 
-              var div = d3.select("body").append("div")
-                  .attr("class", "tooltip")
-                  .style("opacity", 0);
+              var div = window.document.createElement('div');
 
               var x = d3.scale.ordinal()
                   .rangeRoundBands([0, width], .1);
@@ -975,12 +793,21 @@ map.on('click', function (e) {
                   .orient("left")
                   .ticks(5);
 
-              var svg = d3.select(".mapboxgl-popup-content").append("svg")
+              var tip = d3.tip()
+                  .attr('class', 'd3-tip')
+                  .offset([-10, 0])
+                  .html(function(d) {
+                    return "<span style='color:#1B55C0'>" + d.value + "</span><strong> cfs</strong> ";
+                  })
+
+              var svg = d3.select(div).append("svg")
                   .attr("class", "xs")
                   .attr("width", width + margin.left + margin.right)
                   .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                svg.call(tip);
 
                 d3.select(".xs").selectAll(".bar").remove()
 
@@ -1019,21 +846,8 @@ map.on('click', function (e) {
                     .attr("width", x.rangeBand())
                     .attr("y", function(d) { return height; })
                     .attr("height", 0)
-                    .on("mouseover", function(data) {
-                        div.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                        div	.html(function(d) {
-                              return "<strong><span style='color:#1B55C0'>" + data.value + "</span> cfs</strong>";
-                            })
-                            .style("left", (d3.event.pageX - 30) + "px")
-                            .style("top", (d3.event.pageY - 50) + "px");
-                        })
-                    .on("mouseout", function(data) {
-                        div.transition()
-                            .duration(500)
-                            .style("opacity", 0);
-                    })
+                    .on('mouseover', tip.show)
+                    .on('mouseout', tip.hide)
                     .transition()
                     .delay(function (d, i) { return i*100; })
                     .attr("height", function(d) { return height - y(d.value); })
@@ -1052,26 +866,19 @@ map.on('click', function (e) {
                 return d;
               }
 
-    });
+              var d3popup = new mapboxgl.Popup()
+                  .setLngLat(e.lngLat)
+                  .setDOMContent(div)
+                  .addTo(map);
+
+    }
 });
 
-//map.on('click', function (e) {
-  //  map.featuresAt(e.point, {layer: ['basins'], radius: 10, includeGeometry: true}, function (err, features) {
-    //  if (err) throw err;
-      //var feature = features[0];
-        //  document.getElementById('features').innerHTML = 'Basin: ' + feature.properties.Basin;
-    //});
-//});
-
-// Use the same approach as above to indicate that the symbols are clickable
-// by changing the cursor style to 'pointer'.
 map.on('mousemove', function (e) {
-    map.featuresAt(e.point, {layer: ['xs2d','designPoints','diversions','outfalls','shallowFlood','xsExtended','flowDepth2','flowDepth3', 'flowDepth4', 'flowDepth5', 'flowDepth6', 'flowDepth7', 'flowDepth8'], radius: 10}, function (err, features) {
-        map.getCanvas().style.cursor = (!err && features.length) ? 'pointer' : '';
-    });
+    var features = map.queryRenderedFeatures(e.point, { layers: ['xs2d','designPoints','diversions','outfalls','shallowFlood','xsExtended','flowDepth2','flowDepth3', 'flowDepth4', 'flowDepth5', 'flowDepth6', 'flowDepth7', 'flowDepth8'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
-map.addControl(new mapboxgl.Geocoder());
-map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
+map.addControl(new mapboxgl.Navigation({position: 'top-right'}));
 
 }

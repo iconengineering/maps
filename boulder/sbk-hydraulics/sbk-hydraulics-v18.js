@@ -4,7 +4,7 @@ if (!mapboxgl.supported()) {
 } else {
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 14,
     center: [-105.27, 40]
 });
@@ -17,8 +17,6 @@ function switchLayer(layer) {
     map.setStyle('mapbox://styles/iconeng/' + layerId);
     $('.layer-off').prop('checked', false);
     $('.layer-on').prop('checked', true);
-    $('.label-off').removeClass('is-checked');
-    $('.label-on').addClass('is-checked');
 }
 
 for (var i = 0; i < inputs.length; i++) {
@@ -361,7 +359,7 @@ map.on('click', function (e) {
 
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML('<h4>' + feature.properties.RiverCode + ' Cross Section ' + feature.properties.ProfileM + '</h4>' +
+            .setHTML('<b>' + feature.properties.RiverCode + ' Cross Section ' + feature.properties.ProfileM + '</b> <br />' +
                      '10-year: ' + feature.properties.P003.toFixed(2) + '<br />' +
                      '25-year: ' + feature.properties.P004.toFixed(2) + '<br />' +
                      '50-year: ' + feature.properties.P005.toFixed(2) + '<br />' +
@@ -378,8 +376,7 @@ map.on('mousemove', function (e) {
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
-map.addControl(new mapboxgl.Geocoder());
-map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
+map.addControl(new mapboxgl.Navigation({position: 'top-right'}));
 
 // disable map rotation using right click + drag
 map.dragRotate.disable();
