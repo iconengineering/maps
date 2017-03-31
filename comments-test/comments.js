@@ -10,7 +10,7 @@
   firebase.initializeApp(config);
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
-/* eslint-disable */
+
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
@@ -33,10 +33,6 @@ firebaseData().then(function(result) {
     firebaseGeojsonFeatures.push(f);
   }
 });
-
-// draw.setFeatureProperty("6d595a13a1d9e7dc7d8d704c05e97b63","var","complaint")
-// console.log(draw.getAll().features[0]);
-// firebase.database().ref().push(draw.getAll());
 
 map.on('load', function() {
 
