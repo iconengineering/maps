@@ -3346,12 +3346,12 @@ small {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
     padding: 16px 24px; }
     .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-      color: #ffab40;
+      color: #26c6da;
       margin-right: 24px;
       transition: color .3s ease;
       text-transform: uppercase; }
       .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
-        color: #ffd8a6; }
+        color: #7ddde9; }
   .card .card-reveal {
     padding: 24px;
     position: absolute;
@@ -4127,18 +4127,18 @@ label {
    ========================================================================== */
 /* Style Placeholders */
 ::-webkit-input-placeholder {
-  color: #d1d1d1; }
+  color: #f0f0f0; }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #d1d1d1; }
+  color: #f0f0f0; }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #d1d1d1; }
+  color: #f0f0f0; }
 
 :-ms-input-placeholder {
-  color: #d1d1d1; }
+  color: #f0f0f0; }
 
 /* Text inputs */
 input:not([type]),
@@ -4156,7 +4156,7 @@ input[type=search],
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #9e9e9e;
+  border-bottom: 1px solid #bdbdbd;
   border-radius: 0;
   outline: none;
   height: 3rem;
@@ -4413,7 +4413,7 @@ textarea.materialize-textarea {
   .input-field.col .prefix ~ .validate ~ label {
     width: calc(100% - 3rem - 1.5rem); }
   .input-field label {
-    color: #9e9e9e;
+    color: #bdbdbd;
     position: absolute;
     top: 0.8rem;
     left: 0;
@@ -4871,7 +4871,7 @@ select {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #9e9e9e;
+    border-bottom: 1px solid #bdbdbd;
     outline: none;
     height: 3rem;
     line-height: 3rem;

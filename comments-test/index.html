@@ -1,11 +1,23 @@
 ---
 layout: default-map
 title: Comment Test
-version: v0.34.0
+version: v0.32.0
 script: comments.js
 extra-js:
   - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js
   - //www.gstatic.com/firebasejs/3.7.4/firebase.js
 extra-css:
   - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.css
+  - comments.css
 ---
+<div class="container">
+  <div id="info-row" class="row">
+    <div class="col s9 m6 offset-m6 l4 offset-l7 abs">
+      <div id="input-card" class="card blue-grey">
+        <div class="card-content white-text">
+          <span class="card-title">Place a Marker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
