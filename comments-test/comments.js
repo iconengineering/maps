@@ -62,29 +62,6 @@ map.on('load', function() {
 
 });
 
-// When a click event occurs near a marker icon, open a popup at the location of
-// the feature, with description HTML from its properties.
-map.on('click', function (e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['firebase'] });
-  if (!features.length) {
-      return;
-  }
-
-  var feature = features[0];
-
-        var popup = new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(feature.properties.description)
-            .addTo(map);
-    });
-
-// Use the same approach as above to indicate that the symbols are clickable
-// by changing the cursor style to 'pointer'.
-map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['firebase'] });
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-});
-
 var draw = new MapboxDraw({
     displayControlsDefault: false,
     controls: {
@@ -167,4 +144,34 @@ map.on('draw.delete', function() {
   var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div>';
 
   card.innerHTML = reset;
+});
+
+// When a click event occurs near a marker icon, open a popup at the location of
+// the feature, with description HTML from its properties.
+
+var firePopup = function (e) {
+  var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
+  var features = map.queryRenderedFeatures(bbox, { layers: ['firebase'] });
+
+  if (!features.length) {
+      return;
+  }
+
+  var feature = features[0];
+
+        var popup = new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(feature.properties.description)
+            .addTo(map);
+    };
+
+map.on('touchstart', firePopup);
+
+map.on('click', firePopup);
+
+// Use the same approach as above to indicate that the symbols are clickable
+// by changing the cursor style to 'pointer'.
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['firebase'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
