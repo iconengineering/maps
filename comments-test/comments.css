@@ -9,3 +9,7 @@
   position:absolute;
   left: 0 !important;
 }
+
+.card-title .btn, .card-action .btn {
+  margin-left: .5em;
+}

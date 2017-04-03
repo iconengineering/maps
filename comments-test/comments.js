@@ -10,7 +10,7 @@
   firebase.initializeApp(config);
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
-
+/* eslint-disable */
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
@@ -33,6 +33,10 @@ firebaseData().then(function(result) {
     firebaseGeojsonFeatures.push(f);
   }
 });
+
+// draw.setFeatureProperty("6d595a13a1d9e7dc7d8d704c05e97b63","var","complaint")
+// console.log(draw.getAll().features[0]);
+// firebase.database().ref().push(draw.getAll());
 
 map.on('load', function() {
 
@@ -59,11 +63,7 @@ map.on('load', function() {
 });
 
 var draw = new MapboxDraw({
-    displayControlsDefault: false,
-    controls: {
-        point: true,
-        trash: true
-    }
+    displayControlsDefault: false
 });
 
 map.addControl(draw);
@@ -79,11 +79,17 @@ map.on('draw.create', function() {
 
   var action = document.createElement('div');
   action.className = 'card-action';
+  action.id = 'cardAction';
   var actionA = document.createElement('a');
-  actionA.className = 'btn-flat';
+  actionA.className = 'btn';
   actionA.href = '#';
   actionA.text = 'Submit';
   var actionButton = action.insertAdjacentElement('beforeend', actionA);
+  var cancelA = document.createElement('a');
+  cancelA.className = 'btn';
+  cancelA.href = '#';
+  cancelA.text = 'Cancel';
+  var cancelButton = action.insertAdjacentElement('beforeend', cancelA);
   card.insertAdjacentElement('beforeend', action);
 
   actionButton.addEventListener('click', function(){
@@ -105,7 +111,7 @@ map.on('draw.create', function() {
       .deleteAll()
       .getAll();
 
-    var thanks = '<div class="card-content white-text"><span>Your comment has been received.</span></div>'
+    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker <a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="waves-effect waves-cyan btn white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a></span><span>Your comment has been received.</span></div>'
 
     card.innerHTML = thanks;
 
@@ -131,16 +137,27 @@ map.on('draw.create', function() {
 
   });
 
+  cancelButton.addEventListener('click', function(){
+
+    draw.deleteAll();
+    draw.changeMode('simple_select');
+
+    var card = document.getElementById('input-card');
+
+    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker <a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="waves-effect waves-cyan btn white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a></span></div>';
+
+    card.innerHTML = reset;
+  });
+
 });
 
-map.on('draw.delete', function() {
+function drawPoint(){
+  draw.changeMode("draw_point");
+}
 
-  var card = document.getElementById('input-card');
-
-  var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div>';
-
-  card.innerHTML = reset;
-});
+function simpleSelect(){
+  draw.changeMode("simple_select");
+}
 
 // When a click event occurs near a marker icon, open a popup at the location of
 // the feature, with description HTML from its properties.
