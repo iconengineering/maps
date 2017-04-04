@@ -22,20 +22,20 @@ function smoothTwo(layer, property, reset, layer2, property2, reset2) {
         }
     };
 
-  function smoothThree(layer, property, reset, layer2, property2, reset2, layer3, property3, reset3) {
+function smoothThree(layer, property, reset, layer2, property2, reset2, layer3, property3, reset3) {
 
-          var opacity = map.getPaintProperty(layer, property);
+        var opacity = map.getPaintProperty(layer, property);
 
-          if (opacity === reset) {
-              map.setPaintProperty(layer,property, 0);
-              map.setPaintProperty(layer2,property2, 0);
-              map.setPaintProperty(layer3,property3, 0);
-          } else {
-              map.setPaintProperty(layer, property, reset);
-              map.setPaintProperty(layer2, property2, reset2);
-              map.setPaintProperty(layer3, property3, reset3);
-          }
-      };
+        if (opacity === reset) {
+            map.setPaintProperty(layer,property, 0);
+            map.setPaintProperty(layer2,property2, 0);
+            map.setPaintProperty(layer3,property3, 0);
+        } else {
+            map.setPaintProperty(layer, property, reset);
+            map.setPaintProperty(layer2, property2, reset2);
+            map.setPaintProperty(layer3, property3, reset3);
+        }
+    };
 
 function toggleLayer(layer) {
 
@@ -63,18 +63,18 @@ function toggleTwo(layer, layer2) {
 
 function toggleThree(layer, layer2, layer3) {
 
-            var visibility = map.getLayoutProperty(layer, 'visibility');
+        var visibility = map.getLayoutProperty(layer, 'visibility');
 
-            if (visibility === 'visible') {
-                map.setLayoutProperty(layer, 'visibility', 'none');
-                map.setLayoutProperty(layer2, 'visibility', 'none');
-                map.setLayoutProperty(layer3, 'visibility', 'none');
-            } else {
-                map.setLayoutProperty(layer, 'visibility', 'visible');
-                map.setLayoutProperty(layer2, 'visibility', 'visible');
-                map.setLayoutProperty(layer3, 'visibility', 'visible');
-            }
-        };
+        if (visibility === 'visible') {
+            map.setLayoutProperty(layer, 'visibility', 'none');
+            map.setLayoutProperty(layer2, 'visibility', 'none');
+            map.setLayoutProperty(layer3, 'visibility', 'none');
+        } else {
+            map.setLayoutProperty(layer, 'visibility', 'visible');
+            map.setLayoutProperty(layer2, 'visibility', 'visible');
+            map.setLayoutProperty(layer3, 'visibility', 'visible');
+        }
+    };
 
 function toggleFour(layer, layer2, layer3, layer4) {
 

@@ -6,71 +6,71 @@ script: clear-creek-dfirm.js
 ---
 <ul id="slide-out" class="side-nav fixed">
   <a href="#" class="brand-logo center hide-on-med-and-up">{{ page.title }}</a>
-<li class="no-padding">
-  <ul class="collapsible" data-collapsible="expandable">
-    <li>
-      <a class="collapsible-header white">Counties<i class="material-icons">keyboard_arrow_down</i></a>
-      <div class="collapsible-body">
-        <small class="grey-text text-darken-2 note">Click to Zoom to county data.</small>
-        <ul>
-          <li><a class="waves-effect" href="#!" id="jeffco">Jefferson County</a></li>
-          <li><a class="waves-effect" href="#!" id="clearcreek">Clear Creek County</a></li>
-        </ul>
-      </div>
-    </li>
-    <li>
-      <a class="collapsible-header white">Basemap<i class="material-icons">keyboard_arrow_down</i></a>
-      <div class="collapsible-body grey-text text-darken-2">
-        <form id="menu">
-          <p class="narrow">
-            <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot'/>
-            <label for="test1">Satellite</label>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <a class="collapsible-header white">Counties<i class="material-icons">keyboard_arrow_down</i></a>
+        <div class="collapsible-body">
+          <small class="grey-text text-darken-2 note">Click to Zoom to county data.</small>
+          <ul>
+            <li><a class="waves-effect" href="#!" id="jeffco">Jefferson County</a></li>
+            <li><a class="waves-effect" href="#!" id="clearcreek">Clear Creek County</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header white">Basemap<i class="material-icons">keyboard_arrow_down</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+          <form id="menu">
+            <p class="narrow">
+              <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot'/>
+              <label for="test1">Satellite</label>
+            </p>
+            <p class="narrow">
+              <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" checked/>
+              <label for="test2">Light</label>
+            </p>
+          </form>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">keyboard_arrow_down</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+          <p>
+            <input name="changes" type="checkbox" id="changes" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
+            <label for="changes" class="valign">Changes</label>
           </p>
-          <p class="narrow">
-            <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" checked/>
-            <label for="test2">Light</label>
+          <p>
+            <input name="bfe" type="checkbox" id="bfe" class="layer-off" onclick="toggleFour('cc-bfe','cc-bfeLabels','jc-bfe','jc-bfeLabels')"/>
+            <label for="bfe" class="valign">BFEs</label>
           </p>
-        </form>
-      </div>
-    </li>
-    <li>
-      <a class="collapsible-header white">Layers<i class="material-icons">keyboard_arrow_down</i></a>
-      <div class="collapsible-body grey-text text-darken-2">
-        <p>
-          <input name="changes" type="checkbox" id="changes" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
-          <label for="changes" class="valign">Changes</label>
-        </p>
-        <p>
-          <input name="bfe" type="checkbox" id="bfe" class="layer-off" onclick="toggleFour('cc-bfe','cc-bfeLabels','jc-bfe','jc-bfeLabels')"/>
-          <label for="bfe" class="valign">BFEs</label>
-        </p>
-        <p>
-          <input name="xs" type="checkbox" id="xs" class="layer-off" onclick="toggleFour('cc-xs','cc-xsLabels','jc-xs','jc-xsLabels')"/>
-          <label for="xs" class="valign">Cross Sections</label>
-        </p>
-        <p>
-          <input name="structures" type="checkbox" id="structures" class="layer-off" onclick="toggleTwo('cc-structures','jc-structures')"/>
-          <label for="structures" class="valign">Structures</label>
-        </p>
-        <p>
-          <input name="streams" type="checkbox" id="streams" class="layer-off" onclick="toggleFour('cc-streams','cc-streamsLabels','jc-streams','jc-streamsLabels')"/>
-          <label for="streams" class="valign">Streams</label>
-        </p>
-      </div>
-    </li>
-    <li>
-      <a class="collapsible-header white">Legend<i class="material-icons">keyboard_arrow_down</i></a>
-      <div class="collapsible-body">
-        <ul class="collection with-header grey-text text-darken-2">
-          <li class="collection-header"><h6>Floodplain</h6></li>
-          <li class="collection-item"><div>100-Year<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2196F3" fill-opacity=".8" /></svg></a></div></li>
-          <li class="collection-item"><div>500-Year<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#ffa726" fill-opacity=".8" /></svg></a></div></li>
-          <li class="collection-header"><h6>Change</h6></li>
-          <li class="collection-item"><div>Increase in Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#F57B7B" fill-opacity=".8" /></svg></a></div></li>
-          <li class="collection-item"><div>Decrease in Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#A5F57B" fill-opacity=".8" /></svg></a></div></li>
-         </ul>
-      </div>
-    </li>
-  </ul>
-</li>
+          <p>
+            <input name="xs" type="checkbox" id="xs" class="layer-off" onclick="toggleFour('cc-xs','cc-xsLabels','jc-xs','jc-xsLabels')"/>
+            <label for="xs" class="valign">Cross Sections</label>
+          </p>
+          <p>
+            <input name="structures" type="checkbox" id="structures" class="layer-off" onclick="toggleTwo('cc-structures','jc-structures')"/>
+            <label for="structures" class="valign">Structures</label>
+          </p>
+          <p>
+            <input name="streams" type="checkbox" id="streams" class="layer-off" onclick="toggleFour('cc-streams','cc-streamsLabels','jc-streams','jc-streamsLabels')"/>
+            <label for="streams" class="valign">Streams</label>
+          </p>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header white">Legend<i class="material-icons">keyboard_arrow_down</i></a>
+        <div class="collapsible-body">
+          <ul class="collection with-header grey-text text-darken-2">
+            <li class="collection-header"><h6>Floodplain</h6></li>
+            <li class="collection-item"><div>100-Year<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2196F3" fill-opacity=".8" /></svg></a></div></li>
+            <li class="collection-item"><div>500-Year<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#ffa726" fill-opacity=".8" /></svg></a></div></li>
+            <li class="collection-header"><h6>Change</h6></li>
+            <li class="collection-item"><div>Increase in Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#F57B7B" fill-opacity=".8" /></svg></a></div></li>
+            <li class="collection-item"><div>Decrease in Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#A5F57B" fill-opacity=".8" /></svg></a></div></li>
+           </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
 </ul>

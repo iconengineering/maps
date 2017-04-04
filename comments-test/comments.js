@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB481srlKzeUsISRGwwMk15saZGxbvXa0w",
@@ -33,10 +38,6 @@ firebaseData().then(function(result) {
     firebaseGeojsonFeatures.push(f);
   }
 });
-
-// draw.setFeatureProperty("6d595a13a1d9e7dc7d8d704c05e97b63","var","complaint")
-// console.log(draw.getAll().features[0]);
-// firebase.database().ref().push(draw.getAll());
 
 map.on('load', function() {
 
@@ -86,7 +87,7 @@ map.on('draw.create', function() {
   actionA.text = 'Submit';
   var actionButton = action.insertAdjacentElement('beforeend', actionA);
   var cancelA = document.createElement('a');
-  cancelA.className = 'btn';
+  cancelA.className = 'btn red accent-2';
   cancelA.href = '#';
   cancelA.text = 'Cancel';
   var cancelButton = action.insertAdjacentElement('beforeend', cancelA);
@@ -111,7 +112,7 @@ map.on('draw.create', function() {
       .deleteAll()
       .getAll();
 
-    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker <a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="waves-effect waves-cyan btn white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a></span><span>Your comment has been received.</span></div>'
+    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span>Your comment has been received.</span></div><div class="card-action"><a class="waves-effect waves-cyan btn tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Start drawing" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="red accent-2 waves-effect waves-red btn tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Cancel drawing" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a></div>'
 
     card.innerHTML = thanks;
 
@@ -144,9 +145,10 @@ map.on('draw.create', function() {
 
     var card = document.getElementById('input-card');
 
-    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker <a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="waves-effect waves-cyan btn white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a></span></div>';
+    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div class="card-action"><a class="waves-effect waves-cyan btn tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Start drawing" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="red accent-2 waves-effect waves-red btn  tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Cancel drawing" onclick="simpleSelect()"><i class="material-icons">cancel</i></a></div>';
 
     card.innerHTML = reset;
+    
   });
 
 });
