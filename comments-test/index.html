@@ -28,12 +28,12 @@ extra-css:
           <p>
             <input name="changes" type="checkbox" id="changes" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
             <label for="changes" class="valign">Changes </label>
-             <button data-target="modal1" class="btn-floating btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
+            <button data-target="modal1" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
           </p>
           <p>
-            <input name="changes" type="checkbox" id="changes" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
-            <label for="changes" class="valign">Other </label>
-             <button data-target="modal2" class="btn-floating btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
+            <input name="other" type="checkbox" id="other" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
+            <label for="other" class="valign">Other </label>
+            <button data-target="modal2" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
           </p>
         </div>
       </li>
@@ -58,9 +58,8 @@ extra-css:
         <div class="card-content white-text">
           <span class="card-title">Place a Marker</span>
         </div>
-        <div class="card-action">
+        <div id="action" class="card-action">
           <a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>
-          <a class="red accent-2 waves-effect waves-red btn white-text" onclick="simpleSelect()"><i class="material-icons">cancel</i></a>
         </div>
       </div>
     </div>
@@ -69,22 +68,30 @@ extra-css:
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal bottom-sheet">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  <div class="row">
+    <div class="col s12 l6 offset-l3">
+      <div class="modal-content">
+        <h4>High Hazard Zone</h4>
+        <p>The High Hazard Zone is the portion of the floodplain where an unacceptably high hazard to human safety exists defined as those areas where the product number of flow velocity (measured in ft./sec.) times flow depth (measured in feet) equals or exceeds four, or where flow depths equal or exceed four feet.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close btn waves-effect waves-light red accent-2">Close</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- Modal Structure -->
 <div id="modal2" class="modal bottom-sheet">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>Another bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  <div class="row">
+    <div class="col s12 l6 offset-l3">
+      <div class="modal-content">
+        <h4>Conveyance Zone</h4>
+          <p>The Conveyance Zone is the portion of the floodplain required for the passage of the one hundred-year flood from the edges of the flood channel to a point where the one hundred-year flood profile will surcharge six inches or more.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-light btn red accent-2">Close</a>
+      </div>
+    </div>
   </div>
 </div>

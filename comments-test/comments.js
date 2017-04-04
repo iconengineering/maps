@@ -112,7 +112,7 @@ map.on('draw.create', function() {
       .deleteAll()
       .getAll();
 
-    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span>Your comment has been received.</span></div><div class="card-action"><a class="waves-effect waves-cyan btn tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Start drawing" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="red accent-2 waves-effect waves-red btn tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Cancel drawing" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a></div>'
+    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span>Your comment has been received.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>'
 
     card.innerHTML = thanks;
 
@@ -145,20 +145,33 @@ map.on('draw.create', function() {
 
     var card = document.getElementById('input-card');
 
-    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div class="card-action"><a class="waves-effect waves-cyan btn tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Start drawing" onclick="drawPoint()"><i class="material-icons">place</i></a><a class="red accent-2 waves-effect waves-red btn  tooltipped white-text" data-position="bottom" data-delay="50" data-tooltip="Cancel drawing" onclick="simpleSelect()"><i class="material-icons">cancel</i></a></div>';
+    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>';
 
     card.innerHTML = reset;
-    
+
   });
 
 });
 
 function drawPoint(){
   draw.changeMode("draw_point");
+
+  var action = document.getElementById('action');
+  var cancel = '<a id="cancel" class="red accent-2 waves-effect waves-red btn white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a>';
+
+  var cancelButton = document.getElementById('cancel');
+
+  if (typeof(cancelButton) != 'undefined' && cancelButton != null) {
+  return;
+} else {
+  action.insertAdjacentHTML('beforeend', cancel);
+}
+
 }
 
 function simpleSelect(){
   draw.changeMode("simple_select");
+  document.getElementById("cancel").remove();
 }
 
 // When a click event occurs near a marker icon, open a popup at the location of
@@ -190,3 +203,9 @@ map.on('mousemove', function (e) {
     var features = map.queryRenderedFeatures(e.point, { layers: ['firebase'] });
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
+
+// disable map rotation using right click + drag
+map.dragRotate.disable();
+
+// disable map rotation using touch rotation gesture
+map.touchZoomRotate.disableRotation();

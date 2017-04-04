@@ -13,3 +13,17 @@
 .card-title .btn, .card-action .btn {
   margin-left: .5em;
 }
+
+.btn-floating.small {
+  line-height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.btn-floating.small i {
+  line-height: 1.5rem;
+}
+
+.btn-floating.small .tiny {
+  font-size: 1rem;
+}
