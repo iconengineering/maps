@@ -23,6 +23,13 @@ var map = new mapboxgl.Map({
     zoom: 12 // starting zoom
 });
 
+var draw = new MapboxDraw({
+    displayControlsDefault: false
+});
+
+map.addControl(draw);
+map.addControl(new mapboxgl.GeolocateControl());
+
 var firebaseGeojsonFeatures = [];
 
 function firebaseData() { return firebase.database().ref('testing').once("value").then(function(snapshot) {
@@ -62,13 +69,6 @@ map.on('load', function() {
   });
 
 });
-
-var draw = new MapboxDraw({
-    displayControlsDefault: false
-});
-
-map.addControl(draw);
-map.addControl(new mapboxgl.GeolocateControl());
 
 map.on('draw.create', function() {
 
@@ -176,6 +176,22 @@ function simpleSelect(){
 
 // When a click event occurs near a marker icon, open a popup at the location of
 // the feature, with description HTML from its properties.
+var popup = new mapboxgl.Popup()
+var firePopupTouch = function (e) {
+  var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
+  var features = map.queryRenderedFeatures(bbox, { layers: ['firebase'] });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+        popup.remove();
+        popup
+            .setLngLat(e.lngLat)
+            .setHTML(feature.properties.description)
+            .addTo(map);
+    };
 
 var firePopup = function (e) {
   var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
@@ -193,7 +209,7 @@ var firePopup = function (e) {
             .addTo(map);
     };
 
-map.on('touchstart', firePopup);
+map.on('touchstart', firePopupTouch);
 
 map.on('click', firePopup);
 
