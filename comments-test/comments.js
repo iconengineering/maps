@@ -1,6 +1,24 @@
 $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+
+    var header = document.getElementById('header-links');
+    var admin = '<li><a href="#modalAdmin">ADMIN</li>';
+
+    header.insertAdjacentHTML('beforeend',admin);
+
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrainWidth: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'left', // Displays dropdown with edge aligned to the left of button
+        stopPropagation: false // Stops event propagation
+      }
+    );
+
   });
 
 // Initialize Firebase
@@ -13,6 +31,61 @@ $(document).ready(function(){
     messagingSenderId: "430372226547"
   };
   firebase.initializeApp(config);
+
+document.querySelector('#adminSubmit').addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var email = document.querySelector('#adminEmail').value;
+      var password = document.querySelector('#adminPassword').value
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+  });
+});
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var header = document.getElementById('header-links');
+    var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
+
+    var adminFooter = document.getElementById('adminFooter');
+    var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Sign Out</a>';
+
+    header.insertAdjacentHTML('beforeend',dropdown);
+    adminFooter.insertAdjacentHTML('beforeend',logout);
+
+    document.querySelector('#adminLogout').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          firebase.auth().signOut();
+        });
+
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrainWidth: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'left', // Displays dropdown with edge aligned to the left of button
+        stopPropagation: false // Stops event propagation
+      }
+    );
+  } else {
+    var header = document.getElementById('header-links');
+    var adminFooter = document.getElementById('adminFooter');
+    var download = document.getElementById('download');
+    var logout = document.getElementById('adminLogout');
+
+    header.removeChild(download);
+    adminFooter.removeChild(logout);
+
+    document.getElementById("adminForm").reset();
+
+  }
+});
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 /* eslint-disable */
@@ -174,6 +247,34 @@ function simpleSelect(){
   document.getElementById("cancel").remove();
 }
 
+function downloadShp(){
+  var logJson = map.getSource('firebase')._data;
+  var options = {
+      folder: 'myshapes',
+      types: {
+          point: 'mypoints',
+          polygon: 'mypolygons',
+          line: 'mylines'
+      }
+  };
+
+  shpwrite.download(logJson, options);
+}
+
+function downloadGeojson(){
+  var logJson = map.getSource('firebase')._data;
+
+  function download(filename, json) {
+      var el = document.createElement('a'),
+          text = JSON.stringify(json, null, 2);
+      el.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      el.setAttribute('download', filename);
+      el.click();
+  }
+
+  download("file.geojson", logJson);
+}
+
 // When a click event occurs near a marker icon, open a popup at the location of
 // the feature, with description HTML from its properties.
 var popup = new mapboxgl.Popup()
@@ -186,10 +287,16 @@ var firePopupTouch = function (e) {
   }
 
   var feature = features[0];
+
+  if (firebase.auth().currentUser){
+    var popupContent = '<span>Name: ' + feature.properties.name + '<br />Email: ' + feature.properties.email + '<br />' + feature.properties.description + '</span>';
+  } else {
+  var popupContent = feature.properties.description;
+  }
         popup.remove();
         popup
             .setLngLat(e.lngLat)
-            .setHTML(feature.properties.description)
+            .setHTML(popupContent)
             .addTo(map);
     };
 
@@ -203,9 +310,15 @@ var firePopup = function (e) {
 
   var feature = features[0];
 
+  if (firebase.auth().currentUser){
+    var popupContent = '<span>Name: ' + feature.properties.name + '<br />Email: ' + feature.properties.email + '<br />' + feature.properties.description + '</span>';
+  } else {
+  var popupContent = feature.properties.description;
+  }
+
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(feature.properties.description)
+            .setHTML(popupContent)
             .addTo(map);
     };
 
