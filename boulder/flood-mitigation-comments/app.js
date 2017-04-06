@@ -111,6 +111,12 @@ var map = new mapboxgl.Map({
     maxBounds: bounds // Sets bounds as max
 });
 
+var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+});
+
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map))
+
 // Init Draw
 var draw = new MapboxDraw({
     displayControlsDefault: false
@@ -157,6 +163,13 @@ map.on('load', function() {
   map.addSource('floodExtents', {
   type: 'vector',
   url: 'mapbox://iconeng.8fvqotm7'
+  });
+  map.addSource('single-point', {
+      "type": "geojson",
+      "data": {
+          "type": "FeatureCollection",
+          "features": []
+      }
   });
 
   map.addLayer({
@@ -250,6 +263,16 @@ map.on('load', function() {
   });
 
   map.addLayer({
+      "id": "point",
+      "source": "single-point",
+      "type": "circle",
+      "paint": {
+          "circle-radius": 5,
+          "circle-color": "#333"
+      }
+  });
+
+  map.addLayer({
     id: 'firebase',
     source: 'firebase',
     type: 'circle',
@@ -263,6 +286,11 @@ map.on('load', function() {
   });
 
 }); // end map layers
+
+// draw point on geocode
+geocoder.on('result', function(ev) {
+  map.getSource('single-point').setData(ev.result.geometry);
+});
 
 // actions on draw
 map.on('draw.create', function() {
