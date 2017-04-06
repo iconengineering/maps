@@ -95,12 +95,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
+// Set bounds to project area
+var bounds = [
+    [-105.36,39.98], // Southwest coordinates
+    [-105.19,40.05]  // Northeast coordinates
+];
+
 // Init Map
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
-    center: [-105.1522,40.0452], // starting position
-    zoom: 12 // starting zoom
+    center: [-105.2715,40.0184], // starting position
+    zoom: 12.5, // starting zoom,
+    hash: true,
+    maxBounds: bounds // Sets bounds as max
 });
 
 // Init Draw
@@ -109,9 +117,6 @@ var draw = new MapboxDraw({
 });
 
 map.addControl(draw);
-
-// optional geolocation
-map.addControl(new mapboxgl.GeolocateControl());
 
 //set blank geojson
 var firebaseGeojsonFeatures = [];
@@ -141,6 +146,108 @@ map.on('load', function() {
          features: firebaseGeojsonFeatures
        }
 	});
+  map.addSource('floodZones', {
+	type: 'geojson',
+  data: 'floodZones.geojson'
+	});
+  map.addSource('centerlines', {
+	type: 'geojson',
+  data: 'centerlines.geojson'
+	});
+  map.addSource('floodExtents', {
+  type: 'vector',
+  url: 'mapbox://iconeng.8fvqotm7'
+  });
+
+  map.addLayer({
+    id: '500yr',
+    source: 'floodZones',
+    type: 'fill',
+    filter: ['==', 'FldZone', '500yr'],
+    paint: {
+        'fill-opacity': 0,
+        'fill-color': '#7ebdc5',
+        'fill-outline-color': '#61a4b3'
+    }
+  }, 'road-label-small');
+
+  map.addLayer({
+    id: '100yr',
+    source: 'floodZones',
+    type: 'fill',
+    filter: ['in', 'FldZone', '100yr','AO1','AO2'],
+    paint: {
+        'fill-opacity': 0.75,
+        'fill-color': '#2a5674',
+        'fill-outline-color': '#2a5674'
+    }
+  }, 'road-label-small');
+
+  map.addLayer({
+    id: 'HHZ',
+    source: 'floodZones',
+    type: 'fill',
+    filter: ['==', 'FldZone', 'HHZ'],
+    paint: {
+        'fill-opacity': 0,
+        'fill-color': '#FF5252',
+        'fill-outline-color': '#FF5252'
+    }
+  }, 'road-label-small');
+
+  map.addLayer({
+    id: 'conveyance',
+    source: 'floodZones',
+    type: 'fill',
+    filter: ['==', 'FldZone', 'Conveyance'],
+    paint: {
+        'fill-pattern': 'yellowhatch',
+        'fill-opacity': 0
+    }
+  }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'floodExtents',
+      'type': 'fill',
+      'source': 'floodExtents',
+      'source-layer': 'Boulder_Flood2013Extents',
+      'paint': {
+          'fill-pattern': 'bluestripe',
+          'fill-opacity': 0
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'centerlines',
+      'type': 'line',
+      'source': 'centerlines',
+      'paint': {
+          'line-width': 1,
+          'line-color': '#036180',
+          'line-opacity': 1
+      }
+  });
+
+  map.addLayer({
+      'id': 'centerlineLabels',
+      'type': 'symbol',
+      'source': 'centerlines',
+      'layout': {
+        "text-optional": true,
+        'symbol-placement': 'line',
+        'symbol-spacing': 200,
+        'text-field': '{RiverCode}',
+        'text-font': ['Roboto Italic','Open Sans Regular','Arial Unicode MS Regular'],
+        'text-size': 7,
+        "text-padding": 100,
+      },
+      'paint': {
+        'text-color': '#F8F4F0',
+        'text-halo-color': '#036180',
+        'text-halo-width': 1,
+        'text-opacity': 1
+      }
+  });
 
   map.addLayer({
     id: 'firebase',
@@ -148,7 +255,7 @@ map.on('load', function() {
     type: 'circle',
     filter: ["==", '$type', 'Point'],
     paint: {
-      "circle-color":'blue',
+      "circle-color":'#ee4d5a',
       'circle-radius': 5,
       'circle-stroke-width': 2,
       'circle-stroke-color': '#fff'
@@ -204,7 +311,7 @@ map.on('draw.create', function() {
       .getAll();
 
 // set card content
-    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">Your comment has been received.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>'
+    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">Your comment has been received.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn-floating white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>'
 
     card.innerHTML = thanks;
 
@@ -242,7 +349,7 @@ map.on('draw.create', function() {
 
     var card = document.getElementById('input-card');
 
-    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>';
+    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn-floating white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>';
 
     card.innerHTML = reset;
 
@@ -255,7 +362,7 @@ function drawPoint(){
   draw.changeMode("draw_point");
 
   var action = document.getElementById('action');
-  var cancel = '<a id="cancel" class="red accent-2 waves-effect waves-red btn white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a>';
+  var cancel = '<a id="cancel" class="red accent-2 waves-effect waves-red btn-floating white-text" onclick="simpleSelect()"> <i class="material-icons">cancel</i></a>';
 
   var cancelButton = document.getElementById('cancel');
 

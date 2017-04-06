@@ -1,0 +1,109 @@
+body {
+  margin:0; padding:0;
+}
+
+#map {
+  position:absolute;
+  top:64px;
+  bottom:0;
+  width: 100vw;
+  z-index:-1;
+}
+
+.side-nav {
+  background-color: rgba(255,255,255,0);
+  margin-top: 70px;
+  box-shadow: none;
+  padding-left: 6px!important;
+}
+
+.logos {
+  margin-bottom:0;
+  padding-top: .5rem;
+}
+
+.collapsible-header {
+  font-size: 16px !important;
+}
+
+.collection.with-header .collection-header {
+  padding: 10px 20px !important;
+}
+
+.collection.with-header .collection-item {
+  padding: 10px .5em !important;
+  line-height: 21px !important;
+}
+
+.collection.with-header .collection-item a {
+  height: auto !important;
+  line-height: 21px !important;
+  padding: 0 4px !important;
+}
+
+.container, #info-row {
+  width: 90%;
+  max-width: 90%;
+  z-index:-2;
+}
+
+.card .card-content, .card .card-action, #modalAdmin .modal-content {
+  padding: 6px 24px;
+}
+
+.card .card-content .card-title {
+  margin-bottom: 0px;
+}
+
+.abs {
+  z-index:1;
+  position:absolute;
+  left: 0 !important;
+}
+
+.card-action .btn, .card-action .btn-floating {
+  margin-left: .5em;
+}
+
+.card-action .btn {
+  padding: 0 1rem;
+}
+
+.card-content .row, .modal-content .row {
+  margin-bottom: 0px;
+}
+
+.btn-floating.small {
+  line-height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.btn-floating.small i {
+  line-height: 1.5rem;
+}
+
+.btn-floating.small .tiny {
+  font-size: 1rem;
+}
+
+#header-links {
+  padding-right: 1.5rem;
+}
+
+
+
+@media only screen and (max-width : 992px) {
+  #map {
+    width: 100vw;
+    left: 0;
+    top: 56px;
+  }
+
+  .side-nav {
+    background-color: #fff;
+    margin-top: 0px;
+    width: 300px !important;
+  }
+
+}
