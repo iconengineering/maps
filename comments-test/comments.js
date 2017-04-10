@@ -47,12 +47,17 @@ firebase.auth().onAuthStateChanged(function(user) {
     var header = document.getElementById('header-links');
     var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
 
-//add logout to admin modal
+// add logout to admin modal
     var adminFooter = document.getElementById('adminFooter');
     var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Sign Out</a>';
 
+// add edit tool to admin card
+    var action = document.getElementById('action');
+    var edit = '<a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a>';
+
     header.insertAdjacentHTML('beforeend',dropdown);
     adminFooter.insertAdjacentHTML('beforeend',logout);
+    action.insertAdjacentHTML('beforeend',edit);
 
 // add listener for admin logout
     document.querySelector('#adminLogout').addEventListener('click', function(e) {
@@ -80,10 +85,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     var adminFooter = document.getElementById('adminFooter');
     var download = document.getElementById('download');
     var logout = document.getElementById('adminLogout');
+    var action = document.getElementById('action');
+    var edit = document.getElementById('adminEdit');
 
     if (typeof(download) != 'undefined' && download !== null) {
       header.removeChild(download);
       adminFooter.removeChild(logout);
+      action.removeChild(edit);
     } else {
       return;
     }
@@ -105,7 +113,8 @@ var map = new mapboxgl.Map({
 
 // Init Draw
 var draw = new MapboxDraw({
-    displayControlsDefault: false
+    displayControlsDefault: false,
+    userProperties: true
 });
 
 map.addControl(draw);
@@ -116,8 +125,10 @@ map.addControl(new mapboxgl.GeolocateControl());
 //set blank geojson
 var firebaseGeojsonFeatures = [];
 
+var dataRef = firebase.database().ref('testing');
+
 // call firebase database
-function firebaseData() { return firebase.database().ref('testing').once("value").then(function(snapshot) {
+function firebaseData() { return dataRef.once("value").then(function(snapshot) {
     var data = snapshot.val();
     return data;
   });
@@ -153,7 +164,7 @@ map.on('load', function() {
       'circle-stroke-width': 2,
       'circle-stroke-color': '#fff'
     }
-  });
+  }, 'country-label-lg');
 
 }); // end map layers
 
@@ -196,7 +207,7 @@ map.on('draw.create', function() {
     draw.setFeatureProperty(id,"email",email);
     draw.setFeatureProperty(id,"description",description);
 
-    firebase.database().ref('testing').push(draw.getAll().features[n]);
+    dataRef.push(draw.getAll().features[n]);
 
 // delete draw point from map
     draw
@@ -242,7 +253,7 @@ map.on('draw.create', function() {
 
     var card = document.getElementById('input-card');
 
-    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>';
+    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>';
 
     card.innerHTML = reset;
 
@@ -303,6 +314,194 @@ function downloadGeojson(){
   download("file.geojson", logJson);
 }
 
+
+
+// admin edit function
+function adminEdit() {
+  var editButton = document.getElementById('adminEdit');
+ // check if edit button is active
+   if (editButton.className == 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text') {
+     // change edit to active
+      editButton.className = 'deep-orange accent-3 waves-effect waves-deep-orange btn white-text';
+     // add current data to draw dataset
+      var logJson = map.getSource('firebase')._data;
+      draw.set(logJson);
+      draw.changeMode("simple_select");
+      map.setLayoutProperty('firebase', 'visibility', 'none');
+
+  } else {
+    // set edit button to inactive and remove all draw features
+      editButton.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+      draw.deleteAll();
+      map.setLayoutProperty('firebase', 'visibility', 'visible');
+  }
+
+}
+
+
+map.on('draw.selectionchange', function(){
+  var visibility = map.getLayoutProperty('firebase', 'visibility');
+  if ( firebase.auth().currentUser && visibility === 'visible' || draw.getSelected().features.length === 0) {
+    console.log('.');
+  } else {
+    var editFeature = draw.getSelected().features[0];
+    dataRef.orderByChild('id').equalTo(editFeature.id).once('value', function(snapshot) {
+      snapshot.forEach(function(feature) {
+        console.log(feature.val());
+
+        var featureKey = feature.key;
+        var origName = feature.val().properties.name;
+        var origEmail = feature.val().properties.email;
+        var origDescription = feature.val().properties.description;
+        var origResponse = feature.val().properties.response;
+        var origNotes = feature.val().properties.notes;
+        var card = document.getElementById('input-card');
+
+        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><form class="col s12"><div class="input-field col s6"><input id="name" type="text" class="validate" value="' + origName + '"><label for="name">Name</label></div><div class="input-field col s6"><input id="email" type="email" class="validate" value="' + origEmail + '"><label for="email">Email</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Message</label></div><div class="input-field col s12"><textarea id="response" class="materialize-textarea">' + origResponse + '</textarea><label for="response">Response (public)</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
+
+        card.innerHTML = form;
+        Materialize.updateTextFields();
+
+        var action = document.createElement('div');
+        action.className = 'card-action';
+        action.id = 'cardAction';
+        var actionA = document.createElement('a');
+        actionA.className = 'btn';
+        actionA.href = '#';
+        actionA.text = 'Update';
+        var actionButton = action.insertAdjacentElement('beforeend', actionA);
+        var cancelA = document.createElement('a');
+        cancelA.className = 'btn red accent-2';
+        cancelA.href = '#';
+        cancelA.text = 'Cancel';
+        var cancelButton = action.insertAdjacentElement('beforeend', cancelA);
+        card.insertAdjacentElement('beforeend', action);
+        var deleteA = document.createElement('a');
+        deleteA.className = 'btn purple accent-2';
+        deleteA.href = '#';
+        deleteA.text = 'Delete';
+        var deleteButton = action.insertAdjacentElement('beforeend', deleteA);
+
+      // push response and notes to firebase
+          actionButton.addEventListener('click', function(){
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var description = document.getElementById('description').value;
+            var response = document.getElementById('response').value;
+            var notes = document.getElementById('notes').value;
+            var id = draw.getSelected().features[0].id;
+
+        // set semantic data for point
+            draw.setFeatureProperty(id,"name",name);
+            draw.setFeatureProperty(id,"email",email);
+            draw.setFeatureProperty(id,"description",description);
+            draw.setFeatureProperty(id,"response",response);
+            draw.setFeatureProperty(id,"notes",notes);
+
+            firebase.database().ref('testing/' + featureKey).update(draw.getSelected().features[0]);
+
+            // delete draw point from map
+                draw
+                  .deleteAll()
+                  .getAll();
+
+            // set card content
+                var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">The feature has been updated.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+
+                card.innerHTML = thanks;
+
+                var received = document.getElementById('received');
+                setTimeout(function() {
+                  $('#received').fadeOut();
+                }, 3000);
+
+            // update point features in map
+                var editGeojsonFeatures = [];
+
+                editGeojsonFeatures.length = 0;
+
+                firebaseData().then(function(result) {
+                  for (var key in result) {
+                  	var f = result[key];
+                    f.type = "Feature";
+                    editGeojsonFeatures.push(f);
+                  }
+                }).then(function(){
+                  var newData = {type: 'FeatureCollection',
+                         features: editGeojsonFeatures
+                       };
+
+                  map.getSource('firebase').setData(newData);
+                });
+
+                map.setLayoutProperty('firebase', 'visibility', 'visible');
+        });
+
+
+
+        // delete feature
+          deleteButton.addEventListener('click', function(){
+
+            firebase.database().ref('testing/' + featureKey).remove();
+
+            // delete draw point from map
+                draw
+                  .deleteAll()
+                  .getAll();
+
+            // set card content
+                var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">The feature has been deleted.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+
+                card.innerHTML = thanks;
+
+                var received = document.getElementById('received');
+                setTimeout(function() {
+                  $('#received').fadeOut();
+                }, 3000);
+
+            // update point features in map
+                var deleteGeojsonFeatures = [];
+
+                deleteGeojsonFeatures.length = 0;
+
+                firebaseData().then(function(result) {
+                  for (var key in result) {
+                  	var f = result[key];
+                    f.type = "Feature";
+                    deleteGeojsonFeatures.push(f);
+                  }
+                }).then(function(){
+                  var newData = {type: 'FeatureCollection',
+                         features: deleteGeojsonFeatures
+                       };
+
+                  map.getSource('firebase').setData(newData);
+                });
+
+                map.setLayoutProperty('firebase', 'visibility', 'visible');
+
+          });
+
+      // cancel form/point submittal
+        cancelButton.addEventListener('click', function(){
+
+          draw.deleteAll();
+          map.setLayoutProperty('firebase', 'visibility', 'visible');
+          draw.changeMode('simple_select');
+
+          var card = document.getElementById('input-card');
+
+          var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+
+          card.innerHTML = reset;
+
+        });
+      });
+    });
+  }
+});
+
 // When a click event occurs near a marker icon, open a popup at the location of
 // the feature, with description HTML from its properties.
 var popup = new mapboxgl.Popup()
@@ -340,10 +539,9 @@ var firePopup = function (e) {
   }
 
   var feature = features[0];
-  console.log(feature);
 
   if (firebase.auth().currentUser){
-    var popupContent = '<span>Name: ' + feature.properties.name + '<br />Email: ' + feature.properties.email + '<br />' + feature.properties.description + '</span>';
+    var popupContent = '<span>Name: ' + feature.properties.name + '<br />Email: ' + feature.properties.email + '<br />Description: ' + feature.properties.description + '<br />Response: ' + feature.properties.response + '<br />Notes: ' + feature.properties.notes + '</span>';
   } else {
   var popupContent = feature.properties.description;
   }
