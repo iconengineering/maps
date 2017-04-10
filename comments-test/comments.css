@@ -47,6 +47,11 @@ body {
   z-index:-2;
 }
 
+#input-card {
+  max-height: calc(100vh - 100px);
+  overflow: auto;
+}
+
 .card .card-content, .card .card-action, #modalAdmin .modal-content {
   padding: 6px 24px;
 }
