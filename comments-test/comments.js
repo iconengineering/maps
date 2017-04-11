@@ -47,7 +47,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     var header = document.getElementById('header-links');
     var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
 
-// add logout to admin modal
+// add logout to admin modal and disable login
+    var submit = document.getElementById('adminSubmit');
+    submit.className = 'disabled modal-action modal-close waves-effect waves-light btn cyan';
     var adminFooter = document.getElementById('adminFooter');
     var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Sign Out</a>';
 
@@ -89,6 +91,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     var edit = document.getElementById('adminEdit');
 
     if (typeof(download) != 'undefined' && download !== null) {
+      var submit = document.getElementById('adminSubmit');
+      submit.className = 'modal-action modal-close waves-effect waves-light btn cyan';
       header.removeChild(download);
       adminFooter.removeChild(logout);
       action.removeChild(edit);
@@ -215,7 +219,11 @@ map.on('draw.create', function() {
       .getAll();
 
 // set card content
-    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">Your comment has been received.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>'
+  if (firebase.auth().currentUser) {
+    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">Your comment has been received.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+  } else {
+    var thanks = '<div class="card-content white-text"><span class="card-title">Place a Marker</span><span id="received">Your comment has been received.</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>';
+  }
 
     card.innerHTML = thanks;
 
