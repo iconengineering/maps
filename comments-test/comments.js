@@ -51,9 +51,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     var submit = document.getElementById('adminSubmit');
     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn cyan';
     var adminFooter = document.getElementById('adminFooter');
-    var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Sign Out</a>';
+    var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Sign Out</a>';
 
-// add edit tool to admin card
+    // add edit tool to admin card
     var action = document.getElementById('action');
     var edit = '<a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a>';
 
@@ -92,7 +92,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if (typeof(download) != 'undefined' && download !== null) {
       var submit = document.getElementById('adminSubmit');
-      submit.className = 'modal-action modal-close waves-effect waves-light btn cyan';
+      submit.className = 'modal-action modal-close waves-effect waves-cyan btn-flat';
       header.removeChild(download);
       adminFooter.removeChild(logout);
       action.removeChild(edit);
@@ -261,7 +261,11 @@ map.on('draw.create', function() {
 
     var card = document.getElementById('input-card');
 
-    var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>';
+    if (firebase.auth().currentUser) {
+      var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+    } else {
+      var reset = '<div class="card-content white-text"><span class="card-title">Place a Marker</span></div><div id="action" class="card-action"><a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a></div>';
+    }
 
     card.innerHTML = reset;
 
@@ -322,8 +326,6 @@ function downloadGeojson(){
   download("file.geojson", logJson);
 }
 
-
-
 // admin edit function
 function adminEdit() {
   var editButton = document.getElementById('adminEdit');
@@ -346,7 +348,7 @@ function adminEdit() {
 
 }
 
-
+// on draw feature being selected
 map.on('draw.selectionchange', function(){
   var visibility = map.getLayoutProperty('firebase', 'visibility');
   if ( firebase.auth().currentUser && visibility === 'visible' || draw.getSelected().features.length === 0) {
@@ -355,7 +357,6 @@ map.on('draw.selectionchange', function(){
     var editFeature = draw.getSelected().features[0];
     dataRef.orderByChild('id').equalTo(editFeature.id).once('value', function(snapshot) {
       snapshot.forEach(function(feature) {
-        console.log(feature.val());
 
         var featureKey = feature.key;
         var origName = feature.val().properties.name;
@@ -508,7 +509,7 @@ map.on('draw.selectionchange', function(){
       });
     });
   }
-});
+}); // end of admin edit functions
 
 // When a click event occurs near a marker icon, open a popup at the location of
 // the feature, with description HTML from its properties.
@@ -525,15 +526,51 @@ var firePopupTouch = function (e) {
 
   var feature = features[0];
 
+  var div = document.createElement('div');
+  div.className = 'row';
+  var col = document.createElement('div');
+  col.className = "col s12";
+  div.insertAdjacentElement('beforeend', col);
+  var card = document.createElement('div');
+  card.className = 'card blue-grey darken-2';
+  col.insertAdjacentElement('beforeend', card);
+  var content = document.createElement('div');
+  content.className = 'card-content white-text';
+  card.insertAdjacentElement('beforeend', content);
+
+  var name = document.createElement('span');
+  name.innerHTML = '<span class="popup-title">Name:</span> ' + feature.properties.name + '<br />';
+  var email = document.createElement('span');
+  email.innerHTML = '<span class="popup-title">Email:</span> ' + feature.properties.email + '<br />';
+  var description = document.createElement('span');
+  description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
+  var response = document.createElement('span');
+  response.innerHTML = '<div class="divider"></div><span class="popup-title">Response:</span> ' + feature.properties.response + '<br />';
+  var notes = document.createElement('span');
+  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
+
   if (firebase.auth().currentUser){
-    var popupContent = '<span>Name: ' + feature.properties.name + '<br />Email: ' + feature.properties.email + '<br />' + feature.properties.description + '</span>';
+
+    content.insertAdjacentElement('beforeend', name);
+    content.insertAdjacentElement('beforeend', email);
+    content.insertAdjacentElement('beforeend', description);
+    if (feature.properties.response != null) {
+      content.insertAdjacentElement('beforeend', response);
+      content.insertAdjacentElement('beforeend', notes);
+    }
+
   } else {
-  var popupContent = feature.properties.description;
+
+    content.insertAdjacentElement('beforeend', description);
+    if (feature.properties.response != null) {
+      content.insertAdjacentElement('beforeend', response);
+    }
+
   }
         popup.remove();
         popup
             .setLngLat(e.lngLat)
-            .setHTML(popupContent)
+            .setDOMContent(div)
             .addTo(map);
     };
 
@@ -548,15 +585,51 @@ var firePopup = function (e) {
 
   var feature = features[0];
 
+  var div = document.createElement('div');
+  div.className = 'row';
+  var col = document.createElement('div');
+  col.className = "col s12";
+  div.insertAdjacentElement('beforeend', col);
+  var card = document.createElement('div');
+  card.className = 'card blue-grey darken-2';
+  col.insertAdjacentElement('beforeend', card);
+  var content = document.createElement('div');
+  content.className = 'card-content white-text';
+  card.insertAdjacentElement('beforeend', content);
+
+  var name = document.createElement('span');
+  name.innerHTML = '<span class="popup-title">Name:</span> ' + feature.properties.name + '<br />';
+  var email = document.createElement('span');
+  email.innerHTML = '<span class="popup-title">Email:</span> ' + feature.properties.email + '<br />';
+  var description = document.createElement('span');
+  description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
+  var response = document.createElement('span');
+  response.innerHTML = '<div class="divider"></div><span class="popup-title">Response:</span> ' + feature.properties.response + '<br />';
+  var notes = document.createElement('span');
+  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
+
   if (firebase.auth().currentUser){
-    var popupContent = '<span>Name: ' + feature.properties.name + '<br />Email: ' + feature.properties.email + '<br />Description: ' + feature.properties.description + '<br />Response: ' + feature.properties.response + '<br />Notes: ' + feature.properties.notes + '</span>';
+
+    content.insertAdjacentElement('beforeend', name);
+    content.insertAdjacentElement('beforeend', email);
+    content.insertAdjacentElement('beforeend', description);
+    if (feature.properties.response != null) {
+      content.insertAdjacentElement('beforeend', response);
+      content.insertAdjacentElement('beforeend', notes);
+    }
+
   } else {
-  var popupContent = feature.properties.description;
+
+    content.insertAdjacentElement('beforeend', description);
+    if (feature.properties.response != null) {
+      content.insertAdjacentElement('beforeend', response);
+    }
+
   }
 
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(popupContent)
+            .setDOMContent(div)
             .addTo(map);
     };
 

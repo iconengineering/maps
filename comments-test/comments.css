@@ -52,8 +52,25 @@ body {
   overflow: auto;
 }
 
-.card .card-content, .card .card-action, #modalAdmin .modal-content {
+textarea.materialize-textarea, input[type=text], input[type=email] {
+  margin: 0 0 6px 0;
+}
+
+textarea.materialize-textarea:disabled, input[type=text]:disabled, input[type=email]:disabled {
+  color: rgba(255,255,255,.5);
+  border-bottom-color: rgba(255,255,255,.26);
+}
+
+textarea.materialize-textarea:disabled + label, input[type=text]:disabled + label, input[type=email]:disabled + label {
+  color: rgba(255,255,255,.26);
+}
+
+.card .card-content, #modalAdmin .modal-content {
   padding: 6px 24px;
+}
+
+.card .card-action {
+  padding: 6px 12px;
 }
 
 .card .card-content .card-title {
@@ -67,7 +84,7 @@ body {
 }
 
 .card-action .btn, .card-action .btn-floating {
-  margin-left: .5em;
+  margin: 0 6px 6px 0;
 }
 
 .card-action .btn {
@@ -127,8 +144,53 @@ body {
   line-height: 20px !important;
 }
 
+.mapboxgl-popup-content {
+  max-height:70vh;
+  max-width:45em;
+  overflow-y: auto;
+  background-color: rgba(44, 62, 80, 0.25);
+}
+
+.mapboxgl-popup-tip {
+  border-bottom-color: rgba(44, 62, 80, 0.25) !important;
+  border-top-color: rgba(44, 62, 80, 0.25) !important;
+}
+
+.mapboxgl-popup-content .row {
+  margin-bottom: 0;
+}
+
+.mapboxgl-popup-content .row .col {
+  padding: 0;
+}
+
+.mapboxgl-popup-content .row .col .card {
+  margin: 6px 0 0 0;
+}
+
+.popup-title {
+  font-weight: 700;
+  color: rgba(255,255,255,.63);
+  font-size: 10px;
+}
+
 #header-links {
   padding-right: 1.5rem;
+}
+
+.note {
+  font-size: 12px;
+}
+
+.note li {
+  font-size: 12px !important;
+  line-height: normal !important;
+}
+
+
+.divider {
+  background-color: rgba(255,255,255,.26);
+  margin: 3px 0;
 }
 
 @media only screen and (max-width : 992px) {
@@ -143,6 +205,11 @@ body {
     margin-top: 0px;
     width: 300px !important;
     padding-left: 0px !important;
+  }
+
+  .mapboxgl-popup-content {
+    max-height:50vh;
+    max-width:90vw;
   }
 
 }

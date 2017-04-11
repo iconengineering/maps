@@ -60,13 +60,28 @@
           <div class="collapsible-body">
             <p class="grey-text text-darken-3">Select the <i class="tiny material-icons cyan-text">place</i> button and then click in the map to set a marker. Select the <i class="tiny material-icons red-text text-accent-2">cancel</i> button before clicking in the map to cancel drawing.</p>
             <p>Once a marker is placed, a form will pop up for you to provide your comment. If necessary, you can drag your marker to relocate it before pressing <span class="cyan-text">SUBMIT</span>. Hover over your point and the <i class="tiny material-icons">open_with</i> icon will appear and allow you to move the point. You can also press the <span class="red-text text-accent-2">CANCEL</span> button to delete the marker and clear the form.</p>
-            <p>When you submit your comment, the point will display in the map but only your comment will be available to view. Your name and contact information are not displayed to the public and will only be used if someone needs to follow up regarding your comment.</p>
+            <p>When you submit your comment, the point will display in the map but only your comment will be available to view. Your name and contact information are not displayed to the public and will only be used if city staff needs to follow up regarding your comment.</p>
           </div>
         </li>
         <!-- Layers collapsible -->
         <li>
           <a class="collapsible-header blue-grey white-text">Layers<i class="material-icons white-text">keyboard_arrow_down</i></a>
           <div class="collapsible-body grey-text text-darken-2">
+            <div class="row">
+              <p class="grey-text text-darken-2 note">
+                The flood hazard areas represented by the layers below cover the following streams:
+              </p>
+              <ul class="grey-text text-darken-2 note">
+                <li>Bluebell Canyon Creek</li>
+                <li>Goose Creek</li>
+                <li>Kings Gulch</li>
+                <li>Skunk Creek</li>
+                <li>Twomile Canyon Creek</li>
+              </ul>
+              <p class="grey-text text-darken-2 note">
+                The flood hazard areas for the rest of the City of Boulder are not depicted in this map.
+              </p>
+            </div>
             <p>
               <input name="centerlines" type="checkbox" id="centerlines" class="layer-on" onclick="smoothTwo('centerlines','line-opacity',1,'centerlineLabels','text-opacity',1)" checked/>
               <label for="centerlines" class="valign">Stream Centerlines </label>
@@ -153,7 +168,7 @@
           <span class="card-title">Place a Marker</span>
         </div>
         <div id="action" class="card-action">
-          <a class="waves-effect waves-cyan btn-floating white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>
+          <a class="waves-effect waves-cyan btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>
         </div>
       </div>
     </div>
