@@ -783,3 +783,6 @@ map.dragRotate.disable();
 
 // disable map rotation using touch rotation gesture
 map.touchZoomRotate.disableRotation();
+
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'bottom-right');
