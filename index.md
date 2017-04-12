@@ -41,3 +41,5 @@ layout: default
 [Comment Map](comments-test)
 
 [Manor House](other/manor-house)
+
+[Data Collector](data-collector)
