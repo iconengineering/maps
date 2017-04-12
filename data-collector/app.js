@@ -84,6 +84,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     adminFooter.insertAdjacentHTML('beforeend',logout);
 
     // make buttons active
+    var displayName = firebase.auth().currentUser.displayName;
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/access/coalcreek");
+        ref.once("value")
+          .then(function(snapshot) {
+            var val = snapshot.val(); // "ada"
+          if (val === true) {
     var adminPoint = document.getElementById('adminPoint');
     adminPoint.className = 'waves-effect waves-blue btn blue white-text';
     var adminLine = document.getElementById('adminLine');
@@ -92,13 +98,18 @@ firebase.auth().onAuthStateChanged(function(user) {
     adminPoly.className = 'waves-effect waves-blue btn blue white-text';
     var adminEdit = document.getElementById('adminEdit');
     adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-
+    }
+  });
 // add listener for admin logout
     document.querySelector('#adminLogout').addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
           firebase.auth().signOut();
-          clearFeatures();
+
+           map.getSource('firebase').setData({
+                 "type": "FeatureCollection",
+                 "features": []
+               });
 
           // make buttons disabled
           var adminPoint = document.getElementById('adminPoint');
