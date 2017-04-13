@@ -37,8 +37,20 @@ document.querySelector('#adminSubmit').addEventListener('click', function(e) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
+      Materialize.toast('Login failed. ' + error.message, 4000);
   });
+});
+
+// reset password
+var auth = firebase.auth();
+document.querySelector('#reset').addEventListener('click', function(e) {
+  var emailAddress = document.getElementById('resetEmail').value;
+  auth.sendPasswordResetEmail(emailAddress).then(function() {
+  Materialize.toast('An email has been sent to ' + emailAddress, 4000);
+  console.log('sent');
+}, function(error) {
+  Materialize.toast('Something went wrong. Please contact the admin.', 4000);
+});
 });
 
 // Set states for Admin/anonymous
@@ -83,9 +95,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     adminFooter.insertAdjacentHTML('beforeend',logout);
 
-    // make buttons active
+    // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/access/coalcreek");
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/coalcreek/write");
         ref.once("value")
           .then(function(snapshot) {
             var val = snapshot.val(); // "ada"
@@ -283,12 +295,14 @@ map.on('draw.create', function() {
 
     var user = firebase.auth().currentUser.displayName;
     var description = document.getElementById('description').value;
+    var timestamp = firebase.database.ServerValue.TIMESTAMP;
 
     var n = draw.getAll().features.length - 1;
     var id = draw.getAll().features[n].id;
 
 // set semantic data for point
     draw.setFeatureProperty(id,"createdBy",user);
+    draw.setFeatureProperty(id,"createdOn",timestamp);
     draw.setFeatureProperty(id,"description",description);
 
     dataRef.push(draw.getAll().features[n]);
@@ -483,12 +497,14 @@ map.on('draw.selectionchange', function(){
 
         var featureKey = feature.key;
         var createdBy = feature.val().properties.createdBy;
+        var createdOn = moment(feature.val().properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a");
         var editedBy = feature.val().properties.editedBy;
+        var editedOn = moment(feature.val().properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a");
         var origDescription = feature.val().properties.description;
         var origNotes = feature.val().properties.notes;
         var card = document.getElementById('input-card');
 
-        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
+        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
 
         card.innerHTML = form;
         Materialize.updateTextFields();
@@ -517,14 +533,18 @@ map.on('draw.selectionchange', function(){
           actionButton.addEventListener('click', function(){
 
             var createdBy = document.getElementById('createdBy').value;
+            var createdOn = feature.val().properties.createdOn;
             var editedBy = firebase.auth().currentUser.displayName;
+            var editedOn = firebase.database.ServerValue.TIMESTAMP;
             var description = document.getElementById('description').value;
             var notes = document.getElementById('notes').value;
             var id = draw.getSelected().features[0].id;
 
         // set semantic data for point
             draw.setFeatureProperty(id,"createdBy",createdBy);
+            draw.setFeatureProperty(id,"createdOn",createdOn);
             draw.setFeatureProperty(id,"editedBy",editedBy);
+            draw.setFeatureProperty(id,"editedOn",editedOn);
             draw.setFeatureProperty(id,"description",description);
             draw.setFeatureProperty(id,"notes",notes);
 
@@ -634,17 +654,23 @@ var firePopupTouch = function (e) {
 
   var createdBy = document.createElement('span');
   createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy + '<br />';
+  var createdOn = document.createElement('span');
+  createdOn.innerHTML = '<span class="popup-title">Created On:</span> ' + moment(feature.properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
   var editedBy = document.createElement('span');
   editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.editedBy + '<br />';
+  var editedOn = document.createElement('span');
+  editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
   var description = document.createElement('span');
   description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
   var notes = document.createElement('span');
   notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
 
     content.insertAdjacentElement('beforeend', createdBy);
+    content.insertAdjacentElement('beforeend', createdOn);
     content.insertAdjacentElement('beforeend', description);
     if (feature.properties.editedBy != null) {
       content.insertAdjacentElement('beforeend', editedBy);
+      content.insertAdjacentElement('beforeend', editedOn);
       content.insertAdjacentElement('beforeend', notes);
     }
 
@@ -680,17 +706,23 @@ var firePopup = function (e) {
 
   var createdBy = document.createElement('span');
   createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy + '<br />';
+  var createdOn = document.createElement('span');
+  createdOn.innerHTML = '<span class="popup-title">Created On:</span> ' + moment(feature.properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
   var editedBy = document.createElement('span');
   editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.editedBy + '<br />';
+  var editedOn = document.createElement('span');
+  editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
   var description = document.createElement('span');
   description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
   var notes = document.createElement('span');
   notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
 
     content.insertAdjacentElement('beforeend', createdBy);
+    content.insertAdjacentElement('beforeend', createdOn);
     content.insertAdjacentElement('beforeend', description);
     if (feature.properties.editedBy != null) {
       content.insertAdjacentElement('beforeend', editedBy);
+      content.insertAdjacentElement('beforeend', editedOn);
       content.insertAdjacentElement('beforeend', notes);
     }
 

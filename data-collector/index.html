@@ -6,6 +6,7 @@ script: app.js
 extra-js:
   - //www.gstatic.com/firebasejs/3.7.4/firebase.js
   - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js
+  - //cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js
   - shpwrite.js
 extra-css:
   - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.css
@@ -116,11 +117,31 @@ extra-css:
             <input id="adminPassword" type="password" class="validate">
             <label for="adminPassword">Password</label>
           </div>
+          <a href="#modalReset" id="resetPW" class="small">Forgot Password?</a>
         </div>
       </form>
     </div>
   </div>
   <div id="adminFooter" class="modal-footer">
     <a id="adminSubmit" href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Log In</a>
+  </div>
+</div>
+
+<!-- Reset Modal -->
+<div id="modalReset" class="modal">
+  <div class="modal-content">
+    <div class="row">
+      <form id="resetForm" class="col s12 l6 offset-l3">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="resetEmail" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="resetFooter" class="modal-footer">
+    <a id="reset" href="#!" class="modal-action modal-close waves-effect waves-light btn">Reset Password</a>
   </div>
 </div>
