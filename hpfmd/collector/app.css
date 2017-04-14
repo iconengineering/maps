@@ -1,0 +1,215 @@
+body {
+  margin:0; padding:0;
+}
+
+#map {
+  position:absolute;
+  top:64px;
+  bottom:0;
+  width: 100vw;
+  z-index:-1;
+}
+
+.side-nav {
+  background-color: rgba(255,255,255,0);
+  margin-top: 70px;
+  box-shadow: none;
+  padding-left: 6px!important;
+}
+
+.logos {
+  margin-bottom:0;
+  padding-top: .5rem;
+}
+
+.collapsible-header {
+  font-size: 16px !important;
+}
+
+.collection.with-header .collection-header {
+  padding: 10px 20px !important;
+}
+
+.collection.with-header .collection-item {
+  padding: 10px .5em !important;
+  line-height: 21px !important;
+}
+
+.collection.with-header .collection-item a {
+  height: auto !important;
+  line-height: 21px !important;
+  padding: 0 4px !important;
+}
+
+.container, #info-row {
+  width: 90%;
+  max-width: 90%;
+  z-index:-2;
+}
+
+#input-card {
+  max-height: calc(100vh - 100px);
+  overflow: auto;
+}
+
+textarea.materialize-textarea, input[type=text], input[type=email] {
+  margin: 0 0 6px 0;
+}
+
+textarea.materialize-textarea:disabled, input[type=text]:disabled, input[type=email]:disabled {
+  color: rgba(255,255,255,.5);
+  border-bottom-color: rgba(255,255,255,.26);
+}
+
+textarea.materialize-textarea:disabled + label, input[type=text]:disabled + label, input[type=email]:disabled + label {
+  color: rgba(255,255,255,.26);
+}
+
+.card .card-content, #modalAdmin .modal-content {
+  padding: 6px 24px;
+}
+
+.card .card-action {
+  padding: 6px 12px;
+}
+
+.card .card-content .card-title {
+  margin-bottom: 0px;
+}
+
+.abs {
+  z-index:1;
+  position:absolute;
+  left: 0 !important;
+}
+
+.card-action .btn, .card-action .btn-floating {
+  margin: 0 6px 6px 0;
+}
+
+.card-action .btn {
+  padding: 0 1rem;
+}
+
+.card-content .row, .modal-content .row {
+  margin-bottom: 0px;
+}
+
+.btn-floating.small {
+  line-height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.btn-floating.small i {
+  line-height: 1.5rem;
+}
+
+.btn-floating.small .tiny {
+  font-size: 1rem;
+}
+
+#geocoder {
+  padding-bottom: 6px;
+}
+.mapboxgl-ctrl-geocoder {
+  width: 100% !important;
+  border-radius: 0 !important;
+  max-width: none !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.mapboxgl-ctrl-geocoder input {
+  width: calc(100% - 40px) !important;
+  padding: 0 0 0 40px !important;
+}
+
+.mapboxgl-ctrl-geocoder input::-webkit-input-placeholder {
+  color: #aaa;
+}
+.mapboxgl-ctrl-geocoder input:-ms-input-placeholder {
+  color: #aaa;
+}
+.mapboxgl-ctrl-geocoder input::-moz-placeholder {
+  color: #aaa;
+}
+.mapboxgl-ctrl-geocoder input:-moz-placeholder {
+  color: #aaa;
+}
+
+.mapboxgl-ctrl-geocoder ul > li > a {
+  padding:6px 10px !important;
+  font-size:12px !important;
+  height: 32px !important;
+  line-height: 20px !important;
+}
+
+.mapboxgl-popup-content {
+  max-height:70vh;
+  max-width:45em;
+  overflow-y: auto;
+  background-color: rgba(44, 62, 80, 0.25);
+}
+
+.mapboxgl-popup-tip {
+  border-bottom-color: rgba(44, 62, 80, 0.25) !important;
+  border-top-color: rgba(44, 62, 80, 0.25) !important;
+}
+
+.mapboxgl-popup-content .row {
+  margin-bottom: 0;
+}
+
+.mapboxgl-popup-content .row .col {
+  padding: 0;
+}
+
+.mapboxgl-popup-content .row .col .card {
+  margin: 6px 0 0 0;
+}
+
+.popup-title {
+  font-weight: 700;
+  color: rgba(255,255,255,.63);
+  font-size: 10px;
+}
+
+#header-links {
+  padding-right: 1.5rem;
+}
+
+.note {
+  font-size: 12px;
+}
+
+.note li {
+  font-size: 12px !important;
+  line-height: normal !important;
+}
+
+
+.divider {
+  background-color: rgba(255,255,255,.26);
+  margin: 3px 0;
+}
+
+@media only screen and (max-width : 992px) {
+  #map {
+    width: 100vw;
+    left: 0;
+    top: 56px;
+  }
+
+  .side-nav {
+    background-color: #fff;
+    margin-top: 0px;
+    width: 300px !important;
+    padding-left: 0px !important;
+  }
+
+  .mapboxgl-popup-content {
+    max-height:50vh;
+    max-width:90vw;
+  }
+
+}

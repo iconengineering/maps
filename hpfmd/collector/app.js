@@ -97,7 +97,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/coalcreek/write");
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/hpfmd/write");
         ref.once("value")
           .then(function(snapshot) {
             var val = snapshot.val(); // "ada"
@@ -177,7 +177,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
-    center: [-105.1522,40.0452], // starting position
+    center: [-104.717272818, 39.446576941], // starting position
     zoom: 12 // starting zoom
 });
 
@@ -195,7 +195,7 @@ map.addControl(new mapboxgl.GeolocateControl());
 //set blank geojson
 var firebaseGeojsonFeatures = [];
 
-var dataRef = firebase.database().ref('datacollector/coalcreek');
+var dataRef = firebase.database().ref('datacollector/hpfmd');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -259,9 +259,27 @@ map.on('load', function() {
     type: 'circle',
     filter: ["==", '$type', 'Point'],
     paint: {
-      "circle-color":'blue',
-      'circle-radius': 5,
-      'circle-stroke-width': 2,
+      "circle-color":{
+        "property": "condition",
+        "stops": [
+          [1, 'red'],
+          [5, 'blue']
+        ]
+      },
+      'circle-radius': {
+        "property": "condition",
+        "stops": [
+          [1, 5],
+          [5, 3]
+        ]
+      },
+      'circle-stroke-width': {
+        "property": "condition",
+        "stops": [
+          [1, 2],
+          [5, 1]
+        ]
+      },
       'circle-stroke-color': '#fff'
     }
   }, 'country-label-lg');
@@ -548,7 +566,7 @@ map.on('draw.selectionchange', function(){
             draw.setFeatureProperty(id,"description",description);
             draw.setFeatureProperty(id,"notes",notes);
 
-            firebase.database().ref('datacollector/coalcreek/' + featureKey).update(draw.getSelected().features[0]);
+            firebase.database().ref('datacollector/hpfmd/' + featureKey).update(draw.getSelected().features[0]);
 
             // delete draw point from map
                 draw
@@ -578,7 +596,7 @@ map.on('draw.selectionchange', function(){
         // delete feature
           deleteButton.addEventListener('click', function(){
 
-            firebase.database().ref('datacollector/coalcreek/' + featureKey).remove();
+            firebase.database().ref('datacollector/hpfmd/' + featureKey).remove();
 
             // delete draw point from map
                 draw
