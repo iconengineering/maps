@@ -32,7 +32,7 @@ document.querySelector('#adminSubmit').addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       var email = document.querySelector('#adminEmail').value;
-      var password = document.querySelector('#adminPassword').value
+      var password = document.querySelector('#adminPassword').value;
       firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -67,13 +67,11 @@ firebase.auth().onAuthStateChanged(function(user) {
         displayName: username
       }).then(function() {
         // Update successful.
-      }, function(error) {
-        // An error happened.
-      }).then( function() {
         var navAdmin = document.getElementById('navAdmin');
         navAdmin.innerText = 'Hello, ' + firebase.auth().currentUser.displayName;
         callData();
-
+      }, function(error) {
+        // An error happened.
       });
     } else {
       var navAdmin = document.getElementById('navAdmin');
@@ -273,7 +271,7 @@ map.on('draw.create', function() {
 
   var card = document.getElementById('input-card');
 
-  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"><form class="col s12"><div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div></form></div></div>';
+  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"><form action="#" class="col s12"><div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field"><div class="btn"><span>File</span><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></form></div></div>';
 
   card.innerHTML = form;
 
@@ -298,6 +296,21 @@ map.on('draw.create', function() {
     var user = firebase.auth().currentUser.displayName;
     var description = document.getElementById('description').value;
     var timestamp = firebase.database.ServerValue.TIMESTAMP;
+    var file = document.getElementById('fileUpload').files[0];
+    var fileName = file.name;
+    var fileExt = fileName.split('.')[1];
+
+    function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+};
+
+    var imageUUID = generateUUID() + '.' + fileExt;
 
     var n = draw.getAll().features.length - 1;
     var id = draw.getAll().features[n].id;
@@ -306,8 +319,55 @@ map.on('draw.create', function() {
     draw.setFeatureProperty(id,"createdBy",user);
     draw.setFeatureProperty(id,"createdOn",timestamp);
     draw.setFeatureProperty(id,"description",description);
+    draw.setFeatureProperty(id,"imageUUID",imageUUID);
 
     dataRef.push(draw.getAll().features[n]);
+
+// Create the file metadata
+var metadata = {
+  contentType: 'image/jpeg'
+};
+
+var storageRef = firebase.storage().ref('testUpload/');
+
+// Upload file and metadata to the object 'images/mountains.jpg'
+var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
+
+// Listen for state changes, errors, and completion of the upload.
+uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+  function(snapshot) {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+      case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+    }
+  }, function(error) {
+
+  // A full list of error codes is available at
+  // https://firebase.google.com/docs/storage/web/handle-errors
+  switch (error.code) {
+    case 'storage/unauthorized':
+      // User doesn't have permission to access the object
+      break;
+
+    case 'storage/canceled':
+      // User canceled the upload
+      break;
+
+    case 'storage/unknown':
+      // Unknown error occurred, inspect error.serverResponse
+      break;
+  }
+}, function() {
+  // Upload completed successfully, now we can get the download URL
+  var downloadURL = uploadTask.snapshot.downloadURL;
+});
 
 // delete draw point from map
     draw
@@ -323,9 +383,6 @@ map.on('draw.create', function() {
     setTimeout(function() {
       $('#received').fadeOut();
     }, 3000);
-
-// update point features in map
-//    updateFeatures();
 
   });
 
@@ -343,26 +400,6 @@ map.on('draw.create', function() {
   });
 
 });
-
-function updateFeatures() {
-  // update point features in map
-      var firebaseGeojsonFeatures = [];
-      firebaseGeojsonFeatures.length = 0;
-
-      firebaseData().then(function(result) {
-        for (var key in result) {
-        	var f = result[key];
-          f.type = "Feature";
-          firebaseGeojsonFeatures.push(f);
-        }
-      }).then(function(){
-        var newData = {type: 'FeatureCollection',
-               features: firebaseGeojsonFeatures
-             };
-
-        map.getSource('firebase').setData(newData);
-      });
-}
 
 function clearFeatures() {
   // update point features in map
@@ -498,13 +535,46 @@ map.on('draw.selectionchange', function(){
         var featureKey = feature.key;
         var createdBy = feature.val().properties.createdBy;
         var createdOn = moment(feature.val().properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a");
+        var photo = feature.val().properties.imageUUID;
         var editedBy = feature.val().properties.editedBy;
         var editedOn = moment(feature.val().properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a");
         var origDescription = feature.val().properties.description;
         var origNotes = feature.val().properties.notes;
         var card = document.getElementById('input-card');
 
-        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
+        // Create a reference to the file we want to download
+        var storageRef = firebase.storage().ref('testUpload/');
+        var photoRef = storageRef.child('images/' + photo);
+
+        if (typeof(photo) != 'undefined') {
+        photoRef.getDownloadURL().then(function(url) {
+            // Insert url into an <img> tag to "download"
+            document.getElementById('photo').src = url;
+          }).catch(function(error) {
+
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+              case 'storage/object_not_found':
+                // File doesn't exist
+                break;
+
+              case 'storage/unauthorized':
+                // User doesn't have permission to access the object
+                break;
+
+              case 'storage/canceled':
+                // User canceled the upload
+                break;
+
+              case 'storage/unknown':
+                // Unknown error occurred, inspect the server response
+                break;
+            }
+          });
+        }
+
+        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><div class="col s12"><img id="photo" class="responsive-img" src="//placehold.it/350x150"></div><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
 
         card.innerHTML = form;
         Materialize.updateTextFields();
@@ -534,6 +604,7 @@ map.on('draw.selectionchange', function(){
 
             var createdBy = document.getElementById('createdBy').value;
             var createdOn = feature.val().properties.createdOn;
+            var photo = feature.val().properties.imageUUID;
             var editedBy = firebase.auth().currentUser.displayName;
             var editedOn = firebase.database.ServerValue.TIMESTAMP;
             var description = document.getElementById('description').value;
@@ -543,9 +614,10 @@ map.on('draw.selectionchange', function(){
         // set semantic data for point
             draw.setFeatureProperty(id,"createdBy",createdBy);
             draw.setFeatureProperty(id,"createdOn",createdOn);
+            draw.setFeatureProperty(id,"description",description);
+            draw.setFeatureProperty(id,"imageUUID",photo);
             draw.setFeatureProperty(id,"editedBy",editedBy);
             draw.setFeatureProperty(id,"editedOn",editedOn);
-            draw.setFeatureProperty(id,"description",description);
             draw.setFeatureProperty(id,"notes",notes);
 
             firebase.database().ref('datacollector/coalcreek/' + featureKey).update(draw.getSelected().features[0]);
@@ -564,9 +636,6 @@ map.on('draw.selectionchange', function(){
                 setTimeout(function() {
                   $('#received').fadeOut();
                 }, 3000);
-
-            // update point features in map
-            //    updateFeatures();
 
                 map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
                 map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
@@ -594,9 +663,6 @@ map.on('draw.selectionchange', function(){
                 setTimeout(function() {
                   $('#received').fadeOut();
                 }, 3000);
-
-            // update point features in map
-            //    updateFeatures();
 
                 map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
                 map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
@@ -652,6 +718,41 @@ var firePopupTouch = function (e) {
   content.className = 'card-content white-text';
   card.insertAdjacentElement('beforeend', content);
 
+  // Create a reference to the file we want to download
+  var photo = feature.properties.imageUUID;
+  var storageRef = firebase.storage().ref('testUpload/');
+  var photoRef = storageRef.child('images/' + photo);
+
+  if (typeof(photo) != 'undefined') {
+  photoRef.getDownloadURL().then(function(url) {
+      // Insert url into an <img> tag to "download"
+      document.getElementById('popupPhoto').src = url;
+    }).catch(function(error) {
+
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/object_not_found':
+          // File doesn't exist
+          break;
+
+        case 'storage/unauthorized':
+          // User doesn't have permission to access the object
+          break;
+
+        case 'storage/canceled':
+          // User canceled the upload
+          break;
+
+        case 'storage/unknown':
+          // Unknown error occurred, inspect the server response
+          break;
+      }
+    });
+  }
+
+  var image = document.createElement('span');
+  image.innerHTML = '<img id="popupPhoto" class="responsive-img" src="//placehold.it/350x150">';
   var createdBy = document.createElement('span');
   createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy + '<br />';
   var createdOn = document.createElement('span');
@@ -665,6 +766,9 @@ var firePopupTouch = function (e) {
   var notes = document.createElement('span');
   notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
 
+    if (feature.properties.imageUUID != null) {
+      content.insertAdjacentElement('beforeend', image);
+    }
     content.insertAdjacentElement('beforeend', createdBy);
     content.insertAdjacentElement('beforeend', createdOn);
     content.insertAdjacentElement('beforeend', description);
@@ -704,6 +808,42 @@ var firePopup = function (e) {
   content.className = 'card-content white-text';
   card.insertAdjacentElement('beforeend', content);
 
+  // Create a reference to the file we want to download
+  var photo = feature.properties.imageUUID;
+  var storageRef = firebase.storage().ref('testUpload/');
+  var photoRef = storageRef.child('images/' + photo);
+
+  if (typeof(photo) != 'undefined') {
+  photoRef.getDownloadURL().then(function(url) {
+      // Insert url into an <img> tag to "download"
+      document.getElementById('popupPhoto').src = url;
+    }).catch(function(error) {
+
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/object_not_found':
+          // File doesn't exist
+          break;
+
+        case 'storage/unauthorized':
+          // User doesn't have permission to access the object
+          break;
+
+        case 'storage/canceled':
+          // User canceled the upload
+          break;
+
+        case 'storage/unknown':
+          // Unknown error occurred, inspect the server response
+          break;
+      }
+    });
+  }
+
+  var image = document.createElement('span');
+  image.innerHTML = '<img id="popupPhoto" style="max-width:250px;" class="responsive-img" src="//placehold.it/250x150"><br />';
+
   var createdBy = document.createElement('span');
   createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy + '<br />';
   var createdOn = document.createElement('span');
@@ -717,6 +857,9 @@ var firePopup = function (e) {
   var notes = document.createElement('span');
   notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
 
+  if (feature.properties.imageUUID != null) {
+    content.insertAdjacentElement('beforeend', image);
+  }
     content.insertAdjacentElement('beforeend', createdBy);
     content.insertAdjacentElement('beforeend', createdOn);
     content.insertAdjacentElement('beforeend', description);
