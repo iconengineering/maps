@@ -271,7 +271,7 @@ map.on('draw.create', function() {
 
   var card = document.getElementById('input-card');
 
-  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"><form action="#" class="col s12"><div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field"><div class="btn"><span>File</span><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></form></div></div>';
+  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"><form action="#" class="col s12"><div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></form></div></div>';
 
   card.innerHTML = form;
 
@@ -332,13 +332,14 @@ var storageRef = firebase.storage().ref('testUpload/');
 
 // Upload file and metadata to the object 'images/mountains.jpg'
 var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
-
+Materialize.toast(' ');
 // Listen for state changes, errors, and completion of the upload.
 uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   function(snapshot) {
     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
+    var progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
+    var $toastContent = 'Upload is ' + progress + '% done';
+    $('.toast').text($toastContent);
     switch (snapshot.state) {
       case firebase.storage.TaskState.PAUSED: // or 'paused'
         console.log('Upload is paused');
@@ -354,19 +355,24 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   switch (error.code) {
     case 'storage/unauthorized':
       // User doesn't have permission to access the object
+      Materialize.toast('User is not authorized to upload images', 4000);
       break;
 
     case 'storage/canceled':
       // User canceled the upload
+      Materialize.toast('Upload has been cancelled', 4000);
       break;
 
     case 'storage/unknown':
       // Unknown error occurred, inspect error.serverResponse
+      Materialize.toast('An unknown error occurred', 4000);
       break;
   }
 }, function() {
   // Upload completed successfully, now we can get the download URL
+  $('.toast').remove();
   var downloadURL = uploadTask.snapshot.downloadURL;
+  Materialize.toast('Image has been uploaded', 4000);
 });
 
 // delete draw point from map
@@ -602,7 +608,7 @@ map.on('draw.selectionchange', function(){
       // push response and notes to firebase
           actionButton.addEventListener('click', function(){
 
-            var createdBy = document.getElementById('createdBy').value;
+            var createdBy = feature.val().properties.createdBy;
             var createdOn = feature.val().properties.createdOn;
             var photo = feature.val().properties.imageUUID;
             var editedBy = firebase.auth().currentUser.displayName;
@@ -628,7 +634,7 @@ map.on('draw.selectionchange', function(){
                   .getAll();
 
             // set card content
-                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been updated.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been updated.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
                 card.innerHTML = thanks;
 

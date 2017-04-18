@@ -87,7 +87,7 @@ textarea.materialize-textarea:disabled + label, input[type=text]:disabled + labe
   margin: 0 6px 6px 0;
 }
 
-.card-action .btn {
+.card-action .btn, .file-field .btn {
   padding: 0 1rem;
 }
 
