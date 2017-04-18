@@ -1,6 +1,6 @@
 ---
 layout: default-map
-title: Data Collector
+title: HPFMD Data Collector
 version: v0.32.1
 script: app.js
 extra-js:
@@ -17,14 +17,6 @@ extra-css:
   <li class="no-padding">
     <ul class="collapsible" data-collapsible="expandable">
       <li>
-        <a class="collapsible-header grey darken-1 white-text">Instructions<i class="material-icons white-text">keyboard_arrow_down</i></a>
-        <div class="collapsible-body">
-          <p class="grey-text text-darken-3">Select the <i class="tiny material-icons blue-text">place</i> button and then click in the map to set a marker. Select the <i class="tiny material-icons red-text text-accent-2">cancel</i> button before clicking in the map to cancel drawing.</p>
-          <p>Once a marker is placed, a form will pop up for you to provide your comment. If necessary, you can drag your marker to relocate it before pressing <span class="blue-text">SUBMIT</span>. Hover over your point and the <i class="tiny material-icons">open_with</i> icon will appear and allow you to move the point. You can also press the <span class="red-text text-accent-2">CANCEL</span> button to delete the marker and clear the form.</p>
-          <p>When you submit your comment, the point will display in the map but only your comment will be available to view. Your name and contact information are not displayed to the public and will only be used if someone needs to follow up regarding your comment.</p>
-        </div>
-      </li>
-      <li>
         <a class="collapsible-header grey darken-1 white-text">Layers<i class="material-icons white-text">keyboard_arrow_down</i></a>
         <div class="collapsible-body grey-text text-darken-2">
           <p>
@@ -37,16 +29,6 @@ extra-css:
             <label for="other" class="valign">Other </label>
             <button data-target="modal2" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
           </p>
-        </div>
-      </li>
-      <li>
-        <a class="collapsible-header grey darken-1 white-text">Legend<i class="material-icons white-text">keyboard_arrow_down</i></a>
-        <div class="collapsible-body">
-          <ul class="collection with-header grey-text text-darken-2">
-            <li class="collection-header"><h6>Floodplain</h6></li>
-            <li class="collection-item"><div>100-Year<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2196F3" fill-opacity=".8" /></svg></a></div></li>
-            <li class="collection-item"><div>500-Year<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#ffa726" fill-opacity=".8" /></svg></a></div></li>
-           </ul>
         </div>
       </li>
     </ul>
@@ -66,36 +48,6 @@ extra-css:
           <a id="adminPolygon" class="disabled waves-effect waves-blue btn blue white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a>
           <a id="adminEdit" class="disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal bottom-sheet">
-  <div class="row">
-    <div class="col s12 l6 offset-l3">
-      <div class="modal-content">
-        <h4>High Hazard Zone</h4>
-        <p>The High Hazard Zone is the portion of the floodplain where an unacceptably high hazard to human safety exists defined as those areas where the product number of flow velocity (measured in ft./sec.) times flow depth (measured in feet) equals or exceeds four, or where flow depths equal or exceed four feet.</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close btn waves-effect waves-light red accent-2">Close</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Structure -->
-<div id="modal2" class="modal bottom-sheet">
-  <div class="row">
-    <div class="col s12 l6 offset-l3">
-      <div class="modal-content">
-        <h4>Conveyance Zone</h4>
-          <p>The Conveyance Zone is the portion of the floodplain required for the passage of the one hundred-year flood from the edges of the flood channel to a point where the one hundred-year flood profile will surcharge six inches or more.</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-light btn red accent-2">Close</a>
       </div>
     </div>
   </div>

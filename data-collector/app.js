@@ -1,43 +1,43 @@
 $(document).ready(function(){
-// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
 
-    document.querySelector('nav').className = 'grey darken-3';
+  document.querySelector('nav').className = 'grey darken-3';
 
-// Add admin button to navbar
-    var header = document.getElementById('header');
-    var headerLinks = document.createElement('ul');
-    headerLinks.id = 'header-links';
-    headerLinks.className = 'right';
-    var admin = '<li><a id="navAdmin" href="#modalAdmin">ADMIN</li>';
+  // Add admin button to navbar
+  var header = document.getElementById('header');
+  var headerLinks = document.createElement('ul');
+  headerLinks.id = 'header-links';
+  headerLinks.className = 'right';
+  var admin = '<li><a id="navAdmin" href="#modalAdmin">ADMIN</li>';
 
-    header.insertAdjacentElement('beforeend',headerLinks);
-    headerLinks.insertAdjacentHTML('beforeend',admin);
+  header.insertAdjacentElement('beforeend',headerLinks);
+  headerLinks.insertAdjacentHTML('beforeend',admin);
 
 });
 
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC1ucfyNAcYHPpLjtxul6NPMu5JEI2TiR4",
-    authDomain: "iconeng-2cbda.firebaseapp.com",
-    databaseURL: "https://iconeng-2cbda.firebaseio.com",
-    projectId: "iconeng-2cbda",
-    storageBucket: "iconeng-2cbda.appspot.com",
-    messagingSenderId: "328083825507"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyC1ucfyNAcYHPpLjtxul6NPMu5JEI2TiR4",
+  authDomain: "iconeng-2cbda.firebaseapp.com",
+  databaseURL: "https://iconeng-2cbda.firebaseio.com",
+  projectId: "iconeng-2cbda",
+  storageBucket: "iconeng-2cbda.appspot.com",
+  messagingSenderId: "328083825507"
+};
+firebase.initializeApp(config);
 
 // Add listener for admin login
 document.querySelector('#adminSubmit').addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var email = document.querySelector('#adminEmail').value;
-      var password = document.querySelector('#adminPassword').value;
-      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      Materialize.toast('Login failed. ' + error.message, 4000);
+  e.preventDefault();
+  e.stopPropagation();
+  var email = document.querySelector('#adminEmail').value;
+  var password = document.querySelector('#adminPassword').value;
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    Materialize.toast('Login failed. ' + error.message, 4000);
   });
 });
 
@@ -46,11 +46,11 @@ var auth = firebase.auth();
 document.querySelector('#reset').addEventListener('click', function(e) {
   var emailAddress = document.getElementById('resetEmail').value;
   auth.sendPasswordResetEmail(emailAddress).then(function() {
-  Materialize.toast('An email has been sent to ' + emailAddress, 4000);
-  console.log('sent');
-}, function(error) {
-  Materialize.toast('Something went wrong. Please contact the admin.', 4000);
-});
+    Materialize.toast('An email has been sent to ' + emailAddress, 4000);
+    console.log('sent');
+  }, function(error) {
+    Materialize.toast('Something went wrong. Please contact the admin.', 4000);
+  });
 });
 
 // Set states for Admin/anonymous
@@ -79,13 +79,13 @@ firebase.auth().onAuthStateChanged(function(user) {
       callData();
     }
 
-// add downloads for admin
+    // add downloads for admin
     var header = document.getElementById('header-links');
     var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
 
     header.insertAdjacentHTML('beforeend',dropdown);
 
-// add logout to admin modal and disable login
+    // add logout to admin modal and disable login
     var submit = document.getElementById('adminSubmit');
     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
     var adminFooter = document.getElementById('adminFooter');
@@ -96,93 +96,93 @@ firebase.auth().onAuthStateChanged(function(user) {
     // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
     var ref = firebase.database().ref("datacollector/users/" + displayName + "/coalcreek/write");
-        ref.once("value")
-          .then(function(snapshot) {
-            var val = snapshot.val(); // "ada"
-          if (val === true) {
-    var adminPoint = document.getElementById('adminPoint');
-    adminPoint.className = 'waves-effect waves-blue btn blue white-text';
-    var adminLine = document.getElementById('adminLine');
-    adminLine.className = 'waves-effect waves-blue btn blue white-text';
-    var adminPoly = document.getElementById('adminPolygon');
-    adminPoly.className = 'waves-effect waves-blue btn blue white-text';
-    var adminEdit = document.getElementById('adminEdit');
-    adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-    }
-  });
-// add listener for admin logout
-    document.querySelector('#adminLogout').addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          firebase.auth().signOut();
-
-           map.getSource('firebase').setData({
-                 "type": "FeatureCollection",
-                 "features": []
-               });
-
-          // make buttons disabled
-          var adminPoint = document.getElementById('adminPoint');
-          adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
-          var adminLine = document.getElementById('adminLine');
-          adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
-          var adminPoly = document.getElementById('adminPolygon');
-          adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
-          var adminEdit = document.getElementById('adminEdit');
-          adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-
-          var navAdmin = document.getElementById('navAdmin');
-          navAdmin.innerText = 'ADMIN';
-        });
-
-// init dropdown
-    $('.dropdown-button').dropdown({
-        inDuration: 300,
-        outDuration: 225,
-        constrainWidth: false, // Does not change width of dropdown to that of the activator
-        hover: true, // Activate on hover
-        gutter: 0, // Spacing from edge
-        belowOrigin: true, // Displays dropdown below the button
-        alignment: 'left', // Displays dropdown with edge aligned to the left of button
-        stopPropagation: false // Stops event propagation
+    ref.once("value")
+    .then(function(snapshot) {
+      var val = snapshot.val(); // "ada"
+      if (val === true) {
+        var adminPoint = document.getElementById('adminPoint');
+        adminPoint.className = 'waves-effect waves-blue btn blue white-text';
+        var adminLine = document.getElementById('adminLine');
+        adminLine.className = 'waves-effect waves-blue btn blue white-text';
+        var adminPoly = document.getElementById('adminPolygon');
+        adminPoly.className = 'waves-effect waves-blue btn blue white-text';
+        var adminEdit = document.getElementById('adminEdit');
+        adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
       }
-    );
-  } else {
+    });
+    // add listener for admin logout
+    document.querySelector('#adminLogout').addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      firebase.auth().signOut();
 
-// remove admin tools
-    var header = document.getElementById('header-links');
-    var adminFooter = document.getElementById('adminFooter');
-    var download = document.getElementById('download');
-    var logout = document.getElementById('adminLogout');
+      map.getSource('firebase').setData({
+        "type": "FeatureCollection",
+        "features": []
+      });
 
-    if (typeof(download) != 'undefined' && download !== null) {
-      var submit = document.getElementById('adminSubmit');
-      submit.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
-      header.removeChild(download);
-      adminFooter.removeChild(logout);
-    } else {
-      return;
+      // make buttons disabled
+      var adminPoint = document.getElementById('adminPoint');
+      adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
+      var adminLine = document.getElementById('adminLine');
+      adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
+      var adminPoly = document.getElementById('adminPolygon');
+      adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
+      var adminEdit = document.getElementById('adminEdit');
+      adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+
+      var navAdmin = document.getElementById('navAdmin');
+      navAdmin.innerText = 'ADMIN';
+    });
+
+    // init dropdown
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
     }
+  );
+} else {
 
-    document.getElementById("adminForm").reset();
+  // remove admin tools
+  var header = document.getElementById('header-links');
+  var adminFooter = document.getElementById('adminFooter');
+  var download = document.getElementById('download');
+  var logout = document.getElementById('adminLogout');
 
+  if (typeof(download) != 'undefined' && download !== null) {
+    var submit = document.getElementById('adminSubmit');
+    submit.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
+    header.removeChild(download);
+    adminFooter.removeChild(logout);
+  } else {
+    return;
   }
+
+  document.getElementById("adminForm").reset();
+
+}
 });
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
 // Init Map
 var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
-    center: [-105.1522,40.0452], // starting position
-    zoom: 12 // starting zoom
+  container: 'map', // container id
+  style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
+  center: [-105.1522,40.0452], // starting position
+  zoom: 12 // starting zoom
 });
 
 // Init Draw
 var draw = new MapboxDraw({
-    displayControlsDefault: false,
-    userProperties: false
+  displayControlsDefault: false,
+  userProperties: false
 });
 
 map.addControl(draw);
@@ -198,14 +198,14 @@ var dataRef = firebase.database().ref('datacollector/coalcreek');
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
   firebaseGeojsonFeatures.length = 0;
-    snapshot.forEach(function(feature) {
-  	var f = feature.val();
+  snapshot.forEach(function(feature) {
+    var f = feature.val();
     f.type = "Feature";
     firebaseGeojsonFeatures.push(f);
   });
   var newData = {type: 'FeatureCollection',
-         features: firebaseGeojsonFeatures
-       };
+  features: firebaseGeojsonFeatures
+};
 if (typeof(map.getSource('firebase')) != 'undefined'){
   map.getSource('firebase').setData(newData);
 }
@@ -215,54 +215,54 @@ if (typeof(map.getSource('firebase')) != 'undefined'){
 // map layers
 map.on('load', function() {
 
-	map.addSource('firebase', {
-	type: 'geojson',
-  data: {type: 'FeatureCollection',
-         features: firebaseGeojsonFeatures
-       }
-	});
+  map.addSource('firebase', {
+    type: 'geojson',
+    data: {type: 'FeatureCollection',
+    features: firebaseGeojsonFeatures
+  }
+});
 
-  callData();
+callData();
 
-  map.addLayer({
-    id: 'firebasePoly',
-    source: 'firebase',
-    type: 'fill',
-    filter: ["==", '$type', 'Polygon'],
-    paint: {
-        "fill-color": "blue",
-        "fill-opacity": .4,
+map.addLayer({
+  id: 'firebasePoly',
+  source: 'firebase',
+  type: 'fill',
+  filter: ["==", '$type', 'Polygon'],
+  paint: {
+    "fill-color": "blue",
+    "fill-opacity": .4,
 
-    }
-  }, 'country-label-lg');
+  }
+}, 'country-label-lg');
 
-  map.addLayer({
-    id: 'firebaseLine',
-    source: 'firebase',
-    type: 'line',
-    filter: ["==", '$type', 'LineString'],
-    layout: {
-        "line-join": "round",
-        "line-cap": "round"
-    },
-    paint: {
-        "line-color": "blue",
-        "line-width": 2
-    }
-  }, 'country-label-lg');
+map.addLayer({
+  id: 'firebaseLine',
+  source: 'firebase',
+  type: 'line',
+  filter: ["==", '$type', 'LineString'],
+  layout: {
+    "line-join": "round",
+    "line-cap": "round"
+  },
+  paint: {
+    "line-color": "blue",
+    "line-width": 2
+  }
+}, 'country-label-lg');
 
-  map.addLayer({
-    id: 'firebasePoint',
-    source: 'firebase',
-    type: 'circle',
-    filter: ["==", '$type', 'Point'],
-    paint: {
-      "circle-color":'blue',
-      'circle-radius': 5,
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#fff'
-    }
-  }, 'country-label-lg');
+map.addLayer({
+  id: 'firebasePoint',
+  source: 'firebase',
+  type: 'circle',
+  filter: ["==", '$type', 'Point'],
+  paint: {
+    "circle-color":'blue',
+    'circle-radius': 5,
+    'circle-stroke-width': 2,
+    'circle-stroke-color': '#fff'
+  }
+}, 'country-label-lg');
 
 }); // end map layers
 
@@ -290,97 +290,100 @@ map.on('draw.create', function() {
   var cancelButton = action.insertAdjacentElement('beforeend', cancelA);
   card.insertAdjacentElement('beforeend', action);
 
-// push last point drawn to firebase
+  // push last point drawn to firebase
   actionButton.addEventListener('click', function(){
 
     var user = firebase.auth().currentUser.displayName;
     var description = document.getElementById('description').value;
     var timestamp = firebase.database.ServerValue.TIMESTAMP;
     var file = document.getElementById('fileUpload').files[0];
-    var fileName = file.name;
-    var fileExt = fileName.split('.')[1];
 
     function generateUUID() {
-    var d = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = (d + Math.random()*16)%16 | 0;
         d = Math.floor(d/16);
         return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-    });
-    return uuid;
-};
-
-    var imageUUID = generateUUID() + '.' + fileExt;
+      });
+      return uuid;
+    }
 
     var n = draw.getAll().features.length - 1;
     var id = draw.getAll().features[n].id;
 
-// set semantic data for point
+    if (typeof(file) != 'undefined') {
+    var fileName = file.name;
+    var fileExt = fileName.split('.')[1];
+
+    var imageUUID = generateUUID() + '.' + fileExt;
+    draw.setFeatureProperty(id,"imageUUID",imageUUID);
+
+    // Create the file metadata
+    var metadata = {
+      contentType: 'image/jpeg'
+    };
+
+    var storageRef = firebase.storage().ref('testUpload/');
+
+    // Upload file and metadata to the object 'images/mountains.jpg'
+    var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
+    Materialize.toast(' ');
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+    function(snapshot) {
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      var progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
+      var $toastContent = 'Upload is ' + progress + '% done';
+      $('.toast').text($toastContent);
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+      }
+    }, function(error) {
+
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        Materialize.toast('User is not authorized to upload images', 4000);
+        break;
+
+        case 'storage/canceled':
+        // User canceled the upload
+        Materialize.toast('Upload has been cancelled', 4000);
+        break;
+
+        case 'storage/unknown':
+        // Unknown error occurred, inspect error.serverResponse
+        Materialize.toast('An unknown error occurred', 4000);
+        break;
+      }
+    }, function() {
+      // Upload completed successfully, now we can get the download URL
+      $('.toast').remove();
+      var downloadURL = uploadTask.snapshot.downloadURL;
+      Materialize.toast('Image has been uploaded', 4000);
+    });
+  }
+
+    // set semantic data for point
     draw.setFeatureProperty(id,"createdBy",user);
     draw.setFeatureProperty(id,"createdOn",timestamp);
     draw.setFeatureProperty(id,"description",description);
-    draw.setFeatureProperty(id,"imageUUID",imageUUID);
 
     dataRef.push(draw.getAll().features[n]);
 
-// Create the file metadata
-var metadata = {
-  contentType: 'image/jpeg'
-};
-
-var storageRef = firebase.storage().ref('testUpload/');
-
-// Upload file and metadata to the object 'images/mountains.jpg'
-var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
-Materialize.toast(' ');
-// Listen for state changes, errors, and completion of the upload.
-uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
-  function(snapshot) {
-    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-    var progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
-    var $toastContent = 'Upload is ' + progress + '% done';
-    $('.toast').text($toastContent);
-    switch (snapshot.state) {
-      case firebase.storage.TaskState.PAUSED: // or 'paused'
-        console.log('Upload is paused');
-        break;
-      case firebase.storage.TaskState.RUNNING: // or 'running'
-        console.log('Upload is running');
-        break;
-    }
-  }, function(error) {
-
-  // A full list of error codes is available at
-  // https://firebase.google.com/docs/storage/web/handle-errors
-  switch (error.code) {
-    case 'storage/unauthorized':
-      // User doesn't have permission to access the object
-      Materialize.toast('User is not authorized to upload images', 4000);
-      break;
-
-    case 'storage/canceled':
-      // User canceled the upload
-      Materialize.toast('Upload has been cancelled', 4000);
-      break;
-
-    case 'storage/unknown':
-      // Unknown error occurred, inspect error.serverResponse
-      Materialize.toast('An unknown error occurred', 4000);
-      break;
-  }
-}, function() {
-  // Upload completed successfully, now we can get the download URL
-  $('.toast').remove();
-  var downloadURL = uploadTask.snapshot.downloadURL;
-  Materialize.toast('Image has been uploaded', 4000);
-});
-
-// delete draw point from map
+    // delete draw point from map
     draw
-      .deleteAll()
-      .getAll();
+    .deleteAll()
+    .getAll();
 
-// set card content
+    // set card content
     var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been submitted.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
     card.innerHTML = thanks;
@@ -392,30 +395,20 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 
   });
 
-// cancel form/point submittal
+  // cancel form/point submittal
   cancelButton.addEventListener('click', function(){
 
     draw.deleteAll();
     draw.changeMode('simple_select');
 
     var card = document.getElementById('input-card');
-      var reset = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+    var reset = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
     card.innerHTML = reset;
 
   });
 
 });
-
-function clearFeatures() {
-  // update point features in map
-      var clearGeojsonFeatures = [];
-        var clearData = {type: 'FeatureCollection',
-               features: firebaseGeojsonFeatures
-             };
-
-        map.getSource('firebase').setData(clearData);
-}
 
 // start drawing with button click
 function drawPoint(){
@@ -427,10 +420,10 @@ function drawPoint(){
   var cancelButton = document.getElementById('cancel');
 
   if (typeof(cancelButton) != 'undefined' && cancelButton !== null) {
-  return;
-} else {
-  action.insertAdjacentHTML('beforeend', cancel);
-}
+    return;
+  } else {
+    action.insertAdjacentHTML('beforeend', cancel);
+  }
 
 }
 
@@ -444,10 +437,10 @@ function drawLine(){
   var cancelButton = document.getElementById('cancel');
 
   if (typeof(cancelButton) != 'undefined' && cancelButton !== null) {
-  return;
-} else {
-  action.insertAdjacentHTML('beforeend', cancel);
-}
+    return;
+  } else {
+    action.insertAdjacentHTML('beforeend', cancel);
+  }
 
 }
 
@@ -461,10 +454,10 @@ function drawPoly(){
   var cancelButton = document.getElementById('cancel');
 
   if (typeof(cancelButton) != 'undefined' && cancelButton !== null) {
-  return;
-} else {
-  action.insertAdjacentHTML('beforeend', cancel);
-}
+    return;
+  } else {
+    action.insertAdjacentHTML('beforeend', cancel);
+  }
 
 }
 
@@ -478,12 +471,12 @@ function simpleSelect(){
 function downloadShp(){
   var logJson = map.getSource('firebase')._data;
   var options = {
-      folder: 'myshapes',
-      types: {
-          point: 'mypoints',
-          polygon: 'mypolygons',
-          line: 'mylines'
-      }
+    folder: 'myshapes',
+    types: {
+      point: 'mypoints',
+      polygon: 'mypolygons',
+      line: 'mylines'
+    }
   };
 
   shpwrite.download(logJson, options);
@@ -494,11 +487,11 @@ function downloadGeojson(){
   var logJson = map.getSource('firebase')._data;
 
   function download(filename, json) {
-      var el = document.createElement('a'),
-          text = JSON.stringify(json, null, 2);
-      el.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-      el.setAttribute('download', filename);
-      el.click();
+    var el = document.createElement('a'),
+    text = JSON.stringify(json, null, 2);
+    el.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    el.setAttribute('download', filename);
+    el.click();
   }
 
   download("file.geojson", logJson);
@@ -507,25 +500,25 @@ function downloadGeojson(){
 // admin edit function
 function adminEdit() {
   var editButton = document.getElementById('adminEdit');
- // check if edit button is active
-   if (editButton.className == 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text') {
-     // change edit to active
-      editButton.className = 'deep-orange accent-3 waves-effect waves-deep-orange btn white-text';
-     // add current data to draw dataset
-      var logJson = map.getSource('firebase')._data;
-      draw.set(logJson);
-      draw.changeMode("simple_select");
-      map.setLayoutProperty('firebasePoint', 'visibility', 'none');
-      map.setLayoutProperty('firebaseLine', 'visibility', 'none');
-      map.setLayoutProperty('firebasePoly', 'visibility', 'none');
+  // check if edit button is active
+  if (editButton.className == 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text') {
+    // change edit to active
+    editButton.className = 'deep-orange accent-3 waves-effect waves-deep-orange btn white-text';
+    // add current data to draw dataset
+    var logJson = map.getSource('firebase')._data;
+    draw.set(logJson);
+    draw.changeMode("simple_select");
+    map.setLayoutProperty('firebasePoint', 'visibility', 'none');
+    map.setLayoutProperty('firebaseLine', 'visibility', 'none');
+    map.setLayoutProperty('firebasePoly', 'visibility', 'none');
 
   } else {
     // set edit button to inactive and remove all draw features
-      editButton.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-      draw.deleteAll();
-      map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-      map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-      map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+    editButton.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+    draw.deleteAll();
+    map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
+    map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+    map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
   }
 
 }
@@ -553,7 +546,7 @@ map.on('draw.selectionchange', function(){
         var photoRef = storageRef.child('images/' + photo);
 
         if (typeof(photo) != 'undefined') {
-        photoRef.getDownloadURL().then(function(url) {
+          photoRef.getDownloadURL().then(function(url) {
             // Insert url into an <img> tag to "download"
             document.getElementById('photo').src = url;
           }).catch(function(error) {
@@ -562,20 +555,20 @@ map.on('draw.selectionchange', function(){
             // https://firebase.google.com/docs/storage/web/handle-errors
             switch (error.code) {
               case 'storage/object_not_found':
-                // File doesn't exist
-                break;
+              // File doesn't exist
+              break;
 
               case 'storage/unauthorized':
-                // User doesn't have permission to access the object
-                break;
+              // User doesn't have permission to access the object
+              break;
 
               case 'storage/canceled':
-                // User canceled the upload
-                break;
+              // User canceled the upload
+              break;
 
               case 'storage/unknown':
-                // Unknown error occurred, inspect the server response
-                break;
+              // Unknown error occurred, inspect the server response
+              break;
             }
           });
         }
@@ -605,78 +598,78 @@ map.on('draw.selectionchange', function(){
         deleteA.text = 'Delete';
         var deleteButton = action.insertAdjacentElement('beforeend', deleteA);
 
-      // push response and notes to firebase
-          actionButton.addEventListener('click', function(){
+        // push response and notes to firebase
+        actionButton.addEventListener('click', function(){
 
-            var createdBy = feature.val().properties.createdBy;
-            var createdOn = feature.val().properties.createdOn;
-            var photo = feature.val().properties.imageUUID;
-            var editedBy = firebase.auth().currentUser.displayName;
-            var editedOn = firebase.database.ServerValue.TIMESTAMP;
-            var description = document.getElementById('description').value;
-            var notes = document.getElementById('notes').value;
-            var id = draw.getSelected().features[0].id;
+          var createdBy = feature.val().properties.createdBy;
+          var createdOn = feature.val().properties.createdOn;
+          var photo = feature.val().properties.imageUUID;
+          var editedBy = firebase.auth().currentUser.displayName;
+          var editedOn = firebase.database.ServerValue.TIMESTAMP;
+          var description = document.getElementById('description').value;
+          var notes = document.getElementById('notes').value;
+          var id = draw.getSelected().features[0].id;
 
-        // set semantic data for point
-            draw.setFeatureProperty(id,"createdBy",createdBy);
-            draw.setFeatureProperty(id,"createdOn",createdOn);
-            draw.setFeatureProperty(id,"description",description);
-            draw.setFeatureProperty(id,"imageUUID",photo);
-            draw.setFeatureProperty(id,"editedBy",editedBy);
-            draw.setFeatureProperty(id,"editedOn",editedOn);
-            draw.setFeatureProperty(id,"notes",notes);
+          // set semantic data for point
+          draw.setFeatureProperty(id,"createdBy",createdBy);
+          draw.setFeatureProperty(id,"createdOn",createdOn);
+          draw.setFeatureProperty(id,"description",description);
+          draw.setFeatureProperty(id,"imageUUID",photo);
+          draw.setFeatureProperty(id,"editedBy",editedBy);
+          draw.setFeatureProperty(id,"editedOn",editedOn);
+          draw.setFeatureProperty(id,"notes",notes);
 
-            firebase.database().ref('datacollector/coalcreek/' + featureKey).update(draw.getSelected().features[0]);
+          firebase.database().ref('datacollector/coalcreek/' + featureKey).update(draw.getSelected().features[0]);
 
-            // delete draw point from map
-                draw
-                  .deleteAll()
-                  .getAll();
+          // delete draw point from map
+          draw
+          .deleteAll()
+          .getAll();
 
-            // set card content
-                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been updated.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+          // set card content
+          var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been updated.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
-                card.innerHTML = thanks;
+          card.innerHTML = thanks;
 
-                var received = document.getElementById('received');
-                setTimeout(function() {
-                  $('#received').fadeOut();
-                }, 3000);
+          var received = document.getElementById('received');
+          setTimeout(function() {
+            $('#received').fadeOut();
+          }, 3000);
 
-                map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-                map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-                map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+          map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
+          map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+          map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
         });
 
 
 
         // delete feature
-          deleteButton.addEventListener('click', function(){
+        deleteButton.addEventListener('click', function(){
 
-            firebase.database().ref('datacollector/coalcreek/' + featureKey).remove();
+          firebase.database().ref('datacollector/coalcreek/' + featureKey).remove();
 
-            // delete draw point from map
-                draw
-                  .deleteAll()
-                  .getAll();
+          // delete draw point from map
+          draw
+          .deleteAll()
+          .getAll();
 
-            // set card content
-                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been deleted.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+          // set card content
+          var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been deleted.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
 
-                card.innerHTML = thanks;
+          card.innerHTML = thanks;
 
-                var received = document.getElementById('received');
-                setTimeout(function() {
-                  $('#received').fadeOut();
-                }, 3000);
+          var received = document.getElementById('received');
+          setTimeout(function() {
+            $('#received').fadeOut();
+          }, 3000);
 
-                map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-                map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-                map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+          map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
+          map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+          map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
 
-          });
+        });
 
-      // cancel form/point submittal
+        // cancel form/point submittal
         cancelButton.addEventListener('click', function(){
 
           draw.deleteAll();
@@ -730,7 +723,7 @@ var firePopupTouch = function (e) {
   var photoRef = storageRef.child('images/' + photo);
 
   if (typeof(photo) != 'undefined') {
-  photoRef.getDownloadURL().then(function(url) {
+    photoRef.getDownloadURL().then(function(url) {
       // Insert url into an <img> tag to "download"
       document.getElementById('popupPhoto').src = url;
     }).catch(function(error) {
@@ -739,20 +732,20 @@ var firePopupTouch = function (e) {
       // https://firebase.google.com/docs/storage/web/handle-errors
       switch (error.code) {
         case 'storage/object_not_found':
-          // File doesn't exist
-          break;
+        // File doesn't exist
+        break;
 
         case 'storage/unauthorized':
-          // User doesn't have permission to access the object
-          break;
+        // User doesn't have permission to access the object
+        break;
 
         case 'storage/canceled':
-          // User canceled the upload
-          break;
+        // User canceled the upload
+        break;
 
         case 'storage/unknown':
-          // Unknown error occurred, inspect the server response
-          break;
+        // Unknown error occurred, inspect the server response
+        break;
       }
     });
   }
@@ -772,24 +765,24 @@ var firePopupTouch = function (e) {
   var notes = document.createElement('span');
   notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
 
-    if (feature.properties.imageUUID != null) {
-      content.insertAdjacentElement('beforeend', image);
-    }
-    content.insertAdjacentElement('beforeend', createdBy);
-    content.insertAdjacentElement('beforeend', createdOn);
-    content.insertAdjacentElement('beforeend', description);
-    if (feature.properties.editedBy != null) {
-      content.insertAdjacentElement('beforeend', editedBy);
-      content.insertAdjacentElement('beforeend', editedOn);
-      content.insertAdjacentElement('beforeend', notes);
-    }
+  if (feature.properties.imageUUID != null) {
+    content.insertAdjacentElement('beforeend', image);
+  }
+  content.insertAdjacentElement('beforeend', createdBy);
+  content.insertAdjacentElement('beforeend', createdOn);
+  content.insertAdjacentElement('beforeend', description);
+  if (feature.properties.editedBy != null) {
+    content.insertAdjacentElement('beforeend', editedBy);
+    content.insertAdjacentElement('beforeend', editedOn);
+    content.insertAdjacentElement('beforeend', notes);
+  }
 
-        popup.remove();
-        popup
-            .setLngLat(e.lngLat)
-            .setDOMContent(div)
-            .addTo(map);
-    };
+  popup.remove();
+  popup
+  .setLngLat(e.lngLat)
+  .setDOMContent(div)
+  .addTo(map);
+};
 
 // popup function
 var firePopup = function (e) {
@@ -797,7 +790,7 @@ var firePopup = function (e) {
   var features = map.queryRenderedFeatures(bbox, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
 
   if (!features.length) {
-      return;
+    return;
   }
 
   var feature = features[0];
@@ -820,7 +813,7 @@ var firePopup = function (e) {
   var photoRef = storageRef.child('images/' + photo);
 
   if (typeof(photo) != 'undefined') {
-  photoRef.getDownloadURL().then(function(url) {
+    photoRef.getDownloadURL().then(function(url) {
       // Insert url into an <img> tag to "download"
       document.getElementById('popupPhoto').src = url;
     }).catch(function(error) {
@@ -829,20 +822,20 @@ var firePopup = function (e) {
       // https://firebase.google.com/docs/storage/web/handle-errors
       switch (error.code) {
         case 'storage/object_not_found':
-          // File doesn't exist
-          break;
+        // File doesn't exist
+        break;
 
         case 'storage/unauthorized':
-          // User doesn't have permission to access the object
-          break;
+        // User doesn't have permission to access the object
+        break;
 
         case 'storage/canceled':
-          // User canceled the upload
-          break;
+        // User canceled the upload
+        break;
 
         case 'storage/unknown':
-          // Unknown error occurred, inspect the server response
-          break;
+        // Unknown error occurred, inspect the server response
+        break;
       }
     });
   }
@@ -866,20 +859,20 @@ var firePopup = function (e) {
   if (feature.properties.imageUUID != null) {
     content.insertAdjacentElement('beforeend', image);
   }
-    content.insertAdjacentElement('beforeend', createdBy);
-    content.insertAdjacentElement('beforeend', createdOn);
-    content.insertAdjacentElement('beforeend', description);
-    if (feature.properties.editedBy != null) {
-      content.insertAdjacentElement('beforeend', editedBy);
-      content.insertAdjacentElement('beforeend', editedOn);
-      content.insertAdjacentElement('beforeend', notes);
-    }
+  content.insertAdjacentElement('beforeend', createdBy);
+  content.insertAdjacentElement('beforeend', createdOn);
+  content.insertAdjacentElement('beforeend', description);
+  if (feature.properties.editedBy != null) {
+    content.insertAdjacentElement('beforeend', editedBy);
+    content.insertAdjacentElement('beforeend', editedOn);
+    content.insertAdjacentElement('beforeend', notes);
+  }
 
-        var popup = new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setDOMContent(div)
-            .addTo(map);
-    };
+  var popup = new mapboxgl.Popup()
+  .setLngLat(e.lngLat)
+  .setDOMContent(div)
+  .addTo(map);
+};
 
 // fire popup
 map.on('touchstart', firePopupTouch);
@@ -889,8 +882,8 @@ map.on('click', firePopup);
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+  var features = map.queryRenderedFeatures(e.point, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
 // disable map rotation using right click + drag

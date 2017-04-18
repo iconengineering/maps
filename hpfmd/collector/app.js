@@ -67,13 +67,11 @@ firebase.auth().onAuthStateChanged(function(user) {
         displayName: username
       }).then(function() {
         // Update successful.
-      }, function(error) {
-        // An error happened.
-      }).then( function() {
         var navAdmin = document.getElementById('navAdmin');
         navAdmin.innerText = 'Hello, ' + firebase.auth().currentUser.displayName;
         callData();
-
+      }, function(error) {
+        // An error happened.
       });
     } else {
       var navAdmin = document.getElementById('navAdmin');
@@ -291,9 +289,10 @@ map.on('draw.create', function() {
 
   var card = document.getElementById('input-card');
 
-  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"><form class="col s12"><div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div></form></div></div>';
+  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"> <form class="col s12"> <div class="input-field col s6"> <select id="generation" name="generation" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Existing">Existing</option> <option value="Proposed">Proposed</option> </select> <label>Generation</label> </div> <div class="input-field col s6"> <select id="type" name="type" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Pond">Pond</option> <option value="Channel">Channel</option> <option value="Pipe">Pipe</option> <option value="Outlet">Outlet</option> <option value="Inlet">Inlet</option> <option value="Other">Other</option> </select> <label>Purpose</label> </div> <div class="input-field col s6"> <select id="sediment" name="sediment" class="form-control"> <option value="" disabled selected>Choose</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Sediment</label> </div> <div class="input-field col s6"> <select id="debris" name="debris" class="form-control"> <option value="" disabled selected>Choose</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Debris</label> </div> <div class="input-field col s12"> <select id="condition" name="condition" class="form-control"> <option value="" disabled selected>Choose</option> <option value="5">5-Excellent</option> <option value="4">4-Functional</option> <option value="3">3-Maintenance Req\'d</option> <option value="2">2-Marginal</option> <option value="1">1-Disfunctional</option> </select> <label>Condition</label> </div> <div class="input-field col s12"> <select id="recommendation" name="recommendation" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Do Nothing">Do Nothing</option> <option value="Maintenance">Maintenance</option> <option value="Repairs">Repairs</option> <option value="Replace">Replace</option> <option value="Abandon">Abandon</option> <option value="Other">Other</option> </select> <label>Recommendation</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div>';
 
   card.innerHTML = form;
+  $('select').material_select();
 
   var action = document.createElement('div');
   action.className = 'card-action';
@@ -314,16 +313,100 @@ map.on('draw.create', function() {
   actionButton.addEventListener('click', function(){
 
     var user = firebase.auth().currentUser.displayName;
+    var generation = document.getElementById('generation').value;
+    var type = document.getElementById('type').value;
+    var sediment = document.getElementById('sediment').value;
+    var debris = document.getElementById('debris').value;
+    var condition = document.getElementById('condition').value;
+    var recommendation = document.getElementById('recommendation').value;
     var description = document.getElementById('description').value;
     var timestamp = firebase.database.ServerValue.TIMESTAMP;
+
+    var file = document.getElementById('fileUpload').files[0];
+
+    function generateUUID() {
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+    }
 
     var n = draw.getAll().features.length - 1;
     var id = draw.getAll().features[n].id;
 
+    if (typeof(file) != 'undefined') {
+    var fileName = file.name;
+    var fileExt = fileName.split('.')[1];
+
+    var imageUUID = generateUUID() + '.' + fileExt;
+    draw.setFeatureProperty(id,"photo",imageUUID);
+
+    // Create the file metadata
+    var metadata = {
+      contentType: 'image/jpeg'
+    };
+
+    var storageRef = firebase.storage().ref('testUpload/');
+
+    // Upload file and metadata to the object 'images/mountains.jpg'
+    var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
+    Materialize.toast(' ');
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+    function(snapshot) {
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      var progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
+      var $toastContent = 'Upload is ' + progress + '% done';
+      $('.toast').text($toastContent);
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+      }
+    }, function(error) {
+
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        Materialize.toast('User is not authorized to upload images', 4000);
+        break;
+
+        case 'storage/canceled':
+        // User canceled the upload
+        Materialize.toast('Upload has been cancelled', 4000);
+        break;
+
+        case 'storage/unknown':
+        // Unknown error occurred, inspect error.serverResponse
+        Materialize.toast('An unknown error occurred', 4000);
+        break;
+      }
+    }, function() {
+      // Upload completed successfully, now we can get the download URL
+      $('.toast').remove();
+      var downloadURL = uploadTask.snapshot.downloadURL;
+      Materialize.toast('Image has been uploaded', 4000);
+    });
+  }
+
 // set semantic data for point
-    draw.setFeatureProperty(id,"createdBy",user);
-    draw.setFeatureProperty(id,"createdOn",timestamp);
-    draw.setFeatureProperty(id,"description",description);
+    draw.setFeatureProperty(id,"created_by",user);
+    draw.setFeatureProperty(id,"created_at",timestamp);
+    draw.setFeatureProperty(id,"generation",generation);
+    draw.setFeatureProperty(id,"type",type);
+    draw.setFeatureProperty(id,"sediment",sediment);
+    draw.setFeatureProperty(id,"debris",debris);
+    draw.setFeatureProperty(id,"condition",condition);
+    draw.setFeatureProperty(id,"recommenda",recommendation);
+    draw.setFeatureProperty(id,"notes",description);
 
     dataRef.push(draw.getAll().features[n]);
 
@@ -342,9 +425,6 @@ map.on('draw.create', function() {
       $('#received').fadeOut();
     }, 3000);
 
-// update point features in map
-//    updateFeatures();
-
   });
 
 // cancel form/point submittal
@@ -361,36 +441,6 @@ map.on('draw.create', function() {
   });
 
 });
-
-function updateFeatures() {
-  // update point features in map
-      var firebaseGeojsonFeatures = [];
-      firebaseGeojsonFeatures.length = 0;
-
-      firebaseData().then(function(result) {
-        for (var key in result) {
-        	var f = result[key];
-          f.type = "Feature";
-          firebaseGeojsonFeatures.push(f);
-        }
-      }).then(function(){
-        var newData = {type: 'FeatureCollection',
-               features: firebaseGeojsonFeatures
-             };
-
-        map.getSource('firebase').setData(newData);
-      });
-}
-
-function clearFeatures() {
-  // update point features in map
-      var clearGeojsonFeatures = [];
-        var clearData = {type: 'FeatureCollection',
-               features: firebaseGeojsonFeatures
-             };
-
-        map.getSource('firebase').setData(clearData);
-}
 
 // start drawing with button click
 function drawPoint(){
@@ -514,18 +564,63 @@ map.on('draw.selectionchange', function(){
       snapshot.forEach(function(feature) {
 
         var featureKey = feature.key;
-        var createdBy = feature.val().properties.createdBy;
-        var createdOn = moment(feature.val().properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a");
-        var editedBy = feature.val().properties.editedBy;
-        var editedOn = moment(feature.val().properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a");
-        var origDescription = feature.val().properties.description;
-        var origNotes = feature.val().properties.notes;
+        var createdBy = feature.val().properties.created_by;
+        var createdOn = moment(feature.val().properties.created_on).format("ddd, MMM D YYYY, h:mm:ss a");
+        var editedBy = feature.val().properties.edited_by;
+        var editedOn = moment(feature.val().properties.edited_on).format("ddd, MMM D YYYY, h:mm:ss a");
+        var origDescription = feature.val().properties.notes;
+        var origNotes = feature.val().properties.editNotes;
+        var origGeneration = feature.val().properties.generation;
+        var origType = feature.val().properties.type;
+        var origSediment = feature.val().properties.sediment;
+        var origDebris = feature.val().properties.debris;
+        var origCondition = feature.val().properties.condition;
+        var origRecommendation = feature.val().properties.recommenda;
+        var photo = feature.val().properties.photo;
+        var extension = feature.val().properties.extension;
         var card = document.getElementById('input-card');
 
-        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
+        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><div class="col s12"><img id="photo" class="responsive-img" src="//placehold.it/350x150"></div><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s6"> <select id="generation" name="generation" class="form-control"> <option value="' + origGeneration + '" disabled selected>' + origGeneration + '</option> <option value="Existing">Existing</option> <option value="Proposed">Proposed</option> </select> <label>Generation</label> </div> <div class="input-field col s6"> <select id="type" name="type" class="form-control"> <option value="' + origType + '" disabled selected>' + origType + '</option> <option value="Pond">Pond</option> <option value="Channel">Channel</option> <option value="Pipe">Pipe</option> <option value="Outlet">Outlet</option> <option value="Inlet">Inlet</option> <option value="Other">Other</option> </select> <label>Purpose</label> </div> <div class="input-field col s6"> <select id="sediment" name="sediment" class="form-control"> <option value="' + origSediment + '" disabled selected>' + origSediment + '</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Sediment</label> </div> <div class="input-field col s6"> <select id="debris" name="debris" class="form-control"> <option value="' + origDebris + '" disabled selected>' + origDebris + '</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Debris</label> </div> <div class="input-field col s12"> <select id="condition" name="condition" class="form-control"> <option value="' + origCondition + '" disabled selected>' + origCondition + '</option> <option value="5">5-Excellent</option> <option value="4">4-Functional</option> <option value="3">3-Maintenance Req\'d</option> <option value="2">2-Marginal</option> <option value="1">1-Disfunctional</option> </select> <label>Condition</label> </div> <div class="input-field col s12"> <select id="recommendation" name="recommendation" class="form-control"> <option value="' + origRecommendation + '" disabled selected>' + origRecommendation + '</option> <option value="Do Nothing">Do Nothing</option> <option value="Maintenance">Maintenance</option> <option value="Repairs">Repairs</option> <option value="Replace">Replace</option> <option value="Abandon">Abandon</option> <option value="Other">Other</option> </select> <label>Recommendation</label> </div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
 
         card.innerHTML = form;
+        $('select').material_select();
         Materialize.updateTextFields();
+
+        // Create a reference to the file we want to download
+        var storageRef = firebase.storage().ref('testUpload/');
+        var photoRef = storageRef.child('images/' + photo);
+
+        if (typeof(extension) == 'undefined') {
+          photoRef.getDownloadURL().then(function(url) {
+            // Insert url into an <img> tag to "download"
+            document.getElementById('photo').src = url;
+          }).catch(function(error) {
+
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+              case 'storage/object_not_found':
+              // File doesn't exist
+              break;
+
+              case 'storage/unauthorized':
+              // User doesn't have permission to access the object
+              break;
+
+              case 'storage/canceled':
+              // User canceled the upload
+              break;
+
+              case 'storage/unknown':
+              // Unknown error occurred, inspect the server response
+              break;
+            }
+          });
+        } else {
+          var s3Url = '//s3-us-west-2.amazonaws.com/iconeng/hpfmd-img/thumbs/';
+          var photoUrl = s3Url + photo + '.' + extension;
+          document.getElementById('photo').src = photoUrl;
+        }
 
         var action = document.createElement('div');
         action.className = 'card-action';
@@ -554,8 +649,16 @@ map.on('draw.selectionchange', function(){
             var createdOn = feature.val().properties.createdOn;
             var editedBy = firebase.auth().currentUser.displayName;
             var editedOn = firebase.database.ServerValue.TIMESTAMP;
+            var generation = document.getElementById('generation').value;
+            var type = document.getElementById('type').value;
+            var sediment = document.getElementById('sediment').value;
+            var debris = document.getElementById('debris').value;
+            var condition = document.getElementById('condition').value;
+            var recommendation = document.getElementById('recommendation').value;
             var description = document.getElementById('description').value;
             var notes = document.getElementById('notes').value;
+            var photo = feature.val().properties.photo;
+            var extension = feature.val().properties.extension;
             var id = draw.getSelected().features[0].id;
 
         // set semantic data for point
@@ -563,8 +666,19 @@ map.on('draw.selectionchange', function(){
             draw.setFeatureProperty(id,"createdOn",createdOn);
             draw.setFeatureProperty(id,"editedBy",editedBy);
             draw.setFeatureProperty(id,"editedOn",editedOn);
-            draw.setFeatureProperty(id,"description",description);
-            draw.setFeatureProperty(id,"notes",notes);
+            draw.setFeatureProperty(id,"generation",generation);
+            draw.setFeatureProperty(id,"type",type);
+            draw.setFeatureProperty(id,"sediment",sediment);
+            draw.setFeatureProperty(id,"debris",debris);
+            draw.setFeatureProperty(id,"condition",condition);
+            draw.setFeatureProperty(id,"recommenda",recommendation);
+            draw.setFeatureProperty(id,"notes",description);
+            draw.setFeatureProperty(id,"editNotes",notes);
+            draw.setFeatureProperty(id,"photo",photo);
+
+            if (typeof(extension) != 'undefined') {
+              draw.setFeatureProperty(id,"extension",extension);
+            }
 
             firebase.database().ref('datacollector/hpfmd/' + featureKey).update(draw.getSelected().features[0]);
 
