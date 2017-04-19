@@ -50,6 +50,13 @@ document.querySelector('#adminSubmit').addEventListener('click', function(e) {
   });
 });
 
+// add listener for admin logout
+document.querySelector('#adminLogout').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  firebase.auth().signOut();
+});
+
 // reset password
 var auth = firebase.auth();
 document.querySelector('#reset').addEventListener('click', function(e) {
@@ -99,16 +106,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     // add logout to admin modal and disable login
     var submit = document.getElementById('adminSubmit');
     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
-    var adminFooter = document.getElementById('adminFooter');
-    var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Sign Out</a>';
-    var adminLogout = document.getElementById('adminLogout');
-    if (typeof(adminLogout) == 'undefined' || adminLogout == null) {
-    adminFooter.insertAdjacentHTML('beforeend',logout);
-    }
+    var logout = document.getElementById('adminLogout');
+    logout.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
 
     // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/coalcreek/write");
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/test");
     ref.once("value")
     .then(function(snapshot) {
       var val = snapshot.val(); // "ada"
@@ -122,30 +125,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         var adminEdit = document.getElementById('adminEdit');
         adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
       }
-    });
-    // add listener for admin logout
-    document.querySelector('#adminLogout').addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      firebase.auth().signOut();
-
-      map.getSource('firebase').setData({
-        "type": "FeatureCollection",
-        "features": []
-      });
-
-      // make buttons disabled
-      var adminPoint = document.getElementById('adminPoint');
-      adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
-      var adminLine = document.getElementById('adminLine');
-      adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
-      var adminPoly = document.getElementById('adminPolygon');
-      adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
-      var adminEdit = document.getElementById('adminEdit');
-      adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-
-      var navAdmin = document.getElementById('navAdmin');
-      navAdmin.innerText = 'ADMIN';
     });
 
     // init dropdown
@@ -164,15 +143,35 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   // remove admin tools
   var header = document.getElementById('header-links');
-  var adminFooter = document.getElementById('adminFooter');
   var download = document.getElementById('download');
-  var logout = document.getElementById('adminLogout');
 
   if (typeof(download) != 'undefined' && download !== null) {
     var submit = document.getElementById('adminSubmit');
     submit.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
     header.removeChild(download);
-    adminFooter.removeChild(logout);
+
+    map.getSource('firebase').setData({
+      "type": "FeatureCollection",
+      "features": []
+    });
+
+    // make buttons disabled
+    var adminPoint = document.getElementById('adminPoint');
+    adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
+    var adminLine = document.getElementById('adminLine');
+    adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
+    var adminPoly = document.getElementById('adminPolygon');
+    adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
+    var adminEdit = document.getElementById('adminEdit');
+    adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+    // enable login to admin modal and disable logout
+    var submit = document.getElementById('adminSubmit');
+    submit.className = 'modal-action modal-close waves-effect waves-light btn blue';
+    var logout = document.getElementById('adminLogout');
+    logout.className = 'disabled modal-action modal-close waves-effect waves-blue btn-flat';
+
+    var navAdmin = document.getElementById('navAdmin');
+    navAdmin.innerText = 'ADMIN';
   } else {
     return;
   }
@@ -206,7 +205,8 @@ map.addControl(new mapboxgl.GeolocateControl());
 //set blank geojson
 var firebaseGeojsonFeatures = [];
 
-var dataRef = firebase.database().ref('datacollector/coalcreek');
+var dataRef = firebase.database().ref('datacollector/test');
+var archiveRef = firebase.database().ref('datacollector/testArchive');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -395,7 +395,14 @@ map.on('draw.create', function() {
     } else {
         Materialize.toast('Feature has been uploaded.', 4000);
     }
+    });
 
+    archiveRef.push(draw.getAll().features[n], function(error) {
+      if (error) {
+        console.log('Archive Error.');
+    } else {
+        console.log('Archived.');
+    }
     });
 
     // delete draw point from map
@@ -634,13 +641,20 @@ map.on('draw.selectionchange', function(){
           draw.setFeatureProperty(id,"editedOn",editedOn);
           draw.setFeatureProperty(id,"notes",notes);
 
-          firebase.database().ref('datacollector/coalcreek/' + featureKey).update(draw.getSelected().features[0], function(error) {
+          firebase.database().ref('datacollector/test/' + featureKey).update(draw.getSelected().features[0], function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
           } else {
               Materialize.toast('Feature has been updated.', 4000);
           }
+          });
 
+          archiveRef.push(draw.getSelected().features[0], function(error) {
+            if (error) {
+              console.log('Archive Error.');
+          } else {
+              console.log('Archived.');
+          }
           });
 
           // delete draw point from map
@@ -663,13 +677,26 @@ map.on('draw.selectionchange', function(){
         // delete feature
         deleteButton.addEventListener('click', function(){
 
-          firebase.database().ref('datacollector/coalcreek/' + featureKey).remove(function(error) {
+          var user = firebase.auth().currentUser.displayName;
+          var timestamp = firebase.database.ServerValue.TIMESTAMP;
+          var id = draw.getSelected().features[0].id;
+          draw.setFeatureProperty(id,"deleted_by",user);
+          draw.setFeatureProperty(id,"deleted_at",timestamp);
+
+          firebase.database().ref('datacollector/test/' + featureKey).remove(function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
           } else {
               Materialize.toast('Feature has been deleted.', 4000);
           }
+          });
 
+          archiveRef.push(draw.getSelected().features[0], function(error) {
+            if (error) {
+              console.log('Archive Error.');
+          } else {
+              console.log('Archived.');
+          }
           });
 
           // delete draw point from map
@@ -860,9 +887,9 @@ var firePopup = function (e) {
     });
   }
 
-  var image = document.createElement('span');
+  var image = document.createElement('div');
   image.className = 'col s12 center';
-  image.innerHTML = '<img id="popupPhoto" style="max-width:250px;" class="responsive-img" src="//placehold.it/250x150"><br />';
+  image.innerHTML = '<img id="popupPhoto" style="max-width:250px;" class="responsive-img" src="//placehold.it/250x150">';
 
   var createdBy = document.createElement('div');
   createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy;

@@ -50,6 +50,13 @@ document.querySelector('#adminSubmit').addEventListener('click', function(e) {
   });
 });
 
+// add listener for admin logout
+document.querySelector('#adminLogout').addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  firebase.auth().signOut();
+});
+
 // reset password
 var auth = firebase.auth();
 document.querySelector('#reset').addEventListener('click', function(e) {
@@ -96,19 +103,15 @@ firebase.auth().onAuthStateChanged(function(user) {
     header.insertAdjacentHTML('beforeend',dropdown);
   }
 
-// add logout to admin modal and disable login
+    // add logout to admin modal and disable login
     var submit = document.getElementById('adminSubmit');
     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
-    var adminFooter = document.getElementById('adminFooter');
-    var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Sign Out</a>';
-    var adminLogout = document.getElementById('adminLogout');
-    if (typeof(adminLogout) == 'undefined' || adminLogout == null) {
-    adminFooter.insertAdjacentHTML('beforeend',logout);
-  }
+    var logout = document.getElementById('adminLogout');
+    logout.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
 
     // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/hpfmd/write");
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hpfmd");
         ref.once("value")
           .then(function(snapshot) {
             var val = snapshot.val(); // "ada"
@@ -123,30 +126,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
     }
   });
-// add listener for admin logout
-    document.querySelector('#adminLogout').addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          firebase.auth().signOut();
-
-           map.getSource('firebase').setData({
-                 "type": "FeatureCollection",
-                 "features": []
-               });
-
-          // make buttons disabled
-          var adminPoint = document.getElementById('adminPoint');
-          adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
-          var adminLine = document.getElementById('adminLine');
-          adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
-          var adminPoly = document.getElementById('adminPolygon');
-          adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
-          var adminEdit = document.getElementById('adminEdit');
-          adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-
-          var navAdmin = document.getElementById('navAdmin');
-          navAdmin.innerText = 'ADMIN';
-        });
 
 // init dropdown
     $('.dropdown-button').dropdown({
@@ -164,15 +143,35 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 // remove admin tools
     var header = document.getElementById('header-links');
-    var adminFooter = document.getElementById('adminFooter');
     var download = document.getElementById('download');
-    var logout = document.getElementById('adminLogout');
 
     if (typeof(download) != 'undefined' && download !== null) {
       var submit = document.getElementById('adminSubmit');
       submit.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
       header.removeChild(download);
-      adminFooter.removeChild(logout);
+
+      map.getSource('firebase').setData({
+        "type": "FeatureCollection",
+        "features": []
+      });
+
+      // make buttons disabled
+      var adminPoint = document.getElementById('adminPoint');
+      adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
+      var adminLine = document.getElementById('adminLine');
+      adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
+      var adminPoly = document.getElementById('adminPolygon');
+      adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
+      var adminEdit = document.getElementById('adminEdit');
+      adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+      // enable login to admin modal and disable logout
+      var submit = document.getElementById('adminSubmit');
+      submit.className = 'modal-action modal-close waves-effect waves-light btn blue';
+      var logout = document.getElementById('adminLogout');
+      logout.className = 'disabled modal-action modal-close waves-effect waves-blue btn-flat';
+
+      var navAdmin = document.getElementById('navAdmin');
+      navAdmin.innerText = 'ADMIN';
     } else {
       return;
     }
@@ -207,6 +206,7 @@ map.addControl(new mapboxgl.GeolocateControl());
 var firebaseGeojsonFeatures = [];
 
 var dataRef = firebase.database().ref('datacollector/hpfmd');
+var archiveRef = firebase.database().ref('datacollector/hpfmdArchive');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -235,7 +235,47 @@ map.on('load', function() {
        }
 	});
 
+  map.addSource('filings', {
+	type: 'geojson',
+  data: '../hpfmd_filings.geojson'
+	});
+
   callData();
+
+  map.addLayer({
+    id: 'filings',
+    source: 'filings',
+    type: 'line',
+    layout: {
+        "visibility": "visible",
+        "line-join": "round",
+        "line-cap": "round"
+    },
+    paint: {
+        "line-color": "black",
+        "line-width": 1
+    }
+  }, 'country-label-lg');
+
+  map.addLayer({
+      'id': 'filingLabels',
+      'type': 'symbol',
+      'source': 'filings',
+      'layout': {
+         "visibility": "visible",
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": 10,
+         "text-field": "{title}",
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+         "symbol-placement": "point"
+     },
+     "paint": {
+       "text-color": "#F8F4F0",
+       "text-halo-color": "rgba(0,0,0,.87)",
+       "text-halo-width": 1
+     }
+  }, 'country-label-lg');
 
   map.addLayer({
     id: 'firebasePoly',
@@ -302,7 +342,7 @@ map.on('draw.create', function() {
 
   var card = document.getElementById('input-card');
 
-  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"> <form class="col s12"> <div class="input-field col s6"> <select id="generation" name="generation" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Existing">Existing</option> <option value="Proposed">Proposed</option> </select> <label>Generation</label> </div> <div class="input-field col s6"> <select id="type" name="type" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Pond">Pond</option> <option value="Channel">Channel</option> <option value="Pipe">Pipe</option> <option value="Outlet">Outlet</option> <option value="Inlet">Inlet</option> <option value="Other">Other</option> </select> <label>Purpose</label> </div> <div class="input-field col s6"> <select id="sediment" name="sediment" class="form-control"> <option value="" disabled selected>Choose</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Sediment</label> </div> <div class="input-field col s6"> <select id="debris" name="debris" class="form-control"> <option value="" disabled selected>Choose</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Debris</label> </div> <div class="input-field col s12"> <select id="condition" name="condition" class="form-control"> <option value="" disabled selected>Choose</option> <option value="5">5-Excellent</option> <option value="4">4-Functional</option> <option value="3">3-Maintenance Req\'d</option> <option value="2">2-Marginal</option> <option value="1">1-Disfunctional</option> </select> <label>Condition</label> </div> <div class="input-field col s12"> <select id="recommendation" name="recommendation" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Do Nothing">Do Nothing</option> <option value="Maintenance">Maintenance</option> <option value="Repairs">Repairs</option> <option value="Replace">Replace</option> <option value="Abandon">Abandon</option> <option value="Other">Other</option> </select> <label>Recommendation</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div>';
+  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"> <form class="col s12"> <div class="input-field col s6"> <select id="generation" name="generation" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Existing">Existing</option> <option value="Proposed">Proposed</option> </select> <label>Generation</label> </div> <div class="input-field col s6"> <select id="type" name="type" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Pond">Pond</option> <option value="Channel">Channel</option> <option value="Pipe">Pipe</option> <option value="Outlet">Outlet</option> <option value="Inlet">Inlet</option> <option value="Other">Other</option> </select> <label>Type</label> </div> <div class="input-field col s12"> <select id="purpose" name="purpose" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Detention">Detention</option> <option value="Retention">Retention</option> <option value="Water Quality">Water Quality</option> <option value="Conveyance">Conveyance</option> <option value="Capture">Capture</option> <option value="Other">Other</option> </select> <label>Purpose</label> </div> <div class="input-field col s6"> <select id="sediment" name="sediment" class="form-control"> <option value="" disabled selected>Choose</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Sediment</label> </div> <div class="input-field col s6"> <select id="debris" name="debris" class="form-control"> <option value="" disabled selected>Choose</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Debris</label> </div> <div class="input-field col s12"> <select id="condition" name="condition" class="form-control"> <option value="" disabled selected>Choose</option> <option value="5">5-Excellent</option> <option value="4">4-Functional</option> <option value="3">3-Maintenance Req\'d</option> <option value="2">2-Marginal</option> <option value="1">1-Disfunctional</option> </select> <label>Condition</label> </div> <div class="input-field col s12"> <select id="recommendation" name="recommendation" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Do Nothing">Do Nothing</option> <option value="Maintenance">Maintenance</option> <option value="Repairs">Repairs</option> <option value="Replace">Replace</option> <option value="Abandon">Abandon</option> <option value="Other">Other</option> </select> <label>Recommendation</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div>';
 
   card.innerHTML = form;
   $('select').material_select();
@@ -328,6 +368,7 @@ map.on('draw.create', function() {
     var user = firebase.auth().currentUser.displayName;
     var generation = document.getElementById('generation').value;
     var type = document.getElementById('type').value;
+    var purpose = document.getElementById('purpose').value;
     var sediment = document.getElementById('sediment').value;
     var debris = document.getElementById('debris').value;
     var condition = document.getElementById('condition').value;
@@ -362,7 +403,7 @@ map.on('draw.create', function() {
       contentType: 'image/jpeg'
     };
 
-    var storageRef = firebase.storage().ref('testUpload/');
+    var storageRef = firebase.storage().ref('hpfmdUpload/');
 
     // Upload file and metadata to the object 'images/mountains.jpg'
     var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
@@ -415,6 +456,7 @@ map.on('draw.create', function() {
     draw.setFeatureProperty(id,"created_at",timestamp);
     draw.setFeatureProperty(id,"generation",generation);
     draw.setFeatureProperty(id,"type",type);
+    draw.setFeatureProperty(id,"purpose",purpose);
     draw.setFeatureProperty(id,"sediment",sediment);
     draw.setFeatureProperty(id,"debris",debris);
     draw.setFeatureProperty(id,"condition",condition);
@@ -427,7 +469,14 @@ map.on('draw.create', function() {
     } else {
         Materialize.toast('Feature has been uploaded.', 4000);
     }
+    });
 
+    archiveRef.push(draw.getAll().features[n], function(error) {
+      if (error) {
+        console.log('Archive Error.');
+    } else {
+        console.log('Archived.');
+    }
     });
 
 // delete draw point from map
@@ -580,13 +629,14 @@ map.on('draw.selectionchange', function(){
 
         var featureKey = feature.key;
         var createdBy = feature.val().properties.created_by;
-        var createdOn = moment(feature.val().properties.created_on).format("ddd, MMM D YYYY, h:mm:ss a");
-        var editedBy = feature.val().properties.edited_by;
-        var editedOn = moment(feature.val().properties.edited_on).format("ddd, MMM D YYYY, h:mm:ss a");
+        var createdOn = moment(feature.val().properties.created_at).format("ddd, MMM D YYYY, h:mm:ss a");
+        var editedBy = feature.val().properties.updated_by;
+        var editedOn = moment(feature.val().properties.updated_at).format("ddd, MMM D YYYY, h:mm:ss a");
         var origDescription = feature.val().properties.notes;
         var origNotes = feature.val().properties.editNotes;
         var origGeneration = feature.val().properties.generation;
         var origType = feature.val().properties.type;
+        var origPurpose = feature.val().properties.purpose;
         var origSediment = feature.val().properties.sediment;
         var origDebris = feature.val().properties.debris;
         var origCondition = feature.val().properties.condition;
@@ -595,14 +645,14 @@ map.on('draw.selectionchange', function(){
         var extension = feature.val().properties.extension;
         var card = document.getElementById('input-card');
 
-        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><div class="col s12"><img id="photo" class="responsive-img" src="//placehold.it/350x150"></div><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s6"> <select id="generation" name="generation" class="form-control"> <option value="' + origGeneration + '" disabled selected>' + origGeneration + '</option> <option value="Existing">Existing</option> <option value="Proposed">Proposed</option> </select> <label>Generation</label> </div> <div class="input-field col s6"> <select id="type" name="type" class="form-control"> <option value="' + origType + '" disabled selected>' + origType + '</option> <option value="Pond">Pond</option> <option value="Channel">Channel</option> <option value="Pipe">Pipe</option> <option value="Outlet">Outlet</option> <option value="Inlet">Inlet</option> <option value="Other">Other</option> </select> <label>Purpose</label> </div> <div class="input-field col s6"> <select id="sediment" name="sediment" class="form-control"> <option value="' + origSediment + '" disabled selected>' + origSediment + '</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Sediment</label> </div> <div class="input-field col s6"> <select id="debris" name="debris" class="form-control"> <option value="' + origDebris + '" disabled selected>' + origDebris + '</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Debris</label> </div> <div class="input-field col s12"> <select id="condition" name="condition" class="form-control"> <option value="' + origCondition + '" disabled selected>' + origCondition + '</option> <option value="5">5-Excellent</option> <option value="4">4-Functional</option> <option value="3">3-Maintenance Req\'d</option> <option value="2">2-Marginal</option> <option value="1">1-Disfunctional</option> </select> <label>Condition</label> </div> <div class="input-field col s12"> <select id="recommendation" name="recommendation" class="form-control"> <option value="' + origRecommendation + '" disabled selected>' + origRecommendation + '</option> <option value="Do Nothing">Do Nothing</option> <option value="Maintenance">Maintenance</option> <option value="Repairs">Repairs</option> <option value="Replace">Replace</option> <option value="Abandon">Abandon</option> <option value="Other">Other</option> </select> <label>Recommendation</label> </div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
+        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><div class="col s12"><img id="photo" class="responsive-img" src="//placehold.it/350x150"></div><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s6"> <select id="generation" name="generation" class="form-control"> <option value="' + origGeneration + '" disabled selected>' + origGeneration + '</option> <option value="Existing">Existing</option> <option value="Proposed">Proposed</option> </select> <label>Generation</label> </div> <div class="input-field col s6"> <select id="type" name="type" class="form-control"> <option value="' + origType + '" disabled selected>' + origType + '</option> <option value="Pond">Pond</option> <option value="Channel">Channel</option> <option value="Pipe">Pipe</option> <option value="Outlet">Outlet</option> <option value="Inlet">Inlet</option> <option value="Other">Other</option> </select> <label>Type</label> </div> <div class="input-field col s12"> <select id="purpose" name="purpose" class="form-control"> <option value="' + origPurpose + '" disabled selected>' + origPurpose + '</option> <option value="Detention">Detention</option> <option value="Retention">Retention</option> <option value="Water Quality">Water Quality</option> <option value="Conveyance">Conveyance</option> <option value="Capture">Capture</option> <option value="Other">Other</option> </select> <label>Purpose</label> </div> <div class="input-field col s6"> <select id="sediment" name="sediment" class="form-control"> <option value="' + origSediment + '" disabled selected>' + origSediment + '</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Sediment</label> </div> <div class="input-field col s6"> <select id="debris" name="debris" class="form-control"> <option value="' + origDebris + '" disabled selected>' + origDebris + '</option> <option value="High">High</option> <option value="Moderate">Moderate</option> <option value="Low">Low</option> </select> <label>Debris</label> </div> <div class="input-field col s12"> <select id="condition" name="condition" class="form-control"> <option value="' + origCondition + '" disabled selected>' + origCondition + '</option> <option value="5">5-Excellent</option> <option value="4">4-Functional</option> <option value="3">3-Maintenance Req\'d</option> <option value="2">2-Marginal</option> <option value="1">1-Disfunctional</option> </select> <label>Condition</label> </div> <div class="input-field col s12"> <select id="recommendation" name="recommendation" class="form-control"> <option value="' + origRecommendation + '" disabled selected>' + origRecommendation + '</option> <option value="Do Nothing">Do Nothing</option> <option value="Maintenance">Maintenance</option> <option value="Repairs">Repairs</option> <option value="Replace">Replace</option> <option value="Abandon">Abandon</option> <option value="Other">Other</option> </select> <label>Recommendation</label> </div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
 
         card.innerHTML = form;
         $('select').material_select();
         Materialize.updateTextFields();
 
         // Create a reference to the file we want to download
-        var storageRef = firebase.storage().ref('testUpload/');
+        var storageRef = firebase.storage().ref('hpfmdUpload/');
         var photoRef = storageRef.child('images/' + photo);
 
         if (typeof(extension) == 'undefined') {
@@ -661,28 +711,29 @@ map.on('draw.selectionchange', function(){
           actionButton.addEventListener('click', function(){
 
             var createdBy = document.getElementById('createdBy').value;
-            var createdOn = feature.val().properties.createdOn;
+            var createdOn = feature.val().properties.created_at;
             var editedBy = firebase.auth().currentUser.displayName;
             var editedOn = firebase.database.ServerValue.TIMESTAMP;
             var generation = document.getElementById('generation').value;
             var type = document.getElementById('type').value;
+            var purpose = document.getElementById('purpose').value;
             var sediment = document.getElementById('sediment').value;
             var debris = document.getElementById('debris').value;
             var condition = document.getElementById('condition').value;
             var recommendation = document.getElementById('recommendation').value;
             var description = document.getElementById('description').value;
             var notes = document.getElementById('notes').value;
-            var photo = feature.val().properties.photo;
             var extension = feature.val().properties.extension;
             var id = draw.getSelected().features[0].id;
 
         // set semantic data for point
-            draw.setFeatureProperty(id,"createdBy",createdBy);
-            draw.setFeatureProperty(id,"createdOn",createdOn);
-            draw.setFeatureProperty(id,"editedBy",editedBy);
-            draw.setFeatureProperty(id,"editedOn",editedOn);
+            draw.setFeatureProperty(id,"created_by",createdBy);
+            draw.setFeatureProperty(id,"created_at",createdOn);
+            draw.setFeatureProperty(id,"updated_by",editedBy);
+            draw.setFeatureProperty(id,"updated_at",editedOn);
             draw.setFeatureProperty(id,"generation",generation);
             draw.setFeatureProperty(id,"type",type);
+            draw.setFeatureProperty(id,"purpose",purpose);
             draw.setFeatureProperty(id,"sediment",sediment);
             draw.setFeatureProperty(id,"debris",debris);
             draw.setFeatureProperty(id,"condition",condition);
@@ -701,7 +752,14 @@ map.on('draw.selectionchange', function(){
             } else {
                 Materialize.toast('Feature has been updated.', 4000);
             }
+            });
 
+            archiveRef.push(draw.getSelected().features[0], function(error) {
+              if (error) {
+                console.log('Archive Error.');
+            } else {
+                console.log('Archived.');
+            }
             });
 
             // delete draw point from map
@@ -724,13 +782,26 @@ map.on('draw.selectionchange', function(){
         // delete feature
           deleteButton.addEventListener('click', function(){
 
+            var user = firebase.auth().currentUser.displayName;
+            var timestamp = firebase.database.ServerValue.TIMESTAMP;
+            var id = draw.getSelected().features[0].id;
+            draw.setFeatureProperty(id,"deleted_by",user);
+            draw.setFeatureProperty(id,"deleted_at",timestamp);
+
             firebase.database().ref('datacollector/hpfmd/' + featureKey).remove(function(error) {
               if (error) {
                 Materialize.toast('Something went wrong.');
             } else {
                 Materialize.toast('Feature has been deleted.', 4000);
             }
+            });
 
+            archiveRef.push(draw.getSelected().features[0], function(error) {
+              if (error) {
+                console.log('Archive Error.');
+            } else {
+                console.log('Archived.');
+            }
             });
 
             // delete draw point from map
@@ -797,23 +868,88 @@ var firePopupTouch = function (e) {
   content.className = 'card-content white-text';
   card.insertAdjacentElement('beforeend', content);
 
-  var createdBy = document.createElement('span');
-  createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy + '<br />';
-  var createdOn = document.createElement('span');
-  createdOn.innerHTML = '<span class="popup-title">Created On:</span> ' + moment(feature.properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
-  var editedBy = document.createElement('span');
-  editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.editedBy + '<br />';
-  var editedOn = document.createElement('span');
-  editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
-  var description = document.createElement('span');
-  description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
-  var notes = document.createElement('span');
-  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
+  var photo = feature.properties.photo;
+  var storageRef = firebase.storage().ref('hpfmdUpload/');
+  var photoRef = storageRef.child('images/' + photo);
+  var extension = feature.properties.extension;
 
+  if (typeof(extension) == 'undefined' && feature.properties.photo != null) {
+    photoRef.getDownloadURL().then(function(url) {
+      // Insert url into an <img> tag to "download"
+      var image = document.createElement('div');
+      image.className = 'col s12 center';
+      image.innerHTML = '<img id="popupPhoto" class="responsive-img" src="' + url + '">';
+    }).catch(function(error) {
+
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/object_not_found':
+        // File doesn't exist
+        break;
+
+        case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        break;
+
+        case 'storage/canceled':
+        // User canceled the upload
+        break;
+
+        case 'storage/unknown':
+        // Unknown error occurred, inspect the server response
+        break;
+      }
+    });
+  } else {
+    var s3Url = '//s3-us-west-2.amazonaws.com/iconeng/hpfmd-img/thumbs/';
+    var photoUrl = s3Url + photo + '.' + extension;
+    var image = document.createElement('div');
+    image.className = 'col s12 center';
+    image.innerHTML = '<img id="popupPhoto" class="responsive-img" src="' + photoUrl + '">';
+  }
+
+  var createdBy = document.createElement('div');
+  createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.created_by;
+  var generation = document.createElement('div');
+  generation.innerHTML = '<span class="popup-title">Generation:</span> ' + feature.properties.generation;
+  var type = document.createElement('div');
+  type.innerHTML = '<span class="popup-title">Type:</span> ' + feature.properties.type;
+  var purpose = document.createElement('div');
+  purpose.innerHTML = '<span class="popup-title">Purpose:</span> ' + feature.properties.purpose;
+  var sediment = document.createElement('div');
+  sediment.innerHTML = '<span class="popup-title">Sediment:</span> ' + feature.properties.sediment;
+  var debris = document.createElement('div');
+  debris.innerHTML = '<span class="popup-title">Debris:</span> ' + feature.properties.debris;
+  var condition = document.createElement('div');
+  condition.innerHTML = '<span class="popup-title">Condition:</span> ' + feature.properties.condition;
+  var recommenda = document.createElement('div');
+  recommenda.innerHTML = '<span class="popup-title">Recommendation:</span> ' + feature.properties.recommenda;
+  var createdOn = document.createElement('div');
+  createdOn.innerHTML = '<span class="popup-title">Created On:</span> ' + moment(feature.properties.created_at).format("ddd, MMM D YYYY, h:mm:ss a");
+  var editedBy = document.createElement('div');
+  editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.updated_by;
+  var editedOn = document.createElement('div');
+  editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.updated_at).format("ddd, MMM D YYYY, h:mm:ss a");
+  var description = document.createElement('div');
+  description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.notes;
+  var notes = document.createElement('div');
+  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.editNotes;
+
+  if (feature.properties.photo != null) {
+    content.insertAdjacentElement('beforeend', image);
+  }
     content.insertAdjacentElement('beforeend', createdBy);
     content.insertAdjacentElement('beforeend', createdOn);
+    content.insertAdjacentElement('beforeend', generation);
+    content.insertAdjacentElement('beforeend', type);
+    content.insertAdjacentElement('beforeend', purpose);
+    content.insertAdjacentElement('beforeend', sediment);
+    content.insertAdjacentElement('beforeend', debris);
+    content.insertAdjacentElement('beforeend', condition);
+    content.insertAdjacentElement('beforeend', recommenda);
     content.insertAdjacentElement('beforeend', description);
-    if (feature.properties.editedBy != null) {
+    if (feature.properties.updated_by != null) {
       content.insertAdjacentElement('beforeend', editedBy);
       content.insertAdjacentElement('beforeend', editedOn);
       content.insertAdjacentElement('beforeend', notes);
@@ -849,23 +985,92 @@ var firePopup = function (e) {
   content.className = 'card-content white-text';
   card.insertAdjacentElement('beforeend', content);
 
-  var createdBy = document.createElement('span');
-  createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.createdBy + '<br />';
-  var createdOn = document.createElement('span');
-  createdOn.innerHTML = '<span class="popup-title">Created On:</span> ' + moment(feature.properties.createdOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
-  var editedBy = document.createElement('span');
-  editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.editedBy + '<br />';
-  var editedOn = document.createElement('span');
-  editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
-  var description = document.createElement('span');
-  description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
-  var notes = document.createElement('span');
-  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
+  var photo = feature.properties.photo;
+  var storageRef = firebase.storage().ref('hpfmdUpload/');
+  var photoRef = storageRef.child('images/' + photo);
+  var extension = feature.properties.extension;
 
+  if (typeof(extension) == 'undefined' && feature.properties.photo != null) {
+
+    var image = document.createElement('span');
+    image.className = 'col s12 center';
+    image.innerHTML = '<img id="popupPhoto" class="responsive-img" src="//placehold.it/350x150"><br />';
+
+    photoRef.getDownloadURL().then(function(url) {
+      // Insert url into an <img> tag to "download"
+      document.getElementById('popupPhoto').src = url;
+    }).catch(function(error) {
+
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/object_not_found':
+        // File doesn't exist
+        break;
+
+        case 'storage/unauthorized':
+        // User doesn't have permission to access the object
+        break;
+
+        case 'storage/canceled':
+        // User canceled the upload
+        break;
+
+        case 'storage/unknown':
+        // Unknown error occurred, inspect the server response
+        break;
+      }
+    });
+  } else {
+    var s3Url = '//s3-us-west-2.amazonaws.com/iconeng/hpfmd-img/thumbs/';
+    var photoUrl = s3Url + photo + '.' + extension;
+    var image = document.createElement('div');
+    image.className = 'col s12 center';
+    image.innerHTML = '<img id="popupPhoto" class="responsive-img" src="' + photoUrl + '">';
+  }
+
+
+  var createdBy = document.createElement('div');
+  createdBy.innerHTML = '<span class="popup-title">Created By:</span> ' + feature.properties.created_by;
+  var generation = document.createElement('div');
+  generation.innerHTML = '<span class="popup-title">Generation:</span> ' + feature.properties.generation;
+  var type = document.createElement('div');
+  type.innerHTML = '<span class="popup-title">Type:</span> ' + feature.properties.type;
+  var purpose = document.createElement('div');
+  purpose.innerHTML = '<span class="popup-title">Purpose:</span> ' + feature.properties.purpose;
+  var sediment = document.createElement('div');
+  sediment.innerHTML = '<span class="popup-title">Sediment:</span> ' + feature.properties.sediment;
+  var debris = document.createElement('div');
+  debris.innerHTML = '<span class="popup-title">Debris:</span> ' + feature.properties.debris;
+  var condition = document.createElement('div');
+  condition.innerHTML = '<span class="popup-title">Condition:</span> ' + feature.properties.condition;
+  var recommenda = document.createElement('div');
+  recommenda.innerHTML = '<span class="popup-title">Recommendation:</span> ' + feature.properties.recommenda;
+  var createdOn = document.createElement('div');
+  createdOn.innerHTML = '<span class="popup-title">Created On:</span> ' + moment(feature.properties.created_at).format("ddd, MMM D YYYY, h:mm:ss a");
+  var editedBy = document.createElement('div');
+  editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.updated_by;
+  var editedOn = document.createElement('div');
+  editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.updated_at).format("ddd, MMM D YYYY, h:mm:ss a");
+  var description = document.createElement('div');
+  description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.notes;
+  var notes = document.createElement('div');
+  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.editNotes;
+
+  if (feature.properties.photo != null) {
+    content.insertAdjacentElement('beforeend', image);
+  }
     content.insertAdjacentElement('beforeend', createdBy);
     content.insertAdjacentElement('beforeend', createdOn);
+    content.insertAdjacentElement('beforeend', generation);
+    content.insertAdjacentElement('beforeend', type);
+    content.insertAdjacentElement('beforeend', purpose);
+    content.insertAdjacentElement('beforeend', sediment);
+    content.insertAdjacentElement('beforeend', debris);
+    content.insertAdjacentElement('beforeend', condition);
+    content.insertAdjacentElement('beforeend', recommenda);
     content.insertAdjacentElement('beforeend', description);
-    if (feature.properties.editedBy != null) {
+    if (feature.properties.updated_by != null) {
       content.insertAdjacentElement('beforeend', editedBy);
       content.insertAdjacentElement('beforeend', editedOn);
       content.insertAdjacentElement('beforeend', notes);

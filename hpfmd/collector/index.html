@@ -20,14 +20,8 @@ extra-css:
         <a class="collapsible-header grey darken-1 white-text">Layers<i class="material-icons white-text">keyboard_arrow_down</i></a>
         <div class="collapsible-body grey-text text-darken-2">
           <p>
-            <input name="changes" type="checkbox" id="changes" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
-            <label for="changes" class="valign">Changes </label>
-            <button data-target="modal1" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
-          </p>
-          <p>
-            <input name="other" type="checkbox" id="other" class="layer-off" onclick="smoothTwo('cc-changes','fill-opacity',.95,'jc-changes','fill-opacity',.95)"/>
-            <label for="other" class="valign">Other </label>
-            <button data-target="modal2" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
+            <input name="filings" type="checkbox" id="filings" class="layer-on" onclick="toggleTwo('filings','filingLabels')" checked/>
+            <label for="filings" class="valign">Filings</label>
           </p>
         </div>
       </li>
@@ -75,6 +69,7 @@ extra-css:
     </div>
   </div>
   <div id="adminFooter" class="modal-footer">
+    <a id="adminLogout" href="#!" class="disabled modal-action modal-close waves-effect waves-blue btn-flat">Sign Out</a>
     <a id="adminSubmit" href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Log In</a>
   </div>
 </div>

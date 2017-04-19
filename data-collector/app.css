@@ -169,7 +169,6 @@ textarea.materialize-textarea:disabled + label, input[type=text]:disabled + labe
 }
 
 .popup-title {
-  font-weight: 700;
   color: rgba(255,255,255,.63);
   font-size: 10px;
 }
