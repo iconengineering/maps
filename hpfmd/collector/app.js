@@ -14,6 +14,15 @@ $(document).ready(function(){
     header.insertAdjacentElement('beforeend',headerLinks);
     headerLinks.insertAdjacentHTML('beforeend',admin);
 
+    window.addEventListener('keydown', function(e) {
+        if(e.keyCode === 46 || e.keyCode === 8) {
+          e.preventDefault();
+          console.log('delete');
+          var vertices = draw.getSelectedPoints();
+          draw.trash(vertices);
+        }
+    });
+
 });
 
 // Initialize Firebase
@@ -82,16 +91,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 // add downloads for admin
     var header = document.getElementById('header-links');
     var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
-
+    var download = document.getElementById('download');
+    if (typeof(download) == 'undefined' || download == null) {
     header.insertAdjacentHTML('beforeend',dropdown);
+  }
 
 // add logout to admin modal and disable login
     var submit = document.getElementById('adminSubmit');
     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
     var adminFooter = document.getElementById('adminFooter');
     var logout = '<a id="adminLogout" href="#!" class="modal-action modal-close waves-effect waves-blue btn-flat">Sign Out</a>';
-
+    var adminLogout = document.getElementById('adminLogout');
+    if (typeof(adminLogout) == 'undefined' || adminLogout == null) {
     adminFooter.insertAdjacentHTML('beforeend',logout);
+  }
 
     // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
@@ -353,14 +366,14 @@ map.on('draw.create', function() {
 
     // Upload file and metadata to the object 'images/mountains.jpg'
     var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
-    Materialize.toast(' ');
+    Materialize.toast('<span id="counterToast"></span>');
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
     function(snapshot) {
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
       var progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
       var $toastContent = 'Upload is ' + progress + '% done';
-      $('.toast').text($toastContent);
+      $('#counterToast').text($toastContent);
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
         console.log('Upload is paused');
@@ -408,7 +421,14 @@ map.on('draw.create', function() {
     draw.setFeatureProperty(id,"recommenda",recommendation);
     draw.setFeatureProperty(id,"notes",description);
 
-    dataRef.push(draw.getAll().features[n]);
+    dataRef.push(draw.getAll().features[n], function(error) {
+      if (error) {
+        Materialize.toast('Something went wrong.');
+    } else {
+        Materialize.toast('Feature has been uploaded.', 4000);
+    }
+
+    });
 
 // delete draw point from map
     draw
@@ -416,14 +436,9 @@ map.on('draw.create', function() {
       .getAll();
 
 // set card content
-    var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been submitted.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+    var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
     card.innerHTML = thanks;
-
-    var received = document.getElementById('received');
-    setTimeout(function() {
-      $('#received').fadeOut();
-    }, 3000);
 
   });
 
@@ -680,7 +695,14 @@ map.on('draw.selectionchange', function(){
               draw.setFeatureProperty(id,"extension",extension);
             }
 
-            firebase.database().ref('datacollector/hpfmd/' + featureKey).update(draw.getSelected().features[0]);
+            firebase.database().ref('datacollector/hpfmd/' + featureKey).update(draw.getSelected().features[0], function(error) {
+              if (error) {
+                Materialize.toast('Something went wrong.');
+            } else {
+                Materialize.toast('Feature has been updated.', 4000);
+            }
+
+            });
 
             // delete draw point from map
                 draw
@@ -688,17 +710,9 @@ map.on('draw.selectionchange', function(){
                   .getAll();
 
             // set card content
-                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been updated.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
 
                 card.innerHTML = thanks;
-
-                var received = document.getElementById('received');
-                setTimeout(function() {
-                  $('#received').fadeOut();
-                }, 3000);
-
-            // update point features in map
-            //    updateFeatures();
 
                 map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
                 map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
@@ -710,7 +724,14 @@ map.on('draw.selectionchange', function(){
         // delete feature
           deleteButton.addEventListener('click', function(){
 
-            firebase.database().ref('datacollector/hpfmd/' + featureKey).remove();
+            firebase.database().ref('datacollector/hpfmd/' + featureKey).remove(function(error) {
+              if (error) {
+                Materialize.toast('Something went wrong.');
+            } else {
+                Materialize.toast('Feature has been deleted.', 4000);
+            }
+
+            });
 
             // delete draw point from map
                 draw
@@ -718,17 +739,9 @@ map.on('draw.selectionchange', function(){
                   .getAll();
 
             // set card content
-                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span><span id="received">The feature has been deleted.</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+                var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
 
                 card.innerHTML = thanks;
-
-                var received = document.getElementById('received');
-                setTimeout(function() {
-                  $('#received').fadeOut();
-                }, 3000);
-
-            // update point features in map
-            //    updateFeatures();
 
                 map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
                 map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
