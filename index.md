@@ -38,8 +38,12 @@ layout: default
 
 [Clear Creek DFIRM](clear-creek-dfirm)
 
-[Comment Map](comments-test)
-
 [Manor House](other/manor-house)
 
-[Data Collector](data-collector)
+[HPFMD Collector](hpfmd/collector)
+
+#### Testing
+
+[Data Collector](test/data-collector)
+
+[Comment Map](test/comments-test)
