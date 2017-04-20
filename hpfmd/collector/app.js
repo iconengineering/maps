@@ -107,7 +107,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     var submit = document.getElementById('adminSubmit');
     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
     var logout = document.getElementById('adminLogout');
-    logout.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
+    logout.className = 'modal-action modal-close waves-effect waves-blue btn blue';
 
     // make buttons active for authorized users
     var displayName = firebase.auth().currentUser.displayName;
@@ -147,7 +147,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if (typeof(download) != 'undefined' && download !== null) {
       var submit = document.getElementById('adminSubmit');
-      submit.className = 'modal-action modal-close waves-effect waves-blue btn-flat';
+      submit.className = 'modal-action modal-close waves-effect waves-blue btn blue';
       header.removeChild(download);
 
       map.getSource('firebase').setData({
@@ -168,7 +168,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       var submit = document.getElementById('adminSubmit');
       submit.className = 'modal-action modal-close waves-effect waves-light btn blue';
       var logout = document.getElementById('adminLogout');
-      logout.className = 'disabled modal-action modal-close waves-effect waves-blue btn-flat';
+      logout.className = 'disabled modal-action modal-close waves-effect waves-blue btn blue';
 
       var navAdmin = document.getElementById('navAdmin');
       navAdmin.innerText = 'ADMIN';
@@ -186,7 +186,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 // Init Map
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
+    style: 'mapbox://styles/iconeng/cj1qjjocj00112srqxugk16eo', //hosted style id
     center: [-104.717272818, 39.446576941], // starting position
     zoom: 12 // starting zoom
 });
