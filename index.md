@@ -14,6 +14,8 @@ layout: default
 
 [Sediment Assessment](boulder/sediment-analysis)
 
+[Flood Mitigation](boulder/flood-mitigation)
+
 [Flood Mitigation Comments](boulder/flood-mitigation-comments)
 
 #### Fort Collins
