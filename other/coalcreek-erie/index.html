@@ -1,0 +1,282 @@
+---
+layout: default-map
+title: Town of Erie - Coal Creek
+version: v0.32.1
+script: app.js
+extra-js:
+  - //www.gstatic.com/firebasejs/3.7.4/firebase.js
+  - //cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js
+extra-css:
+  - app.css
+---
+
+<!-- SideNav -->
+  <ul id="slide-out" class="side-nav fixed">
+    <a href="#" class="brand-logo center hide-on-med-and-up truncate">Town of Erie - Coal Creek</a>
+    <div class="blue darken-2">
+      <div class="container">
+        <div class="row logos">
+          <div class="col s8 offset-s2 center">
+            <li><img class="responsive-img" src="erie.png" style="max-height: 75px;"></li>
+          </div>
+          <div class="col s6">
+            <li><img class="responsive-img" src="//s3-us-west-2.amazonaws.com/iconeng/iconeng-img/icon-logo-horizontal.png"></li>
+          </div>
+          <div class="col s6">
+            <li><img class="responsive-img" src="../../boulder/flood-mitigation-comments/udfcd-logo-white@2x.png"></li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <li class="no-padding">
+      <ul class="collapsible" data-collapsible="expandable">
+        <!-- Layers collapsible -->
+        <li>
+          <a class="collapsible-header blue white-text">Layers<i class="material-icons white-text">keyboard_arrow_down</i></a>
+          <div class="collapsible-body grey lighten-4 grey-text text-darken-2" style="padding: .5rem 0rem;">
+            <div class="row padding">
+              <p class="grey-text text-darken-2 note">
+                Project Scope:
+              </p>
+              <ul class="collection with-header grey-text text-darken-2">
+                <li class="collection-item">Reduce flooding of County Line Road.</li>
+                <li class="collection-item">Reduce flooding to Westview Estates neighborhood. </li>
+                <li class="collection-item">Extend the Regional Trail to Kenosha Road.</li>
+                <li class="collection-item">Bank stabilization/stream re-alignment east of County Line Road to protect the road and accommodate future widening.</li>
+                <li class="collection-item">Achieve 3’ of freeboard at the north end of the Erie Levee.</li>
+                <li class="collection-item">Stream stabilization/Bank stabilization between County Line Road and Kenosha Road to protect adjacent homes.  </li>
+                <li class="collection-item">Overall ecological restoration of the creek where possible.</li>
+              </ul>
+            </div>
+            <ul class="collapsible" data-collapsible="expandable">
+              <!-- Layers collapsible -->
+              <li>
+                <a class="collapsible-header grey-text">Base Layers<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+                <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                  <p>
+                    <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="toggleThree('1ftContours','5ftContours','5ftLabels')"/>
+                    <label for="contours" class="valign">Contours </label>
+                  </p>
+                  <p>
+                    <input name="stormDrains" type="checkbox" id="stormDrains" class="layer-off" onclick="toggleLayer('stormDrains')"/>
+                    <label for="stormDrains" class="valign">Existing Storm Drains </label>
+                  </p>
+                  <p>
+                    <input name="sdMain" type="checkbox" id="sdMain" class="layer-off" onclick="toggleLayer('sdMain')"/>
+                    <label for="sdMain" class="valign">Existing Storm Drains (sdMain) </label>
+                  </p>
+                </div>
+              </li>
+              <!-- Layers collapsible -->
+              <li>
+                <a class="collapsible-header grey-text">Flood Hazards<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+                <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                  <p>
+                    <input name="centerlines" type="checkbox" id="centerlines" class="layer-on" onclick="smoothTwo('centerlines','line-opacity',1,'centerlineLabels','text-opacity',1)" checked/>
+                    <label for="centerlines" class="valign">Stream Centerlines </label>
+                  </p>
+                  <p>
+                    <input name="100yr" type="checkbox" id="100yr" class="layer-on" onclick="toggleSmooth('100yr','fill-opacity',.75)" checked/>
+                    <label for="100yr" class="valign">100-Year Zone AE </label>
+                    <button data-target="modal3" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
+                  </p>
+                  <p>
+                    <input name="AO" type="checkbox" id="AO" class="layer-on" onclick="toggleSmooth('AO','fill-opacity',.75)" checked/>
+                    <label for="AO" class="valign">100-Year Zone AO </label>
+                  </p>
+                  <p>
+                    <input name="500yr" type="checkbox" id="500yr" class="layer-off" onclick="toggleSmooth('500yr','fill-opacity',.5)"/>
+                    <label for="500yr" class="valign">500-Year Floodplain </label>
+                  </p>
+                  <p>
+                    <input name="HHZ" type="checkbox" id="HHZ" class="layer-off" onclick="toggleSmooth('HHZ','fill-opacity',.75)"/>
+                    <label for="HHZ" class="valign">High Hazard Zone </label>
+                    <button data-target="modal1" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
+                  </p>
+                  <p>
+                    <input name="conveyance" type="checkbox" id="conveyance" class="layer-off" onclick="toggleSmooth('conveyance','fill-opacity',.75)"/>
+                    <label for="conveyance" class="valign">Conveyance Zone </label>
+                    <button data-target="modal2" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
+                  </p>
+                  <p>
+                    <input name="floods" type="checkbox" id="floods" class="layer-off" onclick="toggleSmooth('floodExtents','fill-opacity',.75)"/>
+                    <label for="floods" class="valign">2013 Flood Extents</label>
+                  </p>
+                </div>
+              </li>
+              <li>
+                <a class="collapsible-header grey-text">Proposed Improvements<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+                <div class="collapsible-body grey lighten-4 grey-text text-darken-2 no-padding">
+                  <ul class="collapsible" data-collapsible="expandable">
+                    <!-- Layers collapsible -->
+                    <li>
+                      <a class="collapsible-header cyan lighten-2 white-text">Alternative Analysis<i class="material-icons white-text">keyboard_arrow_down</i></a>
+                      <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                        <p>
+                          <input name="culvert2017" type="checkbox" id="culvert2017" class="layer-off" onclick="toggleSmooth('culvert2017','fill-opacity',.75)"/>
+                          <label for="culvert2017" class="valign">Culvert </label>
+                        </p>
+                        <p>
+                          <input name="detention2017" type="checkbox" id="detention2017" class="layer-off" onclick="toggleSmooth('detention2017','fill-opacity',.75)"/>
+                          <label for="detention2017" class="valign">Detention </label>
+                        </p>
+                        <p>
+                          <input name="openChannel2017" type="checkbox" id="openChannel2017" class="layer-off" onclick="toggleSmooth('openChannel2017','fill-opacity',.75)"/>
+                          <label for="openChannel2017" class="valign">Open Channel </label>
+                        </p>
+                        <p>
+                          <input name="stormDrain2017" type="checkbox" id="stormDrain2017" class="layer-off" onclick="toggleSmooth('stormDrain2017','fill-opacity',.75)"/>
+                          <label for="stormDrain2017" class="valign">Storm Drain </label>
+                        </p>
+                        <p>
+                          <input name="conveyance2017" type="checkbox" id="conveyance2017" class="layer-off" onclick="toggleSmooth('conveyance2017','fill-opacity',.75)"/>
+                          <label for="conveyance2017" class="valign">Roadway Conveyance </label>
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class="collapsible-header cyan lighten-2 white-text">1987 MDP<i class="material-icons white-text">keyboard_arrow_down</i></a>
+                      <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                        <p>
+                          <input name="culvert1987" type="checkbox" id="culvert1987" class="layer-off" onclick="toggleLayer('culvert1987')"/>
+                          <label for="culvert1987" class="valign">Culvert </label>
+                        </p>
+                        <p>
+                          <input name="openChannel1987" type="checkbox" id="openChannel1987" class="layer-off" onclick="toggleSmooth('openChannel1987','fill-opacity',.75)"/>
+                          <label for="openChannel1987" class="valign">Open Channel </label>
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <a class="collapsible-header cyan lighten-2 white-text">1969 SDPPS<i class="material-icons white-text">keyboard_arrow_down</i></a>
+                      <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                        <p>
+                          <input name="culvert1969" type="checkbox" id="culvert1969" class="layer-off" onclick="toggleSmooth('culvert1969','fill-opacity',.75)"/>
+                          <label for="culvert1969" class="valign">Culvert </label>
+                        </p>
+                        <p>
+                          <input name="detention1969" type="checkbox" id="detention1969" class="layer-off" onclick="toggleSmooth('detention1969','fill-opacity',.75)"/>
+                          <label for="detention1969" class="valign">Detention </label>
+                        </p>
+                        <p>
+                          <input name="openChannel1969" type="checkbox" id="openChannel1969" class="layer-off" onclick="toggleSmooth('openChannel1969','fill-opacity',.75)"/>
+                          <label for="openChannel1969" class="valign">Open Channel </label>
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a class="collapsible-header grey-text">Impacted Structures<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+                <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                  <p>
+                    <input name="structuresHHZ" type="checkbox" id="structuresHHZ" class="layer-off" onclick="toggleSmooth('structuresHHZ','fill-opacity',.95)"/>
+                    <label for="structuresHHZ" class="valign">HHZ Structures </label>
+                  </p>
+                  <p>
+                    <input name="structures1d" type="checkbox" id="structures1d" class="layer-off" onclick="toggleSmooth('structures1d','fill-opacity',.75)"/>
+                    <label for="structures1d" class="valign">1D Structures </label>
+                  </p>
+                  <p>
+                    <input name="structures2d" type="checkbox" id="structures2d" class="layer-off" onclick="toggleSmooth('structures2d','fill-opacity',.75)"/>
+                    <label for="structures2d" class="valign">2D Structures </label>
+                  </p>
+                  <p>
+                    <input name="hazus" type="checkbox" id="hazus" class="layer-off" onclick="toggleLayer('hazus')"/>
+                    <label for="hazus" class="valign">Hazus Data </label>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- Legend collapsible -->
+        <li>
+          <a class="collapsible-header blue white-text">Legend<i class="material-icons white-text">keyboard_arrow_down</i></a>
+          <div class="collapsible-body grey lighten-4">
+            <ul class="collection with-header grey-text text-darken-2">
+              <li class="collection-header grey-text"><em>Base Layers</em></li>
+                <li class="collection-item"><div>2013 Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#424242" /></svg></a></div></li>
+                <li class="collection-item"><div>Existing Storm Drains<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#FF9800" /></svg></a></div></li>
+                <li class="collection-item"><div>Existing Storm Drains (sdMain)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#C6FF00" /></svg></a></div></li>
+              <li class="collection-header grey-text"><em>Flood Hazards</em></li>
+                <li class="collection-item"><div>100-Year Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2a5674" fill-opacity=".75" /></svg></a></div></li>
+                <li class="collection-item"><div>100-Year Zone AO<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#1976D2" fill-opacity=".75" /></svg></a></div></li>
+                <li class="collection-item"><div>500-Year Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#7ebdc5" fill-opacity=".5" /></svg></a></div></li>
+                <li class="collection-item"><div>High Hazard Zone<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#FF5252" fill-opacity=".75" /></svg></a></div></li>
+                <li class="collection-item"><div>Conveyance Zone<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="53.8" x2="96.8" y2="-76"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="57.8" x2="96.8" y2="-72"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="49.8" x2="96.8" y2="-80"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="45.8" x2="96.8" y2="-84"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="41.8" x2="96.8" y2="-88"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="37.8" x2="96.8" y2="-92"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-31.2" y1="60" x2="96.8" y2="-68"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-31.2" y1="64" x2="96.8" y2="-64"/>
+                	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-31.2" y1="68" x2="96.8" y2="-60"/>
+                </g></svg></a></div></li>
+                <li class="collection-item"><div>2013 Flood Extents<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
+                </g></svg></a></div></li>
+              <li class="collection-header grey-text"><em>Proposed Improvements</em></li>
+                <li class="collection-item"><div>Culvert<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#333333" /></svg></a></div></li>
+                <li class="collection-item"><div>Detention<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="maroon" fill-opacity=".75" /></svg></a></div></li>
+                <li class="collection-item"><div>Open Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#64DD17" /></svg></a></div></li>
+                <li class="collection-item"><div>Storm Drain<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#FF3D00" /></svg></a></div></li>
+                <li class="collection-item"><div>Roadway Conveyance<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#F50057" /></svg></a></div></li>
+              <li class="collection-header grey-text"><em>Impacted Structures</em></li>
+                <li class="collection-item"><div>HHZ Structure<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#000000" fill-opacity=".75" /></svg></a></div></li>
+                <li class="collection-item"><div>1D Structure<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#9C27B0" fill-opacity=".75" /></svg></a></div></li>
+                <li class="collection-item"><div>2D Structure<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#311B92" fill-opacity=".5" /></svg></a></div></li>
+                <li class="collection-item"><div>Hazus Data<a href="#!" class="secondary-content"><svg height="21" width="21"><circle cx="10.5" cy="10.5" r="7.5" fill="#d50000" /></svg></a></div></li>
+             </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+<!-- Auth Modal -->
+<div id="modalAdmin" class="modal">
+  <div class="modal-content">
+    <div class="row">
+      <form id="adminForm" class="col s12 l6 offset-l3">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="adminEmail" type="email" class="validate">
+            <label for="adminEmail">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="adminPassword" type="password" class="validate">
+            <label for="adminPassword">Password</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="adminFooter" class="modal-footer">
+    <a id="adminSubmit" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Log In</a>
+  </div>
+</div>
