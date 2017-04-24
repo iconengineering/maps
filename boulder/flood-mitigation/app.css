@@ -39,7 +39,7 @@ body {
 
 .collection.with-header .collection-item {
   background-color: transparent;
-  padding: 10px .5em !important;
+  padding: 3px .5em !important;
   line-height: 21px !important;
 }
 
