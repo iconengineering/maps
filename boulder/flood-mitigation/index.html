@@ -1,6 +1,6 @@
 ---
 layout: default-map
-title: Boulder Flood Mitigation
+title: Boulder Flood Mitigation Planning
 version: v0.32.1
 script: app.js
 extra-js:
@@ -12,7 +12,7 @@ extra-css:
 
 <!-- SideNav -->
   <ul id="slide-out" class="side-nav fixed">
-    <a href="#" class="brand-logo center hide-on-med-and-up truncate">Boulder Flood Mitigation Planning - Community Comments</a>
+    <a href="#" class="brand-logo center hide-on-med-and-up truncate">Boulder Flood Mitigation Planning</a>
     <div class="blue-grey darken-2">
       <div class="container">
         <div class="row logos">
@@ -61,6 +61,10 @@ extra-css:
                   <p>
                     <input name="stormDrains" type="checkbox" id="stormDrains" class="layer-off" onclick="toggleLayer('stormDrains')"/>
                     <label for="stormDrains" class="valign">Existing Storm Drains </label>
+                  </p>
+                  <p>
+                    <input name="sdMain" type="checkbox" id="sdMain" class="layer-off" onclick="toggleLayer('sdMain')"/>
+                    <label for="sdMain" class="valign">Existing Storm Drains (sdMain) </label>
                   </p>
                 </div>
               </li>
@@ -196,6 +200,7 @@ extra-css:
               <li class="collection-header grey-text"><em>Base Layers</em></li>
                 <li class="collection-item"><div>2013 Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#424242" /></svg></a></div></li>
                 <li class="collection-item"><div>Existing Storm Drains<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#FF9800" /></svg></a></div></li>
+                <li class="collection-item"><div>Existing Storm Drains (sdMain)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#C6FF00" /></svg></a></div></li>
               <li class="collection-header grey-text"><em>Flood Hazards</em></li>
                 <li class="collection-item"><div>100-Year Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2a5674" fill-opacity=".75" /></svg></a></div></li>
                 <li class="collection-item"><div>100-Year Zone AO<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#1976D2" fill-opacity=".75" /></svg></a></div></li>

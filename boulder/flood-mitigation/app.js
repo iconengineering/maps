@@ -43,6 +43,10 @@ map.on('style.load', function () {
   type: 'geojson',
   data: 'stormDrains.geojson'
   });
+  map.addSource('sdMain', {
+  type: 'geojson',
+  data: 'sdMain.geojson'
+  });
 
   map.addLayer({
       'id': '5ftContours',
@@ -241,6 +245,20 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
   map.addLayer({
+      'id': 'sdMain',
+      'type': 'line',
+      'source': 'sdMain',
+      'layout': {
+        'visibility': 'none'
+      },
+      'paint': {
+          'line-width': 3,
+          'line-color': '#C6FF00',
+          'line-opacity': 1
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
       'id': 'stormDrains',
       'type': 'line',
       'source': 'stormDrains',
@@ -407,7 +425,7 @@ map.on('style.load', function () {
 
 map.on('click', function (e) {
   var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
-  var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','culvert1987','openChannel1987'] });
+  var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','sdMain','culvert1987','openChannel1987'] });
   if (!features.length) {
       return;
   }
@@ -441,7 +459,7 @@ map.on('click', function (e) {
     content.insertAdjacentElement('beforeend', div1);
     content.insertAdjacentElement('beforeend', div2);
 
-  } else if (id == 'stormDrains') {
+  } else if (id == 'stormDrains' || id == 'sdMain') {
 
     var diam = feature.properties.DIAMETER;
     var diam2 = feature.properties.DIAMETER2;
@@ -484,7 +502,7 @@ map.on('click', function (e) {
 
 map.on('mousemove', function (e) {
     var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
-    var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','culvert1987','openChannel1987'] });
+    var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','sdMain','culvert1987','openChannel1987'] });
 
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
