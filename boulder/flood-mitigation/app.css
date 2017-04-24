@@ -31,10 +31,14 @@ body {
 }
 
 .collection.with-header .collection-header {
-  padding: 10px 20px !important;
+  background-color: transparent;
+  padding: 18px 0px 6px 0px !important;
+  font-size: 12px;
+  line-height: 16px !important;
 }
 
 .collection.with-header .collection-item {
+  background-color: transparent;
   padding: 10px .5em !important;
   line-height: 21px !important;
 }

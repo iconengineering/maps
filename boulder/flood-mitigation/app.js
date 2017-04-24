@@ -1,11 +1,3 @@
-$('.button-collapse').sideNav({
-    menuWidth: 350, // Default is 300
-    edge: 'left', // Choose the horizontal origin
-    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    draggable: true // Choose whether you can drag to open on touch screens
-  }
-);
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
 // Init Map
@@ -19,6 +11,10 @@ var map = new mapboxgl.Map({
 
 map.on('style.load', function () {
 
+  map.addSource('contours', {
+      type: 'vector',
+      url: 'mapbox://iconeng.a2w6rq1g'
+  });
   map.addSource('floodZones', {
   type: 'geojson',
   data: '../flood-mitigation-comments/floodZones.geojson'
@@ -47,6 +43,71 @@ map.on('style.load', function () {
   type: 'geojson',
   data: 'stormDrains.geojson'
   });
+
+  map.addLayer({
+      'id': '5ftContours',
+      'type': 'line',
+      'source': 'contours',
+      'source-layer': 'contoursgeojson',
+      'filter': ['==', 'Index', '5'],
+      'layout': {
+          'visibility': 'none',
+          'line-join': 'round',
+          'line-cap': 'round'
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+          'line-color': '#424242'
+      }
+  }, 'road-label-small');
+  map.addLayer({
+      'id': '1ftContours',
+      'type': 'line',
+      'source': 'contours',
+      'source-layer': 'contoursgeojson',
+      'filter': ['==', 'Index', '1'],
+      'layout': {
+          'visibility': 'none',
+          'line-join': 'round',
+          'line-cap': 'round'
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0], [17, .5], [19, 1]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+          'line-color': '#424242'
+      }
+  }, 'road-label-small');
+  map.addLayer({
+      'id': '5ftLabels',
+      'type': 'symbol',
+      'source': 'contours',
+      'source-layer': 'contoursgeojson',
+      'filter': ['==', 'Index', '5'],
+      'layout': {
+          'visibility': 'none',
+        'symbol-placement': 'line',
+        'text-field': '{contour}',
+        'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': {
+          "stops": [[15,9],[17,11],[19,12]]
+        }
+      },
+      'paint': {
+        'text-color': '#424242',
+        'text-halo-color': 'rgba(255,255,235,0.9)',
+        'text-halo-width': 2,
+        'text-halo-blur': 0.5
+      }
+  }, 'road-label-small');
 
   map.addLayer({
     id: '500yr',
@@ -136,8 +197,12 @@ map.on('style.load', function () {
     id: 'hazus',
     source: 'hazus',
     type: 'circle',
+    filter: ['>=','Depth_FT', 0],
+    layout: {
+      'visibility': 'none'
+    },
     paint: {
-        "circle-opacity": 0,
+        "circle-opacity": .75,
         "circle-radius": { "stops": [ [11,.5],[15,2],[19,5] ] },
         "circle-color": "#d50000"
     }
@@ -179,10 +244,13 @@ map.on('style.load', function () {
       'id': 'stormDrains',
       'type': 'line',
       'source': 'stormDrains',
+      'layout': {
+        'visibility': 'none'
+      },
       'paint': {
           'line-width': 3,
           'line-color': '#FF9800',
-          'line-opacity': 0
+          'line-opacity': 1
       }
   }, 'road-label-small');
 
@@ -273,10 +341,13 @@ map.on('style.load', function () {
     source: 'improvements',
     type: 'fill',
     filter: ['all', ['==', 'Id', 1987],['==', 'Improvemen', 'Culvert']],
+    layout: {
+      'visibility': 'none'
+    },
     paint: {
-        'fill-opacity': 0,
         'fill-color': '#333',
-        'fill-outline-color': '#333'
+        'fill-outline-color': '#333',
+        'fill-opacity': .75
     }
   }, 'road-label-small');
 
@@ -331,6 +402,91 @@ map.on('style.load', function () {
         'fill-outline-color': '#64DD17'
     }
   }, 'road-label-small');
+
+});
+
+map.on('click', function (e) {
+  var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
+  var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','culvert1987','openChannel1987'] });
+  if (!features.length) {
+      return;
+  }
+
+  var feature = features[0];
+  var id = feature.layer.id;
+
+  var div = document.createElement('div');
+  div.className = 'row';
+  var col = document.createElement('div');
+  col.className = "col s12";
+  div.insertAdjacentElement('beforeend', col);
+  var card = document.createElement('div');
+  card.className = 'card blue-grey darken-2';
+  col.insertAdjacentElement('beforeend', card);
+  var content = document.createElement('div');
+  content.className = 'card-content white-text';
+  card.insertAdjacentElement('beforeend', content);
+
+  if (id == 'hazus') {
+
+    var loss = feature.properties.BldgLossUS;
+    var depth = feature.properties.Depth_FT;
+
+    var div1 = document.createElement('div');
+    var div2 = document.createElement('div');
+
+    div1.innerHTML = 'Building Loss: ' + numeral(loss).format('$0,0');
+    div2.innerHTML = 'Depth: ' + depth + '\'';
+
+    content.insertAdjacentElement('beforeend', div1);
+    content.insertAdjacentElement('beforeend', div2);
+
+  } else if (id == 'stormDrains') {
+
+    var diam = feature.properties.DIAMETER;
+    var diam2 = feature.properties.DIAMETER2;
+    var material = feature.properties.MATERIAL;
+
+    if (diam2 === 0) {
+      content.innerHTML = diam + '" ' + material;
+    } else {
+      content.innerHTML = diam + '" x ' + diam2 + '" ' + material;
+    }
+
+  } else if (id == 'culvert1987' || id == 'openChannel1987') {
+
+    var size = feature.properties.Size;
+    var interval = feature.properties.Return_Int;
+    var capacity = feature.properties.Capacity;
+
+    var div1 = document.createElement('div');
+    var div2 = document.createElement('div');
+    var div3 = document.createElement('div');
+
+    div1.innerHTML = size;
+    div2.innerHTML = 'Return Interval: ' + interval;
+    div3.innerHTML = 'Capacity: ' + capacity + ' cfs';
+
+    content.insertAdjacentElement('beforeend', div1);
+    content.insertAdjacentElement('beforeend', div2);
+    content.insertAdjacentElement('beforeend', div3);
+
+  } else {
+    return;
+  }
+
+  var popup = new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setDOMContent(div)
+      .addTo(map);
+
+});
+
+map.on('mousemove', function (e) {
+    var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
+    var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','culvert1987','openChannel1987'] });
+
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
 });
 

@@ -44,7 +44,7 @@
         .collection.with-header .collection-item a {height: auto !important; line-height: 21px !important; padding: 0 4px !important;}
         @media only screen and (max-width : 992px) {
           #map{ width: 100vw; left: 0; top: 56px;}
-          .side-nav {background-color: #fff; margin-top: 0px;}
+          .side-nav {background-color: #fff; margin-top: 0px;width: 300px !important;padding-left: 0px !important;}
         }
     </style>
 </head>
@@ -75,7 +75,7 @@
 <script src='{{ page.script }}'></script>
 <script>
 $('.button-collapse').sideNav({
-    menuWidth: 300, // Default is 300
+    menuWidth: 350, // Default is 300
     edge: 'left', // Choose the horizontal origin
     closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
     draggable: false // Choose whether you can drag to open on touch screens
