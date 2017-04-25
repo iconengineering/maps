@@ -1,3 +1,11 @@
+$(document).ready(function(){
+// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+
+    document.querySelector('nav').className = 'blue';
+
+  });
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
 // Init Map
@@ -145,21 +153,8 @@ map.on('style.load', function () {
       source: 'ErieSubdivisions',
       type: 'fill',
       paint: {
-          'fill-opacity': 0.2,
-          'fill-color': '#000',
-          'fill-outline-color': '#000'
-      }
-    }, 'road-label-small');
-
-    map.addLayer({
-      id: 'parks',
-      source: 'ErieParks',
-      type: 'circle',
-      paint: {
-          "circle-opacity": 1,
-          "circle-radius": { "stops": [ [11,2],[15,4],[19,5] ] },
-          "circle-color": "#CDDC39",
-          "circle-stroke-width": 1.5,
+          'fill-opacity': 0.5,
+          'fill-pattern': 'yellowhatch',
       }
     }, 'road-label-small');
 
@@ -180,10 +175,37 @@ map.on('style.load', function () {
       'type': 'line',
       'source': 'ErieTrails',
       'paint': {
-          'line-width': 3,
+          'line-width': 1.5,
           'line-color': '#C6FF00',
           'line-opacity': 1
       }
+  }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'aoi',
+      'type': 'line',
+      'source': 'bounds',
+      'paint': {
+          'line-width': 2.5,
+          'line-color': '#1A237E',
+          'line-opacity': 1
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
+    id: 'parks',
+    source: 'ErieParks',
+    type: 'circle',
+    layout: {
+      "visibility": "visible"
+    },
+    paint: {
+        "circle-opacity": 1,
+        "circle-radius": { "stops": [ [11,2],[15,4],[19,5] ] },
+        "circle-color": "#00E676",
+        "circle-stroke-width": 1.5,
+        "circle-stroke-color": "#fff"
+    }
   }, 'road-label-small');
 
 });

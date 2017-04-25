@@ -10,6 +10,39 @@ body {
   z-index:-1;
 }
 
+.d3-svg {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 64px);
+}
+
+:root {
+      --annotation-color: #000;
+    }
+
+    .annotation path {
+      stroke: var(--annotation-color);
+      fill: none;
+    }
+
+    .annotation path.connector-arrow,
+    .annotation path.connector-dot,
+    .title text, .annotation text {
+      fill: var(--annotation-color);
+    }
+
+    .annotation-note-bg {
+      fill: rgba(0, 0, 0, 0);
+    }
+
+    .annotation-note-title, text.title {
+      font-weight: bold;
+    }
+
+    text.title {
+      font-size: 1.2em;
+    }
+
 .side-nav {
   background-color: rgba(255,255,255,0);
   margin-top: 70px;
