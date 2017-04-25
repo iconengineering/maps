@@ -49,7 +49,7 @@ extra-css:
               <ul class="collection with-header grey-text text-darken-2">
                 <li class="collection-item"><a href="#!" id="anno1">Reduce flooding of County Line Road.</a></li>
                 <li class="collection-item"><a href="#!" id="anno2">Reduce flooding to Westview Estates neighborhood.</a></li>
-                <li class="collection-item"><a href="#!">Extend the Regional Trail to Kenosha Road.</a></li>
+                <li class="collection-item"><a href="#!" id="anno3">Extend the Regional Trail to Kenosha Road.</a></li>
                 <li class="collection-item"><a href="#!">Bank stabilization/stream re-alignment east of County Line Road to protect the road and accommodate future widening.</a></li>
                 <li class="collection-item"><a href="#!">Achieve 3’ of freeboard at the north end of the Erie Levee.</a></li>
                 <li class="collection-item"><a href="#!">Stream stabilization/Bank stabilization between County Line Road and Kenosha Road to protect adjacent homes.  </a></li>
@@ -62,20 +62,16 @@ extra-css:
                 <a class="collapsible-header grey-text">Base Layers<i class="material-icons grey-text">keyboard_arrow_down</i></a>
                 <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
                   <p>
-                    <input name="udfcd" type="checkbox" id="udfcd" class="layer-on" onclick="toggleSmooth('udfcd','line-opacity',1)" checked/>
+                    <input name="udfcd" type="checkbox" id="udfcd" class="layer-off" onclick="toggleSmooth('udfcd','line-opacity',1)"/>
                     <label for="udfcd" class="valign">UDFCD Bounds </label>
                   </p>
                   <p>
-                    <input name="counties" type="checkbox" id="counties" class="layer-on" onclick="toggleSmooth('counties','line-opacity',1)" checked/>
+                    <input name="counties" type="checkbox" id="counties" class="layer-off" onclick="toggleSmooth('counties','line-opacity',1)"/>
                     <label for="counties" class="valign">County Bounds </label>
                   </p>
                   <p>
-                    <input name="ErieBoundary" type="checkbox" id="ErieBoundary" class="layer-on" onclick="toggleSmooth('ErieBoundary','line-opacity',1)" checked/>
+                    <input name="ErieBoundary" type="checkbox" id="ErieBoundary" class="layer-off" onclick="toggleSmooth('ErieBoundary','fill-opacity',0.5)"/>
                     <label for="ErieBoundary" class="valign">Town of Erie Bounds </label>
-                  </p>
-                  <p>
-                    <input name="ErieSubdivisions" type="checkbox" id="ErieSubdivisions" class="layer-on" onclick="toggleSmooth('subdivisions','fill-opacity',0.5)" checked/>
-                    <label for="ErieSubdivisions" class="valign">Town of Erie Subdivisions </label>
                   </p>
                   <p>
                     <input name="ErieTrails" type="checkbox" id="ErieTrails" class="layer-on" onclick="toggleSmooth('trails','line-opacity',1)" checked/>

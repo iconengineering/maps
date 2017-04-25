@@ -3,12 +3,49 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Regional Trail",
+        "label": "Extend to Kenosha Road."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105.05543231964111,
-          40.06582195986086
+          -105.05470275878906,
+          40.06910621557398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Westview Estates",
+        "label": "Reduce flooding."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0536298751831,
+          40.07455773045963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "County Line Road",
+        "label": "Reduce flooding."
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -105.05538940429688,
+            40.06946747403545
+          ],
+          [
+            -105.05556106567381,
+            40.046737301761006
+          ]
         ]
       }
     }

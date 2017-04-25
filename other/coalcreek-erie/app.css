@@ -39,6 +39,15 @@ body {
       font-weight: bold;
     }
 
+    circle.handle {
+      stroke: var(--annotation-color);
+      fill: var(--annotation-color);
+      fill-opacity: 0.01;
+      stroke-opacity: .25;
+      stroke-dasharray: 3,2;
+      r: 5;
+    }
+
     text.title {
       font-size: 1.2em;
     }

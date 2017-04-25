@@ -31,10 +31,6 @@ map.on('style.load', function () {
   type: 'geojson',
   data: 'ErieParks.geojson'
   });
-  map.addSource('ErieSubdivisions', {
-  type: 'geojson',
-  data: 'ErieSubdivisions.geojson'
-  });
   map.addSource('ErieTrails', {
   type: 'geojson',
   data: 'ErieTrails.geojson'
@@ -116,19 +112,17 @@ map.on('style.load', function () {
           'line-width': 4,
           'line-color': '#f44336',
           'line-dasharray': [4,3],
-          'line-opacity': 1
+          'line-opacity': 0
       }
   }, 'road-label-small');
 
   map.addLayer({
       'id': 'ErieBoundary',
-      'type': 'line',
+      'type': 'fill',
       'source': 'ErieBoundary',
       'paint': {
-          'line-width': 1.5,
-          'line-color': '#F57C00',
-          'line-dasharray': [4,3],
-          'line-opacity': 1
+        'fill-opacity': 0,
+        'fill-pattern': 'yellowhatch',
       }
   }, 'road-label-small');
 
@@ -142,21 +136,11 @@ map.on('style.load', function () {
       },
       'paint': {
         'line-width':  2.5,
-        'line-opacity': 1,
+        'line-opacity': 0,
         'line-dasharray': [4,3],
         'line-color': 'black'
       }
   },'road-label-small');
-
-  map.addLayer({
-      id: 'subdivisions',
-      source: 'ErieSubdivisions',
-      type: 'fill',
-      paint: {
-          'fill-opacity': 0.5,
-          'fill-pattern': 'yellowhatch',
-      }
-    }, 'road-label-small');
 
   map.addLayer({
       'id': 'centerlines',
