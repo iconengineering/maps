@@ -73,6 +73,9 @@
 <div id='map'></div>
 
 <script src='{{ page.script }}'></script>
+{% for extra_map_js in page.extra-map-js %}
+  <script src="{{ extra_map_js }}"></script>
+{% endfor %}
 <script>
 $('.button-collapse').sideNav({
     menuWidth: 350, // Default is 300
