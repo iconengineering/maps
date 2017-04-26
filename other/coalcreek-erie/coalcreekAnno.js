@@ -172,12 +172,12 @@ document.querySelector('#anno1').addEventListener('click', function(){
   if (anno.className.baseVal == 'annotation-group hidden') {
     $(anno).removeClass('hidden');
     $(annoButton).addClass('white-text');
-    $(annoButton).parent('li').addClass('cyan darken-2');
+    $(annoButton).parent('li').addClass('red lighten-2');
     map.flyTo({center: getLL(feature[0])});
   } else {
     $(anno).addClass('hidden');
     $(annoButton).removeClass('white-text');
-    $(annoButton).parent('li').removeClass('cyan darken-2');
+    $(annoButton).parent('li').removeClass('red lighten-2');
   }
 });
 
@@ -187,12 +187,12 @@ document.querySelector('#anno2').addEventListener('click', function(){
   if (anno.className.baseVal == 'annotation-group hidden') {
     $(anno).removeClass('hidden');
     $(annoButton).addClass('white-text');
-    $(annoButton).parent('li').addClass('cyan darken-2');
+    $(annoButton).parent('li').addClass('red lighten-2');
     map.flyTo({center: getLL(feature[1])});
   } else {
     $(anno).addClass('hidden');
     $(annoButton).removeClass('white-text');
-    $(annoButton).parent('li').removeClass('cyan darken-2');
+    $(annoButton).parent('li').removeClass('red lighten-2');
   }
 });
 
@@ -202,12 +202,12 @@ document.querySelector('#anno3').addEventListener('click', function(){
   if (anno.className.baseVal == 'annotation-group hidden') {
     $(anno).removeClass('hidden');
     $(annoButton).addClass('white-text');
-    $(annoButton).parent('li').addClass('cyan darken-2');
+    $(annoButton).parent('li').addClass('red lighten-2');
     map.flyTo({center: [-105.05538940429688,40.058]});
   } else {
     $(anno).addClass('hidden');
     $(annoButton).removeClass('white-text');
-    $(annoButton).parent('li').removeClass('cyan darken-2');
+    $(annoButton).parent('li').removeClass('red lighten-2');
   }
 });
 

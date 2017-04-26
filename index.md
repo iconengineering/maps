@@ -32,7 +32,9 @@ layout: default
 
 #### Others
 
-[Happy Canyon](happy-canyon)
+[Happy Canyon](other/happy-canyon)
+
+[Gordon Drive](other/gordondr)
 
 [Lone Tree Creek](centennial/lone-tree-creek)
 

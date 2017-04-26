@@ -1,0 +1,22 @@
+---
+layout: default-map
+title: Gordon Drive
+version: v0.34.0
+script: app.js
+---
+<ul id="slide-out" class="side-nav fixed">
+  <a href="#" class="brand-logo center hide-on-med-and-up">{{ page.title }}</a>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">arrow_drop_down</i></a>
+        <div class="collapsible-body">
+          <p>
+            <input name="contours" type="checkbox" id="contours" class="layer-on" onclick="toggleThree('1ftContours','5ftContours','5ftLabels')" checked/>
+            <label for="contours" class="valign">Contours</label>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
