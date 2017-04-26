@@ -92,10 +92,10 @@ map.on('load', function () {
       'type': 'line',
       'source': 'catchmentOutline',
       'paint': {
-          'line-width': 1,
+          'line-width': 1.5,
           'line-opacity': 1,
           'line-color': '#d32f2f',
-          'line-dasharray': [8,4]
+          'line-dasharray': [8,2]
       }
   }, 'road-label-small');
 
