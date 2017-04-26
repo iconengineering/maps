@@ -13,6 +13,19 @@ map.on('load', function () {
       type: 'vector',
       url: 'mapbox://iconeng.1eijv7im'
   });
+  map.addSource('catchmentOutline', {
+      type: 'geojson',
+      "data": 'catchmentOutline.geojson'
+  });
+  map.addSource('basins', {
+      type: 'geojson',
+      "data": 'catchments.geojson'
+  });
+  map.addSource('drainageLine', {
+      type: 'geojson',
+      "data": 'drainageLine.geojson'
+  });
+
   map.addLayer({
       'id': '1ftContours',
       'type': 'line',
@@ -73,6 +86,82 @@ map.on('load', function () {
         'text-halo-blur': .2
       }
   }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'basinOutlines',
+      'type': 'line',
+      'source': 'catchmentOutline',
+      'paint': {
+          'line-width': 1,
+          'line-opacity': 1,
+          'line-color': '#d32f2f',
+          'line-dasharray': [8,4]
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'drainageLine',
+      'type': 'line',
+      'source': 'drainageLine',
+      'layout': {
+        'line-join': 'bevel'
+        },
+      'paint': {
+          'line-width': 2,
+          'line-opacity': 1,
+          'line-color': '#036180'
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'basinLabels',
+      'type': 'symbol',
+      'source': 'basins',
+      'layout': {
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[15, 10], [17, 12], [19, 14]]
+         },
+         "text-field": "{Area_Acres} Ac. | {Ave_Slope}% Slope",
+         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-offset": {
+             "stops": [[13, [0, 0.25]], [17, [0, 0.75]]]
+         },
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#ee4d5a",
+       "text-opacity": 1,
+       "text-halo-color": "rgba(255,255,255,.87)",
+       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+     }
+  });
+
+  map.addLayer({
+      'id': 'basinLabels2',
+      'type': 'symbol',
+      'source': 'basins',
+      'layout': {
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[15, 10], [17, 12], [19, 14]]
+         },
+         "text-field": "Catchment {HydroID}",
+         "text-offset": {
+             "stops": [[13, [0, -1]], [17, [0, -1.5]]]
+         },
+         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#ee4d5a",
+       "text-opacity": 1,
+       "text-halo-color": "rgba(255,255,255,.87)",
+       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+     }
+  });
 
 
 });
