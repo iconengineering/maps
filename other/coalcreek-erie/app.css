@@ -17,7 +17,7 @@ body {
 }
 
 :root {
-      --annotation-color: #b71c1c;
+      --annotation-color: #DD2C00;
     }
 
     .annotation path {
@@ -32,7 +32,10 @@ body {
     }
 
     .annotation-note-bg {
-      fill: rgba(0, 0, 0, 0);
+      fill: white;
+      stroke-width: 4px;
+      stroke: white;
+      opacity: 0.75;
     }
 
     .annotation-note-title, text.title {
@@ -74,6 +77,10 @@ body {
 
 .collapsible-header {
   font-size: 16px !important;
+}
+
+.collapsible .collection {
+  margin-bottom: 1rem;
 }
 
 .collection.with-header .collection-header {

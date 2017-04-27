@@ -5,12 +5,17 @@ version: v0.32.1
 script: app.js
 extra-js:
   - //www.gstatic.com/firebasejs/3.7.4/firebase.js
+  - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.js
   - //cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js
+  - //cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js
+  - shpwrite.js
   - //d3js.org/d3.v4.min.js
   - d3-annotation.min.js
 extra-map-js:
   - coalcreekAnno.js
+  - draw.js
 extra-css:
+  - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v0.17.0/mapbox-gl-draw.css
   - app.css
 ---
 
@@ -36,7 +41,7 @@ extra-css:
       <ul class="collapsible" data-collapsible="expandable">
         <!-- Layers collapsible -->
         <li>
-          <a class="collapsible-header blue white-text">Layers<i class="material-icons white-text">keyboard_arrow_down</i></a>
+          <a class="collapsible-header blue white-text active">Layers<i class="material-icons white-text">keyboard_arrow_down</i></a>
           <div class="collapsible-body grey lighten-4 grey-text text-darken-2" style="padding: .5rem 0rem;">
             <div class="row padding">
               <p>
@@ -47,13 +52,13 @@ extra-css:
                 Project Scope:
               </p>
               <ul class="collection with-header grey-text text-darken-2">
-                <li class="collection-item"><a href="#!" id="anno1">Reduce flooding of County Line Road.</a></li>
-                <li class="collection-item"><a href="#!" id="anno2">Reduce flooding to Westview Estates neighborhood.</a></li>
-                <li class="collection-item"><a href="#!" id="anno3">Extend the Regional Trail to Kenosha Road.</a></li>
-                <li class="collection-item"><a href="#!">Bank stabilization/stream re-alignment east of County Line Road to protect the road and accommodate future widening.</a></li>
-                <li class="collection-item"><a href="#!">Achieve 3’ of freeboard at the north end of the Erie Levee.</a></li>
-                <li class="collection-item"><a href="#!">Stream stabilization/Bank stabilization between County Line Road and Kenosha Road to protect adjacent homes.  </a></li>
-                <li class="collection-item"><a href="#!">Overall ecological restoration of the creek where possible.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno2" class="white-text">Reduce flooding of County Line Road.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno1" class="white-text">Reduce flooding to Westview Estates neighborhood.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno0" class="white-text">Extend the Regional Trail to Kenosha Road.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno3" class="white-text">Bank stabilization/stream re-alignment east of County Line Road to protect the road and accommodate future widening.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno4" class="white-text">Achieve 3’ of freeboard at the north end of the Erie Levee.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno5" class="white-text">Stream stabilization/Bank stabilization between County Line Road and Kenosha Road to protect adjacent homes.</a></li>
+                <li class="collection-item deep-orange"><a href="#!" id="anno6" class="white-text">Overall ecological restoration of the creek where possible.</a></li>
               </ul>
             </div>
             <ul class="collapsible" data-collapsible="expandable">
@@ -74,12 +79,24 @@ extra-css:
                     <label for="ErieBoundary" class="valign">Town of Erie Bounds </label>
                   </p>
                   <p>
-                    <input name="ErieTrails" type="checkbox" id="ErieTrails" class="layer-on" onclick="toggleSmooth('trails','line-opacity',1)" checked/>
+                    <input name="ErieTrails" type="checkbox" id="ErieTrails" class="layer-on" onclick="toggleSmooth('trails','line-opacity',1)"/>
                     <label for="ErieTrails" class="valign">Town of Erie Trails </label>
                   </p>
                   <p>
-                    <input name="ErieParks" type="checkbox" id="ErieParks" class="layer-on" onclick="toggleLayer('parks')" checked/>
+                    <input name="ErieParks" type="checkbox" id="ErieParks" class="layer-off" onclick="toggleLayer('parks')"/>
                     <label for="ErieParks" class="valign">Town of Erie Parks </label>
+                  </p>
+                  <p>
+                    <input name="parcels" type="checkbox" id="parcels" class="layer-off" onclick="toggleTwo('parcels','parcelOutlines')"/>
+                    <label for="parcels" class="valign">Town of Erie Parcels </label>
+                  </p>
+                  <p>
+                    <input name="levee" type="checkbox" id="levee" class="layer-off" onclick="toggleSmooth('levee','line-opacity',1)"/>
+                    <label for="levee" class="valign">Erie Levee </label>
+                  </p>
+                  <p>
+                    <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="toggleThree('1ftContours','5ftContours','5ftLabels')"/>
+                    <label for="contours" class="valign">Contours</label>
                   </p>
                 </div>
               </li>
@@ -94,7 +111,6 @@ extra-css:
                   <p>
                     <input name="100yr" type="checkbox" id="100yr" class="layer-on" onclick="smoothTwo('100yr','fill-opacity',.25,'100yr1','fill-opacity',.25)" checked/>
                     <label for="100yr" class="valign">100-Year Floodplain </label>
-                    <button data-target="modal3" class="btn-floating small btn-flat"><i class="tiny material-icons grey-text">help_outline</i></button>
                   </p>
                   <p>
                     <input name="500yr" type="checkbox" id="500yr" class="layer-off" onclick="smoothTwo('500yr','fill-opacity',.25,'500yr1','fill-opacity',.25)" checked/>
@@ -113,8 +129,7 @@ extra-css:
               <li class="collection-header grey-text"><em>Base Layers</em></li>
                 <li class="collection-item"><div>UDFCD Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#f44336" /></svg></a></div></li>
                 <li class="collection-item"><div>County Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#000000" /></svg></a></div></li>
-                <li class="collection-item"><div>Town of Erie Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#F57C00" /></svg></a></div></li>
-                <li class="collection-item"><div>Town of Erie Subdivisions<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                <li class="collection-item"><div>Town of Erie Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
                 	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
                 	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
                 	<line fill="none" stroke="#FFEB3B" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
@@ -137,6 +152,19 @@ extra-css:
                 </g></svg></a></div></li>
                 <li class="collection-item"><div>Town of Erie Trails<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#C6FF00" /></svg></a></div></li>
                 <li class="collection-item"><div>Town of Erie Parks<a href="#!" class="secondary-content"><svg height="21" width="21"><circle cx="10.5" cy="10.5" r="7.5" fill="#00E676" /></svg></a></div></li>
+                <li class="collection-item"><div>Erie Levee<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#D500F9" /></svg></a></div></li>
+                <li class="collection-item"><div>Public Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
+                	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
+                </g></svg></a></div></li>
               <li class="collection-header grey-text"><em>Flood Hazards</em></li>
                 <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#036180" /></svg></a></div></li>
                 <li class="collection-item"><div>100-Year Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2a5674" fill-opacity=".75" /></svg></a></div></li>
@@ -149,27 +177,66 @@ extra-css:
     </li>
   </ul>
 
-<!-- Auth Modal -->
-<div id="modalAdmin" class="modal">
-  <div class="modal-content">
-    <div class="row">
-      <form id="adminForm" class="col s12 l6 offset-l3">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="adminEmail" type="email" class="validate">
-            <label for="adminEmail">Email</label>
+  <div class="container">
+    <div id="info-row" class="row">
+      <div class="col s10 m6 offset-m5 l3 offset-l8 abs">
+        <div id="input-card" class="card blue">
+          <div class="card-content white-text">
+            <span class="card-title">Draw a Feature</span>
+          </div>
+          <div id="action" class="card-action">
+            <a id="adminPoint" class="disabled waves-effect waves-blue btn blue darken-2 white-text" onclick="drawPoint()"><i class="material-icons">place</i></a>
+            <a id="adminLine" class="disabled waves-effect waves-blue btn blue white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a>
+            <a id="adminPolygon" class="disabled waves-effect waves-blue btn blue white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a>
+            <a id="adminEdit" class="disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a>
           </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="adminPassword" type="password" class="validate">
-            <label for="adminPassword">Password</label>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
-  <div id="adminFooter" class="modal-footer">
-    <a id="adminSubmit" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Log In</a>
+
+  <!-- Auth Modal -->
+  <div id="modalAdmin" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <form id="adminForm" class="col s12 l6 offset-l3">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="adminEmail" type="email" class="validate">
+              <label for="adminEmail">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="adminPassword" type="password" class="validate">
+              <label for="adminPassword">Password</label>
+            </div>
+            <a href="#modalReset" id="resetPW" class="small">Forgot Password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="adminFooter" class="modal-footer">
+      <a id="adminLogout" href="#!" class="disabled modal-action modal-close waves-effect waves-blue btn blue">Sign Out</a>
+      <a id="adminSubmit" href="#!" class="modal-action modal-close waves-effect waves-blue btn blue">Log In</a>
+    </div>
   </div>
-</div>
+
+  <!-- Reset Modal -->
+  <div id="modalReset" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <form id="resetForm" class="col s12 l6 offset-l3">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="resetEmail" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="resetFooter" class="modal-footer">
+      <a id="reset" href="#!" class="modal-action modal-close waves-effect waves-light btn">Reset Password</a>
+    </div>
+  </div>
