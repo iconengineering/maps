@@ -23,6 +23,7 @@ body {
     .annotation path {
       stroke: var(--annotation-color);
       fill: none;
+      stroke-width: 1.5;
     }
 
     .annotation path.connector-arrow,
