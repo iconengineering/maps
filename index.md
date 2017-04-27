@@ -32,6 +32,8 @@ layout: default
 
 #### Others
 
+[Coal Creek - Town of Erie](other/coalcreek-erie)
+
 [Happy Canyon](other/happy-canyon)
 
 [Gordon Drive](other/gordondr)
