@@ -121,19 +121,6 @@ map.on('style.load', function () {
         }
     });
     map.addLayer({
-        'id': 'zoneX100',
-        'type': 'fill',
-        'source': 'sbk-hydraulics-101416',
-        'source-layer': 'EC_Zone_X_100_YR',
-        'layout': {
-            'visibility': 'none'
-        },
-        'paint': {
-            'fill-opacity': 0.6,
-            'fill-color': '#FFC107'
-        }
-    });
-    map.addLayer({
         'id': 'zoneAO1',
         'type': 'fill',
         'source': 'sbk-hydraulics-101416',
