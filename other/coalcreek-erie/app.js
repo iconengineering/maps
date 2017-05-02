@@ -80,15 +80,32 @@ $(document).ready(function(){
       // check for display name
       if (thisUser.displayName == null) {
         var email = thisUser.email;
-        var username = email.split('@')[0];
+        var name = email.split('@')[0];
+        var address = email.split('@')[1];
+        var domain = address.split('.')[0];
+        var username = name + '-' + domain;
         thisUser.updateProfile({
           displayName: username
         }).then(function() {
           // Update successful.
+          var thisUser = firebase.auth().currentUser;
+          var displayName = firebase.auth().currentUser.displayName;
           var navAdmin = document.getElementById('navAdmin');
           navAdmin.innerText = 'Hello, ' + displayName;
-          loadMap();
-          drawAnno();
+          var email = thisUser.email;
+          var address = email.split('@')[1];
+          var authRef = firebase.database().ref("datacollector/users/" + displayName + "/read/coalcreek");
+          authRef.once("value")
+          .then(function(snapshot) {
+            var val = snapshot.val(); // "ada"
+            console.log(val, address);
+            if (val === true || address == 'iconeng.com') {
+              loadMap();
+              drawAnno();
+            } else {
+              Materialize.toast('You do not have access to this page. Please contact the admin.', 10000);
+            }
+          });
         }, function(error) {
           // An error happened.
         });
