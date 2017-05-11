@@ -48,6 +48,14 @@ extra-css:
                 <input name="bounds" type="checkbox" id="bounds" class="layer-on" onclick="toggleSmooth('aoi','line-opacity',1)" checked/>
                 <label for="bounds" class="valign">Project Bounds </label>
               </p>
+              <p>
+                <input name="comments" type="checkbox" id="comments" class="layer-on" onclick="toggleThree('firebasePoly','firebaseLine','firebasePoint')" checked/>
+                <label for="comments" class="valign">Comments </label>
+              </p>
+              <p>
+                <input name="cadContours" type="checkbox" id="cadContours" class="layer-off" onclick="toggleSmooth('cadContours','line-opacity',1)"/>
+                <label for="cadContours" class="valign">Proposed Contours </label>
+              </p>
               <p class="grey-text text-darken-2 note">
                 Project Scope:
               </p>
@@ -127,6 +135,7 @@ extra-css:
           <div class="collapsible-body grey lighten-4">
             <ul class="collection with-header grey-text text-darken-2">
               <li class="collection-header grey-text"><em>Base Layers</em></li>
+                <li class="collection-item"><div>Proposed Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#1DE9B6" /></svg></a></div></li>
                 <li class="collection-item"><div>UDFCD Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#f44336" /></svg></a></div></li>
                 <li class="collection-item"><div>County Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#000000" /></svg></a></div></li>
                 <li class="collection-item"><div>Town of Erie Bounds<a href="#!" class="secondary-content"><svg height="21" width="21"><g>

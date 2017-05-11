@@ -286,6 +286,10 @@ function loadMap() {
   type: 'geojson',
   data: 'counties_ln.geojson'
   });
+  map.addSource('cadContours', {
+  type: 'geojson',
+  data: 'cadContours.geojson'
+  });
   map.addSource('boulderSFHA', {
   type: 'vector',
   url: 'mapbox://iconeng.c8qwcgbh'
@@ -509,6 +513,23 @@ callData();
   }, 'road-label-small');
 
   map.addLayer({
+      'id': 'cadContours',
+      'type': 'line',
+      'source': 'cadContours',
+      'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, .75], [17, 1], [19, 1.5]]
+        },
+          'line-color': '#1DE9B6',
+          'line-opacity':0
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
       'id': 'levee',
       'type': 'line',
       'source': 'levee',
@@ -562,6 +583,9 @@ callData();
     source: 'firebase',
     type: 'fill',
     filter: ["==", '$type', 'Polygon'],
+    layout: {
+      "visibility": "visible",
+    },
     paint: {
       "fill-color": "blue",
       "fill-opacity": .4,
@@ -575,6 +599,7 @@ callData();
     type: 'line',
     filter: ["==", '$type', 'LineString'],
     layout: {
+      "visibility": "visible",
       "line-join": "round",
       "line-cap": "round"
     },
@@ -589,6 +614,9 @@ callData();
     source: 'firebase',
     type: 'circle',
     filter: ["==", '$type', 'Point'],
+    layout: {
+      "visibility": "visible",
+    },
     paint: {
       "circle-color":'blue',
       'circle-radius': 5,
