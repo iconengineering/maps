@@ -382,7 +382,7 @@ callData();
     type: 'fill',
     filter: ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
     paint: {
-        'fill-opacity': 0.5,
+        'fill-opacity': 0.45,
         'fill-color': '#7ebdc5',
         'fill-outline-color': '#61a4b3'
     }
@@ -395,7 +395,7 @@ callData();
     type: 'fill',
     filter: ['==', 'SFHA_TF', 'T'],
     paint: {
-        'fill-opacity': 0.5,
+        'fill-opacity': 0.45,
         'fill-color': '#2a5674',
         'fill-outline-color': '#2a5674'
     }
