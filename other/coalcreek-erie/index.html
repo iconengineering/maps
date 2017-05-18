@@ -45,10 +45,6 @@ extra-css:
           <div class="collapsible-body grey lighten-4 grey-text text-darken-2" style="padding: .5rem 0rem;">
             <div class="row padding">
               <p>
-                <input name="bounds" type="checkbox" id="bounds" class="layer-on" onclick="toggleSmooth('aoi','line-opacity',1)" checked/>
-                <label for="bounds" class="valign">Project Bounds </label>
-              </p>
-              <p>
                 <input name="comments" type="checkbox" id="comments" class="layer-on" onclick="toggleThree('firebasePoly','firebaseLine','firebasePoint')" checked/>
                 <label for="comments" class="valign">Comments </label>
               </p>
@@ -117,11 +113,11 @@ extra-css:
                     <label for="centerlines" class="valign">Stream Centerlines </label>
                   </p>
                   <p>
-                    <input name="100yr" type="checkbox" id="100yr" class="layer-on" onclick="smoothTwo('100yr','fill-opacity',.25,'100yr1','fill-opacity',.25)" checked/>
+                    <input name="100yr" type="checkbox" id="100yr" class="layer-on" onclick="toggleSmooth('100yr','fill-opacity',.5)" checked/>
                     <label for="100yr" class="valign">100-Year Floodplain </label>
                   </p>
                   <p>
-                    <input name="500yr" type="checkbox" id="500yr" class="layer-off" onclick="smoothTwo('500yr','fill-opacity',.25,'500yr1','fill-opacity',.25)" checked/>
+                    <input name="500yr" type="checkbox" id="500yr" class="layer-off" onclick="toggleSmooth('500yr','fill-opacity',.5)" checked/>
                     <label for="500yr" class="valign">500-Year Floodplain </label>
                   </p>
                 </div>

@@ -258,10 +258,6 @@ if (typeof(map.getSource('firebase')) != 'undefined'){
 
 function loadMap() {
 
-  map.addSource('bounds', {
-  type: 'geojson',
-  data: 'bounds.geojson'
-  });
   map.addSource('ErieBoundary', {
   type: 'geojson',
   data: 'ErieBoundary.geojson'
@@ -386,20 +382,7 @@ callData();
     type: 'fill',
     filter: ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
     paint: {
-        'fill-opacity': 0.25,
-        'fill-color': '#7ebdc5',
-        'fill-outline-color': '#61a4b3'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: '500yr1',
-    source: 'boulderSFHA',
-    'source-layer': 'boulderSFHAgeojson',
-    type: 'fill',
-    filter: ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
-    paint: {
-        'fill-opacity': 0.25,
+        'fill-opacity': 0.5,
         'fill-color': '#7ebdc5',
         'fill-outline-color': '#61a4b3'
     }
@@ -412,20 +395,7 @@ callData();
     type: 'fill',
     filter: ['==', 'SFHA_TF', 'T'],
     paint: {
-        'fill-opacity': 0.25,
-        'fill-color': '#2a5674',
-        'fill-outline-color': '#2a5674'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: '100yr1',
-    source: 'boulderSFHA',
-    'source-layer': 'boulderSFHAgeojson',
-    type: 'fill',
-    filter: ['==', 'SFHA_TF', 'T'],
-    paint: {
-        'fill-opacity': 0.25,
+        'fill-opacity': 0.5,
         'fill-color': '#2a5674',
         'fill-outline-color': '#2a5674'
     }
@@ -548,17 +518,6 @@ callData();
           'line-width': 1.5,
           'line-color': '#C6FF00',
           'line-opacity': 0
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'aoi',
-      'type': 'line',
-      'source': 'bounds',
-      'paint': {
-          'line-width': 2.5,
-          'line-color': '#1A237E',
-          'line-opacity': 1
       }
   }, 'road-label-small');
 
