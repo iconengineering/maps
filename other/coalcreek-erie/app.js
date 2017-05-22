@@ -298,6 +298,16 @@ function loadMap() {
   type: 'vector',
   url: 'mapbox://iconeng.2ufedrsb'
   });
+  map.addSource('conceptualDesign', {
+    type: "image",
+    url: "County-Line-Road-Conceptual-Plans.png",
+    coordinates: [
+                  [-105.057352293, 40.070016562],
+                  [-105.054566655, 40.070016562],
+                  [-105.054566655, 40.059036145],
+                  [-105.057352293, 40.059036145]
+              ]
+  });
   map.addSource('levee', {
   type: 'geojson',
   data: {
@@ -468,6 +478,15 @@ callData();
         'line-color': 'black'
       }
   },'road-label-small');
+
+  map.addLayer({
+      'id': 'conceptualDesign',
+      'type': 'raster',
+      'source': 'conceptualDesign',
+      'layout': {
+        'visibility': 'none'
+      }
+  });
 
   map.addLayer({
       'id': 'centerlines',
