@@ -45,23 +45,27 @@ extra-css:
           <div class="collapsible-body grey lighten-4 grey-text text-darken-2" style="padding: .5rem 0rem;">
             <div class="row padding">
               <p>
-                <input name="comments" type="checkbox" id="comments" class="layer-on" onclick="toggleThree('firebasePoly','firebaseLine','firebasePoint')" checked/>
+                <input name="comments" type="checkbox" id="comments" class="layer-on" onclick="toggleTwo('firebaseLine','firebasePoint')" checked/>
                 <label for="comments" class="valign">Comments </label>
               </p>
-              <p class="grey-text text-darken-2 note">
-                Project Scope:
-              </p>
-              <ul class="collection with-header grey-text text-darken-2">
-                <li class="collection-item deep-orange"><a href="#!" id="anno2" class="white-text">Reduce flooding of County Line Road.</a></li>
-                <li class="collection-item deep-orange"><a href="#!" id="anno1" class="white-text">Reduce flooding to Westview Estates neighborhood.</a></li>
-                <li class="collection-item deep-orange"><a href="#!" id="anno0" class="white-text">Extend the Regional Trail to Kenosha Road.</a></li>
-                <li class="collection-item deep-orange"><a href="#!" id="anno3" class="white-text">Bank stabilization/stream re-alignment east of County Line Road to protect the road and accommodate future widening.</a></li>
-                <li class="collection-item deep-orange"><a href="#!" id="anno4" class="white-text">Achieve 3’ of freeboard at the north end of the Erie Levee.</a></li>
-                <li class="collection-item deep-orange"><a href="#!" id="anno5" class="white-text">Stream stabilization/Bank stabilization between County Line Road and Kenosha Road to protect adjacent homes.</a></li>
-                <li class="collection-item deep-orange"><a href="#!" id="anno6" class="white-text">Overall ecological restoration of the creek where possible.</a></li>
-              </ul>
             </div>
+
             <ul class="collapsible" data-collapsible="expandable">
+              <!-- Layers collapsible -->
+              <li>
+                <a class="collapsible-header grey-text">Project Scope<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+                <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+                  <ul class="collection with-header grey-text text-darken-2">
+                    <li class="collection-item deep-orange"><a href="#!" id="anno4" class="white-text">Erie Levee</a></li>
+                    <li class="collection-item deep-orange"><a href="#!" id="anno6" class="white-text">Coal Creek</a></li>
+                    <li class="collection-item deep-orange"><a href="#!" id="anno2" class="white-text">County Line Road Flooding</a></li>
+                    <li class="collection-item deep-orange"><a href="#!" id="anno3" class="white-text">County Line Road Bank Stabilization</a></li>
+                    <li class="collection-item deep-orange"><a href="#!" id="anno5" class="white-text">Erie Village</a></li>
+                    <li class="collection-item deep-orange"><a href="#!" id="anno0" class="white-text">Regional Trail</a></li>
+                    <li class="collection-item deep-orange"><a href="#!" id="anno1" class="white-text">Westview Estates</a></li>
+                  </ul>
+                </div>
+              </li>
               <!-- Layers collapsible -->
               <li>
                 <a class="collapsible-header grey-text">Base Layers<i class="material-icons grey-text">keyboard_arrow_down</i></a>
@@ -109,12 +113,16 @@ extra-css:
                     <label for="conceptualDesign" class="valign">County Line Road</label>
                   </p>
                   <p>
-                    <input name="cadContours" type="checkbox" id="cadContours" class="layer-off" onclick="toggleSmooth('cadContours','line-opacity',1)"/>
-                    <label for="cadContours" class="valign">Proposed Contours </label>
+                    <input name="proposed" type="checkbox" id="proposed" class="layer-off" onclick="toggleTwo('firebasePoly','proposedImages')"/>
+                    <label for="proposed" class="valign">Proposed Solutions </label>
                   </p>
                   <p>
-                    <input name="conceptualDrawings" type="checkbox" id="conceptualDrawings" class="layer-off" onclick="toggleLayer('conceptualDrawings')"/>
-                    <label for="conceptualDrawings" class="valign">Conceptual Drawings </label>
+                    <input name="proposedBank" type="checkbox" id="proposedBank" class="layer-off" onclick="toggleLayer('proposedBank')"/>
+                    <label for="proposedBank" class="valign">Proposed Bank </label>
+                  </p>
+                  <p>
+                    <input name="proposedFloodplain" type="checkbox" id="proposedFloodplain" class="layer-off" onclick="toggleLayer('proposedFloodplain')"/>
+                    <label for="proposedFloodplain" class="valign">Proposed Floodplain </label>
                   </p>
                 </div>
               </li>
@@ -184,11 +192,14 @@ extra-css:
                 	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
                 	<line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
                 </g></svg></a></div></li>
+              <li class="collection-header grey-text"><em>Conceptual Design</em></li>
+                <li class="collection-item"><div>Proposed Solutions<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="blue" fill-opacity=".4" /></svg></a></div></li>
+                <li class="collection-item"><div>Proposed Bank<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#9C27B0" fill-opacity=".4" /></svg></a></div></li>
+                <li class="collection-item"><div>Proposed Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#03A9F4" fill-opacity=".4" /></svg></a></div></li>
               <li class="collection-header grey-text"><em>Flood Hazards</em></li>
                 <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="#036180" /></svg></a></div></li>
                 <li class="collection-item"><div>100-Year Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#2a5674" fill-opacity=".75" /></svg></a></div></li>
                 <li class="collection-item"><div>500-Year Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#7ebdc5" fill-opacity=".5" /></svg></a></div></li>
-
              </ul>
           </div>
         </li>
@@ -257,5 +268,14 @@ extra-css:
     </div>
     <div id="resetFooter" class="modal-footer">
       <a id="reset" href="#!" class="modal-action modal-close waves-effect waves-light btn">Reset Password</a>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="image-modal" class="modal">
+    <div id="modalImage" class="modal-content">
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>

@@ -258,6 +258,22 @@ if (typeof(map.getSource('firebase')) != 'undefined'){
 
 function loadMap() {
 
+  map.addSource('proposedImages', {
+  type: 'geojson',
+  data: 'proposedImages.geojson'
+  });
+  map.addSource('proposedBank', {
+  type: 'geojson',
+  data: 'proposedBank.geojson'
+  });
+  map.addSource('proposedFloodplain', {
+  type: 'geojson',
+  data: 'proposedFloodplain.geojson'
+  });
+  map.addSource('proposedCenterline', {
+  type: 'geojson',
+  data: 'proposedCenterline.geojson'
+  });
   map.addSource('ErieBoundary', {
   type: 'geojson',
   data: 'ErieBoundary.geojson'
@@ -281,10 +297,6 @@ function loadMap() {
   map.addSource('counties', {
   type: 'geojson',
   data: 'counties_ln.geojson'
-  });
-  map.addSource('cadContours', {
-  type: 'geojson',
-  data: 'cadContours.geojson'
   });
   map.addSource('boulderSFHA', {
   type: 'vector',
@@ -502,23 +514,6 @@ callData();
   }, 'road-label-small');
 
   map.addLayer({
-      'id': 'cadContours',
-      'type': 'line',
-      'source': 'cadContours',
-      'layout': {
-          'line-join': 'round',
-          'line-cap': 'round'
-      },
-      'paint': {
-        'line-width': {
-            "stops": [[15, .75], [17, 1], [19, 1.5]]
-        },
-          'line-color': '#1DE9B6',
-          'line-opacity':0
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
       'id': 'levee',
       'type': 'line',
       'source': 'levee',
@@ -557,17 +552,72 @@ callData();
   }, 'road-label-small');
 
   map.addLayer({
+    id: 'proposedFloodplain',
+    source: 'proposedFloodplain',
+    type: 'fill',
+    layout: {
+      "visibility": "none",
+    },
+    paint: {
+      "fill-color": "#03A9F4",
+      "fill-opacity": .4,
+    }
+  }, 'country-label-lg');
+
+  map.addLayer({
+    id: 'proposedBank',
+    source: 'proposedBank',
+    type: 'fill',
+    layout: {
+      "visibility": "none",
+    },
+    paint: {
+      "fill-color": "#9C27B0",
+      "fill-opacity": .4,
+    }
+  }, 'country-label-lg');
+
+  map.addLayer({
+    id: 'proposedCenterline',
+    source: 'proposedCenterline',
+    type: 'line',
+    layout: {
+      "visibility": "none",
+      "line-join": "round",
+      "line-cap": "round"
+    },
+    paint: {
+      "line-color": "orange",
+      "line-width": 2
+    }
+  }, 'country-label-lg');
+
+  map.addLayer({
+    id: 'proposedImages',
+    source: 'proposedImages',
+    type: 'circle',
+    layout: {
+      "visibility": "none",
+    },
+    paint: {
+      "circle-color":'#E91E63',
+      'circle-radius': 8,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#222'
+    }
+  }, 'country-label-lg');
+
+  map.addLayer({
     id: 'firebasePoly',
     source: 'firebase',
     type: 'fill',
     filter: ["==", '$type', 'Polygon'],
     layout: {
-      "visibility": "visible",
+      "visibility": "none",
     },
     paint: {
       "fill-color": "blue",
       "fill-opacity": .4,
-
     }
   }, 'country-label-lg');
 
@@ -662,13 +712,16 @@ var firePopupTouch = function (e) {
 // popup function
 var firePopup = function (e) {
   var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
-  var features = map.queryRenderedFeatures(bbox, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
+  var features = map.queryRenderedFeatures(bbox, { layers: ['firebasePoint','firebaseLine','firebasePoly','proposedImages'] });
 
   if (!features.length) {
     return;
   }
 
   var feature = features[0];
+  var id = feature.layer.id;
+
+  if (id == 'firebasePoint' || id == 'firebaseLine' || id == 'firebasePoly'){
 
   var div = document.createElement('div');
   div.className = 'row';
@@ -708,6 +761,18 @@ var firePopup = function (e) {
   .setLngLat(e.lngLat)
   .setDOMContent(div)
   .addTo(map);
+} else if (id == 'proposedImages') {
+
+  var imageModal = document.getElementById('modalImage');
+  while (imageModal.firstChild) {
+    imageModal.removeChild(imageModal.firstChild);
+}
+  var image = document.createElement('img');
+  image.src = "//s3-us-west-2.amazonaws.com/iconeng/maps/images/coalcreek-erie/" + feature.properties.image;
+  image.className = 'responsive-img';
+  imageModal.insertAdjacentElement('beforeend', image);
+  $('#image-modal').modal('open');
+}
 };
 
 // fire popup
