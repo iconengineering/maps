@@ -616,7 +616,7 @@ callData();
       "visibility": "none",
     },
     paint: {
-      "fill-color": "blue",
+      "fill-color": "#E91E63",
       "fill-opacity": .4,
     }
   }, 'country-label-lg');
@@ -667,6 +667,9 @@ var firePopupTouch = function (e) {
   }
 
   var feature = features[0];
+  var id = feature.layer.id;
+
+  if (id == 'firebasePoint' || id == 'firebaseLine' || id == 'firebasePoly'){
 
   var div = document.createElement('div');
   div.className = 'row';
@@ -707,6 +710,18 @@ var firePopupTouch = function (e) {
   .setLngLat(e.lngLat)
   .setDOMContent(div)
   .addTo(map);
+} else if (id == 'proposedImages') {
+
+  var imageModal = document.getElementById('modalImage');
+  while (imageModal.firstChild) {
+    imageModal.removeChild(imageModal.firstChild);
+}
+  var image = document.createElement('img');
+  image.src = "//s3-us-west-2.amazonaws.com/iconeng/maps/images/coalcreek-erie/" + feature.properties.image;
+  image.className = 'responsive-img';
+  imageModal.insertAdjacentElement('beforeend', image);
+  $('#image-modal').modal('open');
+}
 };
 
 // popup function
