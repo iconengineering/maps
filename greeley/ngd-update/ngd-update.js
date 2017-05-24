@@ -59,7 +59,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('flowDepth', {
       type: 'vector',
-      url: 'mapbox://iconeng.1djbxmde'
+      url: 'mapbox://iconeng.dn7xcwcd'
   });
 
   map.addLayer({
