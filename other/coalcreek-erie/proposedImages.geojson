@@ -32,6 +32,19 @@
           40.06516508971698
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "image": "downstream-reach.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.04762172698975,
+          40.055278429106146
+        ]
+      }
     }
   ]
 }

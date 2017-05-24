@@ -627,7 +627,7 @@ callData();
     type: 'line',
     filter: ["==", '$type', 'LineString'],
     layout: {
-      "visibility": "visible",
+      "visibility": "none",
       "line-join": "round",
       "line-cap": "round"
     },
@@ -643,7 +643,7 @@ callData();
     type: 'circle',
     filter: ["==", '$type', 'Point'],
     layout: {
-      "visibility": "visible",
+      "visibility": "none",
     },
     paint: {
       "circle-color":'blue',

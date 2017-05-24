@@ -232,7 +232,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno0-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno0);
 
         var makeAnno1 = d3.annotation()
@@ -243,7 +243,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno1-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno1);
 
         var makeAnno2 = d3.annotation()
@@ -254,7 +254,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno2-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno2);
 
         var makeAnno3 = d3.annotation()
@@ -265,7 +265,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno3-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno3);
 
         var makeAnno4 = d3.annotation()
@@ -276,7 +276,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno4-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno4);
 
         var makeAnno5 = d3.annotation()
@@ -287,7 +287,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno5-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno5);
 
         var makeAnno6 = d3.annotation()
@@ -298,7 +298,7 @@ function drawAnno(){
         d3.select(".d3-svg")
           .append("g")
           .attr("id", "anno6-group")
-          .attr("class", "annotation-group")
+          .attr("class", "annotation-group hidden")
           .call(makeAnno6);
 
       // re-render our visualization whenever the view changes
