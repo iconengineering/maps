@@ -298,6 +298,10 @@ function loadMap() {
   type: 'geojson',
   data: 'counties_ln.geojson'
   });
+  map.addSource('utilities', {
+  type: 'geojson',
+  data: 'utilities.geojson'
+  });
   map.addSource('boulderSFHA', {
   type: 'vector',
   url: 'mapbox://iconeng.c8qwcgbh'
@@ -531,6 +535,28 @@ callData();
       'paint': {
           'line-width': 1.5,
           'line-color': '#C6FF00',
+          'line-opacity': 0
+      }
+  }, 'road-label-small');
+
+  map.addLayer({
+      'id': 'utilities',
+      'type': 'line',
+      'source': 'utilities',
+      'paint': {
+          'line-width': 1.5,
+          'line-color': {
+              property: 'LAYER',
+              type: 'categorical',
+              stops: [
+                ['ELEC','#d50000'],
+                ['GAS','#FFFF00'],
+                ['WATER','#2196F3'],
+                ['STORM SEWER','#1DE9B6'],
+                ['FIBER','#FF6D00'],
+                ['SAN SEWER','#00E676']
+              ]
+          },
           'line-opacity': 0
       }
   }, 'road-label-small');
