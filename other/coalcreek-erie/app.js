@@ -593,6 +593,20 @@ callData();
   }, 'country-label-lg');
 
   map.addLayer({
+    id: 'firebasePoly',
+    source: 'firebase',
+    type: 'fill',
+    filter: ["==", '$type', 'Polygon'],
+    layout: {
+      "visibility": "none",
+    },
+    paint: {
+      "fill-color": "#E91E63",
+      "fill-opacity": .4,
+    }
+  }, 'country-label-lg');
+
+  map.addLayer({
     id: 'proposedImages',
     source: 'proposedImages',
     type: 'circle',
@@ -604,20 +618,6 @@ callData();
       'circle-radius': 8,
       'circle-stroke-width': 2,
       'circle-stroke-color': '#222'
-    }
-  }, 'country-label-lg');
-
-  map.addLayer({
-    id: 'firebasePoly',
-    source: 'firebase',
-    type: 'fill',
-    filter: ["==", '$type', 'Polygon'],
-    layout: {
-      "visibility": "none",
-    },
-    paint: {
-      "fill-color": "#E91E63",
-      "fill-opacity": .4,
     }
   }, 'country-label-lg');
 
