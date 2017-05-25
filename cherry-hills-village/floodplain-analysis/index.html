@@ -231,8 +231,8 @@ map.on('click', function (e) {
         .range(["#A0E374", "#307b94"]);
 
     var arc = d3.svg.arc()
-        .outerRadius(radius-100)
-        .innerRadius(radius-50);
+        .outerRadius(radius-50)
+        .innerRadius(radius-90);
 
     var pie = d3.layout.pie()
         .sort(null)
