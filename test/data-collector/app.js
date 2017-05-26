@@ -1,3 +1,5 @@
+// change paths for any line commented 'change per project'
+
 $(document).ready(function(){
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
@@ -109,7 +111,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     var logout = document.getElementById('adminLogout');
     logout.className = 'modal-action modal-close waves-effect waves-blue btn blue';
 
-    // make buttons active for authorized users
+    // make buttons active for authorized users, change per project
     var displayName = firebase.auth().currentUser.displayName;
     var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/test");
     ref.once("value")
@@ -205,6 +207,7 @@ map.addControl(new mapboxgl.GeolocateControl());
 //set blank geojson
 var firebaseGeojsonFeatures = [];
 
+// set repository, this needs to change per project
 var dataRef = firebase.database().ref('datacollector/test');
 var archiveRef = firebase.database().ref('datacollector/testArchive');
 
@@ -336,6 +339,7 @@ map.on('draw.create', function() {
       contentType: 'image/jpeg'
     };
 
+    // change per project
     var storageRef = firebase.storage().ref('testUpload/');
 
     // Upload file and metadata to the object 'images/mountains.jpg'
@@ -563,7 +567,7 @@ map.on('draw.selectionchange', function(){
         var origNotes = feature.val().properties.notes;
         var card = document.getElementById('input-card');
 
-        // Create a reference to the file we want to download
+        // Create a reference to the file we want to download, change per project
         var storageRef = firebase.storage().ref('testUpload/');
         var photoRef = storageRef.child('images/' + photo);
 
@@ -641,6 +645,7 @@ map.on('draw.selectionchange', function(){
           draw.setFeatureProperty(id,"editedOn",editedOn);
           draw.setFeatureProperty(id,"notes",notes);
 
+          // change per project
           firebase.database().ref('datacollector/test/' + featureKey).update(draw.getSelected().features[0], function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
@@ -683,6 +688,7 @@ map.on('draw.selectionchange', function(){
           draw.setFeatureProperty(id,"deleted_by",user);
           draw.setFeatureProperty(id,"deleted_at",timestamp);
 
+          // change per project
           firebase.database().ref('datacollector/test/' + featureKey).remove(function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
@@ -765,6 +771,7 @@ var firePopupTouch = function (e) {
 
   // Create a reference to the file we want to download
   var photo = feature.properties.imageUUID;
+  // change per project
   var storageRef = firebase.storage().ref('testUpload/');
   var photoRef = storageRef.child('images/' + photo);
 
@@ -856,6 +863,7 @@ var firePopup = function (e) {
 
   // Create a reference to the file we want to download
   var photo = feature.properties.imageUUID;
+  // change per project
   var storageRef = firebase.storage().ref('testUpload/');
   var photoRef = storageRef.child('images/' + photo);
 
