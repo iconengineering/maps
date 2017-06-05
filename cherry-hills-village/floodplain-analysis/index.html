@@ -55,11 +55,7 @@
     margin-right: 5px;
     width: 10px;
 }
-
 </style>
-
-
-
 
 
 
@@ -81,20 +77,13 @@
         font-size: 12px;
         color: #404040;
         display: block;
+        border: 1.5px solid rgba(0,0,0,0.4);
         margin: 0;
         padding: 0;
         padding: 10px;
         text-decoration: none;
         border-bottom: 1px solid rgba(0,0,0,0.25);
         text-align: center;
-    }
-
-   #menu a:first-child {
-        border: 2px solid rgba(0,0,0,0.4);
-    }
-
-   #menu a:last-child {
-        border: 2px solid rgba(0,0,0,0.4);
     }
 
     #menu a:hover {
@@ -111,7 +100,6 @@
         background-color: #0d1178;
     }
 </style>
-
 
 
 
@@ -139,7 +127,6 @@
 
     z-index: 1;
 }
-
 </style>
 
 
@@ -176,7 +163,7 @@
 
 
 
-//Grant MB Promissions
+//Grant MB Access
 mapboxgl.accessToken = 'pk.eyJ1IjoiamxncmVkODgiLCJhIjoiY2l0a2ZlZ3RhMGFyaTJubzNhaGF2emR4diJ9.H-hgfgmsmIoJoPNaWF5LKw';
 
 
@@ -288,41 +275,33 @@ map.on('load', function() {
         }
     }); 
 
-    /*
+    
 
     //CONNECT SOURCE FD AREA
     map.addSource ('FP_Area', {                
-        'type': 'vector',
-        //'url': 'mapbox://jlgred88.cizhim61101jz2qnniq2nq4i0-7wyxu'
-    });
-
+        'type': 'geojson',
+        'data': 'chv_fld_haz_ar_DISSOLVE.geojson' })
    
     map.addLayer({
-        'id': 'Floodplain Regions',                     //anything             
+        'id': 'Floodplain Regions',                                
         'source': 'FP_Area',
-        'source-layer': 'chv_parcels_prcnt_FP', 		// name within MB
+        'layout': {'visibility': 'none'},       //INITIALIZE LAYER OFF
         'type': 'fill',
-        'filter': ['>','PrctFldPl', 0],        			// attribute name w.i. MB
         'paint': {
-            'fill-color': {
-                property: 'PrctFldPl',
-                stops: [
-                    [6.95903, '#ffff80'],
-                    [16.8773, '#A0E374'],
-                    [30.207399, '#3db178'],
-                    [46.179199, '#307b94'],
-                    [68.341003, '#21468e'],
-                    [100.008003, '#0d1178']
-                ]
-            },
-            'fill-opacity': 0.7,
-            'fill-outline-color': '#fff'
-        }
-    },'road-label-small');
+          'fill-opacity': 0.75,
+          'fill-color': {
+            property: 'ZONE_SUBTY',
+            type: 'categorical',
+            stops: [
+                ['Floodway', '#FF5733'],
+                ['100-Yr', '#FF5733'],
+                ['500-Yr', '#C70038'],
+                ],}}
+    }, 'Owner Labels');
 
-*/
 
-});
+
+}); //END MAPON FUNCTION
 
 
 //User Nav Controls
@@ -534,8 +513,7 @@ map.on('mousemove', function (e) {
 
 
 //CREATE TOGGLE LAYERS AND BUTTONS
-var toggleableLayerIds = [ 'Floodplain Outline','Floodplain Parcels', 'Owner Labels' ];
-//var toggleableLayerName = ['Boundary', 'Parcel'];
+var toggleableLayerIds = [ 'Floodplain Parcels', 'Floodplain Outline', 'Floodplain Regions', 'Owner Labels' ];
 
 var layers = document.getElementById('menu');
 
