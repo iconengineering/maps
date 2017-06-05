@@ -4,10 +4,10 @@
     <meta charset='utf-8' />
     <title>Cherry Hills Floodplain Analysis </title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js"></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -20,16 +20,21 @@
             stroke: #fff;
         }
 
+
     </style>
 </head>
 <body>
 
-<style>
 
-.legend {;
+
+
+
+ <!-- ADD LEGEND STYLE -->
+<style>
+.legend {
 
     background-color: #fff;    
-    order-radius: 3px;
+    border-radius: 3px;
     bottom: 30px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.10);
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -55,7 +60,95 @@
 
 
 
+
+
+
+ <!-- ADD MENU STYLE -->
+<style>
+    #menu {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        top: 300px;
+        left: 10px;
+        border-radius: 5px;
+        width: 130px;
+        border: 1px solid rgba(0,0,0,0.4);
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+    #menu a {
+        font-size: 12px;
+        color: #404040;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+   #menu a:first-child {
+        border: 2px solid rgba(0,0,0,0.4);
+    }
+
+   #menu a:last-child {
+        border: 2px solid rgba(0,0,0,0.4);
+    }
+
+    #menu a:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    #menu a.active {
+        background-color: #21468e;
+        color: #ffffff;
+    }
+
+    #menu a.active:hover {
+        background-color: #0d1178;
+    }
+</style>
+
+
+
+
+
+
+
+
+ <!-- ADD TITLE STYLE -->
+ <style>
+.myTitle {
+	font-size: 30px;
+	background: #21468e;
+	opacity: 0.9;
+	color: #fff;
+    display: block;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+    text-align: left;
+    font: 'Helvetica Neue';
+    padding: 10px;
+    position: relative;
+    width: 1500px;
+  	height: 75px;
+    top: 10px;
+    left: 10px;
+
+    z-index: 1;
+}
+
+</style>
+
+
+ <!-- __________________________________________________________________________--> 
+
+<div id="menu" class= "menu"></div>
 <div id='map'></div>
+<div id="textDiv" class= 'myTitle'>
+</div>
 <div id='chv_legend' class='legend'>
     <h4>Floodplain Coverage within Parcel</h4>
     <div><span style='background-color: #ffff80'></span>0.1 - 6.9%</div>
@@ -65,33 +158,43 @@
     <div><span style='background-color: #21468e''></span>46.2 - 68.3%</div>
     <div><span style='background-color: #0d1178''></span>68.4 - 100.0%</div>
 </div>
+ <!-- __________________________________________________________________________--> 
+
+ 
 
 
 
-<style> 
-  .legend {
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  }
-  rect {
-    stroke-width: 2;
-  }
-</style>:
 
 
-
+ <!-- __START SCRIPT___________________________________________________________--> 
 <script>
+
+//	Display Title
+    var div = document.getElementById("textDiv");  
+    div.textContent = "Cherry Hills Village Floodplain Analysis" 
+    var text = div.textContent; 
+
+
+
+//Grant MB Promissions
 mapboxgl.accessToken = 'pk.eyJ1IjoiamxncmVkODgiLCJhIjoiY2l0a2ZlZ3RhMGFyaTJubzNhaGF2emR4diJ9.H-hgfgmsmIoJoPNaWF5LKw';
+
+
+//Create MAP variable 
 var map = new mapboxgl.Map({
-    container: 'map',          // container id
+    container: 'map',              // container id
     style: 'mapbox://styles/jlgred88/cizhizj7u000k2rrxml7xfy7y', //stylesheet location
     center: [-104.946, 39.638],   // starting position
-    zoom: 13.4,                  // starting zoom
+    zoom: 13.4,                   // starting zoom
     minZoom: 11.2               
 });
 
+
+
+//Turn MAP on
 map.on('load', function() {
 
-    //connect to boundary titleset from MB
+    //CONNECT SOURCE BOUNDARY FROM MB
     map.addSource ('chv_boundary', {                //this ID is specific to this script
         'type': 'vector',
         'url': 'mapbox://jlgred88.cizhim61101jz2qnniq2nq4i0-7wyxu'
@@ -105,7 +208,7 @@ map.on('load', function() {
         'type': 'fill',
         'paint': {
             'fill-color': '#D7D7D7',
-            'fill-opacity': 0.5
+            'fill-opacity': 0.2
         }
         
     },'road-label-small');
@@ -119,13 +222,13 @@ map.on('load', function() {
     });
 
     
-    // Add data
+    // Add data     
     map.addLayer({
-        'id': 'prct_FP_ID',                     //anything             
+        'id': 'Floodplain Parcels',                     //anything             
         'source': 'prct_FP',
-        'source-layer': 'chv_parcels_prcnt_FP', // name within MB
+        'source-layer': 'chv_parcels_prcnt_FP', 		// name within MB
         'type': 'fill',
-        'filter': ['>','PrctFldPl', 0],         // attribute name w.i. MB
+        'filter': ['>','PrctFldPl', 0],        			// attribute name w.i. MB
         'paint': {
             'fill-color': {
                 property: 'PrctFldPl',
@@ -138,9 +241,33 @@ map.on('load', function() {
                     [100.008003, '#0d1178']
                 ]
             },
+            'fill-opacity': 0.7,
             'fill-outline-color': '#fff'
         }
     },'road-label-small');
+
+
+    //Add Owner Labels to Parcels via prct_FP source
+        map.addLayer({
+        'id': 'Owner Labels',
+        'type': 'symbol',                                
+        'source': 'prct_FP',
+        'source-layer': 'chv_parcels_prcnt_FP',
+        'filter': ['>','PrctFldPl', 0], 
+        'layout': {
+          'visibility': 'none',
+        'text-field': '{Owner}',
+        'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
+      	'text-size': 11
+      	},
+
+      	'paint': {
+        'text-color': 'rgb(255,255,255)',
+        'text-halo-color': 'rgb(0,0,0)',
+        'text-halo-width': 1.5
+     	}
+    },'road-label-small');
+
 
 
 // "connect" to FP layer from MB
@@ -149,9 +276,9 @@ map.on('load', function() {
         'url': 'mapbox://jlgred88.cizhilg6301k62wmgyq002ksu-6opk2'
     });
 
-
+    //Add data
     map.addLayer({
-        'id': 'FP_ID',                          
+        'id': 'Floodplain Outline',                          
         'source': 'FP',
         'source-layer': 'chv_fld_ar_outline', 
         'type': 'line',
@@ -159,15 +286,54 @@ map.on('load', function() {
             'line-color': 'rgb(55,55,55)',
             'line-width' : 1
         }
+    }); 
+
+    /*
+
+    //CONNECT SOURCE FD AREA
+    map.addSource ('FP_Area', {                
+        'type': 'vector',
+        //'url': 'mapbox://jlgred88.cizhim61101jz2qnniq2nq4i0-7wyxu'
     });
 
+   
+    map.addLayer({
+        'id': 'Floodplain Regions',                     //anything             
+        'source': 'FP_Area',
+        'source-layer': 'chv_parcels_prcnt_FP', 		// name within MB
+        'type': 'fill',
+        'filter': ['>','PrctFldPl', 0],        			// attribute name w.i. MB
+        'paint': {
+            'fill-color': {
+                property: 'PrctFldPl',
+                stops: [
+                    [6.95903, '#ffff80'],
+                    [16.8773, '#A0E374'],
+                    [30.207399, '#3db178'],
+                    [46.179199, '#307b94'],
+                    [68.341003, '#21468e'],
+                    [100.008003, '#0d1178']
+                ]
+            },
+            'fill-opacity': 0.7,
+            'fill-outline-color': '#fff'
+        }
+    },'road-label-small');
 
+*/
 
 });
 
 
+//User Nav Controls
+map.addControl(new mapboxgl.NavigationControl());
 
-//Define currency formatting function
+
+
+
+
+
+//Currency Format Function
 function formatCurrency(num)
 {
     num = num.toString().replace(/\$|\,/g, '');
@@ -193,18 +359,25 @@ function formatCurrency(num)
 
 
 
+
+
 // When a click event occurs near a polygon, open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['prct_FP_ID'] });
+    var features = map.queryRenderedFeatures(e.point, { layers: ['Floodplain Parcels'] });
     if (!features.length) {
         return;
     }
 
     var feature = features[0];
 
-// **-------------------------** D3 **---------------------------------**
 
+
+
+
+
+
+// **-------------------------** D3 **---------------------------------**
     var fpVal = feature.properties.Area_Acre*(feature.properties.PrctFldPl/100);
     var non_fpVal = feature.properties.Area_Acre - fpVal;
 
@@ -294,6 +467,10 @@ map.on('click', function (e) {
 */
 
 
+
+
+
+
 // Add d3 legend
     var legendRectSize = 10;
     var legendSpacing = 4;
@@ -342,16 +519,73 @@ map.on('click', function (e) {
 
 });
 
+
+
+
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['prct_FP_ID'] });
+    var features = map.queryRenderedFeatures(e.point, { layers: ['Floodplain Parcels'] });
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-
-// https://iconengineering.github.io/maps/cherry-hills-village/floodplain-analysis/ 
-
 });
+
+
+
+
+
+//CREATE TOGGLE LAYERS AND BUTTONS
+var toggleableLayerIds = [ 'Floodplain Outline','Floodplain Parcels', 'Owner Labels' ];
+//var toggleableLayerName = ['Boundary', 'Parcel'];
+
+var layers = document.getElementById('menu');
+
+for (var i = 0; i < toggleableLayerIds.length; i++) { 
+    var id = toggleableLayerIds[i];
+    
+    var link = document.createElement('a');
+    link.href = '#';
+    
+   
+    //Initially activate specific layer menu buttons 
+    if (i<2){
+    	  link.className = 'active';
+    }
+    else {
+    	link.className = 'visable'
+    }
+  
+    link.innerHTML = id
+
+    link.onclick = function (f) {
+        var clickedLayer = this.textContent;
+        f.preventDefault();
+        f.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+
+        //establish selected layers as "off" initially via placement within array
+          if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }  
+
+
+    };
+
+    layers.appendChild(link);
+}
+
 </script>
+
+
+
+<!-- May not need -->
+<script src="toggleLayer.js"></script>
+
 
 </body>
 </html>
