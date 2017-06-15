@@ -1,0 +1,63 @@
+---
+layout: default-map-2
+title: Surrey Ridge Trails
+version: v0.34.0
+script: surrey-ridge.js
+---
+<ul id="slide-out" class="side-nav fixed">
+  <a href="#" class="brand-logo center hide-on-med-and-up" >{{ page.title }}</a>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+   	 <li>
+        <a class="collapsible-header white">Basemap<i class="material-icons">map</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+          <form id="menu">
+            <p class="narrow">
+              <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
+              <label for="test1">Satellite Streets</label>
+            </p>
+            <p class="narrow">
+              <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd">
+              <label for="test2">Light</label>
+            </p>
+            <p class="narrow">
+              <input name="group1" type="radio" id="test3" value="cj3kop90l000g2smjcwm8nm9b">
+              <label for="test3">Outdoors</label>
+            </p>
+          </form>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">layers</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+          <p>
+            <input name="estTrailsMenu" type="checkbox" id="estTrailsMenu" class="layer-on" onclick="toggleTwo('TrailLines','TrailNames')" checked/>
+            <label for="estTrailsMenu" class="valign">Trails</label>
+          </p>
+           <p>
+            <input name="parcMenu" type="checkbox" id="parcMenu" class="layer-on" onclick="toggleLayer('PropertyLines')" checked/>
+            <label for="parcMenu" class="valign">Property Lines</label>
+          </p>
+           <p>
+            <input name="contourMenu" type="checkbox" id="contourMenu" class="layer-off" onclick="toggleFour('5ftContours', '10ftContours', '20ftContours', '20ftLabels')" />
+            <label for="contourMenu" class="valign">Contours</label>
+          </p>
+            <p>
+            <input name="AddressMenu" type="checkbox" id="AddressMenu" class="layer-off" onclick="toggleLayer('Address')"/>
+            <label for="AddressMenu" class="valign">Address</label>
+          </p>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header white">Legend<i class="material-icons">more_vert</i></a>
+        <div class="collapsible-body">
+          <ul class="collection with-header grey-text text-darken-2">
+            <li class="collection-item"><div>Trails<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+          	<li class="collection-item"><div>Property Lines<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.0" stroke="#3D5C85" /></svg></a></div></li>
+            <li class="collection-item"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#F57B7B" fill-opacity=".8" /></svg></a></div></li>
+           </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
