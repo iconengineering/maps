@@ -56,4 +56,5 @@ layout: default
 
 [CHV Floodplain](cherry-hills-village/floodplain-analysis)
 
+[Surrey Ridge Trails](surrey-ridge)
 
