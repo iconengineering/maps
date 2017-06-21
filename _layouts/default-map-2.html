@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+{% assign base = '' %}
+{% assign depth = page.url | split: '/' | size | minus: 0 %}
+{% if    depth <= 1 %}{% assign base = '.' %}
+{% elsif depth == 2 %}{% assign base = '..' %}
+{% elsif depth == 3 %}{% assign base = '../..' %}
+{% elsif depth == 4 %}{% assign base = '../../..' %}
+{% elsif depth == 5 %}{% assign base = '../../../..' %}
+{% elsif depth == 6 %}{% assign base = '../../../../..' %}
+{% elsif depth == 7 %}{% assign base = '../../../../../..' %}{% endif %}
+<head>
+    <meta charset='utf-8' />
+    <title>{{ page.title }}</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{base}}/assets/css/materialize2.css">
+    <script src="{{base}}/assets/js/toggleLayer.js"></script>
+    <script src='//api.tiles.mapbox.com/mapbox-gl-js/{{ page.version }}/mapbox-gl.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox-gl-js/{{ page.version }}/mapbox-gl.css' rel='stylesheet' />
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-66511604-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:64px; bottom:0; width: 100vw;z-index:-1;}
+        .side-nav {background-color: rgba(255,255,255,0); margin-top: 70px; box-shadow: none;padding-left: 6px!important;}
+        .collapsible-header {font-size: 16px !important;}
+        .collection.with-header .collection-header {
+          padding: 10px 20px !important;
+        }
+        .collection.with-header .collection-item {padding: 10px .5em !important; line-height: 21px !important;}
+        .collection.with-header .collection-item a {height: auto !important; line-height: 21px !important; padding: 0 4px !important;}
+        @media only screen and (max-width : 992px) {
+          #map{ width: 100vw; left: 0; top: 56px;}
+          .side-nav {background-color: #fff; margin-top: 0px;width: 300px !important;padding-left: 0px !important;}
+        }
+    </style>
+</head>
+
+{% for extra_css in page.extra-css %}
+<link rel="stylesheet" type="text/css" href="{{ extra_css }}"/>
+{% endfor %}
+
+<body>
+
+{% for extra_js in page.extra-js %}
+  <script src="{{ extra_js }}"></script>
+{% endfor %}
+
+<header>
+  <nav>
+    <div id="header" class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" class="brand-logo hide-on-small-and-down">{{ page.title }}</a>
+    </div>
+  </nav>
+</header>
+
+    {{ content }}
+
+<div id='map'></div>
+
+<script src='{{ page.script }}'></script>
+{% for extra_map_js in page.extra-map-js %}
+  <script src="{{ extra_map_js }}"></script>
+{% endfor %}
+<script>
+$('.button-collapse').sideNav({
+    menuWidth: 350, // Default is 300
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: false // Choose whether you can drag to open on touch screens
+  }
+);
+
+$('.collapsible').collapsible();
+</script>
+
+</body>
+</html>
