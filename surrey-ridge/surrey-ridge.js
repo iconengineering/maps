@@ -173,12 +173,16 @@ map.on('style.load', function () {
          'symbol-placement': 'line',
          'text-field': '{Name}',
          'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
-         'text-size': 11
+         'text-size': {"stops": [
+                          [13,12],
+                          [14,14],
+                          [19,16]
+                          ]}
           },
        'paint': {
          'text-color': 'rgb(255,255,255)',
-         'text-halo-color': 'rgb(0,0,0)',
-         'text-halo-width': 1.5
+         'text-halo-color': 'rgb(34,34,34)',
+         'text-halo-width': 2.3
         }
    },'road-label-small');
 
@@ -193,7 +197,7 @@ map.on('style.load', function () {
          //'symbol-placement': 'line',
          'text-field': '{STREET_N_1}',
          'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
-         'text-size': 10
+         'text-size': 8
           },
        'paint': {
          'text-color': 'rgb(0,0,0)',
