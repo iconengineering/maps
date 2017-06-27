@@ -33,12 +33,13 @@ for (var i = 0; i < inputs.length; i++) {
 
 map.on('style.load', function () {
 
+  /*
   //local
   map.addSource('contours', {
       type: 'geojson',
       'data': 'SYR_Contours_2.geojson'
   });
-
+*/
 
   map.addSource('parcels', {
       'type': 'vector',
@@ -46,20 +47,19 @@ map.on('style.load', function () {
   });
 
 
-  map.addSource('parcelOutline', {
-      'type': 'vector',
-      'url': 'mapbox://iconeng.bn2rfkaa'
-  });
-
- 
   map.addSource('estTrailLines', {
       'type': 'vector',
       'url': 'mapbox://iconeng.a5wz1jiu'
   });
 
+//Buffer Trail lines; pop-up click is easier
+  map.addSource('TrailBuffer', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.0swysmup'
+  });
 
 
-
+/* -------Contours--------
 
 
   map.addLayer({
@@ -133,6 +133,8 @@ map.on('style.load', function () {
           'text-halo-blur': 1
         }
     },'road-label-small');
+
+    */
     
     map.addLayer({
       'id': 'PropertyLines',                               
@@ -207,7 +209,20 @@ map.on('style.load', function () {
    },'road-label-small');
 
 
-
+    map.addLayer({
+      'id': 'lineBuffer',
+      'type': 'fill',
+      'source': 'TrailBuffer',
+      'source-layer': 'SYR_TrailLines_Buffer5ft-2hi1q4',
+      'layout': {
+        'visibility': 'visible'
+      },
+      'paint': {
+            'fill-color': '#eee',
+            'fill-opacity': 0
+        }
+        
+});
 
 
 
@@ -216,7 +231,7 @@ map.on('style.load', function () {
 // When a click event occurs near a marker icon, open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['TrailLines'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['lineBuffer'] });
   if (!featureList.length) {
       return;
   }
@@ -226,15 +241,15 @@ map.on('click', function (k) {
         var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)
             .setHTML('<b>' + feature.properties.Name + '</b> <br />' +
-                     'Approx Length: ' + feature.properties.Length + ' ft' + '<br />' +
-                     'No. of Intersecting Private Properties: ' + feature.properties.Prcl_ct)
+                     'Approx. Length: ' + feature.properties.Length + ' ft' + '<br />' +
+                     'No. of Intersecting Residential Properties: ' + feature.properties.Prcl_ct)
             .addTo(map);
     });
 
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (k) {
-    var featureList = map.queryRenderedFeatures(k.point, { layers: ['TrailLines'] });
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['lineBuffer'] });
     map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
 });
 
