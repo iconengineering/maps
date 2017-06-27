@@ -197,12 +197,12 @@ map.on('style.load', function () {
          //'symbol-placement': 'line',
          'text-field': '{STREET_N_1}',
          'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
-         'text-size': 8
+         'text-size': 10
           },
        'paint': {
          'text-color': 'rgb(0,0,0)',
          'text-halo-color': 'rgb(0255,255,255)',
-         'text-halo-width': 0.7
+         'text-halo-width': 0.9
         }
    },'road-label-small');
 
@@ -213,6 +213,29 @@ map.on('style.load', function () {
 
 });
 
+// When a click event occurs near a marker icon, open a popup at the location of
+// the feature, with description HTML from its properties.
+map.on('click', function (k) {
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['TrailLines'] });
+  if (!featureList.length) {
+      return;
+  }
 
+  var feature = featureList[0];
+
+        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+            .setHTML('<b>' + feature.properties.Name + '</b> <br />' +
+                     'Approx Length: ' + feature.properties.Length + ' ft' + '<br />' +
+                     'No. of Intersecting Private Properties: ' + feature.properties.Prcl_ct)
+            .addTo(map);
+    });
+
+// Use the same approach as above to indicate that the symbols are clickable
+// by changing the cursor style to 'pointer'.
+map.on('mousemove', function (k) {
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['TrailLines'] });
+    map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
+});
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
