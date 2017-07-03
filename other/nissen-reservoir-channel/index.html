@@ -1,0 +1,202 @@
+---
+layout: default-map-2
+title: Nissen Reservoir Drainage Improvements
+version: v0.34.0
+script: Nissen-Reservoir.js
+---
+
+<!--Begin Main Menu -->
+<ul id="slide-out" class="side-nav fixed">
+  <a href="#" class="brand-logo center hide-on-med-and-up" >{{ page.title }}</a>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+
+
+     <!--Base Map Menu -->
+   	 <li>
+        <a class="collapsible-header white">Basemap<i class="material-icons">map</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+          <form id="menu">
+            <p class="narrow">
+              <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
+              <label for="test1">Satellite Streets</label>
+            </p>
+            <p class="narrow">
+              <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd">
+              <label for="test2">Light</label>
+            </p>
+          </form>
+        </div>
+      </li>
+     
+
+      <!-- Layer Menu-->
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">layers</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+        
+        <ul class="collapsible" data-collapsible="expandable">    
+
+        <!-- Base Layer Sub-menu-->
+        <li>
+         <a class="collapsible-header grey-text">Base Layers<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+         <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+         
+            <!-- Check-box to toggle layer-->
+
+            <!--Boundary-->
+            <p>
+              <input name="BoundaryMenu" type="checkbox" id="BoundaryMenu" class="layer-on" onclick="toggleTwo('BOUNDARY_LINE', 'BOUNDARY')" checked/>
+              <label for="BoundaryMenu" class="valign">Project Boundary</label>
+            </p>
+
+            <!--Contour-->
+            <p>
+              <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-on" onclick="toggleThree('majorContour', 'minorContour', 'contourLabels')" checked/>
+              <label for="ContourMenu" class="valign">Contours</label>
+            </p>
+
+            <!--Parcel-->	
+            <p>
+              <input name="ParcelMenu" type="checkbox" id="ParcelMenu" class="layer-on" onclick="toggleLayer('PROP_LINES')" checked/>
+              <label for="ParcelMenu" class="valign">Broomfield Parcels</label>
+            </p>
+
+            <!--Existing Utilitiy-->
+            <p>
+              <input name="UtilityMenu" type="checkbox" id="UtilityMenu" class="layer-on" onclick="toggleFour('SAN', 'SAN_LABELS', 'WTR', 'WTR_LABELS')" checked/>
+              <label for="UtilityMenu" class="valign">Existing Utility</label>
+            </p>
+           </div>    
+           </li>
+ 
+         <!-- Project Items Sub-menu-->
+        <li>
+         <a class="collapsible-header grey-text">"Improvements"<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+         <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+         
+            <!-- Check-box to toggle layer-->
+            <!--LAYER 1-->
+            <p>
+              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-off" onclick="toggleLayer('Address')"/>
+              <label for="Pro1Menu" class="valign">PRO LAYER 1</label>
+            </p>
+            
+            <!--LAYER 2-->
+            <p>
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleLayer('Address')"/>
+              <label for="Pro2Menu" class="valign">PRO LAYER 2</label>
+            </p>
+
+            <!--LAYER 3-->
+            <p>
+              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleLayer('Address')"/>
+              <label for="Pro3Menu" class="valign">PRO LAYER 3</label>
+            </p>
+          </div>   
+         </li>
+
+
+
+          <!-- Floodplain Sub-menu-->
+          <li>
+          <a class="collapsible-header grey-text">Flood Hazards<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+          <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+         
+            <!--Profile Baseline-->
+            <p>
+              <input name="streamMenu" type="checkbox" id="streamMenu" class="layer-off" onclick="toggleLayer('STREAMS')" checked/>
+              <label for="streamMenu" class="valign">Stream Centerline</label>
+            </p>
+
+            <!--Floodway-->
+            <p>
+              <input name="fwMenu" type="checkbox" id="fwMenu" class="layer-off" onclick="toggleLayer('FLOODWAY')" checked/>
+              <label for="fwMenu" class="valign">Floodway</label>
+            </p>
+
+            <!--100-Yr -->
+            <p>
+              <input name="100Menu" type="checkbox" id="100Menu" class="layer-off" onclick="toggleLayer('100_YR')" checked/>
+              <label for="100Menu" class="valign">100-Yr Floodplain</label>
+            </p>
+
+            <!--500-Yr-->
+            <p>
+              <input name="500Menu" type="checkbox" id="500Menu" class="layer-off" onclick="toggleLayer('500_YR')" checked/>
+              <label for="500Menu" class="valign">500-Yr Floodplain</label>
+            </p>
+          </div>
+         </li>
+        
+
+        </ul>
+       </div>   
+      </li>
+  <!--end layer menu items -->
+
+
+
+      <!--legend-->
+      <li>
+        <a class="collapsible-header white">Legend<i class="material-icons">more_vert</i></a>
+        <div class="collapsible-body">
+          <ul class="collection with-header grey-text text-darken-2">
+            
+            <!--Base layer legend-->
+            <li class="collection-header grey-text"><em>Base Layers</em></li>
+              
+              <!--Boundary--> 
+              <li class="collection-item"><div>Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="3" stroke="#161616" /></svg></a></div></li>
+
+              <!--Contour--> 
+              <li class="collection-item"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.8"  stroke="rgb(195,195,195)" /></svg></a></div></li>
+
+              <!--Parcels--> 
+              <li class="collection-item"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke="#430064" /></svg></a></div></li>
+
+              <!--Existing Utility--> 
+              <li class="collection-item"><div>Existing Utility<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke-dasharray= "4,4"  stroke="#222222" /></svg></a></div></li>
+            
+              
+
+
+            <!--Project Items legend-->
+            <li class="collection-header grey-text"><em>Proposal Items</em></li>
+              
+              <!--LAYER 1--> 
+              <li class="collection-item"><div>PRO LAYER 1<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+
+              <!--LAYER 2--> 
+              <li class="collection-item"><div>PRO LAYER 2<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+
+              <!--LAYER 3 --> 
+              <li class="collection-item"><div>PRO LAYER 3<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+          
+          	  
+
+
+            <!--Floodplain Hazards legend-->
+            <li class="collection-header grey-text"><em>Floodplain Layers</em></li>
+              
+              <!--Stream Centerline--> 
+              <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke="#253494" /></svg></a></div></li>
+
+              <!--Floodway--> 
+              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#377ab3" fill-opacity=".8" /></svg></a></div></li>
+
+              <!--100-Yr--> 
+              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#66c1b6" fill-opacity=".8" /></svg></a></div></li>
+
+              <!--500-Yr --> 
+              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#edf8b1" fill-opacity=".8"  /></svg></a></div></li>
+            
+
+
+           </ul>
+        </div>
+      </li>
+
+    </ul>
+  </li>
+</ul>
