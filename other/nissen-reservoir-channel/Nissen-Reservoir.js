@@ -6,9 +6,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
-    zoom: 16,
+    zoom: 15.8,
     hash: true,
-    center: [-105.03993, 39.91584]
+    center: [-105.0403, 39.9158]
 });
 
 
@@ -135,6 +135,58 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+ //Floodway
+    map.addLayer({
+      'id': 'FLOODWAY',
+      'source': 'fldHazAreas',
+      'source-layer': 'NRC_S_FLD_HAZ_AR_DISSOLVE-45f1x9',
+      'layout': {
+        'visibility': 'visible'
+      },
+      'type': 'fill',
+      'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
+      'paint': {
+        'fill-opacity': 0.7,
+        'fill-color': '#377ab3',
+        'fill-outline-color': '#fff',
+      }
+  }, 'road-label-small');
+
+    //100-yr
+    map.addLayer({
+      'id': '100_YR',
+      'source': 'fldHazAreas',
+      'source-layer': 'NRC_S_FLD_HAZ_AR_DISSOLVE-45f1x9',
+      'layout': {
+        'visibility': 'visible'
+      },
+      'type': 'fill',
+      'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
+      'paint': {
+        'fill-opacity': 0.7,
+        'fill-outline-color': '#fff',
+        'fill-color': '#66c1b6',
+      }
+  }, 'road-label-small');
+
+
+    //500-yr
+    map.addLayer({
+      'id': '500_YR',
+      'source': 'fldHazAreas',
+      'source-layer': 'NRC_S_FLD_HAZ_AR_DISSOLVE-45f1x9',
+      'layout': {
+        'visibility': 'visible'
+      },
+      'type': 'fill',
+      'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
+      'paint': {
+        'fill-opacity': 0.7,
+        'fill-outline-color': '#fff',
+        'fill-color': '#edf8b1',
+      }
+  }, 'road-label-small');
+
 
     //Existing SAN
     map.addLayer({
@@ -223,59 +275,7 @@ map.on('style.load', function () {
 
 
 
-    //Floodway
-    map.addLayer({
-      'id': 'FLOODWAY',
-      'source': 'fldHazAreas',
-      'source-layer': 'NRC_S_FLD_HAZ_AR_DISSOLVE-45f1x9',
-      'layout': {
-        'visibility': 'visible'
-      },
-      'type': 'fill',
-      'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
-      'paint': {
-        'fill-opacity': 0.78,
-        'fill-color': '#377ab3',
-        'fill-outline-color': '#fff',
-      }
-    });
-
-    //100-yr
-    map.addLayer({
-      'id': '100_YR',
-      'source': 'fldHazAreas',
-      'source-layer': 'NRC_S_FLD_HAZ_AR_DISSOLVE-45f1x9',
-      'layout': {
-        'visibility': 'visible'
-      },
-      'type': 'fill',
-      'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
-      'paint': {
-        'fill-opacity': 0.78,
-        'fill-outline-color': '#fff',
-        'fill-color': '#66c1b6',
-      }
-    });
-
-
-    //500-yr
-    map.addLayer({
-      'id': '500_YR',
-      'source': 'fldHazAreas',
-      'source-layer': 'NRC_S_FLD_HAZ_AR_DISSOLVE-45f1x9',
-      'layout': {
-        'visibility': 'visible'
-      },
-      'type': 'fill',
-      'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
-      'paint': {
-        'fill-opacity': 0.78,
-        'fill-outline-color': '#fff',
-        'fill-color': '#edf8b1',
-      }
-    });
-
-
+   
     //Streams  
     map.addLayer({
       'id': 'STREAMS',
