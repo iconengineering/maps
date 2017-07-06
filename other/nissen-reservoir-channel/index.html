@@ -1,6 +1,6 @@
 ---
 layout: default-map-2
-title: Nissen Reservoir Drainage Improvements
+title: Nissen Reservoir Drainage Improvements (Working)
 version: v0.34.0
 script: Nissen-Reservoir.js
 ---
@@ -64,8 +64,8 @@ script: Nissen-Reservoir.js
 
             <!--Existing Utilitiy-->
             <p>
-              <input name="UtilityMenu" type="checkbox" id="UtilityMenu" class="layer-on" onclick="toggleFour('SAN', 'SAN_LABELS', 'WTR', 'WTR_LABELS')" checked/>
-              <label for="UtilityMenu" class="valign">Existing Utility</label>
+              <input name="UtilityMenu" type="checkbox" id="UtilityMenu" class="layer-on" onclick="toggleFive('SAN', 'SAN_LABELS', 'SAN_NODES', 'WTR', 'WTR_LABELS')" checked/>
+              <label for="UtilityMenu" class="valign">Existing Utilities</label>
             </p>
            </div>    
            </li>
@@ -78,21 +78,29 @@ script: Nissen-Reservoir.js
             <!-- Check-box to toggle layer-->
             <!--LAYER 1-->
             <p>
-              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-off" onclick="toggleLayer('Address')"/>
-              <label for="Pro1Menu" class="valign">PRO LAYER 1</label>
+              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-on" onclick="toggleTwo('ALT1', 'ALT1GRADING')" checked/>
+              <label for="Pro1Menu" class="valign">Alternative 1</label>
             </p>
             
             <!--LAYER 2-->
             <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleLayer('Address')"/>
-              <label for="Pro2Menu" class="valign">PRO LAYER 2</label>
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleThree('ALT2', 'ALT2GRADING', 'PROPPOND')"/>
+              <label for="Pro2Menu" class="valign">Alternative 2</label>
             </p>
 
             <!--LAYER 3-->
             <p>
-              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleLayer('Address')"/>
-              <label for="Pro3Menu" class="valign">PRO LAYER 3</label>
-            </p>
+              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleLayer('EASEMENTS')"/>
+              <label for="Pro3Menu" class="valign">Easement</label>
+          
+          	<br> Alternative 1 and 2 </br>
+           </p>
+
+             <!--LAYER 4-->
+            <p>
+              <input name="Pro4Menu" type="checkbox" id="Pro4Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro4Menu" class="valign">Culverts</label>
+            </p>          
           </div>   
          </li>
 
@@ -155,9 +163,14 @@ script: Nissen-Reservoir.js
               <!--Parcels--> 
               <li class="collection-item"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke="#430064" /></svg></a></div></li>
 
-              <!--Existing Utility--> 
-              <li class="collection-item"><div>Existing Utility<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke-dasharray= "4,4"  stroke="#222222" /></svg></a></div></li>
+              <!--Existing SAN--> 
+              <li class="collection-item"><div>Sanitary Sewer and Manhole<a href="#!" class="secondary-content"><img src="san-line-node.svg" style="height: 21px;"></a></div></li>
             
+             <!--Existing WTR DOMESTIC--> 
+              <li class="collection-item"><div>Domestic Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#434499" /></svg></a></div></li> 
+
+               <!--Existing WTR REUSE--> 
+              <li class="collection-item"><div>Reuse Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#BF00BC" /></svg></a></div></li>
               
 
 
@@ -165,13 +178,19 @@ script: Nissen-Reservoir.js
             <li class="collection-header grey-text"><em>Proposal Items</em></li>
               
               <!--LAYER 1--> 
-              <li class="collection-item"><div>PRO LAYER 1<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+              <li class="collection-item"><div>Alternative Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
 
               <!--LAYER 2--> 
-              <li class="collection-item"><div>PRO LAYER 2<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+              <li class="collection-item"><div>Alternative Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+
+			  <!--LAYER 2--> 
+              <li class="collection-item"><div>Alternative 2 Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
 
               <!--LAYER 3 --> 
-              <li class="collection-item"><div>PRO LAYER 3<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+              <li class="collection-item"><div>Easement<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+
+              <!--LAYER 4 --> 
+               <li class="collection-item"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="7" stroke="#161616" /></svg></a></div></li>
           
           	  
 

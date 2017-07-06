@@ -50,7 +50,7 @@ map.on('style.load', function () {
       'url': 'mapbox://iconeng.at4lisjc'
   });
 
-0
+
   map.addSource('fldHazAreas', {
       'type': 'vector',
       'url': 'mapbox://iconeng.0t5cy9d9'
@@ -73,6 +73,66 @@ map.on('style.load', function () {
       'type': 'vector',
       'url': 'mapbox://iconeng.0dhycpfl'
   });
+
+
+  map.addSource('existingSanNodes',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.3h674jtq'
+  });
+
+
+  map.addSource('propPond',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.dcnpevmz'
+  });
+
+
+  map.addSource('propEasements',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.3qdxp8j3'
+  });
+
+
+  map.addSource('culverts',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.5oebumwy'
+  });
+
+
+  map.addSource('alt1',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.41tl4h5r'
+  });
+
+  map.addSource('alt2',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.0ohh34jj'
+  });
+
+
+  map.addSource('alt1Grading',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.6yo5voab'
+  });
+
+  map.addSource('alt2Grading',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.1e8j1t4j'
+  });
+
+
+//Boundary Fill
+    map.addLayer({
+      'id': 'BOUNDARY',                               
+      'source': 'boundary',
+      'source-layer': 'NRC_Boundary_HARN-4q7dsx',     
+      'type': 'fill',        
+      'paint': {
+         'fill-color': '#161616', 
+         'fill-opacity': 0.17
+       },
+      'layout': {'visibility': 'visible'}
+    },'road-label-small');
 
 
 
@@ -146,11 +206,31 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
       'paint': {
-        'fill-opacity': 0.7,
+        'fill-opacity': 0.35,
         'fill-color': '#377ab3',
         'fill-outline-color': '#fff',
       }
   }, 'road-label-small');
+
+
+
+   
+    //Streams  
+    map.addLayer({
+      'id': 'STREAMS',
+      'type': 'line',
+      'source': 'streams',
+      'source-layer': 'NRC_S_PROFIL_BASLN-5v8tg7',
+      'layout': {
+        'visibility': 'visible'
+      },
+      'paint': {
+          'line-width': 2.5,
+          'line-color': '#253494',
+          'line-opacity': 0.65
+      }
+    },'road-label-small');
+
 
     //100-yr
     map.addLayer({
@@ -163,7 +243,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.7,
+        'fill-opacity': 0.35,
         'fill-outline-color': '#fff',
         'fill-color': '#66c1b6',
       }
@@ -181,7 +261,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.7,
+        'fill-opacity': 0.35,
         'fill-outline-color': '#fff',
         'fill-color': '#edf8b1',
       }
@@ -195,13 +275,25 @@ map.on('style.load', function () {
       'source-layer': 'NRC_SAN_LINES-0outbg',     
       'type': 'line',        
       'paint': {
-         'line-color': '#222222', 
-         'line-width': 2,
-         'line-dasharray': [2,1]
+         'line-color': '#BF2700', 
+         'line-width': 2.6,
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');
 
+
+    //Existing SAN Nodes
+    map.addLayer({
+      'id': 'SAN_NODE',                               
+      'source': 'existingSanNodes',
+      'source-layer': 'NRC_SAN_NODES-ct9tc7',     
+      'type': 'circle',        
+      'paint': {
+         'circle-color': '#BF2700', 
+         'circle-radius': 5.1,
+       },
+      'layout': {'visibility': 'visible'}
+    },'road-label-small')
 
     //Existing SAN Labels
     map.addLayer({
@@ -217,9 +309,9 @@ map.on('style.load', function () {
          'text-size': 12,
           },
        'paint': {
-         'text-color': 'rgb(1,1,1)',
-         'text-halo-color': 'rgb(255,255,255)',
-         'text-halo-width': 0.4
+         'text-color': '#BF2700',
+         'text-halo-color': 'rgb(250,250,250 )',
+         'text-halo-width': 0.7
         }
     },'road-label-small');
 
@@ -231,12 +323,19 @@ map.on('style.load', function () {
       'source-layer': 'NRC_WTR_LINES-6p73xr',     
       'type': 'line',        
       'paint': {
-         'line-color': '#222222', 
-         'line-width': 2,
-         'line-dasharray': [2,1],
+         'line-width': 2.6,
+         'line-color': {
+          property: 'Type',
+          type: 'categorical',
+          stops: [
+            ['Domestic Water', '#0007BF'],
+            ['Reuse Water', '#BF00BC' ]
+            ]
+          } 
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');
+
 
 
     //Existing WTR Labels
@@ -250,14 +349,22 @@ map.on('style.load', function () {
          'symbol-placement': 'line',
          'text-field': 'WTR',
          'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
-         'text-size': 12,
+         'text-size': 12
           },
        'paint': {
-         'text-color': 'rgb(1,1,1)',
+         'text-color': {
+            property: 'Type',
+            type: 'categorical',
+            stops: [
+              ['Domestic Water', '#0007BF'],
+              ['Reuse Water', '#A600BF'],
+              ]
+            },
          'text-halo-color': 'rgb(255,255,255)',
-         'text-halo-width': 0.4
+         'text-halo-width': 0.7
         }
     },'road-label-small');
+
 
 
     //Parcels
@@ -275,37 +382,116 @@ map.on('style.load', function () {
 
 
 
-   
-    //Streams  
+    //Alt 1
     map.addLayer({
-      'id': 'STREAMS',
-      'type': 'line',
-      'source': 'streams',
-      'source-layer': 'NRC_S_PROFIL_BASLN-5v8tg7',
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-          'line-width': 2.5,
-          'line-color': '#253494',
-          'line-opacity': 0.9
-      }
+        'id': 'ALT1',
+        'source': 'alt1',
+        'source-layer': 'NRC_Alt_1-8cnnhc', 
+        'type': 'fill',
+        'paint': {
+          'fill-color': 'rgb(100,0,0)',
+          'fill-opacity': .7
+        },
+       'layout': {'visibility': 'visible'}
+    }, 'road-label-small');
+
+
+    //Alt 1 Grading
+    map.addLayer({
+        'id': 'ALT1GRADING',
+        'type': 'line',
+        'source': 'alt1Grading',
+        'source-layer': 'NRC_Alt_1_Grading-1dvls8',
+        'layout': {
+            'visibility': 'visible',
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': { 
+            'line-width': 0.8,
+            'line-color': '#E9E200',
+            'line-opacity': 0.9
+        }
     },'road-label-small');
+    
 
 
-
-    //Boundary Fill
+    //Alt 2
     map.addLayer({
-      'id': 'BOUNDARY',                               
-      'source': 'boundary',
-      'source-layer': 'NRC_Boundary_HARN-4q7dsx',     
-      'type': 'fill',        
-      'paint': {
-         'fill-color': '#161616', 
-         'fill-opacity': 0.17
+        'id': 'ALT2',
+        'source': 'alt2',
+        'source-layer': 'NRC_Alt_2-39wt3n', 
+        'type': 'fill',
+        'paint': {
+          'fill-color': 'rgb(100,0,0)',
+          'fill-opacity': .7
+        },
+       'layout': {'visibility': 'none'}
+    }, 'road-label-small');
+
+
+    //Alt 2 Grading
+    map.addLayer({
+        'id': 'ALT2GRADING',
+        'type': 'line',
+        'source': 'alt2Grading',
+        'source-layer': 'NRC_Alt_2_Grading-9ee2f1',
+        'layout': {
+            'visibility': 'none',
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': { 
+            'line-width': 0.8,
+            'line-color': '#E9E200',
+            'line-opacity': 0.9
+        }
+    },'road-label-small');
+    
+    //Propsed Pond
+    map.addLayer({
+       'id': 'PROPPOND',
+       'source': 'propPond',
+       'source-layer': 'NRC_Proposed_Pond-ah0ubm', 
+       'type': 'fill',
+       'paint': {
+         'fill-color': '#F26487',
+         'fill-opacity': 0.5,
+         'fill-outline-color': '#333'
        },
-      'layout': {'visibility': 'visible'}
-    },'road-label-small');
+      'layout': {'visibility': 'none'}
+   }, 'road-label-small');
+
+
+
+    //Easement 
+    map.addLayer({
+       'id': 'EASEMENTS',
+       'source': 'propEasements',
+       'source-layer': 'NRC_Proposed_Easement-9ucmur', 
+       'type': 'fill',
+       'paint': {
+         'fill-pattern': 'bluestripe'
+       },
+      'layout': {'visibility': 'none'}
+   }, 'road-label-small');
+
+
+
+    //Culverts
+    map.addLayer({
+        'id': 'CULVERTS',
+        'source': 'culverts',
+        'source-layer': 'NRC_Culvert-7flm2b', 
+        'type': 'fill',
+        'paint': {
+          'fill-color': '#111' 
+        },
+       'layout': {'visibility': 'none'}
+    }, 'road-label-small');
+
+
+
 
     //Boundary Outline
     map.addLayer({
