@@ -246,7 +246,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
       'paint': {
-        'fill-opacity': 0.3,
+        'fill-opacity': 0.23,
         'fill-color': '#21468E',
         'fill-outline-color': '#fff',
       }
@@ -268,7 +268,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.3,
+        'fill-opacity': 0.23,
         'fill-outline-color': '#fff',
         'fill-color': '#3DB178'
         ,
@@ -287,7 +287,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.3,
+        'fill-opacity': 0.23,
         'fill-outline-color': '#fff',
         'fill-color': '#FFFD4C',
       }
@@ -374,7 +374,7 @@ map.on('style.load', function () {
           property: 'Type',
           type: 'categorical',
           stops: [
-            ['Reuse Water', '#ff0099' ],
+            ['Reuse Water', '#7A0050' ],
             ['Domestic Water', '#0007BF']
             ]
           },
@@ -404,7 +404,7 @@ map.on('style.load', function () {
             type: 'categorical',
             stops: [
               ['Domestic Water', '#0007BF'],
-              ['Reuse Water', '#ff0099'],
+              ['Reuse Water', '#7A0050'],
               ]
             },
          'text-halo-color': 'rgb(255,255,255)',
@@ -457,7 +457,7 @@ map.on('style.load', function () {
         },
         'paint': { 
             'line-width': 0.5,
-            'line-color': '#FFDA54',
+            'line-color': '#FFF140',
             'line-opacity': 0.95
         }
     },'road-label-small');
@@ -491,7 +491,7 @@ map.on('style.load', function () {
         },
         'paint': { 
             'line-width': 0.5,
-            'line-color': '#FFED00',
+            'line-color': '#FFF140',
             'line-opacity': 0.95
         }
     },'road-label-small');
@@ -503,25 +503,9 @@ map.on('style.load', function () {
        'source-layer': 'NRC_Proposed_Pond-ah0ubm', 
        'type': 'fill',
        'paint': {
-         'fill-color': '#F26487',
          'fill-opacity': 0.99,
          'fill-outline-color': '#333',
-         'fill-pattern': 'bluestripe'
-       },
-      'layout': {'visibility': 'none'}
-   }, 'road-label-small');
-
-        //Propsed Pond
-    map.addLayer({
-       'id': 'PROPPOND2',
-       'source': 'propPond',
-       'source-layer': 'NRC_Proposed_Pond-ah0ubm', 
-       'type': 'fill',
-       'paint': {
-         'fill-color': '#F26487',
-         'fill-opacity': 0.99,
-         'fill-outline-color': '#333',
-         'fill-pattern': 'bluestripe'
+         'fill-pattern': 'bluestripe',
        },
       'layout': {'visibility': 'none'}
    }, 'road-label-small');
@@ -534,10 +518,10 @@ map.on('style.load', function () {
        'source-layer': 'NRC_Existing_Pond-dogwem', 
        'type': 'fill',
        'paint': {
-         'fill-color': '#F26487',
          'fill-opacity': 0.99,
          'fill-outline-color': '#333',
-         'fill-pattern': 'bluestripe'
+         'fill-pattern': 'bluestripe',
+
        },
       'layout': {'visibility': 'visible'}
    }, 'road-label-small');
@@ -554,10 +538,10 @@ map.on('style.load', function () {
        'source-layer': 'NRC_Proposed_Easement-9ucmur', 
        'type': 'fill',
        'paint': {
-         'fill-color': '#111',
-         'fill-opacity': 0.24
+         'fill-color':'#E61856',
+         'fill-opacity': 0.5
        },
-      'layout': {'visibility': 'none'}
+      'layout': {'visibility': 'visible'}
    }, 'road-label-small');
 
     //Easement Outline
@@ -567,11 +551,11 @@ map.on('style.load', function () {
        'source-layer': 'NRC_Proposed_Easement-9ucmur', 
        'type': 'line',
        'paint': {
-         'line-color': '#111',
-         'line-opacity': 0.15,
+         'line-color': '#d3d3d3',
+         'line-opacity': 0.3,
          'line-width': 2
        },
-      'layout': {'visibility': 'none'}
+      'layout': {'visibility': 'visible'}
    }, 'road-label-small');
 
 
