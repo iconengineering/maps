@@ -1,6 +1,6 @@
 ---
 layout: default-map-2
-title: Nissen Reservoir Drainage Improvements (Working)
+title: Nissen Reservoir Drainage Improvements
 version: v0.34.0
 script: Nissen-Reservoir.js
 extra-css:
@@ -80,7 +80,7 @@ extra-css:
             <!-- Check-box to toggle layer-->
             <!--LAYER 1-->
             <p>
-              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-on" onclick="toggleTwo('ALT1', 'ALT1GRADING')" checked/>
+              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-on" onclick="toggleThree('ALT1', 'ALT1GRADING', 'EXISTINGPOND')" checked/>
               <label for="Pro1Menu" class="valign">Alternative 1</label>
             </p>
             
@@ -185,13 +185,13 @@ extra-css:
             <li class="collection-header grey-text"><em>Proposal Items</em></li>
               
               <!--Alternative Channels--> 
-              <li class="collection-item"><div>Alternative Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#007F25" /></svg></a></div></li>
+              <li class="collection-item"><div>Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#007F25" /></svg></a></div></li>
 
               <!--Alternative Grading--> 
-              <li class="collection-item"><div>Alternative Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
+              <li class="collection-item"><div>Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
 
 			        <!--Alternative 2 Pond--> 
-              <li class="collection-item"><div>Alternative 2 Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+              <li class="collection-item"><div>Proposed/Existing Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
 
               <!--Utilitiy Easement --> 
               <li class="collection-item"><div>Easement<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
@@ -209,13 +209,13 @@ extra-css:
               <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#253494" /></svg></a></div></li>
 
               <!--Floodway--> 
-              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#377ab3" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#21468E" fill-opacity=".7" /></svg></a></div></li>
 
               <!--100-Yr--> 
-              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#66c1b6" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#3DB178" fill-opacity=".7" /></svg></a></div></li>
 
               <!--500-Yr --> 
-              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#edf8b1" fill-opacity=".8"  /></svg></a></div></li>
+              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFFD4C" fill-opacity=".7" fill-outline= "fff" /></svg></a></div></li>
             
 
 
