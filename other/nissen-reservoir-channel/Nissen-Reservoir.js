@@ -511,6 +511,21 @@ map.on('style.load', function () {
       'layout': {'visibility': 'none'}
    }, 'road-label-small');
 
+        //Propsed Pond
+    map.addLayer({
+       'id': 'PROPPOND2',
+       'source': 'propPond',
+       'source-layer': 'NRC_Proposed_Pond-ah0ubm', 
+       'type': 'fill',
+       'paint': {
+         'fill-color': '#F26487',
+         'fill-opacity': 0.99,
+         'fill-outline-color': '#333',
+         'fill-pattern': 'bluestripe'
+       },
+      'layout': {'visibility': 'none'}
+   }, 'road-label-small');
+
 
     //Existing Pond
     map.addLayer({
