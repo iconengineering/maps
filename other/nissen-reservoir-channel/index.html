@@ -3,6 +3,8 @@ layout: default-map-2
 title: Nissen Reservoir Drainage Improvements (Working)
 version: v0.34.0
 script: Nissen-Reservoir.js
+extra-css:
+ - app_v2.css
 ---
 
 <!--Begin Main Menu -->
@@ -15,7 +17,7 @@ script: Nissen-Reservoir.js
      <!--Base Map Menu -->
    	 <li>
         <a class="collapsible-header white">Basemap<i class="material-icons">map</i></a>
-        <div class="collapsible-body grey-text text-darken-2">
+        <div class="collapsible-body grey-text text-darken-2" >
           <form id="menu">
             <p class="narrow">
               <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
@@ -90,10 +92,10 @@ script: Nissen-Reservoir.js
 
             <!--LAYER 3-->
             <p>
-              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleLayer('EASEMENTS')"/>
+              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleTwo('EASEMENTS', 'EASEMENTS_OUTLINE')"/>
               <label for="Pro3Menu" class="valign">Easement</label>
           
-          	<br> Alternative 1 and 2 </br>
+          	<p class="note" > Alternative 1 and 2 </p>
            </p>
 
              <!--LAYER 4-->
@@ -137,6 +139,11 @@ script: Nissen-Reservoir.js
           </div>
          </li>
         
+                  <div class="mdl-grid">
+    <a id="clear" class="waves-effect waves-light btn">Clear All Layers</a>
+    </div>
+      
+
 
         </ul>
        </div>   
@@ -155,13 +162,13 @@ script: Nissen-Reservoir.js
             <li class="collection-header grey-text"><em>Base Layers</em></li>
               
               <!--Boundary--> 
-              <li class="collection-item"><div>Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="3" stroke="#161616" /></svg></a></div></li>
+              <li class="collection-item"><div>Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#161616" /></svg></a></div></li>
 
               <!--Contour--> 
-              <li class="collection-item"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.8"  stroke="rgb(195,195,195)" /></svg></a></div></li>
+              <li class="collection-item"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2"  stroke="rgb(195,195,195)" /></svg></a></div></li>
 
               <!--Parcels--> 
-              <li class="collection-item"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke="#430064" /></svg></a></div></li>
+              <li class="collection-item"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#430064" /></svg></a></div></li>
 
               <!--Existing SAN--> 
               <li class="collection-item"><div>Sanitary Sewer and Manhole<a href="#!" class="secondary-content"><img src="san-line-node.svg" style="height: 21px;"></a></div></li>
@@ -170,27 +177,27 @@ script: Nissen-Reservoir.js
               <li class="collection-item"><div>Domestic Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#434499" /></svg></a></div></li> 
 
                <!--Existing WTR REUSE--> 
-              <li class="collection-item"><div>Reuse Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#BF00BC" /></svg></a></div></li>
+              <li class="collection-item"><div>Reuse Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#ff0099" /></svg></a></div></li>
               
 
 
             <!--Project Items legend-->
             <li class="collection-header grey-text"><em>Proposal Items</em></li>
               
-              <!--LAYER 1--> 
-              <li class="collection-item"><div>Alternative Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+              <!--Alternative Channels--> 
+              <li class="collection-item"><div>Alternative Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#007F25" /></svg></a></div></li>
 
-              <!--LAYER 2--> 
-              <li class="collection-item"><div>Alternative Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
+              <!--Alternative Grading--> 
+              <li class="collection-item"><div>Alternative Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
 
-			  <!--LAYER 2--> 
+			        <!--Alternative 2 Pond--> 
               <li class="collection-item"><div>Alternative 2 Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
 
-              <!--LAYER 3 --> 
+              <!--Utilitiy Easement --> 
               <li class="collection-item"><div>Easement<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.3" stroke-dasharray= "3, 3"  stroke="rgb(230,0,25)" /></svg></a></div></li>
 
-              <!--LAYER 4 --> 
-               <li class="collection-item"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="7" stroke="#161616" /></svg></a></div></li>
+              <!--Cultverts --> 
+               <li class="collection-item"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="5" stroke="#161616" /></svg></a></div></li>
           
           	  
 
@@ -199,16 +206,16 @@ script: Nissen-Reservoir.js
             <li class="collection-header grey-text"><em>Floodplain Layers</em></li>
               
               <!--Stream Centerline--> 
-              <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.5" stroke="#253494" /></svg></a></div></li>
+              <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#253494" /></svg></a></div></li>
 
               <!--Floodway--> 
-              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#377ab3" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#377ab3" fill-opacity=".8" /></svg></a></div></li>
 
               <!--100-Yr--> 
-              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#66c1b6" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#66c1b6" fill-opacity=".8" /></svg></a></div></li>
 
               <!--500-Yr --> 
-              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="#edf8b1" fill-opacity=".8"  /></svg></a></div></li>
+              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#edf8b1" fill-opacity=".8"  /></svg></a></div></li>
             
 
 
@@ -216,6 +223,10 @@ script: Nissen-Reservoir.js
         </div>
       </li>
 
+
     </ul>
+
+
+
   </li>
 </ul>

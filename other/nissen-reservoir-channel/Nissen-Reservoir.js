@@ -29,6 +29,39 @@ for (var i = 0; i < inputs.length; i++) {
 }
 
 
+$(document).ready(function() {
+    $("#clear").click(function() {
+        var checkBoxes = $("input[type=checkbox]");
+        checkBoxes.prop("checked", false);
+        map.setLayoutProperty('majorContour','visibility', 'none');
+        map.setLayoutProperty('minorContour','visibility', 'none');
+        map.setLayoutProperty('PROP_LINES','visibility', 'none');
+        map.setLayoutProperty('contourLabels','visibility', 'none');
+        map.setLayoutProperty('FLOODWAY','visibility', 'none');
+        map.setLayoutProperty('STREAMS','visibility', 'none');
+        map.setLayoutProperty('100_YR','visibility', 'none');
+        map.setLayoutProperty('500_YR','visibility', 'none');
+        map.setLayoutProperty('SAN','visibility', 'none');
+        map.setLayoutProperty('SAN_NODES','visibility', 'none');
+        map.setLayoutProperty('SAN_LABELS','visibility', 'none');
+        map.setLayoutProperty('WTR','visibility', 'none');
+        map.setLayoutProperty('WTR_LABELS','visibility', 'none');
+        map.setLayoutProperty('PROP_LINES','visibility', 'none');
+        map.setLayoutProperty('BOUNDARY','visibility', 'none');
+        map.setLayoutProperty('BOUNDARY_LINE','visibility', 'none');
+        map.setLayoutProperty('ALT1','visibility', 'none');
+        map.setLayoutProperty('ALT2','visibility', 'none');
+        map.setLayoutProperty('ALT1GRADING','visibility', 'none');
+        map.setLayoutProperty('ALT2GRADING','visibility', 'none');
+        map.setLayoutProperty('EASEMENTS','visibility', 'none');
+        map.setLayoutProperty('EASEMENTS_OUTLINE','visibility', 'none');
+        map.setLayoutProperty('PROPPOND','visibility', 'none');
+        map.setLayoutProperty('CULVERTS','visibility', 'none');
+
+    });
+});
+
+
 //Create Map
 map.on('style.load', function () {
 
@@ -206,7 +239,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
       'paint': {
-        'fill-opacity': 0.35,
+        'fill-opacity': 0.32,
         'fill-color': '#377ab3',
         'fill-outline-color': '#fff',
       }
@@ -243,7 +276,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.35,
+        'fill-opacity': 0.32,
         'fill-outline-color': '#fff',
         'fill-color': '#66c1b6',
       }
@@ -261,7 +294,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.35,
+        'fill-opacity': 0.32,
         'fill-outline-color': '#fff',
         'fill-color': '#edf8b1',
       }
@@ -277,6 +310,7 @@ map.on('style.load', function () {
       'paint': {
          'line-color': '#BF2700', 
          'line-width': 2.6,
+         'line-opacity': 0.65
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');
@@ -284,13 +318,14 @@ map.on('style.load', function () {
 
     //Existing SAN Nodes
     map.addLayer({
-      'id': 'SAN_NODE',                               
+      'id': 'SAN_NODES',                               
       'source': 'existingSanNodes',
       'source-layer': 'NRC_SAN_NODES-ct9tc7',     
       'type': 'circle',        
       'paint': {
          'circle-color': '#BF2700', 
          'circle-radius': 5.1,
+         'circle-opacity': 0.65
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small')
@@ -309,6 +344,7 @@ map.on('style.load', function () {
          'text-size': 12,
           },
        'paint': {
+         'text-opacity': 0.65,
          'text-color': '#BF2700',
          'text-halo-color': 'rgb(250,250,250 )',
          'text-halo-width': 0.7
@@ -328,10 +364,11 @@ map.on('style.load', function () {
           property: 'Type',
           type: 'categorical',
           stops: [
-            ['Domestic Water', '#0007BF'],
-            ['Reuse Water', '#BF00BC' ]
+            ['Reuse Water', '#ff0099' ],
+            ['Domestic Water', '#0007BF']
             ]
-          } 
+          },
+          'line-opacity': 0.65
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');
@@ -357,11 +394,12 @@ map.on('style.load', function () {
             type: 'categorical',
             stops: [
               ['Domestic Water', '#0007BF'],
-              ['Reuse Water', '#A600BF'],
+              ['Reuse Water', '#ff0099'],
               ]
             },
          'text-halo-color': 'rgb(255,255,255)',
-         'text-halo-width': 0.7
+         'text-halo-width': 0.7,
+         'text-opacity': 0.65
         }
     },'road-label-small');
 
@@ -389,8 +427,8 @@ map.on('style.load', function () {
         'source-layer': 'NRC_Alt_1-8cnnhc', 
         'type': 'fill',
         'paint': {
-          'fill-color': 'rgb(100,0,0)',
-          'fill-opacity': .7
+          'fill-color': '#007F25',
+          'fill-opacity': 0.88
         },
        'layout': {'visibility': 'visible'}
     }, 'road-label-small');
@@ -408,9 +446,9 @@ map.on('style.load', function () {
             'line-cap': 'round'
         },
         'paint': { 
-            'line-width': 0.8,
-            'line-color': '#E9E200',
-            'line-opacity': 0.9
+            'line-width': 0.5,
+            'line-color': '#FFED00',
+            'line-opacity': 0.95
         }
     },'road-label-small');
     
@@ -423,8 +461,8 @@ map.on('style.load', function () {
         'source-layer': 'NRC_Alt_2-39wt3n', 
         'type': 'fill',
         'paint': {
-          'fill-color': 'rgb(100,0,0)',
-          'fill-opacity': .7
+          'fill-color': '#007F25',
+          'fill-opacity': 0.88
         },
        'layout': {'visibility': 'none'}
     }, 'road-label-small');
@@ -442,9 +480,9 @@ map.on('style.load', function () {
             'line-cap': 'round'
         },
         'paint': { 
-            'line-width': 0.8,
-            'line-color': '#E9E200',
-            'line-opacity': 0.9
+            'line-width': 0.5,
+            'line-color': '#FFED00',
+            'line-opacity': 0.95
         }
     },'road-label-small');
     
@@ -456,11 +494,13 @@ map.on('style.load', function () {
        'type': 'fill',
        'paint': {
          'fill-color': '#F26487',
-         'fill-opacity': 0.5,
-         'fill-outline-color': '#333'
+         'fill-opacity': 0.99,
+         'fill-outline-color': '#333',
+         'fill-pattern': 'bluestripe'
        },
       'layout': {'visibility': 'none'}
    }, 'road-label-small');
+
 
 
 
@@ -471,7 +511,22 @@ map.on('style.load', function () {
        'source-layer': 'NRC_Proposed_Easement-9ucmur', 
        'type': 'fill',
        'paint': {
-         'fill-pattern': 'bluestripe'
+         'fill-color': '#111',
+         'fill-opacity': 0.24
+       },
+      'layout': {'visibility': 'none'}
+   }, 'road-label-small');
+
+    //Easement Outline
+    map.addLayer({
+       'id': 'EASEMENTS_OUTLINE',
+       'source': 'propEasements',
+       'source-layer': 'NRC_Proposed_Easement-9ucmur', 
+       'type': 'line',
+       'paint': {
+         'line-color': '#111',
+         'line-opacity': 0.15,
+         'line-width': 2
        },
       'layout': {'visibility': 'none'}
    }, 'road-label-small');
@@ -502,7 +557,7 @@ map.on('style.load', function () {
       'paint': {
          'line-color': '#161616', 
          'line-opacity': 0.75,
-         'line-width': 4.0
+         'line-width': 3.0
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');

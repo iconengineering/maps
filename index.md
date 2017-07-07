@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Here are some maps.
+## List of ICON's Web Maps
 
 #### Boulder
 
@@ -47,6 +47,9 @@ layout: default
 [Manor House](other/manor-house)
 
 [HPFMD Collector](hpfmd/collector)
+
+#### 2017 Proposals 
+[Nissen Reservoir Channel](other/nissen-reservoir-channel)
 
 #### Testing
 
