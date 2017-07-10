@@ -29,39 +29,6 @@ for (var i = 0; i < inputs.length; i++) {
 }
 
 
-$(document).ready(function() {
-    $("#clear").click(function() {
-        var checkBoxes = $("input[type=checkbox]");
-        checkBoxes.prop("checked", false);
-        map.setLayoutProperty('majorContour','visibility', 'none');
-        map.setLayoutProperty('minorContour','visibility', 'none');
-        map.setLayoutProperty('PROP_LINES','visibility', 'none');
-        map.setLayoutProperty('contourLabels','visibility', 'none');
-        map.setLayoutProperty('FLOODWAY','visibility', 'none');
-        map.setLayoutProperty('STREAMS','visibility', 'none');
-        map.setLayoutProperty('100_YR','visibility', 'none');
-        map.setLayoutProperty('500_YR','visibility', 'none');
-        map.setLayoutProperty('SAN','visibility', 'none');
-        map.setLayoutProperty('SAN_NODES','visibility', 'none');
-        map.setLayoutProperty('SAN_LABELS','visibility', 'none');
-        map.setLayoutProperty('WTR','visibility', 'none');
-        map.setLayoutProperty('WTR_LABELS','visibility', 'none');
-        map.setLayoutProperty('PROP_LINES','visibility', 'none');
-        map.setLayoutProperty('BOUNDARY','visibility', 'none');
-        map.setLayoutProperty('BOUNDARY_LINE','visibility', 'none');
-        map.setLayoutProperty('ALT1','visibility', 'none');
-        map.setLayoutProperty('ALT2','visibility', 'none');
-        map.setLayoutProperty('ALT1GRADING','visibility', 'none');
-        map.setLayoutProperty('ALT2GRADING','visibility', 'none');
-        map.setLayoutProperty('EASEMENTS','visibility', 'none');
-        map.setLayoutProperty('EASEMENTS_OUTLINE','visibility', 'none');
-        map.setLayoutProperty('PROPPOND','visibility', 'none');
-        map.setLayoutProperty('EXISTINGPOND','visibility', 'none');
-        map.setLayoutProperty('CULVERTS','visibility', 'none');
-
-    });
-});
-
 
 //Create Map
 map.on('style.load', function () {
@@ -511,6 +478,29 @@ map.on('style.load', function () {
    }, 'road-label-small');
 
 
+
+  map.addLayer({
+      'id': 'propPondLabels',
+      'type': 'symbol',
+      'source': 'propPond',
+      'layout': {
+          'visibility': 'visible',
+        'text-field': 'Existing Pond',
+        'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': 20
+      },
+      'paint': {
+        'text-color': '#000',
+        'text-halo-color': 'rgb(255,255,255)',
+        'text-halo-width': 0.75
+      }
+  }, 'road-label-small');
+
+
+
+
+
+
     //Existing Pond
     map.addLayer({
        'id': 'EXISTINGPOND',
@@ -521,10 +511,28 @@ map.on('style.load', function () {
          'fill-opacity': 0.99,
          'fill-outline-color': '#333',
          'fill-pattern': 'bluestripe',
-
        },
       'layout': {'visibility': 'visible'}
    }, 'road-label-small');
+
+
+
+  map.addLayer({
+      'id': 'existingPondLabels',
+      'type': 'symbol',
+      'source': 'existingPond',
+      'layout': {
+          'visibility': 'visible',
+        'text-field': 'Existing Pond',
+        'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': 20
+      },
+      'paint': {
+        'text-color': '#000',
+        'text-halo-color': 'rgb(255,255,255)',
+        'text-halo-width': 0.75
+      }
+  }, 'road-label-small');
 
 
 
@@ -623,6 +631,39 @@ map.on('mousemove', function (k) {
 });
 */
 
+
+$(document).ready(function() {
+    $("#clear").click(function() {
+        var checkBoxes = $("input[type=checkbox]");
+        checkBoxes.prop("checked", false);
+        map.setLayoutProperty('majorContour','visibility', 'none');
+        map.setLayoutProperty('minorContour','visibility', 'none');
+        map.setLayoutProperty('PROP_LINES','visibility', 'none');
+        map.setLayoutProperty('contourLabels','visibility', 'none');
+        map.setLayoutProperty('FLOODWAY','visibility', 'none');
+        map.setLayoutProperty('STREAMS','visibility', 'none');
+        map.setLayoutProperty('100_YR','visibility', 'none');
+        map.setLayoutProperty('500_YR','visibility', 'none');
+        map.setLayoutProperty('SAN','visibility', 'none');
+        map.setLayoutProperty('SAN_NODES','visibility', 'none');
+        map.setLayoutProperty('SAN_LABELS','visibility', 'none');
+        map.setLayoutProperty('WTR','visibility', 'none');
+        map.setLayoutProperty('WTR_LABELS','visibility', 'none');
+        map.setLayoutProperty('PROP_LINES','visibility', 'none');
+        map.setLayoutProperty('BOUNDARY','visibility', 'none');
+        map.setLayoutProperty('BOUNDARY_LINE','visibility', 'none');
+        map.setLayoutProperty('ALT1','visibility', 'none');
+        map.setLayoutProperty('ALT2','visibility', 'none');
+        map.setLayoutProperty('ALT1GRADING','visibility', 'none');
+        map.setLayoutProperty('ALT2GRADING','visibility', 'none');
+        map.setLayoutProperty('EASEMENTS','visibility', 'none');
+        map.setLayoutProperty('EASEMENTS_OUTLINE','visibility', 'none');
+        map.setLayoutProperty('PROPPOND','visibility', 'none');
+        map.setLayoutProperty('EXISTINGPOND','visibility', 'none');
+        map.setLayoutProperty('CULVERTS','visibility', 'none');
+
+    });
+});
 
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');

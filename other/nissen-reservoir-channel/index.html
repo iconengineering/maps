@@ -116,25 +116,25 @@ extra-css:
          
             <!--Profile Baseline-->
             <p>
-              <input name="streamMenu" type="checkbox" id="streamMenu" class="layer-off" onclick="toggleLayer('STREAMS')" checked/>
+              <input name="streamMenu" type="checkbox" id="streamMenu" class="layer-on" onclick="toggleLayer('STREAMS')" checked/>
               <label for="streamMenu" class="valign">Channel Centerline</label>
             </p>
 
             <!--Floodway-->
             <p>
-              <input name="fwMenu" type="checkbox" id="fwMenu" class="layer-off" onclick="toggleLayer('FLOODWAY')" checked/>
+              <input name="fwMenu" type="checkbox" id="fwMenu" class="layer-on" onclick="toggleLayer('FLOODWAY')" checked/>
               <label for="fwMenu" class="valign">Floodway</label>
             </p>
 
             <!--100-Yr -->
             <p>
-              <input name="100Menu" type="checkbox" id="100Menu" class="layer-off" onclick="toggleLayer('100_YR')" checked/>
+              <input name="100Menu" type="checkbox" id="100Menu" class="layer-on" onclick="toggleLayer('100_YR')" checked/>
               <label for="100Menu" class="valign">100-Yr Floodplain</label>
             </p>
 
             <!--500-Yr-->
             <p>
-              <input name="500Menu" type="checkbox" id="500Menu" class="layer-off" onclick="toggleLayer('500_YR')" checked/>
+              <input name="500Menu" type="checkbox" id="500Menu" class="layer-on" onclick="toggleLayer('500_YR')" checked/>
               <label for="500Menu" class="valign">500-Yr Floodplain</label>
             </p>
           </div>
@@ -191,8 +191,19 @@ extra-css:
               <!--Alternative Grading--> 
               <li class="collection-item"><div>Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
 
-			        <!--Alternative 2 Pond--> 
-              <li class="collection-item"><div>Existing/Proposed Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#999" /></svg></a></div></li>
+			        <!--Alternative 2 Pond-->
+              <li class="collection-item"><div>Existing/Proposed Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.5" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
+                </g></svg></a></div></li>
 
               <!--Utilitiy Easement --> 
               <li class="collection-item"><div>Easements<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#E61856" fill-opacity= ".5" /></svg></a></div></li>
