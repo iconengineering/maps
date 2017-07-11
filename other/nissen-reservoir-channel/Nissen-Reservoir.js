@@ -437,23 +437,6 @@ map.on('style.load', function () {
     }, 'road-label-small');
 
 
-    //Alt 1 Pathway
-    map.addLayer({
-        'id': 'ALT1PATHWAY',
-        'type': 'line',
-        'source': 'alt1Pathway',
-        'source-layer': 'NRC_Alt_1_Pathway-96xr8v',
-        'layout': {
-            'visibility': 'none',
-            'line-join': 'round',
-            'line-cap': 'round'
-        },
-        'paint': { 
-            'line-width': 5,
-            'line-color': '#545454',
-            'line-opacity': 0.95
-        }
-    },'road-label-small');
 
     //Alt 1 Grading
     map.addLayer({
@@ -518,7 +501,7 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': { 
-            'line-width': 3.5,
+            'line-width': 5.5,
             'line-color': '#545454',
             'line-opacity': 0.95
         }
@@ -648,6 +631,26 @@ map.on('style.load', function () {
        },
       'layout': {'visibility': 'none'}
    }, 'road-label-small');
+
+
+        //Alt 1 Pathway
+    map.addLayer({
+        'id': 'ALT1PATHWAY',
+        'type': 'line',
+        'source': 'alt1Pathway',
+        'source-layer': 'NRC_Alt_1_Pathway-96xr8v',
+        'layout': {
+            'visibility': 'none',
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': { 
+            'line-width': 5.5,
+            'line-color': '#545454',
+            'line-opacity': 0.95
+        }
+    },'road-label-small');
+
 
 
 
