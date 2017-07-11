@@ -127,6 +127,17 @@ map.on('style.load', function () {
       'url': 'mapbox://iconeng.1e8j1t4j'
   });
 
+  map.addSource('alt1Pathway',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.25bsa1zf'
+  });
+
+  map.addSource('alt2Pathway',{
+      'type': 'vector',
+      'url': 'mapbox://iconeng.85x3283x'
+  });
+
+
 
 //Boundary Fill
     map.addLayer({
@@ -397,19 +408,52 @@ map.on('style.load', function () {
 
 
 
-    //Alt 1
+    //Alt 1 Banks
     map.addLayer({
         'id': 'ALT1',
         'source': 'alt1',
         'source-layer': 'NRC_Alt_1-8cnnhc', 
+        'filter': ['==', 'OBJECTID', 3],
         'type': 'fill',
         'paint': {
-          'fill-color': '#007F25',
-          'fill-opacity': 0.88
+          'fill-color': '#00B00B',
+          'fill-opacity': 0.65,
         },
-       'layout': {'visibility': 'visible'}
+       'layout': {'visibility': 'none'}
     }, 'road-label-small');
 
+        //Alt 1 Channel
+    map.addLayer({
+        'id': 'ALT1_CHANNEL',
+        'source': 'alt1',
+        'source-layer': 'NRC_Alt_1-8cnnhc', 
+        'filter': ['==', 'OBJECTID', 4],
+        'type': 'fill',
+        'paint': {
+          'fill-color': '#003605',
+          'fill-opacity': 0.88
+        },
+       'layout': {'visibility': 'none'}
+    }, 'road-label-small');
+
+
+    //Alt 1 Pathway
+    map.addLayer({
+        'id': 'ALT1PATHWAY',
+        'type': 'line',
+        'source': 'alt1Pathway',
+        'source-layer': 'NRC_Alt_1_Pathway-96xr8v',
+        'layout': {
+            'visibility': 'none',
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': { 
+            'line-width': 5,
+            'line-color': '#545454',
+            'line-opacity': 0.95
+        }
+    },'road-label-small');
 
     //Alt 1 Grading
     map.addLayer({
@@ -420,7 +464,8 @@ map.on('style.load', function () {
         'layout': {
             'visibility': 'visible',
             'line-join': 'round',
-            'line-cap': 'round'
+            'line-cap': 'round',
+            'visibility': 'none'
         },
         'paint': { 
             'line-width': 0.5,
@@ -431,18 +476,55 @@ map.on('style.load', function () {
     
 
 
-    //Alt 2
+
+    //Alt 2 Banks
     map.addLayer({
         'id': 'ALT2',
         'source': 'alt2',
         'source-layer': 'NRC_Alt_2-39wt3n', 
+        'filter': ['==', 'OBJECTID', 1],
         'type': 'fill',
         'paint': {
-          'fill-color': '#007F25',
+          'fill-color': '#00B00B',
+          'fill-opacity': 0.65,
+        },
+       'layout': {'visibility': 'none'}
+    }, 'road-label-small');
+
+        //Alt 2 Channel
+    map.addLayer({
+        'id': 'ALT2_CHANNEL',
+        'source': 'alt2',
+        'source-layer': 'NRC_Alt_2-39wt3n', 
+        'filter': ['==', 'OBJECTID', 2],
+        'type': 'fill',
+        'paint': {
+          'fill-color': '#003605',
           'fill-opacity': 0.88
         },
        'layout': {'visibility': 'none'}
     }, 'road-label-small');
+
+
+    //Alt 2 Pathway
+    map.addLayer({
+        'id': 'ALT2PATHWAY',
+        'type': 'line',
+        'source': 'alt2Pathway',
+        'source-layer': 'NRC_Alt_2_Pathway-cbfkq8',
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round',
+            'visibility': 'none'
+        },
+        'paint': { 
+            'line-width': 3.5,
+            'line-color': '#545454',
+            'line-opacity': 0.95
+        }
+    },'road-label-small');
+
+
 
 
     //Alt 2 Grading
@@ -454,7 +536,8 @@ map.on('style.load', function () {
         'layout': {
             'visibility': 'none',
             'line-join': 'round',
-            'line-cap': 'round'
+            'line-cap': 'round',
+            'visibility': 'none'
         },
         'paint': { 
             'line-width': 0.5,
@@ -478,7 +561,7 @@ map.on('style.load', function () {
    }, 'road-label-small');
 
 
-
+/*
   map.addLayer({
       'id': 'propPondLabels',
       'type': 'symbol',
@@ -495,7 +578,7 @@ map.on('style.load', function () {
         'text-halo-width': 0.75
       }
   }, 'road-label-small');
-
+*/
 
 
 
@@ -512,11 +595,11 @@ map.on('style.load', function () {
          'fill-outline-color': '#333',
          'fill-pattern': 'bluestripe',
        },
-      'layout': {'visibility': 'visible'}
+      'layout': {'visibility': 'none'}
    }, 'road-label-small');
 
 
-
+/*
   map.addLayer({
       'id': 'existingPondLabels',
       'type': 'symbol',
@@ -534,7 +617,7 @@ map.on('style.load', function () {
       }
   }, 'road-label-small');
 
-
+*/
 
 
 
@@ -549,7 +632,7 @@ map.on('style.load', function () {
          'fill-color':'#E61856',
          'fill-opacity': 0.5
        },
-      'layout': {'visibility': 'visible'}
+      'layout': {'visibility': 'none'}
    }, 'road-label-small');
 
     //Easement Outline
@@ -563,7 +646,7 @@ map.on('style.load', function () {
          'line-opacity': 0.3,
          'line-width': 2
        },
-      'layout': {'visibility': 'visible'}
+      'layout': {'visibility': 'none'}
    }, 'road-label-small');
 
 
@@ -654,8 +737,12 @@ $(document).ready(function() {
         map.setLayoutProperty('BOUNDARY_LINE','visibility', 'none');
         map.setLayoutProperty('ALT1','visibility', 'none');
         map.setLayoutProperty('ALT2','visibility', 'none');
+        map.setLayoutProperty('ALT1_CHANNEL','visibility', 'none');
+        map.setLayoutProperty('ALT2_CHANNEL','visibility', 'none');
         map.setLayoutProperty('ALT1GRADING','visibility', 'none');
         map.setLayoutProperty('ALT2GRADING','visibility', 'none');
+        map.setLayoutProperty('ALT1PATHWAY','visibility', 'none');
+        map.setLayoutProperty('ALT2PATHWAY','visibility', 'none');
         map.setLayoutProperty('EASEMENTS','visibility', 'none');
         map.setLayoutProperty('EASEMENTS_OUTLINE','visibility', 'none');
         map.setLayoutProperty('PROPPOND','visibility', 'none');

@@ -81,19 +81,19 @@ extra-css:
             <!-- Check-box to toggle layer-->
             <!--LAYER 1-->
             <p>
-              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-on" onclick="toggleThree('ALT1', 'ALT1GRADING', 'EXISTINGPOND')" checked/>
+              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-off" onclick="toggleFive('ALT1', 'ALT1_CHANNEL', 'Alt1PATHWAY', 'ALT1GRADING', 'EXISTINGPOND')" />
               <label for="Pro1Menu" class="valign">Alternative 1</label>
             </p>
             
             <!--LAYER 2-->
             <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleFour('ALT2', 'ALT2GRADING', 'PROPPOND', 'PROPPOND2')"/>
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleFive('ALT2', 'ALT2GRADING', 'PROPPOND', 'Alt2PATHWAY','ALT2_CHANNEL')"/>
               <label for="Pro2Menu" class="valign">Alternative 2</label>
             </p>
 
             <!--LAYER 3-->
             <p>
-              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-on" onclick="toggleTwo('EASEMENTS', 'EASEMENTS_OUTLINE')" checked />
+              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleTwo('EASEMENTS', 'EASEMENTS_OUTLINE')" />
               <label for="Pro3Menu" class="valign">Easement</label>
           
           	<p class="note" > Alternative 1 and 2 </p>
@@ -103,6 +103,9 @@ extra-css:
             <p>
               <input name="Pro4Menu" type="checkbox" id="Pro4Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
               <label for="Pro4Menu" class="valign">Culverts</label>
+
+           <p class="note" > Alternative 1 and 2 </p>
+           </p>
             </p>          
           </div>   
          </li>
@@ -175,7 +178,7 @@ extra-css:
               <li class="collection-item"><div>Sanitary Sewer and Manhole<a href="#!" class="secondary-content"><img src="san-line-node.svg" style="height: 21px;"></a></div></li>
             
              <!--Existing WTR DOMESTIC--> 
-              <li class="collection-item"><div>Domestic Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#434499" /></svg></a></div></li> 
+              <li class="collection-item"><div>Domestic Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#0007BF" /></svg></a></div></li>  
 
                <!--Existing WTR REUSE--> 
               <li class="collection-item"><div>Reuse Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#7A0050" /></svg></a></div></li>
@@ -186,8 +189,14 @@ extra-css:
             <li class="collection-header grey-text"><em>Proposal Items</em></li>
               
               <!--Alternative Channels--> 
-              <li class="collection-item"><div>Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#007F25" /></svg></a></div></li>
+              <li class="collection-item"><div>Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#003605" /></svg></a></div></li>
+             
+              <!--Alternative Banking-->
+              <li class="collection-item"><div>Channel Banks<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#00B00B" fill-opacity= ".65" /></svg></a></div></li>
 
+              <!--Alternative Grading--> 
+              <li class="collection-item"><div>Pathway<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#545454" /></svg></a></div></li>
+                          
               <!--Alternative Grading--> 
               <li class="collection-item"><div>Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
 
@@ -206,7 +215,7 @@ extra-css:
                 </g></svg></a></div></li>
 
               <!--Utilitiy Easement --> 
-              <li class="collection-item"><div>Easements<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#E61856" fill-opacity= ".5" /></svg></a></div></li>
+              <li class="collection-item"><div>Easements<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#E61856" fill-opacity= ".4"  /></svg></a></div></li>
 
 
               <!--Cultverts --> 
@@ -222,13 +231,13 @@ extra-css:
               <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#0D1178" /></svg></a></div></li>
 
               <!--Floodway--> 
-              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#21468E" fill-opacity=".7" /></svg></a></div></li>
+              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#21468E" fill-opacity=".45" /></svg></a></div></li>
 
               <!--100-Yr--> 
-              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#3DB178" fill-opacity=".7" /></svg></a></div></li>
+              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#3DB178" fill-opacity=".45" /></svg></a></div></li>
 
               <!--500-Yr --> 
-              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFFD4C" fill-opacity=".7" fill-outline= "fff" /></svg></a></div></li>
+              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFFD4C" fill-opacity=".45" /></svg></a></div></li>
             
 
 
