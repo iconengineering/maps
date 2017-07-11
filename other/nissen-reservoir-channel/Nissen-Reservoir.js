@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 //Satellite Steets
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 15.8,
     hash: true,
     center: [-105.0403, 39.9158]
@@ -147,7 +147,7 @@ map.on('style.load', function () {
       'type': 'fill',        
       'paint': {
          'fill-color': '#161616', 
-         'fill-opacity': 0.17
+         'fill-opacity': 0.1
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');
@@ -165,13 +165,15 @@ map.on('style.load', function () {
             'visibility': 'visible',
             'line-join': 'round',
             'line-cap': 'round'
-        },
-        'paint': { 
-            'line-width': 0.7,
+          },
+        'paint': {
+          'line-width': {
+              "stops": [[15, 0], [17, .5], [19, 1]]
+          },
             'line-color': '#424242',
-            'line-opacity': 0.9
+            'line-opacity':.8
         }
-    },'road-label-small');
+    }, 'road-label-small');
 
     map.addLayer({
         'id': 'majorContour',
@@ -179,17 +181,18 @@ map.on('style.load', function () {
         'source': 'contours',
         'filter': ['==', 'Index', 5],
         'layout': {
-            'visibility': 'visible',
-            'line-join': 'round',
-            'line-cap': 'round'
+          'visibility': 'visible',
+          'line-join': 'round',
+          'line-cap': 'round'
         },
-        'paint': { 
-            'line-width': 2,
-            'line-color': '#484848',
-            'line-opacity': 0.9
+        'paint': {
+          'line-width': {
+              "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+          },
+            'line-color': '#424242',
+            'line-opacity':.8
         }
-    },'road-label-small');
-    
+    }, 'road-label-small');
 
   map.addLayer({
       'id': 'contourLabels',
@@ -202,13 +205,14 @@ map.on('style.load', function () {
         'text-field': '{CONTOUR}',
         'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
         'text-size': {
-          "stops": [[15,12],[17,15],[19,17]]
+          "stops": [[15,9],[17,12],[19,14]]
         }
       },
       'paint': {
         'text-color': '#424242',
-        'text-halo-color': 'rgb(255,255,255)',
-        'text-halo-width': 0.75
+        'text-halo-color': 'rgba(255,255,255,0.9)',
+        'text-halo-width': 1,
+        'text-halo-blur': .2
       }
   }, 'road-label-small');
 
@@ -224,9 +228,9 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
       'paint': {
-        'fill-opacity': 0.23,
-        'fill-color': '#21468E',
-        'fill-outline-color': '#fff',
+        'fill-opacity': 0.5,
+        'fill-color': '#417190',
+        'fill-outline-color': '#417190',
       }
   }, 'road-label-small');
 
@@ -246,9 +250,9 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.23,
-        'fill-outline-color': '#fff',
-        'fill-color': '#3DB178'
+        'fill-opacity': 0.5,
+        'fill-outline-color': '#7ca4b3',
+        'fill-color': '#7ca4b3'
         ,
       }
   }, 'road-label-small');
@@ -265,9 +269,9 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.23,
-        'fill-outline-color': '#fff',
-        'fill-color': '#FFFD4C',
+        'fill-opacity': 0.5,
+        'fill-outline-color': '#bad9dd',
+        'fill-color': '#bad9dd',
       }
   }, 'road-label-small');
 
@@ -282,7 +286,7 @@ map.on('style.load', function () {
       },
       'paint': {
           'line-width': 3.0,
-          'line-color': '#0D1178',
+          'line-color': '#003b7f',
           'line-opacity': 0.65
       }
     },'road-label-small');
