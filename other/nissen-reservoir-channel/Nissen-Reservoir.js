@@ -7,6 +7,8 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 15.8,
+    minZoom:12,
+    maxZoom:19,
     hash: true,
     center: [-105.0403, 39.9158]
 });
@@ -37,6 +39,11 @@ map.on('style.load', function () {
   map.addSource('contours', {
       'type': 'geojson',
       'data': 'NRC_contour_web.geojson'
+  });
+
+  map.addSource('mapLabels2', {
+      'type': 'geojson',
+      'data': 'NRC_MapLabels2.geojson'
   });
 
 
@@ -232,7 +239,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
       'paint': {
-        'fill-opacity': 0.5,
+        'fill-opacity': 0.63,
         'fill-color': '#254061',
         'fill-outline-color': '#254061',
       }
@@ -254,7 +261,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '1.0 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.5,
+        'fill-opacity': 0.63,
         'fill-outline-color': '#7ca4b3',
         'fill-color': '#7ca4b3'
         ,
@@ -273,7 +280,7 @@ map.on('style.load', function () {
       'type': 'fill',
       'filter': ['==', 'ZONE_SUBTY', '0.2 PCT ANNUAL CHANCE FLOOD HAZARD'],
       'paint': {
-        'fill-opacity': 0.5,
+        'fill-opacity': 0.63,
         'fill-outline-color': '#bad9dd',
         'fill-color': '#bad9dd',
       }
@@ -696,22 +703,34 @@ map.on('style.load', function () {
   map.addLayer({
       'id': 'MAPLABELS',
       'type': 'symbol',
-      'source': 'mapLabels',
-      'source-layer': 'NRC_Map_Labels-atl12v', 
+      'source': 'mapLabels2',
+      //'source-layer': 'NRC_Map_Labels-atl12v', 
       'layout': {
+        
+        'text-allow-overlap': true,
         'visibility': 'visible',
         'symbol-placement': 'line',
         'text-field': '{Name}',
         'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
-        'text-size': 30 },
+        'text-size': {
+            "stops" : 
+                      [[0,0],
+                      [13,0],
+                      [14,10],
+                      [15,15],
+                      [16,20],
+                      [17,20],
+                      [18,22]]
 
+        }             
+      },
       'paint': {
         'text-color': '#424242',
         'text-halo-color': 'rgba(255,255,255,0.9)',
-        'text-halo-width': 5,
+        'text-halo-width': 25,
         'text-halo-blur': .2
       }
-  }, 'road-label-small');
+  });
 
 
 });
@@ -779,7 +798,7 @@ $(document).ready(function() {
         map.setLayoutProperty('PROPPOND','visibility', 'none');
         map.setLayoutProperty('EXISTINGPOND','visibility', 'none');
         map.setLayoutProperty('CULVERTS','visibility', 'none');
-        map.setLayoutProperty('MAPLABELS','visibility', 'none');
+        //map.setLayoutProperty('MAPLABELS','visibility', 'none');
 
     });
 });
