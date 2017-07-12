@@ -137,6 +137,10 @@ map.on('style.load', function () {
       'url': 'mapbox://iconeng.85x3283x'
   });
 
+  map.addSource('mapLabels',{
+      'type': 'vector', 
+      'url': 'mapbox://iconeng.do7gqzl1' 
+  });
 
 
 //Boundary Fill
@@ -168,10 +172,10 @@ map.on('style.load', function () {
           },
         'paint': {
           'line-width': {
-              "stops": [[15, 0], [17, .5], [19, 1]]
+              "stops": [[15, 0.4], [17, .7], [19, 1.2]]
           },
-            'line-color': '#424242',
-            'line-opacity':.8
+            'line-color': '#323232',
+            'line-opacity':.70
         }
     }, 'road-label-small');
 
@@ -189,8 +193,8 @@ map.on('style.load', function () {
           'line-width': {
               "stops": [[15, 1], [17, 1.75], [19, 2.5]]
           },
-            'line-color': '#424242',
-            'line-opacity':.8
+            'line-color': '#323232',
+            'line-opacity':.70
         }
     }, 'road-label-small');
 
@@ -229,8 +233,8 @@ map.on('style.load', function () {
       'filter': ['==', 'ZONE_SUBTY', 'FLOODWAY'],
       'paint': {
         'fill-opacity': 0.5,
-        'fill-color': '#417190',
-        'fill-outline-color': '#417190',
+        'fill-color': '#254061',
+        'fill-outline-color': '#254061',
       }
   }, 'road-label-small');
 
@@ -286,7 +290,7 @@ map.on('style.load', function () {
       },
       'paint': {
           'line-width': 3.0,
-          'line-color': '#003b7f',
+          'line-color': '#0A2127',
           'line-opacity': 0.65
       }
     },'road-label-small');
@@ -300,7 +304,7 @@ map.on('style.load', function () {
       'source-layer': 'NRC_SAN_LINES-0outbg',     
       'type': 'line',        
       'paint': {
-         'line-color': '#BF2700', 
+         'line-color': '#00876C', 
          'line-width': 2.6,
          'line-opacity': 0.65
        },
@@ -315,7 +319,7 @@ map.on('style.load', function () {
       'source-layer': 'NRC_SAN_NODES-ct9tc7',     
       'type': 'circle',        
       'paint': {
-         'circle-color': '#BF2700', 
+         'circle-color': '#00876C', 
          'circle-radius': 5.1,
          'circle-opacity': 0.65
        },
@@ -337,7 +341,7 @@ map.on('style.load', function () {
           },
        'paint': {
          'text-opacity': 0.65,
-         'text-color': '#BF2700',
+         'text-color': '#00876C',
          'text-halo-color': 'rgb(250,250,250 )',
          'text-halo-width': 0.7
         }
@@ -404,8 +408,9 @@ map.on('style.load', function () {
       'source-layer': 'NRC_Parcels_Brmfld_Co-9rols7',     
       'type': 'line',        
       'paint': {
-         'line-color': '#170021', 
-         'line-width': 1.5
+         'line-color': '#fff', 
+         'line-width': 1.3,
+         'line-opacity': 0.75
        },
       'layout': {'visibility': 'visible'}
     },'road-label-small');
@@ -505,7 +510,7 @@ map.on('style.load', function () {
             'visibility': 'none'
         },
         'paint': { 
-            'line-width': 5.5,
+            'line-width': 5,
             'line-color': '#545454',
             'line-opacity': 0.95
         }
@@ -649,7 +654,7 @@ map.on('style.load', function () {
             'line-cap': 'round'
         },
         'paint': { 
-            'line-width': 5.5,
+            'line-width': 5,
             'line-color': '#545454',
             'line-opacity': 0.95
         }
@@ -687,7 +692,26 @@ map.on('style.load', function () {
       'layout': {'visibility': 'visible'}
     },'road-label-small');
 
-    
+
+  map.addLayer({
+      'id': 'MAPLABELS',
+      'type': 'symbol',
+      'source': 'mapLabels',
+      'source-layer': 'NRC_Map_Labels-atl12v', 
+      'layout': {
+        'visibility': 'visible',
+        'symbol-placement': 'line',
+        'text-field': '{Name}',
+        'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': 30 },
+
+      'paint': {
+        'text-color': '#424242',
+        'text-halo-color': 'rgba(255,255,255,0.9)',
+        'text-halo-width': 5,
+        'text-halo-blur': .2
+      }
+  }, 'road-label-small');
 
 
 });
@@ -755,6 +779,7 @@ $(document).ready(function() {
         map.setLayoutProperty('PROPPOND','visibility', 'none');
         map.setLayoutProperty('EXISTINGPOND','visibility', 'none');
         map.setLayoutProperty('CULVERTS','visibility', 'none');
+        map.setLayoutProperty('MAPLABELS','visibility', 'none');
 
     });
 });
