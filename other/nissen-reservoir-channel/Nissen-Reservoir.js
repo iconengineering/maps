@@ -8,7 +8,7 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 15.7,
     minZoom:11,
-    maxZoom:19,
+    maxZoom:19.5,
     hash: true,
     center: [-105.0403, 39.9158]
 });
@@ -713,7 +713,7 @@ map.on('style.load', function () {
       'type': 'symbol',
       'source': 'mapLabelsPoint',
       'source-layer': 'NRC_Map_Labels_Cntrd_txtWrap-c51l0y', 
-      'filter': ['==', 'Angle', 0],
+      'filter': ['==', 'Angle', 0],  
       'layout': {
          "visibility": 'visible',
          "text-optional": true,
@@ -734,41 +734,6 @@ map.on('style.load', function () {
      }
   });
 
-
-
-/*
-    map.addLayer({
-      'id': 'MAPLABELS_POINT',
-      'type': 'symbol',
-      'source': 'mapLabelsPoint',
-      'source-layer': 'NRC_Map_Labels_Cntrd_txtWrap-c51l0y', 
-      'filter': ['==', 'Angle', 0],
-      'layout': {
-         "visibility": 'visible',
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": {
-             "stops": [[14, 6],[14.5, 7],[15, 8], [15.5, 9], [16, 13], [19, 18]]
-         },
-         "text-field": {
-            property: 'txtWrp',
-            type: 'categorical',
-            stops: [
-              ['1','{Name}']
-              ]
-            },
-         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
-         'text-allow-overlap': true,
-         'symbol-avoid-edges' : true
-        }, 
-     "paint": {
-       "text-color": "rgba(0,0,0,.87)",
-       "text-halo-color": "#F8F4F0",
-       "text-halo-width": {"stops": [[15,15],[17,25]]}
-
-     }
-  });
-*/
 
 
   map.addLayer({
@@ -861,8 +826,8 @@ $(document).ready(function() {
         map.setLayoutProperty('PROPPOND','visibility', 'none');
         map.setLayoutProperty('EXISTINGPOND','visibility', 'none');
         map.setLayoutProperty('CULVERTS','visibility', 'none');
-        //map.setLayoutProperty('MAPLABELS','visibility', 'none');
-
+        map.setLayoutProperty('MAPLABELS_LINE','visibility', 'none');
+        map.setLayoutProperty('MAPLABELS_POINT','visibility', 'none');
     });
 });
 
