@@ -1,4 +1,4 @@
-//This will not change
+  //This will not change
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
 
@@ -6,8 +6,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    zoom: 15.8,
-    minZoom:12,
+    zoom: 15,
+    minZoom:11,
     maxZoom:19,
     hash: true,
     center: [-105.0403, 39.9158]
@@ -41,10 +41,11 @@ map.on('style.load', function () {
       'data': 'NRC_contour_web.geojson'
   });
 
-  map.addSource('mapLabels2', {
+  /*map.addSource('mapLabels2', {
       'type': 'geojson',
       'data': 'NRC_MapLabels2.geojson'
   });
+  */
 
 
   map.addSource('parcels', {
@@ -144,14 +145,19 @@ map.on('style.load', function () {
       'url': 'mapbox://iconeng.85x3283x'
   });
 
-  map.addSource('mapLabels',{
+  map.addSource('mapLabelsLine',{
       'type': 'vector', 
-      'url': 'mapbox://iconeng.do7gqzl1' 
+      'url': 'mapbox://iconeng.c7ugcugq'
+  });
+
+  map.addSource('mapLabelsPoint',{
+    'type': 'vector', 
+    'url': 'mapbox://iconeng.d6g7r0p4' 
   });
 
 
 //Boundary Fill
-    map.addLayer({
+  map.addLayer({
       'id': 'BOUNDARY',                               
       'source': 'boundary',
       'source-layer': 'NRC_Boundary_HARN-4q7dsx',     
@@ -161,7 +167,7 @@ map.on('style.load', function () {
          'fill-opacity': 0.1
        },
       'layout': {'visibility': 'visible'}
-    },'road-label-small');
+  },'road-label-small');
 
 
 
@@ -700,42 +706,65 @@ map.on('style.load', function () {
     },'road-label-small');
 
 
-  map.addLayer({
-      'id': 'MAPLABELS',
-      'type': 'symbol',
-      'source': 'mapLabels2',
-      //'source-layer': 'NRC_Map_Labels-atl12v', 
-      'layout': {
-        
-        'text-allow-overlap': true,
-        'visibility': 'visible',
-        'symbol-placement': 'line',
-        'text-field': '{Name}',
-        'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
-        'text-size': {
-            "stops" : 
-                      [[0,0],
-                      [13,0],
-                      [14,10],
-                      [15,15],
-                      [16,20],
-                      [17,20],
-                      [18,22]]
 
-        }             
-      },
-      'paint': {
-        'text-color': '#424242',
-        'text-halo-color': 'rgba(255,255,255,0.9)',
-        'text-halo-width': 25,
-        'text-halo-blur': .2
-      }
+
+  map.addLayer({
+      'id': 'MAPLABELS_POINT',
+      'type': 'symbol',
+      'source': 'mapLabelsPoint',
+      'source-layer': 'NRC_Map_Labels_Cntrd_txtWrap-c51l0y', 
+      'filter': ['==', 'Angle', 0],
+      'layout': {
+         "visibility": 'visible',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[14, 6],[14.5, 7],[15, 8], [15.5, 9], [16, 13], [19, 18]]
+         },
+         "text-field": '{Name}',
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+         'text-allow-overlap': true,
+         'symbol-avoid-edges' : true
+        }, 
+     "paint": {
+       "text-color": "rgba(0,0,0,.87)",
+       "text-halo-color": "#F8F4F0",
+       "text-halo-width": {"stops": [[15,15],[17,25]]}
+
+     }
+  });
+
+
+
+
+  map.addLayer({
+      'id': 'MAPLABELS_LINE',
+      'type': 'symbol',
+      'source': 'mapLabelsLine',
+      'source-layer': 'NRC_Map_Labels_Line-4008jb', 
+      'filter': ['==', 'Angle', 90],
+      'layout': {
+         "visibility": 'visible',
+         "symbol-placement": 'line',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[14, 6],[14.5, 7],[15, 8], [15.5, 9], [16, 13], [19, 18]]
+         },
+         "text-field": '{Name}',
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+
+     },
+     "paint": {
+       "text-color": "rgba(0,0,0,.87)",
+       "text-halo-color": "#F8F4F0",
+       "text-halo-width": {"stops": [[15,15],[17,25]]}
+
+     }
   });
 
 
 });
-
-
 
 /*
 // When a click event occurs near a marker icon, open a popup at the location of
