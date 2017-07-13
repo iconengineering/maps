@@ -6,7 +6,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    zoom: 15,
+    zoom: 15.7,
     minZoom:11,
     maxZoom:19,
     hash: true,
@@ -721,7 +721,7 @@ map.on('style.load', function () {
          "text-size": {
              "stops": [[14, 6],[14.5, 7],[15, 8], [15.5, 9], [16, 13], [19, 18]]
          },
-         "text-field": '{Name}',
+         "text-field": "{Name}",
          'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
          'text-allow-overlap': true,
          'symbol-avoid-edges' : true
@@ -736,13 +736,47 @@ map.on('style.load', function () {
 
 
 
+/*
+    map.addLayer({
+      'id': 'MAPLABELS_POINT',
+      'type': 'symbol',
+      'source': 'mapLabelsPoint',
+      'source-layer': 'NRC_Map_Labels_Cntrd_txtWrap-c51l0y', 
+      'filter': ['==', 'Angle', 0],
+      'layout': {
+         "visibility": 'visible',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[14, 6],[14.5, 7],[15, 8], [15.5, 9], [16, 13], [19, 18]]
+         },
+         "text-field": {
+            property: 'txtWrp',
+            type: 'categorical',
+            stops: [
+              ['1','{Name}']
+              ]
+            },
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+         'text-allow-overlap': true,
+         'symbol-avoid-edges' : true
+        }, 
+     "paint": {
+       "text-color": "rgba(0,0,0,.87)",
+       "text-halo-color": "#F8F4F0",
+       "text-halo-width": {"stops": [[15,15],[17,25]]}
+
+     }
+  });
+*/
+
 
   map.addLayer({
       'id': 'MAPLABELS_LINE',
       'type': 'symbol',
       'source': 'mapLabelsLine',
       'source-layer': 'NRC_Map_Labels_Line-4008jb', 
-      'filter': ['==', 'Angle', 90],
+      'filter': ['==', 'Angle', 90], 
       'layout': {
          "visibility": 'visible',
          "symbol-placement": 'line',
