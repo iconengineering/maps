@@ -39,7 +39,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('alternatives', {
       type: 'geojson',
-      "data": 'alternatives.geojson'
+      "data": 'New/Projected/alternatives.geojson'
   });
   map.addSource('basinPoints', {
       type: 'vector',
