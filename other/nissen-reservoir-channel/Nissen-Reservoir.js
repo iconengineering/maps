@@ -147,12 +147,12 @@ map.on('style.load', function () {
 
   map.addSource('mapLabelsLine',{
       'type': 'vector', 
-      'url': 'mapbox://iconeng.c7ugcugq'
+      'url': 'mapbox://iconeng.baq75249',
   });
 
   map.addSource('mapLabelsPoint',{
     'type': 'vector', 
-    'url': 'mapbox://iconeng.d6g7r0p4' 
+    'url': 'mapbox://iconeng.5s0709nn' 
   });
 
 
@@ -712,7 +712,7 @@ map.on('style.load', function () {
       'id': 'MAPLABELS_POINT',
       'type': 'symbol',
       'source': 'mapLabelsPoint',
-      'source-layer': 'NRC_Map_Labels_Cntrd_txtWrap-c51l0y', 
+      'source-layer': 'NRC_Map_Labels_Cntrd2-01ji5r', 
       'filter': ['==', 'Angle', 0],  
       'layout': {
          "visibility": 'visible',
@@ -740,7 +740,7 @@ map.on('style.load', function () {
       'id': 'MAPLABELS_LINE',
       'type': 'symbol',
       'source': 'mapLabelsLine',
-      'source-layer': 'NRC_Map_Labels_Line-4008jb', 
+      'source-layer': 'NRC_Map_Labels_Line2-dppbu7', 
       'filter': ['==', 'Angle', 90], 
       'layout': {
          "visibility": 'visible',
