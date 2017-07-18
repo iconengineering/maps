@@ -707,7 +707,7 @@ map.on('style.load', function () {
 
 
 
-
+/*
   map.addLayer({
       'id': 'MAPLABELS_POINT',
       'type': 'symbol',
@@ -733,7 +733,7 @@ map.on('style.load', function () {
 
      }
   });
-
+*/
 
 
   map.addLayer({
@@ -741,11 +741,14 @@ map.on('style.load', function () {
       'type': 'symbol',
       'source': 'mapLabelsLine',
       'source-layer': 'NRC_Map_Labels_Line2-dppbu7', 
-      'filter': ['==', 'Angle', 90], 
+      //'filter': ['==', 'Angle', 90], 
       'layout': {
          "visibility": 'visible',
          "symbol-placement": 'line',
-         "text-optional": true,
+         'symbol-allow-overlap': true,
+         'symbol-padding': 0,
+         'text-rotation-alignment': "map",
+         "text-ignore-placement": true,
          "text-line-height": 1,
          "text-size": {
              "stops": [[14, 6],[14.5, 7],[15, 8], [15.5, 9], [16, 13], [19, 18]]
