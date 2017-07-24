@@ -90,13 +90,13 @@
              <div id="conduitsSwitch" style="padding-left: 3rem;"><small class="grey-text text-darken-2">Alternative</small>
 
                 <p class="narrow">
-                  <input name="conduit" type="radio" id="existingCond" class="layer-on" value='existing' checked/>
-                  <label for="existingCond">Existing</label>
+                  <input name="conduit2" type="radio" id="existing" class="layer-on" value='existing' checked/>
+                  <label for="existing">Existing</label>
                 </p>
 
                <p class="narrow">
-                  <input name="conduit" type="radio" id="masterPlanCond" class="layer-off" value= 'Selected Plan'/>
-                  <label for="masterPlanCond">Master Plan</label>
+                  <input name="conduit2" type="radio" id="selected" class="layer-off" value= 'selected'/>
+                  <label for="selected">Master Plan</label>
                 </p>
 
             </div>
@@ -107,8 +107,25 @@
                 <input name="junctions" type="checkbox" id="junctions" class="layer-off" onclick="toggleTwo('junctions','junctionLabels')"/>
                 <label for="junctions" class="valign">Junctions</label>
               </p>
+
+              <div id="junctionsSwitch" style="padding-left: 3rem;"><small class="grey-text text-darken-2">Alternative</small>
+
+                <p class="narrow">
+                  <input name="junction2" type="radio" id="existing" class="layer-on" value='existing' checked/>
+                  <label for="existing">Existing</label>
+                </p>
+
+                <p class="narrow">
+                  <input name="junction2" type="radio" id="selected" class="layer-off" value= 'selected'/>
+                  <label for="selected">Master Plan</label>
+                </p>
+
+              </div>
+
             </div>
           </li>
+          
+
           <li>
             <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Alternatives</div>
             <div class="collapsible-body white">
