@@ -47,23 +47,19 @@ map.on('style.load', function (e) {
   });
   map.addSource('junctions', {
       type: 'vector',
-      url: 'mapbox://iconeng.479t5s2h'
-//    url: 'mapbox://iconeng.4u0iz0t3'     original
+      url: 'mapbox://iconeng.4u0iz0t3'
   });
   map.addSource('conveyance', {
       type: 'vector',
-      //merged file
-      url: 'mapbox://iconeng.1x8kd1vy'
-      //url: 'mapbox://iconeng.2w7cnk9w' original 
+      url: 'mapbox://iconeng.2w7cnk9w'
   });
 
-  /*
   map.addSource('conveyanceSP', {
       type: 'vector',
       url: 'mapbox://iconeng.dyxf3b9g'
   });
 
- */
+
 
 
   map.addSource('contours', {
@@ -212,12 +208,10 @@ map.on('style.load', function (e) {
       'id': 'conduits',
       'type': 'line',
       'source': 'conveyance',
-      //'source-layer': 'ngd_conduits'
-      'source-layer': 'NGD_Conduits_Merge-aqq7jw',
-      'filter': ["==", "alt", 'existing'],
-      'layout': {
-        "visibility": 'none'
-       },
+      'source-layer': 'ngd_conduits',
+   //   'layout': {
+     //   "visibility": 'none'
+      //  },
       'paint': {
           'line-width': 4,
           'line-color': '#036180'
@@ -228,9 +222,7 @@ map.on('style.load', function (e) {
       'id': 'conduitArrows',
       'type': 'symbol',
       'source': 'conveyance',
-      //'source-layer': 'ngd_conduits'
-      'source-layer': 'NGD_Conduits_Merge-aqq7jw',
-      'filter': ["==", "alt", 'existing'],
+      'source-layer': 'ngd_conduits',
       'layout': {
         "visibility": 'none',
         'symbol-placement': 'line',
@@ -251,9 +243,7 @@ map.on('style.load', function (e) {
       'id': 'conduitLabels',
       'type': 'symbol',
       'source': 'conveyance',
-      //'source-layer': 'ngd_conduits'
-      'source-layer': 'NGD_Conduits_Merge-aqq7jw',
-      'filter': ["==", "alt", 'existing'],
+      'source-layer': 'ngd_conduits',
       'layout': {
         "visibility": 'none',
         "text-optional": true,
@@ -273,7 +263,7 @@ map.on('style.load', function (e) {
 
 
 
-  /* MASTER PLAN CONVEYANCE
+  // MASTER PLAN CONVEYANCE
   map.addLayer({
       'id': 'conduitsSP',
       'type': 'line',
@@ -284,8 +274,7 @@ map.on('style.load', function (e) {
         },
       'paint': {
           'line-width': 4,
-          'line-color': '#036180',
-          'line-opacity': 0
+          'line-color': '#036180'
       }
   });
 
@@ -307,7 +296,6 @@ map.on('style.load', function (e) {
         "icon-ignore-placement": true
       },
       'paint': {
-        'icon-opacity': 0 
       }
   });
 
@@ -329,12 +317,12 @@ map.on('style.load', function (e) {
       'paint': {
         'text-color': '#F8F4F0',
         'text-halo-color': '#036180',
-        'text-halo-width': 1,
-        'text-opacity':0
+        'text-halo-width': 1
       }
   });
 
-*/
+
+
 
 
   map.addLayer({
@@ -382,8 +370,7 @@ map.on('style.load', function (e) {
       'id': 'junctions',
       'type': 'circle',
       'source': 'junctions',
-      'source-layer': 'NGD_Junctions_Merge-6hvewb',
-      'filter': ["==", "alt", 'existing'],
+      'source-layer': 'ngd_junctions',
       'layout': {
          "visibility": 'none'
        },
@@ -397,8 +384,7 @@ map.on('style.load', function (e) {
       'id': 'junctionLabels',
       'type': 'symbol',
       'source': 'junctions',
-      'source-layer': 'NGD_Junctions_Merge-6hvewb',
-      'filter': ["==", "alt", 'existing'],
+      'source-layer': 'ngd_junctions',
       'layout': {
          "visibility": 'none',
          "text-optional": true,
@@ -546,36 +532,23 @@ var conduitList = document.getElementById('conduitsSwitch');
 var conduitRadio = conduitList.getElementsByTagName('input');
 
 function switchConduit() {
-    var value = document.querySelector('input[name="conduit2"]:checked').value;
-    map.setFilter('conduits', ['==', 'alt', value]);
-    map.setFilter('conduitLabels', ['==', 'alt', value]);
-    map.setFilter('conduitArrows', ['==', 'alt', value]);
-
-
-}
+    var value = document.querySelector('input[name="conduit"]:checked').value;
+          if (value == "existing")
+            {
+              map.setLayoutProperty('conduits', 'visibility', 'visible');
+              //map.setLayoutProperty('conduitsSP', 'visibility', 'none')
+            }
+            else if (value == "Selected Plan")
+                          {
+              map.setLayoutProperty('conduits', 'visibility', 'none');
+             // map.setLayoutProperty('conduitsSP', 'visibility', 'visible')
+            }
+            else {}
+};
 
 for (var i = 0; i < conduitRadio.length; i++) {
     conduitRadio[i].onclick = switchConduit;
 };
-
-
-
-//Radio Button for Juntions
-var junctionList = document.getElementById('junctionsSwitch');
-var junctionRadio = junctionList.getElementsByTagName('input');
-
-function switchJuntion() {
-    var value = document.querySelector('input[name="junction2"]:checked').value;
-    map.setFilter('junctions', ['==', 'alt', value]);
-    map.setFilter('junctionLabels', ['==', 'alt', value]);
-
-}
-
-
-for (var i = 0; i < junctionRadio.length; i++) {
-    junctionRadio[i].onclick = switchJunction;
-};
-
 
 
 
@@ -584,7 +557,7 @@ for (var i = 0; i < junctionRadio.length; i++) {
 
 
 map.on('click', function (e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['conduits', 'junctions','flowDepth','basinLabels2','alternatives'] });
+  var features = map.queryRenderedFeatures(e.point, { layers: ['conduits','junctions','flowDepth','basinLabels2','alternatives'] });
   if (!features.length) {
       return;
   }
@@ -1136,7 +1109,7 @@ map.on('click', function (e) {
     });
 
 map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['conduits', 'junctions','flowDepth','basinLabels2','alternatives'] });
+    var features = map.queryRenderedFeatures(e.point, { layers: ['conduits','junctions','flowDepth','basinLabels2','alternatives'] });
 
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
