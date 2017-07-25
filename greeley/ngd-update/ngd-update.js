@@ -57,14 +57,6 @@ map.on('style.load', function (e) {
       //url: 'mapbox://iconeng.2w7cnk9w' original 
   });
 
-  /*
-  map.addSource('conveyanceSP', {
-      type: 'vector',
-      url: 'mapbox://iconeng.dyxf3b9g'
-  });
-
- */
-
 
   map.addSource('contours', {
       type: 'vector',
