@@ -47,7 +47,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('junctions', {
       type: 'vector',
-      url: 'mapbox://iconeng.479t5s2h'
+      url: 'mapbox://iconeng.ar1xojg3'
 //    url: 'mapbox://iconeng.4u0iz0t3'     original
   });
   map.addSource('conveyance', {
@@ -333,7 +333,7 @@ map.on('style.load', function (e) {
       'id': 'alternativesCase',
       'type': 'line',
       'source': 'alternatives',
-      'filter': ['==', 'alt', 'recPlan'],
+      'filter': ['==', 'alt', 'existing'],
       'layout': {
         "visibility": 'none',
         'line-join': 'bevel'
@@ -350,7 +350,7 @@ map.on('style.load', function (e) {
       'id': 'alternatives',
       'type': 'line',
       'source': 'alternatives',
-      'filter': ['==', 'alt', 'recPlan'],
+      'filter': ['==', 'alt', 'existing'],
       'layout': {
         "visibility": 'none',
         'line-join': 'bevel'
@@ -374,8 +374,8 @@ map.on('style.load', function (e) {
       'id': 'junctions',
       'type': 'circle',
       'source': 'junctions',
-      'source-layer': 'NGD_Junctions_Merge-6hvewb',
-      'filter': ["==", "alt", 'existing'],
+      'source-layer': 'NGD_Junctions_Merge_2D-apcjeq',
+      'filter': ["==", "alt", 'recPlan'],
       'layout': {
          "visibility": 'none'
        },
@@ -389,8 +389,8 @@ map.on('style.load', function (e) {
       'id': 'junctionLabels',
       'type': 'symbol',
       'source': 'junctions',
-      'source-layer': 'NGD_Junctions_Merge-6hvewb',
-      'filter': ["==", "alt", 'existing'],
+      'source-layer': 'NGD_Junctions_Merge_2D-apcjeq',
+      'filter': ["==", "alt", 'recPlan'],
       'layout': {
          "visibility": 'none',
          "text-optional": true,
@@ -533,6 +533,19 @@ for (var i = 0; i < altRadio.length; i++) {
 }
 
 
+var junctionList = document.getElementById('junctionSwitch');
+var junctionRadio = junctionList.getElementsByTagName('input');
+
+function switchJunction() {
+	var value1 = document.querySelector('input[name="junction2"]:checked').value;
+    map.setFilter('junctions', ['==', 'alt', value1]);
+    map.setFilter('junctionLabels', ['==', 'alt', value1]);
+}
+
+for (var i = 0; i < junctionRadio.length; i++) {
+    junctionRadio[i].onclick = switchJunction;
+}
+
 //Radio Button for Conduit
 var conduitList = document.getElementById('conduitsSwitch');
 var conduitRadio = conduitList.getElementsByTagName('input');
@@ -548,7 +561,7 @@ function switchConduit() {
 
 for (var i = 0; i < conduitRadio.length; i++) {
     conduitRadio[i].onclick = switchConduit;
-};
+}
 
 
 
