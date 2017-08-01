@@ -31,7 +31,6 @@ layout: default
 [North Greeley and Downtown](greeley/ngd-update)
 
 #### Others
-[Town of Lyons - Stormwater Masterplan](lyons-stormwater-masterplan)
 
 [Coal Creek - Town of Erie](other/coalcreek-erie)
 
