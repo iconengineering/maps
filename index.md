@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default_mapList
 ---
 
 ## List of ICON's Web Maps
