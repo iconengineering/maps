@@ -264,6 +264,7 @@ map.on('style.load', function (e) {
       'id': 'ponds',
       'type': 'fill',
       'source': 'ponds',
+      'filter': ['==', 'Show', "1"],
       'paint': {
           'fill-opacity': 0,
           'fill-color': '#1D6996'
