@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cikh67rk8004n9vkouhls14s4',
+    style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
     zoom: 13.25,
     center: [-105.0833, 40.5834],
     hash: true,
@@ -511,7 +511,7 @@ map.on('style.load', function (e) {
          "text-size": {
              "stops": [[15, 10], [17, 12], [19, 14]]
          },
-         "text-field": "{Acre_Round} Ac. | {Imperv}%",
+         "text-field": "{Area_Ac} Ac. | {Imperv}%",
          'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
          "text-offset": {
              "stops": [[13, [0, .25]], [17, [0, .75]]]
