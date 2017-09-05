@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
+    style: 'mapbox://styles/iconeng/cikh67rk8004n9vkouhls14s4',
     zoom: 13.25,
     center: [-105.0833, 40.5834],
     hash: true,
@@ -168,20 +168,20 @@ map.on('style.load', function (e) {
       'type': 'fill',
       'source': 'watersheds',
       'paint': {
-          'fill-opacity': 0.25,
+          'fill-opacity': 0.179,
           'fill-color': {
               property: 'Outfall',
               type: 'categorical',
               stops: [
-                  ['Howes', '#E17C05'],
-                  ['Willow', '#94346E'],
-                  ['Locust', '#5F4690'],
-                  ['Campus West', '#1D6996'],
-                  ['Magnolia', '#CC503E'],
-                  ['Oak', '#0F8554'],
-                  ['Lemay', '#0F8554'],
-                  ['Spring Creek', '#CC503E'],
-                  ['Mulberry/Myrtle', '#E17C05']
+                  ['Howes', '#1f78b4'],
+                  ['Willow', '#b2df8a'],
+                  ['Locust', '#6a3d9a'],
+                  ['Campus West', '#fdbf6f'],
+                  ['Magnolia', '#33a02c'],
+                  ['Oak', '#e31a1c'],
+                  ['Lemay', '#fb9a99'],
+                  ['Spring Creek', '#ff7f00'],
+                  ['Mulberry/Myrtle', '#a6cee3']
                   ]
           }
       }
@@ -566,8 +566,8 @@ map.on('style.load', function (e) {
      },
      "paint": {
        "text-color": "#F8F4F0",
-       "text-halo-color": "#5c53a5",
-       "text-halo-width": {"stops": [[15,.75],[17,1]]},
+       "text-halo-color": "#000", 
+       "text-halo-width": {"stops": [[15,1.25],[17,1.5]]},
        "text-opacity":1
      }
   });
@@ -724,13 +724,13 @@ map.on('click', function (e) {
 
       var div = window.document.createElement('div');
       if (id == 'conduitComps' && feature.properties.Shape1 == 'IRREGULAR') {
-        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.Name + '</b><br />Irregular<br /><small><span style="font-weight: bold;color: #ca5268;">2005 ACE Study</span> | <span style="font-weight: bold;color: #00718b;">2016 ICON Study</span></small></div>';
+        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.Name + '</b><br />Irregular<br /><small><span style="font-weight: bold;color: #ca5268;">2003 ANDERSON Study</span> | <span style="font-weight: bold;color: #00718b;">2017 ICON Study</span></small></div>';
       } else if (id == 'conduitComps' && feature.properties.Shape1 == 'CIRCULAR') {
-        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.Name + '</b><br />' + feature.properties.Geom1 + 'ft Circular<br /><small><span style="font-weight: bold;color: #ca5268;">2005 ACE Study</span> | <span style="font-weight: bold;color: #00718b;">2016 ICON Study</span></small></div>';
+        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.Name + '</b><br />' + feature.properties.Geom1 + 'ft Circular<br /><small><span style="font-weight: bold;color: #ca5268;">2003 ANDERSON Study</span> | <span style="font-weight: bold;color: #00718b;">2017 ICON Study</span></small></div>';
       } else if (id == 'conduitComps' && feature.properties.Shape1 == 'RECT_CLOSED') {
-        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.Name + '</b><br />' + feature.properties.Geom1 + 'ft x ' + feature.properties.Geom2 + 'ft Box<br /><small><span style="font-weight: bold;color: #ca5268;">2005 ACE Study</span> | <span style="font-weight: bold;color: #00718b;">2016 ICON Study</span></small></div>';
+        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.Name + '</b><br />' + feature.properties.Geom1 + 'ft x ' + feature.properties.Geom2 + 'ft Box<br /><small><span style="font-weight: bold;color: #ca5268;">2003 ANDERSON Study</span> | <span style="font-weight: bold;color: #00718b;">2017 ICON Study</span></small></div>';
       }  else {
-        div.innerHTML = '<div class="row"><b>Junction ' + feature.properties.Name + '</b><br /><small><span style="font-weight: bold;color: #ca5268;">2005 ACE Study</span> | <span style="font-weight: bold;color: #00718b;">2016 ICON Study</span></small></div>';
+        div.innerHTML = '<div class="row"><b>Junction ' + feature.properties.Name + '</b><br /><small><span style="font-weight: bold;color: #ca5268;">2003 ANDERSON Study</span> | <span style="font-weight: bold;color: #00718b;">2017 ICON Study</span></small></div>';
       };
 
       var	svg = d3.select(div)
