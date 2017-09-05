@@ -558,16 +558,16 @@ map.on('style.load', function (e) {
          "text-optional": true,
          "text-line-height": 1,
          "text-size": {
-             "stops": [[15, 12], [17, 16]]
+             "stops": [[15, 14], [17, 17]]
          },
          "text-field": "{Outfall}",
          'text-font': ['Roboto Black Italic','Open Sans Bold','Arial Unicode MS Regular'],
          "symbol-placement": "point"
      },
      "paint": {
-       "text-color": "#F8F4F0",
-       "text-halo-color": "#000", 
-       "text-halo-width": {"stops": [[15,1.25],[17,1.5]]},
+       "text-color": "#754A3F",
+       "text-halo-color": "#eee", 
+       "text-halo-width": {"stops": [[15,2],[17,2.5]]},
        "text-opacity":1
      }
   });
