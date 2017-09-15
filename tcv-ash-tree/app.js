@@ -1086,9 +1086,8 @@ map.dragRotate.disable();
 // disable map rotation using touch rotation gesture
 map.touchZoomRotate.disableRotation();
 
-//var nav = new mapboxgl.NavigationControl();
-//map.addControl(nav, 'bottom-right');
-// optional geolocation
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'bottom-right');
 
 var geoLoc = new mapboxgl.GeolocateControl({
     positionOptions: {
