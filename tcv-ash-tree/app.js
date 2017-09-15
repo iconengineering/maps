@@ -381,7 +381,7 @@ map.on('draw.create', function() {
   var card = document.getElementById('input-card');
 
 
-  var form = '<div class="card-content white-text"><span class="card-title"Create Feature</span><div class="row"> <form class="col s12"> <div class="input-field col s6"> <select id="condition" name="condition" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Excellent">Excellent</option> <option value="Moderate">Moderate</option> <option value="Poor">Poor</option> <option value="Severe">Severe</option></select> <label>Condition</label> </div> <div class="input-field col s6"> <select id="ownership" name="ownerhship" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Public">Public</option> <option value="Private">Private</option></select> <label>Ownersip</label> </div> <div class="input-field col s12"> <select id="size" name="size" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Large">Large</option> <option value="Medium">Medium</option> <option value="Small">Small</option> </select> <label>Size</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div>';
+  var form = '<div class="card-content white-text"><span class="card-title"Create Feature</span><div class="row"> <form class="col s12"> <div class="input-field col s6"> <select id="condition" name="condition" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Excellent">Excellent</option> <option value="Moderate">Moderate</option> <option value="Poor">Poor</option> <option value="Severe">Severe</option></select> <label>Condition</label> </div> <div class="input-field col s6"> <select id="ownership" name="ownerhship" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Public">Public</option> <option value="Private">Private</option></select> <label>Ownership</label> </div> <div class="input-field col s12"> <select id="size" name="size" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Large">Large</option> <option value="Medium">Medium</option> <option value="Small">Small</option> </select> <label>Size</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div>';
 
   card.innerHTML = form;
   $('select').material_select();
@@ -1076,9 +1076,9 @@ map.dragRotate.disable();
 // disable map rotation using touch rotation gesture
 map.touchZoomRotate.disableRotation();
 
-var nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'bottom-right');
+//var nav = new mapboxgl.NavigationControl();
+//map.addControl(nav, 'bottom-right');
 // optional geolocation
 
 var geoLoc = new mapboxgl.GeolocateControl()
-map.addControl(geoLoc, 'top-right');
+map.addControl(geoLoc, 'bottom-right');
