@@ -225,15 +225,13 @@ var draw = new MapboxDraw({
 
 map.addControl(draw);
 
-// optional geolocation
-map.addControl(new mapboxgl.GeolocateControl());
 
 //set blank geojson
 var firebaseGeojsonFeatures = [];
 
 // set repository, this needs to change per project
 var dataRef = firebase.database().ref('datacollector/tcvAshTree');
-var archiveRef = firebase.database().ref('datacollector/tcvAshTree');
+var archiveRef = firebase.database().ref('datacollector/tcvAshTreeArchive');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -367,7 +365,7 @@ map.addLayer({
   type: 'circle',
   filter: ["==", '$type', 'Point'],
   paint: {
-    "circle-color":'#FFB600', //dark yellow
+    "circle-color":'#FF5E00', //dark yellow ff6e12
     'circle-radius': 5,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#fff'
@@ -1032,10 +1030,15 @@ var firePopup = function (e) {
   editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.editedBy;
   var editedOn = document.createElement('div');
   editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a");
+  var condition = document.createElement('div');
+  condition.innerHTML = '<span class="popup-title">Condition:</span> ' + feature.properties.condition;
+  var ownership = document.createElement('div');
+  ownership.innerHTML = '<span class="popup-title">Ownership:</span> ' + feature.properties.ownership;
+  var size = document.createElement('div');
+  size.innerHTML = '<span class="popup-title">Size</span> ' + feature.properties.size;
   var description = document.createElement('div');
   description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
-  var notes = document.createElement('div');
-  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
+
 
   if (feature.properties.imageUUID != null) {
     content.insertAdjacentElement('beforeend', image);
@@ -1075,3 +1078,7 @@ map.touchZoomRotate.disableRotation();
 
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'bottom-right');
+// optional geolocation
+
+var geoLoc = new mapboxgl.GeolocateControl()
+map.addControl(geoLoc, 'bottom-right');
