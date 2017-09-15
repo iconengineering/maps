@@ -899,6 +899,16 @@
 .green-text.text-accent-4 {
   color: #00C853 !important; }
 
+
+/* JGARETT EDIT */
+.green-grey {
+    background-color: #437E51 !important}
+
+.green-grey-text {
+  color: #437E51 !important; }
+
+
+
 .light-green {
   background-color: #8bc34a !important; }
 
@@ -1402,6 +1412,19 @@
 
 .deep-orange-text.text-accent-4 {
   color: #dd2c00 !important; }
+
+
+/* JGARETT EDIT */
+.red-burnt {  
+  background-color: #963022 !important; }
+
+.red-burnt {
+  color: #963022 !important; }
+
+.red-burnt-light{  
+  background-color: #C76D5C !important; }
+
+
 
 .brown {
   background-color: #795548 !important; }

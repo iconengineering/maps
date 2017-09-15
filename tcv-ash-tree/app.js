@@ -4,7 +4,7 @@ $(document).ready(function(){
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
 
-  document.querySelector('nav').className = 'grey darken-3';
+  document.querySelector('nav').className = 'red-burnt';
 
   // Add admin button to navbar
   var header = document.getElementById('header');
@@ -120,10 +120,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       if (val === true) {
         var adminPoint = document.getElementById('adminPoint');
         adminPoint.className = 'waves-effect waves-blue btn blue white-text';
-        var adminLine = document.getElementById('adminLine');
+        /*var adminLine = document.getElementById('adminLine');
         adminLine.className = 'waves-effect waves-blue btn blue white-text';
         var adminPoly = document.getElementById('adminPolygon');
         adminPoly.className = 'waves-effect waves-blue btn blue white-text';
+        */
         var adminEdit = document.getElementById('adminEdit');
         adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
       }
@@ -160,10 +161,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     // make buttons disabled
     var adminPoint = document.getElementById('adminPoint');
     adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
+    /*
     var adminLine = document.getElementById('adminLine');
     adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
     var adminPoly = document.getElementById('adminPolygon');
     adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
+    */
     var adminEdit = document.getElementById('adminEdit');
     adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
     
@@ -230,7 +233,7 @@ var firebaseGeojsonFeatures = [];
 
 // set repository, this needs to change per project
 var dataRef = firebase.database().ref('datacollector/tcvAshTree');
-//var archiveRef = firebase.database().ref('datacollector/testArchive');
+var archiveRef = firebase.database().ref('datacollector/tcvAshTree');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -250,17 +253,34 @@ if (typeof(map.getSource('firebase')) != 'undefined'){
 }
 
 // map layers
-map.on('load', function() {
+map.on('style.load', function() {
 
+  //parcels
+  map.addSource('parcels', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.5mrjqlq0' //TCV_Parcels-b3pbeq 
+  }); 
+
+ 
+  //Town Limits 
+  map.addSource('boundary', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.ca55ms95' //TCV_Boundary-cbf8pg
+  });
+
+
+  //tree data
   map.addSource('firebase', {
     type: 'geojson',
     data: {type: 'FeatureCollection',
     features: firebaseGeojsonFeatures
   }
-});
+  });
+
 
 callData();
 
+/*
 map.addLayer({
   id: 'firebasePoly',
   source: 'firebase',
@@ -272,6 +292,7 @@ map.addLayer({
 
   }
 }, 'country-label-lg');
+
 
 map.addLayer({
   id: 'firebaseLine',
@@ -287,6 +308,58 @@ map.addLayer({
     "line-width": 2
   }
 }, 'country-label-lg');
+*/
+
+
+    //Parcels
+map.addLayer({
+ 'id': 'parcels',                               
+ 'source': 'parcels',
+ 'source-layer': 'TCV_Parcels-b3pbeq',     
+ 'type': 'line',        
+ 'paint': {
+    'line-color': '#fff', 
+    'line-width': 1,
+    'line-opacity': 0.8
+  },
+ 'layout': {'visibility': 'visible'}
+},'country-label-lg');
+
+    //Add Address Label
+        map.addLayer({
+        'id': 'parcelLabels',
+        'type': 'symbol',                                
+        'source': 'parcels',
+        'source-layer': 'TCV_Parcels-b3pbeq',
+        'layout': {
+          'visibility': 'none',
+        'text-field': '{Situs_Addr}',
+        'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
+        'text-size': 10
+        },
+
+        'paint': {
+        'text-color': 'rgb(255,255,255)',
+        'text-halo-color': 'rgb(0,0,0)',
+        'text-halo-width': 0.9
+      }
+    },'country-label-lg');
+
+
+//Boundary Fill
+  map.addLayer({
+      'id': 'boundary',                               
+      'source': 'boundary',
+      'source-layer': 'TCV_Boundary-cbf8pg',    
+      'type': 'line',        
+      'paint': {
+         'line-color': '#A9FF41', 
+         'line-width': 3,
+         'line-opacity': 0.1
+       },
+      'layout': {'visibility': 'visible'}
+  },'country-label-lg');
+
 
 map.addLayer({
   id: 'firebasePoint',
@@ -294,11 +367,12 @@ map.addLayer({
   type: 'circle',
   filter: ["==", '$type', 'Point'],
   paint: {
-    "circle-color":'blue',
+    "circle-color":'#FFB600', //dark yellow
     'circle-radius': 5,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#fff'
-  }
+  },
+  'layout': {'visibility': 'visible'}
 }, 'country-label-lg');
 
 }); // end map layers
@@ -308,9 +382,11 @@ map.on('draw.create', function() {
 
   var card = document.getElementById('input-card');
 
-  var form = '<div class="card-content white-text"><span class="card-title">Enter Your Comment</span><div class="row"><form action="#" class="col s12"><div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></form></div></div>';
+
+  var form = '<div class="card-content white-text"><span class="card-title"Create Feature</span><div class="row"> <form class="col s12"> <div class="input-field col s6"> <select id="condition" name="condition" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Excellent">Excellent</option> <option value="Moderate">Moderate</option> <option value="Poor">Poor</option> <option value="Severe">Severe</option></select> <label>Condition</label> </div> <div class="input-field col s6"> <select id="ownership" name="ownerhship" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Public">Public</option> <option value="Private">Private</option></select> <label>Ownersip</label> </div> <div class="input-field col s12"> <select id="size" name="size" class="form-control"> <option value="" disabled selected>Choose</option> <option value="Large">Large</option> <option value="Medium">Medium</option> <option value="Small">Small</option> </select> <label>Size</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea"></textarea><label for="description">Description</label></div><div class="file-field input-field col s12"><div class="btn"><i class="material-icons">add_a_photo</i><input id="fileUpload" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div>';
 
   card.innerHTML = form;
+  $('select').material_select();
 
   var action = document.createElement('div');
   action.className = 'card-action';
@@ -331,6 +407,9 @@ map.on('draw.create', function() {
   actionButton.addEventListener('click', function(){
 
     var user = firebase.auth().currentUser.displayName;
+    var condition = document.getElementById('condition').value;
+    var ownership = document.getElementById('ownership').value;
+    var size = document.getElementById('size').value;
     var description = document.getElementById('description').value;
     var timestamp = firebase.database.ServerValue.TIMESTAMP;
     var file = document.getElementById('fileUpload').files[0];
@@ -409,9 +488,17 @@ map.on('draw.create', function() {
     });
   }
 
+    
+//________________EDITME
+
+
+
     // set semantic data for point
     draw.setFeatureProperty(id,"createdBy",user);
     draw.setFeatureProperty(id,"createdOn",timestamp);
+    draw.setFeatureProperty(id,"condition",condition);
+    draw.setFeatureProperty(id,"ownship", ownership);
+    draw.setFeatureProperty(id,"size", size);
     draw.setFeatureProperty(id,"description",description);
 
     dataRef.push(draw.getAll().features[n], function(error) {
@@ -436,9 +523,10 @@ map.on('draw.create', function() {
     .getAll();
 
     // set card content
-    var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+    var thanks = '<div class="card-content white-text"><span class="card-title">Create a Point Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
     card.innerHTML = thanks;
+
 
   });
 
@@ -449,7 +537,7 @@ map.on('draw.create', function() {
     draw.changeMode('simple_select');
 
     var card = document.getElementById('input-card');
-    var reset = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+    var reset = '<div class="card-content white-text"><span class="card-title">Create a Point Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
     card.innerHTML = reset;
 
@@ -474,6 +562,8 @@ function drawPoint(){
 
 }
 
+
+/*
 // start drawing with button click
 function drawLine(){
   draw.changeMode("draw_line_string");
@@ -507,6 +597,7 @@ function drawPoly(){
   }
 
 }
+*/
 
 // cancel drawing with button click
 function simpleSelect(){
@@ -556,16 +647,16 @@ function adminEdit() {
     draw.set(logJson);
     draw.changeMode("simple_select");
     map.setLayoutProperty('firebasePoint', 'visibility', 'none');
-    map.setLayoutProperty('firebaseLine', 'visibility', 'none');
-    map.setLayoutProperty('firebasePoly', 'visibility', 'none');
+   // map.setLayoutProperty('firebaseLine', 'visibility', 'none');
+   // map.setLayoutProperty('firebasePoly', 'visibility', 'none');
 
   } else {
     // set edit button to inactive and remove all draw features
     editButton.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
     draw.deleteAll();
     map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-    map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-    map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+    // map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+    // map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
   }
 
 }
@@ -585,7 +676,9 @@ map.on('draw.selectionchange', function(){
         var editedBy = feature.val().properties.editedBy;
         var editedOn = moment(feature.val().properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a");
         var origDescription = feature.val().properties.description;
-        var origNotes = feature.val().properties.notes;
+        var origCondition = feature.val().properties.condition;
+        var origOwnership = feature.val().properties.ownership;
+        var origSize = feature.val().properties.size;
         var card = document.getElementById('input-card');
 
         // Create a reference to the file we want to download, change per project
@@ -620,9 +713,11 @@ map.on('draw.selectionchange', function(){
           });
         }
 
-        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><div class="col s12"><img id="photo" class="responsive-img" src="//placehold.it/350x150"></div><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div><div class="input-field col s12"><textarea id="notes" class="materialize-textarea">' + origNotes + '</textarea><label for="notes">Notes (not public)</label></div></form></div></div>';
+        var form = '<div class="card-content white-text"><span class="card-title">Edit Feature</span><div class="row"><div class="col s12"><img id="photo" class="responsive-img" src="//placehold.it/350x150"></div><form class="col s12"><div class="input-field col s6"><input disabled id="createdBy" type="text" class="validate" value="' + createdBy + '"><label for="createdBy">Created By</label></div><div class="input-field col s6"><input disabled id="createdOn" type="text" class="validate" value="' + createdOn + '"><label for="createdOn">Created On</label></div><div class="input-field col s6"><input disabled id="editedBy" type="text" class="validate" value="' + editedBy + '"><label for="editedBy">Edited By</label></div><div class="input-field col s6"><input disabled id="editedOn" type="text" class="validate" value="' + editedOn + '"><label for="editedOn">Edited On</label></div><div class="input-field col s6"> <select id="condition" name="condition" class="form-control"> <option value="' + origCondition + '" disabled selected>' + origCondition + '<option value="Excellent">Excellent</option> <option value="Moderate">Moderate</option> <option value="Poor">Poor</option> <option value="Severe">Severe</option></select> <label>Condition</label> </div> <div class="input-field col s6"> <select id="type" name="ownership" class="form-control"> <option value="' + origOwnership + '" disabled selected>' + origOwnership + '<option value="Public">Public</option> <option value="Private">Private</option></select> <label>Ownership</label> </div> <div class="input-field col s12"> <select id="size" name="size" class="form-control"> <option value="' + origSize + '" disabled selected>' + origSize + '</option> <option value="Large">Large</option> <option value="Medium">Medium</option> <option value="Small">Small</option> </select> <label>Size</label> </div> <div class="input-field col s12"><textarea id="description" class="materialize-textarea">' + origDescription + '</textarea><label for="description">Description</label></div></form></div></div>';
+
 
         card.innerHTML = form;
+        $('select').material_select();
         Materialize.updateTextFields();
 
         var action = document.createElement('div');
@@ -654,17 +749,26 @@ map.on('draw.selectionchange', function(){
           var editedBy = firebase.auth().currentUser.displayName;
           var editedOn = firebase.database.ServerValue.TIMESTAMP;
           var description = document.getElementById('description').value;
-          var notes = document.getElementById('notes').value;
+          var condition = document.getElementById('condition').value;
+          var ownership = document.getElementById('ownership').value;
+          var size = document.getElementById('size').value;
           var id = draw.getSelected().features[0].id;
 
           // set semantic data for point
           draw.setFeatureProperty(id,"createdBy",createdBy);
           draw.setFeatureProperty(id,"createdOn",createdOn);
           draw.setFeatureProperty(id,"description",description);
+          draw.setFeatureProperty(id,"condition",condition);
+          draw.setFeatureProperty(id,"ownership",ownership);
+          draw.setFeatureProperty(id,"size",size);
           draw.setFeatureProperty(id,"imageUUID",photo);
           draw.setFeatureProperty(id,"editedBy",editedBy);
           draw.setFeatureProperty(id,"editedOn",editedOn);
-          draw.setFeatureProperty(id,"notes",notes);
+
+          if (typeof(extension) != 'undefined') {
+              draw.setFeatureProperty(id,"extension",extension);
+          }
+
 
           // change per project
           firebase.database().ref('datacollector/tcvAshTree/' + featureKey).update(draw.getSelected().features[0], function(error) {
@@ -689,13 +793,13 @@ map.on('draw.selectionchange', function(){
           .getAll();
 
           // set card content
-          var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+          var thanks = '<div class="card-content white-text"><span class="card-title">Create a Point Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
           card.innerHTML = thanks;
 
           map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-          map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-          map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+       //   map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+       //   map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
         });
 
 
@@ -732,13 +836,13 @@ map.on('draw.selectionchange', function(){
           .getAll();
 
           // set card content
-          var thanks = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
+          var thanks = '<div class="card-content white-text"><span class="card-title">Create a Point Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>'
 
           card.innerHTML = thanks;
 
           map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-          map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-          map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+      //    map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+       //   map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
 
         });
 
@@ -747,13 +851,13 @@ map.on('draw.selectionchange', function(){
 
           draw.deleteAll();
           map.setLayoutProperty('firebasePoint', 'visibility', 'visible');
-          map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
-          map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
+    //      map.setLayoutProperty('firebaseLine', 'visibility', 'visible');
+   //       map.setLayoutProperty('firebasePoly', 'visibility', 'visible');
           draw.changeMode('simple_select');
 
           var card = document.getElementById('input-card');
 
-          var reset = '<div class="card-content white-text"><span class="card-title">Draw a Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminLine" class="waves-effect waves-blue btn white-text" onclick="drawLine()"><i class="material-icons">show_chart</i></a><a id="adminPolygon" class="waves-effect waves-blue btn white-text" onclick="drawPoly()"><i class="material-icons">layers</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
+          var reset = '<div class="card-content white-text"><span class="card-title">Create a Point Feature</span></div><div id="action" class="card-action"><a id="adminPoint" class="waves-effect waves-blue btn white-text" onclick="drawPoint()"><i class="material-icons">place</i></a><a id="adminEdit" class="deep-orange accent-1 waves-effect waves-deep-orange btn white-text" onclick="adminEdit()"> <i class="material-icons">create</i></a></div>';
 
           card.innerHTML = reset;
 
@@ -770,7 +874,7 @@ var popup = new mapboxgl.Popup()
 // touch workaround
 var firePopupTouch = function (e) {
   var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
-  var features = map.queryRenderedFeatures(bbox, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
+  var features = map.queryRenderedFeatures(bbox, 'firebasePoint');
 
   if (!features.length) {
     return;
@@ -784,7 +888,7 @@ var firePopupTouch = function (e) {
   col.className = "col s12";
   div.insertAdjacentElement('beforeend', col);
   var card = document.createElement('div');
-  card.className = 'card grey darken-1';
+  card.className = 'red-burnt';
   col.insertAdjacentElement('beforeend', card);
   var content = document.createElement('div');
   content.className = 'card-content white-text';
@@ -862,7 +966,7 @@ var firePopupTouch = function (e) {
 // popup function
 var firePopup = function (e) {
   var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
-  var features = map.queryRenderedFeatures(bbox, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
+  var features = map.queryRenderedFeatures(bbox,'firebasePoint' );
 
   if (!features.length) {
     return;
@@ -876,7 +980,7 @@ var firePopup = function (e) {
   col.className = "col s12";
   div.insertAdjacentElement('beforeend', col);
   var card = document.createElement('div');
-  card.className = 'card grey darken-1';
+  card.className = 'card red-burnt';
   col.insertAdjacentElement('beforeend', card);
   var content = document.createElement('div');
   content.className = 'card-content white-text';
@@ -959,7 +1063,7 @@ map.on('click', firePopup);
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['firebasePoint','firebaseLine','firebasePoly'] });
+  var features = map.queryRenderedFeatures(e.point, 'firebasePoint');
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
