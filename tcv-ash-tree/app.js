@@ -1081,4 +1081,4 @@ map.addControl(nav, 'bottom-right');
 // optional geolocation
 
 var geoLoc = new mapboxgl.GeolocateControl()
-map.addControl(geoLoc, 'bottom-right');
+map.addControl(geoLoc, 'top-right');
