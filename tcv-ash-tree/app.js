@@ -1089,6 +1089,7 @@ map.touchZoomRotate.disableRotation();
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'bottom-right');
 
+
 var geoLoc = new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
