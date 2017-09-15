@@ -352,8 +352,7 @@ map.addLayer({
       'type': 'line',        
       'paint': {
          'line-color': '#A9FF41', 
-         'line-width': 3,
-         'line-opacity': 0.1
+         'line-width': 2.5
        },
       'layout': {'visibility': 'visible'}
   },'country-label-lg');
@@ -1091,5 +1090,10 @@ map.touchZoomRotate.disableRotation();
 //map.addControl(nav, 'bottom-right');
 // optional geolocation
 
-var geoLoc = new mapboxgl.GeolocateControl()
+var geoLoc = new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+});
 map.addControl(geoLoc, 'bottom-right');
