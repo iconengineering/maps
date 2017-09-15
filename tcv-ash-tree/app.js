@@ -937,10 +937,15 @@ var firePopupTouch = function (e) {
   editedBy.innerHTML = '<div class="divider"></div><span class="popup-title">Edited By:</span> ' + feature.properties.editedBy + '<br />';
   var editedOn = document.createElement('span');
   editedOn.innerHTML = '<span class="popup-title">Edited On:</span> ' + moment(feature.properties.editedOn).format("ddd, MMM D YYYY, h:mm:ss a") + '<br />';
+  var condition = document.createElement('span');
+  condition.innerHTML = '<span class="popup-title">Condition:</span> ' + feature.properties.condition;
+  var ownership = document.createElement('span');
+  ownership.innerHTML = '<span class="popup-title">Ownership:</span> ' + feature.properties.ownership;
+  var size = document.createElement('span');
+  size.innerHTML = '<span class="popup-title">Size:</span> ' + feature.properties.size;
   var description = document.createElement('span');
   description.innerHTML = '<span class="popup-title">Description:</span> ' + feature.properties.description;
-  var notes = document.createElement('span');
-  notes.innerHTML = '<span class="popup-title">Notes:</span> ' + feature.properties.notes;
+
 
   if (feature.properties.imageUUID != null) {
     content.insertAdjacentElement('beforeend', image);
@@ -1045,12 +1050,18 @@ var firePopup = function (e) {
   }
   content.insertAdjacentElement('beforeend', createdBy);
   content.insertAdjacentElement('beforeend', createdOn);
+  content.insertAdjacentElement('beforeend', condition);
+  content.insertAdjacentElement('beforeend', ownership);
+  content.insertAdjacentElement('beforeend', size);
   content.insertAdjacentElement('beforeend', description);
   if (feature.properties.editedBy != null) {
     content.insertAdjacentElement('beforeend', editedBy);
     content.insertAdjacentElement('beforeend', editedOn);
-    content.insertAdjacentElement('beforeend', notes);
-  }
+    content.insertAdjacentElement('beforeend', condition);
+    content.insertAdjacentElement('beforeend', ownership);
+    content.insertAdjacentElement('beforeend', size);
+    content.insertAdjacentElement('beforeend', description);
+    }
 
   var popup = new mapboxgl.Popup()
   .setLngLat(e.lngLat)
