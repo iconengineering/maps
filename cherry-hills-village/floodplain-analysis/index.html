@@ -214,6 +214,7 @@ map.on('load', function() {
         'id': 'Floodplain Parcels',                     //anything             
         'source': 'prct_FP',
         'source-layer': 'chv_parcels_prcnt_FP', 		// name within MB
+        'layout': {'visibility': 'visible'},  
         'type': 'fill',
         'filter': ['>','PrctFldPl', 0],        			// attribute name w.i. MB
         'paint': {
@@ -265,7 +266,8 @@ map.on('load', function() {
 
     //Add data
     map.addLayer({
-        'id': 'Floodplain Outline',                          
+        'id': 'Floodplain Outline',   
+        'layout': {'visibility': 'visible'},                         
         'source': 'FP',
         'source-layer': 'chv_fld_ar_outline', 
         'type': 'line',
@@ -513,7 +515,7 @@ map.on('mousemove', function (e) {
 
 
 //CREATE TOGGLE LAYERS AND BUTTONS
-var toggleableLayerIds = [ 'Floodplain Parcels', 'Floodplain Outline', 'Floodplain Regions', 'Owner Labels' ];
+var toggleableLayerIds = [ 'Floodplain Parcels', 'Floodplain Outline', 'Owner Labels' ];
 
 var layers = document.getElementById('menu');
 
