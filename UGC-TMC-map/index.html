@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta charset='utf-8' />
+    <title>Upper Goose Creek and Twomile Canyon Creek</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/materialize2.css">
+    <script src="../../assets/js/toggleLayer.js"></script>
+
+    <script src='//api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-66511604-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:64px; bottom:0; width: 100vw;z-index:-1;}
+        .side-nav {background-color: rgba(255,255,255,0); margin-top: 70px; box-shadow: none;padding-left: 6px!important;}
+        .collapsible-header {font-size: 16px !important;}
+        .collection.with-header .collection-header {
+          padding: 10px 20px !important;
+        }
+        .collection.with-header .collection-item {padding: 10px .5em !important; line-height: 21px !important;}
+        .collection.with-header .collection-item a {height: auto !important; line-height: 21px !important; padding: 0 4px !important;}
+        @media only screen and (max-width : 992px) {
+          #map{ width: 100vw; left: 0; top: 56px;}
+          .side-nav {background-color: #fff; margin-top: 0px;width: 300px !important;padding-left: 0px !important;}
+        }
+    </style>
+</head>
+
+
+<link rel="stylesheet" type="text/css" href="ugc.css"/>
+
+
+<body>
+
+
+
+<header>
+  <nav>
+    <div id="header" class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" class="brand-logo hide-on-small-and-down">Upper Goose Creek and Twomile Canyon Creek</a>
+    </div>
+  </nav>
+</header>
+
+    <!--Begin Main Menu -->
+<ul id="slide-out" class="side-nav fixed">
+  <a href="#" class="brand-logo center hide-on-med-and-up" >Upper Goose Creek and Twomile Canyon Creek</a>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+
+
+     <!--Base Map Menu -->
+     <li>
+        <a class="collapsible-header white">Basemap<i class="material-icons">map</i></a>
+        <div class="collapsible-body grey-text text-darken-2" >
+          <form id="menu">
+            <p class="narrow">
+              <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
+              <label for="test1">Satellite Streets</label>
+            </p>
+            <p class="narrow">
+              <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd">
+              <label for="test2">Light</label>
+            </p>
+          </form>
+        </div>
+      </li>
+     
+
+      <!-- Layer Menu-->
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">layers</i></a>
+        <div class="collapsible-body grey-text text-darken-2">
+        
+        <ul class="collapsible" data-collapsible="expandable">    
+
+        <!-- Base Layer Sub-menu-->
+        <li>
+         <a class="collapsible-header grey-text">Base Layers<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+         <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+         
+            <!-- Check-box to toggle layer-->
+
+            <!--Contour-->
+            <p>
+              <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-off" onclick="toggleTwo('majorContour', 'minorContour')" />
+              <label for="ContourMenu" class="valign">Contours</label>
+            </p>
+
+            <!--Parcel--> 
+            <p>
+              <input name="ParcelMenu" type="checkbox" id="ParcelMenu" class="layer-off" onclick="toggleLayer('parcels')" />
+              <label for="ParcelMenu" class="valign">Parcels</label>
+            </p>
+
+            <!--Existing Utilitiy-->
+            <p>
+              <input name="UtilityMenu" type="checkbox" id="UtilityMenu" class="layer-off" onclick="toggleThree('san', 'wtr', 'storm')" />
+              <label for="UtilityMenu" class="valign">Utilities</label>
+            </p>
+        
+
+           <!-- Building -->
+            <p>
+              <input name="bldMenu" type="checkbox" id="bldMenu" class="layer-off" onclick="toggleLayer('struct')"/>
+              <label for="bldMenu" class="valign">Building Footprints</label>
+            </p>
+          </div>    
+          </li>
+
+
+
+ 
+         <!-- UGC Sub-menu-->
+        <li>
+         <a class="collapsible-header grey-text">Upper Goose Creek<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+         <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+         
+            <!-- Check-box to toggle layer-->
+            <!--LAYER 1-->
+            <p>
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-on" onclick="toggleThree('ugc_grading1','ugc_grading2', 'ugc_grading3')" checked/>
+              <label for="Pro2Menu" class="valign">Proposed Grading and Detention Areas </label>
+            </p>
+
+            <p class="grey-text text-darken-2 note">
+                  Hydrologic
+            </p>
+            <!--LAYER 2-->
+            <p>
+              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-off" onclick="toggleFive('ALT1', 'ALT1_CHANNEL', 'ALT1PATHWAY', 'ALT1GRADING', 'EXISTINGPOND')" />
+              <label for="Pro1Menu" class="valign">Gutter Lines</label>
+            </p>
+            
+
+            <!--LAYER 3-->
+            <p>
+              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-off" onclick="toggleTwo('EASEMENTS', 'EASEMENTS_OUTLINE')" />
+              <label for="Pro3Menu" class="valign">Cross Sections</label>
+            </p>
+
+
+             <!--LAYER 4-->
+            <p>
+              <input name="Pro4Menu" type="checkbox" id="Pro4Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro4Menu" class="valign">Stream Centerlines</label>
+            </p>  
+
+            
+            <p class="grey-text text-darken-2 note">
+                  Flood Hazard Zones
+            </p>
+
+             <!--LAYER 5-->
+            <p>
+              <input name="Pro5Menu" type="checkbox" id="Pro5Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro5Menu" class="valign">Conveyance Zone</label>
+            </p>  
+
+            <!--LAYER 6-->
+            <p>
+              <input name="Pro6Menu" type="checkbox" id="Pro6Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro6Menu" class="valign">High Hazard Zone</label>
+            </p>  
+
+            <!--LAYER 7-->
+            <p>
+              <input name="Pro7Menu" type="checkbox" id="Pro7Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro7Menu" class="valign">100-Yr Flood Zone</label>
+            </p>  
+
+            <!--LAYER 8-->            
+            <p>
+              <input name="Pro8Menu" type="checkbox" id="Pro8Menu" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro8Menu" class="valign">Zone X</label>
+            </p>  
+
+
+
+          </div>   
+         </li>
+
+
+
+
+
+
+
+         <!-- tmc Sub-menu-->
+        <li>
+         <a class="collapsible-header grey-text">Twomile Canyon Creek<i class="material-icons grey-text">keyboard_arrow_down</i></a>
+         <div class="collapsible-body grey lighten-4 grey-text text-darken-2">
+         
+            <!-- Check-box to toggle layer-->
+            <!--LAYER 1-->
+            <p>
+              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-on" onclick="toggleThree('tmc_grading1','tmc_grading2', 'tmc_grading3')" checked/>
+              <label for="Pro2Menu1" class="valign">Proposed Grading and Detention Areas </label>
+            </p>
+
+            <p>
+              <input name="Pro2Menu3" type="checkbox" id="Pro2Menu3" class="layer-off" onclick="toggleLayer('tmc_grading4')" />
+              <label for="Pro2Menu3" class="valign">Iris Split </label>
+            </p>
+
+            <p class="grey-text text-darken-2 note">
+                  Hydrologic
+            </p>
+            <!--LAYER 2-->
+            <p>
+              <input name="Pro1Menu1" type="checkbox" id="Pro1Menu1" class="layer-off" onclick="toggleFive('ALT1', 'ALT1_CHANNEL', 'ALT1PATHWAY', 'ALT1GRADING', 'EXISTINGPOND')" />
+              <label for="Pro1Menu1" class="valign">Gutter Lines</label>
+            </p>
+            
+
+            <!--LAYER 3-->
+            <p>
+              <input name="Pro3Menu1" type="checkbox" id="Pro3Menu1" class="layer-off" onclick="toggleTwo('EASEMENTS', 'EASEMENTS_OUTLINE')" />
+              <label for="Pro3Menu1" class="valign">Cross Sections</label>
+            </p>
+
+
+             <!--LAYER 4-->
+            <p>
+              <input name="Pro4Menu1" type="checkbox" id="Pro4Menu1" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro4Menu1" class="valign">Stream Centerlines</label>
+            </p>  
+
+            
+            <p class="grey-text text-darken-2 note">
+                  Flood Hazard Zones
+            </p>
+
+             <!--LAYER 5-->
+            <p>
+              <input name="Pro5Menu1" type="checkbox" id="Pro5Menu1" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro5Menu1" class="valign">Conveyance Zone</label>
+            </p>  
+
+            <!--LAYER 6-->
+            <p>
+              <input name="Pro6Menu1" type="checkbox" id="Pro6Menu1" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro6Menu1" class="valign">High Hazard Zone</label>
+            </p>  
+
+            <!--LAYER 7-->
+            <p>
+              <input name="Pro7Menu1" type="checkbox" id="Pro7Menu1" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro7Menu1" class="valign">100-Yr Flood Zone</label>
+            </p>  
+
+            <!--LAYER 8-->            
+            <p>
+              <input name="Pro8Menu1" type="checkbox" id="Pro8Menu1" class="layer-off" onclick="toggleLayer('CULVERTS')"/>
+              <label for="Pro8Menu1" class="valign">Zone X</label>
+            </p>  
+
+
+
+          </div>   
+         </li>
+
+
+      
+    
+        
+    <!--
+    <div class="mdl-grid">
+    <a id="clear" class="waves-effect waves-light btn">Clear All Layers</a>
+    </div> -->
+      
+
+
+        </ul>
+       </div>   
+      </li>
+  <!--end layer menu items -->
+
+
+      <!--legend-->
+      <li>
+        <a class="collapsible-header white">Legend<i class="material-icons">more_vert</i></a>
+        <div class="collapsible-body">
+          <ul class="collection with-header grey-text text-darken-2">
+            
+            <!--Base layer legend-->
+            <li class="collection-header grey-text"><em>Base Layers</em></li>
+              
+              <!--Boundary--> 
+              <li class="collection-item"><div>Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#161616" /></svg></a></div></li>
+
+              <!--Contour--> 
+              <li class="collection-item"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2"  stroke="#545454" /></svg></a></div></li>
+
+              <!--Parcels--> 
+              <li class="collection-item"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#F0F0F0" /></svg></a></div></li>
+
+              <!--Existing SAN--> 
+              <li class="collection-item"><div>Sanitary Sewer and Manhole<a href="#!" class="secondary-content"><img src="san-line-node.svg" style="height: 21px;"></a></div></li>
+            
+             <!--Existing WTR DOMESTIC--> 
+              <li class="collection-item"><div>Domestic Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#0007BF" /></svg></a></div></li>  
+
+               <!--Existing WTR REUSE--> 
+              <li class="collection-item"><div>Reuse Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#7A0050" stroke-opacity = "0.8"/></svg></a></div></li>
+              
+
+
+            <!--Project Items legend-->
+            <li class="collection-header grey-text"><em>Proposal Items</em></li>
+              
+              <!--Alternative Channels--> 
+              <li class="collection-item"><div>Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#003605" /></svg></a></div></li>
+             
+              <!--Alternative Banking-->
+              <li class="collection-item"><div>Channel Banks<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#00B00B" fill-opacity= ".65" /></svg></a></div></li>
+
+              <!--Alternative Grading--> 
+              <li class="collection-item"><div>Pathway<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#545454" line-opacity= "0.8" /></svg></a></div></li>
+                          
+              <!--Alternative Grading--> 
+              <li class="collection-item"><div>Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
+
+              <!--Alternative 2 Pond-->
+              <li class="collection-item"><div>Existing/Proposed Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
+                </g></svg></a></div></li>
+
+              <!--Utilitiy Easement --> 
+              <li class="collection-item"><div>Easements<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#E61856" fill-opacity= ".4"  /></svg></a></div></li>
+
+
+              <!--Cultverts --> 
+               <li class="collection-item"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="5" stroke="#161616" /></svg></a></div></li>
+          
+              
+
+
+            <!--Floodplain Hazards legend-->
+            <li class="collection-header grey-text"><em>Floodplain Layers</em></li>
+              
+              <!--Stream Centerline--> 
+              <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#0A2127" /></svg></a></div></li>
+
+              <!--Floodway--> 
+              <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#254061" fill-opacity=".8" /></svg></a></div></li>
+
+              <!--100-Yr--> 
+              <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#7ca4b3" fill-opacity=".8" /></svg></a></div></li>
+
+              <!--500-Yr --> 
+              <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#bad9dd" fill-opacity=".6" /></svg></a></div></li>
+            
+
+
+           </ul>
+        </div>
+      </li>
+
+
+    </ul>
+
+
+
+  </li>
+</ul>
+
+
+<div id='map'></div>
+
+<script src='ugc.js'></script>
+
+<script>
+$('.button-collapse').sideNav({
+    menuWidth: 350, // Default is 300
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: false // Choose whether you can drag to open on touch screens
+  }
+);
+
+$('.collapsible').collapsible();
+</script>
+
+</body>
+</html>
