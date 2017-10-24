@@ -519,7 +519,7 @@ for (var i = 0; i < radios2.length; i++) {
 
 
 //Radio Button for Alignment
-var altList = document.getElementById('altSwitch');
+var altList = document.getElementById('alts');
 var altRadio = altList.getElementsByTagName('input');
 
 function switchAlts() {
@@ -551,10 +551,10 @@ var conduitList = document.getElementById('conduitsSwitch');
 var conduitRadio = conduitList.getElementsByTagName('input');
 
 function switchConduit() {
-    var value3 = document.querySelector('input[name="conduit2"]:checked').value;
-    map.setFilter('conduits', ['==', 'alt', value3]);
-    map.setFilter('conduitLabels', ['==', 'alt', value3]);
-    map.setFilter('conduitArrows', ['==', 'alt', value3]);
+    var value = document.querySelector('input[name="conduit2"]:checked').value;
+    map.setFilter('conduits', ['==', 'alt', value]);
+    map.setFilter('conduitLabels', ['==', 'alt', value]);
+    map.setFilter('conduitArrows', ['==', 'alt', value]);
 
 
 }
