@@ -1,4 +1,6 @@
-
+---
+layout: default
+---
 ## Boulder Projects
 
 [Skunk, Bluebell, King](sbk-map)
@@ -12,3 +14,5 @@
 [Flood Mitigation](flood-mitigation)
 
 [Flood Mitigation Comments](flood-mitigation-comments)
+
+[Upper Goose Creek and Twomile Canyon Creek](UGC-TMC-map)
