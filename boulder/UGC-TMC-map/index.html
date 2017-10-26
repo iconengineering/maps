@@ -102,7 +102,7 @@
 
             <!--Contour-->
             <p>
-              <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-off" onclick="toggleThree('majorContour', 'minorContour', 'contourLabels')" />
+              <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-on" onclick="toggleThree('majorContour', 'minorContour', 'contourLabels')" checked="" />
               <label for="ContourMenu" class="valign">Contours</label>
             </p>
 
@@ -305,42 +305,35 @@
             <!--Base layer legend-->
             <li class="collection-header grey-text"><em>Base Layers</em></li>
               
-              <!--Boundary--> 
-              <li class="collection-item"><div>Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#161616" /></svg></a></div></li>
-
               <!--Contour--> 
               <li class="collection-item"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2"  stroke="#545454" /></svg></a></div></li>
 
               <!--Parcels--> 
               <li class="collection-item"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#F0F0F0" /></svg></a></div></li>
 
-              <!--Existing SAN--> 
-              <li class="collection-item"><div>Sanitary Sewer and Manhole<a href="#!" class="secondary-content"><img src="san-line-node.svg" style="height: 21px;"></a></div></li>
+              <!--SAN--> 
+              <li class="collection-item"><div>Sanitary Sewer<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#FFFF30" /></svg></a></div></li>   
             
-             <!--Existing WTR DOMESTIC--> 
-              <li class="collection-item"><div>Domestic Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#0007BF" /></svg></a></div></li>  
+             <!--WTR --> 
+              <li class="collection-item"><div>Water<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#00DBA7" /></svg></a></div></li>  
 
-               <!--Existing WTR REUSE--> 
-              <li class="collection-item"><div>Reuse Water Line<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#7A0050" stroke-opacity = "0.8"/></svg></a></div></li>
+               <!-- strom--> 
+              <li class="collection-item"><div>Strom<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#FF00AA" stroke-opacity = "0.8"/></svg></a></div></li>
+
+               <li class="collection-item"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#EDE400" fill-opacity=".4" /></svg></a></div></li>
               
 
 
             <!--Project Items legend-->
             <li class="collection-header grey-text"><em>Proposal Items</em></li>
               
-              <!--Alternative Channels--> 
-              <li class="collection-item"><div>Channel<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#003605" /></svg></a></div></li>
+              <!--Alternative Channel Grading --> 
+              <li class="collection-item"><div>Channel Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#036180" /></svg></a></div></li>
              
-              <!--Alternative Banking-->
-              <li class="collection-item"><div>Channel Banks<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#00B00B" fill-opacity= ".65" /></svg></a></div></li>
+              <!--Alternative Detention Grading-->
+             <li class="collection-item"><div>Detention Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#036180" /></svg></a></div></li>
 
-              <!--Alternative Grading--> 
-              <li class="collection-item"><div>Pathway<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#545454" line-opacity= "0.8" /></svg></a></div></li>
-                          
-              <!--Alternative Grading--> 
-              <li class="collection-item"><div>Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1.2" stroke="#FFED00" /></svg></a></div></li>
-
-              <!--Alternative 2 Pond-->
+              <!--Alternative 2 Pond
               <li class="collection-item"><div>Existing/Proposed Pond<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
@@ -352,34 +345,35 @@
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/>
-                </g></svg></a></div></li>
+                </g></svg></a></div></li> -->
 
-              <!--Utilitiy Easement --> 
+              <!--Utilitiy Easement 
               <li class="collection-item"><div>Easements<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#E61856" fill-opacity= ".4"  /></svg></a></div></li>
+				--> 
 
-
-              <!--Cultverts --> 
+              <!--Cultverts 
                <li class="collection-item"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="5" stroke="#161616" /></svg></a></div></li>
-          
+          		--> 
               
 
+   			<li class="collection-header grey-text"><em>Hydrologic</em></li>
 
             <!--Floodplain Hazards legend-->
-            <li class="collection-header grey-text"><em>Floodplain Layers</em></li>
+            <li class="collection-header grey-text"><em>Floodplain Harzard Zones</em></li>
               
-              <!--Stream Centerline--> 
+              <!--Stream Centerline
               <li class="collection-item"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2.5" stroke="#0A2127" /></svg></a></div></li>
 
-              <!--Floodway--> 
+              <!--Floodway
               <li class="collection-item"><div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#254061" fill-opacity=".8" /></svg></a></div></li>
 
-              <!--100-Yr--> 
+              <!--100-Yr
               <li class="collection-item"><div>100-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#7ca4b3" fill-opacity=".8" /></svg></a></div></li>
 
-              <!--500-Yr --> 
+              <!--500-Yr 
               <li class="collection-item"><div>500-Yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#bad9dd" fill-opacity=".6" /></svg></a></div></li>
             
-
+-->
 
            </ul>
         </div>

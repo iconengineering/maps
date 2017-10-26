@@ -383,7 +383,7 @@ map.on('style.load', function () {
       'type': 'line',
       'source': 'contours',
       'layout': {
-          'visibility': 'none',
+          'visibility': 'visible',
           'line-join': 'round',
           'line-cap': 'round'   
       },
@@ -404,7 +404,7 @@ map.on('style.load', function () {
       'type': 'line',
       'source': 'contours5',
       'layout': {
-          'visibility': 'none',
+          'visibility': 'visible',
           'line-join': 'round',
           'line-cap': 'round'   
       },
@@ -477,7 +477,7 @@ map.on('style.load', function () {
       'source': 'contours',
     //  'filter': ['==', 'Index', '5'],
       'layout': {
-          'visibility': 'none',
+          'visibility': 'visible',
         'symbol-placement': 'line',
         'text-field': '{Label}',
         'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
