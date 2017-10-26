@@ -1,6 +1,4 @@
----
-layout: default
----
+
 ## Boulder Projects
 
 [Skunk, Bluebell, King](sbk-map)
