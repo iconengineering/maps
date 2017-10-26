@@ -408,13 +408,13 @@ map.on('style.load', function () {
           'line-join': 'round',
           'line-cap': 'round'   
       },
-      'paint': {
+		'paint': {
         'line-width': {
-            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+             "stops": [[15, 1], [17, 1.75], [19, 2.5]]
         },
-      'line-opacity': {
-     "stops": [[16, 0.7],[19, 1]] },
-        
+       'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]] },
+       
           'line-color': '#424242'
       }
     }, 'road-label-small');
@@ -519,7 +519,7 @@ map.on('style.load', function () {
       'paint': {
          'line-color': '#fff', 
          'line-width': 1.4,
-         'line-opacity': 0.5
+         'line-opacity': 0.8
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -532,11 +532,33 @@ map.on('style.load', function () {
       'source-layer': 'UGC_SAN-6zo1fw',     
       'type': 'line',        
       'paint': {
-         'line-color': '#00876C', 
+         'line-color': '#FFFF30', 
          'line-width': 2.6,
-         'line-opacity': 0.4
+         'line-opacity': 0.9,
+        // 'line-dasharray': [3, 3],
        },
       'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+ 	map.addLayer({
+       'id': 'sanLabels',
+       'type': 'symbol',                                
+       'source': 'san',
+       'source-layer': 'UGC_SAN-6zo1fw',
+       'layout': {
+         'visibility': 'none',
+         'symbol-placement': 'line',
+         'text-field': 'SAN',
+         'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
+         'text-size': 12,
+          },
+       'paint': {
+         'text-opacity': 0.75,
+         'text-color': '#FFFF30',
+         'text-halo-color': 'rgb(250,250,250 )',
+         'text-halo-width': 0.7
+        }
     },'road-label-small');
 
 
@@ -549,12 +571,31 @@ map.on('style.load', function () {
       'type': 'line',        
       'paint': {
          'line-width': 2.6,
-         'line-color': '#7A0050', 
+         'line-color': '#00DBA7', 
          'line-opacity': 0.4
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
 
+ 	map.addLayer({
+       'id': 'wtrLabels',
+       'type': 'symbol',                                
+       'source': 'wtr',
+       'source-layer': 'UGC_water-aqbp8r',
+       'layout': {
+         'visibility': 'none',
+         'symbol-placement': 'line',
+         'text-field': 'WTR',
+         'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
+         'text-size': 12,
+          },
+       'paint': {
+         'text-opacity': 0.75,
+         'text-color': '#00DBA7',
+         'text-halo-color': 'rgb(250,250,250 )',
+         'text-halo-width': 0.7
+        }
+    },'road-label-small');
 
 
     //Storm
@@ -564,12 +605,35 @@ map.on('style.load', function () {
       'source-layer': 'UGC_storm-916fqn',     
       'type': 'line',        
       'paint': {
-         'line-color': '#FD6E2C', 
+         'line-color': '#FF00AA', 
          'line-width': 2.6,
         'line-opacity': 0.4
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
+
+
+  	map.addLayer({
+       'id': 'stormLabels',
+       'type': 'symbol',                                
+       'source': 'storm',
+       'source-layer': 'UGC_storm-916fqn',
+       'layout': {
+         'visibility': 'none',
+         'symbol-placement': 'line',
+         'text-field': 'STORM',
+         'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
+         'text-size': 12,
+          },
+       'paint': {
+         'text-opacity': 0.75,
+         'text-color': '#FF00AA',
+         'text-halo-color': 'rgb(250,250,250 )',
+         'text-halo-width': 0.7
+        }
+    },'road-label-small');
+
+
 
 
 
