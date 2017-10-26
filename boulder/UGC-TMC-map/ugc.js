@@ -191,7 +191,12 @@ map.on('style.load', function () {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     map.addSource('contours', {
         type: 'geojson',
-        data: 'UGC_contours.geojson'
+        data: 'contour_index_10.geojson'
+    });
+
+    map.addSource('contours5', {
+        type: 'geojson',
+        data: 'contour_index_5.geojson'
     });
 
     map.addSource('structures', {
@@ -371,6 +376,53 @@ map.on('style.load', function () {
 //-----------------------------------Base Layers----------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+    
+    //10- ft  
+    map.addLayer({
+      'id': 'majorContour',
+      'type': 'line',
+      'source': 'contours',
+      'layout': {
+          'visibility': 'none',
+          'line-join': 'round',
+          'line-cap': 'round'   
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+        },
+      'line-opacity': {
+     "stops": [[16, 0.7],[19, 1]] },
+        
+          'line-color': '#424242'
+      }
+    }, 'road-label-small');
+
+        //10- ft  
+    map.addLayer({
+      'id': 'minorContour',
+      'type': 'line',
+      'source': 'contours5',
+      'layout': {
+          'visibility': 'none',
+          'line-join': 'round',
+          'line-cap': 'round'   
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+        },
+      'line-opacity': {
+     "stops": [[16, 0.7],[19, 1]] },
+        
+          'line-color': '#424242'
+      }
+    }, 'road-label-small');
+  
+  
+
+
+/*
     //Major contours     
     map.addLayer({
       'id': 'majorContour',
@@ -414,13 +466,16 @@ map.on('style.load', function () {
           'line-color': '#424242'
       }
     }, 'road-label-small');
+
+
+*/
   
     //contour labels
     map.addLayer({
       'id': 'contourLabels',
       'type': 'symbol',
       'source': 'contours',
-      'filter': ['==', 'Index', '5'],
+    //  'filter': ['==', 'Index', '5'],
       'layout': {
           'visibility': 'none',
         'symbol-placement': 'line',
