@@ -35,11 +35,11 @@ map.on('style.load', function (e) {
 
   map.addSource('basinOutlines', {
       type: 'geojson',
-      "data": 'basinOutlines.geojson'
+      data: 'basinOutlines.geojson'
   });
   map.addSource('alternatives', {
       type: 'geojson',
-      "data": 'alternatives.geojson'
+      data: 'alternatives.geojson'
   });
   map.addSource('basinPoints', {
       type: 'vector',
@@ -333,7 +333,7 @@ map.on('style.load', function (e) {
       'id': 'alternativesCase',
       'type': 'line',
       'source': 'alternatives',
-      'filter': ['==', 'alt', 'existing'],
+      'filter': ['==', 'alt', 'recPlan'],
       'layout': {
         "visibility": 'none',
         'line-join': 'bevel'
@@ -350,7 +350,7 @@ map.on('style.load', function (e) {
       'id': 'alternatives',
       'type': 'line',
       'source': 'alternatives',
-      'filter': ['==', 'alt', 'existing'],
+      'filter': ['==', 'alt', 'recPlan'],
       'layout': {
         "visibility": 'none',
         'line-join': 'bevel'

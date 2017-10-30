@@ -858,7 +858,3 @@
 { "type": "Feature", "properties": { "Id": 0, "Outfall": "12th St.", "Lateral": null, "Improv_Lvl": "05-yr", "Pipe_Slope": 0.0, "Pipe_DIA": 0.0, "SWMM_Pipe": "L036.22", "MaxFlow": 0.0, "Pipe_Width": 0.0, "Barrels": 1, "Flow": 0.0, "Len": 0.0, "alt": "recPlan" }, "geometry": { "type": "LineString", "coordinates": [ [ -104.68185143163848, 40.41695875289269 ], [ -104.68009286312667, 40.416911528526875 ] ] } }
 ]
 }
-
-]
-}
-
