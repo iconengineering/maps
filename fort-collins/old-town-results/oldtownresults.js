@@ -94,7 +94,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('flowDepth', {
       type: 'vector',
-      url: 'mapbox://iconeng.c23ab050'
+      url: 'mapbox://iconeng.d05b65ag'    // iconeng.c23ab050
   });
   map.addSource('contours', {
       type: 'vector',
@@ -102,7 +102,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('velocity', {
       type: 'vector',
-      url: 'mapbox://iconeng.8ad980f5'
+      url: 'mapbox://iconeng.19prc5ll'   //  iconeng.8ad980f5
   });
 
   map.addLayer({
@@ -215,7 +215,7 @@ map.on('style.load', function (e) {
       'id': 'flowDepth',
       'type': 'fill',
       'source': 'flowDepth',
-      'source-layer': 'OTH_RainOnGrid_MaxFlowDepth',
+      'source-layer': 'OTH_Update_MaxFlowDepth-60jggv',  //OTH_RainOnGrid_MaxFlowDepth
       'filter': ['>', 'Var', 0.25],
       'paint': {
           'fill-color': {
@@ -239,7 +239,7 @@ map.on('style.load', function (e) {
       'id': 'velocity',
       'type': 'line',
       'source': 'velocity',
-      'source-layer': 'OTH_RainOnGrid_Velocity',
+      'source-layer': 'OTH_Update_Velocity-2n2pj8',   //OTH_RainOnGrid_Velocity
       'filter': ['>', 'Var', 0.25],
       'paint': {
           'line-width': 1.2,
