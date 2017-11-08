@@ -94,7 +94,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('flowDepth', {
       type: 'vector',
-      url: 'mapbox://iconeng.c23ab050'    // iconeng. d05b65ag
+      url: 'mapbox://iconeng.c23ab050'    
   });
   map.addSource('contours', {
       type: 'vector',
@@ -102,8 +102,21 @@ map.on('style.load', function (e) {
   });
   map.addSource('velocity', {
       type: 'vector',
-      url: 'mapbox://iconeng.8ad980f5'   //  iconeng.19prc5ll
+      url: 'mapbox://iconeng.8ad980f5'   
   });
+
+  map.addSource('flowDepthPotential', {
+      type: 'vector',
+      url: 'mapbox://iconeng.d05b65ag'    
+  });
+
+  map.addSource('velocityPotential', {
+      type: 'vector',
+      url: 'mapbox://iconeng.19prc5ll'   
+  });
+
+
+
 
   map.addLayer({
       'id': '5ftContours',
@@ -168,7 +181,7 @@ map.on('style.load', function (e) {
       'type': 'fill',
       'source': 'watersheds',
       'paint': {
-          'fill-opacity': 0.179,
+          'fill-opacity': 0.25,
           'fill-color': {
               property: 'Outfall',
               type: 'categorical',
@@ -235,6 +248,31 @@ map.on('style.load', function (e) {
       }
   }, 'road-label-small');
 
+
+ map.addLayer({
+      'id': 'flowDepthPotential',
+      'type': 'fill',
+      'source': 'flowDepth',
+      'source-layer': 'OTH_Update_MaxFlowDepth-60jggv',  
+      'filter': ['>', 'Var', 0.25],
+      'paint': {
+          'fill-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, 'rgb(252,244,182)'],
+                  [.5, 'rgb(245,194,152)'],
+                  [1, 'rgb(227,147,138)'],
+                  [1.5, 'rgb(199,101,134)'],
+                  [2, 'rgb(161,59,139)'],
+                  [3, 'rgb(109,23,143)'],
+                  [4, 'rgb(14,9,135)']
+                  ]
+          },
+          'fill-opacity': 0
+      }
+  }, 'road-label-small');
+
   map.addLayer({
       'id': 'velocity',
       'type': 'line',
@@ -259,6 +297,34 @@ map.on('style.load', function (e) {
           }
       }
   },'road-label-small');
+
+
+  map.addLayer({
+      'id': 'velocityPotential',
+      'type': 'line',
+      'source': 'velocity',
+      'source-layer': 'OTH_Update_Velocity-2n2pj8', 
+      'filter': ['>', 'Var', 0.25],
+      'paint': {
+          'line-width': 1.2,
+          'line-opacity': 0,
+          'line-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, '#cfd8dc'],
+                  [.5, '#acbbc1'],
+                  [1, '#8c9ea6'],
+                  [1.5, '#6e828b'],
+                  [2, '#53666f'],
+                  [3, '#3b4c54'],
+                  [4, '#263238']
+                  ]
+          }
+      }
+  },'road-label-small');
+
+
 
   map.addLayer({
       'id': 'ponds',
