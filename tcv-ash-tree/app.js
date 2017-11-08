@@ -968,7 +968,7 @@ var firePopupTouch = function (e) {
 // popup function
 var firePopup = function (e) {
   var bbox = [[e.point.x - 2, e.point.y - 2], [e.point.x + 2, e.point.y + 2]];
-  var features = map.queryRenderedFeatures(bbox,'firebasePoint' );
+  var features = map.queryRenderedFeatures(bbox, { layers:['firebasePoint']} );
 
   if (!features.length) {
     return;
@@ -1076,7 +1076,7 @@ map.on('click', firePopup);
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (e) {
-  var features = map.queryRenderedFeatures(e.point, 'firebasePoint');
+  var features = map.queryRenderedFeatures(e.point, { layers: ['firebasePoint']});
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
