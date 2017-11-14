@@ -2,15 +2,15 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
 
-//Satellite Steets
+//Dark Canvas
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    zoom: 14.0,
+    style: 'mapbox://styles/iconeng/cj9104irokbj02rph2yzugzjb',
+    zoom: 14.45,
     //minZoom:11,
    // maxZoom:19.5,
     hash: true,
-    center: [-105.2773,40.0330]
+    center: [-105.2780,40.0329] 
 });
 
 
@@ -232,145 +232,6 @@ map.on('style.load', function () {
 
 //++++++++++++++++++++++++++++++++ ADD LAYER +++++++++++++++++++++++++++++++++++++
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//--------------------------Upper Goose Creek-------------------------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- /* map.addLayer({
-    id: 'ugc_100yr',
-    source: 'ugc_100yr',
-    type: 'fill',
-    paint: {
-        'fill-opacity': 0.75,
-        'fill-color': '#2a5674',
-        'fill-outline-color': '#2a5674'
-    }
-  }, 'road-label-small');
-
-*/
-
-    map.addLayer({
-    id: 'ugc_grading1',
-    source: 'ugc_grading_alipine', 
-    type: 'line',
-    layout: {'visibility': 'visible'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#0B8074',
-          
-      }
-   
-  }, 'road-label-small');
-
-    map.addLayer({
-    id: 'ugc_grading2',
-    source: 'ugc_detention_nBoulderPark',
-    type: 'line',
-    layout: {'visibility': 'visible'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#0B8074',
-         
-      }
-   
-  }, 'road-label-small');
-
-
-    map.addLayer({
-    id: 'ugc_grading3',
-    source: 'ugc_grading',
-    type: 'line',
-    layout: {'visibility': 'visible'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#0B8074',
-         
-      }
-   
-  }, 'road-label-small');
-
-
-
-
-
-
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//--------------------------Twomile Canyon Creek----------------------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- /* map.addLayer({
-    id: 'tmc_100yr',
-    source: 'tmc_100yr',
-    type: 'fill',
-    layout: {'visibility': 'none'},
-    paint: {
-        'fill-opacity': 0.75,
-        'fill-color': '#2a5674',
-        'fill-outline-color': '#2a5674'
-    }
-  }, 'road-label-small');
-*/
-
-
-
-    map.addLayer({
-    id: 'tmc_grading1',
-    source: 'tmc_grading_mnr',
-    type: 'line',
-    layout: {'visibility': 'visible'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#036180',
-          
-      }
-   
-  }, 'road-label-small');
-
-    map.addLayer({
-    id: 'tmc_grading2',
-    source: 'tmc_grading_mjr',
-    type: 'line',
-    layout: {'visibility': 'visible'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#036180',
-         
-      }
-   
-  }, 'road-label-small');
-
-
-    map.addLayer({
-    id: 'tmc_grading3',
-    source: 'tmc_detention_springValley',
-    type: 'line',
-    layout: {'visibility': 'visible'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#036180',
-         
-      }
-   
-  }, 'road-label-small');
-
-
-
-    map.addLayer({
-    id: 'tmc_grading4',
-    source: 'tmc_grading_Iris',
-    type: 'line',
-    layout: {'visibility': 'none'},
-         'paint': {
-          'line-width': 0.5,
-          'line-color': '#036180',
-         
-      }
-   
-  }, 'road-label-small');
-
-
-
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //-----------------------------------Base Layers----------------------------------
@@ -383,7 +244,7 @@ map.on('style.load', function () {
       'type': 'line',
       'source': 'contours',
       'layout': {
-          'visibility': 'visible',
+          'visibility': 'none',
           'line-join': 'round',
           'line-cap': 'round'   
       },
@@ -394,28 +255,28 @@ map.on('style.load', function () {
       'line-opacity': {
      "stops": [[16, 0.7],[19, 1]] },
         
-          'line-color': '#424242'
+          'line-color': '#999999'
       }
     }, 'road-label-small');
 
-        //10- ft  
+        //5- ft  
     map.addLayer({
       'id': 'minorContour',
       'type': 'line',
       'source': 'contours5',
       'layout': {
-          'visibility': 'visible',
+          'visibility': 'none',
           'line-join': 'round',
           'line-cap': 'round'   
       },
-		'paint': {
+    'paint': {
         'line-width': {
              "stops": [[15, 1], [17, 1.75], [19, 2.5]]
         },
        'line-opacity': {
             "stops": [[16, 0.7],[19, 1]] },
        
-          'line-color': '#424242'
+          'line-color': '#999999'
       }
     }, 'road-label-small');
   
@@ -477,7 +338,7 @@ map.on('style.load', function () {
       'source': 'contours',
     //  'filter': ['==', 'Index', '5'],
       'layout': {
-          'visibility': 'visible',
+          'visibility': 'none',
         'symbol-placement': 'line',
         'text-field': '{Label}',
         'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
@@ -517,9 +378,9 @@ map.on('style.load', function () {
       'source-layer': 'UGC_parcel-04pgif',     
       'type': 'line',        
       'paint': {
-         'line-color': '#fff', 
-         'line-width': 1.4,
-         'line-opacity': 0.8
+         'line-color': '#AA9769', 
+         'line-width': 0.85,
+         'line-opacity': 0.65
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -532,16 +393,16 @@ map.on('style.load', function () {
       'source-layer': 'UGC_SAN-6zo1fw',     
       'type': 'line',        
       'paint': {
-         'line-color': '#FFFF30', 
+         'line-color': '#96D400', 
          'line-width': 2.6,
-         'line-opacity': 0.9,
+         'line-opacity': 0.7,
         // 'line-dasharray': [3, 3],
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
 
 
- 	map.addLayer({
+  map.addLayer({
        'id': 'sanLabels',
        'type': 'symbol',                                
        'source': 'san',
@@ -555,7 +416,7 @@ map.on('style.load', function () {
           },
        'paint': {
          'text-opacity': 0.75,
-         'text-color': '#FFFF30',
+         'text-color': '#96D400',
          'text-halo-color': 'rgb(250,250,250 )',
          'text-halo-width': 0.7
         }
@@ -571,13 +432,13 @@ map.on('style.load', function () {
       'type': 'line',        
       'paint': {
          'line-width': 2.6,
-         'line-color': '#00DBA7', 
-         'line-opacity': 0.4
+         'line-color': '#00FDD9', 
+         'line-opacity': 0.7
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
 
- 	map.addLayer({
+  map.addLayer({
        'id': 'wtrLabels',
        'type': 'symbol',                                
        'source': 'wtr',
@@ -591,7 +452,7 @@ map.on('style.load', function () {
           },
        'paint': {
          'text-opacity': 0.75,
-         'text-color': '#00DBA7',
+         'text-color': '#00FDD9',
          'text-halo-color': 'rgb(250,250,250 )',
          'text-halo-width': 0.7
         }
@@ -605,15 +466,15 @@ map.on('style.load', function () {
       'source-layer': 'UGC_storm-916fqn',     
       'type': 'line',        
       'paint': {
-         'line-color': '#FF00AA', 
+         'line-color': '#004AFD', 
          'line-width': 2.6,
-        'line-opacity': 0.4
+        'line-opacity': 0.7
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
 
 
-  	map.addLayer({
+    map.addLayer({
        'id': 'stormLabels',
        'type': 'symbol',                                
        'source': 'storm',
@@ -627,417 +488,603 @@ map.on('style.load', function () {
           },
        'paint': {
          'text-opacity': 0.75,
-         'text-color': '#FF00AA',
+         'text-color': '#004AFD',
          'text-halo-color': 'rgb(250,250,250 )',
          'text-halo-width': 0.7
         }
     },'road-label-small');
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//--------------------------Upper Goose Creek-------------------------------------
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+// ---- UGC PROPOSED GRADING
+    map.addLayer({
+    id: 'ugc_grading1',
+    source: 'ugc_grading_alipine', 
+    type: 'line',
+    filter: ['!=', 'Type', 'Alpine Detention'],
+       layout: {
+        'visibility': 'visible',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+    map.addLayer({
+    id: 'ugc_grading_alpine_det',
+    source: 'ugc_grading_alipine', 
+    type: 'line',
+    filter: ['==', 'Type', 'Alpine Detention'],
+    layout: {
+      'visibility': 'visible',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF00C3',
+          
+      }
+   
+  }, 'road-label-small');
+
+    map.addLayer({
+    id: 'ugc_grading2',
+    source: 'ugc_detention_nBoulderPark',
+    type: 'line',
+    layout: {
+        'visibility': 'visible',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF00C3',
+         
+      }
+   
+  }, 'road-label-small');
+
+    map.addLayer({
+    id: 'ugc_grading3',
+    source: 'ugc_grading',
+    type: 'line',
+    'layout': {
+      'visibility': 'visible',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF0072',
+          
+      }
+   
+  }, 'road-label-small');
 
 
 
+
+
+// ----UGC HAZARD ZONES
+
+    //Hi Haz
+    map.addLayer({
+    id: 'ugc_hiHaz',
+    source: 'ugc_high_haz',
+    'source-layer': 'UGC_EC_High_Hazard_GooseCreek-4v9vgk',
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#DC0714',
+        'fill-outline-color': '#DC0714'
+    }
+  }, 'road-label-small');
+
+    //Zone X
+    map.addLayer({
+    id: 'ugc_zone_x',
+    source: 'ugc_zone_x',
+    'source-layer': 'UGC_EC_Zone_X_GooseCreek-0sirpr',
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#FFA540',
+        'fill-outline-color': '#FFA540'
+    }
+  }, 'road-label-small');
+
+
+    //Conveyence - outline
+    map.addLayer({
+    id: 'ugc_fw',
+    source: 'ugc_fw',
+    'source-layer': 'UGC_EC_Conveyance_Zone_GooseC-6icxv5',
+    type: 'line',
+    layout: {
+        'visibility': 'none',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#0034D9',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+    //100-Yr - outline
+    map.addLayer({
+    id: 'ugc_100yr',
+    source: 'ugc_100yr',
+    'source-layer': 'UGC_EC_1_PCT_ANNUAL_CHANCE_FL-3ouelt',
+    type: 'line',
+    layout: {
+        'visibility': 'none',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#FFBF00',
+        'line-width': {
+              "stops": [[15, 1.1], [17, 2], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+
+// ----UGC Hydrology     
+    
+    //Flow Path
+    map.addLayer({
+    id: 'ugc_centerline',
+    source: 'ugc_centerline',
+    'source-layer': 'UGC_EC_Centerline_GooseCreek-bdao6q',
+    type: 'line',
+    layout: {
+        'visibility': 'visible',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#08D6FF',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+    //XS
+    map.addLayer({
+    id: 'ugc_xs',
+    source: 'ugc_xs',
+    'source-layer': 'UGC_EC_Cross_Sections_GooseCr-cm3ba9',
+    type: 'line',
+    layout: {
+        'visibility': 'visible',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#08FA47',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+
+    //XS labels
+    map.addLayer({
+      'id': 'ugc_xs_labels',
+      'type': 'symbol',
+      'source': 'ugc_xs',
+      'source-layer': 'UGC_EC_Cross_Sections_GooseCr-cm3ba9',
+      'layout': {
+          'visibility': 'visible',
+        'symbol-placement': 'line',
+        'text-field': '{ProfileM}',
+        'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': {
+          "stops": [[15,11],[17,12],[19,14]]
+        }
+      },
+      'paint': {
+        'text-color': '#08FA47',
+        'text-halo-color': 'rgba(20,20,20,0.9)',
+        'text-halo-width': 2,
+        'text-halo-blur': 0.5
+      }
+     }, 'road-label-small');
+
+
+
+
+    //Gutterline
+    map.addLayer({
+    id: 'ugc_gutter_line',
+    source: 'ugc_gutter_line',
+    'source-layer': 'UGC_EC_Gutter_Line_GooseCreek-6fpike',
+    type: 'line',
+    layout: {
+        'visibility': 'none',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#FF9800',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+    
+ 
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//--------------------------Twomile Canyon Creek----------------------------------
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+// TMC PROPOSED GRADING
+
+    map.addLayer({
+    id: 'tmc_grading1',
+    source: 'tmc_grading_mnr',
+    type: 'line',
+    'layout': {
+      'visibility': 'visible',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF0072',
+          
+      }
+   
+  }, 'road-label-small');
+
+    map.addLayer({
+    id: 'tmc_grading2',
+    source: 'tmc_grading_mjr',
+        type: 'line',
+    'layout': {
+      'visibility': 'visible',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.3], [17, 0.8], [19, 1.3]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF0072',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'tmc_grading3',
+    source: 'tmc_detention_springValley',
+    type: 'line',
+    layout: {
+        'visibility': 'visible',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+              "stops": [[15, 0.25], [17, 0.6], [19, 1 ]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF00C3',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'tmc_grading4',
+    source: 'tmc_grading_Iris',
+    type: 'line',
+    'layout': {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF0072',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+
+// --- TMC HAZARD ZONES
+
+    //Zone AO - 2ft
+    map.addLayer({
+    id: 'tmc_zone_ao_2',
+    source: 'tmc_zone_ao_2',
+    'source-layer': 'UGC_EC_Zone_AO_2_Foot_Twomile-awnxb5',
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#7FEAFF',
+        'fill-outline-color': '#7FEAFF' 
+    }
+  }, 'road-label-small');
+
+
+    //Zone AO - 1ft
+    map.addLayer({
+    id: 'tmc_zone_ao_1',
+    source: 'tmc_zone_ao_1',
+    'source-layer': 'UGC_EC_Zone_AO_1_Foot_Twomlil-daw5bx',
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#E980FC',
+        'fill-outline-color': '#E980FC'
+    }
+  }, 'road-label-small');
+
+
+    //Hi Hazard
+    map.addLayer({
+    id: 'tmc_hiHaz',
+    source: 'tmc_high_haz',
+    'source-layer': 'UGC_EC_High_Hazard_TwomileCan-9p8plr', 
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#DC0714',
+        'fill-outline-color': '#DC0714'
+    }
+  }, 'road-label-small');
+
+    //Zone X
+    map.addLayer({
+    id: 'tmc_zone_x',
+    source: 'tmc_zone_x',
+    'source-layer': 'UGC_EC_Zone_X_TwomileCanyonCr-a7xaee',
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#FFA540',
+        'fill-outline-color': '#FFA540'
+    }
+  }, 'road-label-small');
+
+
+    //Conveyence - outline
+    map.addLayer({
+    id: 'tmc_fw',
+    source: 'tmc_fw',
+    'source-layer': 'UGC_EC_Conveyance_Zone_Twomil-3loygh',
+    type: 'line',
+    layout: {
+        'visibility': 'none',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#0034D9',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+    //100-Yr - outline
+    map.addLayer({
+    id: 'tmc_100yr',
+    source: 'tmc_100yr',
+    'source-layer': 'UGC_EC_1_PCT_ANNUAL_CHANCE_FL-854emf',
+    type: 'line',
+    layout: {
+        'visibility': 'none',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#FFBF00',
+        'line-width': {
+              "stops": [[15, 1.1], [17, 2], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+//-----TMC HYDROLICS
+
+
+
+ //Flow Path
+    map.addLayer({
+    id: 'tmc_centerline',
+    source: 'tmc_centerline',
+    'source-layer': 'UGC_EC_Centerline_TwomileCany-cemj2e',
+    type: 'line',
+    layout: {
+        'visibility': 'visible',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#08D6FF',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+    //XS
+    map.addLayer({
+    id: 'tmc_xs',
+    source: 'tmc_xs',
+    'source-layer': 'UGC_EC_Cross_Sections_Twomile-1njxgb',
+    type: 'line',
+    layout: {
+        'visibility': 'visible',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#08FA47',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+
+    //XS labels
+    map.addLayer({
+      'id': 'tmc_xs_labels',
+      'type': 'symbol',
+      'source': 'tmc_xs',
+      'source-layer': 'UGC_EC_Cross_Sections_Twomile-1njxgb',
+      'layout': {
+          'visibility': 'visible',
+        'symbol-placement': 'line',
+        'text-field': '{ProfileM}',
+        'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': {
+          "stops": [[15,11],[17,12],[19,14]]
+        }
+      },
+      'paint': {
+        'text-color': '#08FA47',
+        'text-halo-color': 'rgba(20,20,20,0.9)',
+        'text-halo-width': 2,
+        'text-halo-blur': 0.5
+      }
+     }, 'road-label-small');
+
+
+
+
+    //Gutterline
+    map.addLayer({
+    id: 'tmc_gutter_line',
+    source: 'tmc_gutter_line',
+    'source-layer': 'UGC_EC_Gutter_Line_TwomileCan-26swm6',
+    type: 'line',
+    layout: {
+        'visibility': 'none',
+        'line-join': 'miter',
+        'line-cap': 'butt'
+      },
+    paint: {
+        'line-color': '#FF9800',
+        'line-width': {
+              "stops": [[15, 1.3], [17, 2.5], [19, 4]]
+        },
+
+    }
+  }, 'road-label-small');
+
+
+
+/* ATLER FEATURE COLOR BASED ON BASE MAP
+    var style = map.getStyle();
+
+    if (style.name != 'Light'){
+      map.setLayoutProperty('conduitArrows','icon-image','oneway-spaced-white-small');
+      map.setLayoutProperty('conduitCompsArrows','icon-image','oneway-spaced-white-small');
+    };
 
    
-
-
-/*
-
-  map.addLayer({
-    id: '500yr',
-    source: 'floodZones',
-    type: 'fill',
-    filter: ['==', 'FldZone', '500yr'],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#7ebdc5',
-        'fill-outline-color': '#61a4b3'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: '100yr',
-    source: 'floodZones',
-    type: 'fill',
-    filter: ['==', 'FldZone', '100yr'],
-    paint: {
-        'fill-opacity': 0.75,
-        'fill-color': '#2a5674',
-        'fill-outline-color': '#2a5674'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'AO',
-    source: 'floodZones',
-    type: 'fill',
-    filter: ['in', 'FldZone', 'AO1','AO2'],
-    paint: {
-        'fill-opacity': 0.75,
-        'fill-color': '#1976D2',
-        'fill-outline-color': '#1976D2'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'HHZ',
-    source: 'floodZones',
-    type: 'fill',
-    filter: ['==', 'FldZone', 'HHZ'],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#FF5252',
-        'fill-outline-color': '#FF5252'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'structures2d',
-    source: 'structures',
-    type: 'fill',
-    filter: ['==', 'study', '2D'],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#311B92',
-        'fill-outline-color': '#311B92'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'structures1d',
-    source: 'structures',
-    type: 'fill',
-    filter: ['==', 'study', '1D'],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#9C27B0',
-        'fill-outline-color': '#9C27B0'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'structuresHHZ',
-    source: 'structures',
-    type: 'fill',
-    filter: ['==', 'study', 'HHZ'],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#000',
-        'fill-outline-color': '#000'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'hazus',
-    source: 'hazus',
-    type: 'circle',
-    filter: ['>=','Depth_FT', 0],
-    layout: {
-      'visibility': 'none'
-    },
-    paint: {
-        "circle-opacity": .75,
-        "circle-radius": { "stops": [ [11,.5],[15,2],[19,5] ] },
-        "circle-color": "#d50000"
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'conveyance',
-    source: 'floodZones',
-    type: 'fill',
-    filter: ['==', 'FldZone', 'Conveyance'],
-    paint: {
-        'fill-pattern': 'yellowhatch',
-        'fill-opacity': 0
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'floodExtents',
-      'type': 'fill',
-      'source': 'floodExtents',
-      'paint': {
-          'fill-pattern': 'bluestripe',
-          'fill-opacity': 0
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'centerlines',
-      'type': 'line',
-      'source': 'centerlines',
-      'paint': {
-          'line-width': 1,
-          'line-color': '#036180',
-          'line-opacity': 1
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'sdMain',
-      'type': 'line',
-      'source': 'sdMain',
-      'layout': {
-        'visibility': 'none'
-      },
-      'paint': {
-          'line-width': 3,
-          'line-color': '#C6FF00',
-          'line-opacity': 1
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'stormDrains',
-      'type': 'line',
-      'source': 'stormDrains',
-      'layout': {
-        'visibility': 'none'
-      },
-      'paint': {
-          'line-width': 3,
-          'line-color': '#FF9800',
-          'line-opacity': 1
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'centerlineLabels',
-      'type': 'symbol',
-      'source': 'centerlines',
-      'layout': {
-        "text-optional": true,
-        'symbol-placement': 'line',
-        'symbol-spacing': 200,
-        'text-field': '{RiverCode}',
-        'text-font': ['Roboto Italic','Open Sans Regular','Arial Unicode MS Regular'],
-        'text-size': 7,
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': '#F8F4F0',
-        'text-halo-color': '#036180',
-        'text-halo-width': 1,
-        'text-opacity': 1
-      }
-  });
-
-  map.addLayer({
-    id: 'culvert2017',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 2017],['==', 'Improvemen', 'Culvert']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#333',
-        'fill-outline-color': '#333'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'detention2017',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 2017],['==', 'Improvemen', 'Detention']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': 'maroon',
-        'fill-outline-color': 'maroon'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'openChannel2017',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 2017],['==', 'Improvemen', 'Open Channel']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#64DD17',
-        'fill-outline-color': '#64DD17'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'stormDrain2017',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 2017],['==', 'Improvemen', 'Storm Drain']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#FF3D00',
-        'fill-outline-color': '#FF3D00'
-    }
-  }, 'road-label-small');
-
-  map.addLayer({
-    id: 'conveyance2017',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 2017],['==', 'Improvemen', 'Roadway Conveyance']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#F50057',
-        'fill-outline-color': '#F50057'
-    }
-  }, 'road-label-small');
-
-
-  map.addLayer({
-    id: 'culvert1987',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 1987],['==', 'Improvemen', 'Culvert']],
-    layout: {
-      'visibility': 'none'
-    },
-    paint: {
-        'fill-color': '#333',
-        'fill-outline-color': '#333',
-        'fill-opacity': .75
-    }
-  }, 'road-label-small');
-
-
-  map.addLayer({
-    id: 'openChannel1987',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 1987],['==', 'Improvemen', 'Open Channel']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#64DD17',
-        'fill-outline-color': '#64DD17'
-    }
-  }, 'road-label-small');
-
-
-  map.addLayer({
-    id: 'culvert1969',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 1969],['==', 'Improvemen', 'Culvert']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#333',
-        'fill-outline-color': '#333'
-    }
-  }, 'road-label-small');
-
-
-  map.addLayer({
-    id: 'detention1969',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 1969],['==', 'Improvemen', 'Detention']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': 'maroon',
-        'fill-outline-color': 'maroon'
-    }
-  }, 'road-label-small');
-
-
-  map.addLayer({
-    id: 'openChannel1969',
-    source: 'improvements',
-    type: 'fill',
-    filter: ['all', ['==', 'Id', 1969],['==', 'Improvemen', 'Open Channel']],
-    paint: {
-        'fill-opacity': 0,
-        'fill-color': '#64DD17',
-        'fill-outline-color': '#64DD17'
-    }
-  }, 'road-label-small');
-
-});
-
-map.on('click', function (e) {
-  var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
-  var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','sdMain','culvert1987','openChannel1987'] });
-  if (!features.length) {
-      return;
-  }
-
-  var feature = features[0];
-  var id = feature.layer.id;
-
-  var div = document.createElement('div');
-  div.className = 'row';
-  var col = document.createElement('div');
-  col.className = "col s12";
-  div.insertAdjacentElement('beforeend', col);
-  var card = document.createElement('div');
-  card.className = 'card blue-grey darken-2';
-  col.insertAdjacentElement('beforeend', card);
-  var content = document.createElement('div');
-  content.className = 'card-content white-text';
-  card.insertAdjacentElement('beforeend', content);
-
-  if (id == 'hazus') {
-
-    var loss = feature.properties.BldgLossUS;
-    var depth = feature.properties.Depth_FT;
-
-    var div1 = document.createElement('div');
-    var div2 = document.createElement('div');
-
-    div1.innerHTML = 'Building Loss: ' + numeral(loss).format('$0,0');
-    div2.innerHTML = 'Depth: ' + depth + '\'';
-
-    content.insertAdjacentElement('beforeend', div1);
-    content.insertAdjacentElement('beforeend', div2);
-
-  } else if (id == 'stormDrains' || id == 'sdMain') {
-
-    var diam = feature.properties.DIAMETER;
-    var diam2 = feature.properties.DIAMETER2;
-    var material = feature.properties.MATERIAL;
-
-    if (diam2 === 0) {
-      content.innerHTML = diam + '" ' + material;
-    } else {
-      content.innerHTML = diam + '" x ' + diam2 + '" ' + material;
-    }
-
-  } else if (id == 'culvert1987' || id == 'openChannel1987') {
-
-    var size = feature.properties.Size;
-    var interval = feature.properties.Return_Int;
-    var capacity = feature.properties.Capacity;
-
-    var div1 = document.createElement('div');
-    var div2 = document.createElement('div');
-    var div3 = document.createElement('div');
-
-    div1.innerHTML = size;
-    div2.innerHTML = 'Return Interval: ' + interval;
-    div3.innerHTML = 'Capacity: ' + capacity + ' cfs';
-
-    content.insertAdjacentElement('beforeend', div1);
-    content.insertAdjacentElement('beforeend', div2);
-    content.insertAdjacentElement('beforeend', div3);
-
-  } else {
-    return;
-  }
-
-  var popup = new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setDOMContent(div)
-      .addTo(map);
-
-});
-
-map.on('mousemove', function (e) {
-    var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
-    var features = map.queryRenderedFeatures(bbox, { layers: ['hazus','stormDrains','sdMain','culvert1987','openChannel1987'] });
-
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-
-});
-
 */
+
+
 });
 
 
