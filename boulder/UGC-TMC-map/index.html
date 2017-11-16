@@ -52,19 +52,20 @@
           <div class="collapsible-body white">
             <div id="menu" class="demo-toggles">
 
-               <p class="narrow">
-                  <input name="group1" type="radio" id="test3" value="cj9104irokbj02rph2yzugzjb" checked/>
-                  <label for="test3">Dark</label>
+              <p class="narrow">
+                  <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked/>
+                  <label for="test1">Satellite</label>
               </p>
+
 
               <p class="narrow">
                   <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" />
                   <label for="test2">Light</label>
               </p>
 
-              <p class="narrow">
-                  <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" />
-                  <label for="test1">Satellite</label>
+               <p class="narrow">
+                  <input name="group1" type="radio" id="test3" value="cj9104irokbj02rph2yzugzjb"/>
+                  <label for="test3">Dark</label>
               </p>
 
             </div>
@@ -103,15 +104,13 @@
       </li>
 
 
-  <!-- UPPER GOOSE CREEK LAYERS-->
+ <!-- UPPER GOOSE CREEK MITIGATION LAYERS-->
       <li>
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Upper Goose Creek</div>
          <div class="collapsible-body white">
          
-
-        <!--SUBMENU GRADING -->
             <p class="grey-text text-darken-2 note">
-                  Proposed Grading
+                  Mitigation Alternatives
             </p>            
             <!--Layer Main Channel-->
             <p>
@@ -124,74 +123,17 @@
               <label for="Pro2Menu" class="valign">Detention Areas</label>
             </p>
 
+         </div>
+      </li> 
 
 
-
-        <!--SUBMENU FLOOD HAZARD ZONES-->
-            <p class="grey-text text-darken-2 note">
-                  Flood Hazard Zones
-            </p>
-            <!--Layer Conveyance Zone-->
-            <p>
-              <input name="Pro5Menu" type="checkbox" id="Pro5Menu" class="layer-off" onclick="toggleLayer('ugc_fw')"/>
-              <label for="Pro5Menu" class="valign">Conveyance Zone</label>
-            </p>  
-
-            <!--Layer 100-Yr Flood-->
-            <p>
-              <input name="Pro7Menu" type="checkbox" id="Pro7Menu" class="layer-off" onclick="toggleLayer('ugc_100yr')"/>
-              <label for="Pro7Menu" class="valign">100-Yr Floodplain</label>
-            </p>  
-            
-            <!--Layer High Hazard-->
-            <p>
-              <input name="Pro6Menu" type="checkbox" id="Pro6Menu" class="layer-off" onclick="toggleLayer('ugc_hiHaz')"/>
-              <label for="Pro6Menu" class="valign">High Hazard Zone</label>
-            </p>  
-
-            <!--Layer Zone X-->            
-            <p>
-              <input name="Pro8Menu" type="checkbox" id="Pro8Menu" class="layer-off" onclick="toggleLayer('ugc_zone_x')"/>
-              <label for="Pro8Menu" class="valign">Zone X</label>
-            </p>  
-
-
-
-
-        <!--SUBMENU HYDROLOGIC-->
-            <p class="grey-text text-darken-2 note">
-                  Hydrologics
-            </p>
-            <!--Layer Stream CL-->
-            <p>
-              <input name="Pro4Menu" type="checkbox" id="Pro4Menu" class="layer-on" onclick="toggleLayer('ugc_centerline')" checked/>
-              <label for="Pro4Menu" class="valign">Stream Centerline</label>
-            </p>  
-            <!--Layer Xs-->
-            <p>
-              <input name="Pro3Menu" type="checkbox" id="Pro3Menu" class="layer-on" onclick="toggleTwo('ugc_xs', 'ugc_xs_labels')" checked/>
-              <label for="Pro3Menu" class="valign">Cross Sections</label>
-            </p>
-            <!--Layer Gutter Lines -->
-            <p>
-              <input name="Pro1Menu" type="checkbox" id="Pro1Menu" class="layer-off" onclick="toggleLayer('ugc_gutterline')" />
-              <label for="Pro1Menu" class="valign">Gutter Lines</label>
-            </p>
-
-
-        </div>   
-      </li> <!--end ugc layers-->
-
-
-
-  <!-- TWOMILE CANYON CREEK LAYERS-->
+ <!-- TWOMILE CANYON CREEK LAYERS-->
       <li>
          <div class="collapsible-header indigo-alt">Twomile Canyon Creek<i class="material-icons right">keyboard_arrow_down</i></div>
          <div class="collapsible-body white">
          
-         <!--SUBMENU GRADING -->
             <p class="grey-text text-darken-2 note">
-                  Proposed Grading
+                  Mitigation Alternatives
             </p>            
             <!--Layer Main Channel-->   
             <p>
@@ -209,66 +151,77 @@
               <label for="Pro2Menu2" class="valign">Detention Areas</label>
             </p>
 
-         
-         <!--SUBMENU FLOOD HAZARD ZONES-->      
-           <p class="grey-text text-darken-2 note">
-                  Flood Hazard Zones
-            </p>
+         </div>
+	  </li>
+
+
+
+ <!--FLOOD HAZARD LAYERS-->
+      <li>
+         <div class="collapsible-header indigo-alt">Flood Hazard Zones<i class="material-icons right">keyboard_arrow_down</i></div>
+         <div class="collapsible-body white">
+
             <!--Layer Conveyance Zone-->
             <p>
-              <input name="Pro5Menu1" type="checkbox" id="Pro5Menu1" class="layer-off" onclick="toggleLayer('tmc_fw')"/>
-              <label for="Pro5Menu1" class="valign">Conveyance Zone</label>
+              <input name="ConveyMenu" type="checkbox" id="ConveyMenu" class="layer-off" onclick="toggleTwo('ugc_fw', 'tmc_fw')"/>
+              <label for="COnveyMenu" class="valign">Conveyance Zone</label>
             </p>  
 
             <!--Layer 100-Yr Flood-->
             <p>
-              <input name="Pro7Menu1" type="checkbox" id="Pro7Menu1" class="layer-off" onclick="toggleLayer('tmc_100yr')"/>
-              <label for="Pro7Menu1" class="valign">100-Yr Floodplain</label>
-            </p> 
-
+              <input name="100YrMenu" type="checkbox" id="100YrMenu" class="layer-off" onclick="toggleTwo('ugc_100yr', 'tmc_100yr')"/>
+              <label for="100YrMenu" class="valign">100-Yr Floodplain</label>
+            </p>  
+            
             <!--Layer High Hazard-->
             <p>
-              <input name="Pro6Menu1" type="checkbox" id="Pro6Menu1" class="layer-off" onclick="toggleLayer('tmc_hiHaz')"/>
-              <label for="Pro6Menu1" class="valign">High Hazard Zone</label>
+              <input name="HiHazMenu" type="checkbox" id="HiHazMenu" class="layer-off" onclick="toggleTwo('ugc_hiHaz', 'tmc_hiHaz')"/>
+              <label for="HiHazMenu" class="valign">High Hazard Zone</label>
             </p>  
 
-            <!--Layer High Hazard-->
+            <!--Layer zone AO -->
             <p>
-              <input name="Pro9Menu1" type="checkbox" id="Pro9Menu1" class="layer-off" onclick="toggleTwo('tmc_zone_ao_1', 'tmc_zone_ao_2')"/>
-              <label for="Pro9Menu1" class="valign">Zone AO (1ft and 2ft Flooding)</label>
-            </p>  
- 
-            <!--Layer Zone X-->           
-            <p>
-              <input name="Pro8Menu1" type="checkbox" id="Pro8Menu1" class="layer-off" onclick="toggleLayer('tmc_zone_x')"/>
-              <label for="Pro8Menu1" class="valign">Zone X</label>
+              <input name="ZoneAOMenu" type="checkbox" id="ZoneAOMenu" class="layer-off" onclick="toggleTwo('tmc_zone_ao_1', 'tmc_zone_ao_2')"/>
+              <label for="ZoneAOMenu" class="valign">Zone AO (1ft and 2ft Flooding)</label>
             </p>  
 
-          
-          <!--SUBMENU HYDROLOGIC-->
-            <p class="grey-text text-darken-2 note">
-                  Hydrologics
-            </p>
+            <!--Layer Zone X-->            
+            <p>
+              <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-off" onclick="toggleTwo('ugc_zone_x', 'tmc_zone_x')"/>
+              <label for="ZoneXMenu" class="valign">Zone X</label>
+            </p>  
+         </div>
+      </li>
+
+
+
+ <!-- HYDROLOGICS-->
+      <li>
+         <div class="collapsible-header indigo-alt">Hydrologics<i class="material-icons right">keyboard_arrow_down</i></div>
+         <div class="collapsible-body white">
+           
             <!--Layer Stream CL-->
             <p>
-              <input name="Pro4Menu1" type="checkbox" id="Pro4Menu1" class="layer-on" onclick="toggleLayer('tmc_centerline')" checked/>
-              <label for="Pro4Menu1" class="valign">Stream Centerline</label>
+              <input name="CLMenu" type="checkbox" id="CLMenu" class="layer-on" onclick="toggleTwo('ugc_centerline', 'tmc_gutter_line')" checked/>
+              <label for="CLMenu" class="valign">Stream Centerline</label>
             </p>  
             <!--Layer Xs-->
             <p>
-              <input name="Pro3Menu1" type="checkbox" id="Pro3Menu1" class="layer-on" onclick="toggleTwo('tmc_xs', 'tmc_xs_labels')" checked/>
-              <label for="Pro3Menu1" class="valign">Cross Sections</label>
+              <input name="XSMenu" type="checkbox" id="XSMenu" class="layer-on" onclick="toggleFour('ugc_xs', 'ugc_xs_labels')" checked/>
+              <label for="XSMenu" class="valign">Cross Sections</label>
             </p>
-             <!--Layer Gutter Lines -->
+            <!--Layer Gutter Lines -->
             <p>
-              <input name="Pro1Menu1" type="checkbox" id="Pro1Menu1" class="layer-off" onclick="toggleFive('tmc_gutter_line')" />
-              <label for="Pro1Menu1" class="valign">Gutter Lines</label>
+              <input name="GutterMenu" type="checkbox" id="GutterMenu" class="layer-off" onclick="toggleLayer('ugc_gutterline')" />
+              <label for="GutterMenu" class="valign">Gutter Lines</label>
             </p>
 
- 
 
-          </div>   
-        </li> <!--end TMC layers-->
+        </div>   
+      </li> 
+
+
+
 
          
       <!--legend-->
@@ -295,7 +248,7 @@
 
 
           <!--Legend Item Proposed Grading-->
-          <li class="collection-header"><em>Proposed Adjustments</em></li>          
+          <li class="collection-header"><em>Mitigation Alternatives</em></li>          
               <!--Alternative Channel Grading --> 
               <li class="collection-item grey-text"><div>Channel Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF0072" /></svg></a></div></li>
               <!--Alternative Detention Grading-->
