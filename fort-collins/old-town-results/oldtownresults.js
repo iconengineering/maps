@@ -94,7 +94,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('flowDepth', {            //combined ROG & AOI
       type: 'vector',
-      url: 'mapbox://iconeng.c23ab050'    
+      url: 'mapbox://iconeng.7zwtc3ix'    
   });
   map.addSource('contours', {
       type: 'vector',
@@ -102,7 +102,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('velocity', {
       type: 'vector',
-      url: 'mapbox://iconeng.8ad980f5'    //combined ROG & AOI
+      url: 'mapbox://iconeng.57bpyzyl'    //combined ROG & AOI
   });
 
 
@@ -219,7 +219,7 @@ map.on('style.load', function (e) {
       'id': 'flowDepth',
       'type': 'fill',
       'source': 'flowDepth',
-      'source-layer': 'OTH_RainOnGrid_MaxFlowDepth',  // OTH_Update_MaxFlowDepth-60jggv
+      'source-layer': 'OTH_MaxFlowDepth_Merge-2pt133',  // OTH_Update_MaxFlowDepth-60jggv
       'filter': ['>', 'Var', 0.25],
       'paint': {
           'fill-color': {
@@ -243,7 +243,7 @@ map.on('style.load', function (e) {
       'id': 'velocity',
       'type': 'line',
       'source': 'velocity',
-      'source-layer': 'OTH_RainOnGrid_Velocity',   // OTH_Update_Velocity-2n2pj8
+      'source-layer': 'OTH_Velocity_Merge-chf3yp',   // OTH_Update_Velocity-2n2pj8
       'filter': ['>', 'Var', 0.25],
       'paint': {
           'line-width': 1.2,
