@@ -41,7 +41,8 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer mdl-color--grey-700 mdl-color-text--grey-60 mdl-shadow--2dp">
       <span style="display: inline-block;text-align:center;"><a href= "https://bouldercolorado.gov" target = "blank"><img class="responsive-img" src="img/boulderSealCropped.png" style="padding:1rem;max-width:50%;"></a></span>
-      <h4 style="padding:0 1rem; text-align:center; margin-top:0;">Upper Goose Creek & Twomile Canyon Creek</h4>
+      <h4 style="padding:0 1rem; text-align:center; margin-top:0; margin-bottom: 0.3;">Upper Goose Creek & Twomile Canyon Creek</h4>
+      <h5 style="padding:0 1rem; text-align:center; margin-top:0;" > Flood Mitigation Plan</h5>
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
       
 
@@ -189,7 +190,14 @@
             <p>
               <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-off" onclick="toggleTwo('ugc_zone_x', 'tmc_zone_x')"/>
               <label for="ZoneXMenu" class="valign">Zone X</label>
+            </p>
+
+            <!--2014 Flood Extents-->            
+            <p>
+              <input name="14FloodMenu" type="checkbox" id="14FloodMenu" class="layer-off" onclick="toggleLayer('flood_extents')"/>
+              <label for="14FloodMenu" class="valign">2014 Flood Extents</label>
             </p>  
+
          </div>
       </li>
 
@@ -274,6 +282,19 @@
 
 
              <li class="collection-item grey-text"><div>Zone X<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFA540" fill-opacity=".6" /></svg></a></div></li>
+
+             <li class="collection-item"><div>2014 Flooding Extents<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108"/>
+                  <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/></g></svg></a></div>
+             </li>
 
 
         

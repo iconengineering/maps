@@ -83,7 +83,10 @@ map.on('style.load', function () {
       'url': 'mapbox://iconeng.52y4st9y'      //UGC_EC_1_PCT_ANNUAL_CHANCE_FL-3ouelt
     }); 
 
-
+    map.addSource('flood_extents', {          //2014 Flood Extents (FMC and UGC)
+      'type': 'vector',
+      'url': 'mapbox://iconeng.2a24k4y2'      //COB_Urban_Flood_Extents_2014_-02yrb6
+    }); 
 
     
 
@@ -669,6 +672,24 @@ map.on('style.load', function () {
 
     }
   }, 'road-label-small');
+
+
+    //2014 Flood Extents (TMC and UGC)
+    map.addLayer({
+    id: 'flood_extents',
+    source: 'flood_extents',
+    'source-layer': 'COB_Urban_Flood_Extents_2014_-02yrb6',
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 1,
+        'fill-pattern': 'bluestripe',
+        'fill-outline-color': '#00BCD4'
+    }
+  }, 'road-label-small'); 
+
 
 
 
