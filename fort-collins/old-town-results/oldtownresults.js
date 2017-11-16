@@ -171,6 +171,7 @@ map.on('style.load', function (e) {
       'id': 'watersheds',
       'type': 'fill',
       'source': 'watersheds',
+      'layout': {'visibility': 'visible'},
       'paint': {
           'fill-opacity': 0.179,
           'fill-color': {
@@ -560,6 +561,7 @@ map.on('style.load', function (e) {
       'type': 'symbol',
       'source': 'watersheds',
       'layout': {
+      	 "visibility": 'visible',
          "text-optional": true,
          "text-line-height": 1,
          "text-size": {
@@ -593,8 +595,8 @@ var depthRadio = depthList.getElementsByTagName('input');
 
 function switchDepth() {
   var value = document.querySelector('input[name="switchFD"]:checked').value;
-    map.setFilter('flowDepth', ['==', 'type', value]);
-    map.setFilter('flowDepthOver', ['==', 'type', value]);
+    map.setFilter('flowDepth', ['==', 'Type', value]);
+    //map.setFilter('flowDepthOver', ['==', 'type', value]);
 }
 
 for (var i = 0; i < depthRadio.length; i++) {
@@ -609,7 +611,7 @@ var velocityRadio = velocityList.getElementsByTagName('input');
 
 function switchVelocity() {
   var value = document.querySelector('input[name="switchV"]:checked').value;
-    map.setFilter('velocity', ['==', 'type', value]);
+    map.setFilter('velocity', ['==', 'Type', value]);
    
 }
 

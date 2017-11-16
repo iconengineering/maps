@@ -84,7 +84,7 @@
                 </p>
               </div>
               <p>
-                <input name="watersheds" type="checkbox" id="watersheds" class="layer-on" onclick="smoothTwo('watersheds','fill-opacity',.25,'watershedLabels','text-opacity',1)" checked/>
+                <input name="watersheds" type="checkbox" id="watersheds" class="layer-on" onclick="toggleTwo('watersheds','watershedLabels')" checked/>
                 <label for="watersheds" class="valign">Watersheds</label>
               </p>
               <p>
@@ -122,7 +122,7 @@
              
 
               <p>
-                <input name="flowdepth" type="checkbox" id="flowdepth" class="layer-off" onclick="smoothTwo('flowDepth','fill-opacity',.8,'flowDepthover','fill-opacity',.8)"/>
+                <input name="flowdepth" type="checkbox" id="flowdepth" class="layer-off" onclick="toggleSmooth('flowDepth', 'fill-opacity', 0.8)"/>
                 <label for="flowdepth" class="valign">Flow Depth</label>
               </p>
 
@@ -130,12 +130,12 @@
              <div id="flowDepthSwitch">
 
                <p class="indent">
-                  <input name="switchFD" type="radio" id="FD_AOI" class="layer-on" value='AIO' checked/>
+                  <input name="switchFD" type="radio" id="FD_AOI" class="layer-off" value='AOI' />
                   <label for="FD_AOI">Potential Inundation Area</label>
                 </p>
 
                 <p class="indent">
-                  <input name="switchFD" type="radio" id="FD_rainOnGrid" class="layer-off" value='ROG'/>
+                  <input name="switchFD" type="radio" id="FD_rainOnGrid" class="layer-on" value='ROG' checked/>
                   <label for="FD_rainOnGrid">Rain on Grid</label>
                 </p>
 
@@ -146,14 +146,14 @@
 
 
               <p>
-                <input name="velocity" type="checkbox" id="velocity" class="layer-off" onclick="smoothTwo('velocity','line-opacity',1, 'velocityPotential','line-opacity',1)"/>
+                <input name="velocity" type="checkbox" id="velocity" class="layer-off" onclick="toggleSmooth('velocity','line-opacity',1)"/>
                 <label for="velocity" class="valign">Velocity</label>
               </p>
 
              <div id="velocitySwitch">
         
                 <p class="indent">
-                  <input name="switchV" type="radio" id="r" class="layer-on" value='AIO' checked/>
+                  <input name="switchV" type="radio" id="r" class="layer-on" value='AOI' checked/>
                   <label for="r">Potential Inundation Area</label>
                 </p>
 
