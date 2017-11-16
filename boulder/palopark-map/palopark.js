@@ -653,7 +653,7 @@ map.on('style.load', function () {
         },
         'paint': {
           'line-width': {
-              "stops": [[15, 1.5], [17, 2.2], [19, 4]]
+              "stops": [[15, 1], [17, 2], [19, 4]]
           },
             'line-color': '#F50057',
             'line-dasharray': [4,.5]

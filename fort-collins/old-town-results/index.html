@@ -113,7 +113,70 @@
               </p>
             </div>
           </li>
+         
+        
+
           <li>
+            <div class="collapsible-header grey"><i class="material-icons right">keyboard_arrow_down</i>Hydraulics</div>
+            <div class="collapsible-body white">
+             
+
+              <p>
+                <input name="flowdepth" type="checkbox" id="flowdepth" class="layer-off" onclick="smoothTwo('flowDepth','fill-opacity',.8,'flowDepthover','fill-opacity',.8)"/>
+                <label for="flowdepth" class="valign">Flow Depth</label>
+              </p>
+
+
+             <div id="flowDepthSwitch">
+
+               <p class="indent">
+                  <input name="switchFD" type="radio" id="FD_AOI" class="layer-on" value='AIO' checked/>
+                  <label for="FD_AOI">Potential Inundation Area</label>
+                </p>
+
+                <p class="indent">
+                  <input name="switchFD" type="radio" id="FD_rainOnGrid" class="layer-off" value='ROG'/>
+                  <label for="FD_rainOnGrid">Rain on Grid</label>
+                </p>
+
+
+
+              </div>
+
+
+
+              <p>
+                <input name="velocity" type="checkbox" id="velocity" class="layer-off" onclick="smoothTwo('velocity','line-opacity',1, 'velocityPotential','line-opacity',1)"/>
+                <label for="velocity" class="valign">Velocity</label>
+              </p>
+
+             <div id="velocitySwitch">
+        
+                <p class="indent">
+                  <input name="switchV" type="radio" id="r" class="layer-on" value='AIO' checked/>
+                  <label for="r">Potential Inundation Area</label>
+                </p>
+
+
+
+                <p class="indent">
+                  <input name="switchV" type="radio" id="rainOnGridV" class="layer-off" value='ROG' />
+                  <label for="rainOnGridV">Rain on Grid</label>
+                </p>
+
+
+              </div>
+
+
+
+            </div>
+          </li>
+
+
+
+
+
+           <li>
             <div class="collapsible-header grey"><i class="material-icons right">keyboard_arrow_down</i>Study Comparison</div>
             <div class="collapsible-body white">
               <div class="row">
@@ -131,21 +194,11 @@
               </p>
             </div>
           </li>
-          <li>
-            <div class="collapsible-header grey"><i class="material-icons right">keyboard_arrow_down</i>Rain On Grid</div>
-            <div class="collapsible-body white">
-              <p>
-                <input name="flowDepth" type="checkbox" id="flowDepth" class="layer-off" onclick="smoothTwo('flowDepth','fill-opacity',.8,'flowDepthOver','fill-opacity',.8)"/>
-                <label for="flowDepth" class="valign">Flow Depth</label>
-              </p>
-              <p>
-                <input name="velocity" type="checkbox" id="velocity" class="layer-off" onclick="toggleSmooth('velocity','line-opacity',1)"/>
-                <label for="velocity" class="valign">Velocity</label>
-              </p>
-            </div>
-          </li>
           <!--
           <li>
+
+
+
             <div class="collapsible-header grey"><i class="material-icons right">keyboard_arrow_down</i>Potential Inundation Areas</div>
             <div class="collapsible-body white">
               <p>
