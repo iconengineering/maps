@@ -253,12 +253,12 @@ map.on('style.load', function () {
       },
       'paint': {
         'line-width': {
-            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+            "stops": [[15, 1.3], [17, 2.2], [19, 3]]
         },
-      'line-opacity': {
-     "stops": [[16, 0.7],[19, 1]] },
+     // 'line-opacity': {
+     //"stops": [[16, 0.7],[19, 1]] },
         
-          'line-color': '#999999'
+          'line-color': '#C8F2C8'
       }
     }, 'road-label-small');
 
@@ -276,10 +276,10 @@ map.on('style.load', function () {
         'line-width': {
              "stops": [[15, 1], [17, 1.75], [19, 2.5]]
         },
-       'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]] },
+     //  'line-opacity': {
+    //        "stops": [[16, 0.7],[19, 1]] },
        
-          'line-color': '#999999'
+          'line-color': '#C8F2C8'
       }
     }, 'road-label-small');
   
@@ -367,9 +367,9 @@ map.on('style.load', function () {
       'layout': {'visibility': 'none'},
       'type': 'fill',
       'paint': {
-          'fill-color': '#EDE400',
-          'fill-outline-color': '#EDE400',
-         'fill-opacity': 0.3
+          'fill-color': '#cd00cd',
+          'fill-outline-color': '#cd00cd',
+         'fill-opacity': 0.4
       }
     }, 'road-label-small');
 
@@ -381,9 +381,9 @@ map.on('style.load', function () {
       'source-layer': 'UGC_parcel-04pgif',     
       'type': 'line',        
       'paint': {
-         'line-color': '#AA9769', 
+         'line-color': '#FFE29D', 
          'line-width': 0.85,
-         'line-opacity': 0.65
+         'line-opacity': 0.9
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -508,7 +508,7 @@ map.on('style.load', function () {
     type: 'line',
     filter: ['!=', 'Type', 'Alpine Detention'],
        layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
          'line-join': 'round',
          'line-cap': 'round'
        },
@@ -532,7 +532,7 @@ map.on('style.load', function () {
     type: 'line',
     filter: ['==', 'Type', 'Alpine Detention'],
     layout: {
-      'visibility': 'visible',
+      'visibility': 'none',
       'line-join': 'round',
       'line-cap': 'round'
     },
@@ -554,7 +554,7 @@ map.on('style.load', function () {
     source: 'ugc_detention_nBoulderPark',
     type: 'line',
     layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
          'line-join': 'round',
          'line-cap': 'round'
        },
@@ -576,7 +576,7 @@ map.on('style.load', function () {
     source: 'ugc_grading',
     type: 'line',
     'layout': {
-      'visibility': 'visible',
+      'visibility': 'none',
       'line-join': 'round',
       'line-cap': 'round'
     },
@@ -606,10 +606,10 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_High_Hazard_GooseCreek-4v9vgk',
     type: 'fill',
     layout: {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
+        'fill-opacity': 0.5,
         'fill-color': '#DC0714',
         'fill-outline-color': '#DC0714'
     }
@@ -622,10 +622,10 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Zone_X_GooseCreek-0sirpr',
     type: 'fill',
     layout: {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
+        'fill-opacity': 0.5,
         'fill-color': '#FFA540',
         'fill-outline-color': '#FFA540'
     }
@@ -639,12 +639,12 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Conveyance_Zone_GooseC-6icxv5',
     type: 'line',
     layout: {
-        'visibility': 'none',
+        'visibility': 'visible',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
     paint: {
-        'line-color': '#0034D9',
+        'line-color': '#FFE642',
         'line-width': {
               "stops": [[15, 1.3], [17, 2.5], [19, 4]]
         },
@@ -660,12 +660,12 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_1_PCT_ANNUAL_CHANCE_FL-3ouelt',
     type: 'line',
     layout: {
-        'visibility': 'none',
+        'visibility': 'visible',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
     paint: {
-        'line-color': '#FFBF00',
+        'line-color': '#0034D9',
         'line-width': {
               "stops": [[15, 1.1], [17, 2], [19, 4]]
         },
@@ -674,7 +674,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-    //2014 Flood Extents (TMC and UGC)
+    //2013 Flood Extents (TMC and UGC)
     map.addLayer({
     id: 'flood_extents',
     source: 'flood_extents',
@@ -702,7 +702,7 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Centerline_GooseCreek-bdao6q',
     type: 'line',
     layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
@@ -723,7 +723,7 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Cross_Sections_GooseCr-cm3ba9',
     type: 'line',
     layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
@@ -745,7 +745,7 @@ map.on('style.load', function () {
       'source': 'ugc_xs',
       'source-layer': 'UGC_EC_Cross_Sections_GooseCr-cm3ba9',
       'layout': {
-          'visibility': 'visible',
+          'visibility': 'none',
         'symbol-placement': 'line',
         'text-field': '{ProfileM}',
         'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
@@ -800,7 +800,7 @@ map.on('style.load', function () {
     source: 'tmc_grading_mnr',
     type: 'line',
     'layout': {
-      'visibility': 'visible',
+      'visibility': 'none',
       'line-join': 'round',
       'line-cap': 'round'
     },
@@ -822,7 +822,7 @@ map.on('style.load', function () {
     source: 'tmc_grading_mjr',
         type: 'line',
     'layout': {
-      'visibility': 'visible',
+      'visibility': 'none',
       'line-join': 'round',
       'line-cap': 'round'
     },
@@ -846,7 +846,7 @@ map.on('style.load', function () {
     source: 'tmc_detention_springValley',
     type: 'line',
     layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
          'line-join': 'round',
          'line-cap': 'round'
        },
@@ -898,10 +898,10 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Zone_AO_2_Foot_Twomile-awnxb5',
     type: 'fill',
     layout: {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
+        'fill-opacity': 0.5,
         'fill-color': '#7FEAFF',
         'fill-outline-color': '#7FEAFF' 
     }
@@ -915,10 +915,10 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Zone_AO_1_Foot_Twomlil-daw5bx',
     type: 'fill',
     layout: {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
+        'fill-opacity': 0.5,
         'fill-color': '#E980FC',
         'fill-outline-color': '#E980FC'
     }
@@ -932,10 +932,10 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_High_Hazard_TwomileCan-9p8plr', 
     type: 'fill',
     layout: {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
+        'fill-opacity': 0.5,
         'fill-color': '#DC0714',
         'fill-outline-color': '#DC0714'
     }
@@ -948,10 +948,10 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Zone_X_TwomileCanyonCr-a7xaee',
     type: 'fill',
     layout: {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
+        'fill-opacity': 0.5,
         'fill-color': '#FFA540',
         'fill-outline-color': '#FFA540'
     }
@@ -965,12 +965,12 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Conveyance_Zone_Twomil-3loygh',
     type: 'line',
     layout: {
-        'visibility': 'none',
+        'visibility': 'visible',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
     paint: {
-        'line-color': '#0034D9',
+        'line-color': '#FFE642',
         'line-width': {
               "stops": [[15, 1.3], [17, 2.5], [19, 4]]
         },
@@ -986,12 +986,12 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_1_PCT_ANNUAL_CHANCE_FL-854emf',
     type: 'line',
     layout: {
-        'visibility': 'none',
+        'visibility': 'visible',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
     paint: {
-        'line-color': '#FFBF00',
+        'line-color': '#0034D9',
         'line-width': {
               "stops": [[15, 1.1], [17, 2], [19, 4]]
         },
@@ -1010,7 +1010,7 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Centerline_TwomileCany-cemj2e',
     type: 'line',
     layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
@@ -1031,7 +1031,7 @@ map.on('style.load', function () {
     'source-layer': 'UGC_EC_Cross_Sections_Twomile-1njxgb',
     type: 'line',
     layout: {
-        'visibility': 'visible',
+        'visibility': 'none',
         'line-join': 'miter',
         'line-cap': 'butt'
       },
@@ -1053,7 +1053,7 @@ map.on('style.load', function () {
       'source': 'tmc_xs',
       'source-layer': 'UGC_EC_Cross_Sections_Twomile-1njxgb',
       'layout': {
-          'visibility': 'visible',
+          'visibility': 'none',
         'symbol-placement': 'line',
         'text-field': '{ProfileM}',
         'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
@@ -1107,6 +1107,33 @@ map.on('style.load', function () {
 
 
 });
+
+
+// When a click event occurs near the feature open a popup at the location of
+// the feature, with description HTML from its properties.
+map.on('click', function (k) {
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm'] });
+  if (!featureList.length) {
+      return;
+  }
+
+  var feature = featureList[0];
+
+        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+            .setHTML('DIAMETER: ' + feature.properties.DIAMETER + ' in'+ '</b> <br />' +
+                     'LENGTH: ' + feature.properties.LENGTH + ' ft' + '<br />' +
+                     'MATERIAL: ' + feature.properties.MATERIAL)
+            .addTo(map);
+    });
+
+// Use the same approach as above to indicate that the symbols are clickable
+// by changing the cursor style to 'pointer'.
+map.on('mousemove', function (k) {
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm'] });
+    map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
+});
+
 
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');

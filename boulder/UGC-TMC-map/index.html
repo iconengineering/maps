@@ -81,6 +81,15 @@
           <div class="collapsible-header indigo-alt"><i class="material-icons right">layers</i>Base Layers</div>
           <div class="collapsible-body white">
 
+            <p class="grey-text text-darken-2 note">
+                  Click on storm drain for pipe properties
+            </p> 
+            <!--Existing Utilitiy-->
+            <p>
+              <input name="UtilityMenu" type="checkbox" id="UtilityMenu" class="layer-off" onclick="toggleSix('san', 'sanLabels', 'wtr', 'wtrLabels', 'storm', 'stormLabels')" />
+              <label for="UtilityMenu" class="valign">Utilities</label>
+            </p>
+
             <!--Contour-->
             <p>
               <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-off" onclick="toggleThree('majorContour', 'minorContour', 'contourLabels')" />
@@ -91,11 +100,7 @@
               <input name="ParcelMenu" type="checkbox" id="ParcelMenu" class="layer-off" onclick="toggleLayer('parcels')" />
               <label for="ParcelMenu" class="valign">Parcels</label>
             </p>
-            <!--Existing Utilitiy-->
-            <p>
-              <input name="UtilityMenu" type="checkbox" id="UtilityMenu" class="layer-off" onclick="toggleSix('san', 'sanLabels', 'wtr', 'wtrLabels', 'storm', 'stormLabels')" />
-              <label for="UtilityMenu" class="valign">Utilities</label>
-            </p>
+
            <!-- Building -->
             <p>
               <input name="bldMenu" type="checkbox" id="bldMenu" class="layer-off" onclick="toggleLayer('struct')"/>
@@ -115,12 +120,12 @@
             </p>            
             <!--Layer Main Channel-->
             <p>
-              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-on" onclick="toggleTwo('ugc_grading1', 'ugc_grading3')" checked/>
+              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('ugc_grading1', 'ugc_grading3')" />
               <label for="Pro0Menu" class="valign">Main Channel</label>
             </p>
             <!--Layer Detention Areas-->
             <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-on" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" checked/>
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
               <label for="Pro2Menu" class="valign">Detention Areas</label>
             </p>
 
@@ -138,7 +143,7 @@
             </p>            
             <!--Layer Main Channel-->   
             <p>
-              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-on" onclick="toggleTwo('tmc_grading1','tmc_grading2')" checked/>
+              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-off" onclick="toggleTwo('tmc_grading1','tmc_grading2')" />
               <label for="Pro2Menu1" class="valign">Main Channel</label>
             </p>
             <!--Layer Split Channel--> 
@@ -148,7 +153,7 @@
             </p>
             <!--Layer Detention Areas-->   
             <p>
-              <input name="Pro2Menu2" type="checkbox" id="Pro2Menu2" class="layer-on" onclick="toggleLayer('tmc_grading3')" checked/>
+              <input name="Pro2Menu2" type="checkbox" id="Pro2Menu2" class="layer-off" onclick="toggleLayer('tmc_grading3')" />
               <label for="Pro2Menu2" class="valign">Detention Areas</label>
             </p>
 
@@ -164,39 +169,41 @@
 
             <!--Layer Conveyance Zone-->
             <p>
-              <input name="ConveyMenu" type="checkbox" id="ConveyMenu" class="layer-off" onclick="toggleTwo('ugc_fw', 'tmc_fw')"/>
-              <label for="COnveyMenu" class="valign">Conveyance Zone</label>
+              <input name="ConveyMenu" type="checkbox" id="ConveyMenu" class="layer-on" onclick="toggleTwo('ugc_fw', 'tmc_fw')" checked/>
+              <label for="ConveyMenu" class="valign">Conveyance Zone</label>
             </p>  
 
             <!--Layer 100-Yr Flood-->
             <p>
-              <input name="100YrMenu" type="checkbox" id="100YrMenu" class="layer-off" onclick="toggleTwo('ugc_100yr', 'tmc_100yr')"/>
+              <input name="100YrMenu" type="checkbox" id="100YrMenu" class="layer-on" onclick="toggleTwo('ugc_100yr', 'tmc_100yr')" checked/>
               <label for="100YrMenu" class="valign">100-Yr Floodplain</label>
             </p>  
             
             <!--Layer High Hazard-->
             <p>
-              <input name="HiHazMenu" type="checkbox" id="HiHazMenu" class="layer-off" onclick="toggleTwo('ugc_hiHaz', 'tmc_hiHaz')"/>
+              <input name="HiHazMenu" type="checkbox" id="HiHazMenu" class="layer-on" onclick="toggleTwo('ugc_hiHaz', 'tmc_hiHaz')" checked/>
               <label for="HiHazMenu" class="valign">High Hazard Zone</label>
             </p>  
 
             <!--Layer zone AO -->
             <p>
-              <input name="ZoneAOMenu" type="checkbox" id="ZoneAOMenu" class="layer-off" onclick="toggleTwo('tmc_zone_ao_1', 'tmc_zone_ao_2')"/>
+              <input name="ZoneAOMenu" type="checkbox" id="ZoneAOMenu" class="layer-on" onclick="toggleTwo('tmc_zone_ao_1', 'tmc_zone_ao_2')" checked/>
               <label for="ZoneAOMenu" class="valign">Zone AO (1ft and 2ft Flooding)</label>
             </p>  
 
             <!--Layer Zone X-->            
             <p>
-              <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-off" onclick="toggleTwo('ugc_zone_x', 'tmc_zone_x')"/>
+              <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-on" onclick="toggleTwo('ugc_zone_x', 'tmc_zone_x')" checked/>
               <label for="ZoneXMenu" class="valign">Zone X</label>
             </p>
 
             <!--2014 Flood Extents-->            
             <p>
               <input name="14FloodMenu" type="checkbox" id="14FloodMenu" class="layer-off" onclick="toggleLayer('flood_extents')"/>
-              <label for="14FloodMenu" class="valign">2014 Flood Extents</label>
+              <label for="14FloodMenu" class="valign">2013 Flood Extents</label>
             </p>  
+
+           
 
          </div>
       </li>
@@ -210,23 +217,32 @@
            
             <!--Layer Stream CL-->
             <p>
-              <input name="CLMenu" type="checkbox" id="CLMenu" class="layer-on" onclick="toggleTwo('ugc_centerline', 'tmc_gutter_line')" checked/>
+              <input name="CLMenu" type="checkbox" id="CLMenu" class="layer-off" onclick="toggleTwo('ugc_centerline', 'tmc_centerline')" />
               <label for="CLMenu" class="valign">Stream Centerline</label>
             </p>  
             <!--Layer Xs-->
             <p>
-              <input name="XSMenu" type="checkbox" id="XSMenu" class="layer-on" onclick="toggleFour('ugc_xs', 'ugc_xs_labels')" checked/>
+              <input name="XSMenu" type="checkbox" id="XSMenu" class="layer-off" onclick="toggleFour('ugc_xs', 'ugc_xs_labels', 'tmc_xs', 'tmc_xs_labels')" />
               <label for="XSMenu" class="valign">Cross Sections</label>
             </p>
             <!--Layer Gutter Lines -->
             <p>
-              <input name="GutterMenu" type="checkbox" id="GutterMenu" class="layer-off" onclick="toggleLayer('ugc_gutterline')" />
+              <input name="GutterMenu" type="checkbox" id="GutterMenu" class="layer-off" onclick="toggleTwo('ugc_gutter_line', 'tmc_gutter_line')" />
               <label for="GutterMenu" class="valign">Gutter Lines</label>
             </p>
 
 
+             <!-- Toogle on off 
+            <div class="mdl-grid">
+                <a id="clear" class="btn-hover">Clear All Layers</a>
+            </div> -->
+      
+
+
         </div>   
       </li> 
+
+
 
 
 
@@ -240,18 +256,18 @@
             
           <!--Legend Base Layer-->
           <li class="collection-header"><em>Base Layers</em></li>
-              <!--Contour--> 
-              <li class="collection-item grey-text"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke="#999999" stroke-opacity = "0.8" /></svg></a></div></li>
-              <!--Parcels--> 
-              <li class="collection-item grey-text"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#AA9769" stroke-opacity= "0.8"/></svg></a></div></li>
-              <!--SAN--> 
+               <!--SAN--> 
               <li class="collection-item grey-text"><div>Sanitary Sewer<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#96D400" /></svg></a></div></li>   
               <!--WTR --> 
               <li class="collection-item grey-text"><div>Water<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#00FDD9" /></svg></a></div></li>  
               <!--STRM--> 
               <li class="collection-item grey-text"><div>Storm<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#004AFD" stroke-opacity = "0.8"/></svg></a></div></li>
+              <!--Contour--> 
+              <li class="collection-item grey-text"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke="#C8F2C8" stroke-opacity = "0.8" /></svg></a></div></li>
+              <!--Parcels--> 
+              <li class="collection-item grey-text"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE29D" stroke-opacity= "0.8"/></svg></a></div></li>
               <!--Footprints-->
-              <li class="collection-item grey-text"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#EDE400" fill-opacity=".4" /></svg></a></div></li>
+              <li class="collection-item grey-text"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#cd00cd" fill-opacity=".6" /></svg></a></div></li>
               
 
 
@@ -267,10 +283,10 @@
           <!--Floodplain Hazards legend-->
           <li class="collection-header"><em>Flood Hazard Zones</em></li>
 
-          	 <li class="collection-item grey-text"><div>Conveyance Zone (Floodway)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#0034D9"/></svg></a></div></li>
+          	 <li class="collection-item grey-text"><div>Conveyance Zone (Floodway)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE642"/></svg></a></div></li>
 
 
-             <li class="collection-item grey-text"><div>100-Yr Floodplain (Zone AE)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFBF00"/></svg></a></div></li>
+             <li class="collection-item grey-text"><div>100-Yr Floodplain (Zone AE)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#0034D9"/></svg></a></div></li>
 
 
              <li class="collection-item grey-text"><div>High Hazard<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#DC0714" fill-opacity=".6" /></svg></a></div></li>
@@ -283,7 +299,7 @@
 
              <li class="collection-item grey-text"><div>Zone X<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFA540" fill-opacity=".6" /></svg></a></div></li>
 
-             <li class="collection-item"><div>2014 Flooding Extents<a href="#!" class="secondary-content"><svg height="21" width="21"><g>
+             <li class="collection-item grey-text"><div>2013 Flooding Extents<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
