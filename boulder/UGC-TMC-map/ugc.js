@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 //Dark Canvas
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 14.45,
     //minZoom:11,
    // maxZoom:19.5,
