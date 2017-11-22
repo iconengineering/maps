@@ -165,7 +165,7 @@
  <!--FLOOD HAZARD LAYERS-->
       <li>
          <div class="collapsible-header indigo-alt">Flood Hazard Zones<i class="material-icons right">keyboard_arrow_down</i></div>
-         <div class="collapsible-body white">
+         <div class="collapsible-body white" id="testing1">
 
             <!--Layer Conveyance Zone-->
             <p>
@@ -202,8 +202,18 @@
               <input name="14FloodMenu" type="checkbox" id="14FloodMenu" class="layer-off" onclick="toggleLayer('flood_extents')"/>
               <label for="14FloodMenu" class="valign">2013 Flood Extents</label>
             </p>  
+<!--
+            <p>
+              <label class="mdl-switch mdl-js-switch label-off" for="lsChannel">
+                <input type="checkbox" id="lsChannel" class="mdl-switch__input layer-off" onclick="toggleLayer('flood_extents')" />
+              </label>
 
-           
+           </p> -->
+        
+          <div class="mdl-grid">
+              <a id="clear" class="waves-light btn">Clear Flood Hazard Layers</a>
+          </div>
+
 
          </div>
       </li>
@@ -231,11 +241,12 @@
               <label for="GutterMenu" class="valign">Gutter Lines</label>
             </p>
 
-
-             <!-- Toogle on off 
             <div class="mdl-grid">
-                <a id="clear" class="btn-hover">Clear All Layers</a>
-            </div> -->
+              <a id="clear2" class="waves-light btn">Clear Hydrologics Layers</a>
+            </div>
+
+
+
       
 
 
@@ -257,17 +268,17 @@
           <!--Legend Base Layer-->
           <li class="collection-header"><em>Base Layers</em></li>
                <!--SAN--> 
-              <li class="collection-item grey-text"><div>Sanitary Sewer<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#96D400" /></svg></a></div></li>   
+              <li class="collection-item grey-text"><div>Sanitary Sewer<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke-dasharray= "6, 3" stroke="#96D400" /></svg></a></div></li>   
               <!--WTR --> 
-              <li class="collection-item grey-text"><div>Water<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#00FDD9" /></svg></a></div></li>  
+              <li class="collection-item grey-text"><div>Water<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke-dasharray= "6, 3" stroke="#00FDD9"  /></svg></a></div></li>  
               <!--STRM--> 
-              <li class="collection-item grey-text"><div>Storm<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#004AFD" stroke-opacity = "0.8"/></svg></a></div></li>
+              <li class="collection-item grey-text"><div>Storm<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke-dasharray= "6, 3" stroke="#004AFD" stroke-opacity = "0.8"/></svg></a></div></li>
               <!--Contour--> 
               <li class="collection-item grey-text"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke="#C8F2C8" stroke-opacity = "0.8" /></svg></a></div></li>
               <!--Parcels--> 
               <li class="collection-item grey-text"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE29D" stroke-opacity= "0.8"/></svg></a></div></li>
               <!--Footprints-->
-              <li class="collection-item grey-text"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#cd00cd" fill-opacity=".6" /></svg></a></div></li>
+              <li class="collection-item grey-text"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#C457E0" fill-opacity=".6" /></svg></a></div></li>
               
 
 
@@ -294,7 +305,7 @@
 
              <li class="collection-item grey-text"><div>Zone AO - 2ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#7FEAFF" fill-opacity=".6" /></svg></a></div></li>
 
-             <li class="collection-item grey-text" ><div>Zone AO - 1ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#E980FC" fill-opacity=".6" /></svg></a></div></li>
+             <li class="collection-item grey-text" ><div>Zone AO - 1ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#316873" fill-opacity=".6" /></svg></a></div></li>
 
 
              <li class="collection-item grey-text"><div>Zone X<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFA540" fill-opacity=".6" /></svg></a></div></li>

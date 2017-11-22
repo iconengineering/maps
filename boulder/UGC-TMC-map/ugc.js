@@ -367,9 +367,9 @@ map.on('style.load', function () {
       'layout': {'visibility': 'none'},
       'type': 'fill',
       'paint': {
-          'fill-color': '#cd00cd',
-          'fill-outline-color': '#cd00cd',
-         'fill-opacity': 0.4
+          'fill-color': '#C457E0',
+          'fill-outline-color': '#C457E0',
+         'fill-opacity': 0.5
       }
     }, 'road-label-small');
 
@@ -399,7 +399,7 @@ map.on('style.load', function () {
          'line-color': '#96D400', 
          'line-width': 2.6,
          'line-opacity': 0.7,
-        // 'line-dasharray': [3, 3],
+         'line-dasharray': [3, 1.5],
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -436,7 +436,8 @@ map.on('style.load', function () {
       'paint': {
          'line-width': 2.6,
          'line-color': '#00FDD9', 
-         'line-opacity': 0.7
+         'line-opacity': 0.7,
+         'line-dasharray': [3, 1.5],
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -471,7 +472,8 @@ map.on('style.load', function () {
       'paint': {
          'line-color': '#004AFD', 
          'line-width': 2.6,
-        'line-opacity': 0.7
+        'line-opacity': 0.7,
+        'line-dasharray': [3, 1.5],
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -919,8 +921,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.5,
-        'fill-color': '#E980FC',
-        'fill-outline-color': '#E980FC'
+        'fill-color': '#316873',
+        'fill-outline-color': '#316873'
     }
   }, 'road-label-small');
 
@@ -1107,6 +1109,46 @@ map.on('style.load', function () {
 
 
 });
+
+//defeine clear button for flood haz zones
+$(document).ready(function() {
+    $("#clear").click(function() {
+        var checkBoxes = $("#FloodZones input[type=checkbox]");
+        
+        
+        checkBoxes.prop("checked", false);
+
+        map.setLayoutProperty('tmc_fw','visibility', 'none');
+        map.setLayoutProperty('ugc_fw','visibility', 'none');
+        map.setLayoutProperty('tmc_100yr','visibility', 'none');
+        map.setLayoutProperty('ugc_100yr','visibility', 'none');
+        map.setLayoutProperty('tmc_hiHaz','visibility', 'none');
+        map.setLayoutProperty('ugc_hiHaz','visibility', 'none');
+        map.setLayoutProperty('tmc_zone_ao_1','visibility', 'none');
+        map.setLayoutProperty('tmc_zone_ao_2','visibility', 'none');
+        map.setLayoutProperty('tmc_zone_x','visibility', 'none');
+        map.setLayoutProperty('ugc_zone_x','visibility', 'none');
+        map.setLayoutProperty('flood_extents','visibility', 'none');
+       });
+});
+
+
+// define clear button for hydo
+$(document).ready(function() {
+    $("#clear2").click(function() {
+        var checkBoxes = $("#HydroID input[type=checkbox]");
+        checkBoxes.prop("checked", false);
+        map.setLayoutProperty('tmc_centerline','visibility', 'none');
+        map.setLayoutProperty('ugc_centerline','visibility', 'none');
+        map.setLayoutProperty('tmc_xs','visibility', 'none');
+        map.setLayoutProperty('ugc_xs','visibility', 'none');
+        map.setLayoutProperty('tmc_xs_labels','visibility', 'none');
+        map.setLayoutProperty('ugc_xs_labels','visibility', 'none');
+        map.setLayoutProperty('tmc_gutter_line','visibility', 'none');
+        map.setLayoutProperty('ugc_gutter_line','visibility', 'none');
+       });
+});
+
 
 
 // When a click event occurs near the feature open a popup at the location of
