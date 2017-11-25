@@ -171,13 +171,28 @@ map.on('style.load', function () {
       'url': 'mapbox://iconeng.au4crcts'
      }); 
    
-
     map.addSource('storm', {
       'type': 'vector',
       'url': 'mapbox://iconeng.0lva1cj0'     
     }); 
 
-    
+    //Daylight Opp
+    map.addSource('dayLightOpp', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.6sgvzcya'   //SBK2_DaylightOpp-bdr7do    
+    }); 
+
+    //Prop Trial
+    map.addSource('propTrails', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.cszraife'   //SBK2_ProposedTrails-88pol2  
+    }); 
+
+    //Envir Restoration Area
+    map.addSource('restorArea', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.45j481w2'  //SBK2_EnviroRestorationArea-ae49du     
+    });  
 
 
 
@@ -323,9 +338,56 @@ map.on('style.load', function () {
         }
     },'road-label-small');
 
+    //Green Restoration Area
+    map.addLayer({
+    id: 'restorArea',
+    source: 'restorArea',
+    'source-layer': 'SBK2_EnviroRestorationArea-ae49du', 
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#22BA61',
+        'fill-outline-color': '#22BA61'
+    }
+  }, 'road-label-small');
+
+    
+
+    //Prop trails
+    map.addLayer({
+      'id': 'propTrails',                               
+      'source': 'propTrails',
+      'source-layer': 'SBK2_ProposedTrails-88pol2',     
+      'type': 'line',        
+      'paint': {
+         'line-width': 3,
+         'line-color': '#22BA61', 
+         'line-opacity': 0.9,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
 
 
-    //wtr
+    //Daylight Opp
+    map.addLayer({
+      'id': 'dayLightOpp',                               
+      'source': 'dayLightOpp',
+      'source-layer': 'SBK2_DaylightOpp-bdr7do',     
+      'type': 'line',        
+      'paint': {
+         'line-width': 3,
+         'line-color': '#22BA61', 
+         'line-opacity': 0.9,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+  
+    //Wtr
     map.addLayer({
       'id': 'wtr',                               
       'source': 'wtr',
@@ -339,6 +401,7 @@ map.on('style.load', function () {
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
+
 
   map.addLayer({
        'id': 'wtrLabels',
@@ -513,8 +576,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.5,
-        'fill-color': '#316873',
-        'fill-outline-color': '#316873'
+        'fill-color': '#7FEAFF',
+        'fill-outline-color': '#7FEAFF',
     }
   }, 'road-label-small');
 

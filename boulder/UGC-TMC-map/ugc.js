@@ -229,6 +229,23 @@ map.on('style.load', function () {
     }); 
 
     
+    //Daylight Opp
+    map.addSource('dayLightOpp', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.6sgvzcya'   //SBK2_DaylightOpp-bdr7do    
+    }); 
+
+    //Prop Trial
+    map.addSource('propTrails', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.cszraife'   //SBK2_ProposedTrails-88pol2  
+    }); 
+
+    //Envir Restoration Area
+    map.addSource('restorArea', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.45j481w2'  //SBK2_EnviroRestorationArea-ae49du     
+    });  
 
 
 
@@ -423,6 +440,54 @@ map.on('style.load', function () {
          'text-halo-color': 'rgb(250,250,250 )',
          'text-halo-width': 0.7
         }
+    },'road-label-small');
+
+
+//Green Restoration Area
+    map.addLayer({
+    id: 'restorArea',
+    source: 'restorArea',
+    'source-layer': 'SBK2_EnviroRestorationArea-ae49du', 
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#22BA61',
+        'fill-outline-color': '#22BA61'
+    }
+  }, 'road-label-small');
+
+    
+
+    //Prop trails
+    map.addLayer({
+      'id': 'propTrails',                               
+      'source': 'propTrails',
+      'source-layer': 'SBK2_ProposedTrails-88pol2',     
+      'type': 'line',        
+      'paint': {
+         'line-width': 3,
+         'line-color': '#22BA61', 
+         'line-opacity': 0.9,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+    //Daylight Opp
+    map.addLayer({
+      'id': 'dayLightOpp',                               
+      'source': 'dayLightOpp',
+      'source-layer': 'SBK2_DaylightOpp-bdr7do',     
+      'type': 'line',        
+      'paint': {
+         'line-width': 3,
+         'line-color': '#22BA61', 
+         'line-opacity': 0.9,
+       },
+      'layout': {'visibility': 'none'}
     },'road-label-small');
 
 
