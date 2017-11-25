@@ -12,6 +12,10 @@ layout: default_mapList
 
 [Fourmile Canyon Creek at Palo Park](boulder/palopark-map)
 
+[Twomile Canyon Creek and Upper Goose Creek: Flood Mitigation](boulder/UGC-TMC-map)
+
+[Skunk, Bluebell & King: Flood Mitigation](boulder/SBK-Flood-Mitigation-Map)
+
 [Sediment Assessment](boulder/sediment-analysis)
 
 [Flood Mitigation](boulder/flood-mitigation)

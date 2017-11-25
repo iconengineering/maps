@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Upper Goose Creek & Twomile Canyon Creek</title>
+    <title>Skunk, Bluebell & King</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js"></script>
     <link href="//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css" rel="stylesheet" />
@@ -41,7 +41,7 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer mdl-color--grey-700 mdl-color-text--grey-60 mdl-shadow--2dp">
       <span style="display: inline-block;text-align:center;"><a href= "https://bouldercolorado.gov" target = "blank"><img class="responsive-img" src="img/boulderSealCropped.png" style="padding:1rem;max-width:50%;"></a></span>
-      <h4 style="padding:0 1rem; text-align:center; margin-top:0; margin-bottom: 0.3;">Upper Goose Creek & Twomile Canyon Creek</h4>
+      <h4 style="padding:0 1rem; text-align:center; margin-top:0; margin-bottom: 0.3;">Skunk, Bluebell & King</h4>
       <h5 style="padding:0 1rem; text-align:center; margin-top:0;" >Flood Mitigation Plan</h5>
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
       
@@ -92,7 +92,7 @@
 
             <!--Contour-->
             <p>
-              <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-off" onclick="toggleThree('majorContour', 'minorContour', 'contourLabels')" />
+              <input name="ContourMenu" type="checkbox" id="ContourMenu" class="layer-off" onclick="toggleThree('1ftContours', '5ftContours', '5ftLabels')" />
               <label for="ContourMenu" class="valign">Contours</label>
             </p>
             <!--Parcel--> 
@@ -110,146 +110,107 @@
       </li>
 
 
- <!-- UPPER GOOSE CREEK MITIGATION LAYERS-->
+ <!-- SKUNK CREEK MITIGATION LAYERS-->
       <li>
-         <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Upper Goose Creek</div>
+         <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Skunk Creek</div>
          <div class="collapsible-body white">
          
             <p class="grey-text text-darken-2 note">
                   Mitigation Alternatives
-            </p>            
-            <!--Layer Main Channel
-            <p>
-              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('ugc_grading1', 'ugc_grading3')" />
+            </p>    
+
+            <!--R0-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 00 - Upstream of Green Mountain Memorial
+            </p> 
+            <p class="indent">
+              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('sbk_grading1', 'sbk_grading3')" />
               <label for="Pro0Menu" class="valign">Main Channel</label>
             </p>
-            Layer Detention Areas
-            <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
+
+            <!--R1-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 01 - Green Mountain Memorial to Broadway
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
               <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p> -->
+            </p>
+
+             <!--R2-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 02 - Broadway to US Highway 36
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Detention Areas</label>
+            </p>
+
+             <!--R3-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 03 - US Highway 36 to Aurora Avenue
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Detention Areas</label>
+            </p>
+
+             <!--R4-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 04 - Aurora Avenue to Colorado Avenue
+
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Detention Areas</label>
+            </p>
+
+             <!--R5-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 05 - Colorado Ave. to Bear Canyon Creek
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Alt A</label>
+            </p>
+
 
          </div>
       </li> 
 
 
- <!-- TWOMILE CANYON CREEK LAYERS-->
+ <!-- BLUEBELL CANYON CREEK LAYERS-->
       <li>
-         <div class="collapsible-header indigo-alt">Twomile Canyon Creek<i class="material-icons right">keyboard_arrow_down</i></div>
+         <div class="collapsible-header indigo-alt">Bluebell Canyon Creek<i class="material-icons right">keyboard_arrow_down</i></div>
          <div class="collapsible-body white">
          
             <p class="grey-text text-darken-2 note">
                   Mitigation Alternatives
-            </p>  
-
-			<!--R1-->
-			<p class="grey-text text-darken-2 note">
-                 Reach 01 - Upstream of 9th Street 
             </p>            
-            <p>
-              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('ugc_grading1', 'ugc_grading3')" />
-              <label for="Pro0Menu" class="valign">Main Channel</label>
+
+            <!--R0-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 0 - Chautauqua Park Area
+            </p>     
+            <p class="indent">
+              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-off" onclick="toggleTwo('tmc_grading1','tmc_grading2')" />
+              <label for="Pro2Menu1" class="valign">Main Channel</label>
             </p>
-            
+
+            <!--R1--> 
+            <p class="grey-text text-darken-2 note">
+                  Reach 1 - Chautauqua Park to 15th Street
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu3" type="checkbox" id="Pro2Menu3" class="layer-off" onclick="toggleLayer('tmc_grading4')" />
+              <label for="Pro2Menu3" class="valign">Iris Split</label>
+            </p>
+
             <!--R2-->
             <p class="grey-text text-darken-2 note">
-                 Reach 02 - 9th Street to Broadway
-            </p> 
-            <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
-
-            <!--R3-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 03 - Broadway to 13th Street
-            </p> 
-            <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
-
-            <!--R4-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 04 - 13th Street to 17th Street
-            </p> 
-            <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
-
-            <!--R5-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 05 - 17th Street to 19th Street
-            </p> 
-            <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
-
-            <!--R6-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 06 - 19th Street to Folsom Street
-            <p>
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('ugc_grading2', 'ugc_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
-
-
-
-
-
-            <!--Layer Main Channel
-            <p>
-              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-off" onclick="toggleTwo('tmc_grading1','tmc_grading2')" />
-              <label for="Pro2Menu1" class="valign">Main Channel</label>
-            </p>
-            Layer Split Channel 
-            <p>
-              <input name="Pro2Menu3" type="checkbox" id="Pro2Menu3" class="layer-off" onclick="toggleLayer('tmc_grading4')" />
-              <label for="Pro2Menu3" class="valign">Iris Split</label>
-            </p>
-            Layer Detention Areas  
-            <p>
-              <input name="Pro2Menu2" type="checkbox" id="Pro2Menu2" class="layer-off" onclick="toggleLayer('tmc_grading3')" />
-              <label for="Pro2Menu2" class="valign">Detention Areas</label>
-            </p>     
-				-->
-
-
-
-            <!--R1-->   
-            <p class="grey-text text-darken-2 note">
-                 Reach 01 - City Limits to Linden Avenue
-            </p>   
-            <p>
-              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-off" onclick="toggleTwo('tmc_grading1','tmc_grading2')" />
-              <label for="Pro2Menu1" class="valign">Main Channel</label>
-            </p>
-
-            <!--R2--> 
-            <p class="grey-text text-darken-2 note">
-                 Reach 02 - Linden Avenue to Broadway
-            </p>  
-            <p>
-              <input name="Pro2Menu3" type="checkbox" id="Pro2Menu3" class="layer-off" onclick="toggleLayer('tmc_grading4')" />
-              <label for="Pro2Menu3" class="valign">Iris Split</label>
-            </p>
-
-            <!--R3-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 03 - Broadway to 19th Street
-            </p> 
-            <p>
-              <input name="Pro2Menu2" type="checkbox" id="Pro2Menu2" class="layer-off" onclick="toggleLayer('tmc_grading3')" />
-              <label for="Pro2Menu2" class="valign">Detention Areas</label>
-            </p>
-
-             <!--R4-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 04 - 19th Street to Elmer's Twomile Creek/Goose Creek
-            </p> 
-            <p>
+                  Reach 2 - 15th Street to Broadway
+            </p>    
+            <p class="indent">
               <input name="Pro2Menu2" type="checkbox" id="Pro2Menu2" class="layer-off" onclick="toggleLayer('tmc_grading3')" />
               <label for="Pro2Menu2" class="valign">Detention Areas</label>
             </p>
@@ -259,6 +220,54 @@
 
 
 
+ <!--KINGS GULCH REEK MITIGATION LAYERS-->
+      <li>
+         <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>King's Gulch Creek</div>
+         <div class="collapsible-body white">
+         
+            <p class="grey-text text-darken-2 note">
+                  Mitigation Alternatives
+            </p>    
+
+            <!--R0-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 00 - Upstream of Bellevue Drive
+            </p> 
+            <p class="indent">
+              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('sbk_grading1', 'sbk_grading3')" />
+              <label for="Pro0Menu" class="valign">Main Channel</label>
+            </p>
+
+            <!--R1-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 01 - Bellevue Drive to 15th Street
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Detention Areas</label>
+            </p>
+
+            <!--R2-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 02 - 15th Street to 17th Street
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Detention Areas</label>
+            </p>
+
+            <!--R3-->
+            <p class="grey-text text-darken-2 note">
+                  Reach 03 - 17th Street to 22nd Street/Skunk Creek
+            </p> 
+            <p class="indent">
+              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
+              <label for="Pro2Menu" class="valign">Detention Areas</label>
+            </p>
+
+         </div>
+      </li>
+
  <!--FLOOD HAZARD LAYERS-->
       <li>
          <div class="collapsible-header indigo-alt">Flood Hazard Zones<i class="material-icons right">keyboard_arrow_down</i></div>
@@ -266,61 +275,61 @@
 
             <!--Layer Conveyance Zone-->
             <p>
-              <input name="ConveyMenu" type="checkbox" id="ConveyMenu" class="layer-on" onclick="toggleTwo('ugc_fw', 'tmc_fw')" checked/>
+              <input name="ConveyMenu" type="checkbox" id="ConveyMenu" class="layer-on" onclick="toggleLayer('sbk_fw')" checked/>
               <label for="ConveyMenu" class="valign">Conveyance Zone</label>
             </p>  
 
             <!--Layer 100-Yr Flood-->
             <p>
-              <input name="100YrMenu" type="checkbox" id="100YrMenu" class="layer-on" onclick="toggleTwo('ugc_100yr', 'tmc_100yr')" checked/>
+              <input name="100YrMenu" type="checkbox" id="100YrMenu" class="layer-on" onclick="toggleLayer('sbk_100yr')" checked/>
               <label for="100YrMenu" class="valign">100-Yr Floodplain</label>
             </p>  
             
             <!--Layer High Hazard-->
             <p>
-              <input name="HiHazMenu" type="checkbox" id="HiHazMenu" class="layer-on" onclick="toggleTwo('ugc_hiHaz', 'tmc_hiHaz')" checked/>
+              <input name="HiHazMenu" type="checkbox" id="HiHazMenu" class="layer-on" onclick="toggleLayer('sbk_hiHaz')" checked/>
               <label for="HiHazMenu" class="valign">High Hazard Zone</label>
             </p>  
 
             <!--Layer zone AO -->
             <p>
-              <input name="ZoneAOMenu" type="checkbox" id="ZoneAOMenu" class="layer-on" onclick="toggleTwo('tmc_zone_ao_1', 'tmc_zone_ao_2')" checked/>
-              <label for="ZoneAOMenu" class="valign">Zone AO (1ft and 2ft Flooding)</label>
+              <input name="ZoneAHMenu" type="checkbox" id="ZoneAHMenu" class="layer-on" onclick="toggleLayer('sbk_zone_ah)" checked/>
+              <label for="ZoneAHMenu" class="valign">Zone AH </label>
             </p>  
 
             <!--Layer Zone X-->            
             <p>
-              <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-on" onclick="toggleTwo('ugc_zone_x', 'tmc_zone_x')" checked/>
+              <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-on" onclick="toggleLayer('sbk_zone_x')" checked/>
               <label for="ZoneXMenu" class="valign">Zone X</label>
             </p>
-            <!--Layer Stream CL-->
+              <!--Layer Stream CL-->
             <p>
-              <input name="CLMenu" type="checkbox" id="CLMenu" class="layer-off" onclick="toggleTwo('ugc_centerline', 'tmc_centerline')" />
+              <input name="CLMenu" type="checkbox" id="CLMenu" class="layer-off" onclick="toggleLayer('sbk_centerline')" />
               <label for="CLMenu" class="valign">Stream Centerline</label>
             </p>  
             <!--Layer Xs-->
             <p>
-              <input name="XSMenu" type="checkbox" id="XSMenu" class="layer-off" onclick="toggleFour('ugc_xs', 'ugc_xs_labels', 'tmc_xs', 'tmc_xs_labels')" />
+              <input name="XSMenu" type="checkbox" id="XSMenu" class="layer-off" onclick="toggleTwo('sbk_xs', 'sbk_xs_labels')" />
               <label for="XSMenu" class="valign">Cross Sections</label>
+            </p>
+            <!-- Layer BFE -->
+            <p>
+              <input name="BFEMenu" type="checkbox" id="BFEMenu" class="layer-off" onclick="toggleTwo('sbk_bfe', 'sbk_bfeLabels')" />
+              <label for="BFEMenu" class="valign">Base Flood Elevation</label>
             </p>
             <!--Layer Gutter Lines -->
             <p>
-              <input name="GutterMenu" type="checkbox" id="GutterMenu" class="layer-off" onclick="toggleTwo('ugc_gutter_line', 'tmc_gutter_line')" />
+              <input name="GutterMenu" type="checkbox" id="GutterMenu" class="layer-off" onclick="toggleLayer('sbk_gutter_line')" />
               <label for="GutterMenu" class="valign">Gutter Lines</label>
             </p>
+
+
             <!--2014 Flood Extents-->            
             <p>
               <input name="14FloodMenu" type="checkbox" id="14FloodMenu" class="layer-off" onclick="toggleLayer('flood_extents')"/>
               <label for="14FloodMenu" class="valign">2013 Flood Extents</label>
             </p>  
-<!--
-            <p>
-              <label class="mdl-switch mdl-js-switch label-off" for="lsChannel">
-                <input type="checkbox" id="lsChannel" class="mdl-switch__input layer-off" onclick="toggleLayer('flood_extents')" />
-              </label>
 
-           </p> -->
-        
           <div class="mdl-grid">
               <a id="clear" class="waves-light btn">Clear Flood Hazard Layers</a>
           </div>
@@ -328,6 +337,12 @@
 
          </div>
       </li>
+
+
+
+
+
+
 
 
 
@@ -383,17 +398,6 @@
 
              <li class="collection-item grey-text"><div>Zone X<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFA540" fill-opacity=".6" /></svg></a></div></li>
 
-           <!--Stream Centerline-->
-             <li class="collection-item grey-text"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08D6FF" /></svg></a></div></li>
-
-
-           <!--XS-->
-             <li class="collection-item grey-text"><div>Floodplain Cross Sections<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08FA47" /></svg></a></div></li>
-            
-
-             <!--Gutterline-->
-             <li class="collection-item grey-text"><div>Gutter Lines<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF9800" /></svg></a></div></li>v
-
              <li class="collection-item grey-text"><div>2013 Flooding Extents<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
@@ -407,7 +411,19 @@
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/></g></svg></a></div>
              </li>
 
+             <!--Stream Centerline-->
+             <li class="collection-item grey-text"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08D6FF" /></svg></a></div></li>
 
+
+      		 <!--XS-->
+             <li class="collection-item grey-text"><div>Floodplain Cross Sections<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08FA47" /></svg></a></div></li>
+            
+
+             <!--Gutterline-->
+             <li class="collection-item grey-text"><div>Gutter Lines<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF9800" /></svg></a></div></li>
+
+
+    
           </ul>
         </div>
       </li> 
@@ -432,7 +448,7 @@
 
 <div id='map'></div>
 
-<script src='ugc.js'></script>
+<script src='sbk-mitigation.js'></script>
 <script src="toggleLayer.js"></script>
 
 
