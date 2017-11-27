@@ -3820,7 +3820,7 @@ button.btn-floating {
  */
 .waves-effect {
   position: relative;
-  cursor: pointer;
+  cursor: pointer;  
   display: inline-block;
   overflow: hidden;
   user-select: none;

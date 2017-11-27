@@ -42,7 +42,7 @@ map.on('style.load', function () {
 //--------------------------Upper Goose Creek-------------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    // channel grading (proposed improvements)
+   /*    // channel grading (proposed improvements)
     map.addSource('ugc_grading_alipine', {    //existing? as filler
       type: 'geojson',
       data: 'UGC_Alipine_Channel.geojson'
@@ -58,8 +58,21 @@ map.on('style.load', function () {
       type: 'geojson',
       data: 'UGC_NorthBoulderPark.geojson'
     });
+*/
 
+    // Mitigation Polygon
+    map.addSource('ugc_mitigation_polygonwork', {           
+      'type': 'vector',
+      'url': 'mapbox://iconeng.beykh0kc'    //ugc_ugc_polyon_merge-5og7u1 
+    }); 
+ 
+    // Mitigation Polyline
+    map.addSource('ugc_mitigation_linework', {           
+      'type': 'geojson',
+      'data': 'ugc_ugc_polyline_merge.geojson'    
+    }); 
 
+ 
 
 
     // Flood Hazard Zones
@@ -114,6 +127,7 @@ map.on('style.load', function () {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
     // channel grading (proposed improvements)
+    /*
     map.addSource('tmc_grading_mnr', {
       type: 'geojson',
       data: 'UGC_Twomile_to_Goose_Grading15ft_Index1ft.geojson'
@@ -135,7 +149,7 @@ map.on('style.load', function () {
       data: 'UGC_SpringValleyDrive.geojson'
     });
 
-
+*/
 
 
     // Flood Hazard Zones
@@ -301,62 +315,12 @@ map.on('style.load', function () {
     }, 'road-label-small');
   
   
-
-
-/*
-    //Major contours     
-    map.addLayer({
-      'id': 'majorContour',
-      'type': 'line',
-      'source': 'contours',
-      'filter': ['==', 'Index', '5'],
-      'layout': {
-          'visibility': 'none',
-          'line-join': 'round',
-          'line-cap': 'round'   
-      },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
-        },
-      'line-opacity': {
-     "stops": [[16, 0.7],[19, 1]] },
-        
-          'line-color': '#424242'
-      }
-    }, 'road-label-small');
-  
-    //Minor contours   
-    map.addLayer({
-      'id': 'minorContour',
-      'type': 'line',
-      'source': 'contours',
-      'filter': ['==', 'Index', '1'],
-      'layout': {
-          'visibility': 'none',
-          'line-join': 'round',
-          'line-cap': 'round'
-      },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0], [17, .5], [19, 1]]
-        },
-       'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]] },
-       
-          'line-color': '#424242'
-      }
-    }, 'road-label-small');
-
-
-*/
   
     //contour labels
     map.addLayer({
       'id': 'contourLabels',
       'type': 'symbol',
       'source': 'contours',
-    //  'filter': ['==', 'Index', '5'],
       'layout': {
           'visibility': 'none',
         'symbol-placement': 'line',
@@ -493,7 +457,7 @@ map.on('style.load', function () {
 
 
     //wtr
-    map.addLayer({
+      map.addLayer({
       'id': 'wtr',                               
       'source': 'wtr',
       'source-layer': 'UGC_water-aqbp8r',     
@@ -507,7 +471,7 @@ map.on('style.load', function () {
       'layout': {'visibility': 'none'}
     },'road-label-small');
 
-  map.addLayer({
+      map.addLayer({
        'id': 'wtrLabels',
        'type': 'symbol',                                
        'source': 'wtr',
@@ -529,7 +493,7 @@ map.on('style.load', function () {
 
 
     //Storm
-    map.addLayer({
+      map.addLayer({
       'id': 'storm',                               
       'source': 'storm',
       'source-layer': 'UGC_storm-916fqn',     
@@ -544,7 +508,7 @@ map.on('style.load', function () {
     },'road-label-small');
 
 
-    map.addLayer({
+        map.addLayer({
        'id': 'stormLabels',
        'type': 'symbol',                                
        'source': 'storm',
@@ -568,6 +532,365 @@ map.on('style.load', function () {
 //--------------------------Upper Goose Creek-------------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  
+// ---- UGS Reach 01 Alt A Detention
+    map.addLayer({
+    id: 'ugc_r01_altA_detention',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Detention']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF00C3',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+
+// ---- UGS Reach 01 Alt A Outfall
+    map.addLayer({
+    id: 'ugc_r01_altA_outfall',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Outfall']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#720f00',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 01 Alt B Outfall
+    map.addLayer({
+    id: 'ugc_r01_altB_outfall',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '01']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#720f00',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 02 Alt A Open Channel Detained Flow
+    map.addLayer({
+    id: 'ugc_r02_altA_OpenChannel_Detained',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 02 Alt B Open Channel FullFlow
+    map.addLayer({
+    id: 'ugc_r02_altB_OpenChannel_Full',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 03 Alt A Strom Drain Detained Flow
+    map.addLayer({
+    id: 'ugc_r03_altA_StormDrain_Detained',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Reach', '03'],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 03 Alt B Strom Drain Full Flow
+    map.addLayer({
+    id: 'ugc_r03_altB_StormDrain_Full',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Reach', '03'],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 04 Alt A Strom Drain Detained Flow
+    map.addLayer({
+    id: 'ugc_r04_altA_StormDrain_Detained',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 04 Alt B Strom Drain Full Flow
+    map.addLayer({
+    id: 'ugc_r04_altB_StormDrain_Full',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 04 Alt C Open Channel Detained
+    map.addLayer({
+    id: 'ugc_r04_altC_OpenChannel_Detained',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+// ---- UGS Reach 04 Alt D Open Channel Full
+    map.addLayer({
+    id: 'ugc_r04_altD_OpenChannel_Full',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+// ---- UGS Reach 05 Alt A Strom Drain Detained Flow
+    map.addLayer({
+    id: 'ugc_r05_altA_StormDrain_Detained',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '05']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 05 Alt B Strom Drain Full Flow
+    map.addLayer({
+    id: 'ugc_r05_altB_StormDrain_Full',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '05']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 05 Alt C Culvert Detained Flow
+    map.addLayer({
+    id: 'ugc_r05_altC_Culvert_Detained',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 05 Alt D Culvert Detained Flow
+    map.addLayer({
+    id: 'ugc_r05_altC_Culvert_Full',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- UGS Reach 06 Alt A Outfall (text states open channel)
+    map.addLayer({
+    id: 'ugc_r06_altA_outfall',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Alt', '6'],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#720f00',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+
+/*
 // ---- UGC PROPOSED GRADING
     map.addLayer({
     id: 'ugc_grading1',
@@ -660,7 +983,7 @@ map.on('style.load', function () {
    
   }, 'road-label-small');
 
-
+*/
 
 
 
@@ -1194,15 +1517,6 @@ $(document).ready(function() {
         map.setLayoutProperty('tmc_zone_x','visibility', 'none');
         map.setLayoutProperty('ugc_zone_x','visibility', 'none');
         map.setLayoutProperty('flood_extents','visibility', 'none');
-       });
-});
-
-
-// define clear button for hydo
-$(document).ready(function() {
-    $("#clear2").click(function() {
-        var checkBoxes = $("#HydroID input[type=checkbox]");
-        checkBoxes.prop("checked", false);
         map.setLayoutProperty('tmc_centerline','visibility', 'none');
         map.setLayoutProperty('ugc_centerline','visibility', 'none');
         map.setLayoutProperty('tmc_xs','visibility', 'none');
@@ -1216,31 +1530,107 @@ $(document).ready(function() {
 
 
 
+//get extents of a layer
+function getBoundingBox (data) {
+  var bounds = {}, coords, point, latitude, longitude;
+
+  // We want to use the “features” key of the FeatureCollection (see above)
+  data = data.features;
+
+  // Loop through each “feature”
+  for (var i = 0; i < data.length; i++) {
+
+    // Pull out the coordinates of this feature
+    coords = data[i].geometry.coordinates[0];
+
+    // For each individual coordinate in this feature's coordinates…
+    for (var j = 0; j < coords.length; j++) {
+
+      longitude = coords[j][0];
+      latitude = coords[j][1];
+
+      // Update the bounds recursively by comparing the current
+      // xMin/xMax and yMin/yMax with the coordinate
+      // we're currently checking
+      bounds.xMin = bounds.xMin < longitude ? bounds.xMin : longitude;
+      bounds.xMax = bounds.xMax > longitude ? bounds.xMax : longitude;
+      bounds.yMin = bounds.yMin < latitude ? bounds.yMin : latitude;
+      bounds.yMax = bounds.yMax > latitude ? bounds.yMax : latitude;
+    }
+
+  }
+
+  // Returns an object that contains the bounds of this GeoJSON
+  // data. The keys of this object describe a box formed by the
+  // northwest (xMin, yMin) and southeast (xMax, yMax) coordinates.
+  return bounds;
+}
+
+
+//Change map zoom and pov
+document.getElementById('UGC_Zoom').addEventListener('click', function() {
+
+  var bbox = [[-105.289,40.0212], [-105.263,40.031]];
+  map.fitBounds(bbox, { padding: 50 });
+
+
+});
+
+document.getElementById('TMC_Zoom').addEventListener('click', function() {
+
+  var bbox = [[-121.9,38.5], [-120.4,38.9]];
+  map.fitBounds(bbox, { padding: 50 });
+
+});
+
+
+
+
+
+
+
 // When a click event occurs near the feature open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs'] });
   if (!featureList.length) {
       return;
   }
 
   var feature = featureList[0];
+  var id = feature.layer.id;
+     
 
+     if (id == 'storm'){
         var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)
             .setHTML('DIAMETER: ' + feature.properties.DIAMETER + ' in'+ '</b> <br />' +
                      'LENGTH: ' + feature.properties.LENGTH + ' ft' + '<br />' +
                      'MATERIAL: ' + feature.properties.MATERIAL)
             .addTo(map);
+          }
+
+      else if (id == 'ugc_xs') {
+        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+            .setHTML('<b>' + feature.properties.RiverCode + ' Cross Section ' + feature.properties.ProfileM + '</b> <br />' +
+                     '<b>100-Year: ' + feature.properties.P001.toFixed(2) + '<br />' +
+                     'Floodway: ' + feature.properties.P002.toFixed(2)  )
+            .addTo(map);
+      }
     });
+
+
+
+
+
 
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (k) {
-    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm'] });
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs'] });
     map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
 });
-
 
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
