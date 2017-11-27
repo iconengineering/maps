@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 //Dark Canvas
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 14.45,
     //minZoom:11,
    // maxZoom:19.5,
@@ -150,6 +150,20 @@ map.on('style.load', function () {
     });
 
 */
+
+    // Mitigation Polygon
+    map.addSource('tmc_mitigation_polygonwork', {           
+      'type': 'vector',
+      'url': 'mapbox://iconeng.c1ykx9hp'    //ugc_tmc_polygon_merge-b4mlf2
+    }); 
+ 
+    // Mitigation Polyline
+    map.addSource('tmc_mitigation_linework', {           
+      'type': 'geojson',
+      'data': 'ugc_tmc_polyline_merge.geojson'    
+    }); 
+
+
 
 
     // Flood Hazard Zones
@@ -532,7 +546,7 @@ map.on('style.load', function () {
 //--------------------------Upper Goose Creek-------------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  
-// ---- UGS Reach 01 Alt A Detention
+// ---- UGC Reach 01 Alt A Detention
     map.addLayer({
     id: 'ugc_r01_altA_detention',
     source: 'ugc_mitigation_linework', 
@@ -558,7 +572,7 @@ map.on('style.load', function () {
 
 
 
-// ---- UGS Reach 01 Alt A Outfall
+// ---- UGC Reach 01 Alt A Outfall
     map.addLayer({
     id: 'ugc_r01_altA_outfall',
     source: 'ugc_mitigation_linework', 
@@ -581,7 +595,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 01 Alt B Outfall
+// ---- UGC Reach 01 Alt B Outfall
     map.addLayer({
     id: 'ugc_r01_altB_outfall',
     source: 'ugc_mitigation_linework', 
@@ -604,7 +618,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 02 Alt A Open Channel Detained Flow
+// ---- UGC Reach 02 Alt A Open Channel Detained Flow
     map.addLayer({
     id: 'ugc_r02_altA_OpenChannel_Detained',
     source: 'ugc_mitigation_polygonwork',
@@ -622,7 +636,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 02 Alt B Open Channel FullFlow
+// ---- UGC Reach 02 Alt B Open Channel FullFlow
     map.addLayer({
     id: 'ugc_r02_altB_OpenChannel_Full',
     source: 'ugc_mitigation_polygonwork',
@@ -640,7 +654,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 03 Alt A Strom Drain Detained Flow
+// ---- UGC Reach 03 Alt A Strom Drain Detained Flow
     map.addLayer({
     id: 'ugc_r03_altA_StormDrain_Detained',
     source: 'ugc_mitigation_linework', 
@@ -663,7 +677,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 03 Alt B Strom Drain Full Flow
+// ---- UGC Reach 03 Alt B Strom Drain Full Flow
     map.addLayer({
     id: 'ugc_r03_altB_StormDrain_Full',
     source: 'ugc_mitigation_linework', 
@@ -686,7 +700,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 04 Alt A Strom Drain Detained Flow
+// ---- UGC Reach 04 Alt A Strom Drain Detained Flow
     map.addLayer({
     id: 'ugc_r04_altA_StormDrain_Detained',
     source: 'ugc_mitigation_linework', 
@@ -709,7 +723,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 04 Alt B Strom Drain Full Flow
+// ---- UGC Reach 04 Alt B Strom Drain Full Flow
     map.addLayer({
     id: 'ugc_r04_altB_StormDrain_Full',
     source: 'ugc_mitigation_linework', 
@@ -732,7 +746,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 04 Alt C Open Channel Detained
+// ---- UGC Reach 04 Alt C Open Channel Detained
     map.addLayer({
     id: 'ugc_r04_altC_OpenChannel_Detained',
     source: 'ugc_mitigation_linework', 
@@ -758,7 +772,7 @@ map.on('style.load', function () {
 
 
 
-// ---- UGS Reach 04 Alt D Open Channel Full
+// ---- UGC Reach 04 Alt D Open Channel Full
     map.addLayer({
     id: 'ugc_r04_altD_OpenChannel_Full',
     source: 'ugc_mitigation_linework', 
@@ -784,7 +798,7 @@ map.on('style.load', function () {
 
 
 
-// ---- UGS Reach 05 Alt A Strom Drain Detained Flow
+// ---- UGC Reach 05 Alt A Strom Drain Detained Flow
     map.addLayer({
     id: 'ugc_r05_altA_StormDrain_Detained',
     source: 'ugc_mitigation_linework', 
@@ -807,7 +821,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 05 Alt B Strom Drain Full Flow
+// ---- UGC Reach 05 Alt B Strom Drain Full Flow
     map.addLayer({
     id: 'ugc_r05_altB_StormDrain_Full',
     source: 'ugc_mitigation_linework', 
@@ -830,7 +844,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 05 Alt C Culvert Detained Flow
+// ---- UGC Reach 05 Alt C Culvert Detained Flow
     map.addLayer({
     id: 'ugc_r05_altC_Culvert_Detained',
     source: 'ugc_mitigation_polygonwork',
@@ -848,7 +862,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 05 Alt D Culvert Detained Flow
+// ---- UGC Reach 05 Alt D Culvert Detained Flow
     map.addLayer({
     id: 'ugc_r05_altC_Culvert_Full',
     source: 'ugc_mitigation_polygonwork',
@@ -866,7 +880,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- UGS Reach 06 Alt A Outfall (text states open channel)
+// ---- UGC Reach 06 Alt A Outfall (text states open channel)
     map.addLayer({
     id: 'ugc_r06_altA_outfall',
     source: 'ugc_mitigation_linework', 
@@ -1183,8 +1197,369 @@ map.on('style.load', function () {
 //--------------------------Twomile Canyon Creek----------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  
-// TMC PROPOSED GRADING
+/* 
+// ---- TMC Reach 01 Alt A Detention
+    map.addLayer({
+    id: 'tmc_r01_altA_detention',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Detention']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
+        },
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#FF00C3',
+          
+      }
+   
+  }, 'road-label-small');
 
+
+
+// ---- TMC Reach 01 Alt A Outfall
+    map.addLayer({
+    id: 'tmc_r01_altA_outfall',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Outfall']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#720f00',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 01 Alt B Outfall
+    map.addLayer({
+    id: 'tmc_r01_altB_outfall',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '01']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#720f00',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 02 Alt A Open Channel Detained Flow
+    map.addLayer({
+    id: 'tmc_r02_altA_OpenChannel_Detained',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'tmc_tmc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 02 Alt B Open Channel FullFlow
+    map.addLayer({
+    id: 'tmc_r02_altB_OpenChannel_Full',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'tmc_tmc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 03 Alt A Strom Drain Detained Flow
+    map.addLayer({
+    id: 'tmc_r03_altA_StormDrain_Detained',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Reach', '03'],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 03 Alt B Strom Drain Full Flow
+    map.addLayer({
+    id: 'tmc_r03_altB_StormDrain_Full',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Reach', '03'],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 04 Alt A Strom Drain Detained Flow
+    map.addLayer({
+    id: 'tmc_r04_altA_StormDrain_Detained',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 04 Alt B Strom Drain Full Flow
+    map.addLayer({
+    id: 'tmc_r04_altB_StormDrain_Full',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 04 Alt C Open Channel Detained
+    map.addLayer({
+    id: 'tmc_r04_altC_OpenChannel_Detained',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+// ---- TMC Reach 04 Alt D Open Channel Full
+    map.addLayer({
+    id: 'tmc_r04_altD_OpenChannel_Full',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+// ---- TMC Reach 05 Alt A Strom Drain Detained Flow
+    map.addLayer({
+    id: 'tmc_r05_altA_StormDrain_Detained',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '05']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 05 Alt B Strom Drain Full Flow
+    map.addLayer({
+    id: 'tmc_r05_altB_StormDrain_Full',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '05']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#22D9D9',
+          
+      }
+   
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 05 Alt C Culvert Detained Flow
+    map.addLayer({
+    id: 'tmc_r05_altC_Culvert_Detained',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'tmc_tmc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 05 Alt D Culvert Detained Flow
+    map.addLayer({
+    id: 'tmc_r05_altC_Culvert_Full',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'tmc_tmc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 06 Alt A Outfall (text states open channel)
+    map.addLayer({
+    id: 'tmc_r06_altA_outfall',
+    source: 'tmc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Alt', '6'],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 4,
+        'line-opacity': {
+            "stops": [[16, 0.7],[19, 1]]
+        },
+        'line-color': '#720f00',
+          
+      }
+   
+  }, 'road-label-small');
+*/
+
+
+
+
+
+/*
     map.addLayer({
     id: 'tmc_grading1',
     source: 'tmc_grading_mnr',
@@ -1276,7 +1651,7 @@ map.on('style.load', function () {
       }
    
   }, 'road-label-small');
-
+*/
 
 
 // --- TMC HAZARD ZONES
@@ -1571,15 +1946,15 @@ function getBoundingBox (data) {
 document.getElementById('UGC_Zoom').addEventListener('click', function() {
 
   var bbox = [[-105.289,40.0212], [-105.263,40.031]];
-  map.fitBounds(bbox, { padding: 50 });
+  map.fitBounds(bbox, { padding: 10 });
 
 
 });
 
 document.getElementById('TMC_Zoom').addEventListener('click', function() {
 
-  var bbox = [[-121.9,38.5], [-120.4,38.9]];
-  map.fitBounds(bbox, { padding: 50 });
+  var bbox = [[-105.285,40.0259], [-105.26,40.0425]];
+  map.fitBounds(bbox, { padding:10 });
 
 });
 
