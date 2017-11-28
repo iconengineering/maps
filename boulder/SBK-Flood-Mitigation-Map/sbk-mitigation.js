@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 //Dark Canvas
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 14.2,
     //minZoom:11,
    // maxZoom:19.5,
@@ -17,7 +17,7 @@ var map = new mapboxgl.Map({
 
 //Create vectors for menu items
 var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
+var inputs = layerList.getElementsByTagName('input'); 
 
 
 //BaseMap Switch
@@ -38,50 +38,54 @@ map.on('style.load', function () {
 
 //++++++++++++++++++++++++++++++ ADD SOURCE +++++++++++++++++++++++++++++++++++++
 
+//----Skunk 
+
+    // Mitigation Polygon
+    map.addSource('snk_mitigation_polygonwork', {           
+      'type': 'vector',
+      'url': 'mapbox://iconeng.bbnlg1q8'    //ugc_snk_polygon_merge-3mj1ax
+    }); 
+ 
+    // Mitigation Polyline
+    map.addSource('snk_mitigation_linework', {           
+      'type': 'geojson',
+      'data': 'ugc_snk_polyline_merge.GEOJSON'    
+    }); 
+
+
+//----Bluebell 
+
+    // Mitigation Polygon
+    map.addSource('bcc_mitigation_polygonwork', {           
+      'type': 'vector',
+      'url': 'mapbox://iconeng.9n1migyb'    //ugc_bcc_polygon_merge-70udhl 
+    }); 
+ 
+    // Mitigation Polyline
+    map.addSource('bcc_mitigation_linework', {           
+      'type': 'geojson',
+      'data': 'ugc_bcc_polyline_merge.GEOJSON'    
+    }); 
+
+//----King
+
+    // Mitigation Polygon
+    map.addSource('kng_mitigation_polygonwork', {           
+      'type': 'vector',
+      'url': 'mapbox://iconeng.iconeng.4mtk0c24'    //ugc_kng_polygon_merge-abyu3a
+    }); 
+ 
+    // Mitigation Polyline
+    map.addSource('kng_mitigation_linework', {           
+      'type': 'geojson',
+      'data': 'ugc_bbc_polyline_merge.GEOJSON'  
+    }); 
 
 
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//-----------------------------------Skunk Mitigation Layers----------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-    // channel grading (proposed improvements)
-    map.addSource('sbk_grading_alipine', {    //existing? as filler
-      type: 'geojson',
-      data: 'sbk_Alipine_Channel.geojson'
-    });
-
-    map.addSource('sbk_grading', {            //existing? as filler
-      type: 'geojson',
-      data: 'sbk_Existing_Flow_Channel_5yr.geojson'
-    });
-
-    //detention grading (proposed improvements)
-    map.addSource('sbk_detention_nBoulderPark', {
-      type: 'geojson',
-      data: 'sbk_NorthBoulderPark.geojson'
-    });
-
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//-----------------------------------Bluebell Mitigation Layers-------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//-----------------------------------King Mitigation Layers-----------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//-----------------------------------FLOOD ZONE Layers----------------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+//----FLOOD ZONE Layers-
 
     map.addSource('sbk_zone_x', {           //zone x
       'type': 'vector',
@@ -135,11 +139,7 @@ map.on('style.load', function () {
     
 
 
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//-----------------------------------Base Layers----------------------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//---Base Layers------
     map.addSource('5ftContours', {
         type: 'vector',
         url: 'mapbox://iconeng.8e23d2ea'
@@ -271,7 +271,7 @@ map.on('style.load', function () {
         }
     });
 
-
+/*
     //buildings
     map.addLayer({
       'id': 'struct',
@@ -300,7 +300,7 @@ map.on('style.load', function () {
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
-
+*/
 
     //san
     map.addLayer({
@@ -463,106 +463,11 @@ map.on('style.load', function () {
 
 
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//--------------------------Upper Goose Creek-------------------------------------
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 
-// ---- sbk PROPOSED GRADING
-    map.addLayer({
-    id: 'sbk_grading1',
-    source: 'sbk_grading_alipine', 
-    type: 'line',
-    filter: ['!=', 'Type', 'Alpine Detention'],
-       layout: {
-        'visibility': 'none',
-         'line-join': 'round',
-         'line-cap': 'round'
-       },
-        'paint': {
-          'line-width': {
-               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
-          },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
-        'line-color': '#FF0072',
-         
-      }
-   
-  }, 'road-label-small');
-
-
-    map.addLayer({
-    id: 'sbk_grading_alpine_det',
-    source: 'sbk_grading_alipine', 
-    type: 'line',
-    filter: ['==', 'Type', 'Alpine Detention'],
-    layout: {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
-        'line-color': '#FF00C3',
-          
-      }
-   
-  }, 'road-label-small');
-
-    map.addLayer({
-    id: 'sbk_grading2',
-    source: 'sbk_detention_nBoulderPark',
-    type: 'line',
-    layout: {
-        'visibility': 'none',
-         'line-join': 'round',
-         'line-cap': 'round'
-       },
-        'paint': {
-          'line-width': {
-               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
-          },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
-        'line-color': '#FF00C3',
-         
-      }
-   
-  }, 'road-label-small');
-
-    map.addLayer({
-    id: 'sbk_grading3',
-    source: 'sbk_grading',
-    type: 'line',
-    'layout': {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
-        'line-color': '#FF0072',
-          
-      }
-   
-  }, 'road-label-small');
 
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//-----------------------------------Hazard Zones------------------------------------
+//-----------------------------------Hazard Zones---------------------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //Zone AH
@@ -805,78 +710,71 @@ map.on('style.load', function () {
 
 
     
- 
-
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//------------------------------------------------------------
+//-----------------------------------Skunk Mitigation Layers----------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 
-// ugc PROPOSED GRADING
 
-    map.addLayer({
-    id: 'ugc_grading1',
-    source: 'ugc_grading_mnr',
-    type: 'line',
-    'layout': {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
-        'line-color': '#FF0072',
-          
-      }
+//----SNK Reach 00 Alt A Culverts
    
-  }, 'road-label-small');
-
     map.addLayer({
-    id: 'ugc_grading2',
-    source: 'ugc_grading_mjr',
-        type: 'line',
-    'layout': {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.3], [17, 0.8], [19, 1.3]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
-        'line-color': '#FF0072',
-          
-      }
-   
-  }, 'road-label-small');
-
-
-
-    map.addLayer({
-    id: 'ugc_grading3',
-    source: 'ugc_detention_springValley',
+    id: 'snk_r00_altA_Detention_Area',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
     type: 'line',
+    filter: ['==', 'Reach', '00'],
     layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'line-color': '#b1a200',    //ASR_ID for elevations
+        
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+
+
+// ----SNK Reach 01 Alt A Culverts
+    map.addLayer({
+    id: 'snk_r01_altA_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ----SNK Reach 01 Alt A Channel
+ map.addLayer({
+    id: 'snk_r01_altA_Channel',
+    source: 'snk_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01']],
+       layout: {
         'visibility': 'none',
          'line-join': 'round',
          'line-cap': 'round'
        },
         'paint': {
           'line-width': {
-              "stops": [[15, 0.25], [17, 0.6], [19, 1 ]]
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
           },
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF00C3',
+        'line-color': '#FF0072',
          
       }
    
@@ -884,27 +782,308 @@ map.on('style.load', function () {
 
 
 
+   // ----SNK Reach 01 Alt B Culverts
     map.addLayer({
-    id: 'ugc_grading4',
-    source: 'ugc_grading_Iris',
+    id: 'snk_r01_altB_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+
+
+
+
+// ----SNK Reach 02 Alt A Channel
+ map.addLayer({
+    id: 'snk_r02_altA_Channel',
+    source: 'snk_mitigation_linework', 
     type: 'line',
-    'layout': {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
         'line-color': '#FF0072',
-          
+         
       }
    
   }, 'road-label-small');
+
+
+   // ----SNK Reach 02 Alt A Culverts
+    map.addLayer({
+    id: 'snk_r02_altA_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 02 Alt B Culverts
+    map.addLayer({
+    id: 'snk_r02_altB_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+
+
+
+// ----SNK Reach 03 Alt A Channel
+ map.addLayer({
+    id: 'snk_r03_altA_Channel',
+    source: 'snk_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 03 Alt A Culverts
+    map.addLayer({
+    id: 'snk_r03_altA_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '03']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+// ----SNK Reach 03 Alt B Channel
+ map.addLayer({
+    id: 'snk_r03_altB_Channel',
+    source: 'snk_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 03 Alt B Culverts
+    map.addLayer({
+    id: 'snk_r03_altB_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '03']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 03 Alt C Struc Acquisition
+    map.addLayer({
+    id: 'snk_r03_altC_HHStruct',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#fff',
+        'fill-outline-color': '#fff'
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+
+ // ----SNK Reach 04 Alt A Channel
+ map.addLayer({
+    id: 'snk_r04_altA_Channel',
+    source: 'snk_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 04 Alt A Culverts
+    map.addLayer({
+    id: 'snk_r04_altA_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 04 Alt B Culverts
+    map.addLayer({
+    id: 'snk_r04_altB_Culvert',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
+    }
+  }, 'road-label-small');
+
+
+   // ----SNK Reach 04 Alt C Struc Acquisition
+    map.addLayer({
+    id: 'snk_r04_altC_HHStruct',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '04']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#fff',
+        'fill-outline-color': '#fff'
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+
+
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//-----------------------------------Bluebell Mitigation Layers-------------------
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//-----------------------------------King Mitigation Layers-----------------------
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 
 
 
