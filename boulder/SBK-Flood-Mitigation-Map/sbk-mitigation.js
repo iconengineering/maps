@@ -976,8 +976,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.6,
-        'fill-color': '#fff',
-        'fill-outline-color': '#fff'
+        'fill-color': '#000',
+        'fill-outline-color': '#000'
     }
   }, 'road-label-small');
 
@@ -1060,8 +1060,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.6,
-        'fill-color': '#fff',
-        'fill-outline-color': '#fff'
+        'fill-color': '#000',
+        'fill-outline-color': '#000'
     }
   }, 'road-label-small');
 
@@ -1140,8 +1140,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.6,
-        'fill-color': '#fff',
-        'fill-outline-color': '#fff'
+        'fill-color': '#000',
+        'fill-outline-color': '#000'
     }
   }, 'road-label-small');
 
@@ -1237,16 +1237,18 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r00_altA_Detention_Area',
     source: 'kng_mitigation_polygonwork', 
-    type: 'line',
+    type: 'fill',
     filter: ['==', 'Reach', '00'],
     layout: {
         'visibility': 'none'
       },
     paint: {
-        'line-color': '#b1a200',    //ASR_ID for elevations
-        
+        'fill-opacity': 0.6,
+        'fill-color': '#51192E',
+        'fill-outline-color': '#51192E'
     }
   }, 'road-label-small');
+
 
 
 
@@ -1289,9 +1291,8 @@ map.on('style.load', function () {
         'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#fff',
-        'fill-outline-color': '#fff'
+        'fill-color': '#000',
+        'fill-outline-color': '#000'
     }
   }, 'road-label-small');
 
@@ -1352,8 +1353,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.6,
-        'fill-color': '#fff',
-        'fill-outline-color': '#fff'
+        'fill-color': '#000276',
+        'fill-outline-color': '#000276'
     }
   }, 'road-label-small');
 
@@ -1369,8 +1370,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.6,
-        'fill-color': '#fff',
-        'fill-outline-color': '#fff'
+        'fill-color': '#000276',
+        'fill-outline-color': '#000276'
     }
   }, 'road-label-small');
 
