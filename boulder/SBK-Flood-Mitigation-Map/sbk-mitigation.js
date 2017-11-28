@@ -1318,7 +1318,7 @@ map.on('style.load', function () {
 
 // ---- KNG Reach 01 Alt F Strom Drain 
     map.addLayer({
-    id: 'kng_r01_altE_StormDrain',
+    id: 'kng_r01_altF_StormDrain',
     source: 'kng_mitigation_linework', 
     type: 'line',
     filter: ["all",['==', 'Alt', 'F'],['==', 'Reach', '01']],
@@ -1341,12 +1341,49 @@ map.on('style.load', function () {
 
 
 
-// ---- KNG Reach 02 AltB Strom Drain 100-Yr
+ // ----KNG Reach 02 Alt A Misc Channel Improv    
     map.addLayer({
-    id: 'kng_r02_altB_StormDrain',
+    id: 'kng_r02_altA_Misc',
+    source: 'kng_mitigation_polygonwork',
+    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02']],
+    layout: {
+        'visibility': 'visible'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#fff',
+        'fill-outline-color': '#fff'
+    }
+  }, 'road-label-small');
+
+
+ // ----KNG Reach 02 Alt A Misc Channel Improv    
+    map.addLayer({
+    id: 'kng_r02_altB_Misc',
+    source: 'kng_mitigation_polygonwork',
+    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
+    layout: {
+        'visibility': 'visible'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#fff',
+        'fill-outline-color': '#fff'
+    }
+  }, 'road-label-small');
+
+
+
+// ---- KNG Reach 03 Alt A Strom Drain 
+    map.addLayer({
+    id: 'kng_r03_altA_StormDrain',
     source: 'kng_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
+    filter: ["all",['==', 'Alt', 'E'],['==', 'Reach', '03']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -1360,39 +1397,23 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- KNG Reach 02 Alt C Roadwork
-    map.addLayer({
-    id: 'kng_r02_altC_Roadway2',
-    source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-abyu3a', 
-    type: 'fill',
-    filter: ['==', 'Reach', '02'],
-    layout: {
-        'visibility': 'none'
-      },
-    paint: {
-        'fill-opacity': 0.25,
-        'fill-color': '#00FF33',
-        'fill-outline-color': '#00FF33'
-    }
-  }, 'road-label-small');    
 
-    
-
+// ---- KNG Reach 03 Alt B Strom Drain 
     map.addLayer({
-    id: 'kng_r02_altC_Roadway2',
-    source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-abyu3a', 
-    type: 'fill',
-    filter: ['==', 'Reach', '02'],
+    id: 'kng_r03_altB_StormDrain',
+    source: 'kng_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03']],
     layout: {
-        'visibility': 'none'
-      },
-    paint: {
-        'fill-opacity': 0.5,
-        'fill-pattern': 'bluegreystripe',
-        'fill-outline-color': '#00FF33'
-    }
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 8,
+        'line-color': '#00687A',
+         }, 
+         
   }, 'road-label-small');
 
 
@@ -1427,7 +1448,7 @@ $(document).ready(function() {
 });
 
 
-document.getElementById('_Zoom').addEventListener('click', function() {
+document.getElementById('SNK_Zoom').addEventListener('click', function() {
 
   var bbox = [[105.275,39.9901], [-105.245,40.0089]];
   map.fitBounds(bbox, { padding: 10 });

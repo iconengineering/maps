@@ -138,9 +138,13 @@
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Skunk Creek</div>
          <div class="collapsible-body white">
          
-            <p class="grey-text text-darken-2 note">
-                  Mitigation Alternatives
-            </p>    
+         	 
+         	 <a href = "#!" id = "SNK_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 4px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+             </a> 
+  
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
@@ -253,17 +257,13 @@
          <div class="collapsible-body white">
          
 
-          <!--
-            <p class="grey-text text-darken-2 note">
-                  <div>Zoom to<a href="#!" id= 'UGC_Zoom'><i class="material-icons">Zoom_in</i></a></div>
+         	 <a href = "#!" id = "BCC_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 4px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+             </a> 
 
-            </p>    
-         -->
-             
 
-             <p class="blue-grey-text note" style="font-size: 1.07rem; margin-top: 0">
-                  Zoom to Mitigation Alternatives <a href = "#!" id = "UGC_Zoom"> <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i></a> 
-             </p>    
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
@@ -326,50 +326,109 @@
 
 
 
+
+
+<!-- ******************************************************************************************************************** -->  
  <!--KINGS GULCH REEK MITIGATION LAYERS-->
+<!-- ******************************************************************************************************************** -->  
+
+
       <li>
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>King's Gulch Creek</div>
          <div class="collapsible-body white">
          
-            <p class="grey-text text-darken-2 note">
-                  Mitigation Alternatives
-            </p>    
+
+         	 <a href = "#!" id = "KNG_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 4px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+             </a> 
+
+
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
                   Reach 00 - Upstream of Bellevue Dr
             </p> 
-            <p class="indent">
-              <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('sbk_grading1', 'sbk_grading3')" />
-              <label for="Pro0Menu" class="valign">Main Channel</label>
-            </p>
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R0_AltA" type="checkbox" id="KNG_Menu_R0_AltA" class="layer-off" onclick="toggleLayer('kng_r00_altA_Detention_Area')" />
+              <label for="KNG_Menu_R0_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+
+
+
 
             <!--R1-->
             <p class="grey-text text-darken-2 note">
                   Reach 01 - Bellevue Dr to 15th St
             </p> 
-            <p class="indent">
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R1_AltA" type="checkbox" id="KNG_Menu_R1_AltA" class="layer-off" onclick="toggleLayer('kng_r01_altA_Channel')" />
+              <label for="KNG_Menu_R1_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R1_AltD" type="checkbox" id="KNG_Menu_R1_AltD" class="layer-off" onclick="toggleLayer('kng_r01_altD_HHStruct')" />
+              <label for="KNG_Menu_R1_AltD" class="valign">Alt D</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R1_AltE" type="checkbox" id="KNG_Menu_R1_AltE" class="layer-off" onclick="toggleLayer('kng_r01_altE_StormDrain')" />
+              <label for="KNG_Menu_R1_AltE" class="valign">Alt E</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R1_AltF" type="checkbox" id="KNG_Menu_R1_AltF" class="layer-off" onclick="toggleLayer('kng_r01_altF_StormDrain')" />
+              <label for="KNG_Menu_R1_AltF" class="valign">Alt F</label>
+            </p>     
+
+
+
 
             <!--R2-->
             <p class="grey-text text-darken-2 note">
                   Reach 02 - 15th St to 17th St
             </p> 
-            <p class="indent">
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
+            
+            <p class = "indent">
+              <input name= "KNG_Menu_R2_AltA" type="checkbox" id="KNG_Menu_R2_AltA" class="layer-off" onclick="toggleLayer('kng_r02_altA_Misc')" />
+              <label for="KNG_Menu_R2_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R2_AltB" type="checkbox" id="KNG_Menu_R2_AltB" class="layer-off" onclick="toggleLayer('kng_r02_altB_Misc')" />
+              <label for="KNG_Menu_RB_AltA" class="valign">Alt B</label>
+            </p>     
+
+
+
 
             <!--R3-->
             <p class="grey-text text-darken-2 note">
                   Reach 03 - 17th Stnto 22nd St/Skunk Creek
             </p> 
-            <p class="indent">
-              <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
-              <label for="Pro2Menu" class="valign">Detention Areas</label>
-            </p>
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R3_AltA" type="checkbox" id="KNG_Menu_R3_AltA" class="layer-off" onclick="toggleLayer('kng_r03_altA_StormDrain')" />
+              <label for="KNG_Menu_R3_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R3_AltB" type="checkbox" id="KNG_Menu_R3_AltB" class="layer-off" onclick="toggleLayer('kng_r03_altB_StormDrain')" />
+              <label for="KNG_Menu_R3_AltB" class="valign">Alt B</label>
+            </p>     
+
 
          </div>
       </li>
