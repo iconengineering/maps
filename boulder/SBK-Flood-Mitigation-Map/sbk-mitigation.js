@@ -72,14 +72,14 @@ map.on('style.load', function () {
     // Mitigation Polygon
     map.addSource('kng_mitigation_polygonwork', {           
       'type': 'vector',
-      'url': 'mapbox://iconeng.iconeng.4mtk0c24'    //ugc_kng_polygon_merge-abyu3a
+      'url': 'mapbox://iconeng.iconeng.c5fap8dv'    //ugc_kng_polygon_merge-6muuat ugc_kng_polygon_merge-6muuat
     }); 
  
     // Mitigation Polyline
     map.addSource('kng_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_bbc_polyline_merge.GEOJSON'  
-    }); 
+      'data': 'ugc_kng_polyline_merge.GEOJSON'  
+    });
 
 
 
@@ -1134,7 +1134,7 @@ map.on('style.load', function () {
     type: 'fill',
     filter: ['==', 'Reach', '01'],
     layout: {
-        'visibility': 'visible'
+        'visibility': 'none'
       },
     paint: {
         'fill-opacity': 0.6,
@@ -1206,7 +1206,7 @@ map.on('style.load', function () {
     
 
     map.addLayer({
-    id: 'bcc_r02_altC_Roadway2',
+    id: 'bcc_r02_altC_Roadway',
     source: 'bcc_mitigation_polygonwork',
     'source-layer': 'ugc_bcc_polygon_merge-70udhl', 
     type: 'fill',
@@ -1235,7 +1235,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r00_altA_Detention_Area',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    'source-layer': 'ugc_kng_polygon_merge-6muuat', 
     type: 'line',
     filter: ['==', 'Reach', '00'],
     layout: {
@@ -1282,7 +1282,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r01_altD_HHStruct',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    'source-layer': 'ugc_kng_polygon_merge-6muuat',
     type: 'fill',
     filter: ['==', 'Reach', '01'],
     layout: {
@@ -1345,7 +1345,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r02_altA_Misc',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    'source-layer': 'ugc_kng_polygon_merge-6muuat',
     type: 'fill',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02']],
     layout: {
@@ -1363,7 +1363,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r02_altB_Misc',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    'source-layer': 'ugc_kng_polygon_merge-6muuat',
     type: 'fill',
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
     layout: {
@@ -1450,7 +1450,7 @@ $(document).ready(function() {
 
 document.getElementById('SNK_Zoom').addEventListener('click', function() {
 
-  var bbox = [[105.275,39.9901], [-105.245,40.0089]];
+  var bbox = [[-105.275,39.9901], [-105.245,40.0089]];
   map.fitBounds(bbox, { padding: 10 });
 
 });
@@ -1464,7 +1464,7 @@ document.getElementById('BCC_Zoom').addEventListener('click', function() {
 
 document.getElementById('KNG_Zoom').addEventListener('click', function() {
 
-  var bbox = [[105.277,39.9932], [-105.264,39.9969]];
+  var bbox = [[-105.277,39.9932], [-105.264,39.9969]];
   map.fitBounds(bbox, { padding:10 });
 
 });
