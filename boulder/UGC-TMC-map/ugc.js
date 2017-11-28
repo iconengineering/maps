@@ -586,10 +586,10 @@ map.on('style.load', function () {
     },
       'paint': {
         'line-width': 8,
-        },
+       
         'line-color': '#00687A', 
-          
-      }
+           },
+      
    
   }, 'road-label-small');
 
@@ -607,11 +607,10 @@ map.on('style.load', function () {
     },
       'paint': {
         'line-width': 8,
-        },
+      
         'line-color': '#00687A',
-          
-      }
-   
+            },
+
   }, 'road-label-small');
 
 
@@ -865,10 +864,9 @@ map.on('style.load', function () {
     },
       'paint': {
         'line-width': 8,
-        },
+       
         'line-color': '#00687A',
-          
-      }
+ },
    
   }, 'road-label-small');
 
@@ -1539,10 +1537,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
+        'line-width': 8,
         'line-color': '#00687A',
           
       }
