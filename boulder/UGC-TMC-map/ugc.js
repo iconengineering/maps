@@ -585,9 +585,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
+        'line-width': 8,
         },
         'line-color': '#00687A', 
           
@@ -608,9 +606,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
+        'line-width': 8,
         },
         'line-color': '#00687A',
           
@@ -667,7 +663,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
          }, 
          
@@ -686,7 +682,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
   }, 'road-label-small');
@@ -704,7 +700,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
    
@@ -723,7 +719,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
 
@@ -794,7 +790,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
 
@@ -813,7 +809,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
 
@@ -831,7 +827,7 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.8,
+        'fill-opacity': 0.95,
         'fill-color': '#b1a200',
         'fill-outline-color': '#635B00'
     }
@@ -849,7 +845,7 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.8,
+        'fill-opacity': 0.95,
         'fill-color': '#b1a200',
         'fill-outline-color': '#635B00'
     }
@@ -868,9 +864,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
+        'line-width': 8,
         },
         'line-color': '#00687A',
           
@@ -1654,7 +1648,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
 
@@ -1673,7 +1667,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 4,
+        'line-width': 8,
         'line-color': '#00687A',
         },
    
