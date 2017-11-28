@@ -1288,7 +1288,7 @@ map.on('style.load', function () {
     type: 'fill',
     filter: ['==', 'Reach', '01'],
     layout: {
-        'visibility': 'visible'
+        'visibility': 'none'
       },
     paint: {
         
@@ -1368,7 +1368,7 @@ map.on('style.load', function () {
     type: 'fill',
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
     layout: {
-        'visibility': 'visible'
+        'visibility': 'none'
       },
     paint: {
         'fill-opacity': 0.8,
