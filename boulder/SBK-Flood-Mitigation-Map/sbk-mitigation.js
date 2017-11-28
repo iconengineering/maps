@@ -1291,6 +1291,8 @@ map.on('style.load', function () {
         'visibility': 'visible'
       },
     paint: {
+        
+    	  'fill-opacity': 0.6,
         'fill-color': '#000',
         'fill-outline-color': '#000'
     }
@@ -1349,12 +1351,12 @@ map.on('style.load', function () {
     type: 'fill',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02']],
     layout: {
-        'visibility': 'visible'
+        'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#000276',
-        'fill-outline-color': '#000276'
+        'fill-opacity': 0.8,
+        'fill-color': '#BBB917',
+        'fill-outline-color': '#BBB917'
     }
   }, 'road-label-small');
 
@@ -1369,9 +1371,9 @@ map.on('style.load', function () {
         'visibility': 'visible'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#000276',
-        'fill-outline-color': '#000276'
+        'fill-opacity': 0.8,
+        'fill-color': '#BBB917',
+        'fill-outline-color': '#BBB917'
     }
   }, 'road-label-small');
 
