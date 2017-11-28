@@ -69,11 +69,13 @@ map.on('style.load', function () {
 
 //----King
 
+ 
     // Mitigation Polygon
     map.addSource('kng_mitigation_polygonwork', {           
-      'type': 'vector',
-      'url': 'mapbox://iconeng.iconeng.c5fap8dv'    //ugc_kng_polygon_merge-6muuat ugc_kng_polygon_merge-6muuat
-    }); 
+      'type': 'geojson',
+       'data': 'kng_polygon3.geojson'  
+  });
+  
  
     // Mitigation Polyline
     map.addSource('kng_mitigation_linework', {           
@@ -1234,8 +1236,7 @@ map.on('style.load', function () {
    
     map.addLayer({
     id: 'kng_r00_altA_Detention_Area',
-    source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-6muuat', 
+    source: 'kng_mitigation_polygonwork', 
     type: 'line',
     filter: ['==', 'Reach', '00'],
     layout: {
@@ -1282,7 +1283,6 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r01_altD_HHStruct',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-6muuat',
     type: 'fill',
     filter: ['==', 'Reach', '01'],
     layout: {
@@ -1345,7 +1345,6 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r02_altA_Misc',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-6muuat',
     type: 'fill',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02']],
     layout: {
@@ -1363,7 +1362,6 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'kng_r02_altB_Misc',
     source: 'kng_mitigation_polygonwork',
-    'source-layer': 'ugc_kng_polygon_merge-6muuat',
     type: 'fill',
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
     layout: {
@@ -1446,30 +1444,6 @@ $(document).ready(function() {
         map.setLayoutProperty('sbk_gutter_line','visibility', 'none');
        });
 });
-
-
-document.getElementById('SNK_Zoom').addEventListener('click', function() {
-
-  var bbox = [[-105.275,39.9901], [-105.245,40.0089]];
-  map.fitBounds(bbox, { padding: 10 });
-
-});
-
-document.getElementById('BCC_Zoom').addEventListener('click', function() {
-
-  var bbox = [[-105.279,39.9975], [-105.262,39.9998]];
-  map.fitBounds(bbox, { padding:10 }); 
-
-});
-
-document.getElementById('KNG_Zoom').addEventListener('click', function() {
-
-  var bbox = [[-105.277,39.9932], [-105.264,39.9969]];
-  map.fitBounds(bbox, { padding:10 });
-
-});
-
-
 
 
 
