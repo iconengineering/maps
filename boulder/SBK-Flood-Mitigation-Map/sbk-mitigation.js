@@ -962,7 +962,7 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-   // ----SNK Reach 03 Alt C Struc Acquisition
+   // ----SNK Reach 03 Alt C Struc Acquisition		
     map.addLayer({
     id: 'snk_r03_altC_HHStruct',
     source: 'snk_mitigation_polygonwork',
@@ -990,7 +990,7 @@ map.on('style.load', function () {
     id: 'snk_r04_altA_Channel',
     source: 'snk_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '04']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -1078,10 +1078,322 @@ map.on('style.load', function () {
 //-----------------------------------Bluebell Mitigation Layers-------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+//----BCC Reach 00 Alt A Sediment Capture Facility
+   
+    map.addLayer({
+    id: 'bcc_r00_altA_Detention_Area',
+    source: 'bcc_mitigation_polygonwork',
+    'source-layer': 'ugc_bcc_polygon_merge-70udhl',
+    type: 'line',
+    filter: ['==', 'Reach', '00'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'line-color': '#b1a200',    //ASR_ID for elevations
+        
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+// ----BCC Reach 01 Alt A Channel
+ map.addLayer({
+    id: 'bcc_r01_altA_Channel',
+    source: 'bcc_mitigation_linework', 
+    type: 'line',
+    filter: ['==', 'Reach', '01'],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+ // ----BCC Reach 01 Alt B Struc Acquisition    
+    map.addLayer({
+    id: 'bcc_r01_altB_HHStruct',
+    source: 'bcc_mitigation_polygonwork',
+    'source-layer': 'ugc_bcc_polygon_merge-70udhl',
+    type: 'fill',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'visible'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#fff',
+        'fill-outline-color': '#fff'
+    }
+  }, 'road-label-small');
+
+
+
+
+
+   
+// ---- BCC Reach 02 Alt A Strom Drain 100-Yr
+    map.addLayer({
+    id: 'bcc_r02_altA_StormDrain',
+    source: 'bcc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 8,
+        'line-color': '#00687A',
+         }, 
+         
+  }, 'road-label-small');
+
+
+// ---- BCC Reach 02 AltB Strom Drain 100-Yr
+    map.addLayer({
+    id: 'bcc_r02_altB_StormDrain',
+    source: 'bcc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 8,
+        'line-color': '#00687A',
+         }, 
+         
+  }, 'road-label-small');
+
+
+// ---- TMC Reach 02 Alt C Roadwork
+    map.addLayer({
+    id: 'bcc_r02_altC_Roadway2',
+    source: 'bcc_mitigation_polygonwork',
+    'source-layer': 'ugc_bcc_polygon_merge-70udhl', 
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.25,
+        'fill-color': '#00FF33',
+        'fill-outline-color': '#00FF33'
+    }
+  }, 'road-label-small');    
+
+    
+
+    map.addLayer({
+    id: 'bcc_r02_altC_Roadway2',
+    source: 'bcc_mitigation_polygonwork',
+    'source-layer': 'ugc_bcc_polygon_merge-70udhl', 
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-pattern': 'bluegreystripe',
+        'fill-outline-color': '#00FF33'
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //-----------------------------------King Mitigation Layers-----------------------
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+//----KNG Reach 00 Alt A Sediment Capture Facility
+   
+    map.addLayer({
+    id: 'kng_r00_altA_Detention_Area',
+    source: 'kng_mitigation_polygonwork',
+    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    type: 'line',
+    filter: ['==', 'Reach', '00'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'line-color': '#b1a200',    //ASR_ID for elevations
+        
+    }
+  }, 'road-label-small');
+
+
+
+
+
+
+// ----KNG Reach 01 Alt A Channel
+ map.addLayer({
+    id: 'kng_r01_altA_Channel',
+    source: 'kng_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+ // ----KNG Reach 01 Alt D Struc Acquisition    
+    map.addLayer({
+    id: 'kng_r01_altD_HHStruct',
+    source: 'kng_mitigation_polygonwork',
+    'source-layer': 'ugc_kng_polygon_merge-abyu3a',
+    type: 'fill',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'visible'
+      },
+    paint: {
+        'fill-opacity': 0.6,
+        'fill-color': '#fff',
+        'fill-outline-color': '#fff'
+    }
+  }, 'road-label-small');
+
+
+   
+// ---- KNG Reach 01 Alt E Strom Drain 
+    map.addLayer({
+    id: 'kng_r01_altE_StormDrain',
+    source: 'kng_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'E'],['==', 'Reach', '01']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 8,
+        'line-color': '#00687A',
+         }, 
+         
+  }, 'road-label-small');
+
+
+// ---- KNG Reach 01 Alt F Strom Drain 
+    map.addLayer({
+    id: 'kng_r01_altE_StormDrain',
+    source: 'kng_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'F'],['==', 'Reach', '01']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 8,
+        'line-color': '#00687A',
+         }, 
+         
+  }, 'road-label-small');
+
+
+
+
+
+
+
+
+// ---- KNG Reach 02 AltB Strom Drain 100-Yr
+    map.addLayer({
+    id: 'kng_r02_altB_StormDrain',
+    source: 'kng_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
+    layout: {
+      'visibility': 'none',
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+      'paint': {
+        'line-width': 8,
+        'line-color': '#00687A',
+         }, 
+         
+  }, 'road-label-small');
+
+
+// ---- KNG Reach 02 Alt C Roadwork
+    map.addLayer({
+    id: 'kng_r02_altC_Roadway2',
+    source: 'kng_mitigation_polygonwork',
+    'source-layer': 'ugc_kng_polygon_merge-abyu3a', 
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.25,
+        'fill-color': '#00FF33',
+        'fill-outline-color': '#00FF33'
+    }
+  }, 'road-label-small');    
+
+    
+
+    map.addLayer({
+    id: 'kng_r02_altC_Roadway2',
+    source: 'kng_mitigation_polygonwork',
+    'source-layer': 'ugc_kng_polygon_merge-abyu3a', 
+    type: 'fill',
+    filter: ['==', 'Reach', '02'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.5,
+        'fill-pattern': 'bluegreystripe',
+        'fill-outline-color': '#00FF33'
+    }
+  }, 'road-label-small');
 
 
 
@@ -1113,6 +1425,29 @@ $(document).ready(function() {
         map.setLayoutProperty('sbk_gutter_line','visibility', 'none');
        });
 });
+
+
+document.getElementById('_Zoom').addEventListener('click', function() {
+
+  var bbox = [[105.275,39.9901], [-105.245,40.0089]];
+  map.fitBounds(bbox, { padding: 10 });
+
+});
+
+document.getElementById('BCC_Zoom').addEventListener('click', function() {
+
+  var bbox = [[-105.279,39.9975], [-105.262,39.9998]];
+  map.fitBounds(bbox, { padding:10 }); 
+
+});
+
+document.getElementById('KNG_Zoom').addEventListener('click', function() {
+
+  var bbox = [[105.277,39.9932], [-105.264,39.9969]];
+  map.fitBounds(bbox, { padding:10 });
+
+});
+
 
 
 

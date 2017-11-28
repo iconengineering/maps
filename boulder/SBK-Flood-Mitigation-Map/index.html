@@ -47,7 +47,13 @@
       
 
 
+
+
+
+<!-- ******************************************************************************************************************** -->  
   <!--MAP CANVAS MENU-->  
+<!-- ******************************************************************************************************************** -->  
+
       <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Map Canvas</div>
           <div class="collapsible-body white">
@@ -76,7 +82,13 @@
 
 
 
+
+
+<!-- ******************************************************************************************************************** -->  
   <!-- BASE LAYER MENU --> 
+<!-- ******************************************************************************************************************** -->  
+
+
       <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Layers</div>
           <div class="collapsible-body white">
@@ -117,7 +129,11 @@
       
 
 
+
+<!-- ******************************************************************************************************************** -->  
  <!-- SKUNK CREEK MITIGATION LAYERS-->
+<!-- ******************************************************************************************************************** -->  
+
       <li>
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Skunk Creek</div>
          <div class="collapsible-body white">
@@ -128,7 +144,7 @@
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
-                  Reach 00 - Upstream of Green Mountain Memorial
+                  Reach 00 - Upstream of Green Mnt Memorial
             </p> 
 
             <p class = "indent">
@@ -140,7 +156,7 @@
 
             <!--R1-->
             <p class="grey-text text-darken-2 note">
-                  Reach 01 - Green Mountain Memorial to Broadway
+                  Reach 01 - Green Mnt Memorial to Broadway
             </p> 
 
             <p class = "indent">
@@ -177,7 +193,7 @@
 
              <!--R3-->
             <p class="grey-text text-darken-2 note">
-                  Reach 03 - US Highway 36 to Aurora Avenue
+                  Reach 03 - US Highway 36 to Aurora Ave
             </p> 
 
 
@@ -187,7 +203,7 @@
             </p>          
 
             <p class = "indent">
-              <input name= "SNK_Menu_R3_AltB" type="checkbox" id="SNK_Menu_R3_AltB" class="layer-off" onclick="toggleTwo('snk_r03_altA_Culvert', 'snk_r03_altA_Channel' )" />
+              <input name= "SNK_Menu_R3_AltB" type="checkbox" id="SNK_Menu_R3_AltB" class="layer-off" onclick="toggleTwo('snk_r03_altB_Culvert', 'snk_r03_altB_Channel' )" />
               <label for="SNK_Menu_R3_AltB" class="valign">Alt B</label>
             </p>         
             
@@ -202,7 +218,7 @@
 
              <!--R4-->
             <p class="grey-text text-darken-2 note">
-                  Reach 04 - Aurora Avenue to Colorado Avenue
+                  Reach 04 - Aurora Ave to Colorado Ave
 
             <p class = "indent">
               <input name= "SNK_Menu_R4_AltA" type="checkbox" id="SNK_Menu_R4_AltA" class="layer-off" onclick="toggleTwo('snk_r04_altA_Culvert', 'snk_r04_altA_Channel' )" />
@@ -210,7 +226,7 @@
             </p>          
 
             <p class = "indent">
-              <input name= "SNK_Menu_R4_AltB" type="checkbox" id="SNK_Menu_R4_AltB" class="layer-off" onclick="toggleOne('snk_r04_altB_Culvert' )" />
+              <input name= "SNK_Menu_R4_AltB" type="checkbox" id="SNK_Menu_R4_AltB" class="layer-off" onclick="toggleLayer('snk_r04_altB_Culvert' )" />
               <label for="SNK_Menu_R4_AltB" class="valign">Alt B</label>
             </p>         
             
@@ -227,41 +243,83 @@
 
 
 
+
+<!-- ******************************************************************************************************************** -->  
  <!-- BLUEBELL CANYON CREEK LAYERS-->
+<!-- ******************************************************************************************************************** -->  
+
       <li>
          <div class="collapsible-header indigo-alt">Bluebell Canyon Creek<i class="material-icons right">keyboard_arrow_down</i></div>
          <div class="collapsible-body white">
          
+
+          <!--
             <p class="grey-text text-darken-2 note">
-                  Mitigation Alternatives
-            </p>            
+                  <div>Zoom to<a href="#!" id= 'UGC_Zoom'><i class="material-icons">Zoom_in</i></a></div>
+
+            </p>    
+         -->
+             
+
+             <p class="blue-grey-text note" style="font-size: 1.07rem; margin-top: 0">
+                  Zoom to Mitigation Alternatives <a href = "#!" id = "UGC_Zoom"> <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i></a> 
+             </p>    
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
-                  Reach 0 - Chautauqua Park Area
+                  Reach 00 - Chautauqua Park Area
             </p>     
-            <p class="indent">
-              <input name="Pro2Menu1" type="checkbox" id="Pro2Menu1" class="layer-off" onclick="toggleTwo('SNK_grading1','SNK_grading2')" />
-              <label for="Pro2Menu1" class="valign">Main Channel</label>
-            </p>
+
+            <p class = "indent">
+              <input name= "BCC_Menu_R0_AltA" type="checkbox" id="BCC_Menu_R0_AltA" class="layer-off" onclick="toggleLayer('bcc_r00_altA_Detention_Area')" />
+              <label for="BCC_Menu_R0_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+
+
 
             <!--R1--> 
             <p class="grey-text text-darken-2 note">
-                  Reach 1 - Chautauqua Park to 15th Street
+                  Reach 01 - Chautauqua Park to 15th St
             </p> 
-            <p class="indent">
-              <input name="Pro2Menu3" type="checkbox" id="Pro2Menu3" class="layer-off" onclick="toggleLayer('SNK_grading4')" />
-              <label for="Pro2Menu3" class="valign">Iris Split</label>
-            </p>
+
+            <p class = "indent">
+              <input name= "BCC_Menu_R1_AltA" type="checkbox" id="BCC_Menu_R1_AltA" class="layer-off" onclick="toggleLayer('bcc_r01_altA_Channel')" />
+              <label for="BCC_Menu_R1_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "BCC_Menu_R1_AltB" type="checkbox" id="BCC_Menu_R1_AltB" class="layer-off" onclick="toggleLayer('bcc_r01_altB_HHStruct')" />
+              <label for="BCC_Menu_R1_AltB" class="valign">Alt B</label>
+            </p>     
+
+
+
+
 
             <!--R2-->
             <p class="grey-text text-darken-2 note">
-                  Reach 2 - 15th Street to Broadway
+                  Reach 02 - 15th St to Broadway
             </p>    
-            <p class="indent">
-              <input name="Pro2Menu2" type="checkbox" id="Pro2Menu2" class="layer-off" onclick="toggleLayer('SNK_grading3')" />
-              <label for="Pro2Menu2" class="valign">Detention Areas</label>
-            </p>
+           
+            <p class = "indent">
+              <input name= "BCC_Menu_R2_AltA" type="checkbox" id="BCC_Menu_R2_AltA" class="layer-off" onclick="toggleLayer('bcc_r02_altA_StormDrain')" />
+              <label for="BCC_Menu_R2_AltA" class="valign">Alt A</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "BCC_Menu_R2_AltB" type="checkbox" id="BCC_Menu_R2_AltB" class="layer-off" onclick="toggleLayer('bcc_r02_altB_StormDrain')" />
+              <label for="BCC_Menu_R2_AltB" class="valign">Alt B</label>
+            </p>     
+
+
+            <p class = "indent">
+              <input name= "BCC_Menu_R2_AltC" type="checkbox" id="BCC_Menu_R2_AltC" class="layer-off" onclick="toggleTwo('bcc_r04_altA_Roadway', 'bcc_r04_altA_Roadway2')" />
+              <label for="BCC_Menu_R2_AltC" class="valign">Alt C</label>
+            </p>     
 
          </div>
 	  </li>
@@ -279,7 +337,7 @@
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
-                  Reach 00 - Upstream of Bellevue Drive
+                  Reach 00 - Upstream of Bellevue Dr
             </p> 
             <p class="indent">
               <input name="Pro0Menu" type="checkbox" id="Pro0Menu" class="layer-off" onclick="toggleTwo('sbk_grading1', 'sbk_grading3')" />
@@ -288,7 +346,7 @@
 
             <!--R1-->
             <p class="grey-text text-darken-2 note">
-                  Reach 01 - Bellevue Drive to 15th Street
+                  Reach 01 - Bellevue Dr to 15th St
             </p> 
             <p class="indent">
               <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
@@ -297,7 +355,7 @@
 
             <!--R2-->
             <p class="grey-text text-darken-2 note">
-                  Reach 02 - 15th Street to 17th Street
+                  Reach 02 - 15th St to 17th St
             </p> 
             <p class="indent">
               <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
@@ -306,7 +364,7 @@
 
             <!--R3-->
             <p class="grey-text text-darken-2 note">
-                  Reach 03 - 17th Street to 22nd Street/Skunk Creek
+                  Reach 03 - 17th Stnto 22nd St/Skunk Creek
             </p> 
             <p class="indent">
               <input name="Pro2Menu" type="checkbox" id="Pro2Menu" class="layer-off" onclick="toggleTwo('sbk_grading2', 'sbk_grading_alpine_det' )" />
@@ -316,7 +374,14 @@
          </div>
       </li>
 
+ 
+
+
+<!-- ******************************************************************************************************************** --> 
  <!--FLOOD HAZARD LAYERS-->
+<!-- ******************************************************************************************************************** -->  
+
+
       <li>
          <div class="collapsible-header indigo-alt">Flood Hazard Zones<i class="material-icons right">keyboard_arrow_down</i></div>
          <div class="collapsible-body white" id="FloodZones">

@@ -2029,8 +2029,14 @@ i {
   i.right {
     float: right;
     margin-left: 15px; }
+  i.vcenter {
+    line-height: 1.5
+    vertical-align: middle !important; 
+  }  
   i.tiny {
     font-size: 1rem; }
+  i.smaller {
+      font-size:1.5rem;}
   i.small {
     font-size: 2rem; }
   i.medium {
@@ -2981,6 +2987,7 @@ nav {
   nav [class^="mdi-"], nav [class*="mdi-"],
   nav i.material-icons {
     display: block;
+    position: relative; 
     font-size: 24px;
     height: 56px;
     line-height: 56px; }
