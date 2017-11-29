@@ -221,7 +221,7 @@ map.on('style.load', function (e) {
       'type': 'fill',
       'source': 'flowDepth',
       'source-layer': 'OTH_MaxFlowDepth_Merge-2pt133',  // OTH_Update_MaxFlowDepth-60jggv
-      'filter': ['>', 'Var', 0.25],
+      'filter': ["all",['>', 'Var', 0.25], ['==', 'Type', 'AOI']],
       'paint': {
           'fill-color': {
               property: 'Var',
@@ -245,8 +245,8 @@ map.on('style.load', function (e) {
       'type': 'line',
       'source': 'velocity',
       'source-layer': 'OTH_Velocity_Merge-chf3yp',   // OTH_Update_Velocity-2n2pj8
-      'filter': ['>', 'Var', 0.25],
-      'paint': {
+      'filter': ["all",['>', 'Var', 0.25], ['==', 'Type', 'AOI']],
+          'paint': {
           'line-width': 1.2,
           'line-opacity': 0,
           'line-color': {
