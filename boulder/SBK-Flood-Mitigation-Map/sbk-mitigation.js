@@ -49,7 +49,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('snk_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_snk_polyline_merge.GEOJSON'    
+      'data': 'ugc_snk_polyline_merge.geojson'    
     }); 
 
 
@@ -64,7 +64,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('bcc_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_bcc_polyline_merge.GEOJSON'    
+      'data': 'ugc_bcc_polyline_merge.geojson'    
     }); 
 
 //----King
@@ -80,7 +80,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('kng_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_kng_polyline_merge.GEOJSON'  
+      'data': 'ugc_kng_polyline_merge.geojson'  
     });
 
 
@@ -1454,7 +1454,7 @@ $(document).ready(function() {
 // When a click event occurs near the feature open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'sbk_xs'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'sbk_xs', 'ugc_kng_polyline_merge,', 'ugc_bcc_polyline_merge', 'ugc_snk_polyline_merge'] });
   if (!featureList.length) {
       return;
   }
@@ -1483,8 +1483,19 @@ map.on('click', function (k) {
                      'Floodway: ' + feature.properties.P002.toFixed(2) + '</b><br />' +
                      '500-year: ' + feature.properties.P006.toFixed(2) )
             .addTo(map);
-      }
-    });
+            }
+
+        else if ((id == 'ugc_snk_polyline_merge')  ||  (id == 'ugc_bcc_polyline_merge') || (id == 'ugc_kng_polyline_merge'))
+	{
+        	        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+            .setHTML('DIAMETER: ' + feature.properties.DIAMETER + ' in'+ '</b> <br />' +
+                     'LENGTH: ' + feature.properties.LENGTH + ' ft' + '<br />' +
+                     'MATERIAL: ' + feature.properties.MATERIAL)
+            .addTo(map);
+    };
+
+ });
 
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
