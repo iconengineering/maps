@@ -80,7 +80,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('kng_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_kng_polyline_merge.geojson'  
+      'data': 'kng_polyline_update.geojson'  
     });
 
 
@@ -728,7 +728,7 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'line-color': '#b1a200',    //ASR_ID for elevations
+        'line-color': '#BBB917',    //ASR_ID for elevations
         
     }
   }, 'road-label-small');
@@ -752,8 +752,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -796,8 +796,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -847,10 +847,39 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
+
+
+   
+
+
+// ----SNK Reach 02 Alt B Channel
+ map.addLayer({
+    id: 'snk_r02_altB_Channel',
+    source: 'snk_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
 
 
    // ----SNK Reach 02 Alt B Culverts
@@ -865,8 +894,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -915,8 +944,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -958,8 +987,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -1024,8 +1053,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -1042,8 +1071,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.95,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-color': '#00FFEF',
+        'fill-outline-color': '#00FFEF'
     }
   }, 'road-label-small');
 
@@ -1093,7 +1122,7 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'line-color': '#b1a200',    //ASR_ID for elevations
+        'line-color': '#BBB917',    //ASR_ID for elevations
         
     }
   }, 'road-label-small');
@@ -1243,9 +1272,9 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#51192E',
-        'fill-outline-color': '#51192E'
+        'fill-opacity': 0.8,
+        'fill-color': '#BBB917',
+        'fill-outline-color': '#BBB917'
     }
   }, 'road-label-small');
 
@@ -1261,6 +1290,32 @@ map.on('style.load', function () {
     source: 'kng_mitigation_linework', 
     type: 'line',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+// ----KNG Reach 01 Alt B Channel
+ map.addLayer({
+    id: 'kng_r01_altB_Channel',
+    source: 'kng_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '01']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -1355,8 +1410,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.8,
-        'fill-color': '#BBB917',
-        'fill-outline-color': '#BBB917'
+        'fill-color': '#86D123',
+        'fill-outline-color': '#86D123'
     }
   }, 'road-label-small');
 
@@ -1372,8 +1427,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.8,
-        'fill-color': '#BBB917',
-        'fill-outline-color': '#BBB917'
+        'fill-color': '#86D123',
+        'fill-outline-color': '#86D123'
     }
   }, 'road-label-small');
 
@@ -1384,7 +1439,7 @@ map.on('style.load', function () {
     id: 'kng_r03_altA_StormDrain',
     source: 'kng_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'E'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -1451,10 +1506,37 @@ $(document).ready(function() {
 
 
 
+
+document.getElementById('SKN_Zoom').addEventListener('click', function() {
+
+  var bbox = [[-105.275,39.9901], [-105.245,40.0089]];
+  map.fitBounds(bbox, { padding: 10 });
+
+});
+
+document.getElementById('BCC_Zoom').addEventListener('click', function() {
+
+  var bbox = [[-105.279,39.9975], [-105.262,39.9998]];
+  map.fitBounds(bbox, { padding:10 }); 
+
+});
+
+document.getElementById('KNG_Zoom').addEventListener('click', function() {
+
+  var bbox = [[-105.277,39.9932], [-105.264,39.9969]];
+  map.fitBounds(bbox, { padding:10 });
+
+});
+
+
+
+
+
+
 // When a click event occurs near the feature open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'sbk_xs', 'ugc_kng_polyline_merge,', 'ugc_bcc_polyline_merge', 'ugc_snk_polyline_merge'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'sbk_xs'] });
   if (!featureList.length) {
       return;
   }
@@ -1485,7 +1567,7 @@ map.on('click', function (k) {
             .addTo(map);
             }
 
-        else if ((id == 'ugc_snk_polyline_merge')  ||  (id == 'ugc_bcc_polyline_merge') || (id == 'ugc_kng_polyline_merge'))
+        else if ((id == 'ugc_snk_polyline_merge')  ||  (id == 'ugc_bcc_polyline_merge') || (id == 'kng_polyline_update'))
 	{
         	        var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)

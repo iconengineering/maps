@@ -122,7 +122,7 @@
            <!-- 2011 Greenways Master Plan  -->
             <p>
               <input name="greenMenu" type="checkbox" id="greenMenu" class="layer-off" onclick="toggleThree('restorArea', 'propTrails', 'dayLightOpp')"/>
-              <label for="greenMenu" class="valign">2011 Greenways Master Plan</label>
+              <label for="greenMenu" class="valign">2011 Greenways MP</label>
             </p>
           </div>    
       </li>
@@ -138,6 +138,13 @@
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Skunk Creek</div>
          <div class="collapsible-body white">
          
+
+
+           <a href = "#!" id = "SKN_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+             </a> 
 
 
             <!--R0-->
@@ -158,7 +165,7 @@
             </p> 
 
             <p class = "indent">
-              <input name= "SNK_Menu_R1_AltA" type="checkbox" id="SNK_Menu_R1_AltA" class="layer-off" onclick="toggleTwo('snk_r01_altA_Culvert', 'snk_r01_altA_Channel' )" />
+              <input name= "SNK_Menu_R1_AltA" type="checkbox" id="SNK_Menu_R1_AltA" class="layer-off" onclick="toggleTwo( 'snk_r01_altA_Channel' , 'snk_r01_altA_Culvert' )" />
               <label for="SNK_Menu_R1_AltA" class="valign">Alt A</label>
             </p>          
 
@@ -182,7 +189,7 @@
             </p>          
 
             <p class = "indent">
-              <input name= "SNK_Menu_R2_AltB" type="checkbox" id="SNK_Menu_R2_AltB" class="layer-off" onclick="toggleLayer('snk_r02_altB_Culvert' )" />
+              <input name= "SNK_Menu_R2_AltB" type="checkbox" id="SNK_Menu_R2_AltB" class="layer-off" onclick="toggleTwo('snk_r02_altB_Culvert', 'snk_r02_altB_Channel' )" />
               <label for="SNK_Menu_R2_AltB" class="valign">Alt B</label>
             </p>         
 
@@ -252,6 +259,13 @@
          
 
 
+             <a href = "#!" id = "BCC_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+             </a> 
+
+
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
@@ -305,7 +319,7 @@
 
 
             <p class = "indent">
-              <input name= "BCC_Menu_R2_AltC" type="checkbox" id="BCC_Menu_R2_AltC" class="layer-off" onclick="toggleTwo('bcc_r02_altA_Roadway', 'bcc_r02_altA_Roadway2')" />
+              <input name= "BCC_Menu_R2_AltC" type="checkbox" id="BCC_Menu_R2_AltC" class="layer-off" onclick="toggleTwo('bcc_r02_altC_Roadway', 'bcc_r02_altC_Roadway2')" />
               <label for="BCC_Menu_R2_AltC" class="valign">Alt C</label>
             </p>     
 
@@ -325,14 +339,13 @@
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>King's Gulch Creek</div>
          <div class="collapsible-body white">
          
-<!-- 
+
          	 <a href = "#!" id = "KNG_Zoom" > 
              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
                   <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
              </p>   
              </a> 
 
--->
 
             <!--R0-->
             <p class="grey-text text-darken-2 note">
@@ -359,6 +372,13 @@
               <input name= "KNG_Menu_R1_AltA" type="checkbox" id="KNG_Menu_R1_AltA" class="layer-off" onclick="toggleLayer('kng_r01_altA_Channel')" />
               <label for="KNG_Menu_R1_AltA" class="valign">Alt A</label>
             </p>     
+
+
+            <p class = "indent">
+              <input name= "KNG_Menu_R1_AltB" type="checkbox" id="KNG_Menu_R1_AltB" class="layer-off" onclick="toggleLayer('kng_r01_altB_Channel')" />
+              <label for="KNG_Menu_R1_AltB" class="valign">Alt B</label>
+            </p>     
+
 
 
             <p class = "indent">
@@ -531,7 +551,7 @@
               <!--Footprints-->
               <li class="collection-item grey-text"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#C457E0" fill-opacity=".8" /></svg></a></div></li>
               <!--Greenway Plan-->
-              <li class="collection-item grey-text"><div>2011 Greenways Master Plan<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#22BA61" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item grey-text"><div>2011 Greenways MP<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#22BA61" fill-opacity=".8" /></svg></a></div></li>
 
 
 
@@ -539,9 +559,10 @@
           <li class="collection-header"><em>Mitigation Alternatives</em></li>
 
               <!--Culvert-->
-              <li class="collection-item grey-text"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#b1a200"  fill-opacity=".8" /></svg></a></div></li>
-              <!--Pipe-->
-              <li class="collection-item grey-text"><div>Proposed Pipe<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#4F2F1C"  fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item grey-text"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#00FFEF"  fill-opacity=".8" /></svg></a></div></li>
+              
+              <!--Pipe--> <!--
+              <li class="collection-item grey-text"><div>Proposed Pipe<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#4F2F1C"  fill-opacity=".8" /></svg></a></div></li> -->
 
 
              <li class="collection-item grey-text"><div>Roadway Improvements<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
@@ -557,6 +578,19 @@
                   <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/></g></svg></a></div>  
              </li>  
 
+
+              <!--Culvert/Storm Drain Inlet Improv-->
+              <li class="collection-item grey-text"><div>Inlet Improvements<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#86D123"  fill-opacity=".8" /></svg></a></div></li>
+
+
+              <!--Facility-->
+              <li class="collection-item grey-text"><div>Sediment Capture Facility<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#BBB917"  fill-opacity=".8" /></svg></a></div></li>
+
+              
+ 
+              <!--Culvert/Storm Drain Inlet Improv-->
+              <li class="collection-item grey-text"><div>High Hazard Structure<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#000"  fill-opacity=".8" /></svg></a></div></li>
+ 
               <li class="collection-item grey-text"><div>Proposed Storm Drain<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#00687A" /></svg></a></div></li>   
               
               <!--Alternative Channel Grading --> 
