@@ -687,12 +687,18 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+
+
+
+
+
+
 // ---- UGC Reach 04 Alt A Strom Drain Detained Flow
     map.addLayer({
     id: 'ugc_r04_altA_StormDrain_Detained',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '04']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -711,7 +717,7 @@ map.on('style.load', function () {
     id: 'ugc_r04_altB_StormDrain_Full',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -777,12 +783,16 @@ map.on('style.load', function () {
 
 
 
+
+
+
+
 // ---- UGC Reach 05 Alt A Strom Drain Detained Flow
     map.addLayer({
     id: 'ugc_r05_altA_StormDrain_Detained',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '05']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '05']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -801,7 +811,7 @@ map.on('style.load', function () {
     id: 'ugc_r05_altB_StormDrain_Full',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A B'],['==', 'Reach', '05']],
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '05']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -851,21 +861,29 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+
+
+
 // ---- UGC Reach 06 Alt A Outfall (text states open channel)
     map.addLayer({
-    id: 'ugc_r06_altA_outfall',
+    id: 'ugc_r06_altA_Outfall',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ['==', 'Alt', '6'],
+    filter: ['==', 'Reach', '06'],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
       'line-cap': 'round'
     },
-      'paint': {
-        'line-width': 8,
-       
-        'line-color': '#00687A',
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+          },
+          'line-opacity': {
+              "stops": [[16, 0.7],[19, 1]]
+          },
+        'line-color': '#FF0072',
+   
  },
    
   }, 'road-label-small');
