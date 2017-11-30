@@ -67,7 +67,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('ugc_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_ugc_polyline_merge.GEOJSON'    
+      'data': 'ugc_ugc_polyline_merge.geojson'    
     }); 
 
  
@@ -159,7 +159,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('tmc_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_tmc_polyline_merge.GEOJSON'    
+      'data': 'ugc_tmc_polyline_merge.geojson'    
     }); 
 
 
