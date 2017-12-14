@@ -589,6 +589,8 @@ map.on('style.load', function (e) {
 });
 
 
+
+/*
 //Radio Button for Flow Depth 
 var depthList = document.getElementById('flowDepthSwitch');
 var depthRadio = depthList.getElementsByTagName('input');
@@ -621,7 +623,7 @@ for (var i = 0; i < velocityRadio.length; i++) {
 
 
 
-
+*/
 
 
 
