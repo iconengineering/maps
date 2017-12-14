@@ -38,23 +38,6 @@ map.on('style.load', function () {
 
 //++++++++++++++++++++++++++++++ ADD SOURCE +++++++++++++++++++++++++++++++++++++
 
-   /*    // channel grading (proposed improvements)
-    map.addSource('ugc_grading_alipine', {    //existing? as filler
-      type: 'geojson',
-      data: 'UGC_Alipine_Channel.geojson'
-    });
-
-    map.addSource('ugc_grading', {            //existing? as filler
-      type: 'geojson',
-      data: 'UGC_Existing_Flow_Channel_5yr.geojson'
-    });
-
-    //detention grading (proposed improvements)
-    map.addSource('ugc_detention_nBoulderPark', {
-      type: 'geojson',
-      data: 'UGC_NorthBoulderPark.geojson'
-    });
-*/
 
 // UPPER GOOSE CREEK
 
@@ -122,31 +105,6 @@ map.on('style.load', function () {
 
 
 
-    
-    // channel grading (proposed improvements)
-    /*
-    map.addSource('tmc_grading_mnr', {
-      type: 'geojson',
-      data: 'UGC_Twomile_to_Goose_Grading15ft_Index1ft.geojson'
-    });
-
-    map.addSource('tmc_grading_mjr', {
-      type: 'geojson',
-      data: 'UGC_Twomile_to_Goose_Grading15ft_Index5ft.geojson'
-    });
-
-    map.addSource('tmc_grading_Iris', {
-      type: 'geojson',
-      data: 'UGC_Twomile_to_Iris_Grading10ft.geojson'
-    });
-
-    //detention grading (proposed improvements)
-    map.addSource('tmc_detention_springValley', {
-      type: 'geojson',
-      data: 'UGC_SpringValleyDrive.geojson'
-    });
-
-*/
 
 // TWO MILE CANYON CREEK
 
@@ -429,12 +387,30 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.6,
-        'fill-color': '#22BA61',
-        'fill-outline-color': '#22BA61'
+        'fill-pattern': 'bluegreystripe',
+        'fill-outline-color': '#005F43'
     }
   }, 'road-label-small');
 
     
+    
+//Green Restoration Area Border
+
+    map.addLayer({
+      'id': 'restorAreaBorder',                               
+      'source': 'restorArea',
+      'source-layer': 'SBK2_EnviroRestorationArea-ae49du',     
+      'type': 'line',        
+      'paint': {
+         'line-width': 2,
+         'line-color': '#005F43', 
+         'line-opacity': 0.9,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
 
     //Prop trails
     map.addLayer({
@@ -444,7 +420,7 @@ map.on('style.load', function () {
       'type': 'line',        
       'paint': {
          'line-width': 3,
-         'line-color': '#22BA61', 
+         'line-color': '#8DFFA1', 
          'line-opacity': 0.9,
        },
       'layout': {'visibility': 'none'}
@@ -459,7 +435,7 @@ map.on('style.load', function () {
       'type': 'line',        
       'paint': {
          'line-width': 3,
-         'line-color': '#22BA61', 
+         'line-color': '#BADB38', 
          'line-opacity': 0.9,
        },
       'layout': {'visibility': 'none'}
@@ -744,12 +720,12 @@ map.on('style.load', function () {
        },
         'paint': {
           'line-width': {
-               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
+               "stops": [[15, 0.5], [17, 0.1], [19, 1.5]]
           },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
-        'line-color': '#FF0072',
+        //  'line-opacity': {
+        //      "stops": [[16, 0.7],[19, 1]]
+        //  },
+        'line-color': '#FF2034F',
          
       }
    
@@ -775,7 +751,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -882,7 +858,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
    
  },
    
@@ -890,100 +866,7 @@ map.on('style.load', function () {
 
 
 
-/*
-// ---- UGC PROPOSED GRADING
-    map.addLayer({
-    id: 'ugc_grading1',
-    source: 'ugc_grading_alipine', 
-    type: 'line',
-    filter: ['!=', 'Type', 'Alpine Detention'],
-       layout: {
-        'visibility': 'none',
-         'line-join': 'round',
-         'line-cap': 'round'
-       },
-        'paint': {
-          'line-width': {
-               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
-          },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
-        'line-color': '#FF0072',
-         
-      }
-   
-  }, 'road-label-small');
 
-
-    map.addLayer({
-    id: 'ugc_grading_alpine_det',
-    source: 'ugc_grading_alipine', 
-    type: 'line',
-    filter: ['==', 'Type', 'Alpine Detention'],
-    layout: {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
-        'line-color': '#FF00C3',
-          
-      }
-   
-  }, 'road-label-small');
-
-    map.addLayer({
-    id: 'ugc_grading2',
-    source: 'ugc_detention_nBoulderPark',
-    type: 'line',
-    layout: {
-        'visibility': 'none',
-         'line-join': 'round',
-         'line-cap': 'round'
-       },
-        'paint': {
-          'line-width': {
-               "stops": [[15, 0.25], [17, 0.6], [19, 1]]
-          },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
-        'line-color': '#FF00C3',
-         
-      }
-   
-  }, 'road-label-small');
-
-    map.addLayer({
-    id: 'ugc_grading3',
-    source: 'ugc_grading',
-    type: 'line',
-    'layout': {
-      'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
-        },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
-        'line-color': '#FF0072',
-          
-      }
-   
-  }, 'road-label-small');
-
-*/
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1268,7 +1151,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1311,7 +1194,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1358,7 +1241,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1401,7 +1284,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1444,7 +1327,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1493,7 +1376,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1619,7 +1502,7 @@ map.on('style.load', function () {
           'line-opacity': {
               "stops": [[16, 0.7],[19, 1]]
           },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
          
       }
    
@@ -1711,7 +1594,7 @@ map.on('style.load', function () {
         'line-opacity': {
             "stops": [[16, 0.7],[19, 1]]
         },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
           
       }
    
@@ -1733,7 +1616,7 @@ map.on('style.load', function () {
         'line-opacity': {
             "stops": [[16, 0.7],[19, 1]]
         },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
           
       }
    
@@ -1781,7 +1664,7 @@ map.on('style.load', function () {
         'line-opacity': {
             "stops": [[16, 0.7],[19, 1]]
         },
-        'line-color': '#FF0072',
+        'line-color': '#FF203F',
           
       }
    

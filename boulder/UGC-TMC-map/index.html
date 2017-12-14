@@ -112,7 +112,7 @@
 
              <!-- 2011 Greenways Master Plan  -->
             <p>
-              <input name="greenMenu" type="checkbox" id="greenMenu" class="layer-off" onclick="toggleThree('restorArea', 'propTrails', 'dayLightOpp')"/>
+              <input name="greenMenu" type="checkbox" id="greenMenu" class="layer-off" onclick="toggleFour('restorArea', 'restorAreaBorder', 'propTrails', 'dayLightOpp')"/>
               <label for="greenMenu" class="valign">2011 Greenways Master Plan</label>
             </p>
           </div>    
@@ -125,9 +125,13 @@
          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Twomile Canyon Creek</div>
          <div class="collapsible-body white">
             
-          <div class= "mdl-grid">
-              <a id="TMC_Zoom" class="waves-light btn">Zoom to Alternatives</a>
-          </div>
+          
+          <a href = "#!" id = "TMC_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+          </a> 
+
 
         <!--R1-->   
             <p class="grey-text text-darken-2 note">
@@ -229,9 +233,16 @@
          <div class="collapsible-header indigo-alt">Upper Goose Creek<i class="material-icons right">keyboard_arrow_down</i></div>
          <div class="collapsible-body white">
          
-        <div class= "mdl-grid">
-              <a id="UGC_Zoom" class="waves-light btn">Zoom to Alternatives</a>
-          </div>
+
+
+          <a href = "#!" id = "UGC_Zoom" > 
+             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             </p>   
+          </a> 
+
+
+
 			   
         <!-- R1 -->
 			      <p class="grey-text text-darken-2 note">
@@ -353,7 +364,7 @@
 <!-- ******************************************************************************************************************** -->
      
       <li>
-         <div class="collapsible-header indigo-alt">Flood Hazard Zones<i class="material-icons right">keyboard_arrow_down</i></div>
+         <div class="collapsible-header indigo-alt">Flood Hazard Data<i class="material-icons right">keyboard_arrow_down</i></div>
          <div class="collapsible-body white" id="FloodZones">
 
             <!--Layer Conveyance Zone-->
@@ -365,7 +376,7 @@
             <!--Layer 100-Yr Flood-->
             <p>
               <input name="100YrMenu" type="checkbox" id="100YrMenu" class="layer-on" onclick="toggleTwo('ugc_100yr', 'tmc_100yr')" checked/>
-              <label for="100YrMenu" class="valign">100-Yr Floodplain</label>
+              <label for="100YrMenu" class="valign">100-Yr Floodplain (Zone AE)</label>
             </p>  
             
             <!--Layer High Hazard-->
@@ -383,7 +394,7 @@
             <!--Layer Zone X-->            
             <p>
               <input name="ZoneXMenu" type="checkbox" id="ZoneXMenu" class="layer-on" onclick="toggleTwo('ugc_zone_x', 'tmc_zone_x')" checked/>
-              <label for="ZoneXMenu" class="valign">Zone X</label>
+              <label for="ZoneXMenu" class="valign">500-Yr Floodplain (Zone X)</label>
             </p>
             <!--Layer Stream CL-->
             <p>
@@ -422,25 +433,42 @@
       
       <li>
         <div class="collapsible-header indigo-alt">Legend<i class="material-icons right">keyboard_arrow_down</i></div>
-        <div class="collapsible-body white">
-          <ul class="collection with-header grey-text text-darken-2">
+        <div class="collapsible-body mdl-color--grey-700">
+          <ul class="collection with-header white-text">
+  
             
           <!--Legend Base Layer-->
           <li class="collection-header"><em>Base Layers</em></li>
                <!--SAN--> 
-              <li class="collection-item grey-text"><div>Sanitary Sewer<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke-dasharray= "6, 3" stroke="#96D400" /></svg></a></div></li>   
+              <li class="collection-item grey-text text-lighten-1"><div>Sanitary Sewer<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke-dasharray= "6, 3" stroke="#96D400" /></svg></a></div></li>   
               <!--WTR --> 
-              <li class="collection-item grey-text"><div>Water<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke-dasharray= "6, 3" stroke="#00FDD9"  /></svg></a></div></li>  
+              <li class="collection-item grey-text text-lighten-1"><div>Water<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke-dasharray= "6, 3" stroke="#00FDD9"  /></svg></a></div></li>  
               <!--STRM--> 
-              <li class="collection-item grey-text"><div>Storm<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke-dasharray= "6, 3" stroke="#004AFD" stroke-opacity = "0.8"/></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Storm<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke-dasharray= "6, 3" stroke="#004AFD" stroke-opacity = "0.8"/></svg></a></div></li>
               <!--Contour--> 
-              <li class="collection-item grey-text"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke="#C8F2C8" stroke-opacity = "1" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Contours<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke="#C8F2C8" stroke-opacity = "1" /></svg></a></div></li>
               <!--Parcels--> 
-              <li class="collection-item grey-text"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE29D" stroke-opacity= "1"/></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Parcels<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE29D" stroke-opacity= "1"/></svg></a></div></li>
               <!--Footprints-->
-              <li class="collection-item grey-text"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#C457E0" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Building Footprints<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#C457E0" fill-opacity=".8" /></svg></a></div></li>
               <!--Greenway Plan-->
-              <li class="collection-item grey-text"><div>2011 Greenways Master Plan<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#22BA61" fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>GWMP: Envir Restoration<a href="#!" class=	"secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-40" x2="95" y2="88" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-36" x2="95" y2="92" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-32" x2="95" y2="96" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-28" x2="95" y2="100" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-24" x2="95" y2="104" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-20" x2="95" y2="108" rx="4" ry='4'/>
+                  <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112" rx="4" ry='4'/></g></svg></a></div>  
+             </li>  
+
+
+              <li class="collection-item grey-text text-lighten-1"><div>GWMP: Proposed Trails<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#91FFB0" stroke-opacity= "1"/></svg></a></div></li>
+
+              <li class="collection-item grey-text text-lighten-1"><div>GWMP: Channel Daylight Opp<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#AED15D" stroke-opacity= "1"/></svg></a></div></li>	
 
 
 
@@ -448,12 +476,12 @@
           <li class="collection-header"><em>Mitigation Alternatives</em></li>
 
               <!--Culvert-->
-              <li class="collection-item grey-text"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#b1a200"  fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Culverts<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#b1a200"  fill-opacity=".8" /></svg></a></div></li>
               <!--Pipe-->
-              <li class="collection-item grey-text"><div>Proposed Pipe<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#4F2F1C"  fill-opacity=".8" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Proposed Pipe<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#4F2F1C"  fill-opacity=".8" /></svg></a></div></li>
 
 
-             <li class="collection-item grey-text"><div>Roadway Improvements<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
+             <li class="collection-item grey-text text-lighten-1"><div>Roadway Improvements<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
                   <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
                   <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
                   <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
@@ -466,29 +494,29 @@
                   <line fill="none" stroke="#1FFF4C" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-16" x2="95" y2="112"/></g></svg></a></div>  
              </li>  
 
-              <li class="collection-item grey-text"><div>Proposed Storm Drain<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#00687A" /></svg></a></div></li>   
+              <li class="collection-item grey-text text-lighten-1"><div>Proposed Storm Drain<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#00687A" /></svg></a></div></li>   
               
               <!--Alternative Channel Grading --> 
-              <li class="collection-item grey-text"><div>Channel Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF0072" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Channel Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF0072" /></svg></a></div></li>
               <!--Alternative Detention Grading-->
-              <li class="collection-item grey-text"><div>Detention Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF00C3" /></svg></a></div></li>
+              <li class="collection-item grey-text text-lighten-1"><div>Detention Grading<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF00C3" /></svg></a></div></li>
            
 
             
           <!--Floodplain Hazards legend-->
           <li class="collection-header"><em>Flood Hazard Zones</em></li>
 
-             <li class="collection-item grey-text"><div>High Hazard<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#DC0714" fill-opacity=".9" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>High Hazard<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#DC0714" fill-opacity=".9" /></svg></a></div></li>
 
 
-             <li class="collection-item grey-text"><div>Zone AO - 2ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#7FEAFF" fill-opacity=".8" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>Zone AO - 2ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#7FEAFF" fill-opacity=".8" /></svg></a></div></li>
 
-             <li class="collection-item grey-text" ><div>Zone AO - 1ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#00BBFF" fill-opacity=".8" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1" ><div>Zone AO - 1ft<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#00BBFF" fill-opacity=".8" /></svg></a></div></li>
 
 
-             <li class="collection-item grey-text"><div>Zone X<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFA540" fill-opacity=".8" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>500-Yr Floodplain (Zone X)<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" rx="4" ry='4' fill="#FFA540" fill-opacity=".8" /></svg></a></div></li>
 
-             <li class="collection-item grey-text"><div>2013 Flooding Extents<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
+             <li class="collection-item grey-text text-lighten-1"><div>2013 Flooding Extents<a href="#!" class="secondary-content"><svg height="21" width="21" rx="4" ry ='4'><g>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-52" x2="95" y2="76"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-48" x2="95" y2="80"/>
                   <line fill="none" stroke="#00BCD4" stroke-width="0.9" stroke-miterlimit="10" x1="-33" y1="-44" x2="95" y2="84"/>
@@ -502,21 +530,21 @@
              </li>
 
 
-             <li class="collection-item grey-text"><div>Conveyance Zone (Floodway)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE642"/></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>Conveyance Zone (Floodway)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FFE642"/></svg></a></div></li>
 
 
-             <li class="collection-item grey-text"><div>100-Yr Floodplain (Zone AE)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#0034D9"/></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>100-Yr Floodplain (Zone AE)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#0034D9"/></svg></a></div></li>
 
            <!--Stream Centerline-->
-             <li class="collection-item grey-text"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08D6FF" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>Stream Centerline<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08D6FF" /></svg></a></div></li>
 
 
            <!--XS-->
-             <li class="collection-item grey-text"><div>Floodplain Cross Sections<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08FA47" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>Floodplain Cross Sections<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#08FA47" /></svg></a></div></li>
             
 
              <!--Gutterline-->
-             <li class="collection-item grey-text"><div>Gutter Lines<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF9800" /></svg></a></div></li>
+             <li class="collection-item grey-text text-lighten-1"><div>Gutter Lines<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#FF9800" /></svg></a></div></li>
 
             
 
