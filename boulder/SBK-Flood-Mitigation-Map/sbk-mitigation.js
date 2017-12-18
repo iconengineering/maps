@@ -1004,11 +1004,50 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#000',
-        'fill-outline-color': '#000'
+        'fill-opacity': 0.3,
+        'fill-color': '#FF0000',
+        'fill-outline-color': '#FF0000'
     }
   }, 'road-label-small');
+
+
+    map.addLayer({
+    id: 'snk_r03_altC_HHStruct2',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'redstripe',
+        'fill-outline-color': '#FF0000'
+    }
+  }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'snk_r03_altC_HHStruct3',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03']],
+    layout: {
+        'visibility': 'none'
+      },
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FF0000', 
+         'line-opacity': 0.7,
+       },
+  }, 'road-label-small');
+
+
+
+
 
 
 
@@ -1088,12 +1127,50 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#000',
-        'fill-outline-color': '#000'
+        'fill-opacity': 0.3,
+        'fill-color': '#FF0000',
+        'fill-outline-color': '#FF0000'
     }
   }, 'road-label-small');
 
+
+
+    map.addLayer({
+    id: 'snk_r04_altC_HHStruct2',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'fill',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '04']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'redstripe',
+        'fill-outline-color': '#FF0000'
+    }
+  }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'snk_r04_altC_HHStruct3',
+    source: 'snk_mitigation_polygonwork',
+    'source-layer': 'ugc_snk_polygon_merge-3mj1ax',
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '04']],
+    layout: {
+        'visibility': 'none'
+      },
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FF0000', 
+         'line-opacity': 0.7,
+       },
+  }, 'road-label-small');
+
+
+   
 
 
 
@@ -1168,11 +1245,51 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-color': '#000',
-        'fill-outline-color': '#000'
+        'fill-opacity': 0.3,
+        'fill-color': '#FF000',
+        'fill-outline-color': '#FF0000'
     }
   }, 'road-label-small');
+
+
+    map.addLayer({
+    id: 'bcc_r01_altB_HHStruct2',
+    source: 'bcc_mitigation_polygonwork',
+    'source-layer': 'ugc_bcc_polygon_merge-70udhl',
+    type: 'fill',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'redstripe',
+        'fill-outline-color': '#FF0000'
+    }
+  }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'bcc_r01_altB_HHStruct3',
+    source: 'bcc_mitigation_polygonwork',
+    'source-layer': 'ugc_bcc_polygon_merge-70udhl',
+    type: 'line',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'none'
+      },
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FF0000', 
+         'line-opacity': 0.7,
+       },
+  }, 'road-label-small');
+
+
+
+
+
 
 
 
@@ -1191,7 +1308,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          
@@ -1210,7 +1327,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          
@@ -1247,7 +1364,7 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.5,
-        'fill-pattern': 'bluegreystripe',
+        'fill-pattern': 'greenstripe',
         'fill-outline-color': '#00FF33'
     }
   }, 'road-label-small');
@@ -1347,11 +1464,44 @@ map.on('style.load', function () {
       },
     paint: {
         
-    	  'fill-opacity': 0.6,
-        'fill-color': '#000',
-        'fill-outline-color': '#000'
+    	'fill-opacity': 0.3,
+        'fill-color': '#FF0000',
+        'fill-outline-color': '#FF0000'
     }
   }, 'road-label-small');
+
+
+	//Struct Stripe
+    map.addLayer({
+    id: 'kng_r01_altD_HHStruct2',
+    source: 'kng_mitigation_polygonwork',
+    type: 'fill',
+    filter: ['==', 'Reach', '01'],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'redstripe',
+        'fill-outline-color': '#FF0000'
+    }
+  }, 'road-label-small');
+
+    
+    
+	//Struct Area Border
+    map.addLayer({
+    id: 'kng_r01_altD_HHStruct3',
+    source: 'kng_mitigation_polygonwork',
+      'type': 'line',        
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FF0000', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
 
 
    
@@ -1367,7 +1517,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          
@@ -1386,7 +1536,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          
@@ -1446,7 +1596,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          
@@ -1466,7 +1616,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          

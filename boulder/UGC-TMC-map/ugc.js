@@ -376,6 +376,25 @@ map.on('style.load', function () {
     },'road-label-small');
 
 
+
+
+    //Green Restoration Area Green
+    map.addLayer({
+    id: 'restorAreaFill',
+    source: 'restorArea',
+    'source-layer': 'SBK2_EnviroRestorationArea-ae49du', 
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#00FF33',
+        'fill-outline-color': '#00FF33'
+    }
+  }, 'road-label-small');
+
+
 //Green Restoration Area
     map.addLayer({
     id: 'restorArea',
@@ -386,9 +405,9 @@ map.on('style.load', function () {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.6,
-        'fill-pattern': 'bluegreystripe',
-        'fill-outline-color': '#005F43'
+        'fill-opacity': 0.9,
+        'fill-pattern': 'greenstripe',
+        'fill-outline-color': '#00FF33'
     }
   }, 'road-label-small');
 
@@ -402,9 +421,9 @@ map.on('style.load', function () {
       'source-layer': 'SBK2_EnviroRestorationArea-ae49du',     
       'type': 'line',        
       'paint': {
-         'line-width': 2,
-         'line-color': '#005F43', 
-         'line-opacity': 0.9,
+         'line-width': 2.3,
+         'line-color': '#00FF33', 
+         'line-opacity': 0.7,
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
@@ -557,11 +576,9 @@ map.on('style.load', function () {
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Outfall']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
        
         'line-color': '#00687A', 
            },
@@ -578,11 +595,9 @@ map.on('style.load', function () {
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '01']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
       
         'line-color': '#00687A',
             },
@@ -1434,11 +1449,9 @@ map.on('style.load', function () {
     filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Outfall']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
           
       }
