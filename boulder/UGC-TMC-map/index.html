@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="//code.getmdl.io/1.1.3/material.lime-teal.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-blue.min.css" />
     <script defer src="//code.getmdl.io/1.1.3/material.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
@@ -85,7 +85,7 @@
           <div class="collapsible-body white">
 
             <p class="grey-text text-darken-2 note">
-                  Click on existing storm drain for pipe properties
+                  Click on existing storm drain (Utilities) and 2016 MP storm drain for pipe properties.  Easement information can be rendered on-click. 
             </p> 
             <!--Existing Utilitiy-->
             <p>
@@ -125,7 +125,7 @@
            <!-- City of Boulder Easements -->
             <p>
               <input name="cobEase" type="checkbox" id="cobEase" class="layer-off" onclick="toggleTwo('COB_Easements', 'COB_EasementsBorder')"/>
-              <label for="cobEase" class="valign">City of Boulder Easments</label>
+              <label for="cobEase" class="valign">City of Boulder Easements</label>
             </p>
 
 
@@ -142,7 +142,7 @@
           
           <a href = "#!" id = "TMC_Zoom" > 
              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
-                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+                  Zoom to Mitigation Alternatives  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
              </p>   
           </a> 
 
@@ -250,7 +250,7 @@
 
 
           <a href = "#!" id = "UGC_Zoom" > 
-             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+             <p class="blue-grey-text note2" style="margin-top:-3px; margin-bottom: 15px; ">
                   <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
              </p>   
           </a> 
@@ -259,114 +259,385 @@
 
 			   
         <!-- R1 -->
-			      <p class="grey-text text-darken-2 note">
-                 Reach 01 - Upstream of 9th Street 
+			      <p class="grey-text text-darken-2 note2">
+                 <b>Reach 01 - Upstream of 9th Street </b>
             </p>            
             
-            <p class = "indent">
-              <input name= "UGC_Menu_R1_AltA" type="checkbox" id="UGC_Menu_R1_AltA" class="layer-off" onclick="toggleTwo('ugc_r01_altA_outfall', 'ugc_r01_altA_detention' )" />
-              <label for="UGC_Menu_R1_AltA" class="valign">Alt A</label>
+
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="UGC_Menu_R1_AltA">
+                <input type="checkbox" id="UGC_Menu_R1_AltA" class="mdl-switch__input layer-off" onclick="toggleTwo('ugc_r01_altA_outfall', 'ugc_r01_altA_detention' )" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt A
+            </span>
+          </p>
+            
+
+            <p class = "indent narrow">
+              <input name= "01_B_Ease" type="checkbox" id="01_B_Ease" class="layer-off" onclick="toggleLayer('ugc_r01_altA_ease')" />
+              <label for="01_B_Ease" class="valign">Easements</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R1_AltB" type="checkbox" id="UGC_Menu_R1_AltB" class="layer-off" onclick="toggleLayer('ugc_r01_altB_outfall')" />
-              <label for="UGC_Menu_R1_AltB" class="valign">Alt B</label>
-            </p>
-            
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="UGC_Menu_R1_AltB">
+                <input type="checkbox" id="UGC_Menu_R1_AltB" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r01_altB_outfall')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt B
+            </span>
+          </p>
+
+          
+
         
         <!--R2-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 02 - 9th Street to Broadway
+            <p class="grey-text text-darken-2 note2">
+                 <b>Reach 02 - 9th Street to Broadway</b>
             </p> 
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R2_AltA" type="checkbox" id="UGC_Menu_R2_AltA" class="layer-off" onclick="toggleTwo('ugc_r02_altA_OpenChannel_Detained', 'ugc_r02_altA_OpenChannel_Detained2')" />
-              <label for="UGC_Menu_R2_AltA" class="valign">Alt A</label>
+     
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="UGC_Menu_R2_AltA">
+                <input type="checkbox" id="UGC_Menu_R2_AltA" class="mdl-switch__input layer-off"onclick="toggleTwo('ugc_r02_altA_OpenChannel_Detained', 'ugc_r02_altA_OpenChannel_Detained2')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt A
+            </span>
+          </p>
+
+            <p class = "indent narrow">
+              <input name= "02_AB_Struct" type="checkbox" id="02_AB_Struct" class="layer-off"  onclick="toggleThree('ugc_r02_altAB_struc1', 'ugc_r02_altAB_struc2', 'ugc_r02_altAB_struc3')"/>
+              <label for="02_AB_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R2_AltB" type="checkbox" id="UGC_Menu_R2_AltB" class="layer-off" onclick="toggleTwo('ugc_r02_altB_OpenChannel_Full', 'ugc_r02_altB_OpenChannel_Full2')" />
-              <label for="UGC_Menu_R2_AltB" class="valign">Alt B</label>
+            <p class = "indent narrow">
+              <input name= "02_AB_Ease" type="checkbox" id="02_AB_Ease" class="layer-off"  onclick="toggleLayer('ugc_r02_altAB_ease')"/>
+              <label for="02_AB_Ease" class="valign">Easements</label>
             </p>
+
+
+
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="UGC_Menu_R2_AltB">
+                <input type="checkbox" id="UGC_Menu_R2_AltB" class="mdl-switch__input layer-off"onclick="toggleTwo('ugc_r02_altB_OpenChannel_Full', 'ugc_r02_altB_OpenChannel_Full2')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt B
+            </span>
+          </p>
+  
+
+            <p class = "indent narrow">
+              <input name= "02_B_Struct" type="checkbox" id="02_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r02_altAB_struc1', 'ugc_r02_altAB_struc2', 'ugc_r02_altAB_struc3')"/>
+              <label for="02_B_Struct" class="valign">Removed Structures</label>
+            </p>
+
+            <p class = "indent narrow">
+              <input name= "02_AB_Ease" type="checkbox" id="02_B_Ease" class="layer-off"  onclick="toggleLayer('ugc_r02_altAB_ease')"/>
+              <label for="02_B_Ease" class="valign">Easements</label>
+            </p>
+
+
+
+
+
+
 
 
         <!--R3-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 03 - Broadway to 13th Street
+            <p class="grey-text text-darken-2 note2">
+                 <b>Reach 03 - Broadway to 13th Street</b>
             </p> 
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R3_AltA" type="checkbox" id="UGC_Menu_R3_AltA" class="layer-off" onclick="toggleLayer('ugc_r03_altA_StormDrain_Detained')" />
-              <label for="UGC_Menu_R3_AltA" class="valign">Alt A</label>
+           
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R3_AltA">
+                <input type="checkbox" id="UGC_Menu_R3_AltA" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r03_altA_StormDrain_Detained')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt A
+            </span>
+          </p>
+
+
+            <p class = "indent narrow">
+              <input name= "03_A_Struct" type="checkbox" id="03_A_Struct" class="layer-off"  onclick="toggleThree('ugc_r03_altAB_struc1', 'ugc_r03_altAB_struc2', 'ugc_r03_altAB_struc3')"/>
+              <label for="03_A_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R3_AltB" type="checkbox" id="UGC_Menu_R3_AltB" class="layer-off" onclick="toggleLayer('ugc_r03_altB_StormDrain_Full')" />
-              <label for="UGC_Menu_R3_AltB" class="valign">Alt B</label>
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R3_AltB">
+                <input type="checkbox" id="UGC_Menu_R3_AltB" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r03_altB_StormDrain_Full')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt B
+            </span>
+          </p>
+
+
+            <p class = "indent narrow">
+              <input name= "03_B_Struct" type="checkbox" id="03_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r03_altAB_struc1', 'ugc_r03_altAB_struc2', 'ugc_r03_altAB_struc3')"/>
+              <label for="03_B_Struct" class="valign">Removed Structures</label>
             </p>
+
+
+
+
+
+
 
 
         <!--R4-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 04 - 13th Street to 17th Street
+            <p class="grey-text text-darken-2 note2">
+                 <b>Reach 04 - 13th Street to 17th Street </b>
             </p> 
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R4_AltA" type="checkbox" id="UGC_Menu_R4_AltA" class="layer-off" onclick="toggleLayer('ugc_r04_altA_StormDrain_Detained')" />
-              <label for="UGC_Menu_R4_AltA" class="valign">Alt A</label>
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R4_AltA">
+                <input type="checkbox" id="UGC_Menu_R4_AltA" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r04_altA_StormDrain_Detained')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt A
+            </span>
+          </p>
+
+
+            <p class = "indent narrow">
+              <input name= "04_A_Struct" type="checkbox" id="04_A_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
+              <label for="04_A_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R4_AltB" type="checkbox" id="UGC_Menu_R4_AltB" class="layer-off" onclick="toggleLayer('ugc_r04_altB_StormDrain_Full')" />
-              <label for="UGC_Menu_R4_AltB" class="valign">Alt B</label>
+
+
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R4_AltB">
+                <input type="checkbox" id="UGC_Menu_R4_AltB" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r04_altB_StormDrain_Full')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt B
+            </span>
+          </p>
+
+
+            <p class = "indent narrow">
+              <input name= "04_B_Struct" type="checkbox" id="04_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
+              <label for="04_B_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R4_AltC" type="checkbox" id="UGC_Menu_R4_AltC" class="layer-off" onclick="toggleLayer('ugc_r04_altC_OpenChannel_Detained')" />
-              <label for="UGC_Menu_R4_AltC" class="valign">Alt C</label>
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R4_AltC">
+                <input type="checkbox" id="UGC_Menu_R4_AltC" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r04_altC_OpenChannel_Detained')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt C
+            </span>
+          </p>
+
+            <p class = "indent narrow">
+              <input name= "04_C_Struct" type="checkbox" id="04_C_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
+              <label for="04_C_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R4_AltD" type="checkbox" id="UGC_Menu_R4_AltD" class="layer-off" onclick="toggleLayer('ugc_r04_altD_OpenChannel_Full')" />
-              <label for="UGC_Menu_R4_AltD" class="valign">Alt D</label>
+
+            <p class = "indent narrow">
+              <input name= "04_C_Ease" type="checkbox" id="04_C_Ease" class="layer-off"  onclick="toggleLayer('ugc_r04_altCD_ease')"/>
+              <label for="04_C_Ease" class="valign">Easements</label>
             </p>
 
+
+<!--
+          <p class="demo-list-item mdl-list__item indent narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="04_C_Aq">
+                <input type="checkbox" id="04_C_Aq" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r04_altCD_aq')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Full Acquisitions
+            </span>
+          </p>
+-->
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R4_AltD">
+                <input type="checkbox" id="UGC_Menu_R4_AltD" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r04_altD_OpenChannel_Full')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt D
+            </span>
+          </p>
+
+            <p class = "indent narrow">
+              <input name= "04_D_Struct" type="checkbox" id="04_D_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
+              <label for="04_D_Struct" class="valign">Removed Structures</label>
+            </p>
+
+
+            <p class = "indent narrow">
+              <input name= "04_D_Ease" type="checkbox" id="04_D_Ease" class="layer-off"  onclick="toggleLayer('ugc_r04_altCD_ease')"/>
+              <label for="04_D_Ease" class="valign">Easements</label>
+            </p>
+
+
+
+<!--
+          <p class="demo-list-item mdl-list__item indent narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="04_D_Aq">
+                <input type="checkbox" id="04_D_Aq" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r04_altCD_aq')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Full Acquisitions
+            </span>
+          </p>
+
+-->
             
+
+
+
+
 
         <!--R5-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 05 - 17th Street to 19th Street
+            <p class="grey-text text-darken-2 note2">
+                 <b>Reach 05 - 17th Street to 19th Street</b>
             </p> 
-            
-            <p class = "indent">
-              <input name= "UGC_Menu_R5_AltA" type="checkbox" id="UGC_Menu_R5_AltA" class="layer-off" onclick="toggleLayer('ugc_r05_altA_StormDrain_Detained')" />
-              <label for="UGC_Menu_R5_AltA" class="valign">Alt A</label>
+         
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R5_AltA">
+                <input type="checkbox" id="UGC_Menu_R5_AltA" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r05_altA_StormDrain_Detained')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt A
+            </span>
+          </p>
+
+
+
+            <p class = "indent narrow">
+              <input name= "05_A_Struct" type="checkbox" id="05_A_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
+              <label for="05_A_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R5_AltB" type="checkbox" id="UGC_Menu_R5_AltB" class="layer-off" onclick="toggleLayer('ugc_r05_altB_StormDrain_Full')" />
-              <label for="UGC_Menu_R5_AltB" class="valign">Alt B</label>
+
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R5_AltB">
+                <input type="checkbox" id="UGC_Menu_R5_AltB" class="mdl-switch__input layer-off" onclick="toggleLayer('ugc_r05_altB_StormDrain_Full')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt B
+            </span>
+          </p>
+
+
+            <p class = "indent narrow">
+              <input name= "05_B_Struct" type="checkbox" id="05_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
+              <label for="05_B_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R5_AltC" type="checkbox" id="UGC_Menu_R5_AltC" class="layer-off" onclick="toggleLayer('ugc_r05_altC_Culvert_Detained')" />
-              <label for="UGC_Menu_R5_AltC" class="valign">Alt C</label>
+
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R5_AltC">
+                <input type="checkbox" id="UGC_Menu_R5_AltC" class="mdl-switch__input layer-off"onclick="toggleTwo('ugc_r05_altC_Culvert_Detained', 'ugc_r05_altC_Channel')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt C
+            </span>
+          </p>
+
+
+            <p class = "indent narrow">
+              <input name= "05_C_Struct" type="checkbox" id="05_C_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
+              <label for="05_C_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "UGC_Menu_R5_AltD" type="checkbox" id="UGC_Menu_R5_AltD" class="layer-off" onclick="toggleLayer('ugc_r05_altD_Culvert_Full')" />
-              <label for="UGC_Menu_R5_AltD" class="valign">Alt D</label>
+
+
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R5_AltD">
+                <input type="checkbox" id="UGC_Menu_R5_AltD" class="mdl-switch__input layer-off"onclick="toggleTwo('ugc_r05_altD_Culvert_Full', 'ugc_r05_altD_Channel')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt D
+            </span>
+          </p>
+
+
+
+            <p class = "indent narrow">
+              <input name= "05_D_Struct" type="checkbox" id="05_D_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
+              <label for="05_D_Struct" class="valign">Removed Structures</label>
             </p>
+
+
+
+
+
+
 
             <!--R6-->
-            <p class="grey-text text-darken-2 note">
-                 Reach 06 - 19th Street to Folsom Street
+            <p class="grey-text text-darken-2 note2">
+                 <b>Reach 06 - 19th Street to Folsom Street</b>
             </p>
-            <p class = "indent">
-              <input name= "UGC_Menu_R6_AltA" type="checkbox" id="UGC_Menu_R6_AltA" class="layer-off" onclick="toggleLayer('ugc_r06_altA_Outfall')" />
-              <label for="UGC_Menu_R6_AltA" class="valign">Alt A</label>
-            </p>
+           
+            <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action">
+              <label class="mdl-switch mdl-js-switch label-off" for="UGC_Menu_R6_AltA">
+                <input type="checkbox" id="UGC_Menu_R6_AltA" class="mdl-switch__input layer-off"onclick="toggleLayer('ugc_r06_altA_Outfall')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+              Alt A
+            </span>
+          </p>
 
+
+
+            <p class = "indent narrow">
+              <input name= "06_A_Ease" type="checkbox" id="06_A_Ease" class="layer-off"onclick="toggleLayer('ugc_r06_altA_ease')" />
+              <label for="06_A_Ease" class="valign">Easements</label>
+            </p>
 
           
          </div>

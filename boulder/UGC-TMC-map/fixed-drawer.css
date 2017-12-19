@@ -2,6 +2,20 @@ html, body, .mapboxgl-map {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+
+
+.demo-options .mdl-checkbox__box-outline {
+  border-color: #3086A8;
+}
+
+
+.demo-options p {
+  margin: 1px 0;
+}
+.demo-options .material-icons {
+  color: #3086A8;
+}
+
 .link, .collapsible-header {
 color: #3086A8;
 transition: all 0.2s linear;
@@ -61,14 +75,18 @@ color: #3086A8;
   padding-left: 50px !important;
 }
 
+.indentSm {
+  padding-left: 15px !important;
+}
+
 [type="checkbox"]+label.multiline {
   line-height: 14px;
 }
 
 .secondary {
   color: rgba(0,0,0,.62);
-  font-size: 11px;
-  line-height: 11px;
+  font-size: 10px;
+  line-height: 10px;
 }
 
 .collapsible-header {
@@ -96,6 +114,11 @@ color: #3086A8;
   padding: 0 0 .25rem 0;
 }
 
+.collapsible-body .demo-list-item p.narrow {
+  padding: 0 0 .25rem 0;
+}
+
+
 .collapsible-body p:last-child {
   padding: 0;
 }
@@ -108,6 +131,12 @@ color: #3086A8;
   font-size: small;
   line-height: 18px;
 }
+
+.note2 {
+  font-size: medium;
+  line-height: 20px;
+}
+
 
 .domain, .tick line{
 	fill: none;
@@ -142,7 +171,7 @@ color: #3086A8;
 
 ::-webkit-scrollbar{width: 6px;height: 6px;}
 
-::-webkit-scrollbar-thumb{background-color:#ccc; border-radius: 0;}
-::-webkit-scrollbar-thumb:hover{background-color:#ccc;}
+::-webkit-scrollbar-thumb{background-color:#3086A8; border-radius: 0;}
+::-webkit-scrollbar-thumb:hover{background-color:#3086A8;}
 
-::-webkit-scrollbar-track{background-color:_#eee;}
+::-webkit-scrollbar-track{background-color:_#41B5E3;}

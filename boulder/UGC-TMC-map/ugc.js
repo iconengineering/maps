@@ -705,8 +705,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.2,
-        'fill-color': '#FF2034F',
-        'fill-outline-color': '#FF2034F'
+        'fill-color': '#FF2034',
+        'fill-outline-color': '#FF2034'
     }
   }, 'road-label-small');
 
@@ -721,7 +721,7 @@ map.on('style.load', function () {
       },
     paint: {
         'line-opacity': 0.9,
-        'line-color': '#FF2034F',
+        'line-color': '#FF2034',
     }
   }, 'road-label-small');
 
@@ -740,8 +740,8 @@ map.on('style.load', function () {
       },
     paint: {
         'fill-opacity': 0.2,
-        'fill-color': '#FF2034F',
-        'fill-outline-color': '#FF2034F'
+        'fill-color': '#FF2034',
+        'fill-outline-color': '#FF2034'
     }
   }, 'road-label-small');
 
@@ -757,7 +757,7 @@ map.on('style.load', function () {
       },
     paint: {
         'line-opacity': 0.9,
-        'line-color': '#FF2034F',
+        'line-color': '#FF2034',
     }
   }, 'road-label-small');
 
@@ -989,7 +989,7 @@ map.on('style.load', function () {
         //  'line-opacity': {
         //      "stops": [[16, 0.7],[19, 1]]
         //  },
-        'line-color': '#FF2034F',
+        'line-color': '#FF2034',
          
       }
    
@@ -1186,7 +1186,7 @@ map.on('style.load', function () {
         //  'line-opacity': {
         //      "stops": [[16, 0.7],[19, 1]]
         //  },
-        'line-color': '#FF2034F',
+        'line-color': '#FF2034',
          
       }
    
@@ -1231,7 +1231,7 @@ map.on('style.load', function () {
         //  'line-opacity': {
         //      "stops": [[16, 0.7],[19, 1]]
         //  },
-        'line-color': '#FF2034F',
+        'line-color': '#FF2034',
          
       }
    
@@ -1262,7 +1262,7 @@ map.on('style.load', function () {
 
     //UGC R05 Alt C D Ease
     map.addLayer({
-      'id': 'ugc_r04_altCD_ease',                               
+      'id': 'ugc_r05_altCD_ease',                               
       source: 'ugc_mitigation_linework',  
       filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05'], ['==','Type', 'Easement']],
       'type': 'line',        
@@ -1281,7 +1281,7 @@ map.on('style.load', function () {
     map.addLayer({
       'id': 'ugc_r05_altCD_aq',                               
       source: 'ugc_mitigation_linework',  
-      filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05'], ['==','Type', 'Aquisition']],
+      filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05'], ['==','Type', 'Acquisition']],
       'type': 'line',        
       'paint': {
          'line-color': '#00FFCF', 
@@ -2529,7 +2529,7 @@ document.getElementById('TMC_Zoom').addEventListener('click', function() {
 // When a click event occurs near the feature open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs','COB_Easements', '2016_SWMP'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs','COB_Easements', '2016_SWMP','ugc_r01_altA_detention', 'ugc_r06_altA_Outfall', 'ugc_r05_altC_Channel', 'ugc_r05_altD_Channel'] });
   if (!featureList.length) {
       return;
   }
@@ -2547,6 +2547,12 @@ map.on('click', function (k) {
             .addTo(map);
           }
 
+     if ((id == 'ugc_r01_altA_detention') || (id == 'ugc_r06_altA_Outfall') (id == 'ugc_r05_altC_Channel') || (id == 'ugc_r05_altD_Channel')){
+        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+            .setHTML('ELEVATION: ' + feature.properties.ELEVATION + ' ft')
+            .addTo(map);
+          }
 
      if (id == 'COB_Easements'){
         var popup = new mapboxgl.Popup()
@@ -2576,7 +2582,7 @@ map.on('click', function (k) {
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (k) {
-    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs', 'COB_Easements', '2016_SWMP'] });
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs', 'COB_Easements', '2016_SWMP','ugc_r01_altA_detention', 'ugc_r06_altA_Outfall', 'ugc_r05_altC_Channel', 'ugc_r05_altD_Channel'] });
     map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
 });
 
