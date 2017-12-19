@@ -3167,7 +3167,7 @@ map.on('click', function (k) {
           }
 
     if ((id == 'tmc_r04_altB_Culvert') || (id == 'ugc_r05_altC_Culvert_Detained') || (id == 'ugc_r05_altD_Culvert_Full') || (id == 'tmc_r01_altA_Culvert') 
-  || (id == 'mc_r01_altB_Culvert') || (id == 'tmc_r02_altA_Culvert') || (id == 'tmc_r02_altB_Culvert') || (id == 'tmc_r03_altA_Culvert')
+  || (id == 'tmc_r01_altB_Culvert') || (id == 'tmc_r02_altA_Culvert') || (id == 'tmc_r02_altB_Culvert') || (id == 'tmc_r03_altA_Culvert')
   || (id == 'tmc_r03_altC_Culvert') || (id == 'tmc_r03_altD_Culvert') || (id == 'tmc_r04_altA_Culvert') || (id == 'tmc_r04_altB_Culvert')){
         var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)
