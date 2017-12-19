@@ -3140,7 +3140,8 @@ document.getElementById('TMC_Zoom').addEventListener('click', function() {
 // When a click event occurs near the feature open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs','COB_Easements', '2016_SWMP','ugc_r01_altA_detention', 'ugc_r06_altA_Outfall', 'ugc_r05_altC_Channel', 'ugc_r05_altD_Channel'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs','COB_Easements', '2016_SWMP','ugc_r01_altA_detention', 'ugc_r06_altA_Outfall', 'ugc_r05_altC_Channel', 'ugc_r05_altD_Channel' , 'tmc_r04_altB_Culvert', 'ugc_r05_altC_Culvert_Detained', 'ugc_r05_altD_Culvert_Full', 'tmc_r01_altA_Culvert', 'tmc_r01_altB_Culvert', 'tmc_r02_altA_Culvert', 'tmc_r02_altB_Culvert', 
+'tmc_r03_altA_Culvert', 'tmc_r03_altB_Culvert' ,'tmc_r03_altC_Culvert' ,'tmc_r03_altD_Culvert', 'tmc_r04_altA_Culvert', 'tmc_r04_altB_Culvert' ] });
   if (!featureList.length) {
       return;
   }
@@ -3158,12 +3159,24 @@ map.on('click', function (k) {
             .addTo(map);
           }
 
-     if ((id == 'ugc_r01_altA_detention') || (id == 'ugc_r06_altA_Outfall') (id == 'ugc_r05_altC_Channel') || (id == 'ugc_r05_altD_Channel')){
+     if ((id == 'ugc_r01_altA_detention') || (id == 'ugc_r06_altA_Outfall') || (id == 'ugc_r05_altC_Channel') || (id == 'ugc_r05_altD_Channel')){
         var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)
             .setHTML('ELEVATION: ' + feature.properties.ELEVATION + ' ft')
             .addTo(map);
           }
+
+    if ((id == 'tmc_r04_altB_Culvert') || (id == 'ugc_r05_altC_Culvert_Detained') || (id == 'ugc_r05_altD_Culvert_Full') || (id == 'tmc_r01_altA_Culvert') 
+  || (id == 'mc_r01_altB_Culvert') || (id == 'tmc_r02_altA_Culvert') || (id == 'tmc_r02_altB_Culvert') || (id == 'tmc_r03_altA_Culvert')
+  || (id == 'tmc_r03_altC_Culvert') || (id == 'tmc_r03_altD_Culvert') || (id == 'tmc_r04_altA_Culvert') || (id == 'tmc_r04_altB_Culvert')){
+        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+           .setHTML('Existing Size: ' + feature.properties.Ex_Size)
+ 
+            .addTo(map);
+          }
+
+
 
      if (id == 'COB_Easements'){
         var popup = new mapboxgl.Popup()
@@ -3193,7 +3206,8 @@ map.on('click', function (k) {
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (k) {
-    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs', 'COB_Easements', '2016_SWMP','ugc_r01_altA_detention', 'ugc_r06_altA_Outfall', 'ugc_r05_altC_Channel', 'ugc_r05_altD_Channel'] });
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs', 'COB_Easements', '2016_SWMP','ugc_r01_altA_detention', 'ugc_r06_altA_Outfall', 'ugc_r05_altC_Channel', 'ugc_r05_altD_Channel','tmc_r04_altB_Culvert', 'ugc_r05_altC_Culvert_Detained', 'ugc_r05_altD_Culvert_Full', 'tmc_r01_altA_Culvert', 'tmc_r01_altB_Culvert', 'tmc_r02_altA_Culvert', 'tmc_r02_altB_Culvert', 
+'tmc_r03_altA_Culvert', 'tmc_r03_altB_Culvert' ,'tmc_r03_altC_Culvert' ,'tmc_r03_altD_Culvert', 'tmc_r04_altA_Culvert', 'tmc_r04_altB_Culvert' ] });
     map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
 });
 
