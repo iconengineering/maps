@@ -193,21 +193,51 @@
 
 
         <!--R2--> 
-            <p class="grey-text text-darken-2 note">
+            <p class="grey-text text-darken-2 note2">
                  Reach 02 - Linden Avenue to Broadway
             </p>  
            
-            <p class = "indent">
-              <input name= "TMC_Menu_R2_AltA" type="checkbox" id="TMC_Menu_R2_AltA" class="layer-off" onclick="toggleTwo('tmc_r02_altA_Culvert', 'tmc_r02_altA_Channel' )" />
-              <label for="TMC_Menu_R2_AltA" class="valign">Alt A</label>
-            </p>       
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R2_AltA">
+                <input type="checkbox" id="TMC_Menu_R2_AltA" class="mdl-switch__input layer-off" onclick="toggleThree('tmc_r02_altA_Channel', 'tmc_r02_altA_Wall', 'tmc_r02_altA_Culvert' )" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt A
+            </span>
+          </p>
+            
+            <p class = "indent narrow">
+              <input name= "T_02_A_Struct" type="checkbox" id="T_02_A_Struct" class="layer-off"  onclick="toggleThree('tmc_r02_altA_struc1', 'tmc_r02_altA_struc2', 'tmc_r02_altA_struc3')"/>
+              <label for="T_02_A_Struct" class="valign">Removed Structures</label>
+            </p>
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R2_AltB" type="checkbox" id="TMC_Menu_R2_AltB" class="layer-off" onclick="toggleTwo('tmc_r02_altB_Culvert', 'tmc_r02_altB_Channel' )" />
-              <label for="TMC_Menu_R2_AltB" class="valign">Alt B</label>
-            </p>       
+            <p class = "indent narrow">
+              <input name= "T_02_A_Ease" type="checkbox" id="T_02_A_Ease" class="layer-off"  onclick="toggleLayer('tmc_r02_altA_Ease')"/>
+              <label for="T_02_A_Ease" class="valign">Easements</label>
+            </p>
 
 
+
+
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R2_AltB">
+                <input type="checkbox" id="TMC_Menu_R2_AltB" class="mdl-switch__input layer-off" onclick="toggleThree('tmc_r02_altB_Channel', 'tmc_r02_altB_Wall', 'tmc_r02_altB_Culvert')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt B
+            </span>
+          </p>
+              
+
+            <p class = "indent narrow">
+              <input name= "T_02_B_Struct" type="checkbox" id="T_02_B_Struct" class="layer-off"  onclick="toggleThree('tmc_r02_altA_struc1', 'tmc_r02_altA_struc2', 'tmc_r02_altA_struc3')"/>
+              <label for="T_02_B_Struct" class="valign">Removed Structures</label>
+            </p>
 
         <!--R3-->
             <p class="grey-text text-darken-2 note">
