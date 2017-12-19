@@ -122,10 +122,10 @@
               <label for="16SWMPMenu" class="valign">2016 MP Storm Drains</label>
             </p>
 
-           <!-- City of Boulder Easements -->
+           <!-- City of Boulder Drainage Acquisition Easements -->
             <p>
-              <input name="cobEase" type="checkbox" id="cobEase" class="layer-off" onclick="toggleTwo('COB_Easements', 'COB_EasementsBorder')"/>
-              <label for="cobEase" class="valign">City of Boulder Easements</label>
+              <input name="cobEase" type="checkbox" id="cobEase" class="layer-off" onclick="toggleTwo('COB_Drainage Acquisition Easements', 'COB_Drainage Acquisition EasementsBorder')"/>
+              <label for="cobEase" class="valign">City of Boulder Drainage Acquisition Easements</label>
             </p>
 
 
@@ -167,13 +167,13 @@
 
             <p class = "indent narrow">
               <input name= "T_01_A_Struct" type="checkbox" id="T_01_A_Struct" class="layer-off"  onclick="toggleThree('tmc_r01_altA_struc1', 'tmc_r01_altA_struc2', 'tmc_r01_altA_struc3')"/>
-              <label for="T_01_A_Struct" class="valign">Removed Structures</label>
+              <label for="T_01_A_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
             <p class = "indent narrow">
               <input name= "T_01_A_Ease" type="checkbox" id="T_01_A_Ease" class="layer-off"  onclick="toggleLayer('tmc_r01_altA_Ease')"/>
-              <label for="T_01_A_Ease" class="valign">Easements</label>
+              <label for="T_01_A_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -210,12 +210,12 @@
             
             <p class = "indent narrow">
               <input name= "T_02_A_Struct" type="checkbox" id="T_02_A_Struct" class="layer-off"  onclick="toggleThree('tmc_r02_altA_struc1', 'tmc_r02_altA_struc2', 'tmc_r02_altA_struc3')"/>
-              <label for="T_02_A_Struct" class="valign">Removed Structures</label>
+              <label for="T_02_A_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
             <p class = "indent narrow">
               <input name= "T_02_A_Ease" type="checkbox" id="T_02_A_Ease" class="layer-off"  onclick="toggleLayer('tmc_r02_altA_Ease')"/>
-              <label for="T_02_A_Ease" class="valign">Easements</label>
+              <label for="T_02_A_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -236,33 +236,107 @@
 
             <p class = "indent narrow">
               <input name= "T_02_B_Struct" type="checkbox" id="T_02_B_Struct" class="layer-off"  onclick="toggleThree('tmc_r02_altA_struc1', 'tmc_r02_altA_struc2', 'tmc_r02_altA_struc3')"/>
-              <label for="T_02_B_Struct" class="valign">Removed Structures</label>
+              <label for="T_02_B_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
+
+
+
+
+
 
         <!--R3-->
             <p class="grey-text text-darken-2 note">
                  Reach 03 - Broadway to 19th Street
             </p> 
             
-            <p class = "indent">
-              <input name= "TMC_Menu_R3_AltA" type="checkbox" id="TMC_Menu_R3_AltA" class="layer-off" onclick="toggleTwo('tmc_r03_altA_Culvert', 'tmc_r03_altA_Channel' )" />
-              <label for="TMC_Menu_R3_AltA" class="valign">Alt A</label>
-            </p>       
+     
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R3_AltA">
+                <input type="checkbox" id="TMC_Menu_R3_AltA" class="mdl-switch__input layer-off" onclick="toggleThree('tmc_r03_altA_Channel', 'tmc_r03_altA_Wall', 'tmc_r03_altA_Culvert')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt A
+            </span>
+          </p>
+              
+            <p class = "indent narrow">
+              <input name= "T_03_A_Struct" type="checkbox" id="T_03_A_Struct" class="layer-off"  onclick="toggleThree('tmc_r03_altA_struc1', 'tmc_r03_altA_struc2', 'tmc_r03_altA_struc3')"/>
+              <label for="T_03_A_Struct" class="valign">Removed Structures from Floodplain</label>
+            </p>
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R3_AltB" type="checkbox" id="TMC_Menu_R3_AltB" class="layer-off" onclick="toggleLayer('tmc_r03_altB_Culvert' )" />
-              <label for="TMC_Menu_R3_AltB" class="valign">Alt B</label>
-            </p>   
+            <p class = "indent narrow">
+              <input name= "T_03_A_Ease" type="checkbox" id="T_03_A_Ease" class="layer-off"  onclick="toggleLayer('tmc_r03_altA_Ease')"/>
+              <label for="T_03_A_Ease" class="valign">Drainage Acquisition Easements</label>
+            </p>
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R3_AltC" type="checkbox" id="TMC_Menu_R3_AltC" class="layer-off" onclick="toggleTwo('tmc_r03_altC_Culvert', 'tmc_r03_altC_Channel' )" />
-              <label for="TMC_Menu_R3_AltC" class="valign">Alt C</label>
-            </p>   
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R3_AltD" type="checkbox" id="TMC_Menu_R3_AltD" class="layer-off" onclick="toggleFour('tmc_r03_altD_Pipe', 'tmc_r03_altD_Channel', 'tmc_r03_altD_outfall', 'tmc_r03_altD_detention' )" />
-              <label for="TMC_Menu_R3_AltD" class="valign">Alt D</label>
-            </p>   
+
+
+
+         <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R3_AltB">
+                <input type="checkbox" id="TMC_Menu_R3_AltB" class="mdl-switch__input layer-off" onclick="toggleTwo('tmc_r03_altB_Channel', 'tmc_r03_altB_Culvert')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt B
+            </span>
+          </p>
+              
+
+            <p class = "indent narrow">
+              <input name= "T_03_B_Struct" type="checkbox" id="T_03_B_Struct" class="layer-off"  onclick="toggleThree('tmc_r03_altB_struc1', 'tmc_r03_altB_struc2', 'tmc_r03_altB_struc3')"/>
+              <label for="T_03_B_Struct" class="valign">Removed Structures from Floodplain</label>
+            </p>
+
+            <p class = "indent narrow">
+              <input name= "T_03_B_Ease" type="checkbox" id="T_03_B_Ease" class="layer-off"  onclick="toggleLayer('tmc_r03_altB_Ease')"/>
+              <label for="T_03_B_Ease" class="valign">Drainage Acquisition Easements</label>
+            </p>
+
+
+
+      
+         <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R3_AltC">
+                <input type="checkbox" id="TMC_Menu_R3_AltC" class="mdl-switch__input layer-off" onclick="toggleTwo('tmc_r03_altC_Channel', 'tmc_r03_altC_Culvert')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt C
+            </span>
+          </p>
+              
+
+            <p class = "indent narrow">
+              <input name= "T_03_C_Ease" type="checkbox" id="T_03_C_Ease" class="layer-off"  onclick="toggleLayer('tmc_r03_altC_Ease')"/>
+              <label for="T_03_C_Ease" class="valign">Drainage Acquisition Easements</label>
+            </p>
+
+
+         <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R3_AltD">
+                <input type="checkbox" id="TMC_Menu_R3_AltD" class="mdl-switch__input layer-off" onclick="toggleFour('tmc_r03_altD_Culvert', 'tmc_r03_altD_Channel', 'tmc_r03_altD_outfall', 'tmc_r03_altD_detention' )" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt C
+            </span>
+          </p>
+              
+
+
+            <p class = "indent narrow">
+              <input name= "T_03_D_Ease" type="checkbox" id="T_03_D_Ease" class="layer-off"  onclick="toggleLayer('tmc_r03_altD_Ease')"/>
+              <label for="T_03_D_Ease" class="valign">Drainage Acquisition Easements</label>
+            </p>
+
+
 
 
 
@@ -272,26 +346,72 @@
                  Reach 04 - 19th Street to Elmer's Twomile Creek/Goose Creek
             </p>
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R4_AltA" type="checkbox" id="TMC_Menu_R4_AltA" class="layer-off" onclick="toggleTwo('tmc_r04_altA_Roadway', 'tmc_r04_altA_Roadway2' )" />
-              <label for="TMC_Menu_R4_AltA" class="valign">Alt A</label>
-            </p>  
+             
+         <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R4_AltA">
+                <input type="checkbox" id="TMC_Menu_R4_AltA" class="mdl-switch__input layer-off" onclick="toggleLayer('tmc_r04_altA_Culvert')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt A
+            </span>
+          </p>
+              
+ 
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R4_AltB" type="checkbox" id="TMC_Menu_R4_AltB" class="layer-off" onclick="toggleTwo('tmc_r04_altB_Culvert', 'tmc_r04_altB_Channel' )" />
-              <label for="TMC_Menu_R4_AltB" class="valign">Alt B</label>
-            </p>       
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R4_AltB">
+                <input type="checkbox" id="TMC_Menu_R4_AltB" class="mdl-switch__input layer-off" onclick="toggleTwo('tmc_r04_altB_Culvert', 'tmc_04_altB_Channel')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt B
+            </span>
+          </p>
+              
+ 
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R4_AltC" type="checkbox" id="TMC_Menu_R4_AltC" class="layer-off" onclick="toggleLayer('tmc_r04_altC_StormDrain_Detained')" />
-              <label for="TMC_Menu_R4_AltC" class="valign">Alt C</label>
-            </p>   
+            <p class = "indent narrow">
+              <input name= "T_04_B_Struct" type="checkbox" id="T_04_B_Struct" class="layer-off"  onclick="toggleThree('tmc_r04_altB_struc1', 'tmc_r04_altB_struc2', 'tmc_r04_altB_struc3')"/>
+              <label for="T_04_B_Struct" class="valign">Removed Structures from Floodplain</label>
+            </p>
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R4_AltD" type="checkbox" id="TMC_Menu_R4_AltD" class="layer-off" onclick="toggleLayer('tmc_r04_altD_StormDrain_Full' )" />
-              <label for="TMC_Menu_R4_AltD" class="valign">Alt D</label>
-            </p>   
+            <p class = "indent narrow">
+              <input name= "T_04_B_Ease" type="checkbox" id="T_04_B_Ease" class="layer-off"  onclick="toggleLayer('tmc_r04_altB_Ease')"/>
+              <label for="T_04_B_Ease" class="valign">Drainage Acquisition Easements</label>
+            </p>
 
+
+
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R4_AltC">
+                <input type="checkbox" id="TMC_Menu_R4_AltC" class="mdl-switch__input layer-off" onclick="toggleLayer('tmc_r04_altC_StormDrain_Detained')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt C
+            </span>
+          </p>
+              
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R4_AltD">
+                <input type="checkbox" id="TMC_Menu_R4_AltD" class="mdl-switch__input layer-off" onclick="toggleLayer('tmc_r04_altD_StormDrain_Full')" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt C
+            </span>
+          </p>
+              
+ 
+
+ 
 
          </div>
       </li> 
@@ -337,7 +457,7 @@
 
             <p class = "indent narrow">
               <input name= "01_B_Ease" type="checkbox" id="01_B_Ease" class="layer-off" onclick="toggleLayer('ugc_r01_altA_ease')" />
-              <label for="01_B_Ease" class="valign">Easements</label>
+              <label for="01_B_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -375,12 +495,12 @@
 
             <p class = "indent narrow">
               <input name= "02_AB_Struct" type="checkbox" id="02_AB_Struct" class="layer-off"  onclick="toggleThree('ugc_r02_altAB_struc1', 'ugc_r02_altAB_struc2', 'ugc_r02_altAB_struc3')"/>
-              <label for="02_AB_Struct" class="valign">Removed Structures</label>
+              <label for="02_AB_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
             <p class = "indent narrow">
               <input name= "02_AB_Ease" type="checkbox" id="02_AB_Ease" class="layer-off"  onclick="toggleLayer('ugc_r02_altAB_ease')"/>
-              <label for="02_AB_Ease" class="valign">Easements</label>
+              <label for="02_AB_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -400,12 +520,12 @@
 
             <p class = "indent narrow">
               <input name= "02_B_Struct" type="checkbox" id="02_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r02_altAB_struc1', 'ugc_r02_altAB_struc2', 'ugc_r02_altAB_struc3')"/>
-              <label for="02_B_Struct" class="valign">Removed Structures</label>
+              <label for="02_B_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
             <p class = "indent narrow">
               <input name= "02_AB_Ease" type="checkbox" id="02_B_Ease" class="layer-off"  onclick="toggleLayer('ugc_r02_altAB_ease')"/>
-              <label for="02_B_Ease" class="valign">Easements</label>
+              <label for="02_B_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -435,7 +555,7 @@
 
             <p class = "indent narrow">
               <input name= "03_A_Struct" type="checkbox" id="03_A_Struct" class="layer-off"  onclick="toggleThree('ugc_r03_altAB_struc1', 'ugc_r03_altAB_struc2', 'ugc_r03_altAB_struc3')"/>
-              <label for="03_A_Struct" class="valign">Removed Structures</label>
+              <label for="03_A_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -453,7 +573,7 @@
 
             <p class = "indent narrow">
               <input name= "03_B_Struct" type="checkbox" id="03_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r03_altAB_struc1', 'ugc_r03_altAB_struc2', 'ugc_r03_altAB_struc3')"/>
-              <label for="03_B_Struct" class="valign">Removed Structures</label>
+              <label for="03_B_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -483,7 +603,7 @@
 
             <p class = "indent narrow">
               <input name= "04_A_Struct" type="checkbox" id="04_A_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
-              <label for="04_A_Struct" class="valign">Removed Structures</label>
+              <label for="04_A_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -503,7 +623,7 @@
 
             <p class = "indent narrow">
               <input name= "04_B_Struct" type="checkbox" id="04_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
-              <label for="04_B_Struct" class="valign">Removed Structures</label>
+              <label for="04_B_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -520,13 +640,13 @@
 
             <p class = "indent narrow">
               <input name= "04_C_Struct" type="checkbox" id="04_C_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
-              <label for="04_C_Struct" class="valign">Removed Structures</label>
+              <label for="04_C_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
             <p class = "indent narrow">
               <input name= "04_C_Ease" type="checkbox" id="04_C_Ease" class="layer-off"  onclick="toggleLayer('ugc_r04_altCD_ease')"/>
-              <label for="04_C_Ease" class="valign">Easements</label>
+              <label for="04_C_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -556,13 +676,13 @@
 
             <p class = "indent narrow">
               <input name= "04_D_Struct" type="checkbox" id="04_D_Struct" class="layer-off"  onclick="toggleThree('ugc_r04_altABCD_struc1', 'ugc_r04_altABCD_struc2', 'ugc_r04_altABCD_struc3')"/>
-              <label for="04_D_Struct" class="valign">Removed Structures</label>
+              <label for="04_D_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
             <p class = "indent narrow">
               <input name= "04_D_Ease" type="checkbox" id="04_D_Ease" class="layer-off"  onclick="toggleLayer('ugc_r04_altCD_ease')"/>
-              <label for="04_D_Ease" class="valign">Easements</label>
+              <label for="04_D_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
 
@@ -607,7 +727,7 @@
 
             <p class = "indent narrow">
               <input name= "05_A_Struct" type="checkbox" id="05_A_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
-              <label for="05_A_Struct" class="valign">Removed Structures</label>
+              <label for="05_A_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -626,7 +746,7 @@
 
             <p class = "indent narrow">
               <input name= "05_B_Struct" type="checkbox" id="05_B_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
-              <label for="05_B_Struct" class="valign">Removed Structures</label>
+              <label for="05_B_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -645,7 +765,7 @@
 
             <p class = "indent narrow">
               <input name= "05_C_Struct" type="checkbox" id="05_C_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
-              <label for="05_C_Struct" class="valign">Removed Structures</label>
+              <label for="05_C_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -665,7 +785,7 @@
 
             <p class = "indent narrow">
               <input name= "05_D_Struct" type="checkbox" id="05_D_Struct" class="layer-off"  onclick="toggleThree('ugc_r05_altABCD_struc1', 'ugc_r05_altABCD_struc2', 'ugc_r05_altABCD_struc3')"/>
-              <label for="05_D_Struct" class="valign">Removed Structures</label>
+              <label for="05_D_Struct" class="valign">Removed Structures from Floodplain</label>
             </p>
 
 
@@ -694,7 +814,7 @@
 
             <p class = "indent narrow">
               <input name= "06_A_Ease" type="checkbox" id="06_A_Ease" class="layer-off"onclick="toggleLayer('ugc_r06_altA_ease')" />
-              <label for="06_A_Ease" class="valign">Easements</label>
+              <label for="06_A_Ease" class="valign">Drainage Acquisition Easements</label>
             </p>
 
           

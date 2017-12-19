@@ -117,7 +117,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('tmc_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'ugc_tmc_polyline_merge.geojson'    
+      'data': 'tmc_polyline_merge.geojson'    
     }); 
 
 
@@ -1882,6 +1882,7 @@ map.on('style.load', function () {
     id: 'tmc_r02_altA_struc1',
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+     type: 'fill',
     filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],
     layout: {
         'visibility': 'none'
@@ -1928,6 +1929,10 @@ map.on('style.load', function () {
        },
       'layout': {'visibility': 'none'}
     },'road-label-small');
+
+
+
+
 
 
 
@@ -2003,6 +2008,60 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+//struct area
+    map.addLayer({
+    id: 'tmc_r02_altB_struc1',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+     type: 'fill',
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+  id: 'tmc_r02_altB_struc2',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],
+      type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+//struct Border
+    map.addLayer({
+    id: 'tmc_r02_altB_struc3',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2' ,
+      'type': 'line',
+  filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],     
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
 
 
 
@@ -2016,7 +2075,7 @@ map.on('style.load', function () {
     id: 'tmc_r03_altA_Channel',
     source: 'tmc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -2025,9 +2084,6 @@ map.on('style.load', function () {
         'paint': {
           'line-width': {
                "stops": [[15, 0.25], [17, 0.6], [19, 1]]
-          },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
           },
         'line-color': '#FF203F',
          
@@ -2042,7 +2098,7 @@ map.on('style.load', function () {
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03'], ['==', 'Type', 'Culvert']],
     layout: {
         'visibility': 'none'
       },
@@ -2053,13 +2109,106 @@ map.on('style.load', function () {
     }
   }, 'road-label-small');
 
-/*
+
+// ---- TMC Reach 02 Alt B Wall
+    map.addLayer({
+    id: 'tmc_r03_altA_Wall',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+    type: 'fill',
+    filter: ["all",['==', 'Reach', '03'],['==','Alt', 'A'],['==', "Type", 'Wall']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.95,
+        'fill-color': '#091A21',
+        'fill-outline-color': '#091A21'
+    }
+  }, 'road-label-small');
+
+
+    map.addLayer({
+    id: 'tmc_r03_altA_Ease',
+    source: 'tmc_mitigation_linework',  
+       filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+//struct area
+    map.addLayer({
+    id: 'tmc_r03_altA_struc1',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+     type: 'fill',
+    filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+  id: 'tmc_r03_altA_struc2',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+    filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],
+      type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+//struct Border
+    map.addLayer({
+    id: 'tmc_r03_altA_struc3',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2' ,
+      'type': 'line',
+  filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],     
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+
+
+
+
+
+
 // ---- TMC Reach 03 Alt B Channel 
     map.addLayer({
     id: 'tmc_r03_altB_Channel',
     source: 'tmc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -2069,23 +2218,20 @@ map.on('style.load', function () {
           'line-width': {
                "stops": [[15, 0.25], [17, 0.6], [19, 1]]
           },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
         'line-color': '#FF203F',
          
       }
    
   }, 'road-label-small');
-*/
 
-// ---- TMC Reach 03 Alt B Culvert
+
+// ---- TMC Reach 03 Alt A Culvert
     map.addLayer({
     id: 'tmc_r03_altB_Culvert',
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03'], ['==', 'Type', 'Culvert']],
     layout: {
         'visibility': 'none'
       },
@@ -2095,6 +2241,83 @@ map.on('style.load', function () {
         'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'tmc_r03_altB_Ease',
+    source: 'tmc_mitigation_linework',  
+       filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+//struct area
+    map.addLayer({
+    id: 'tmc_r03_altB_struc1',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+     type: 'fill',
+    filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+  id: 'tmc_r03_altB_struc2',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+    filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],
+      type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+//struct Border
+    map.addLayer({
+    id: 'tmc_r03_altB_struc3',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2' ,
+      'type': 'line',
+  filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],     
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+
+
 
 
 // ---- TMC Reach 03 Alt C Channel 
@@ -2102,7 +2325,7 @@ map.on('style.load', function () {
     id: 'tmc_r03_altC_Channel',
     source: 'tmc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -2112,14 +2335,12 @@ map.on('style.load', function () {
           'line-width': {
                "stops": [[15, 0.25], [17, 0.6], [19, 1]]
           },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
         'line-color': '#FF203F',
          
       }
    
   }, 'road-label-small');
+
 
 
 // ---- TMC Reach 03 Alt C Culvert
@@ -2128,7 +2349,7 @@ map.on('style.load', function () {
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03'], ['==', 'Type', 'Culvert']],
     layout: {
         'visibility': 'none'
       },
@@ -2138,6 +2359,25 @@ map.on('style.load', function () {
         'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+
+    map.addLayer({
+    id: 'tmc_r03_altC_Ease',
+    source: 'tmc_mitigation_linework',  
+       filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
 
 
 
@@ -2151,7 +2391,7 @@ map.on('style.load', function () {
     id: 'tmc_r03_altD_Channel',
     source: 'tmc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Detention']],
+    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -2161,9 +2401,7 @@ map.on('style.load', function () {
           'line-width': {
                "stops": [[15, 0.25], [17, 0.6], [19, 1]]
           },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
+
         'line-color': '#FF203F',
          
       }
@@ -2171,22 +2409,26 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
-// ---- TMC Reach 03 Alt D Pipe
+
+// ---- TMC Reach 03 Alt D Culvert
     map.addLayer({
-    id: 'tmc_r03_altD_Pipe',
+    id: 'tmc_r03_altD_Culvert',
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03']],
+    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'], ['==', 'Type', 'Culvert']],
     layout: {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.8,
-        'fill-color': '#4F2F1C',
-        'fill-outline-color': '#362013'
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+
 
 
 // ---- TMC Reach 03 Alt D Detention
@@ -2204,9 +2446,6 @@ map.on('style.load', function () {
         'line-width': {
             "stops": [[15, 0.25], [17, 0.75], [19, 1 ]]
         },
-        'line-opacity': {
-            "stops": [[16, 0.7],[19, 1]]
-        },
         'line-color': '#FF00C3', 
           
       }
@@ -2214,12 +2453,14 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+
+
 // ---- TMC Reach 03 Alt D Outfall 
     map.addLayer({
     id: 'tmc_r03_altD_outfall',
     source: 'tmc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Outfall']],
+    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Storm Drain']],
     layout: {
       'visibility': 'none',
     },
@@ -2234,48 +2475,69 @@ map.on('style.load', function () {
 
 
 
-
-
-
-// ---- TMC Reach 04 Alt A Roadwork
     map.addLayer({
-    id: 'tmc_r04_altA_Roadway2',
+    id: 'tmc_r03_altD_Ease',
+    source: 'tmc_mitigation_linework',  
+       filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---- TMC Reach 04 Alt A Culvert
+    map.addLayer({
+    id: 'tmc_r04_altA_Culvert',
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '04'], ['==', 'Type', 'Culvert']],
     layout: {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.25,
-        'fill-color': '#00FF33',
-        'fill-outline-color': '#00FF33'
-    }
-  }, 'road-label-small');    
-
-    map.addLayer({
-    id: 'tmc_r04_altA_Roadway',
-    source: 'tmc_mitigation_polygonwork',
-    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
-    type: 'fill',
-    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '04']],
-    layout: {
-        'visibility': 'none'
-      },
-    paint: {
-        'fill-opacity': 0.5,
-        'fill-pattern': 'bluegreystripe',
-        'fill-outline-color': '#00FF33'
+        'fill-opacity': 0.95,
+        'fill-color': '#b1a200',
+        'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ---- TMC Reach 04 Alt B Channel 
     map.addLayer({
     id: 'tmc_r04_altB_Channel',
     source: 'tmc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04'], ['==', 'Type', 'Contour']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -2285,9 +2547,7 @@ map.on('style.load', function () {
           'line-width': {
                "stops": [[15, 0.25], [17, 0.6], [19, 1]]
           },
-          'line-opacity': {
-              "stops": [[16, 0.7],[19, 1]]
-          },
+
         'line-color': '#FF203F',
          
       }
@@ -2301,7 +2561,7 @@ map.on('style.load', function () {
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2', 
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04'], ['==', 'Type', 'Culvert']],
     layout: {
         'visibility': 'none'
       },
@@ -2311,6 +2571,79 @@ map.on('style.load', function () {
         'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+    map.addLayer({
+    id: 'tmc_r04_altB_Ease',
+    source: 'tmc_mitigation_linework',  
+       filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04'], ['==', 'Type', 'Easement']],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+//struct area
+    map.addLayer({
+    id: 'tmc_r04_altB_struc1',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+     type: 'fill',
+    filter: ["all",['==', 'Reach', '04'],['==', 'Alt', 'B'],['==', 'Type', "Structure Protected"]],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+  id: 'tmc_r04_altB_struc2',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
+    filter: ["all",['==', 'Reach', '04'],['==', 'Alt', 'B'],['==', 'Type', "Structure Protected"]],
+      type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+//struct Border
+    map.addLayer({
+    id: 'tmc_r04_altB_struc3',
+    source: 'tmc_mitigation_polygonwork',
+    'source-layer': 'ugc_tmc_polygon_merge-b4mlf2' ,
+      'type': 'line',
+    filter: ["all",['==', 'Reach', '04'],['==', 'Alt', 'B'],['==', 'Type', "Structure Protected"]],    
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+
+
 
 
 
