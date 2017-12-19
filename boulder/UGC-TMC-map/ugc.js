@@ -117,7 +117,7 @@ map.on('style.load', function () {
     // Mitigation Polyline
     map.addSource('tmc_mitigation_linework', {           
       'type': 'geojson',
-      'data': 'tmc_polyline_merge.geojson'    
+      'data': 'tmc_polyline_merge2.geojson'    
     }); 
 
 
