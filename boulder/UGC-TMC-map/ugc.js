@@ -116,8 +116,8 @@ map.on('style.load', function () {
  
     // Mitigation Polyline
     map.addSource('tmc_mitigation_linework', {           
-      'type': 'geojson',
-      'data': 'tmc_polyline_merge2.geojson'    
+      'type': 'vector',
+      'url': 'mapbox://iconeng.8x2g3rup'    //ugc_tmc_polyline_merge-61lami
     }); 
 
 
@@ -1604,6 +1604,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r01_altA_Channel',
     source: 'tmc_mitigation_linework', 
+       'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Contour']],
        layout: {
@@ -1629,6 +1630,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r01_altA_Ease',
     source: 'tmc_mitigation_linework',  
+       'source-layer':'ugc_tmc_polyline_merge-61lami',
        filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
       'paint': {
@@ -1767,6 +1769,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r01_altB_detention',
     source: 'tmc_mitigation_linework', 
+    'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'B']],
     layout: {
@@ -1804,6 +1807,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r02_altA_Channel',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02'], ['==', 'Type', 'Contour']],
        layout: {
@@ -1864,6 +1868,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r02_altA_Ease',
     source: 'tmc_mitigation_linework',  
+       'source-layer':'ugc_tmc_polyline_merge-61lami',
        filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '02'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
       'paint': {
@@ -1954,6 +1959,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r02_altB_Channel',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '02'], ['==', 'Type', 'Contour']],
        layout: {
@@ -2074,6 +2080,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altA_Channel',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
@@ -2130,6 +2137,7 @@ map.on('style.load', function () {
 
     map.addLayer({
     id: 'tmc_r03_altA_Ease',
+    'source-layer':'ugc_tmc_polyline_merge-61lami',
     source: 'tmc_mitigation_linework',  
        filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
@@ -2206,6 +2214,7 @@ map.on('style.load', function () {
 // ---- TMC Reach 03 Alt B Channel 
     map.addLayer({
     id: 'tmc_r03_altB_Channel',
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     source: 'tmc_mitigation_linework', 
     type: 'line',
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
@@ -2246,6 +2255,7 @@ map.on('style.load', function () {
 
     map.addLayer({
     id: 'tmc_r03_altB_Ease',
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     source: 'tmc_mitigation_linework',  
        filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
@@ -2324,6 +2334,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altC_Channel',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
@@ -2365,6 +2376,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altC_Ease',
     source: 'tmc_mitigation_linework',  
+       'source-layer':'ugc_tmc_polyline_merge-61lami',
        filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
       'paint': {
@@ -2390,6 +2402,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altD_Channel',
     source: 'tmc_mitigation_linework', 
+    'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Contour']],
        layout: {
@@ -2435,6 +2448,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altD_detention',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Detention']],
     layout: {
@@ -2459,6 +2473,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altD_outfall',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'],['==', 'Type', 'Storm Drain']],
     layout: {
@@ -2478,6 +2493,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r03_altD_Ease',
     source: 'tmc_mitigation_linework',  
+        'source-layer':'ugc_tmc_polyline_merge-61lami',
        filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '03'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
       'paint': {
@@ -2536,6 +2552,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r04_altB_Channel',
     source: 'tmc_mitigation_linework', 
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04'], ['==', 'Type', 'Contour']],
        layout: {
@@ -2576,6 +2593,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r04_altB_Ease',
     source: 'tmc_mitigation_linework',  
+       'source-layer':'ugc_tmc_polyline_merge-61lami',
        filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04'], ['==', 'Type', 'Easement']],   
       'type': 'line',        
       'paint': {
@@ -2655,6 +2673,7 @@ map.on('style.load', function () {
     map.addLayer({
     id: 'tmc_r04_altC_StormDrain_Detained',
     source: 'tmc_mitigation_linework', 
+    'source-layer':'ugc_tmc_polyline_merge-61lami',
     type: 'line',
     filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '04']],
     layout: {
@@ -2673,6 +2692,7 @@ map.on('style.load', function () {
 // ---- TMC Reach 04 Alt D Strom Drain Full Flow
     map.addLayer({
     id: 'tmc_r04_altD_StormDrain_Full',
+     'source-layer':'ugc_tmc_polyline_merge-61lami',
     source: 'tmc_mitigation_linework', 
     type: 'line',
     filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '04']],
