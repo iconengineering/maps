@@ -1685,7 +1685,7 @@ map.on('style.load', function () {
     id: 'tmc_r01_altA_struc1',
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
-    filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'A B']],
+    filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'A'],['==', 'Type', 'Structure Protected']],
     type: 'fill',
     layout: {
         'visibility': 'none'
@@ -1703,7 +1703,7 @@ map.on('style.load', function () {
   id: 'tmc_r01_altA_struc2',
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
-    filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'A B']],
+    filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'A'],['==', 'Type', 'Structure Protected']],
       type: 'fill',
     layout: {
         'visibility': 'none'
@@ -1724,7 +1724,7 @@ map.on('style.load', function () {
     source: 'tmc_mitigation_polygonwork',
     'source-layer': 'ugc_tmc_polygon_merge-b4mlf2',
       'type': 'line',
-    filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'A B']],
+    filter: ["all",['==', 'Reach', '01'],['==', 'Alt', 'A'],['==', 'Type', 'Structure Protected']],
       'paint': {
          'line-width': 2.3,
          'line-color': '#FFFF4B', 
