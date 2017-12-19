@@ -121,9 +121,22 @@
 
            <!-- 2011 Greenways Master Plan  -->
             <p>
-              <input name="greenMenu" type="checkbox" id="greenMenu" class="layer-off" onclick="toggleThree('restorArea', 'propTrails', 'dayLightOpp')"/>
-              <label for="greenMenu" class="valign">2011 Greenways MP</label>
+              <input name="greenMenu" type="checkbox" id="greenMenu" class="layer-off" onclick="toggleFive('restorArea', 'restorAreaBorder', 'restorAreaFill', 'propTrails', 'dayLightOpp')"/>
+              <label for="greenMenu" class="valign">2011 Greenways Master Plan</label>
             </p>
+
+           <!-- 2016 MP Storm Drains  -->
+            <p>
+              <input name="16SWMPMenu" type="checkbox" id="16SWMPMenu" class="layer-off" onclick="toggleLayer('2016_SWMP')"/>
+              <label for="16SWMPMenu" class="valign">2016 MP Storm Drains</label>
+            </p>
+
+           <!-- City of Boulder Easements -->
+            <p>
+              <input name="cobEase" type="checkbox" id="cobEase" class="layer-off" onclick="toggleTwo('COB_Easements', 'COB_EasementsBorder')"/>
+              <label for="cobEase" class="valign">City of Boulder Easments</label>
+            </p>
+
           </div>    
       </li>
       
