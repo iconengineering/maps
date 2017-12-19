@@ -115,6 +115,20 @@
               <input name="greenMenu" type="checkbox" id="greenMenu" class="layer-off" onclick="toggleFive('restorArea', 'restorAreaBorder', 'restorAreaFill', 'propTrails', 'dayLightOpp')"/>
               <label for="greenMenu" class="valign">2011 Greenways Master Plan</label>
             </p>
+
+           <!-- 2016 MP Storm Drains  -->
+            <p>
+              <input name="16SWMPMenu" type="checkbox" id="16SWMPMenu" class="layer-off" onclick="toggleLayer('2016_SWMP')"/>
+              <label for="16SWMPMenu" class="valign">2016 MP Storm Drains</label>
+            </p>
+
+           <!-- City of Boulder Easements -->
+            <p>
+              <input name="cobEase" type="checkbox" id="cobEase" class="layer-off" onclick="toggleTwo('COB_Easements', 'COB_EasementsBorder')"/>
+              <label for="cobEase" class="valign">City of Boulder Easments</label>
+            </p>
+
+
           </div>    
       </li>
 <!-- ******************************************************************************************************************** -->
@@ -266,12 +280,12 @@
             </p> 
 
             <p class = "indent">
-              <input name= "UGC_Menu_R2_AltA" type="checkbox" id="UGC_Menu_R2_AltA" class="layer-off" onclick="toggleLayer('ugc_r02_altA_OpenChannel_Detained')" />
+              <input name= "UGC_Menu_R2_AltA" type="checkbox" id="UGC_Menu_R2_AltA" class="layer-off" onclick="toggleTwo('ugc_r02_altA_OpenChannel_Detained', 'ugc_r02_altA_OpenChannel_Detained2')" />
               <label for="UGC_Menu_R2_AltA" class="valign">Alt A</label>
             </p>
 
             <p class = "indent">
-              <input name= "UGC_Menu_R2_AltB" type="checkbox" id="UGC_Menu_R2_AltB" class="layer-off" onclick="toggleLayer('ugc_r02_altB_OpenChannel_Full')" />
+              <input name= "UGC_Menu_R2_AltB" type="checkbox" id="UGC_Menu_R2_AltB" class="layer-off" onclick="toggleTwo('ugc_r02_altB_OpenChannel_Full', 'ugc_r02_altB_OpenChannel_Full2')" />
               <label for="UGC_Menu_R2_AltB" class="valign">Alt B</label>
             </p>
 

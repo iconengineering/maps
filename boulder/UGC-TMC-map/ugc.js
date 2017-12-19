@@ -212,6 +212,20 @@ map.on('style.load', function () {
     }); 
 
     
+    //2016 STMP
+    map.addSource('2016_SWMP', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.5cb6ycsi'   //UGC_2016_MP_Storm_Drains-bi6jif
+    }); 
+
+
+    //COB Easements
+    map.addSource('COB_Easements', {
+      'type': 'vector',
+      'url': 'mapbox://iconeng.bq3zjosw'   //COB_easements_clipped-5txbl9
+    }); 
+
+
     //Daylight Opp
     map.addSource('dayLightOpp', {
       'type': 'vector',
@@ -375,6 +389,53 @@ map.on('style.load', function () {
         }
     },'road-label-small');
 
+
+  //Easement Fill
+    map.addLayer({
+    id: 'COB_Easements',
+    source: 'COB_Easements',
+    'source-layer': 'COB_easements_clipped-5txbl9', 
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#000',
+        'fill-outline-color': '#000'
+    }
+  }, 'road-label-small');
+
+    
+    //Ease Outline
+    map.addLayer({
+      'id': 'COB_EasementsBorder',                               
+      'source': 'COB_Easements',
+      'source-layer': 'COB_easements_clipped-5txbl9',     
+      'type': 'line',        
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#000', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+    //SWMP 2016
+    map.addLayer({
+      'id': '2016_SWMP',                               
+      'source': '2016_SWMP',
+      'source-layer': 'UGC_2016_MP_Storm_Drains-bi6jif',     
+      'type': 'line',        
+      'paint': {
+         'line-color': 'rgba(0,0,0,1)', 
+         'line-width': 3,
+         'line-opacity': 0.95,
+         'line-dasharray': [5,2.5],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
 
 
 
@@ -573,7 +634,7 @@ map.on('style.load', function () {
     id: 'ugc_r01_altA_outfall',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Outfall']],
+    filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Storm Drain']],
     layout: {
       'visibility': 'none',
     },
@@ -585,6 +646,27 @@ map.on('style.load', function () {
       
    
   }, 'road-label-small');
+
+
+
+    //UGC R01 Alt A Ease
+    map.addLayer({
+      'id': 'ugc_r01_altA_ease',                               
+      source: 'ugc_mitigation_linework',  
+       filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '01'], ['==', 'Type', 'Easement']],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
 
 
 // ---- UGC Reach 01 Alt B Outfall
@@ -605,22 +687,45 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+
+
+
+
+
+
 // ---- UGC Reach 02 Alt A Open Channel Detained Flow
     map.addLayer({
     id: 'ugc_r02_altA_OpenChannel_Detained',
     source: 'ugc_mitigation_polygonwork',
     'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
     type: 'fill',
-    filter: ['==', 'Reach', '02'],
+   filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A']],
     layout: {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.8,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-opacity': 0.2,
+        'fill-color': '#FF2034F',
+        'fill-outline-color': '#FF2034F'
     }
   }, 'road-label-small');
+
+    map.addLayer({
+    id: 'ugc_r02_altA_OpenChannel_Detained2',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'line',
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'line-opacity': 0.9,
+        'line-color': '#FF2034F',
+    }
+  }, 'road-label-small');
+
+
 
 
 // ---- UGC Reach 02 Alt B Open Channel FullFlow
@@ -629,16 +734,111 @@ map.on('style.load', function () {
     source: 'ugc_mitigation_polygonwork',
     'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
     type: 'fill',
-    filter: ['==', 'Reach', '02'],
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'B']],
     layout: {
         'visibility': 'none'
       },
     paint: {
-        'fill-opacity': 0.8,
-        'fill-color': '#b1a200',
-        'fill-outline-color': '#635B00'
+        'fill-opacity': 0.2,
+        'fill-color': '#FF2034F',
+        'fill-outline-color': '#FF2034F'
     }
   }, 'road-label-small');
+
+
+    map.addLayer({
+    id: 'ugc_r02_altB_OpenChannel_Full2',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'line',
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'B']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'line-opacity': 0.9,
+        'line-color': '#FF2034F',
+    }
+  }, 'road-label-small');
+
+
+
+//struct area
+    map.addLayer({
+    id: 'ugc_r02_altAB_struc1',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+    id: 'ugc_r02_altAB_struc2',
+     source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+    
+//struct Border
+
+    map.addLayer({
+      'id': 'ugc_r02_altAB_struc3',                               
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',   
+      'type': 'line',
+      filter: ["all",['==', 'Reach', '02'],['==', 'Alt', 'A B']],        
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+    //UGC R02 Alt A B Ease
+    map.addLayer({
+      'id': 'ugc_r02_altAB_ease',                               
+      source: 'ugc_mitigation_linework',  
+       filter: ['==', 'Reach', '02'],   
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+
+
 
 
 // ---- UGC Reach 03 Alt A Strom Drain Detained Flow
@@ -646,14 +846,12 @@ map.on('style.load', function () {
     id: 'ugc_r03_altA_StormDrain_Detained',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ['==', 'Reach', '03'],
+    filter: ["all",['==', 'Reach', '03'], ['==', 'Alt', 'A']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
          }, 
          
@@ -665,17 +863,72 @@ map.on('style.load', function () {
     id: 'ugc_r03_altB_StormDrain_Full',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ['==', 'Reach', '03'],
+    filter: ["all",['==', 'Reach', '03'], ['==', 'Alt', 'B']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
         },
   }, 'road-label-small');
+
+
+//struct area
+    map.addLayer({
+    id: 'ugc_r03_altAB_struc1',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+    id: 'ugc_r03_altAB_struc2',
+     source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+    
+//struct Border
+
+    map.addLayer({
+      'id': 'ugc_r03_altAB_struc3',                               
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',   
+      'type': 'line',
+      filter: ["all",['==', 'Reach', '03'],['==', 'Alt', 'A B']],        
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
 
 
 
@@ -692,11 +945,9 @@ map.on('style.load', function () {
     filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '04']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
         },
    
@@ -711,11 +962,9 @@ map.on('style.load', function () {
     filter: ["all",['==', 'Alt', 'B'],['==', 'Reach', '04']],
     layout: {
       'visibility': 'none',
-      'line-join': 'round',
-      'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
         },
 
@@ -727,7 +976,7 @@ map.on('style.load', function () {
     id: 'ugc_r04_altC_OpenChannel_Detained',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '04']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -753,7 +1002,7 @@ map.on('style.load', function () {
     id: 'ugc_r04_altD_OpenChannel_Full',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04']],
+    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '04']],
        layout: {
         'visibility': 'none',
          'line-join': 'round',
@@ -776,6 +1025,106 @@ map.on('style.load', function () {
 
 
 
+    //UGC R04 Alt C D Ease
+    map.addLayer({
+      'id': 'ugc_r04_altCD_ease',                               
+      source: 'ugc_mitigation_linework',  
+      filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04'], ['==','Type', 'Easement']],
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+    
+
+    //UGC R04 Alt C D Full Aq
+    map.addLayer({
+      'id': 'ugc_r04_altCD_aq',                               
+      source: 'ugc_mitigation_linework',  
+      filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '04'], ['==','Type', 'Aquisition']],
+      'type': 'line',        
+      'paint': {
+         'line-color': '#00FFCF', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+//struct area
+    map.addLayer({
+    id: 'ugc_r04_altABCD_struc1',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    filter: ["all",['==', 'Reach', '04'],['==', 'Alt', 'A B C D']],
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+    id: 'ugc_r04_altABCD_struc2',
+     source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Reach', '04'],['==', 'Alt', 'A B C D']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+    
+//struct Border
+
+    map.addLayer({
+      'id': 'ugc_r04_altABCD_struc3',                               
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',   
+      'type': 'line',
+      filter: ["all",['==', 'Reach', '04'],['==', 'Alt', 'A B C D']],        
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ---- UGC Reach 05 Alt A Strom Drain Detained Flow
@@ -790,7 +1139,7 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
         },
 
@@ -809,11 +1158,40 @@ map.on('style.load', function () {
       'line-cap': 'round'
     },
       'paint': {
-        'line-width': 8,
+        'line-width': 5,
         'line-color': '#00687A',
         },
 
   }, 'road-label-small');
+
+
+
+
+
+    // ---- UGC Reach 05 Alt C  channel
+    map.addLayer({
+    id: 'ugc_r05_altC_Channel',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '05']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.5], [17, 0.1], [19, 1.5]]
+          },
+        //  'line-opacity': {
+        //      "stops": [[16, 0.7],[19, 1]]
+        //  },
+        'line-color': '#FF2034F',
+         
+      }
+   
+  }, 'road-label-small');
+
 
 
 // ---- UGC Reach 05 Alt C Culvert Detained Flow
@@ -822,7 +1200,7 @@ map.on('style.load', function () {
     source: 'ugc_mitigation_polygonwork',
     'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05']],
+    filter: ["all",['==', 'Alt', 'C'],['==', 'Reach', '05']],
     layout: {
         'visibility': 'none'
       },
@@ -832,6 +1210,36 @@ map.on('style.load', function () {
         'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+
+    // ---- UGC Reach 05 Alt D channel
+    map.addLayer({
+    id: 'ugc_r05_altD_Channel',
+    source: 'ugc_mitigation_linework', 
+    type: 'line',
+    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '05']],
+       layout: {
+        'visibility': 'none',
+         'line-join': 'round',
+         'line-cap': 'round'
+       },
+        'paint': {
+          'line-width': {
+               "stops": [[15, 0.5], [17, 0.1], [19, 1.5]]
+          },
+        //  'line-opacity': {
+        //      "stops": [[16, 0.7],[19, 1]]
+        //  },
+        'line-color': '#FF2034F',
+         
+      }
+   
+  }, 'road-label-small');
+
+
+
+
 
 
 // ---- UGC Reach 05 Alt D Culvert Detained Flow
@@ -840,7 +1248,7 @@ map.on('style.load', function () {
     source: 'ugc_mitigation_polygonwork',
     'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
     type: 'fill',
-    filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05']],
+    filter: ["all",['==', 'Alt', 'D'],['==', 'Reach', '05']],
     layout: {
         'visibility': 'none'
       },
@@ -850,6 +1258,98 @@ map.on('style.load', function () {
         'fill-outline-color': '#635B00'
     }
   }, 'road-label-small');
+
+
+    //UGC R05 Alt C D Ease
+    map.addLayer({
+      'id': 'ugc_r04_altCD_ease',                               
+      source: 'ugc_mitigation_linework',  
+      filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05'], ['==','Type', 'Easement']],
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+    //UGC R05 Alt C D Full Aq
+    map.addLayer({
+      'id': 'ugc_r05_altCD_aq',                               
+      source: 'ugc_mitigation_linework',  
+      filter: ["all",['==', 'Alt', 'C D'],['==', 'Reach', '05'], ['==','Type', 'Aquisition']],
+      'type': 'line',        
+      'paint': {
+         'line-color': '#00FFCF', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
+
+//struct area
+    map.addLayer({
+    id: 'ugc_r05_altABCD_struc1',
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    filter: ["all",['==', 'Reach', '05'],['==', 'Alt', 'A B C D']],
+    type: 'fill',
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.3,
+        'fill-color': '#FFFF4B',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+
+//structe pattern
+    map.addLayer({
+    id: 'ugc_r05_altABCD_struc2',
+     source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',
+    type: 'fill',
+    filter: ["all",['==', 'Reach', '05'],['==', 'Alt', 'A B C D']],
+    layout: {
+        'visibility': 'none'
+      },
+    paint: {
+        'fill-opacity': 0.9,
+        'fill-pattern': 'yellowstripe',
+        'fill-outline-color': '#FFFF4B'
+    }
+  }, 'road-label-small');
+
+    
+    
+//struct Border
+
+    map.addLayer({
+      'id': 'ugc_r05_altABCD_struc3',                               
+    source: 'ugc_mitigation_polygonwork',
+    'source-layer': 'ugc_ugc_polyon_merge-5og7u1',   
+      'type': 'line',
+      filter: ["all",['==', 'Reach', '05'],['==', 'Alt', 'A B C D']],        
+      'paint': {
+         'line-width': 2.3,
+         'line-color': '#FFFF4B', 
+         'line-opacity': 0.7,
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
+
+
+
 
 
 
@@ -860,7 +1360,7 @@ map.on('style.load', function () {
     id: 'ugc_r06_altA_Outfall',
     source: 'ugc_mitigation_linework', 
     type: 'line',
-    filter: ['==', 'Reach', '06'],
+    filter: ["all",['==', 'Reach', '06'],['==','Alt','A']],
     layout: {
       'visibility': 'none',
       'line-join': 'round',
@@ -880,6 +1380,21 @@ map.on('style.load', function () {
   }, 'road-label-small');
 
 
+
+
+    map.addLayer({
+      'id': 'ugc_r06_altA_ease',                               
+      source: 'ugc_mitigation_linework',  
+      filter: ["all",['==', 'Alt', 'A'],['==', 'Reach', '06'], ['==','Type', 'Easement']],
+      'type': 'line',        
+      'paint': {
+         'line-color': '#FF8B2D', 
+         'line-width': 3,
+         'line-opacity': 0.8,
+         'line-dasharray': [6, 3],
+       },
+      'layout': {'visibility': 'none'}
+    },'road-label-small');
 
 
 
@@ -2014,7 +2529,7 @@ document.getElementById('TMC_Zoom').addEventListener('click', function() {
 // When a click event occurs near the feature open a popup at the location of
 // the feature, with description HTML from its properties.
 map.on('click', function (k) {
-  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs'] });
+  var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs','COB_Easements', '2016_SWMP'] });
   if (!featureList.length) {
       return;
   }
@@ -2023,20 +2538,31 @@ map.on('click', function (k) {
   var id = feature.layer.id;
      
 
-     if (id == 'storm'){
+     if ((id == 'storm') || (id == '2016_SWMP')){
         var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)
-            .setHTML('DIAMETER: ' + feature.properties.DIAMETER + ' in'+ '</b> <br />' +
+            .setHTML('DIAMETER: ' + feature.properties.DIAMETER + ' in'+ '<br />' +
                      'LENGTH: ' + feature.properties.LENGTH + ' ft' + '<br />' +
                      'MATERIAL: ' + feature.properties.MATERIAL)
             .addTo(map);
           }
 
+
+     if (id == 'COB_Easements'){
+        var popup = new mapboxgl.Popup()
+            .setLngLat(k.lngLat)
+            .setHTML('CATEGORY: ' + feature.properties.REG_TYP1 + '<br />' +
+                     'TYPE: ' + feature.properties.EAS_TYP1 + '<br />' +
+                     'DESCRIPTION: ' + feature.properties.NAM1)
+            .addTo(map);
+          }
+
+
       else if (id == 'ugc_xs') {
         var popup = new mapboxgl.Popup()
             .setLngLat(k.lngLat)
             .setHTML('<b>' + feature.properties.RiverCode + ' Cross Section ' + feature.properties.ProfileM + '</b> <br />' +
-                     '<b>100-Year: ' + feature.properties.P001.toFixed(2) + '<br />' +
+                     '<b>100-Year: ' + feature.properties.P001.toFixed(2) + '</b> <br />' +
                      'Floodway: ' + feature.properties.P002.toFixed(2)  )
             .addTo(map);
       }
@@ -2050,7 +2576,7 @@ map.on('click', function (k) {
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
 map.on('mousemove', function (k) {
-    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs'] });
+    var featureList = map.queryRenderedFeatures(k.point, { layers: ['storm', 'ugc_xs', 'COB_Easements', '2016_SWMP'] });
     map.getCanvas().style.cursor = (featureList.length) ? 'pointer' : '';
 });
 
