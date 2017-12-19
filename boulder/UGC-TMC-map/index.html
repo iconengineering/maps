@@ -141,26 +141,54 @@
             
           
           <a href = "#!" id = "TMC_Zoom" > 
-             <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
-                  Zoom to Mitigation Alternatives  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
+             <p class="blue-grey-text note2" style="margin-top:-7px; margin-bottom: 15px; ">
+                  <b>Zoom to Mitigation Alternatives</b>  <i style="vertical-align: text-bottom;" class = "smaller material-icons blue-grey-text" >zoom_in</i> 
              </p>   
           </a> 
 
 
         <!--R1-->   
-            <p class="grey-text text-darken-2 note">
-                 Reach 01 - City Limits to Linden Avenue
+            <p class="grey-text text-darken-2 note2">
+                 <b>Reach 01 - City Limits to Linden Avenu</b>
             </p>   
             
-            <p class = "indent">
-              <input name= "TMC_Menu_R1_AltA" type="checkbox" id="TMC_Menu_R1_AltA" class="layer-off" onclick="toggleLayer('tmc_r01_altA_Culvert' )" />
-              <label for="TMC_Menu_R1_AltA" class="valign">Alt A</label>
+            
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R1_AltA">
+                <input type="checkbox" id="TMC_Menu_R1_AltA" class="mdl-switch__input layer-off" onclick="toggleThree('tmc_r01_altA_Channel', 'tmc_r01_altA_Culvert','tmc_r01_altA_Wall' )" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt A
+            </span>
+          </p>
+            
+
+            <p class = "indent narrow">
+              <input name= "T_01_A_Struct" type="checkbox" id="T_01_A_Struct" class="layer-off"  onclick="toggleThree('tmc_r01_altA_struc1', 'tmc_r01_altA_struc2', 'tmc_r01_altA_struc3')"/>
+              <label for="T_01_A_Struct" class="valign">Removed Structures</label>
             </p>
 
-            <p class = "indent">
-              <input name= "TMC_Menu_R1_AltB" type="checkbox" id="TMC_Menu_R1_AltB" class="layer-off" onclick="toggleTwo('tmc_r01_altB_Culvert', 'tmc_r01_altB_detention' )" />
-              <label for="TMC_Menu_R1_AltB" class="valign">Alt B</label>
+
+            <p class = "indent narrow">
+              <input name= "T_01_A_Ease" type="checkbox" id="T_01_A_Ease" class="layer-off"  onclick="toggleLayer('tmc_r01_altA_Ease')"/>
+              <label for="T_01_A_Ease" class="valign">Easements</label>
             </p>
+
+
+          <p class="demo-list-item mdl-list__item indentSm narrow">
+            <span class="mdl-list__item-primary-action narrow">
+              <label class="mdl-switch mdl-js-switch label-off narrow" for="TMC_Menu_R1_AltB">
+                <input type="checkbox" id="TMC_Menu_R1_AltB" class="mdl-switch__input layer-off" onclick="toggleTwo('tmc_r01_altB_Culvert', 'tmc_r01_altB_detention' )" />
+              </label>
+            </span>
+            <span class="mdl-list__item-secondary-content narrow ">
+              Alt B
+            </span>
+          </p>
+            
+
 
 
 
