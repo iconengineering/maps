@@ -21,7 +21,7 @@ $(document).ready(function(){
         e.preventDefault();
         console.log('delete');
         var vertices = draw.getSelectedPoints();
-        draw.trelm(vertices);
+        draw.trash(vertices);
       }
   });
 
@@ -113,7 +113,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     // make buttons active for authorized users, change per project
     var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/tcvelmTree");
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hvTree");
     ref.once("value")
     .then(function(snapshot) {
       var val = snapshot.val(); // "ada"
@@ -230,8 +230,8 @@ map.addControl(draw);
 var firebaseGeojsonFeatures = [];
 
 // set repository, this needs to change per project
-var dataRef = firebase.database().ref('datacollector/tcvelmTree');
-var archiveRef = firebase.database().ref('datacollector/tcvelmTreeArchive');
+var dataRef = firebase.database().ref('datacollector/hpTree');
+var archiveRef = firebase.database().ref('datacollector/hpTreeArchive');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -437,7 +437,7 @@ map.on('draw.create', function() {
     };
 
     // change per project
-    var storageRef = firebase.storage().ref('tcvelmTreeUpload/');
+    var storageRef = firebase.storage().ref('hpTreeUpload/');
 
     // Upload file and metadata to the object 'images/mountains.jpg'
     var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
@@ -679,7 +679,7 @@ map.on('draw.selectionchange', function(){
         var card = document.getElementById('input-card');
 
         // Create a reference to the file we want to download, change per project
-        var storageRef = firebase.storage().ref('tcvelmTreeUpload/');
+        var storageRef = firebase.storage().ref('hpTreeUpload/');
         var photoRef = storageRef.child('images/' + photo);
 
         if (typeof(photo) != 'undefined') {
@@ -768,7 +768,7 @@ map.on('draw.selectionchange', function(){
 
 
           // change per project
-          firebase.database().ref('datacollector/tcvelmTree/' + featureKey).update(draw.getSelected().features[0], function(error) {
+          firebase.database().ref('datacollector/hpTree/' + featureKey).update(draw.getSelected().features[0], function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
           } else {
@@ -811,7 +811,7 @@ map.on('draw.selectionchange', function(){
           draw.setFeatureProperty(id,"deleted_at",timestamp);
 
           // change per project
-          firebase.database().ref('datacollector/tcvelmTree/' + featureKey).remove(function(error) {
+          firebase.database().ref('datacollector/hpTree/' + featureKey).remove(function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
           } else {
@@ -894,7 +894,7 @@ var firePopupTouch = function (e) {
   // Create a reference to the file we want to download
   var photo = feature.properties.imageUUID;
   // change per project
-  var storageRef = firebase.storage().ref('tcvelmTreeUpload/');
+  var storageRef = firebase.storage().ref('hpTreeUpload/');
   var photoRef = storageRef.child('images/' + photo);
 
   if (typeof(photo) != 'undefined') {
@@ -991,7 +991,7 @@ var firePopup = function (e) {
   // Create a reference to the file we want to download
   var photo = feature.properties.imageUUID;
   // change per project
-  var storageRef = firebase.storage().ref('tcvelmTreeUpload/');
+  var storageRef = firebase.storage().ref('hpTreeUpload/');
   var photoRef = storageRef.child('images/' + photo);
 
   if (typeof(photo) != 'undefined') {
