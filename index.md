@@ -57,7 +57,7 @@ layout: default_mapList
 
 [Columbine Valley Ash Tree Data Collector](tcv-ash-tree)
 
-[Happy Valley- Tree Data Collector](happy-valley-tree-inventory)
+[High Prairie Farms Tree Data Collector](high-prairie-farms-tree-inventory)
 
 #### 2017 Proposals
 [Nissen Reservoir Channel](other/nissen-reservoir-channel)
