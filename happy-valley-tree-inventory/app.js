@@ -230,8 +230,8 @@ map.addControl(draw);
 var firebaseGeojsonFeatures = [];
 
 // set repository, this needs to change per project
-var dataRef = firebase.database().ref('datacollector/hpTree');
-var archiveRef = firebase.database().ref('datacollector/hpTreeArchive');
+var dataRef = firebase.database().ref('datacollector/hpfTree');
+var archiveRef = firebase.database().ref('datacollector/hpfTreeArchive');
 
 // call firebase database
 function callData() {dataRef.on("value", function(snapshot) {
@@ -437,7 +437,7 @@ map.on('draw.create', function() {
     };
 
     // change per project
-    var storageRef = firebase.storage().ref('hpTreeUpload/');
+    var storageRef = firebase.storage().ref('hpfTreeUpload/');
 
     // Upload file and metadata to the object 'images/mountains.jpg'
     var uploadTask = storageRef.child('images/' + imageUUID).put(file, metadata);
@@ -679,7 +679,7 @@ map.on('draw.selectionchange', function(){
         var card = document.getElementById('input-card');
 
         // Create a reference to the file we want to download, change per project
-        var storageRef = firebase.storage().ref('hpTreeUpload/');
+        var storageRef = firebase.storage().ref('hpfTreeUpload/');
         var photoRef = storageRef.child('images/' + photo);
 
         if (typeof(photo) != 'undefined') {
@@ -768,7 +768,7 @@ map.on('draw.selectionchange', function(){
 
 
           // change per project
-          firebase.database().ref('datacollector/hpTree/' + featureKey).update(draw.getSelected().features[0], function(error) {
+          firebase.database().ref('datacollector/hpfTree/' + featureKey).update(draw.getSelected().features[0], function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
           } else {
@@ -811,7 +811,7 @@ map.on('draw.selectionchange', function(){
           draw.setFeatureProperty(id,"deleted_at",timestamp);
 
           // change per project
-          firebase.database().ref('datacollector/hpTree/' + featureKey).remove(function(error) {
+          firebase.database().ref('datacollector/hpfTree/' + featureKey).remove(function(error) {
             if (error) {
               Materialize.toast('Something went wrong.');
           } else {
@@ -894,7 +894,7 @@ var firePopupTouch = function (e) {
   // Create a reference to the file we want to download
   var photo = feature.properties.imageUUID;
   // change per project
-  var storageRef = firebase.storage().ref('hpTreeUpload/');
+  var storageRef = firebase.storage().ref('hpfTreeUpload/');
   var photoRef = storageRef.child('images/' + photo);
 
   if (typeof(photo) != 'undefined') {
@@ -991,7 +991,7 @@ var firePopup = function (e) {
   // Create a reference to the file we want to download
   var photo = feature.properties.imageUUID;
   // change per project
-  var storageRef = firebase.storage().ref('hpTreeUpload/');
+  var storageRef = firebase.storage().ref('hpfTreeUpload/');
   var photoRef = storageRef.child('images/' + photo);
 
   if (typeof(photo) != 'undefined') {
