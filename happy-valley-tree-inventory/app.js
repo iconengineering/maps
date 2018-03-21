@@ -113,7 +113,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     // make buttons active for authorized users, change per project
     var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hvTree");
+    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hpfTree");
     ref.once("value")
     .then(function(snapshot) {
       var val = snapshot.val(); // "ada"
