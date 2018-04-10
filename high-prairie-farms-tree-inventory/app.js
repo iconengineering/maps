@@ -256,14 +256,14 @@ map.on('style.load', function() {
   //parcels
   map.addSource('parcels', {
       'type': 'vector',
-      'url': 'mapbox://iconeng.5mrjqlq0' //TCV_Parcels-b3pbeq
+      'url': 'mapbox://iconeng.b04l83ov' //hpf_parcel_w_address-6uto6s
   });
 
 
   //Town Limits
   map.addSource('boundary', {
       'type': 'vector',
-      'url': 'mapbox://iconeng.ca55ms95' //TCV_Boundary-cbf8pg
+      'url': 'mapbox://iconeng.5bii693z' //HPF_boundaryLine-dy391l
   });
 
 
@@ -313,7 +313,7 @@ map.addLayer({
 map.addLayer({
  'id': 'parcels',
  'source': 'parcels',
- 'source-layer': 'TCV_Parcels-b3pbeq',
+ 'source-layer': 'hpf_parcel_w_address-6uto6s',
  'type': 'line',
  'paint': {
     'line-color': '#fff',
@@ -328,10 +328,10 @@ map.addLayer({
         'id': 'parcelLabels',
         'type': 'symbol',
         'source': 'parcels',
-        'source-layer': 'TCV_Parcels-b3pbeq',
+        'source-layer': 'hpf_parcel_w_address-6uto6s',
         'layout': {
           'visibility': 'none',
-        'text-field': '{Situs_Addr}',
+        'text-field': '{STREET_N_1}',
         'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
         'text-size': 10
         },
@@ -348,7 +348,7 @@ map.addLayer({
   map.addLayer({
       'id': 'boundary',
       'source': 'boundary',
-      'source-layer': 'TCV_Boundary-cbf8pg',
+      'source-layer': 'HPF_boundaryLine-dy391l',
       'type': 'line',
       'paint': {
          'line-color': '#A9FF41',
