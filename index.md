@@ -59,6 +59,8 @@ layout: default_mapList
 
 [High Prairie Farms Tree Data Collector](high-prairie-farms-tree-inventory)
 
+[The Pinery](other/pinery)
+
 #### 2017 Proposals
 [Nissen Reservoir Channel](other/nissen-reservoir-channel)
 

@@ -1,0 +1,34 @@
+---
+layout: default-map
+title: Pinery
+version: v0.34.0
+script: app.js
+---
+<ul id="slide-out" class="side-nav fixed">
+  <a href="#" class="brand-logo center hide-on-med-and-up">{{ page.title }}</a>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">arrow_drop_down</i></a>
+        <div class="collapsible-body">
+          <p>
+            <input name="contours" type="checkbox" id="contours" class="layer-on" onclick="toggleThree('1ftContours','5ftContours','5ftLabels')" checked/>
+            <label for="contours" class="valign">Contours</label>
+          </p>
+          <p>
+            <input name="basins" type="checkbox" id="basins" class="layer-on" onclick="toggleSmooth('basinOutlines','line-opacity',1)" checked/>
+            <label for="basins" class="valign">Catchments</label>
+          </p>
+          <p>
+            <input name="labels" type="checkbox" id="labels" class="layer-on" onclick="smoothTwo('basinLabels','text-opacity',1,'basinLabels2','text-opacity',1)" checked/>
+            <label for="labels" class="valign">Catchment Labels</label>
+          </p>
+          <p>
+            <input name="drainage" type="checkbox" id="drainage" class="layer-on" onclick="toggleSmooth('drainageLine','line-opacity',1)" checked/>
+            <label for="drainage" class="valign">Drainage Lines</label>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
