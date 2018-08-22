@@ -3,7 +3,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     center: [-104.72,39.452],
-    zoom: 15,
+    zoom: 5,
     hash: true
 });
 
@@ -41,7 +41,7 @@ map.on('load', function () {
     'source': 'project boundary',
 	'source-layer':'pinery_project_boundary-75s5xf',
     'paint': {
-      'line-width': 1,
+      'line-width': 2,
 	  'line-opacity': 1,
       'line-color': '#d32f2f',
 	  'line-dasharray': [4,2]
@@ -69,7 +69,7 @@ map.on('load', function () {
 	'source-layer':'priority_1_AP-0e7cuh',
     'paint': {
      "circle-color":'#00ff00',
-    'circle-radius': 5,
+    'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#00ff00'
   },
@@ -84,7 +84,7 @@ map.on('load', function () {
 	'source-layer':'priority_2_AP-6i50hu',
     'paint': {
      "circle-color":'#ffff00',
-    'circle-radius': 5,
+    'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#ffff00'
   },
@@ -99,7 +99,7 @@ map.on('load', function () {
 	'source-layer':'priority_3_AP-81f2p5',
     'paint': {
      "circle-color":'#ff0000',
-    'circle-radius': 5,
+    'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#ff0000'
   },
