@@ -2,166 +2,129 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    center: [-104.8325,39.3704],
+    center: [-104.72,39.452],
     zoom: 15,
     hash: true
 });
 
 map.on('load', function () {
 
-  map.addSource('contours', {
+  map.addSource('project boundary', {
       type: 'vector',
-      url: 'mapbox://iconeng.1eijv7im'
+      url: 'mapbox://iconeng.7rcwjlcw'
   });
-  map.addSource('catchmentOutline', {
+  map.addSource('parcels', {
+      type: 'vector',
+      url: 'mapbox://iconeng.cg461vbd'
+  });
+  map.addSource('priority 1 address points', {
+      type: 'vector',
+      url: 'mapbox://iconeng.86nopvsx'
+  });
+  map.addSource('priority 2 address points', {
+      type: 'vector',
+      url: 'mapbox://iconeng.2upjqqvq'
+  });
+  map.addSource('priority 3 address points', {
+      type: 'vector',
+      url: 'mapbox://iconeng.0v23puj1'
+  });
+  map.addSource('street_clip', {
       type: 'geojson',
-      "data": 'catchmentOutline.geojson'
-  });
-  map.addSource('basins', {
-      type: 'geojson',
-      "data": 'catchments.geojson'
-  });
-  map.addSource('drainageLine', {
-      type: 'geojson',
-      "data": 'drainageLine.geojson'
+      "data": 'street_clip.geojson'
   });
 
+//project boundary
   map.addLayer({
-      'id': '1ftContours',
-      'type': 'line',
-      'source': 'contours',
-      'source-layer': 'GordonDrContoursgeojson',
-      'filter': ['==', 'Index', 1],
-      'layout': {
-          'visibility': 'visible',
-          'line-join': 'round',
-          'line-cap': 'round'
-      },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 0], [17, .5], [19, 1]]
+    'id': 'projectBoundary',
+    'type': 'line',
+    'source': 'project boundary',
+	'source-layer':'pinery_project_boundary-75s5xf',
+    'paint': {
+      'line-width': 1,
+	  'line-opacity': 1,
+      'line-color': '#d32f2f',
+	  'line-dasharray': [4,2]
+      }
+  }, 'road-label-small');
+
+//parcels
+  map.addLayer({
+    'id': 'parcels',
+    'type': 'line',
+    'source': 'parcels',
+	'source-layer':'pinery_parcel-bpojro',
+    'paint': {
+      'line-width': 1,
+	  'line-opacity': 1,
+      'line-color': '#d32f2f',
+      }
+  }, 'road-label-small');
+
+//priority 1 address points
+  map.addLayer({
+    'id': 'priority1AP',
+    'type': 'circle',
+    'source': 'priority 1 address points',
+	'source-layer':'priority_1_AP-0e7cuh',
+    'paint': {
+     "circle-color":'#00ff00',
+    'circle-radius': 5,
+    'circle-stroke-width': 2,
+    'circle-stroke-color': '#00ff00'
+  },
+  'layout': {'visibility': 'visible'}
+}, 'country-label-lg');
+
+//priority 2 address points
+  map.addLayer({
+    'id': 'priority2AP',
+    'type': 'circle',
+    'source': 'priority 2 address points',
+	'source-layer':'priority_2_AP-6i50hu',
+    'paint': {
+     "circle-color":'#ffff00',
+    'circle-radius': 5,
+    'circle-stroke-width': 2,
+    'circle-stroke-color': '#ffff00'
+  },
+  'layout': {'visibility': 'visible'}
+}, 'country-label-lg');
+
+//priority 3 address points
+  map.addLayer({
+    'id': 'priority3AP',
+    'type': 'circle',
+    'source': 'priority 3 address points',
+	'source-layer':'priority_3_AP-81f2p5',
+    'paint': {
+     "circle-color":'#ff0000',
+    'circle-radius': 5,
+    'circle-stroke-width': 2,
+    'circle-stroke-color': '#ff0000'
+  },
+  'layout': {'visibility': 'visible'}
+}, 'country-label-lg');
+
+//Add street labels
+  map.addLayer({
+        'id': 'streetLabels',
+        'type': 'symbol',
+        'source': 'street_clip',
+        'source-layer': 'street_clip.geojson',
+        'layout': {
+          'visibility': 'none',
+        'text-field': '{STREET_N_1}',
+        'text-font': ['Open Sans Bold','Arial Unicode MS Regular'],
+        'text-size': 12
         },
-          'line-color': '#424242',
-          'line-opacity':.8
-      }
-  }, 'road-label-small');
-  map.addLayer({
-      'id': '5ftContours',
-      'type': 'line',
-      'source': 'contours',
-      'source-layer': 'GordonDrContoursgeojson',
-      'filter': ['==', 'Index', 5],
-      'layout': {
-          'visibility': 'visible',
-          'line-join': 'round',
-          'line-cap': 'round'
-      },
-      'paint': {
-        'line-width': {
-            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
-        },
-          'line-color': '#424242',
-          'line-opacity':.8
-      }
-  }, 'road-label-small');
-  map.addLayer({
-      'id': '5ftLabels',
-      'type': 'symbol',
-      'source': 'contours',
-      'source-layer': 'GordonDrContoursgeojson',
-      'filter': ['==', 'Index', 5],
-      'layout': {
-          'visibility': 'visible',
-        'symbol-placement': 'line',
-        'text-field': '{CONTOUR}',
-        'text-font': ['Roboto Italic','Open Sans Light','Arial Unicode MS Regular'],
-        'text-size': {
-          "stops": [[15,9],[17,12],[19,14]]
-        }
-      },
-      'paint': {
-        'text-color': '#424242',
-        'text-halo-color': 'rgba(255,255,255,0.9)',
-        'text-halo-width': 1,
-        'text-halo-blur': .2
-      }
-  }, 'road-label-small');
 
-  map.addLayer({
-      'id': 'basinOutlines',
-      'type': 'line',
-      'source': 'catchmentOutline',
-      'paint': {
-          'line-width': 1.5,
-          'line-opacity': 1,
-          'line-color': '#d32f2f',
-          'line-dasharray': [8,2]
+        'paint': {
+        'text-color': 'rgb(255,255,255)',
+        'text-halo-color': 'rgb(0,0,0)',
+        'text-halo-width': 1
       }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'drainageLine',
-      'type': 'line',
-      'source': 'drainageLine',
-      'layout': {
-        'line-join': 'bevel'
-        },
-      'paint': {
-          'line-width': 2,
-          'line-opacity': 1,
-          'line-color': '#036180'
-      }
-  }, 'road-label-small');
-
-  map.addLayer({
-      'id': 'basinLabels',
-      'type': 'symbol',
-      'source': 'basins',
-      'layout': {
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": {
-             "stops": [[15, 10], [17, 12], [19, 14]]
-         },
-         "text-field": "{Area_Acres} Ac. | {Ave_Slope}% Slope",
-         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-         "text-offset": {
-             "stops": [[13, [0, 0.25]], [17, [0, 0.75]]]
-         },
-         "text-anchor": "top"
-     },
-     "paint": {
-       "text-color": "#ee4d5a",
-       "text-opacity": 1,
-       "text-halo-color": "rgba(255,255,255,.87)",
-       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-     }
-  });
-
-  map.addLayer({
-      'id': 'basinLabels2',
-      'type': 'symbol',
-      'source': 'basins',
-      'layout': {
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": {
-             "stops": [[15, 10], [17, 12], [19, 14]]
-         },
-         "text-field": "Catchment {HydroID}",
-         "text-offset": {
-             "stops": [[13, [0, -1]], [17, [0, -1.5]]]
-         },
-         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-         "text-anchor": "top"
-     },
-     "paint": {
-       "text-color": "#ee4d5a",
-       "text-opacity": 1,
-       "text-halo-color": "rgba(255,255,255,.87)",
-       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-     }
-  });
+    },'country-label-lg');
 
 
 });
