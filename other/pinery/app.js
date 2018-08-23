@@ -3,7 +3,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     center: [-104.72,39.452],
-    zoom: 14,
+    zoom: 15,
     hash: true
 });
 
