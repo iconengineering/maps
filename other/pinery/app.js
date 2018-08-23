@@ -126,6 +126,20 @@ map.on('load', function () {
       }
     },'country-label-lg');
 
+    map.on('click', function (e) {
+      var features = map.queryRenderedFeatures(e.point, { layers: ['parcel','priority1AP','priority2AP','priority3AP'] });
+      if (!features.length) {
+          return;
+      }
+
+      var feature = features[0];
+        if (feature.layer.id == 'parcel') {
+            var popup = new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML('<span>' + feature.properties.ST_ADR_2 + '</span>')
+                .addTo(map);
+      });
+
 
 });
 
