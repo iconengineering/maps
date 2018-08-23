@@ -126,6 +126,7 @@ map.on('load', function () {
       }
     },'country-label-lg');
 
+
 });
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
