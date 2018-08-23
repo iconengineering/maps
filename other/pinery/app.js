@@ -45,7 +45,8 @@ map.on('load', function () {
 	  'line-opacity': 1,
       'line-color': '#d32f2f',
 	  'line-dasharray': [4,2]
-      }
+  },
+  'layout': {'visibility': 'visible'}
   }, 'road-label-small');
 
 //parcels
