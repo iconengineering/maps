@@ -59,7 +59,8 @@ map.on('load', function () {
       'line-width': 1,
 	  'line-opacity': 1,
       'line-color': '#d32f2f',
-      }
+  },
+  'layout': {'visibility': 'visible'}
   }, 'road-label-small');
 
 //priority 1 address points
