@@ -130,4 +130,23 @@ map.on('load', function () {
 
 });
 
+//When a click event occurs on a feature in the address point layers, open a popup at the location of the click, with description HTML from its properties.
+  map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['priority1AP','priority2AP','priority3AP'] // replace this with the name of the layers
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.DRN_COND + '</p><p>' + feature.properties.BASIN_ID + '</p><p>' + feature.properties.PRIORITY + '</p><p>' + feature.properties.5YR_FLOW'</p><p>' + features.properties.10YR_FLOW + '</p><p>' + features.properties.SEVERITY + '</p><p>' + features.properties.COMMENT + '</p>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+});
+
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
