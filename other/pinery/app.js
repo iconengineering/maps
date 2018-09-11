@@ -146,7 +146,7 @@ map.on('load', function () {
   if (id == 'priority1AP' || id == 'priority2AP' || id == 'priority3AP')
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('Address: ' + feature.properties.Name + '<br />' + 'Drainage Condition: ' + feature.properties.DRN_COND + '<br />' + 'Severity : ' + feature.properties.SEVERITY + '<br />' + 'Comment: ' + feature.properties.COMMENT)
+    .setHTML('Address: ' + feature.properties.Name + '<br />' + 'Priority: ' + feature.properties.PRIORITY + '<br />' + 'Drainage Condition: ' + feature.properties.DRN_COND + '<br />' + 'Severity : ' + feature.properties.SEVERITY + '<br />' + 'Comment: ' + feature.properties.COMMENT)
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 });
