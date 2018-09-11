@@ -133,7 +133,7 @@ map.on('load', function () {
 //When a click event occurs on a feature in the address point layers, open a popup at the location of the click, with description HTML from its properties.
   map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['priority1AP'] // replace this with the name of the layer
+    layers: ['priority1AP', 'priority2AP', 'priority3AP'] // replace this with the 'id' of the layers from MapBox
   });
 
   if (!features.length) {
@@ -141,10 +141,12 @@ map.on('load', function () {
   }
 
   var feature = features[0];
+  var id = feature.layer.id
 
+  if (id == 'priority1AP' || id == 'priority2AP' || id == 'priority3AP')
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.DRN_COND + '</p><p>' + feature.properties.BASIN_ID + '</p><p>' + feature.properties.PRIORITY + '</p><p>' + features.properties.SEVERITY + '</p>')
+    .setHTML('Name: ' + feature.properties.Name + '<br />' + 'Drainage Condition: ' + feature.properties.DRN_COND + '<br />' + 'Severity : ' + feature.properties.SEVERITY + '<br />' + 'Comment: ' + feature.properties.COMMENT)
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 });
