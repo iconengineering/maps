@@ -144,7 +144,7 @@ map.on('load', function () {
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.DRN_COND + '</p><p>' + feature.properties.BASIN_ID + '</p><p>' + feature.properties.PRIORITY + '</p><p>' + feature.properties.5YR_FLOW + '</p><p>' + features.properties.10YR_FLOW + '</p><p>' + features.properties.SEVERITY + '</p>')
+    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.DRN_COND + '</p><p>' + feature.properties.BASIN_ID + '</p><p>' + feature.properties.PRIORITY + '</p><p>' + features.properties.SEVERITY + '</p>')
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 });
