@@ -133,7 +133,7 @@ map.on('load', function () {
 //When a click event occurs on a feature in the address point layers, open a popup at the location of the click, with description HTML from its properties.
   map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['priority1AP','priority2AP','priority3AP'] // replace this with the name of the layers
+    layers: ['priority1AP'] // replace this with the name of the layers
   });
 
   if (!features.length) {
