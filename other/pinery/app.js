@@ -151,4 +151,9 @@ map.on('load', function () {
     .addTo(map);
 });
 
+map.on('mousemove', function (e) {
+      var features = map.queryRenderedFeatures(e.point, {layers: ['priority1AP', 'priority2AP', 'priority3AP'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+});
+
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
