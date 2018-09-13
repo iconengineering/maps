@@ -161,7 +161,7 @@ map.addControl(new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
     },
-    trackUserLocation: false
+    trackUserLocation: true
 }), 'bottom-right');
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
