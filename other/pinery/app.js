@@ -43,7 +43,7 @@ map.on('load', function () {
     'paint': {
       'line-width': 2,
 	  'line-opacity': 1,
-      'line-color': '#d32f2f',
+      'line-color': '#636363',
 	  'line-dasharray': [4,2]
   },
   'layout': {'visibility': 'visible'}
