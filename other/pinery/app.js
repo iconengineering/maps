@@ -58,7 +58,7 @@ map.on('load', function () {
     'paint': {
       'line-width': 1,
 	  'line-opacity': 1,
-      'line-color': '#636363',
+      'line-color': '#f7f7f7',
   },
   'layout': {'visibility': 'visible'}
   }, 'road-label-small');
