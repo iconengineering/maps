@@ -156,11 +156,11 @@ map.on('mousemove', function (e) {
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
-map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 map.addControl(new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
     },
-    trackUserLocation: true
+    trackUserLocation: false
 }));
