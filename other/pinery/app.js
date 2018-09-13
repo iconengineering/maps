@@ -1,9 +1,9 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
-    container: 'map',
+    container: 'map', //container id
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    center: [-104.72,39.452],
-    zoom: 13,
+    center: [-104.72,39.452], //starting position
+    zoom: 13, //starting zoom
     hash: true
 });
 
@@ -156,11 +156,12 @@ map.on('mousemove', function (e) {
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
 
+//Add geolocate control to the map
 map.addControl(new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
     },
     trackUserLocation: false
-}));
+}), 'bottom-right');
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
