@@ -71,7 +71,7 @@ map.on('load', function () {
 	'source-layer':'priority_1_AP-0e7cuh',
     'paint': {
      "circle-color":'#00ff00',
-    'circle-radius': 2,
+    'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#00ff00'
   },
@@ -86,7 +86,7 @@ map.on('load', function () {
 	'source-layer':'priority_2_AP-6i50hu',
     'paint': {
      "circle-color":'#ffff00',
-    'circle-radius': 2,
+    'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#ffff00'
   },
@@ -101,7 +101,7 @@ map.on('load', function () {
 	'source-layer':'priority_3_AP-81f2p5',
     'paint': {
      "circle-color":'#ff0000',
-    'circle-radius': 2,
+    'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#ff0000'
   },
