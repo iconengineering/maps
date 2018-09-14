@@ -74,8 +74,6 @@ map.on('load', function () {
     'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#00ff00'
-    'circle-border':1,
-    'circle-border-color': '#000000'
   },
   'layout': {'visibility': 'visible'}
 }, 'country-label-lg');
@@ -91,8 +89,6 @@ map.on('load', function () {
     'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#ffff00'
-    'circle-border':1,
-    'circle-border-color': '#000000'
   },
   'layout': {'visibility': 'visible'}
 }, 'country-label-lg');
@@ -108,8 +104,6 @@ map.on('load', function () {
     'circle-radius': 3,
     'circle-stroke-width': 2,
     'circle-stroke-color': '#ff0000'
-    'circle-border':1,
-    'circle-border-color': '#000000'
   },
   'layout': {'visibility': 'visible'}
 }, 'country-label-lg');
