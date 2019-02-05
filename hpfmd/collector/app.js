@@ -103,29 +103,29 @@ firebase.auth().onAuthStateChanged(function(user) {
     header.insertAdjacentHTML('beforeend',dropdown);
   }
 
-    // add logout to admin modal and disable login
-    var submit = document.getElementById('adminSubmit');
-    submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
-    var logout = document.getElementById('adminLogout');
-    logout.className = 'modal-action modal-close waves-effect waves-blue btn blue';
-
-    // make buttons active for authorized users
-    var displayName = firebase.auth().currentUser.displayName;
-    var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hpfmd");
-        ref.once("value")
-          .then(function(snapshot) {
-            var val = snapshot.val(); // "ada"
-          if (val === true) {
-    var adminPoint = document.getElementById('adminPoint');
-    adminPoint.className = 'waves-effect waves-blue btn blue white-text';
-    var adminLine = document.getElementById('adminLine');
-    adminLine.className = 'waves-effect waves-blue btn blue white-text';
-    var adminPoly = document.getElementById('adminPolygon');
-    adminPoly.className = 'waves-effect waves-blue btn blue white-text';
-    var adminEdit = document.getElementById('adminEdit');
-    adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-    }
-  });
+  //   // add logout to admin modal and disable login
+  //   var submit = document.getElementById('adminSubmit');
+  //   submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
+  //   var logout = document.getElementById('adminLogout');
+  //   logout.className = 'modal-action modal-close waves-effect waves-blue btn blue';
+  //
+  //   // make buttons active for authorized users
+  //   var displayName = firebase.auth().currentUser.displayName;
+  //   var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hpfmd");
+  //       ref.once("value")
+  //         .then(function(snapshot) {
+  //           var val = snapshot.val(); // "ada"
+  //         if (val === true) {
+  //   var adminPoint = document.getElementById('adminPoint');
+  //   adminPoint.className = 'waves-effect waves-blue btn blue white-text';
+  //   var adminLine = document.getElementById('adminLine');
+  //   adminLine.className = 'waves-effect waves-blue btn blue white-text';
+  //   var adminPoly = document.getElementById('adminPolygon');
+  //   adminPoly.className = 'waves-effect waves-blue btn blue white-text';
+  //   var adminEdit = document.getElementById('adminEdit');
+  //   adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+  //   }
+  // });
 
 // init dropdown
     $('.dropdown-button').dropdown({
