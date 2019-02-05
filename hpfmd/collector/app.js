@@ -69,117 +69,117 @@ document.querySelector('#reset').addEventListener('click', function(e) {
 });
 });
 
-// Set states for Admin/anonymous
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-
-    var thisUser = firebase.auth().currentUser;
-
-    // check for display name
-    if (thisUser.displayName == null) {
-      var email = thisUser.email;
-      var username = email.split('@')[0];
-      thisUser.updateProfile({
-        displayName: username
-      }).then(function() {
-        // Update successful.
-        var navAdmin = document.getElementById('navAdmin');
-        navAdmin.innerText = 'Hello, ' + firebase.auth().currentUser.displayName;
-        callData();
-      }, function(error) {
-        // An error happened.
-      });
-    } else {
-      var navAdmin = document.getElementById('navAdmin');
-      navAdmin.innerText = 'Hello, ' + firebase.auth().currentUser.displayName;
-      callData();
-    }
-
-// add downloads for admin
-    var header = document.getElementById('header-links');
-    var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
-    var download = document.getElementById('download');
-    if (typeof(download) == 'undefined' || download == null) {
-    header.insertAdjacentHTML('beforeend',dropdown);
-  }
-
-  //   // add logout to admin modal and disable login
-  //   var submit = document.getElementById('adminSubmit');
-  //   submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
-  //   var logout = document.getElementById('adminLogout');
-  //   logout.className = 'modal-action modal-close waves-effect waves-blue btn blue';
-  //
-  //   // make buttons active for authorized users
-  //   var displayName = firebase.auth().currentUser.displayName;
-  //   var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hpfmd");
-  //       ref.once("value")
-  //         .then(function(snapshot) {
-  //           var val = snapshot.val(); // "ada"
-  //         if (val === true) {
-  //   var adminPoint = document.getElementById('adminPoint');
-  //   adminPoint.className = 'waves-effect waves-blue btn blue white-text';
-  //   var adminLine = document.getElementById('adminLine');
-  //   adminLine.className = 'waves-effect waves-blue btn blue white-text';
-  //   var adminPoly = document.getElementById('adminPolygon');
-  //   adminPoly.className = 'waves-effect waves-blue btn blue white-text';
-  //   var adminEdit = document.getElementById('adminEdit');
-  //   adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-  //   }
-  // });
-
-// init dropdown
-    $('.dropdown-button').dropdown({
-        inDuration: 300,
-        outDuration: 225,
-        constrainWidth: false, // Does not change width of dropdown to that of the activator
-        hover: true, // Activate on hover
-        gutter: 0, // Spacing from edge
-        belowOrigin: true, // Displays dropdown below the button
-        alignment: 'left', // Displays dropdown with edge aligned to the left of button
-        stopPropagation: false // Stops event propagation
-      }
-    );
-  } else {
-
-// remove admin tools
-    var header = document.getElementById('header-links');
-    var download = document.getElementById('download');
-
-    if (typeof(download) != 'undefined' && download !== null) {
-      var submit = document.getElementById('adminSubmit');
-      submit.className = 'modal-action modal-close waves-effect waves-blue btn blue';
-      header.removeChild(download);
-
-      map.getSource('firebase').setData({
-        "type": "FeatureCollection",
-        "features": []
-      });
-
-      // make buttons disabled
-      var adminPoint = document.getElementById('adminPoint');
-      adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
-      var adminLine = document.getElementById('adminLine');
-      adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
-      var adminPoly = document.getElementById('adminPolygon');
-      adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
-      var adminEdit = document.getElementById('adminEdit');
-      adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
-      // enable login to admin modal and disable logout
-      var submit = document.getElementById('adminSubmit');
-      submit.className = 'modal-action modal-close waves-effect waves-light btn blue';
-      var logout = document.getElementById('adminLogout');
-      logout.className = 'disabled modal-action modal-close waves-effect waves-blue btn blue';
-
-      var navAdmin = document.getElementById('navAdmin');
-      navAdmin.innerText = 'ADMIN';
-    } else {
-      return;
-    }
-
-    document.getElementById("adminForm").reset();
-
-  }
-});
+// // Set states for Admin/anonymous
+// firebase.auth().onAuthStateChanged(function(user) {
+//   if (user) {
+//
+//     var thisUser = firebase.auth().currentUser;
+//
+//     // check for display name
+//     if (thisUser.displayName == null) {
+//       var email = thisUser.email;
+//       var username = email.split('@')[0];
+//       thisUser.updateProfile({
+//         displayName: username
+//       }).then(function() {
+//         // Update successful.
+//         var navAdmin = document.getElementById('navAdmin');
+//         navAdmin.innerText = 'Hello, ' + firebase.auth().currentUser.displayName;
+//         callData();
+//       }, function(error) {
+//         // An error happened.
+//       });
+//     } else {
+//       var navAdmin = document.getElementById('navAdmin');
+//       navAdmin.innerText = 'Hello, ' + firebase.auth().currentUser.displayName;
+//       callData();
+//     }
+//
+// // add downloads for admin
+//     var header = document.getElementById('header-links');
+//     var dropdown = '<li id="download"><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons white-text">get_app</i></a></li><ul id="dropdown1" class="dropdown-content"><li><a href="#!" onclick="downloadGeojson()">GeoJSON</a></li><li><a href="#!" onclick="downloadShp()">Shapefile</a></li></ul>';
+//     var download = document.getElementById('download');
+//     if (typeof(download) == 'undefined' || download == null) {
+//     header.insertAdjacentHTML('beforeend',dropdown);
+//   }
+//
+//     // add logout to admin modal and disable login
+//     var submit = document.getElementById('adminSubmit');
+//     submit.className = 'disabled modal-action modal-close waves-effect waves-light btn blue';
+//     var logout = document.getElementById('adminLogout');
+//     logout.className = 'modal-action modal-close waves-effect waves-blue btn blue';
+//
+//     // make buttons active for authorized users
+//     var displayName = firebase.auth().currentUser.displayName;
+//     var ref = firebase.database().ref("datacollector/users/" + displayName + "/write/hpfmd");
+//         ref.once("value")
+//           .then(function(snapshot) {
+//             var val = snapshot.val(); // "ada"
+//           if (val === true) {
+//     var adminPoint = document.getElementById('adminPoint');
+//     adminPoint.className = 'waves-effect waves-blue btn blue white-text';
+//     var adminLine = document.getElementById('adminLine');
+//     adminLine.className = 'waves-effect waves-blue btn blue white-text';
+//     var adminPoly = document.getElementById('adminPolygon');
+//     adminPoly.className = 'waves-effect waves-blue btn blue white-text';
+//     var adminEdit = document.getElementById('adminEdit');
+//     adminEdit.className = 'deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+//     }
+//   });
+//
+// // init dropdown
+//     $('.dropdown-button').dropdown({
+//         inDuration: 300,
+//         outDuration: 225,
+//         constrainWidth: false, // Does not change width of dropdown to that of the activator
+//         hover: true, // Activate on hover
+//         gutter: 0, // Spacing from edge
+//         belowOrigin: true, // Displays dropdown below the button
+//         alignment: 'left', // Displays dropdown with edge aligned to the left of button
+//         stopPropagation: false // Stops event propagation
+//       }
+//     );
+//   } else {
+//
+// // remove admin tools
+//     var header = document.getElementById('header-links');
+//     var download = document.getElementById('download');
+//
+//     if (typeof(download) != 'undefined' && download !== null) {
+//       var submit = document.getElementById('adminSubmit');
+//       submit.className = 'modal-action modal-close waves-effect waves-blue btn blue';
+//       header.removeChild(download);
+//
+//       map.getSource('firebase').setData({
+//         "type": "FeatureCollection",
+//         "features": []
+//       });
+//
+//       // make buttons disabled
+//       var adminPoint = document.getElementById('adminPoint');
+//       adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
+//       var adminLine = document.getElementById('adminLine');
+//       adminLine.className = 'disabled waves-effect waves-blue btn blue white-text';
+//       var adminPoly = document.getElementById('adminPolygon');
+//       adminPoly.className = 'disabled waves-effect waves-blue btn blue white-text';
+//       var adminEdit = document.getElementById('adminEdit');
+//       adminEdit.className = 'disabled deep-orange accent-1 waves-effect waves-deep-orange btn white-text';
+//       // enable login to admin modal and disable logout
+//       var submit = document.getElementById('adminSubmit');
+//       submit.className = 'modal-action modal-close waves-effect waves-light btn blue';
+//       var logout = document.getElementById('adminLogout');
+//       logout.className = 'disabled modal-action modal-close waves-effect waves-blue btn blue';
+//
+//       var navAdmin = document.getElementById('navAdmin');
+//       navAdmin.innerText = 'ADMIN';
+//     } else {
+//       return;
+//     }
+//
+//     document.getElementById("adminForm").reset();
+//
+//   }
+// });
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
