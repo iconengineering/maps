@@ -154,7 +154,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         "type": "FeatureCollection",
         "features": []
       });
- 
+
       // make buttons disabled
       var adminPoint = document.getElementById('adminPoint');
       adminPoint.className = 'disabled waves-effect waves-blue btn blue white-text';
