@@ -33,6 +33,7 @@ layout: default_mapList
 #### Greeley
 
 [North Greeley and Downtown](greeley/ngd-update)
+[Sharktooth Bluffs](greeley/sbb-swmp)
 
 #### Others
 [Lyons- Stormwater Master Plan](http://www.iconeng.com/lyons-stormwater-masterplan/map)
