@@ -3,7 +3,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
     zoom: 13,
-    center: [-104.705, 40.42],
+    center: [-104.907, 39.58],
     hash: true,
     preserveDrawingBuffer: true
 });
@@ -33,9 +33,9 @@ $(document).ready(function() {
 map.on('style.load', function (e) {
 
 
-  map.addSource('basinOutlines', {
+  map.addSource('basins', {
       type: 'geojson',
-      data: 'basinOutlines.geojson'
+      data: 'basins.geojson'
   });
   map.addSource('alternatives', {
       type: 'geojson',
@@ -54,7 +54,7 @@ map.on('style.load', function (e) {
       type: 'vector',
       //merged file
       url: 'mapbox://iconeng.1x8kd1vy'
-      //url: 'mapbox://iconeng.2w7cnk9w' original 
+      //url: 'mapbox://iconeng.2w7cnk9w' original
   });
 
 
@@ -185,9 +185,9 @@ map.on('style.load', function (e) {
   }, 'road-label-small');
 
   map.addLayer({
-      'id': 'basinOutlines',
-      'type': 'line',
-      'source': 'basinOutlines',
+      'id': 'basins',
+      'type': 'fill',
+      'source': 'basins',
       'paint': {
           'line-width': 1,
           'line-opacity': 1,
@@ -196,7 +196,7 @@ map.on('style.load', function (e) {
       }
   });
 
-  
+
 
 
   // EXISTING CONVEYANCE
@@ -299,7 +299,7 @@ map.on('style.load', function (e) {
         "icon-ignore-placement": true
       },
       'paint': {
-        'icon-opacity': 0 
+        'icon-opacity': 0
       }
   });
 
