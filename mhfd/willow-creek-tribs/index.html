@@ -42,26 +42,7 @@
       <span style="display: inline-block;text-align:center;"><img class="responsive-img" src="MHFD-logo.png" style="padding:1rem;max-width:40%;"><img class="responsive-img" src="SEMSWA-Logo.png" style="padding:1rem;max-width:40%;"></span>
       <h5 style="padding:0 1rem; text-align:center; margin-top:0;">Willow Creek Tribs MDP & FHAD</h5>
         <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
-          <li>
-            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Map</div>
-            <div class="collapsible-body white">
-              <div id="menu" class="demo-toggles">
-                <p class="narrow">
-                  <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot"/>
-                  <label for="test1">Satellite</label>
-                </p>
-                <p class="narrow">
-                  <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" checked/>
-                  <label for="test2">Light</label>
-                </p>
-              </div>
-              <hr>
-              <p>
-                <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)"/>
-                <label for="contours" class="valign">Contours</label>
-              </p>
-            </div>
-          </li>
+          <!-- Hydrology Subheading -->
           <li>
             <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydrology</div>
             <div class="collapsible-body white">
@@ -126,7 +107,8 @@
 
             </div>
           </li>
-          <li>
+          <!-- Alternatives Subheading -->
+          <!-- <li> -->
             <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Alternatives</div>
             <div class="collapsible-body white">
               <div class="row">
@@ -162,6 +144,7 @@
               </div>
             </div>
           </li>
+          <!-- Hydraulics Subheading -->
           <li>
             <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydraulics</div>
             <div class="collapsible-body white">
@@ -222,6 +205,27 @@
                   <label for="F100">100-Year</label>
                 </p>
               </div>
+            </div>
+          </li>
+          <!-- BaseMap Subheading -->
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Map</div>
+            <div class="collapsible-body white">
+              <div id="menu" class="demo-toggles">
+                <p class="narrow">
+                  <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot"/>
+                  <label for="test1">Satellite</label>
+                </p>
+                <p class="narrow">
+                  <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" checked/>
+                  <label for="test2">Light</label>
+                </p>
+              </div>
+              <hr>
+              <p>
+                <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)"/>
+                <label for="contours" class="valign">Contours</label>
+              </p>
             </div>
           </li>
           <li>
