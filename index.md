@@ -33,7 +33,14 @@ layout: default_mapList
 #### Greeley
 
 [North Greeley and Downtown](greeley/ngd-update)
-[Sharktooth Bluffs](greeley/sbb-swmp)
+
+#### Mile High Flood District
+[Clear Creek DFIRM](clear-creek-dfirm)
+
+[Massey Draw](massey-draw)
+
+[Willow Creek Tribs MDP & FHAD](mhfd/willow-creek-tribs)
+
 
 #### Others
 [Lyons- Stormwater Master Plan](http://www.iconeng.com/lyons-stormwater-masterplan/map)
@@ -47,10 +54,6 @@ layout: default_mapList
 [Gordon Drive](other/gordondr)
 
 [Lone Tree Creek](centennial/lone-tree-creek)
-
-[Massey Draw](massey-draw)
-
-[Clear Creek DFIRM](clear-creek-dfirm)
 
 [Manor House](other/manor-house)
 
@@ -74,5 +77,3 @@ layout: default_mapList
 [CHV Floodplain](cherry-hills-village/floodplain-analysis)
 
 [Surrey Ridge Trails](surrey-ridge)
-
-[Sharktooth Bluffs](greeley/sharktoothbluffs)
