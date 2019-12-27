@@ -126,6 +126,7 @@ map.on('style.load', function (e) {
       }
   },'road-label-small');
 
+// Add Flow Depth outline
   map.addLayer({
       'id': 'flowDepthLine',
       'type': 'line',
@@ -157,6 +158,7 @@ map.on('style.load', function (e) {
       }
   }, 'road-label-small');
 
+// Add Flow Depth Fill
   map.addLayer({
       'id': 'flowDepth',
       'type': 'fill',
@@ -184,6 +186,7 @@ map.on('style.load', function (e) {
       }
   }, 'road-label-small');
 
+//Add Basin Outlines
   map.addLayer({
       'id': 'basins',
       'type': 'fill',
@@ -195,9 +198,6 @@ map.on('style.load', function (e) {
           'line-dasharray': [8,4]
       }
   });
-
-
-
 
   // EXISTING CONVEYANCE
   map.addLayer({
