@@ -32,18 +32,14 @@ $(document).ready(function() {
 
 map.on('style.load', function (e) {
 
-
   map.addSource('basinOutlines', {
       type: 'geojson',
       data: 'basinOutlines.geojson'
   });
-  map.addSource('alternatives', {
-      type: 'geojson',
-      data: 'alternatives.geojson'
-  });
+
   map.addSource('basinPoints', {
-      type: 'vector',
-      url: 'mapbox://iconeng.51s2rjyj'
+      type: 'geojson',
+      data: 'wct_centroids.geojson'
   });
 
   map.addSource('junctions', {
@@ -61,7 +57,7 @@ map.on('style.load', function (e) {
 
   map.addSource('contours', {
       type: 'vector',
-      url: 'mapbox://iconeng.eda7576e'
+      url: 'mapbox://iconeng.7l4srshk'
   });
   map.addSource('flowDepth', {
       type: 'vector',
@@ -421,7 +417,7 @@ map.on('style.load', function (e) {
          "text-size": {
              "stops": [[15, 10], [17, 12], [19, 14]]
          },
-         "text-field": "{Area} Ac. | {Imperv}%",
+         "text-field": "{Basin_Name}",
          'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
          "text-offset": {
              "stops": [[13, [0, 0.25]], [17, [0, 0.75]]]
