@@ -45,18 +45,19 @@ map.on('style.load', function (e) {
       type: 'vector',
       url: 'mapbox://iconeng.51s2rjyj'
   });
+
   map.addSource('junctions', {
       type: 'vector',
       url: 'mapbox://iconeng.ar1xojg3'
 //    url: 'mapbox://iconeng.4u0iz0t3'     original
   });
+
   map.addSource('conveyance', {
       type: 'vector',
       //merged file
       url: 'mapbox://iconeng.1x8kd1vy'
       //url: 'mapbox://iconeng.2w7cnk9w' original
   });
-
 
   map.addSource('contours', {
       type: 'vector',
@@ -189,7 +190,7 @@ map.on('style.load', function (e) {
 //Add Basin Outlines
   map.addLayer({
       'id': 'basins',
-      'type': 'fill',
+      'type': 'line',
       'source': 'basins',
       'paint': {
           'line-width': 1,
