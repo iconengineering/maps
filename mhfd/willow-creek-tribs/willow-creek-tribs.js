@@ -35,7 +35,7 @@ map.on('style.load', function (e) {
 
   map.addSource('basins', {
       type: 'geojson',
-      data: 'basins.geojson'
+      data: 'basins_lines.geojson'
   });
   map.addSource('alternatives', {
       type: 'geojson',
