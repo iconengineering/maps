@@ -555,19 +555,11 @@ function switchConduit() {
     map.setFilter('conduits', ['==', 'alt', value]);
     map.setFilter('conduitLabels', ['==', 'alt', value]);
     map.setFilter('conduitArrows', ['==', 'alt', value]);
-
-
 }
 
 for (var i = 0; i < conduitRadio.length; i++) {
     conduitRadio[i].onclick = switchConduit;
 }
-
-
-
-
-
-
 
 map.on('click', function (e) {
   var features = map.queryRenderedFeatures(e.point, { layers: ['conduits', 'junctions','flowDepth','basinLabels2','alternatives'] });
