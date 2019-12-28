@@ -33,7 +33,7 @@ $(document).ready(function() {
 map.on('style.load', function (e) {
 
 
-  map.addSource('basins', {
+  map.addSource('basinOutlines', {
       type: 'geojson',
       data: 'basins_lines.geojson'
   });
@@ -200,69 +200,69 @@ map.on('style.load', function (e) {
       }
   });
 
-  // EXISTING CONVEYANCE
-  map.addLayer({
-      'id': 'conduits',
-      'type': 'line',
-      'source': 'conveyance',
-      //'source-layer': 'ngd_conduits'
-      'source-layer': 'NGD_Conduits_Merge-aqq7jw',
-      'filter': ["==", "alt", 'existing'],
-      'layout': {
-        "visibility": 'none'
-       },
-      'paint': {
-          'line-width': 4,
-          'line-color': '#036180'
-      }
-  });
-
-  map.addLayer({
-      'id': 'conduitArrows',
-      'type': 'symbol',
-      'source': 'conveyance',
-      //'source-layer': 'ngd_conduits'
-      'source-layer': 'NGD_Conduits_Merge-aqq7jw',
-      'filter': ["==", "alt", 'existing'],
-      'layout': {
-        "visibility": 'none',
-        'symbol-placement': 'line',
-        'symbol-spacing': 50,
-        "icon-image": "oneway-white-small",
-        "icon-allow-overlap": true,
-        "text-rotation-alignment": "map",
-        "icon-size": 1,
-        "text-keep-upright": false,
-        "icon-padding": 0,
-        "icon-ignore-placement": true
-      },
-      'paint': {
-      }
-  });
-
-  map.addLayer({
-      'id': 'conduitLabels',
-      'type': 'symbol',
-      'source': 'conveyance',
-      //'source-layer': 'ngd_conduits'
-      'source-layer': 'NGD_Conduits_Merge-aqq7jw',
-      'filter': ["==", "alt", 'existing'],
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'text-field': '{Conduit}',
-        'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-        'text-size': 10,
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': '#F8F4F0',
-        'text-halo-color': '#036180',
-        'text-halo-width': 1
-      }
-  });
+  // // EXISTING CONVEYANCE
+  // map.addLayer({
+  //     'id': 'conduits',
+  //     'type': 'line',
+  //     'source': 'conveyance',
+  //     //'source-layer': 'ngd_conduits'
+  //     'source-layer': 'NGD_Conduits_Merge-aqq7jw',
+  //     'filter': ["==", "alt", 'existing'],
+  //     'layout': {
+  //       "visibility": 'none'
+  //      },
+  //     'paint': {
+  //         'line-width': 4,
+  //         'line-color': '#036180'
+  //     }
+  // });
+  //
+  // map.addLayer({
+  //     'id': 'conduitArrows',
+  //     'type': 'symbol',
+  //     'source': 'conveyance',
+  //     //'source-layer': 'ngd_conduits'
+  //     'source-layer': 'NGD_Conduits_Merge-aqq7jw',
+  //     'filter': ["==", "alt", 'existing'],
+  //     'layout': {
+  //       "visibility": 'none',
+  //       'symbol-placement': 'line',
+  //       'symbol-spacing': 50,
+  //       "icon-image": "oneway-white-small",
+  //       "icon-allow-overlap": true,
+  //       "text-rotation-alignment": "map",
+  //       "icon-size": 1,
+  //       "text-keep-upright": false,
+  //       "icon-padding": 0,
+  //       "icon-ignore-placement": true
+  //     },
+  //     'paint': {
+  //     }
+  // });
+  //
+  // map.addLayer({
+  //     'id': 'conduitLabels',
+  //     'type': 'symbol',
+  //     'source': 'conveyance',
+  //     //'source-layer': 'ngd_conduits'
+  //     'source-layer': 'NGD_Conduits_Merge-aqq7jw',
+  //     'filter': ["==", "alt", 'existing'],
+  //     'layout': {
+  //       "visibility": 'none',
+  //       "text-optional": true,
+  //       'symbol-placement': 'line',
+  //       'symbol-spacing': 100,
+  //       'text-field': '{Conduit}',
+  //       'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+  //       'text-size': 10,
+  //       "text-padding": 100,
+  //     },
+  //     'paint': {
+  //       'text-color': '#F8F4F0',
+  //       'text-halo-color': '#036180',
+  //       'text-halo-width': 1
+  //     }
+  // });
 
 
 
@@ -329,85 +329,85 @@ map.on('style.load', function (e) {
 
 */
 
-
-  map.addLayer({
-      'id': 'alternativesCase',
-      'type': 'line',
-      'source': 'alternatives',
-      'filter': ['==', 'alt', 'recPlan'],
-      'layout': {
-        "visibility": 'none',
-        'line-join': 'bevel'
-        },
-      'paint': {
-          'line-width': 4,
-          'line-color': '#000',
-          'line-gap-width': 0.1,
-          'line-blur': 4
-      }
-  });
-
-  map.addLayer({
-      'id': 'alternatives',
-      'type': 'line',
-      'source': 'alternatives',
-      'filter': ['==', 'alt', 'recPlan'],
-      'layout': {
-        "visibility": 'none',
-        'line-join': 'bevel'
-        },
-      'paint': {
-          'line-width': 6,
-          'line-color': {
-              property: 'Improv_Lvl',
-              type: 'categorical',
-              stops: [
-                  ['02-yr', 'rgb(199,101,134)'],
-                  ['05-yr', 'rgb(161,59,139)'],
-                  ['10-yr', 'rgb(109,23,143)'],
-                  ['Existing', 'rgb(14,9,135)']
-                  ]
-          }
-      }
-  });
-
-  map.addLayer({
-      'id': 'junctions',
-      'type': 'circle',
-      'source': 'junctions',
-      'source-layer': 'NGD_Junctions_Merge_2D-apcjeq',
-      'filter': ["==", "alt", 'recPlan'],
-      'layout': {
-         "visibility": 'none'
-       },
-      'paint': {
-          'circle-radius': 4,
-          'circle-color': '#ee4d5a'
-      }
-  });
-
-  map.addLayer({
-      'id': 'junctionLabels',
-      'type': 'symbol',
-      'source': 'junctions',
-      'source-layer': 'NGD_Junctions_Merge_2D-apcjeq',
-      'filter': ["==", "alt", 'recPlan'],
-      'layout': {
-         "visibility": 'none',
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": 12,
-         "text-field": "{Node}",
-         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-         "text-offset": [0, 1],
-         "text-anchor": "top"
-     },
-     "paint": {
-       "text-color": "#ee4d5a",
-       "text-halo-color": "#F8F4F0",
-       "text-halo-width": 1,
-     }
-  });
+  //
+  // map.addLayer({
+  //     'id': 'alternativesCase',
+  //     'type': 'line',
+  //     'source': 'alternatives',
+  //     'filter': ['==', 'alt', 'recPlan'],
+  //     'layout': {
+  //       "visibility": 'none',
+  //       'line-join': 'bevel'
+  //       },
+  //     'paint': {
+  //         'line-width': 4,
+  //         'line-color': '#000',
+  //         'line-gap-width': 0.1,
+  //         'line-blur': 4
+  //     }
+  // });
+  //
+  // map.addLayer({
+  //     'id': 'alternatives',
+  //     'type': 'line',
+  //     'source': 'alternatives',
+  //     'filter': ['==', 'alt', 'recPlan'],
+  //     'layout': {
+  //       "visibility": 'none',
+  //       'line-join': 'bevel'
+  //       },
+  //     'paint': {
+  //         'line-width': 6,
+  //         'line-color': {
+  //             property: 'Improv_Lvl',
+  //             type: 'categorical',
+  //             stops: [
+  //                 ['02-yr', 'rgb(199,101,134)'],
+  //                 ['05-yr', 'rgb(161,59,139)'],
+  //                 ['10-yr', 'rgb(109,23,143)'],
+  //                 ['Existing', 'rgb(14,9,135)']
+  //                 ]
+  //         }
+  //     }
+  // });
+  //
+  // map.addLayer({
+  //     'id': 'junctions',
+  //     'type': 'circle',
+  //     'source': 'junctions',
+  //     'source-layer': 'NGD_Junctions_Merge_2D-apcjeq',
+  //     'filter': ["==", "alt", 'recPlan'],
+  //     'layout': {
+  //        "visibility": 'none'
+  //      },
+  //     'paint': {
+  //         'circle-radius': 4,
+  //         'circle-color': '#ee4d5a'
+  //     }
+  // });
+  //
+  // map.addLayer({
+  //     'id': 'junctionLabels',
+  //     'type': 'symbol',
+  //     'source': 'junctions',
+  //     'source-layer': 'NGD_Junctions_Merge_2D-apcjeq',
+  //     'filter': ["==", "alt", 'recPlan'],
+  //     'layout': {
+  //        "visibility": 'none',
+  //        "text-optional": true,
+  //        "text-line-height": 1,
+  //        "text-size": 12,
+  //        "text-field": "{Node}",
+  //        'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+  //        "text-offset": [0, 1],
+  //        "text-anchor": "top"
+  //    },
+  //    "paint": {
+  //      "text-color": "#ee4d5a",
+  //      "text-halo-color": "#F8F4F0",
+  //      "text-halo-width": 1,
+  //    }
+  // });
 
   map.addLayer({
       'id': 'basinLabels',
