@@ -35,7 +35,7 @@ map.on('style.load', function (e) {
 
   map.addSource('basinOutlines', {
       type: 'geojson',
-      data: 'basins_lines.geojson'
+      data: 'basinOutlines.geojson'
   });
   map.addSource('alternatives', {
       type: 'geojson',
@@ -189,9 +189,9 @@ map.on('style.load', function (e) {
 
 //Add Basin Outlines
   map.addLayer({
-      'id': 'basins',
+      'id': 'basinOutlines',
       'type': 'line',
-      'source': 'basins',
+      'source': 'basinOutlines',
       'paint': {
           'line-width': 1,
           'line-opacity': 1,
