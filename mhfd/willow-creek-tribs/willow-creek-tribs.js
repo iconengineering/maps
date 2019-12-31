@@ -26,7 +26,7 @@ $(document).ready(function() {
     $("#clear").click(function() {
         var checkBoxes = $("input[type=checkbox]");
         checkBoxes.prop("checked", false);
-        map.setPaintProperty('watersheds','fill-opacity', 0);
+        map.setPaintProperty('basinOutlines','line-opacity', 0);
     });
 });
 
@@ -34,8 +34,12 @@ map.on('style.load', function (e) {
 
   map.addSource('basinOutlines', {
       type: 'geojson',
-      data: 'basinOutlines.geojson'
+      "data": 'basinOutlines.geojson'
   });
+  map.addSource('contours', {
+    type: 'vector',
+    url: 'mapbox://iconeng.5goos4hw'
+});
 
 
 //Add Basin Outlines
@@ -50,6 +54,24 @@ map.on('style.load', function (e) {
           'line-dasharray': [8,4]
       }
   });
+
+  map.addLayer({
+        'id': '1ftContours',
+        'type': 'line',
+        'source': 'contours',
+        'source-layer': 'oldtown_1ft_contours_smooth',
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-width': {
+              "stops": [[15, 0], [17, .5], [19, 1]]
+          },
+          'line-opacity': 0,
+          'line-color': '#bd925a'
+        }
+    },'road-label-small');
 
   var style = map.getStyle();
 
