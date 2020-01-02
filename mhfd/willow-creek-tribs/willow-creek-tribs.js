@@ -28,7 +28,8 @@ $(document).ready(function() {
     checkBoxes.prop("checked", false);
     map.setPaintProperty('basinOutlines', 'line-opacity', 0);
     map.setPaintProperty('flowDepth', 'fill-opacity', 0);
-    map.setPaintProperty('flowDepthOverview', 'fill-opacity',0);
+    map.setPaintProperty('flowDepthOverview', 'fill-opacity', 0);
+
   });
 });
 
@@ -38,14 +39,18 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'basinOutlines.geojson'
   });
+  map.addSource('buildingOutlines', {
+    type: 'geojson',
+    "data": 'buildingOutlines.geojson'
+  });
   // map.addSource('contours', {
   //   type: 'vector',
   //   url: 'mapbox://iconeng.5goos4hw'
   // });
-  map.addSource('flowDepth', { //combined ROG & AOI
-    type: 'vector',
-    url: 'mapbox://iconeng.7ir8lsql'
-  });
+  // map.addSource('flowDepth', {
+  //   type: 'vector',
+  //   url: 'mapbox://iconeng.7ir8lsql'
+  // });
 
   //Add Basin Outlines
   map.addLayer({
@@ -84,29 +89,41 @@ map.on('style.load', function(e) {
   // }, 'road-label-small');
 
   //Add Flow depth
+  // map.addLayer({
+  //   'id': 'flowDepth',
+  //   'type': 'fill',
+  //   'source': 'flowDepth',
+  //   'source-layer': 'wct_depth_merged-6uujq7',
+  //   'filter': ["all", ['>', 'VALUE', 0.08]],
+  //   'paint': {
+  //     'fill-color': {
+  //       property: 'VALUE',
+  //       type: 'interval',
+  //       stops: [
+  //         [.25, 'rgb(252,244,182)'],
+  //         [.5, 'rgb(245,194,152)'],
+  //         [1, 'rgb(227,147,138)'],
+  //         [1.5, 'rgb(199,101,134)'],
+  //         [2, 'rgb(161,59,139)'],
+  //         [3, 'rgb(109,23,143)'],
+  //         [4, 'rgb(14,9,135)']
+  //       ]
+  //     },
+  //     'fill-opacity': 0
+  //   }
+  // }, 'road-label-small');
+
+  //Add Building
   map.addLayer({
-    'id': 'flowDepth',
-    'type': 'fill',
-    'source': 'flowDepth',
-    'source-layer': 'wct_depth_merged-6uujq7',
-    'filter': ["all",['>', 'VALUE', 0.08]],
+    'id': 'buildingOutlines',
+    'type': 'line',
+    'source-layer': 'buildingOutlines',
     'paint': {
-      'fill-color': {
-        property: 'VALUE',
-        type: 'interval',
-        stops: [
-          [.25, 'rgb(252,244,182)'],
-          [.5, 'rgb(245,194,152)'],
-          [1, 'rgb(227,147,138)'],
-          [1.5, 'rgb(199,101,134)'],
-          [2, 'rgb(161,59,139)'],
-          [3, 'rgb(109,23,143)'],
-          [4, 'rgb(14,9,135)']
-        ]
-      },
-      'fill-opacity': 0
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,1)',
     }
-  }, 'road-label-small');
+  });
 
   // var style = map.getStyle();
   //
