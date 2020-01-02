@@ -89,7 +89,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'flowDepth',
     'source-layer': 'wct_depth_wce-2werws',
-    'filter': ["all",['>', 'VALUE', 0.25]],
+    'filter': ["all",['>', 'VALUE', 0.08]],
     'paint': {
       'fill-color': {
         property: 'VALUE',
