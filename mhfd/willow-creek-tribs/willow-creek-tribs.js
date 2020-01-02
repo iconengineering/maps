@@ -44,7 +44,7 @@ map.on('style.load', function(e) {
   // });
   map.addSource('flowDepth', { //combined ROG & AOI
     type: 'vector',
-    url: 'mapbox://iconeng.29g6797m'
+    url: 'mapbox://iconeng.7ir8lsql'
   });
 
   //Add Basin Outlines
@@ -88,7 +88,7 @@ map.on('style.load', function(e) {
     'id': 'flowDepth',
     'type': 'fill',
     'source': 'flowDepth',
-    'source-layer': 'wct_depth_wce-2werws',
+    'source-layer': 'wct_depth_merged-6uujq7',
     'filter': ["all",['>', 'VALUE', 0.08]],
     'paint': {
       'fill-color': {
