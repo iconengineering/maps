@@ -30,6 +30,9 @@ $(document).ready(function() {
     map.setPaintProperty('draingeways', 'line-opacity', 0)
     map.setPaintProperty('flowDepth', 'fill-opacity', 0);
     map.setPaintProperty('flowDepthOverview', 'fill-opacity', 0);
+    map.setPaintProperty('1ftContours','line-opacity', 0);
+map.setPaintProperty('5ftContours','line-opacity', 0);
+        map.setPaintProperty('5ftLabels','text-opacity', 0);
   });
 });
 
@@ -39,10 +42,10 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'basinOutlines.geojson'
   });
-  // map.addSource('contours', {
-  //   type: 'vector',
-  //   url: 'mapbox://iconeng.5goos4hw'
-  // });
+  map.addSource('contours', {
+      type: 'vector',
+      url: 'mapbox://iconeng.e74b2b70'
+  });
   map.addSource('drainageways', {
     type: 'geojson',
     "data": 'drainageways.geojson'
@@ -65,28 +68,68 @@ map.on('style.load', function(e) {
     }
   });
 
-  // //  Add contours
-  //   map.addLayer({
-  //     'id': '1ftContours',
-  //     'type': 'line',
-  //     'source': 'contours',
-  //     'source-layer': 'oldtown_1ft_contours_smooth',
-  //     'layout': {
-  //       'line-join': 'round',
-  //       'line-cap': 'round'
-  //     },
-  //     'paint': {
-  //       'line-width': {
-  //         "stops": [
-  //           [15, 0],
-  //           [17, .5],
-  //           [19, 1]
-  //         ]
-  //       },
-  //       'line-opacity': 0,
-  //       'line-color': '#bd925a'
-  //     }
-  //   }, 'road-label-small');
+//Add Contours
+  map.addLayer({
+      'id': '5ftContours',
+      'type': 'line',
+      'source': 'contours',
+      'source-layer': 'oldtown_1ft_contours_smooth',
+      'filter': ['all', ['>', 'Index', 1]],
+      'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 1], [17, 1.75], [19, 2.5]]
+        },
+        'line-opacity': 0,
+        'line-color': '#bd925a'
+      }
+  },'road-label-small');
+
+  //  Add contours
+  map.addLayer({
+      'id': '1ftContours',
+      'type': 'line',
+      'source': 'contours',
+      'source-layer': 'oldtown_1ft_contours_smooth',
+      'layout': {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      'paint': {
+        'line-width': {
+            "stops": [[15, 0], [17, .5], [19, 1]]
+        },
+        'line-opacity': 0,
+        'line-color': '#bd925a'
+      }
+  },'road-label-small');
+
+  map.addLayer({
+      'id': '5ftLabels',
+      'type': 'symbol',
+      'source': 'contours',
+      'source-layer': 'oldtown_1ft_contours_smooth',
+      'filter': ['all', ['>', 'Index', 1]],
+      'layout': {
+        'symbol-placement': 'line',
+        'text-field': '{CONTOUR}',
+        'text-font': ['Roboto Light Italic','Open Sans Light','Arial Unicode MS Regular'],
+        'text-size': {
+          "stops": [[15,9],[17,11],[19,13]]
+        }
+      },
+      'paint': {
+        'text-color': '#bd925a',
+        'text-halo-color': '#F8F4F0',
+        'text-halo-width': 2,
+        'text-halo-blur': 0.5,
+        'text-opacity': 0
+      }
+  },'road-label-small');
+
 
   //Add Drainageways
   map.addLayer({
