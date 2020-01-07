@@ -29,7 +29,7 @@ $(document).ready(function() {
     map.setPaintProperty('basinOutlines', 'line-opacity', 0);
     map.setPaintProperty('flowDepth', 'fill-opacity', 0);
     map.setPaintProperty('flowDepthOverview', 'fill-opacity', 0);
-
+    map.setPaintProperty('buildingOutlines', 'fill-opacity',0);
   });
 });
 
@@ -39,10 +39,10 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'basinOutlines.geojson'
   });
-  map.addSource('buildingOutlines', {
-    type: 'geojson',
-    "data": 'buildingOutlines.geojson'
-  });
+  // map.addSource('buildingOutlines', {
+  //   type: 'geojson',
+  //   "data": 'buildingOutlines.geojson'
+  // });
   // map.addSource('contours', {
   //   type: 'vector',
   //   url: 'mapbox://iconeng.5goos4hw'
@@ -64,6 +64,17 @@ map.on('style.load', function(e) {
       'line-dasharray': [8, 4]
     }
   });
+
+  //Add Building
+  // map.addLayer({
+  //   'id': 'buildingOutlines',
+  //   'type': 'fill',
+  //   'source': 'buildingOutlines',
+  //   'paint': {
+  //     'fill-opacity': 0.1,
+  //     'fill-color': 'rgba(0,0,0,1)',
+  //   }
+  // });
 
   //Add contours
   // map.addLayer({
@@ -113,17 +124,7 @@ map.on('style.load', function(e) {
   //   }
   // }, 'road-label-small');
 
-  //Add Building
-  map.addLayer({
-    'id': 'buildingOutlines',
-    'type': 'line',
-    'source-layer': 'buildingOutlines',
-    'paint': {
-      'line-width': 1,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,0,0,1)',
-    }
-  });
+
 
   // var style = map.getStyle();
   //
