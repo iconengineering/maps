@@ -39,14 +39,14 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'basinOutlines.geojson'
   });
-  // map.addSource('buildingOutlines', {
-  //   type: 'geojson',
-  //   "data": 'buildingOutlines.geojson'
-  // });
-  // map.addSource('contours', {
-  //   type: 'vector',
-  //   url: 'mapbox://iconeng.5goos4hw'
-  // });
+  map.addSource('buildingOutlines', {
+    type: 'geojson',
+    "data": 'buildingOutlines.geojson'
+  });
+  map.addSource('contours', {
+    type: 'vector',
+    url: 'mapbox://iconeng.5goos4hw'
+  });
   map.addSource('flowDepth', {
     type: 'vector',
     url: 'mapbox://iconeng.7ir8lsql'
@@ -65,39 +65,39 @@ map.on('style.load', function(e) {
     }
   });
 
-  //Add Building
-  // map.addLayer({
-  //   'id': 'buildingOutlines',
-  //   'type': 'fill',
-  //   'source': 'buildingOutlines',
-  //   'paint': {
-  //     'fill-opacity': 0.1,
-  //     'fill-color': 'rgba(0,0,0,1)',
-  //   }
-  // });
+//  Add Building
+  map.addLayer({
+    'id': 'buildingOutlines',
+    'type': 'fill',
+    'source': 'buildingOutlines',
+    'paint': {
+      'fill-opacity': 0.1,
+      'fill-color': 'rgba(0,0,0,1)',
+    }
+  });
 
-  //Add contours
-  // map.addLayer({
-  //   'id': '1ftContours',
-  //   'type': 'line',
-  //   'source': 'contours',
-  //   'source-layer': 'oldtown_1ft_contours_smooth',
-  //   'layout': {
-  //     'line-join': 'round',
-  //     'line-cap': 'round'
-  //   },
-  //   'paint': {
-  //     'line-width': {
-  //       "stops": [
-  //         [15, 0],
-  //         [17, .5],
-  //         [19, 1]
-  //       ]
-  //     },
-  //     'line-opacity': 0,
-  //     'line-color': '#bd925a'
-  //   }
-  // }, 'road-label-small');
+  Add contours
+  map.addLayer({
+    'id': '1ftContours',
+    'type': 'line',
+    'source': 'contours',
+    'source-layer': 'oldtown_1ft_contours_smooth',
+    'layout': {
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+    'paint': {
+      'line-width': {
+        "stops": [
+          [15, 0],
+          [17, .5],
+          [19, 1]
+        ]
+      },
+      'line-opacity': 0,
+      'line-color': '#bd925a'
+    }
+  }, 'road-label-small');
 
   //Add Flow depth
   map.addLayer({
