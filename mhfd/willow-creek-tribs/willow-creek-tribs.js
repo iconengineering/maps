@@ -27,9 +27,9 @@ $(document).ready(function() {
     var checkBoxes = $("input[type=checkbox]");
     checkBoxes.prop("checked", false);
     map.setPaintProperty('basinOutlines', 'line-opacity', 0);
+    map.setPaintProperty('draingeways', 'line-opacity', 0)
     map.setPaintProperty('flowDepth', 'fill-opacity', 0);
     map.setPaintProperty('flowDepthOverview', 'fill-opacity', 0);
-    map.setPaintProperty('buildingOutlines', 'fill-opacity',0);
   });
 });
 
@@ -39,13 +39,13 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'basinOutlines.geojson'
   });
-  map.addSource('buildingOutlines', {
+  // map.addSource('contours', {
+  //   type: 'vector',
+  //   url: 'mapbox://iconeng.5goos4hw'
+  // });
+  map.addSource('drainageways', {
     type: 'geojson',
-    "data": 'buildingOutlines.geojson'
-  });
-  map.addSource('contours', {
-    type: 'vector',
-    url: 'mapbox://iconeng.5goos4hw'
+    "data": 'drainageways.geojson'
   });
   map.addSource('flowDepth', {
     type: 'vector',
@@ -65,39 +65,40 @@ map.on('style.load', function(e) {
     }
   });
 
-//  Add Building
+  // //  Add contours
+  //   map.addLayer({
+  //     'id': '1ftContours',
+  //     'type': 'line',
+  //     'source': 'contours',
+  //     'source-layer': 'oldtown_1ft_contours_smooth',
+  //     'layout': {
+  //       'line-join': 'round',
+  //       'line-cap': 'round'
+  //     },
+  //     'paint': {
+  //       'line-width': {
+  //         "stops": [
+  //           [15, 0],
+  //           [17, .5],
+  //           [19, 1]
+  //         ]
+  //       },
+  //       'line-opacity': 0,
+  //       'line-color': '#bd925a'
+  //     }
+  //   }, 'road-label-small');
+
+  //Add Drainageways
   map.addLayer({
-    'id': 'buildingOutlines',
-    'type': 'fill',
-    'source': 'buildingOutlines',
+    'id': 'drainageways',
+    'type': 'line',
+    'source': 'drainageways',
     'paint': {
-      'fill-opacity': 0.1,
-      'fill-color': 'rgba(0,0,0,1)',
+      'line-width': 2,
+      'line-opacity': 1,
+      'line-color': 'rgba(134,180,188,1)',
     }
   });
-
-  Add contours
-  map.addLayer({
-    'id': '1ftContours',
-    'type': 'line',
-    'source': 'contours',
-    'source-layer': 'oldtown_1ft_contours_smooth',
-    'layout': {
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    'paint': {
-      'line-width': {
-        "stops": [
-          [15, 0],
-          [17, .5],
-          [19, 1]
-        ]
-      },
-      'line-opacity': 0,
-      'line-color': '#bd925a'
-    }
-  }, 'road-label-small');
 
   //Add Flow depth
   map.addLayer({
