@@ -215,12 +215,12 @@ map.on('style.load', function(e) {
 
   //Add parcels to layer
   map.addLayer({
-    'id': 'parcels',
-    'type': 'fill',
+    'id': 'parcels-lines',
+    'type': 'line',
     'source': 'parcels',
     'paint': {
-      'fill-color': '#dc0714',
-      'fill-opacity': 0.05
+      'line-color': '#dc0714',
+      'line-opacity': 1
     }
 
   });
