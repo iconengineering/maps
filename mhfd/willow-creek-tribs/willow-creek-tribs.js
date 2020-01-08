@@ -238,21 +238,12 @@ map.on('style.load', function(e) {
       'type': 'line',
       'source': 'rasboundary',
       'paint': {
-        'line-color': '#ff0000',
+        'line-color': '#008000',
         'line-width': 3,
         'line-opacity': 0
       },
-
-    
-
   });
-
-
-
-
 }); //end style load
-
-
 
 // When a click event occurs near a marker icon, open a popup at the location of
 
