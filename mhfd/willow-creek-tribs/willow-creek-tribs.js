@@ -72,7 +72,7 @@ map.on('style.load', function(e) {
     }
   });
 
-  //Add Contours
+  //Add 5 ft Contours
   map.addLayer({
     'id': '5ftContours',
     'type': 'line',
@@ -96,7 +96,7 @@ map.on('style.load', function(e) {
     }
   }, 'road-label-small');
 
-  //  Add contours
+  //  Add 1ft contours
   map.addLayer({
     'id': '1ftContours',
     'type': 'line',
@@ -146,7 +146,6 @@ map.on('style.load', function(e) {
       'text-opacity': 0
     }
   }, 'road-label-small');
-
 
   //Add Drainageways
   map.addLayer({
@@ -210,6 +209,9 @@ map.on('style.load', function(e) {
         ]
       },
       'fill-opacity': 0.8
+    },
+    'layout':{
+      'visibility': 'none'
     }
   }, 'road-label-small');
 
