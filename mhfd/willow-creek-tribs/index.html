@@ -182,8 +182,13 @@
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydraulics</div>
           <div class="collapsible-body white">
             <p>
-              <input name="flowdepth" type="checkbox" id="flowdepth" class="layer-off" onclick="toggleLayer('flowDepth')" />
-              <label for="flowdepth" class="valign">Flow Depth (Zoom in to Render)</label>
+              <input name="rasboundary" type="checkbox" id="rasboundary" class="layer-on" onclick="toggleSmooth('rasboundary','line-opacity',1)" checked/>
+              <label for="rasboundary" class="valign">Limits of 2D Analysis</label>
+            </p>
+            <p>
+              <input name="flowdepth" type="checkbox" id="flowdepth" class="layer-off" onclick="toggleLayer('flowDepth')"/>
+              <label for="flowdepth" class="valign">Flow Depth</label>
+              <p> Zoom in to render RAS-2D Depth. Click to sample maximum depths </p>
             </p>
           </div>
         </li>
