@@ -119,7 +119,7 @@ map.on('style.load', function(e) {
     }
   }, 'road-label-small');
 
-// 5 ft. Contour Labels
+  // 5 ft. Contour Labels
   map.addLayer({
     'id': '5ftLabels',
     'type': 'symbol',
@@ -153,7 +153,7 @@ map.on('style.load', function(e) {
     'id': 'drainageways',
     'type': 'line',
     'source': 'drainageways',
-    'source-layer':'drainageways-cbyi1o',
+    'source-layer': 'drainageways-cbyi1o',
     'paint': {
       'line-width': 2,
       'line-opacity': 1,
@@ -163,25 +163,29 @@ map.on('style.load', function(e) {
 
   //Add Drainageway Labels
   map.addLayer({
-    'id':'dwayLabels',
-    'type':'symbol',
-    'source':'drainageways',
-    'source-layer':'drainageways-cbyi1o',
+    'id': 'dwayLabels',
+    'type': 'symbol',
+    'source': 'drainageways',
+    'source-layer': 'drainageways-cbyi1o',
     'layout': {
-          'symbol-placement': 'line',
-          'symbol-spacing': 100,
-          'text-field': '{str_name}',
-          'text-size': {
-            "stops": [[15,12],[17,14],[19,16]]
-          },
-          "text-padding": 100,
-        },
-        'paint': {
-          'text-color': '#000',
-          'text-halo-color': 'rgba(75,255,255,0.9)',
-          'text-halo-width': 2,
-          'text-halo-blur': 1
-        }
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{str_name}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': '#000',
+      'text-halo-color': 'rgba(75,255,255,0.9)',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
   });
 
   //Add Flow depth
@@ -190,7 +194,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'flowDepth',
     'source-layer': 'wct_depth_merged-6uujq7',
-    'filter': ["all", ['>', 'VALUE', 0.08]],
+    'filter': ['>=', 'VALUE', 0.08],
     'paint': {
       'fill-color': {
         property: 'VALUE',
@@ -205,28 +209,50 @@ map.on('style.load', function(e) {
           [4, 'rgb(14,9,135)']
         ]
       },
-      'fill-opacity': 0
+      'fill-opacity': 0.8
     }
   }, 'road-label-small');
 
-//Add parcels to layer
-map.addLayer({
-  'id':'parcels',
-  'type': 'fill',
-  'source': 'parcels',
-  'paint': {
-    'fill-color': '#dc0714',
-    'fill-opacity': 0.05
+  //Add parcels to layer
+  map.addLayer({
+    'id': 'parcels',
+    'type': 'fill',
+    'source': 'parcels',
+    'paint': {
+      'fill-color': '#dc0714',
+      'fill-opacity': 0.05
+    }
+
+  });
+
+}); //end style load
+
+// When a click event occurs near a marker icon, open a popup at the location of
+// the feature, with description HTML from its properties.
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['flowDepth']
+  });
+  if (!features.length) {
+    return;
   }
+  var feature = features[0];
+  if (feature.layer.id == 'flowDepth') {
+    var popup = new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML('<span>Depth: </span>' + Math.round(feature.properties.VALUE*100) / 100 + ' ft')
+      .addTo(map);
 
+  } else {
+    return;
+  }
 });
 
-  // var style = map.getStyle();
-  //
-  // if (style.name != 'Light') {
-  //   map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
-  // }
-
+// Change cursor over clickable features
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['flowDepth'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
+
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
