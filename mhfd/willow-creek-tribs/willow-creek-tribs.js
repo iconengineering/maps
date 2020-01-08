@@ -44,7 +44,7 @@ map.on('style.load', function(e) {
   });
   map.addSource('contours', {
     type: 'vector',
-    url: 'mapbox://iconeng.e74b2b70'
+    url: 'mapbox://iconeng.d80vvltu'
   });
   map.addSource('drainageways', {
     type: 'vector',
@@ -101,7 +101,7 @@ map.on('style.load', function(e) {
     'id': '1ftContours',
     'type': 'line',
     'source': 'contours',
-    'source-layer': 'oldtown_1ft_contours_smooth',
+    'source-layer': 'contours_clipped-c5t1bg',
     'layout': {
       'line-join': 'round',
       'line-cap': 'round'
@@ -124,7 +124,7 @@ map.on('style.load', function(e) {
     'id': '5ftLabels',
     'type': 'symbol',
     'source': 'contours',
-    'source-layer': 'oldtown_1ft_contours_smooth',
+    'source-layer': 'contours_clipped-c5t1bg',
     'filter': ['all', ['>', 'Index', 1]],
     'layout': {
       'symbol-placement': 'line',
