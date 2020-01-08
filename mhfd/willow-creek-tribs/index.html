@@ -183,7 +183,7 @@
           <div class="collapsible-body white">
             <p>
               <input name="flowdepth" type="checkbox" id="flowdepth" class="layer-off" onclick="toggleLayer('flowDepth')" />
-              <label for="flowdepth" class="valign">Flow Depth (Zoom in)</label>
+              <label for="flowdepth" class="valign">Flow Depth (Zoom in to Render)</label>
             </p>
           </div>
         </li>
@@ -205,11 +205,14 @@
             </div>
             <hr>
             <p>
-              <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)"/>
-                <label for="contours" class="valign">Contours</label>
+              <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)" />
+              <label for="contours" class="valign">Contours</label>
             </p>
-            <hr>
-            </div>
+            <p>
+              <input name="parcels" type="checkbox" id="parcels" class="layer-off" onclick="toggleSmooth('parcels','line-opacity',1)" />
+              <label for="parcels" class="valign">Parcels</label>
+            </p>
+          </div>
         </li>
 
 
@@ -258,6 +261,8 @@
         </li>
       </ul>
     </div>
+
+
     <main class="mdl-layout__content">
       <div class="page-content">
         <div id="map"></div>

@@ -33,6 +33,7 @@ $(document).ready(function() {
     map.setPaintProperty('1ftContours', 'line-opacity', 0);
     map.setPaintProperty('5ftContours', 'line-opacity', 0);
     map.setPaintProperty('5ftLabels', 'text-opacity', 0);
+    map.setPaintProperty('parcels', 'line-opacity', 0);
   });
 });
 
@@ -77,7 +78,7 @@ map.on('style.load', function(e) {
     'id': '5ftContours',
     'type': 'line',
     'source': 'contours',
-    'source-layer': 'oldtown_1ft_contours_smooth',
+    'source-layer': 'contours_clipped-c5t1bg',
     'filter': ['all', ['>', 'Index', 1]],
     'layout': {
       'line-join': 'round',
@@ -217,14 +218,14 @@ map.on('style.load', function(e) {
 
   //Add parcels to layer
   map.addLayer({
-    'id': 'parcels-lines',
+    'id': 'parcels',
     'type': 'line',
     'source': 'parcels',
     'paint': {
       'line-color': '#dc0714',
-      'line-opacity': 1
-    }
-
+      'line-width':1,
+      'line-opacity': 0
+    },
   });
 
 }); //end style load
