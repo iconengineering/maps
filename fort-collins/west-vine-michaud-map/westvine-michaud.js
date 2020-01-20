@@ -991,6 +991,29 @@ if (!mapboxgl.supported()) {
         'line-width': 1,
         'line-opacity': 1,
         'line-color': 'rgba(0,77,68,1)'
+      },
+      'layout':{
+        'visiblity':'visible'
+      }
+    });
+
+    map.addSource('wvb-flooplain500yr',{
+      type: 'geojson',
+      "data": 'floodplainsshallowflooding.geojson'
+    });
+
+    //Add shallow flooding
+    map.addLayer({
+      'id':'wvb-floodplain500yr',
+      'type':'line',
+      'source':'wvb-floodplain500yr',
+      'paint':{
+        'line-width':1,
+        'line-opacity':1,
+        'line-color':'rgb(255,128,0)'
+      },
+      'layout':{
+        'visibility':'visible'
       }
     });
 
