@@ -5,8 +5,8 @@ if (!mapboxgl.supported()) {
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
-    zoom: 12.5,
-    center: [-105.15, 40.595],
+    zoom: 15,
+    center: [-105.15, 40.605],
   });
 
   map.on('style.load', function() {
@@ -918,16 +918,16 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-floodplain100yr', {
+    map.addSource('wvb-fp-100yr', {
       type: 'geojson',
-      "data": 'data/floodplain100yr.geojson'
+      "data": 'data/fp-100yr-polygons.geojson'
     });
 
     //West Vine 100 yr FP
     map.addLayer({
-      'id': 'wvb-floodplain100yr',
+      'id': 'wvb-fp-100yr',
       'type': 'line',
-      'source': 'wvb-floodplain100yr',
+      'source': 'wvb-fp-100yr',
       'paint': {
         'line-width': 1,
         'line-opacity': 0.6,
