@@ -960,7 +960,7 @@ if (!mapboxgl.supported()) {
 
     //West Vine Stream Centerline LABEL
     map.addLayer({
-      'id': 'wvb-stream',
+      'id': 'wvb-streamLabels',
       'type': 'symbol',
       'source': 'wvb-stream',
       'layout': {
@@ -1003,7 +1003,7 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-flooplain500yr',{
+    map.addSource('wvb-floodplain500yr',{
       type: 'geojson',
       "data": 'data/floodplainsshallowflooding.geojson'
     });
