@@ -13,7 +13,7 @@ if (!mapboxgl.supported()) {
 
     map.addSource('wvb-contours', {
       type: 'vector',
-      url: 'mapbox://iconeng.7b288ff0'
+      url: 'mapbox://iconeng.3fckylfu'
     });
     //WVB 1 FT CONTOURS
     map.addLayer({
@@ -698,7 +698,62 @@ if (!mapboxgl.supported()) {
       }
     });
 
+    map.addSource('city-fldwy', {
+      type: 'geojson',
+      "data": 'data/cityfp-fldwy.geojson'
+    });
 
+    map.addLayer({
+      'id': 'city-fldwy',
+      'type': 'line',
+      'source': 'city-fldwy',
+      'paint': {
+        'line-width': 2,
+        'line-opacity': 1,
+        'line-color': 'rgba(128,128,128,1)'
+      },
+      'layout': {
+        'visibility': 'visible'
+      }
+    });
+
+    map.addSource('city-fp', {
+      type: 'geojson',
+      "data": 'data/cityfp-fp.geojson'
+    });
+
+    map.addLayer({
+      'id': 'city-fp',
+      'type': 'line',
+      'source': 'city-fp',
+      'paint': {
+        'line-width': 2,
+        'line-opacity': 1,
+        'line-color': 'rgba(128,128,128,1)'
+      },
+      'layout': {
+        'visibility': 'visible'
+      }
+    });
+
+    map.addSource('city-sf', {
+      type: 'geojson',
+      "data": 'data/cityfp-sf.geojson'
+    });
+
+    map.addLayer({
+      'id': 'city-sf',
+      'type': 'line',
+      'source': 'city-sf',
+      'paint': {
+        'line-width': 2,
+        'line-opacity': 1,
+        'line-color': 'rgba(128,128,128,1)'
+      },
+      'layout': {
+        'visibility': 'visible'
+      }
+    });
 
   }); //end style load
 
