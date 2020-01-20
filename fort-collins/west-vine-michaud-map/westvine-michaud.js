@@ -888,6 +888,7 @@ if (!mapboxgl.supported()) {
         'line-color': 'rgba(0,0,0,1)'
       }
     });
+
     //WEST VINE XS LABELS
     map.addLayer({
       'id': 'wvb-xsLabels',
@@ -914,7 +915,7 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addsource('wvb-floodplain100yr',{
+    map.addSource('wvb-floodplain100yr',{
       type:'geojson',
       "data":'data/floodplain100yr.geojson'
     });
@@ -952,7 +953,7 @@ if (!mapboxgl.supported()) {
       .addTo(map);
   });
 
-//Cross Section
+//Cross Section Labels
   map.on('click', function(e) {
     var features = map.queryRenderedFeatures(e.point, {
       layers: ['wvb-xs']
