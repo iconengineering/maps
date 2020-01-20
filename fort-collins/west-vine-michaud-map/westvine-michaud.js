@@ -941,7 +941,7 @@ if (!mapboxgl.supported()) {
     map.addLayer({
       'id':'wvb-stream',
       'type':'line',
-      'source','wvb-stream',
+      'source':'wvb-stream',
       'paint':{
         'linewidth':1,
         'line-opacity':1,
