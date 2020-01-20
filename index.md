@@ -26,9 +26,11 @@ layout: default_mapList
 
 [Old Town Results](fort-collins/old-town-results)
 
+[Mulberry/Riverside](fort-collins/mulberry-riverside)
+
 [West Vine/Michaud](fort-collins/west-vine-michaud-map)
 
-[Mulberry/Riverside](fort-collins/mulberry-riverside)
+[West Vine](fort-collins/west-vine)
 
 #### Greeley
 
