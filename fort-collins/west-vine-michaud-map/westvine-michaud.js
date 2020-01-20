@@ -78,6 +78,7 @@ map.on('style.load', function () {
         }
     });
 
+
     map.addSource('mcb-contours', {
         type: 'vector',
         url: 'mapbox://iconeng.2f2497d6'
@@ -217,6 +218,7 @@ map.on('style.load', function () {
     type: 'vector',
     url: 'mapbox://iconeng.8bkept6e'
     });
+//Add Canals
     map.addLayer({
         'id': 'canals',
         'type': 'line',
@@ -234,7 +236,7 @@ map.on('style.load', function () {
             'line-color': '#33ffff'
         }
     });
-
+//Add canal labels
     map.addLayer({
         'id': 'canalLabels',
         'type': 'symbol',
@@ -257,11 +259,11 @@ map.on('style.load', function () {
           'text-halo-blur': 1
         }
     });
-
     map.addSource('xs', {
     type: 'vector',
     url: 'mapbox://iconeng.0n0c8e77'
     });
+    //Add Canal XS
     map.addLayer({
         'id': 'xs',
         'type': 'line',
@@ -279,6 +281,7 @@ map.on('style.load', function () {
             'line-color': '#33ffff'
         }
     });
+//Add XS labels
     map.addLayer({
         'id': 'xsLabels',
         'type': 'symbol',
