@@ -731,6 +731,49 @@ map.on('style.load', function () {
        }
     });
 
+    map.addSource('wvb-xs',{
+      type:'geojson',
+      "data":'data/xs.geojson'
+    });
+
+    map.addLayer({
+        'id': 'wvb-xs',
+        'type': 'line',
+        'source': 'wvb-xs',
+        'paint': {
+          'line-width': 1,
+          'line-opacity': 1,
+          'line-color': 'rgba(0,0,0,1)',
+          'line-dasharray': [8, 4]
+        }
+      });
+
+    map.addLayer({
+'id': 'wvb-xsLabels',
+'type': 'symbol',
+'source': 'wvb-xs',
+'layout': {
+  'symbol-placement': 'line',
+  'symbol-spacing': 100,
+  'text-field': '{str_name}',
+  'text-size': {
+    "stops": [
+      [15, 12],
+      [17, 14],
+      [19, 16]
+    ]
+  },
+  "text-padding": 100,
+},
+'paint': {
+  'text-color': '#000',
+  'text-halo-color': 'rgba(75,255,255,0.9)',
+  'text-halo-width': 2,
+  'text-halo-blur': 1
+}
+});
+
+
 }); //end style load
 
 // When a click event occurs near a marker icon, open a popup at the location of
