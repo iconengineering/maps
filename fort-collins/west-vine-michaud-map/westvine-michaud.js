@@ -932,6 +932,49 @@ if (!mapboxgl.supported()) {
       }
     });
 
+    map.addSource('wvb-stream',{
+      type:'geojson',
+      "data":'data/river.geojson'
+    });
+
+    //West Vine Stream centerline
+    map.addLayer({
+      'id':'wvb-stream',
+      'type':'line',
+      'source','wvb-stream',
+      'paint':{
+        'linewidth':1,
+        'line-opacity':1,
+        'line-color':'rgba(0,77,68,1)'
+      }
+    });
+
+    //West Vine Stream Centerline LABEL
+    map.addLayer({
+      'id': 'wvb-stream',
+      'type': 'symbol',
+      'source': 'wvb-stream',
+      'layout': {
+        'symbol-placement': 'line',
+        'symbol-spacing': 100,
+        'text-field': '{RiverName}'+' - '+'{ReachName}',
+        'text-size': {
+          "stops": [
+            [15, 12],
+            [17, 14],
+            [19, 16]
+          ]
+        },
+        "text-padding": 100,
+      },
+      'paint': {
+        'text-color': 'rgb(0.77,68)',
+        'text-halo-color': '#ffffff',
+        'text-halo-width': 2,
+        'text-halo-blur': 1
+      }
+    });
+
 
   }); //end style load
 
