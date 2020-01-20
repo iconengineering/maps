@@ -12,10 +12,10 @@ script: westvine-michaud.js
       <li>
         <a class="collapsible-header white">West Vine - Hydraulics<i class="material-icons">arrow_drop_down</i></a>
         <div class="collapsible-body">
-  				<p>
-  					<input name="wvb-xs" type="checkbox" id="wvb-xs" class="layer-on" onclick="toggleTwo('wvb-xs', 'wvb-xsLabels')" checked>
-  					<label for="wvb-xs" class="valign">Cross Sections</label>
-  				</p>
+          <p>
+            <input name="wvb-xs" type="checkbox" id="wvb-xs" class="layer-on" onclick="toggleTwo('wvb-xs', 'wvb-xsLabels')" checked>
+            <label for="wvb-xs" class="valign">Cross Sections</label>
+          </p>
           <p>
             <input name="contour" type="checkbox" id="contour" class="layer-off" onclick="toggleThree('wvb-1ftContours','wvb-5ftContours','wvb-5ftLabels')">
             <label for='contour' class="valign">Contours</label>
@@ -27,46 +27,46 @@ script: westvine-michaud.js
         </div>
 
       </li>
-  		<li>
+      <li>
         <a class="collapsible-header indigo white-text">West Vine - Hydrology<i class="material-icons">arrow_drop_down</i></a>
         <div class="collapsible-body">
           <p>
             <input name="wvb-basins" type="checkbox" id="wvb-basins" class="layer-off" onclick="toggleFour('wvb-basins', 'wvb-basins-borders','wvb-basinMarker', 'wvb-basinLabel')">
-  					<label for='wvb-basins' class="valign">Basins</label>
+            <label for='wvb-basins' class="valign">Basins</label>
           </p>
           <p>
             <input name="wvb-route" type="checkbox" id="wvb-route" class="layer-off" onclick="toggleFour('wvb-routing', 'wvb-routing2', 'wvb-routingLabels', 'wvb-routingArrows')">
-  					<label for="wvb-route" class="valign">Routing Elements</label>
+            <label for="wvb-route" class="valign">Routing Elements</label>
           </p>
-  				<p>
-  					<input name="wvb-junctions" type="checkbox" id="wvb-junctions" class="layer-off" onclick="toggleLayer('wvb-junctions')">
-  					<label for="wvb-junctions" class="valign">Junctions</label>
-  				</p>
-  				<p>
-  					<input name="wvb-spills" type="checkbox" id="wvb-spills" class="layer-off" onclick="toggleTwo('wvb-spills', 'wvb-spillLabels')">
-  					<label for="wvb-spills" class="valign">Spill Flows</label>
-  				</p>
+          <p>
+            <input name="wvb-junctions" type="checkbox" id="wvb-junctions" class="layer-off" onclick="toggleLayer('wvb-junctions')">
+            <label for="wvb-junctions" class="valign">Junctions</label>
+          </p>
+          <p>
+            <input name="wvb-spills" type="checkbox" id="wvb-spills" class="layer-off" onclick="toggleTwo('wvb-spills', 'wvb-spillLabels')">
+            <label for="wvb-spills" class="valign">Spill Flows</label>
+          </p>
         </div>
       </li>
-  		<li>
+      <li>
         <a class="collapsible-header red white-text">Michaud - Hydrology<i class="material-icons">arrow_drop_down</i></a>
         <div class="collapsible-body">
           <p>
             <input name="mcb-basins" type="checkbox" id="mcb-basins" class="layer-off" onclick="toggleFour('mcb-basins', 'mcb-basins-borders','mcb-basinMarker', 'mcb-basinLabel')">
-  					<label for='mcb-basins' class="valign">Basins</label>
+            <label for='mcb-basins' class="valign">Basins</label>
           </p>
           <p>
             <input name="mcb-route" type="checkbox" id="mcb-route" class="layer-off" onclick="toggleFour('mcb-routing', 'mcb-routing2', 'mcb-routingLabels', 'mcb-routingArrows')">
-  					<label for="mcb-route" class="valign">Routing Elements</label>
+            <label for="mcb-route" class="valign">Routing Elements</label>
           </p>
-  				<p>
-  					<input name="mcb-junctions" type="checkbox" id="mcb-junctions" class="layer-off" onclick="toggleLayer('mcb-junctions')">
-  					<label for="mcb-junctions" class="valign">Junctions</label>
-  				</p>
-  				<p>
-  					<input name="mcb-spills" type="checkbox" id="mcb-spills" class="layer-off" onclick="toggleTwo('mcb-spills', 'mcb-spillLabels')">
-  					<label for="mcb-spills" class="valign">Spill Flows</label>
-  				</p>
+          <p>
+            <input name="mcb-junctions" type="checkbox" id="mcb-junctions" class="layer-off" onclick="toggleLayer('mcb-junctions')">
+            <label for="mcb-junctions" class="valign">Junctions</label>
+          </p>
+          <p>
+            <input name="mcb-spills" type="checkbox" id="mcb-spills" class="layer-off" onclick="toggleTwo('mcb-spills', 'mcb-spillLabels')">
+            <label for="mcb-spills" class="valign">Spill Flows</label>
+          </p>
         </div>
       </li>
       <li>
@@ -74,16 +74,16 @@ script: westvine-michaud.js
         <div class="collapsible-body">
           <p>
             <input name="contour" type="checkbox" id="contour" class="layer-on" onclick="toggleSix('wvb-1ftContours','wvb-5ftContours','wvb-5ftLabels','mcb-1ftContours','mcb-5ftContours','mcb-5ftLabels')">
-  					<label for='contour' class="valign">Contours</label>
+            <label for='contour' class="valign">Contours</label>
           </p>
           <p>
             <input name="centerline" type="checkbox" id="centerline" class="layer-off" onclick="toggleTwo('canals', 'canalLabels')">
-  					<label for="centerline" class="valign">Canals</label>
+            <label for="centerline" class="valign">Canals</label>
           </p>
-  				<p>
-  					<input name="xs" type="checkbox" id="xs" class="layer-off" onclick="toggleTwo('xs', 'xsLabels')">
-  					<label for="xs" class="valign">Cross Sections</label>
-  				</p>
+          <p>
+            <input name="xs" type="checkbox" id="xs" class="layer-off" onclick="toggleTwo('xs', 'xsLabels')">
+            <label for="xs" class="valign">Cross Sections</label>
+          </p>
         </div>
       </li>
     </ul>

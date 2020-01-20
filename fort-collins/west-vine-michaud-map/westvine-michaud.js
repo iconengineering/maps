@@ -926,7 +926,7 @@ if (!mapboxgl.supported()) {
       'type': 'line',
       'source': 'wvb-floodplain100yr',
       'paint': {
-        'line-width': 2,
+        'line-width': 1,
         'line-opacity': 1,
         'line-color': 'rgba(0,230,255,1)'
       }
@@ -943,7 +943,7 @@ if (!mapboxgl.supported()) {
       'type': 'line',
       'source': 'wvb-stream',
       'paint': {
-        'linewidth': 1,
+        'line-width': 1,
         'line-opacity': 1,
         'line-color': 'rgba(0,77,68,1)'
       }
