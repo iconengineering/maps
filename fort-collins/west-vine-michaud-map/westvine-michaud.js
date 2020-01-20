@@ -1019,7 +1019,7 @@ if (!mapboxgl.supported()) {
       'paint': {
         'fill-color': '#ff0000',
         'fill-opacity': 0.3,
-        'fill-pattern': 45
+        'fill-pattern': 'redstripe'
       }
     }, 'road_label');
 
