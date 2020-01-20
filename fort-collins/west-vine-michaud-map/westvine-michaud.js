@@ -156,7 +156,7 @@ map.on('style.load', function () {
         'layerGroup': 1,
         'interactive': true,
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': '#dc0714',
@@ -170,7 +170,7 @@ map.on('style.load', function () {
         "source": "mcb-basins",
         'source-layer': 'mcb_basins',
         "layout": {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         "paint": {
             "line-color": "#dc0714",
@@ -191,7 +191,7 @@ map.on('style.load', function () {
         'layerGroup': 1,
         'interactive': true,
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': '#1407dc',
@@ -205,7 +205,7 @@ map.on('style.load', function () {
         "source": "wvb-basins",
         'source-layer': 'wvb_basins',
         "layout": {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         "paint": {
             "line-color": "#1407dc",
