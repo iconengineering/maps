@@ -1001,7 +1001,7 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
-    mapp.addSource('wvb-fldwy-fill', {
+    map.addSource('wvb-fldwy-fill', {
       type: 'geojson',
       "data": "data/fldwy-polygons.geojson"
     });
