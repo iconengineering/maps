@@ -771,9 +771,8 @@ map.on('style.load', function () {
         'paint': {
           'line-width': 1,
           'line-opacity': 1,
-          'line-color': 'rgba(0,0,0,1)',
-          'line-dasharray': [8, 4]
-        }
+          'line-color': 'rgba(0,0,0,1)'
+          }
       });
 
     map.addLayer({
@@ -783,7 +782,7 @@ map.on('style.load', function () {
 'layout': {
   'symbol-placement': 'line',
   'symbol-spacing': 100,
-  'text-field': '{str_name}',
+  'text-field': '{XSName}',
   'text-size': {
     "stops": [
       [15, 12],
@@ -795,7 +794,7 @@ map.on('style.load', function () {
 },
 'paint': {
   'text-color': '#000',
-  'text-halo-color': 'rgba(75,255,255,0.9)',
+  'text-halo-color': '#ffffff',
   'text-halo-width': 2,
   'text-halo-blur': 1
 }
