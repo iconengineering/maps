@@ -10,7 +10,7 @@ if (!mapboxgl.supported()) {
   });
 
   map.on('style.load', function() {
-
+ 
     map.addSource('wvb-contours', {
       type: 'vector',
       url: 'mapbox://iconeng.7b288ff0'
