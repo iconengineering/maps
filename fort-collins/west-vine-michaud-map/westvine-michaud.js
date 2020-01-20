@@ -1062,13 +1062,13 @@ if (!mapboxgl.supported()) {
 
   // Use the same approach as above to indicate that the symbols are clickable
   // by changing the cursor style to 'pointer'.
-  map.on('mousemove', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ['mcb-junctions', 'wvb-junctions', 'wvb-xs']
-    });
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-  });
-
-  map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-}
+//   map.on('mousemove', function(e) {
+//     var features = map.queryRenderedFeatures(e.point, {
+//       layers: ['mcb-junctions', 'wvb-junctions',]
+//     });
+//     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+//   });
+//
+//   map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+//
+// }
