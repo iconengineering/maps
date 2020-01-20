@@ -930,7 +930,7 @@ if (!mapboxgl.supported()) {
       'source': 'wvb-floodplain100yr',
       'paint': {
         'line-width': 1,
-        'line-opacity': 0.3,
+        'line-opacity': 0.6,
         'line-color': 'rgba(0,230,255,1)'
       },
       'layout':{
@@ -1005,7 +1005,7 @@ if (!mapboxgl.supported()) {
 
     map.addSource('wvb-floodplain500yr',{
       type: 'geojson',
-      "data": 'data/floodplainsshallowflooding.geojson'
+      "data": 'data/floodplainshallowflooding.geojson'
     });
 
     //Add shallow flooding
@@ -1015,7 +1015,7 @@ if (!mapboxgl.supported()) {
       'source':'wvb-floodplain500yr',
       'paint':{
         'line-width':1,
-        'line-opacity':0.3,
+        'line-opacity':0.6,
         'line-color':'rgb(255,128,0)'
       },
       'layout':{
@@ -1027,21 +1027,6 @@ if (!mapboxgl.supported()) {
 
   // When a click event occurs near a marker icon, open a popup at the location of
   // the feature, with description HTML from its properties.
-  map.on('click', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ['mcb-junctions', 'wvb-junctions']
-    });
-    if (!features.length) {
-      return;
-    }
-
-    var feature = features[0];
-
-    var popup = new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML('Type: ' + feature.properties.Type)
-      .addTo(map);
-  });
 
   //Cross Section Labels
   map.on('click', function(e) {
@@ -1064,7 +1049,7 @@ if (!mapboxgl.supported()) {
   // by changing the cursor style to 'pointer'.
   map.on('mousemove', function(e) {
     var features = map.queryRenderedFeatures(e.point, {
-      layers: ['mcb-junctions', 'wvb-junctions', 'wvb-xs']
+      layers: ['wvb-xs']
     });
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
