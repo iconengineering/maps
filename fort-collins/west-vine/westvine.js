@@ -770,7 +770,7 @@ if (!mapboxgl.supported()) {
   });
 
   // Change it back to a pointer when it leaves.
-  map.on('mouseleave', 'states-layer', function() {
+  map.on('mouseleave', 'wvb-xs', function() {
     map.getCanvas().style.cursor = '';
   });
 
