@@ -600,7 +600,7 @@ map.on('style.load', function () {
         'source-layer': 'wvb_junctions',
         'filter': ['all', ['in', 'Class', 'Design', 'Outfall', 'Storage']],
         'layout': {
-            'visibility': 'visible',
+            'visibility': 'none',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
@@ -635,7 +635,7 @@ map.on('style.load', function () {
         'source-layer': 'mcb_junctions',
         'filter': ['all', ['in', 'Type', 'Design', 'Outfall', 'Storage']],
         'layout': {
-            'visibility': 'visible',
+            'visibility': 'none',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
@@ -664,7 +664,7 @@ map.on('style.load', function () {
         'source-layer': 'wvb_junctions',
         'filter': ['all', ['==', 'Class', 'Basin']],
         'layout': {
-          'visibility': 'visible'
+          'visibility': 'none'
         },
        "paint": {
          "circle-color": "#1407dc",
@@ -680,7 +680,7 @@ map.on('style.load', function () {
         'source-layer': 'wvb_junctions',
         'filter': ['all', ['==', 'Class', 'Basin']],
         'layout': {
-            'visibility': 'visible',
+            'visibility': 'none',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
@@ -701,7 +701,7 @@ map.on('style.load', function () {
         'source-layer': 'mcb_junctions',
         'filter': ['all', ['==', 'Type', 'Basin']],
         'layout': {
-          'visibility': 'visible'
+          'visibility': 'none'
         },
        "paint": {
          "circle-color": "#dc0714",
@@ -717,7 +717,7 @@ map.on('style.load', function () {
         'source-layer': 'mcb_junctions',
         'filter': ['all', ['==', 'Type', 'Basin']],
         'layout': {
-            'visibility': 'visible',
+            'visibility': 'none',
             "text-optional": true,
             "text-line-height": 1,
             "text-size": {
