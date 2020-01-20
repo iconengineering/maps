@@ -7,7 +7,7 @@ if (!mapboxgl.supported()) {
     style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
     zoom: 12.5,
     center: [-105.15, 40.595],
-    });
+  });
 
   map.on('style.load', function() {
 
@@ -915,37 +915,37 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-floodplain100yr',{
-      type:'geojson',
-      "data":'data/floodplain100yr.geojson'
+    map.addSource('wvb-floodplain100yr', {
+      type: 'geojson',
+      "data": 'data/floodplain100yr.geojson'
     });
 
     //West Vine 100 yr FP
     map.addLayer({
-      'id':'wvb-floodplain100yr',
-      'type':'line',
-      'source':'wvb-floodplain100yr',
-      'paint':{
-        'line-width':2,
-        'line-opacity':1,
-        'line-color':'rgba(0,230,255,1)'
+      'id': 'wvb-floodplain100yr',
+      'type': 'line',
+      'source': 'wvb-floodplain100yr',
+      'paint': {
+        'line-width': 2,
+        'line-opacity': 1,
+        'line-color': 'rgba(0,230,255,1)'
       }
     });
 
-    map.addSource('wvb-stream',{
-      type:'geojson',
-      "data":'data/river.geojson'
+    map.addSource('wvb-stream', {
+      type: 'geojson',
+      "data": 'data/river.geojson'
     });
 
     //West Vine Stream centerline
     map.addLayer({
-      'id':'wvb-stream',
-      'type':'line',
-      'source':'wvb-stream',
-      'paint':{
-        'linewidth':1,
-        'line-opacity':1,
-        'line-color':'rgba(0,77,68,1)'
+      'id': 'wvb-stream',
+      'type': 'line',
+      'source': 'wvb-stream',
+      'paint': {
+        'linewidth': 1,
+        'line-opacity': 1,
+        'line-color': 'rgba(0,77,68,1)'
       }
     });
 
@@ -957,7 +957,7 @@ if (!mapboxgl.supported()) {
       'layout': {
         'symbol-placement': 'line',
         'symbol-spacing': 100,
-        'text-field': '{RiverName}'+' - '+'{ReachName}',
+        'text-field': '{RiverName}' + ' - ' + '{ReachName}',
         'text-size': {
           "stops": [
             [15, 12],
@@ -968,13 +968,28 @@ if (!mapboxgl.supported()) {
         "text-padding": 100,
       },
       'paint': {
-        'text-color': 'rgb(0.77,68)',
+        'text-color': 'rgb(0,77,68)',
         'text-halo-color': '#ffffff',
         'text-halo-width': 2,
         'text-halo-blur': 1
       }
     });
 
+    map.addSource('wvb-roadway', {
+      type: 'geojson',
+      "data": 'data/roadwaycrossings.geojson'
+    });
+    //West Vine Stream centerline
+    map.addLayer({
+      'id': 'wvb-roadway',
+      'type': 'line',
+      'source': 'wvb-roadway',
+      'paint': {
+        'linewidth': 1,
+        'line-opacity': 1,
+        'line-color': 'rgba(0,77,68,1)'
+      }
+    });
 
   }); //end style load
 
@@ -996,7 +1011,7 @@ if (!mapboxgl.supported()) {
       .addTo(map);
   });
 
-//Cross Section Labels
+  //Cross Section Labels
   map.on('click', function(e) {
     var features = map.queryRenderedFeatures(e.point, {
       layers: ['wvb-xs']
@@ -1017,7 +1032,7 @@ if (!mapboxgl.supported()) {
   // by changing the cursor style to 'pointer'.
   map.on('mousemove', function(e) {
     var features = map.queryRenderedFeatures(e.point, {
-      layers: ['mcb-junctions', 'wvb-junctions','wvb-xs']
+      layers: ['mcb-junctions', 'wvb-junctions', 'wvb-xs']
     });
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
