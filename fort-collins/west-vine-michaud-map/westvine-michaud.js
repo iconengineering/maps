@@ -960,6 +960,49 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
+    map.addSource('wvb-floodplain-sf',{
+      type: 'geojson',
+      "data": 'data/floodplainsf.geojson'
+    });
+
+    //Add shallow flooding
+    map.addLayer({
+      'id':'wvb-floodplain-sf',
+      'type':'line',
+      'source':'wvb-floodplain-sf',
+      'paint':{
+        'line-width':1,
+        'line-opacity':0.6,
+        'line-color':'rgb(255,128,0)'
+      },
+      'layout':{
+        'visibility':'visible'
+      }
+    });
+
+    mapp.addSource('wvb-fp-sf-fill',{
+      type: 'geojson',
+      "data": "data/fp-shallow-flooding-polygons.geojson"
+    });
+
+    //SHALLOW FLOODING FLOODPLAIN FILL
+        map.addLayer({
+          'id': 'wvb-fp-sf-fill',
+          'type': 'fill',
+          'source': 'wvb-fp-sf-fill',
+          'layerGroup': 1,
+          'interactive': true,
+          'layout': {
+            'visibility': 'visible'
+          },
+          'paint': {
+            'fill-color': 'rgba(255,128,0)',
+            'fill-opacity': 0.3
+          }
+        }, 'road_label');
+
+
+
     map.addSource('wvb-stream', {
       type: 'geojson',
       "data": 'data/river.geojson'
@@ -1025,25 +1068,7 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-floodplain-sf',{
-      type: 'geojson',
-      "data": 'data/floodplainsf.geojson'
-    });
 
-    //Add shallow flooding
-    map.addLayer({
-      'id':'wvb-floodplain-sf',
-      'type':'line',
-      'source':'wvb-floodplain-sf',
-      'paint':{
-        'line-width':1,
-        'line-opacity':0.6,
-        'line-color':'rgb(255,128,0)'
-      },
-      'layout':{
-        'visibility':'visible'
-      }
-    });
 
   }); //end style load
 
