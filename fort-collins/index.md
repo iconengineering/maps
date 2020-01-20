@@ -5,6 +5,6 @@ layout: default
 
 [Old Town Results](old-town-results)
 
-[West Vine](west-vine-map)
+[West Vine/Michaud](west-vine-michaud-map)
 
 [Mulberry/Riverside](mulberry-riverside)
