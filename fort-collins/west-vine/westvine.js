@@ -631,8 +631,6 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
-
-
     map.addSource('wvb-stream', {
       type: 'geojson',
       "data": 'data/river.geojson'
@@ -757,34 +755,25 @@ if (!mapboxgl.supported()) {
 
   }); //end style load
 
-  // When a click event occurs near a marker icon, open a popup at the location of
-  // the feature, with description HTML from its properties.
-
-  //Cross Section Labels
-  map.on('click', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ['wvb-xs']
-    });
-    if (!features.length) {
-      return;
-    }
-
-    var feature = features[0];
-
-    var popup = new mapboxgl.Popup()
+  // When a click event occurs on a feature in the states layer, open a popup at the
+  // location of the click, with description HTML from its properties.
+  map.on('click', 'wvb-xs', function(e) {
+    new mapboxgl.Popup()
       .setLngLat(e.lngLat)
       .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL: ' + feature.properties.XSWSElev)
       .addTo(map);
   });
 
-  // Use the same approach as above to indicate that the symbols are clickable
-  // by changing the cursor style to 'pointer'.
-  map.on('mousemove', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ['wvb-xs']
-    });
-    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+  // Change the cursor to a pointer when the mouse is over the states layer.
+  map.on('mouseenter', 'wvb-xs', function() {
+    map.getCanvas().style.cursor = 'pointer';
   });
+
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'states-layer', function() {
+    map.getCanvas().style.cursor = '';
+  });
+
 
   map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
