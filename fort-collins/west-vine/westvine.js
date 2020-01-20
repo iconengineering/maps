@@ -13,7 +13,7 @@ if (!mapboxgl.supported()) {
 
     map.addSource('wvb-contours', {
       type: 'vector',
-      url: 'mapbox://iconeng.3fckylfu'
+      url: 'mapbox://iconeng.7b288ff0'
     });
     //WVB 1 FT CONTOURS
     map.addLayer({
