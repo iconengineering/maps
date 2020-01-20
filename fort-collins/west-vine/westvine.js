@@ -5,7 +5,7 @@ if (!mapboxgl.supported()) {
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
-    zoom: 15,
+    zoom: 14.5,
     center: [-105.11, 40.59],
   });
 
