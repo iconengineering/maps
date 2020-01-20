@@ -1041,7 +1041,7 @@ if (!mapboxgl.supported()) {
 
     var popup = new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML('XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
+      .setHTML(feature.properties.RiverName+ ' '+ feature.properties.ReachName + '<br>'+'XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
       .addTo(map);
   });
 
