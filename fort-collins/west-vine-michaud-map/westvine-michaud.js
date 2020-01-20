@@ -7,6 +7,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
     zoom: 12.5,
+    opacity: 0.8,
     center: [-105.15, 40.595]
 });
 
