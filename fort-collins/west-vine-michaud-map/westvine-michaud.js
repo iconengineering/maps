@@ -996,7 +996,7 @@ if (!mapboxgl.supported()) {
         'visibility': 'visible'
       },
       'paint': {
-        'fill-color': 'rgba(255,128,0)',
+        'fill-color': 'rgba(255,128,0,1)',
         'fill-opacity': 0.3
       }
     }, 'road_label');
