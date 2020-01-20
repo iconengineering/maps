@@ -26,7 +26,7 @@ layout: default_mapList
 
 [Old Town Results](fort-collins/old-town-results)
 
-[West Vine](fort-collins/west-vine-map)
+[West Vine/Michaud](fort-collins/west-vine-map)
 
 [Mulberry/Riverside](fort-collins/mulberry-riverside)
 
