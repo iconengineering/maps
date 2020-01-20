@@ -10,7 +10,7 @@ if (!mapboxgl.supported()) {
   });
 
   map.on('style.load', function() {
- 
+
     map.addSource('wvb-contours', {
       type: 'vector',
       url: 'mapbox://iconeng.7b288ff0'
@@ -1003,16 +1003,16 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-floodplain500yr',{
+    map.addSource('wvb-floodplain-sf',{
       type: 'geojson',
-      "data": 'data/floodplainshallowflooding.geojson'
+      "data": 'data/floodplainsf.geojson'
     });
 
     //Add shallow flooding
     map.addLayer({
-      'id':'wvb-floodplain500yr',
+      'id':'wvb-floodplain-sf',
       'type':'line',
-      'source':'wvb-floodplain500yr',
+      'source':'wvb-floodplain-sf',
       'paint':{
         'line-width':1,
         'line-opacity':0.6,
