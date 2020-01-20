@@ -883,7 +883,7 @@ if (!mapboxgl.supported()) {
       'type': 'line',
       'source': 'wvb-xs',
       'paint': {
-        'line-width': 1,
+        'line-width': 2,
         'line-opacity': 1,
         'line-color': 'rgba(0,0,0,1)'
       }
