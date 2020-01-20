@@ -616,24 +616,6 @@ if (!mapboxgl.supported()) {
       "data": "data/fldwy-polygons.geojson"
     });
 
-    //FLOODWAY OUTLINE
-    map.addLayer({
-      'id': 'wvb-fldwy',
-      'type': 'line',
-      'source': 'wvb-fldwy',
-      'layerGroup': 1,
-      'interactive': true,
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-        'line-width': 1,
-        'line-opacity': 1,
-        'line-color': '#ff0000',
-      }
-    }, 'road_label');
-
-    //SHALLOW FLOODING FLOODPLAIN FILL
     map.addLayer({
       'id': 'wvb-fldwy-fill',
       'type': 'fill',
@@ -644,10 +626,12 @@ if (!mapboxgl.supported()) {
         'visibility': 'visible'
       },
       'paint': {
-        'fill-color': '#ff0000',
-        'fill-opacity': 1,
+        'fill-color': 'rgba(255,128,0,1)',
+        'fill-opacity': 1
       }
     }, 'road_label');
+
+
 
     map.addSource('wvb-stream', {
       type: 'geojson',
