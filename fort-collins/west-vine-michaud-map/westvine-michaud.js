@@ -26,7 +26,7 @@ map.on('style.load', function () {
         'filter': ['all', ['==', 'Index', 0]],
         'layout': {
             'line-join': 'round',
-            'visibility': 'none',
+            'visibility': 'visible',
             'line-cap': 'round'
         },
         'paint': {
@@ -45,7 +45,7 @@ map.on('style.load', function () {
         'filter': ['all', ['>=', 'Index', 5],['<=', 'Index', 10]],
         'layout': {
             'line-join': 'round',
-            'visibility': 'none',
+            'visibility': 'visible',
             'line-cap': 'round'
         },
         'paint': {
@@ -64,7 +64,7 @@ map.on('style.load', function () {
         'filter': ['all', ['>=', 'Index', 5],['<=', 'Index', 10]],
         'layout': {
           'symbol-placement': 'line',
-          'visibility': 'none',
+          'visibility': 'visible',
           'text-field': '{CONTOUR}',
           'text-size': {
             "stops": [[15,12],[17,14],[19,16]]
