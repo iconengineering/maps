@@ -952,11 +952,28 @@ if (!mapboxgl.supported()) {
       .addTo(map);
   });
 
+//Cross Section
+  map.on('click', function(e) {
+    var features = map.queryRenderedFeatures(e.point, {
+      layers: ['wvb-xs']
+    });
+    if (!features.length) {
+      return;
+    }
+
+    var feature = features[0];
+
+    var popup = new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML('XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
+      .addTo(map);
+  });
+
   // Use the same approach as above to indicate that the symbols are clickable
   // by changing the cursor style to 'pointer'.
   map.on('mousemove', function(e) {
     var features = map.queryRenderedFeatures(e.point, {
-      layers: ['mcb-junctions', 'wvb-junctions']
+      layers: ['mcb-junctions', 'wvb-junctions','wvb-xs']
     });
     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
