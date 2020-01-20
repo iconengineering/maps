@@ -7,10 +7,7 @@ if (!mapboxgl.supported()) {
     style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
     zoom: 12.5,
     center: [-105.15, 40.595],
-    paint:{
-      opacity:0.1,
-    }
-  });
+    });
 
   map.on('style.load', function() {
 
@@ -917,14 +914,14 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addsource('floodplain100yr',{
+    map.addsource('wvb-floodplain100yr',{
       type:'geojson',
       "data":'data/floodplain100yr.geojson'
     });
 
     //West Vine 100 yr FP
     map.addLayer({
-      'id':'wvb-floodplain',
+      'id':'wvb-floodplain100yr',
       'type':'line',
       'source':'wvb-floodplain100yr',
       'paint':{
