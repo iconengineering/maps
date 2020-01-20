@@ -930,7 +930,7 @@ if (!mapboxgl.supported()) {
       'source': 'wvb-floodplain100yr',
       'paint': {
         'line-width': 1,
-        'line-opacity': 1,
+        'line-opacity': 0.3,
         'line-color': 'rgba(0,230,255,1)'
       },
       'layout':{
@@ -949,9 +949,9 @@ if (!mapboxgl.supported()) {
       'type': 'line',
       'source': 'wvb-stream',
       'paint': {
-        'line-width': 1,
+        'line-width': 1.5,
         'line-opacity': 1,
-        'line-color': 'rgba(0,77,68,1)'
+        'line-color': 'rgb(0,77,168)'
       },
       'layout': {
         'visibility':'visible'
@@ -977,7 +977,7 @@ if (!mapboxgl.supported()) {
         "text-padding": 100,
       },
       'paint': {
-        'text-color': 'rgb(0,77,68)',
+        'text-color': 'rgb(0,77,168)',
         'text-halo-color': '#ffffff',
         'text-halo-width': 2,
         'text-halo-blur': 1
@@ -1015,7 +1015,7 @@ if (!mapboxgl.supported()) {
       'source':'wvb-floodplain500yr',
       'paint':{
         'line-width':1,
-        'line-opacity':1,
+        'line-opacity':0.3,
         'line-color':'rgb(255,128,0)'
       },
       'layout':{
