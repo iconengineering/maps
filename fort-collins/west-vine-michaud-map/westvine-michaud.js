@@ -17,6 +17,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.7b288ff0'
     });
+//WVB 1 FT CONTOURS
     map.addLayer({
         'id': 'wvb-1ftContours',
         'type': 'line',
@@ -35,6 +36,7 @@ map.on('style.load', function () {
             'line-color': '#333'
         }
     },'road_label');
+//WVB 5 FT CONTOURS
     map.addLayer({
         'id': 'wvb-5ftContours',
         'type': 'line',
@@ -53,6 +55,7 @@ map.on('style.load', function () {
             'line-color': '#111'
         }
     },'road_label');
+//WVB 5 FT LABELS
     map.addLayer({
         'id': 'wvb-5ftLabels',
         'type': 'symbol',
@@ -79,6 +82,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.2f2497d6'
     });
+//MCB 1 FT CONTOURS
     map.addLayer({
         'id': 'mcb-1ftContours',
         'type': 'line',
@@ -97,6 +101,7 @@ map.on('style.load', function () {
             'line-color': '#333'
         }
     },'road_label');
+//MCB 5 FT CONTOURS
     map.addLayer({
         'id': 'mcb-5ftContours',
         'type': 'line',
@@ -115,6 +120,7 @@ map.on('style.load', function () {
             'line-color': '#111'
         }
     },'road_label');
+//MCB 5 FT LABELS
     map.addLayer({
         'id': 'mcb-5ftLabels',
         'type': 'symbol',
@@ -141,6 +147,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.83au2rpu'
     });
+//MCB BASINS
     map.addLayer({
         'id': 'mcb-basins',
         'type': 'fill',
@@ -156,7 +163,7 @@ map.on('style.load', function () {
             'fill-opacity': 0.05
         }
     },'road_label');
-
+// MCB BORDERS
     map.addLayer({
         "id": "mcb-basins-borders",
         "type": "line",
@@ -175,6 +182,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.5n8brw3p'
     });
+//WVB BASINS
     map.addLayer({
         'id': 'wvb-basins',
         'type': 'fill',
@@ -190,7 +198,7 @@ map.on('style.load', function () {
             'fill-opacity': 0.05
         }
     },'road_label');
-
+// WVB BASIN BORDER
     map.addLayer({
         "id": "wvb-basins-borders",
         "type": "line",
@@ -209,6 +217,7 @@ map.on('style.load', function () {
     type: 'vector',
     url: 'mapbox://iconeng.8bkept6e'
     });
+//CANAL
     map.addLayer({
         'id': 'canals',
         'type': 'line',
@@ -226,7 +235,7 @@ map.on('style.load', function () {
             'line-color': '#33ffff'
         }
     });
-
+//CANAL LABELS
     map.addLayer({
         'id': 'canalLabels',
         'type': 'symbol',
@@ -254,6 +263,7 @@ map.on('style.load', function () {
     type: 'vector',
     url: 'mapbox://iconeng.0n0c8e77'
     });
+//CANAL XS
     map.addLayer({
         'id': 'xs',
         'type': 'line',
@@ -271,6 +281,7 @@ map.on('style.load', function () {
             'line-color': '#33ffff'
         }
     });
+//CANAL XS LABELES
     map.addLayer({
         'id': 'xsLabels',
         'type': 'symbol',
@@ -298,6 +309,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.6jqhw3te'
     });
+//WVB ROUTING
     map.addLayer({
         'id': 'wvb-routing',
         'type': 'line',
@@ -316,6 +328,7 @@ map.on('style.load', function () {
             'line-color': '#ffd700'
         }
     },'road-label');
+//WVB ROUTING 2
     map.addLayer({
         'id': 'wvb-routing2',
         'type': 'line',
@@ -335,7 +348,7 @@ map.on('style.load', function () {
             'line-dasharray': [4,3]
         }
     },'road-label');
-
+//WVB ROUTING LABELS
     map.addLayer({
         'id': 'wvb-routingLabels',
         'type': 'symbol',
@@ -364,6 +377,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.7ztogkh5'
     });
+// MCB ROUTING
     map.addLayer({
         'id': 'mcb-routing',
         'type': 'line',
@@ -382,6 +396,7 @@ map.on('style.load', function () {
             'line-color': '#ffd700'
         }
     },'road-label');
+//MCB ROUTING LABEL
     map.addLayer({
         'id': 'mcb-routing2',
         'type': 'line',
@@ -402,6 +417,7 @@ map.on('style.load', function () {
         }
     },'road-label');
 
+//MCB ROUTING LABELS
     map.addLayer({
         'id': 'mcb-routingLabels',
         'type': 'symbol',
@@ -425,7 +441,7 @@ map.on('style.load', function () {
           'text-halo-blur': 1
         }
     });
-
+// WVB ROUTING LABELS
     map.addLayer({
         'id': 'wvb-routingArrows',
         'type': 'symbol',
@@ -504,6 +520,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.a90sii2z'
     });
+//WVB SPILLS
     map.addLayer({
         'id': 'wvb-spills',
         'type': 'line',
@@ -521,6 +538,7 @@ map.on('style.load', function () {
             'line-color': '#d700d7'
         }
     });
+//WVB SPILL LABELS
     map.addLayer({
         'id': 'wvb-spillLabels',
         'type': 'symbol',
@@ -548,6 +566,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.4iegbxst'
     });
+//MCB SPILL
     map.addLayer({
         'id': 'mcb-spills',
         'type': 'line',
@@ -565,6 +584,7 @@ map.on('style.load', function () {
             'line-color': '#d700d7'
         }
     });
+//MCB SPILL LABELS
     map.addLayer({
         'id': 'mcb-spillLabels',
         'type': 'symbol',
@@ -592,6 +612,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.ackrtqyc'
     });
+//WVB JUNCTIONS
     map.addLayer({
         'id': 'wvb-junctions',
         'type': 'symbol',
@@ -627,6 +648,7 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.8v22rol1'
     });
+//MCB JUNCTIONS
     map.addLayer({
         'id': 'mcb-junctions',
         'type': 'symbol',
@@ -657,6 +679,7 @@ map.on('style.load', function () {
          }
        }
     });
+//WVB BASIN MARKERS
     map.addLayer({
         'id': 'wvb-basinMarker',
         'type': 'circle',
@@ -673,6 +696,7 @@ map.on('style.load', function () {
          "circle-opacity":0.5
        }
     });
+//WVB BASIN LABELS
     map.addLayer({
         'id': 'wvb-basinLabel',
         'type': 'symbol',
@@ -694,6 +718,7 @@ map.on('style.load', function () {
          "text-color": "#fff"
        }
     });
+//MCB BASIN MARKER
     map.addLayer({
         'id': 'mcb-basinMarker',
         'type': 'circle',
@@ -710,6 +735,7 @@ map.on('style.load', function () {
          "circle-opacity":0.5
        }
     });
+//MCB BASIN LABELS
     map.addLayer({
         'id': 'mcb-basinLabel',
         'type': 'symbol',
@@ -731,6 +757,7 @@ map.on('style.load', function () {
          "text-color": "#fff"
        }
     });
+
 
     map.addSource('wvb-xs',{
       type:'geojson',
