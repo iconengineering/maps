@@ -6,8 +6,10 @@ if (!mapboxgl.supported()) {
     container: 'map',
     style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
     zoom: 12.5,
-    opacity: 0.8,
-    center: [-105.15, 40.595]
+    center: [-105.15, 40.595],
+    paint:{
+      opacity:0.1,
+    }
   });
 
   map.on('style.load', function() {
