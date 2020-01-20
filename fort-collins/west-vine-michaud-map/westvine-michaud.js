@@ -938,6 +938,28 @@ if (!mapboxgl.supported()) {
       }
     });
 
+    map.addSource('wvb-fp-100yr-fill',{
+      type: 'geojson',
+      "data": 'data/fp-100yr-polygons.geojson'
+    });
+
+
+//100-YR FLOODPLAIN FILL
+    map.addLayer({
+      'id': 'wvb-fp-100yr-fill',
+      'type': 'fill',
+      'source': 'wvb-fp-100yr-fill',
+      'layerGroup': 1,
+      'interactive': true,
+      'layout': {
+        'visibility': 'visible'
+      },
+      'paint': {
+        'fill-color': 'rgba(0,230,255,1)',
+        'fill-opacity': 0.3
+      }
+    }, 'road_label');
+
     map.addSource('wvb-stream', {
       type: 'geojson',
       "data": 'data/river.geojson'
