@@ -938,17 +938,11 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-fp-100yr-fill', {
-      type: 'geojson',
-      "data": 'data/fp-100yr-polygons.geojson'
-    });
-
-
     //100-YR FLOODPLAIN FILL
     map.addLayer({
       'id': 'wvb-fp-100yr-fill',
       'type': 'fill',
-      'source': 'wvb-fp-100yr-fill',
+      'source': 'wvb-fp-100yr',
       'layerGroup': 1,
       'interactive': true,
       'layout': {
@@ -960,16 +954,16 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
-    map.addSource('wvb-floodplain-sf', {
+    map.addSource('wvb-fp-sf', {
       type: 'geojson',
-      "data": 'data/floodplainsf.geojson'
+      "data": "data/fp-shallow-flooding-polygons.geojson"
     });
 
     //Add shallow flooding
     map.addLayer({
-      'id': 'wvb-floodplain-sf',
+      'id': 'wvb-fp-sf',
       'type': 'line',
-      'source': 'wvb-floodplain-sf',
+      'source': 'wvb-fp-sf',
       'paint': {
         'line-width': 1,
         'line-opacity': 0.6,
@@ -980,16 +974,11 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('wvb-fp-sf-fill', {
-      type: 'geojson',
-      "data": "data/fp-shallow-flooding-polygons.geojson"
-    });
-
     //SHALLOW FLOODING FLOODPLAIN FILL
     map.addLayer({
       'id': 'wvb-fp-sf-fill',
       'type': 'fill',
-      'source': 'wvb-fp-sf-fill',
+      'source': 'wvb-fp-sf',
       'layerGroup': 1,
       'interactive': true,
       'layout': {
