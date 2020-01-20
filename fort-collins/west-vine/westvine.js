@@ -35,7 +35,7 @@ if (!mapboxgl.supported()) {
             [19, 1]
           ]
         },
-        'line-color': '#333'
+        'line-color': '#bd925a'
       }
     }, 'road_label');
     //WVB 5 FT CONTOURS
@@ -60,7 +60,7 @@ if (!mapboxgl.supported()) {
             [19, 2.5]
           ]
         },
-        'line-color': '#111'
+        'line-color': '#bd925a'
       }
     }, 'road_label');
     //WVB 5 FT LABELS
@@ -85,10 +85,10 @@ if (!mapboxgl.supported()) {
         }
       },
       'paint': {
-        'text-color': '#000',
-        'text-halo-color': 'rgba(255,255,255,0.9)',
-        'text-halo-width': 1,
-        'text-halo-blur': 1
+        'text-color': '#bd925a',
+        'text-halo-color': '#F8F4F0',
+        'text-halo-width': 2,
+        'text-halo-blur': 0.5,
       }
     });
     map.addSource('wvb-basins', {
