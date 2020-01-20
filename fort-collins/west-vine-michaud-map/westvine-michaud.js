@@ -1027,21 +1027,21 @@ if (!mapboxgl.supported()) {
 
   // When a click event occurs near a marker icon, open a popup at the location of
   // the feature, with description HTML from its properties.
-  map.on('click', function(e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ['mcb-junctions', 'wvb-junctions']
-    });
-    if (!features.length) {
-      return;
-    }
-
-    var feature = features[0];
-
-    var popup = new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML('Type: ' + feature.properties.Type)
-      .addTo(map);
-  });
+  // map.on('click', function(e) {
+  //   var features = map.queryRenderedFeatures(e.point, {
+  //     layers: ['mcb-junctions', 'wvb-junctions']
+  //   });
+  //   if (!features.length) {
+  //     return;
+  //   }
+  //
+  //   var feature = features[0];
+  //
+  //   var popup = new mapboxgl.Popup()
+  //     .setLngLat(e.lngLat)
+  //     .setHTML('Type: ' + feature.properties.Type)
+  //     .addTo(map);
+  // });
 
   //Cross Section Labels
   map.on('click', function(e) {
@@ -1062,13 +1062,13 @@ if (!mapboxgl.supported()) {
 
   // Use the same approach as above to indicate that the symbols are clickable
   // by changing the cursor style to 'pointer'.
-//   map.on('mousemove', function(e) {
-//     var features = map.queryRenderedFeatures(e.point, {
-//       layers: ['mcb-junctions', 'wvb-junctions',]
-//     });
-//     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-//   });
-//
-//   map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-//
-// }
+  map.on('mousemove', function(e) {
+    var features = map.queryRenderedFeatures(e.point, {
+      layers: ['wvb-xs']
+    });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+  });
+
+  map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+}
