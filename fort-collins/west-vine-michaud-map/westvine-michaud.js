@@ -990,16 +990,33 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
-    map.addSource('wvb-fldwy-fill', {
+    map.addSource('wvb-fldwy', {
       type: 'geojson',
       "data": "data/fldwy-polygons.geojson"
     });
+
+    //FLOODWAY OUTLINE
+    map.addLayer({
+      'id': 'wvb-fldwy',
+      'type': 'line',
+      'source': 'wvb-fldwy',
+      'layerGroup': 1,
+      'interactive': true,
+      'layout': {
+        'visibility': 'visible'
+      },
+      'paint': {
+        'line-width': 1,
+        'line-opacity': 0.6,
+        'line-color': '#ff0000',
+      }
+    }, 'road_label');
 
     //SHALLOW FLOODING FLOODPLAIN FILL
     map.addLayer({
       'id': 'wvb-fldwy-fill',
       'type': 'fill',
-      'source': 'wvb-fldwy-fill',
+      'source': 'wvb-fldwy',
       'layerGroup': 1,
       'interactive': true,
       'layout': {
