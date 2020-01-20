@@ -12,12 +12,10 @@ var map = new mapboxgl.Map({
 
 map.on('style.load', function () {
 
-// Contours
     map.addSource('wvb-contours', {
         type: 'vector',
         url: 'mapbox://iconeng.7b288ff0'
     });
-// WVB 1 ft Contours
     map.addLayer({
         'id': 'wvb-1ftContours',
         'type': 'line',
@@ -36,7 +34,6 @@ map.on('style.load', function () {
             'line-color': '#333'
         }
     },'road_label');
-//WVB 5 ft contours
     map.addLayer({
         'id': 'wvb-5ftContours',
         'type': 'line',
@@ -55,7 +52,6 @@ map.on('style.load', function () {
             'line-color': '#111'
         }
     },'road_label');
-//WVB 5 ft labels
     map.addLayer({
         'id': 'wvb-5ftLabels',
         'type': 'symbol',
@@ -82,7 +78,6 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.2f2497d6'
     });
-//MCB 1 ft contours
     map.addLayer({
         'id': 'mcb-1ftContours',
         'type': 'line',
@@ -101,7 +96,6 @@ map.on('style.load', function () {
             'line-color': '#333'
         }
     },'road_label');
-//MCB 5 ft contours
     map.addLayer({
         'id': 'mcb-5ftContours',
         'type': 'line',
@@ -120,7 +114,6 @@ map.on('style.load', function () {
             'line-color': '#111'
         }
     },'road_label');
-// MCB 5 ft labels
     map.addLayer({
         'id': 'mcb-5ftLabels',
         'type': 'symbol',
@@ -147,7 +140,6 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.83au2rpu'
     });
-// MCB Basins
     map.addLayer({
         'id': 'mcb-basins',
         'type': 'fill',
@@ -163,7 +155,7 @@ map.on('style.load', function () {
             'fill-opacity': 0.05
         }
     },'road_label');
-//MCB Basin Borders
+
     map.addLayer({
         "id": "mcb-basins-borders",
         "type": "line",
@@ -182,7 +174,6 @@ map.on('style.load', function () {
         type: 'vector',
         url: 'mapbox://iconeng.5n8brw3p'
     });
-//WVB Basins
     map.addLayer({
         'id': 'wvb-basins',
         'type': 'fill',
@@ -198,7 +189,7 @@ map.on('style.load', function () {
             'fill-opacity': 0.05
         }
     },'road_label');
-//WVB Basin Borders
+
     map.addLayer({
         "id": "wvb-basins-borders",
         "type": "line",
