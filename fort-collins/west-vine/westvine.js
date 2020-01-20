@@ -623,7 +623,7 @@ if (!mapboxgl.supported()) {
       },
       'paint': {
         'line-width': 1,
-        'line-opacity': 0.6,
+        'line-opacity': 1,
         'line-color': '#ff0000',
       }
     }, 'road_label');
@@ -640,8 +640,7 @@ if (!mapboxgl.supported()) {
       },
       'paint': {
         'fill-color': '#ff0000',
-        'fill-opacity': 0.3,
-        'fill-pattern': 'redstripe'
+        'fill-opacity': 1,
       }
     }, 'road_label');
 
@@ -695,15 +694,15 @@ if (!mapboxgl.supported()) {
       type: 'geojson',
       "data": 'data/roadwaycrossings.geojson'
     });
-    //West Vine Stream centerline
+    //West Vine Roadway Crossings
     map.addLayer({
       'id': 'wvb-roadway',
       'type': 'line',
       'source': 'wvb-roadway',
       'paint': {
-        'line-width': 1,
+        'line-width': 2,
         'line-opacity': 1,
-        'line-color': 'rgba(0,77,68,1)'
+        'line-color': 'rgba(128,128,128,1)'
       },
       'layout': {
         'visibility': 'visible'
@@ -730,7 +729,7 @@ if (!mapboxgl.supported()) {
 
     var popup = new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
+      .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL: ' + feature.properties.XSWSElev)
       .addTo(map);
   });
 
