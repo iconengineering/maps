@@ -24,7 +24,7 @@ if (!mapboxgl.supported()) {
       'filter': ['all', ['==', 'Index', 0]],
       'layout': {
         'line-join': 'round',
-        'visibility': 'visible',
+        'visibility': 'none',
         'line-cap': 'round'
       },
       'paint': {
@@ -49,7 +49,7 @@ if (!mapboxgl.supported()) {
       ],
       'layout': {
         'line-join': 'round',
-        'visibility': 'visible',
+        'visibility': 'none',
         'line-cap': 'round'
       },
       'paint': {
@@ -74,7 +74,7 @@ if (!mapboxgl.supported()) {
       ],
       'layout': {
         'symbol-placement': 'line',
-        'visibility': 'visible',
+        'visibility': 'none',
         'text-field': '{CONTOUR}',
         'text-size': {
           "stops": [
