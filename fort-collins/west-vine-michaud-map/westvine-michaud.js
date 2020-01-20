@@ -1001,7 +1001,27 @@ if (!mapboxgl.supported()) {
           }
         }, 'road_label');
 
+        mapp.addSource('wvb-fldwy-fill',{
+          type: 'geojson',
+          "data": "data/fldwy-polygons.geojson"
+        });
 
+        //SHALLOW FLOODING FLOODPLAIN FILL
+            map.addLayer({
+              'id': 'wvb-fldwy-fill',
+              'type': 'fill',
+              'source': 'wvb-fldwy-fill',
+              'layerGroup': 1,
+              'interactive': true,
+              'layout': {
+                'visibility': 'visible'
+              },
+              'paint': {
+                'fill-color': '#ff0000',
+                'fill-opacity': 0.3,
+                'fill-pattern': 45
+              }
+            }, 'road_label');
 
     map.addSource('wvb-stream', {
       type: 'geojson',
