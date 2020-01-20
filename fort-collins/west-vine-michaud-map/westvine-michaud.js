@@ -887,8 +887,8 @@ if (!mapboxgl.supported()) {
         'line-opacity': 1,
         'line-color': 'rgba(0,0,0,1)'
       },
-      'layout':{
-        'visibility':'visible'
+      'layout': {
+        'visibility': 'visible'
       }
     });
 
@@ -933,18 +933,18 @@ if (!mapboxgl.supported()) {
         'line-opacity': 0.6,
         'line-color': 'rgba(0,230,255,1)'
       },
-      'layout':{
-        'visibility':'visible'
+      'layout': {
+        'visibility': 'visible'
       }
     });
 
-    map.addSource('wvb-fp-100yr-fill',{
+    map.addSource('wvb-fp-100yr-fill', {
       type: 'geojson',
       "data": 'data/fp-100yr-polygons.geojson'
     });
 
 
-//100-YR FLOODPLAIN FILL
+    //100-YR FLOODPLAIN FILL
     map.addLayer({
       'id': 'wvb-fp-100yr-fill',
       'type': 'fill',
@@ -960,68 +960,68 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
-    map.addSource('wvb-floodplain-sf',{
+    map.addSource('wvb-floodplain-sf', {
       type: 'geojson',
       "data": 'data/floodplainsf.geojson'
     });
 
     //Add shallow flooding
     map.addLayer({
-      'id':'wvb-floodplain-sf',
-      'type':'line',
-      'source':'wvb-floodplain-sf',
-      'paint':{
-        'line-width':1,
-        'line-opacity':0.6,
-        'line-color':'rgb(255,128,0)'
+      'id': 'wvb-floodplain-sf',
+      'type': 'line',
+      'source': 'wvb-floodplain-sf',
+      'paint': {
+        'line-width': 1,
+        'line-opacity': 0.6,
+        'line-color': 'rgb(255,128,0)'
       },
-      'layout':{
-        'visibility':'visible'
+      'layout': {
+        'visibility': 'visible'
       }
     });
 
-    mapp.addSource('wvb-fp-sf-fill',{
+    map.addSource('wvb-fp-sf-fill', {
       type: 'geojson',
       "data": "data/fp-shallow-flooding-polygons.geojson"
     });
 
     //SHALLOW FLOODING FLOODPLAIN FILL
-        map.addLayer({
-          'id': 'wvb-fp-sf-fill',
-          'type': 'fill',
-          'source': 'wvb-fp-sf-fill',
-          'layerGroup': 1,
-          'interactive': true,
-          'layout': {
-            'visibility': 'visible'
-          },
-          'paint': {
-            'fill-color': 'rgba(255,128,0)',
-            'fill-opacity': 0.3
-          }
-        }, 'road_label');
+    map.addLayer({
+      'id': 'wvb-fp-sf-fill',
+      'type': 'fill',
+      'source': 'wvb-fp-sf-fill',
+      'layerGroup': 1,
+      'interactive': true,
+      'layout': {
+        'visibility': 'visible'
+      },
+      'paint': {
+        'fill-color': 'rgba(255,128,0)',
+        'fill-opacity': 0.3
+      }
+    }, 'road_label');
 
-        mapp.addSource('wvb-fldwy-fill',{
-          type: 'geojson',
-          "data": "data/fldwy-polygons.geojson"
-        });
+    mapp.addSource('wvb-fldwy-fill', {
+      type: 'geojson',
+      "data": "data/fldwy-polygons.geojson"
+    });
 
-        //SHALLOW FLOODING FLOODPLAIN FILL
-            map.addLayer({
-              'id': 'wvb-fldwy-fill',
-              'type': 'fill',
-              'source': 'wvb-fldwy-fill',
-              'layerGroup': 1,
-              'interactive': true,
-              'layout': {
-                'visibility': 'visible'
-              },
-              'paint': {
-                'fill-color': '#ff0000',
-                'fill-opacity': 0.3,
-                'fill-pattern': 45
-              }
-            }, 'road_label');
+    //SHALLOW FLOODING FLOODPLAIN FILL
+    map.addLayer({
+      'id': 'wvb-fldwy-fill',
+      'type': 'fill',
+      'source': 'wvb-fldwy-fill',
+      'layerGroup': 1,
+      'interactive': true,
+      'layout': {
+        'visibility': 'visible'
+      },
+      'paint': {
+        'fill-color': '#ff0000',
+        'fill-opacity': 0.3,
+        'fill-pattern': 45
+      }
+    }, 'road_label');
 
     map.addSource('wvb-stream', {
       type: 'geojson',
@@ -1039,7 +1039,7 @@ if (!mapboxgl.supported()) {
         'line-color': 'rgba(0,77,168,1)'
       },
       'layout': {
-        'visibility':'visible'
+        'visibility': 'visible'
       }
     });
 
@@ -1083,8 +1083,8 @@ if (!mapboxgl.supported()) {
         'line-opacity': 1,
         'line-color': 'rgba(0,77,68,1)'
       },
-      'layout':{
-        'visibility':'visible'
+      'layout': {
+        'visibility': 'visible'
       }
     });
 
@@ -1108,7 +1108,7 @@ if (!mapboxgl.supported()) {
 
     var popup = new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(feature.properties.RiverName+ ' '+ feature.properties.ReachName + '<br>'+'XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
+      .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
       .addTo(map);
   });
 
