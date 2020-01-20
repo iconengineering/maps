@@ -91,6 +91,11 @@ if (!mapboxgl.supported()) {
         'text-halo-blur': 1
       }
     });
+    map.addSource('wvb-basins', {
+      type: 'vector',
+      url: 'mapbox://iconeng.5n8brw3p'
+    });
+
     //WVB BASINS
     map.addLayer({
       'id': 'wvb-basins',
