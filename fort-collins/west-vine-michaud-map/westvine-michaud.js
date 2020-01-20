@@ -951,7 +951,7 @@ if (!mapboxgl.supported()) {
       'paint': {
         'line-width': 1.5,
         'line-opacity': 1,
-        'line-color': 'rgb(0,77,168)'
+        'line-color': 'rgba(0,77,168,1)'
       },
       'layout': {
         'visibility':'visible'
@@ -977,7 +977,7 @@ if (!mapboxgl.supported()) {
         "text-padding": 100,
       },
       'paint': {
-        'text-color': 'rgb(0,77,168)',
+        'text-color': 'rgba(0,77,168,1)',
         'text-halo-color': '#ffffff',
         'text-halo-width': 2,
         'text-halo-blur': 1
