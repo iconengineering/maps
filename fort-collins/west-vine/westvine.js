@@ -63,7 +63,7 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'data/river.geojson'
   });
-  map.addSource('wvb-roadway', {
+  map.addSource('wvb-hydStructure', {
   type: 'geojson',
   "data": 'data/roadwaycrossings.geojson'
 });
@@ -202,11 +202,11 @@ map.on('style.load', function(e) {
       'text-halo-blur': 1
     }
   });
-  //West Vine Stream centerline
+  //West Vine Hydraulic Structures
   map.addLayer({
-    'id': 'wvb-roadway',
+    'id': 'wvb-hydStructure',
     'type': 'line',
-    'source': 'wvb-roadway',
+    'source': 'wvb-hydStructure',
     'paint': {
       'line-width': 1,
       'line-opacity': 1,
