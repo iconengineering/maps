@@ -408,9 +408,7 @@ map.addLayer(({
   'type': 'line',
   'source': 'cityfp',
   'source-layer': 'cityfp-dlkbam',
-  'filter': ['all', ['=', 'FLDPLN', 'WEST VINE'],
-  ],
-  'layout': {
+    'layout': {
     'line-join': 'round',
     'visibility': 'visible',
     'line-cap': 'round'
