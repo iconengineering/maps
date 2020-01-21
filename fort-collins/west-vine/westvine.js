@@ -49,7 +49,8 @@ map.on('style.load', function(e) {
   });
   map.addSource('contours', {
     type: 'vector',
-    url: 'mapbox://iconeng.7b288ff0'
+    url: 'mapbox://iconeng.aln7flwh'
+    // Old MP Smoothed iconeng.7b288ff0
   });
   map.addSource('fp', {
     type: 'geojson',
@@ -68,7 +69,6 @@ map.on('style.load', function(e) {
     "data": 'data/lateralstructure.geojson'
   });
 
-
   //WEST VINE XS
   map.addLayer({
     'id': 'wvb-xs',
@@ -83,6 +83,7 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
   //WEST VINE XS Labels
   map.addLayer({
     'id': 'wvb-xsLabels',
@@ -109,6 +110,7 @@ map.on('style.load', function(e) {
       'text-halo-blur': 1
     }
   });
+
   //West Vine 100 yr FP
   map.addLayer({
     'id': 'fp-100yr',
@@ -125,6 +127,7 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
   //100-YR FLOODPLAIN FILL
   map.addLayer({
     'id': 'fp-100yr-fill',
@@ -140,6 +143,7 @@ map.on('style.load', function(e) {
       'fill-opacity': 0.3
     }
   }, 'road_label');
+
   //100-YR SHALLOW FLOODING
   map.addLayer({
     'id': 'fp-sf',
@@ -156,6 +160,7 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
   //100-YR SHALLOW FLOODING FLOODPLAIN FILL
   map.addLayer({
     'id': 'fp-sf-fill',
@@ -171,6 +176,7 @@ map.on('style.load', function(e) {
       'fill-opacity': 0.3
     }
   }, 'road_label');
+
   //100-YR FLOODWAY
   map.addLayer({
     'id': 'fldwy',
@@ -187,6 +193,7 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
   //100-YR FLOODWAY FILL
   map.addLayer({
     'id': 'fldwy-fill',
@@ -217,6 +224,7 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
   //West Vine Stream Centerline LABEL
   map.addLayer({
     'id': 'wvb-streamLabels',
@@ -242,6 +250,7 @@ map.on('style.load', function(e) {
       'text-halo-blur': 1
     }
   });
+
   //West Vine Hydraulic Structures
   map.addLayer({
     'id': 'wvb-hydStructure',
@@ -256,6 +265,8 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
+
   //West Vine Lateral Structures
   map.addLayer({
     'id': 'latStructure',
@@ -281,13 +292,15 @@ map.on('style.load', function(e) {
     ],
     'source': 'cityFP',
     'paint': {
-      'line-color': '#993300',
+      'line-color': '#FFFF00',
       'line-opacity': 1
     },
     'layout': {
       'visibility': 'none'
     }
   });
+
+
   // City Floodplain - Floodway
   map.addLayer({
     'id': 'cityFW',
@@ -297,13 +310,15 @@ map.on('style.load', function(e) {
     ],
     'source': 'cityFP',
     'paint': {
-      'line-color': '#FF0000',
+      'line-color': '#00FF55',
       'line-opacity': 1
     },
     'layout': {
       'visibility': 'none'
     }
   });
+
+
   // City Floodplain - Shallow Flooding
   map.addLayer({
     'id': 'citySF',
@@ -320,12 +335,14 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   });
+
+
   //Contours - 1FT
   map.addLayer({
     'id': 'contour-1ft',
     'type': 'line',
     'source': 'contours',
-    'source-layer': 'wvb_contours',
+    'source-layer': 'contour_100-70zk0h',
     'filter': ['all', ['==', 'Index', 0]],
     'layout': {
       'line-join': 'round',
@@ -343,15 +360,15 @@ map.on('style.load', function(e) {
       'line-color': '#bd925a'
     }
   }, 'road_label');
+
+
   //Contours - 5 ft
   map.addLayer({
     'id': 'contour-5ft',
     'type': 'line',
     'source': 'contours',
     'source-layer': 'wvb_contours',
-    'filter': ['all', ['>=', 'Index', 5],
-      ['<=', 'Index', 10]
-    ],
+    'filter': ['all', ['==', 'Index', 5]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
@@ -368,6 +385,8 @@ map.on('style.load', function(e) {
       'line-color': '#bd925a'
     }
   }, 'road_label');
+
+
   //Contours - 5 ft Labels
   map.addLayer({
     'id': 'contour-5ftLabels',
