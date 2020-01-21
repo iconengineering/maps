@@ -46,14 +46,27 @@ map.on('style.load', function(e) {
 
   map.addSource('flowDepth', {
     type: 'vector',
-    url: 'mapbox://iconeng.7ir8lsql'
+    url: 'mapbox://iconeng.7b288ff0'
   });
 
   map.addSource('cityFP',{
     type:'geojson',
     "data": 'data/cityfp.geojson'
   })
-
+  //WEST VINE XS
+  map.addLayer({
+    'id': 'wvb-xs',
+    'type': 'line',
+    'source': 'wvb-xs',
+    'paint': {
+      'line-width': 2,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 //City Floodplain - 100-yr
 map.addLayer({
   'id':'cityFP',
@@ -82,7 +95,6 @@ map.addLayer({
     'visibility':'visible'
   }
 });
-
 // City Floodplain - Shallow Flooding
 map.addLayer({
   'id':'citySF',
@@ -98,20 +110,7 @@ map.addLayer({
   }
 });
 
-//WEST VINE XS
-map.addLayer({
-  'id': 'wvb-xs',
-  'type': 'line',
-  'source': 'wvb-xs',
-  'paint': {
-    'line-width': 2,
-    'line-opacity': 1,
-    'line-color': 'rgba(0,0,0,1)'
-  },
-  'layout': {
-    'visibility': 'visible'
-  }
-});
+
 
 
 }); //end style load
