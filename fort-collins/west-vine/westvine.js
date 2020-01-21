@@ -26,14 +26,12 @@ $(document).ready(function() {
   $("#clear").click(function() {
     var checkBoxes = $("input[type=checkbox]");
     checkBoxes.prop("checked", false);
-    map.setPaintProperty('basinOutlines', 'line-opacity', 0);
-    map.setPaintProperty('draingeways', 'line-opacity', 0)
-    map.setPaintProperty('flowDepth', 'visibility', 'none');
     map.setPaintProperty('contours-1ft', 'visibility', 'none');
     map.setPaintProperty('contours-5ft', 'visibility', 'none');
     map.setPaintProperty('contours-5ftLabels', 'visibility','none');
-    map.setPaintProperty('parcels', 'line-opacity', 0);
-    map.setPaintProperty('rasboudnary', 'line-opacity', 0);
+    map.setPaintProperty('cityFP', 'visibility', 'none');
+    map.setPaintProperty('cityFW', 'visibility', 'none');
+    map.setPaintProperty('citySF', 'visibility', 'none');
   });
 });
 
@@ -81,7 +79,7 @@ map.on('style.load', function(e) {
       'line-opacity': 1
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
   // City Floodplain - Floodway
@@ -97,7 +95,7 @@ map.on('style.load', function(e) {
       'line-opacity': 1
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
   // City Floodplain - Shallow Flooding
@@ -113,7 +111,7 @@ map.on('style.load', function(e) {
       'line-opacity': 1
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
   //Contours - 1FT
