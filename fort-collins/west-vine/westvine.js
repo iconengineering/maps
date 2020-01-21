@@ -64,9 +64,13 @@ map.on('style.load', function(e) {
     "data": 'data/river.geojson'
   });
   map.addSource('wvb-hydStructure', {
-  type: 'geojson',
-  "data": 'data/roadwaycrossings.geojson'
-});
+    type: 'geojson',
+    "data": 'data/roadwaycrossings.geojson'
+  });
+  map.addSource('latStructure', {
+    type: 'geojson',
+    "data": 'data/lateralstructure.geojson'
+  });
 
   //WEST VINE XS
   map.addLayer({
@@ -216,7 +220,20 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
-
+  //West Vine Lateral Structures
+  map.addLayer({
+    'id': 'latStructure',
+    'type': 'line',
+    'source': 'latStructure',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,68,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
   //City Floodplain - 100-yr
   map.addLayer({
     'id': 'cityFP',
