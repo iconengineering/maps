@@ -306,7 +306,7 @@ map.on('style.load', function(e) {
     'type': 'line',
     'source': 'contours',
     'source-layer': 'contour_100-70zk0h',
-    'filter': ['all', ['==', 'Index', 0]],
+    'filter': ['all', ['==', 'INDEX', 0]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
@@ -331,7 +331,7 @@ map.on('style.load', function(e) {
     'type': 'line',
     'source': 'contours',
     'source-layer': 'contour_100-70zk0h',
-    'filter': ['all', ['==', 'Index', 5]],
+    'filter': ['all', ['==', 'INDEX', 5]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
@@ -356,7 +356,7 @@ map.on('style.load', function(e) {
     'type': 'symbol',
     'source': 'contours',
     'source-layer': 'contour_100-70zk0h',
-    'filter': ['all', ['>=', 'Index', 5],
+    'filter': ['all', ['>=', 'INDEX', 5],
       ['<=', 'Index', 10]
     ],
     'layout': {
