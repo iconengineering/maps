@@ -500,7 +500,7 @@ map.addLayer(({
 
     var popup = new mapboxgl.Popup()
       .setLngLat(e.lngLat)
-      .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
+      .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL: ' + feature.properties.XSWSElev)
       .addTo(map);
   });
 
