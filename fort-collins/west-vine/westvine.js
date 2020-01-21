@@ -28,12 +28,12 @@ $(document).ready(function() {
     checkBoxes.prop("checked", false);
     map.setPaintProperty('contours-1ft', 'visibility', 'none');
     map.setPaintProperty('contours-5ft', 'visibility', 'none');
-    map.setPaintProperty('contours-5ftLabels', 'visibility','none');
+    map.setPaintProperty('contours-5ftLabels', 'visibility', 'none');
     map.setPaintProperty('cityFP', 'visibility', 'none');
     map.setPaintProperty('cityFW', 'visibility', 'none');
     map.setPaintProperty('citySF', 'visibility', 'none');
-    map.setPaintProperty('wvb-fp-100yr','visibility','none');
-    map.setPaintProperty('wvb-fp-100yr-fill','visibility','none');
+    map.setPaintProperty('wvb-fp-100yr', 'visibility', 'none');
+    map.setPaintProperty('wvb-fp-100yr-fill', 'visibility', 'none');
   });
 });
 
@@ -51,12 +51,22 @@ map.on('style.load', function(e) {
     type: 'vector',
     url: 'mapbox://iconeng.7b288ff0'
   });
-
   map.addSource('wvb-fp-100yr', {
+    type: 'geojson',
+    "data": 'data/fp-100yr-polygons.geojson'
+  });
+  map.addSource('wvb-fp-sf', {
+    type: 'geojson',
+    "data": "data/fp-shallow-flooding-polygons.geojson"
+  });
+  map.addSource('wvb-stream', {
+    type: 'geojson',
+    "data": 'data/river.geojson'
+  });
+  map.addSource('wvb-roadway', {
   type: 'geojson',
-  "data": 'data/fp-100yr-polygons.geojson'
+  "data": 'data/roadwaycrossings.geojson'
 });
-
 
   //WEST VINE XS
   map.addLayer({
@@ -78,7 +88,7 @@ map.on('style.load', function(e) {
     'type': 'symbol',
     'source': 'wvb-xs',
     'layout': {
-      'visibility':'visible',
+      'visibility': 'visible',
       'symbol-placement': 'line',
       'symbol-spacing': 100,
       'text-field': '{XSName}',
@@ -113,18 +123,100 @@ map.on('style.load', function(e) {
     }
   });
   //100-YR FLOODPLAIN FILL
-map.addLayer({
-  'id': 'wvb-fp-100yr-fill',
-  'type': 'fill',
-  'source': 'wvb-fp-100yr',
-  'layout': {
-    'visibility': 'visible'
-  },
-  'paint': {
-    'fill-color': 'rgba(0,230,255,1)',
-    'fill-opacity': 0.3
-  }
-}, 'road_label');
+  map.addLayer({
+    'id': 'wvb-fp-100yr-fill',
+    'type': 'fill',
+    'source': 'wvb-fp-100yr',
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {
+      'fill-color': 'rgba(0,230,255,1)',
+      'fill-opacity': 0.3
+    }
+  }, 'road_label');
+  //100-YR SHALLOW FLOODING
+  map.addLayer({
+    'id': 'wvb-fp-sf',
+    'type': 'line',
+    'source': 'wvb-fp-sf',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.6,
+      'line-color': 'rgb(255,128,0)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  //100-YRSHALLOW FLOODING FLOODPLAIN FILL
+  map.addLayer({
+    'id': 'wvb-fp-sf-fill',
+    'type': 'fill',
+    'source': 'wvb-fp-sf',
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {
+      'fill-color': 'rgba(255,128,0,1)',
+      'fill-opacity': 0.3
+    }
+  }, 'road_label');
+
+  //West Vine Stream centerline
+  map.addLayer({
+    'id': 'wvb-stream',
+    'type': 'line',
+    'source': 'wvb-stream',
+    'paint': {
+      'line-width': 1.5,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  //West Vine Stream Centerline LABEL
+  map.addLayer({
+    'id': 'wvb-streamLabels',
+    'type': 'symbol',
+    'source': 'wvb-stream',
+    'layout': {
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{RiverName}' + ' - ' + '{ReachName}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
+  //West Vine Stream centerline
+  map.addLayer({
+    'id': 'wvb-roadway',
+    'type': 'line',
+    'source': 'wvb-roadway',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,68,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
   //City Floodplain - 100-yr
   map.addLayer({
     'id': 'cityFP',
