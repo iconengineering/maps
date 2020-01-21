@@ -11,6 +11,20 @@ if (!mapboxgl.supported()) {
 
   map.on('style.load', function() {
 
+    map.addSource('cityFP',{
+      type:'geojson',
+      "data": 'cityfp.geojson'
+    })
+
+  map.addLayer({
+    'id':'cityFP',
+    'type':'line',
+    'source':'cityFP',
+    'paint':{
+      'line-width':2
+    }
+  });
+
     map.addSource('wvb-contours', {
       type: 'vector',
       url: 'mapbox://iconeng.7b288ff0'
@@ -363,27 +377,6 @@ if (!mapboxgl.supported()) {
         'visibility': 'visible'
       }
     });
-
-    map.addSource('cityfp', {
-      type: 'vector',
-      url: 'mapbox://iconeng.3magdi8v'
-    });
-
-    map.addLayer(({
-      'id': 'cityfp',
-      'type': 'line',
-      'source': 'cityfp',
-      'source-layer': 'cityfp-dlkbam',
-      'layout': {
-        'line-join': 'round',
-        'visibility': 'visible',
-        'line-cap': 'round'
-      },
-      'paint': {
-        'line-width': 1,
-        'line-color': '#FFFF00'
-      }
-    }));
 
   }); //end style load
 
