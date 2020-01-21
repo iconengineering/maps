@@ -69,47 +69,7 @@ map.on('style.load', function(e) {
     "data": 'data/lateralstructure.geojson'
   });
 
-  //WEST VINE XS
-  map.addLayer({
-    'id': 'wvb-xs',
-    'type': 'line',
-    'source': 'wvb-xs',
-    'paint': {
-      'line-width': 2,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,0,0,1)'
-    },
-    'layout': {
-      'visibility': 'visible'
-    }
-  });
 
-  //WEST VINE XS Labels
-  map.addLayer({
-    'id': 'wvb-xsLabels',
-    'type': 'symbol',
-    'source': 'wvb-xs',
-    'layout': {
-      'visibility': 'visible',
-      'symbol-placement': 'line',
-      'symbol-spacing': 100,
-      'text-field': '{XSName}',
-      'text-size': {
-        "stops": [
-          [15, 12],
-          [17, 14],
-          [19, 16]
-        ]
-      },
-      "text-padding": 100,
-    },
-    'paint': {
-      'text-color': '#000',
-      'text-halo-color': '#ffffff',
-      'text-halo-width': 2,
-      'text-halo-blur': 1
-    }
-  });
 
   //West Vine 100 yr FP
   map.addLayer({
@@ -121,7 +81,7 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
-      'line-color': 'rgba(0,230,255,1)'
+      'line-color': 'rgb(190,210,255)'
     },
     'layout': {
       'visibility': 'visible'
@@ -139,8 +99,8 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     },
     'paint': {
-      'fill-color': 'rgba(0,230,255,1)',
-      'fill-opacity': 0.3
+      'fill-color': 'rgb(190,210,255)',
+      'fill-opacity': 0.6
     }
   }, 'road_label');
 
@@ -154,7 +114,7 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
-      'line-color': 'rgb(255,128,0)'
+      'line-color': 'rgb(232,190,255)'
     },
     'layout': {
       'visibility': 'visible'
@@ -172,8 +132,8 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     },
     'paint': {
-      'fill-color': 'rgba(255,128,0,1)',
-      'fill-opacity': 0.3
+      'fill-color': 'rgb(232,190,255)',
+      'fill-opacity': 0.6
     }
   }, 'road_label');
 
@@ -187,7 +147,7 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 1,
       'line-opacity': 0.3,
-      'line-color': '#FF0000'
+      'line-color': 'rgb(163,255,115)'
     },
     'layout': {
       'visibility': 'visible'
@@ -205,8 +165,8 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     },
     'paint': {
-      'fill-color': '#FF0000',
-      'fill-opacity': 0.3,
+      'fill-color': 'rgb(163,255,115)',
+      'fill-opacity': 0.5,
     }
   }, 'road_label');
 
@@ -292,8 +252,9 @@ map.on('style.load', function(e) {
     ],
     'source': 'cityFP',
     'paint': {
-      'line-color': '#FFFF00',
-      'line-opacity': 1
+      'line-color': "rgb(230,76,0)",
+      'line-opacity': 1,
+      'line-dasharray': [8, 4]
     },
     'layout': {
       'visibility': 'none'
@@ -310,7 +271,7 @@ map.on('style.load', function(e) {
     ],
     'source': 'cityFP',
     'paint': {
-      'line-color': '#00FF55',
+      'line-color': 'rgb(230,76,0)',
       'line-opacity': 1
     },
     'layout': {
@@ -328,8 +289,10 @@ map.on('style.load', function(e) {
     ],
     'source': 'cityFP',
     'paint': {
-      'line-color': '#800000',
-      'line-opacity': 1
+      'line-color': 'rgb(230,76,0)',
+      'line-opacity': 1,
+      'line-dasharray': [4, 2],
+      'line-width':0.5
     },
     'layout': {
       'visibility': 'none'
@@ -367,7 +330,7 @@ map.on('style.load', function(e) {
     'id': 'contour-5ft',
     'type': 'line',
     'source': 'contours',
-    'source-layer': 'wvb_contours',
+    'source-layer': 'contour_100-70zk0h',
     'filter': ['all', ['==', 'Index', 5]],
     'layout': {
       'line-join': 'round',
@@ -392,7 +355,7 @@ map.on('style.load', function(e) {
     'id': 'contour-5ftLabels',
     'type': 'symbol',
     'source': 'contours',
-    'source-layer': 'wvb_contours',
+    'source-layer': 'contour_100-70zk0h',
     'filter': ['all', ['>=', 'Index', 5],
       ['<=', 'Index', 10]
     ],
@@ -416,6 +379,49 @@ map.on('style.load', function(e) {
     }
   });
 
+  //WEST VINE XS
+  map.addLayer({
+    'id': 'wvb-xs',
+    'type': 'line',
+    'source': 'wvb-xs',
+    'paint': {
+      'line-width': 2,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+
+
+    //WEST VINE XS Labels
+    map.addLayer({
+      'id': 'wvb-xsLabels',
+      'type': 'symbol',
+      'source': 'wvb-xs',
+      'layout': {
+        'visibility': 'visible',
+        'symbol-placement': 'line',
+        'symbol-spacing': 100,
+        'text-field': '{XSName}',
+        'text-size': {
+          "stops": [
+            [15, 12],
+            [17, 14],
+            [19, 16]
+          ]
+        },
+        "text-padding": 100,
+      },
+      'paint': {
+        'text-color': '#000',
+        'text-halo-color': '#ffffff',
+        'text-halo-width': 2,
+        'text-halo-blur': 1
+      }
+    });
 
 }); //end style load
 
