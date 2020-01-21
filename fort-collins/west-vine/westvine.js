@@ -298,40 +298,6 @@ if (!mapboxgl.supported()) {
       }
     }, 'road_label');
 
-    map.addSource('wvb-fldwy', {
-      type: 'geojson',
-      "data": "data/fldwy-polygons.geojson"
-    });
-
-//FLOODWAY BORDER
-    map.addLayer({
-      'id': 'wvb-fldwy',
-      'type': 'line',
-      'source': 'wvb-fldwy',
-      'paint': {
-        'line-width': 1.5,
-        'line-opacity': 1,
-        'line-color': '#FFFF00'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    map.addLayer({
-      'id': 'wvb-fldwy-fill',
-      'type': 'fill',
-      'source': 'wvb-fldwy',
-      'layerGroup': 1,
-      'interactive': true,
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-        'fill-color': 'rgba(255,128,0,1)',
-        'fill-opacity': 1
-      }
-    }, 'road_label');
 
     map.addSource('wvb-stream', {
       type: 'geojson',
@@ -398,83 +364,26 @@ if (!mapboxgl.supported()) {
       }
     });
 
-map.addSource('cityfp',{
-  type: 'vector',
-  url: 'mapbox://iconeng.3magdi8v'
-});
-
-map.addLayer(({
-  'id': 'city-fp',
-  'type': 'line',
-  'source': 'cityfp',
-  'source-layer': 'cityfp-dlkbam',
-    'layout': {
-    'line-join': 'round',
-    'visibility': 'visible',
-    'line-cap': 'round'
-  },
-  'paint': {
-    'line-width': 1,
-    'line-color': '#FFFF00'
-  }
-}));
-
-    map.addSource('city-fldwy', {
-      type: 'geojson',
-      "data": 'data/cityfp-fldwy.geojson'
+    map.addSource('cityfp', {
+      type: 'vector',
+      url: 'mapbox://iconeng.3magdi8v'
     });
 
-    map.addLayer({
-      'id': 'city-fldwy',
+    map.addLayer(({
+      'id': 'cityfp',
       'type': 'line',
-      'source': 'city-fldwy',
-      'paint': {
-        'line-width': 2,
-        'line-opacity': 1,
-        'line-color': 'rgba(128,128,128,1)'
-      },
+      'source': 'cityfp',
+      'source-layer': 'cityfp-dlkbam',
       'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    map.addSource('city-fp', {
-      type: 'geojson',
-      "data": 'data/cityfp-fp.geojson'
-    });
-
-    map.addLayer({
-      'id': 'city-fp',
-      'type': 'line',
-      'source': 'city-fp',
-      'paint': {
-        'line-width': 2,
-        'line-opacity': 1,
-        'line-color': 'rgba(128,128,128,1)'
+        'line-join': 'round',
+        'visibility': 'visible',
+        'line-cap': 'round'
       },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    map.addSource('city-sf', {
-      type: 'geojson',
-      "data": 'data/cityfp-sf.geojson'
-    });
-
-    map.addLayer({
-      'id': 'city-sf',
-      'type': 'line',
-      'source': 'city-sf',
       'paint': {
-        'line-width': 2,
-        'line-opacity': 1,
-        'line-color': 'rgba(128,128,128,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
+        'line-width': 1,
+        'line-color': '#FFFF00'
       }
-    });
+    }));
 
   }); //end style load
 
