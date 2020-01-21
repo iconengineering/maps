@@ -383,6 +383,35 @@ if (!mapboxgl.supported()) {
       }
     });
 
+map.addSource('cityfp',{
+  type: 'vector',
+  url: 'mapbox://iconeng.3magdi8v'
+});
+
+map.addLayer(({
+  'id': 'city-fp',
+  'type': 'line',
+  'source': 'cityfp',
+  'source-layer': 'cityfp-dlkbam',
+  'filter': ['all', ['=', 'FLDPLN', 'WEST VINE'],
+  ],
+  'layout': {
+    'line-join': 'round',
+    'visibility': 'visible',
+    'line-cap': 'round'
+  },
+  'paint': {
+    'line-width': {
+      "stops": [
+        [15, 1],
+        [17, 1.75],
+        [19, 2.5]
+      ]
+    },
+    'line-color': '#bd925a'
+  }
+}));
+
     map.addSource('city-fldwy', {
       type: 'geojson',
       "data": 'data/cityfp-fldwy.geojson'
