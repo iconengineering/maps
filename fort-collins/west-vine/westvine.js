@@ -414,14 +414,8 @@ map.addLayer(({
     'line-cap': 'round'
   },
   'paint': {
-    'line-width': {
-      "stops": [
-        [15, 1],
-        [17, 1.75],
-        [19, 2.5]
-      ]
-    },
-    'line-color': '#bd925a'
+    'line-width': 1,
+    'line-color': '#FFFF00'
   }
 }));
 
