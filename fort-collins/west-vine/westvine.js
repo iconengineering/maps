@@ -303,6 +303,21 @@ if (!mapboxgl.supported()) {
       "data": "data/fldwy-polygons.geojson"
     });
 
+//FLOODWAY BORDER
+    map.addLayer({
+      'id': 'wvb-fldwy',
+      'type': 'line',
+      'source': 'wvb-fldwy',
+      'paint': {
+        'line-width': 1.5,
+        'line-opacity': 1,
+        'line-color': '#FFFF00'
+      },
+      'layout': {
+        'visibility': 'visible'
+      }
+    });
+
     map.addLayer({
       'id': 'wvb-fldwy-fill',
       'type': 'fill',
