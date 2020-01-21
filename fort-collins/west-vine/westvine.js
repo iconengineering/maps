@@ -71,6 +71,10 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'data/lateralstructure.geojson'
   });
+  map.addSource('wvb-fldwy',{
+    type:'geojson',
+    "data": 'data/fldwy-polygons.geojson'
+  });
 
   //WEST VINE XS
   map.addLayer({
@@ -166,7 +170,6 @@ map.on('style.load', function(e) {
       'fill-opacity': 0.3
     }
   }, 'road_label');
-
   //West Vine Stream centerline
   map.addLayer({
     'id': 'wvb-stream',
@@ -234,6 +237,21 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+//West Vine Floodway
+  map.addLayer({
+    'id': 'wvb-fldwy',
+    'type': 'line',
+    'source': 'wvb-fldwy',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,68,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
   //City Floodplain - 100-yr
   map.addLayer({
     'id': 'cityFP',
