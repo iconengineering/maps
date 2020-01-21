@@ -51,13 +51,9 @@ map.on('style.load', function(e) {
     type: 'vector',
     url: 'mapbox://iconeng.7b288ff0'
   });
-  map.addSource('wvb-fp-100yr', {
+  map.addSource('fp', {
     type: 'geojson',
-    "data": 'data/fp-100yr-polygons.geojson'
-  });
-  map.addSource('wvb-fp-sf', {
-    type: 'geojson',
-    "data": "data/fp-shallow-flooding-polygons.geojson"
+    "data": 'data/fp.geojson'
   });
   map.addSource('wvb-stream', {
     type: 'geojson',
@@ -71,10 +67,7 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'data/lateralstructure.geojson'
   });
-  map.addSource('wvb-fldwy',{
-    type:'geojson',
-    "data": 'data/fldwy-polygons.geojson'
-  });
+
 
   //WEST VINE XS
   map.addLayer({
@@ -118,9 +111,11 @@ map.on('style.load', function(e) {
   });
   //West Vine 100 yr FP
   map.addLayer({
-    'id': 'wvb-fp-100yr',
+    'id': 'fp-100yr',
     'type': 'line',
-    'source': 'wvb-fp-100yr',
+    'source': 'fp',
+    'filter':['all',['==',"ZONE","100-Year Floodplain"]
+  ],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
@@ -132,9 +127,11 @@ map.on('style.load', function(e) {
   });
   //100-YR FLOODPLAIN FILL
   map.addLayer({
-    'id': 'wvb-fp-100yr-fill',
+    'id': 'fp-100yr-fill',
     'type': 'fill',
-    'source': 'wvb-fp-100yr',
+    'source': 'fp',
+    'filter':['all',['==',"ZONE","100-Year Floodplain"]
+  ],
     'layout': {
       'visibility': 'visible'
     },
@@ -145,9 +142,11 @@ map.on('style.load', function(e) {
   }, 'road_label');
   //100-YR SHALLOW FLOODING
   map.addLayer({
-    'id': 'wvb-fp-sf',
+    'id': 'fp-sf',
     'type': 'line',
-    'source': 'wvb-fp-sf',
+    'source': 'fp',
+    'filter':['all',['==',"ZONE","100-Year Shallow Flooding (1' Depth)"]
+  ],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
@@ -157,11 +156,13 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
-  //100-YRSHALLOW FLOODING FLOODPLAIN FILL
+  //100-YR SHALLOW FLOODING FLOODPLAIN FILL
   map.addLayer({
-    'id': 'wvb-fp-sf-fill',
+    'id': 'fp-sf-fill',
     'type': 'fill',
-    'source': 'wvb-fp-sf',
+    'source': 'fp',
+    'filter':['all',['==',"ZONE","100-Year Shallow Flooding (1' Depth)"]
+  ],
     'layout': {
       'visibility': 'visible'
     },
@@ -170,6 +171,38 @@ map.on('style.load', function(e) {
       'fill-opacity': 0.3
     }
   }, 'road_label');
+  //100-YR FLOODWAY
+  map.addLayer({
+    'id': 'fldwy',
+    'type': 'line',
+    'source': 'fp',
+    'filter':['all',['==',"ZONE","0.5' Floodway"]
+  ],
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.3,
+      'line-color': '#FF0000'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  //100-YR FLOODWAY FILL
+  map.addLayer({
+    'id': 'fldwy-fill',
+    'type': 'fill',
+    'source': 'fp',
+    'filter':['all',['==',"ZONE","0.5' Floodway"]
+  ],
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {
+      'fill-color': '#FF0000',
+      'fill-opacity': 0.3,
+    }
+  }, 'road_label');
+
   //West Vine Stream centerline
   map.addLayer({
     'id': 'wvb-stream',
@@ -237,20 +270,7 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
-//West Vine Floodway
-  map.addLayer({
-    'id': 'wvb-fldwy',
-    'type': 'line',
-    'source': 'wvb-fldwy',
-    'paint': {
-      'line-width': 1,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,77,68,1)'
-    },
-    'layout': {
-      'visibility': 'visible'
-    }
-  });
+
 
   //City Floodplain - 100-yr
   map.addLayer({
