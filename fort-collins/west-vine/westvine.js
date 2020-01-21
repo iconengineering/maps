@@ -32,6 +32,8 @@ $(document).ready(function() {
     map.setPaintProperty('cityFP', 'visibility', 'none');
     map.setPaintProperty('cityFW', 'visibility', 'none');
     map.setPaintProperty('citySF', 'visibility', 'none');
+    map.setPaintProperty('wvb-fp-100yr','visibility','none');
+    map.setPaintProperty('wvb-fp-100yr-fill','visibility','none');
   });
 });
 
@@ -50,6 +52,11 @@ map.on('style.load', function(e) {
     url: 'mapbox://iconeng.7b288ff0'
   });
 
+  map.addSource('wvb-fp-100yr', {
+  type: 'geojson',
+  "data": 'data/fp-100yr-polygons.geojson'
+});
+
 
   //WEST VINE XS
   map.addLayer({
@@ -65,7 +72,59 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
-
+  //WEST VINE XS Labels
+  map.addLayer({
+    'id': 'wvb-xsLabels',
+    'type': 'symbol',
+    'source': 'wvb-xs',
+    'layout': {
+      'visibility':'visible',
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{XSName}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': '#000',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
+  //West Vine 100 yr FP
+  map.addLayer({
+    'id': 'wvb-fp-100yr',
+    'type': 'line',
+    'source': 'wvb-fp-100yr',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.6,
+      'line-color': 'rgba(0,230,255,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  //100-YR FLOODPLAIN FILL
+map.addLayer({
+  'id': 'wvb-fp-100yr-fill',
+  'type': 'fill',
+  'source': 'wvb-fp-100yr',
+  'layout': {
+    'visibility': 'visible'
+  },
+  'paint': {
+    'fill-color': 'rgba(0,230,255,1)',
+    'fill-opacity': 0.3
+  }
+}, 'road_label');
   //City Floodplain - 100-yr
   map.addLayer({
     'id': 'cityFP',
