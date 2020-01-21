@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
+  style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
   zoom: 13.75,
   center: [-105.1122, 40.5920],
   hash: true,
@@ -54,13 +54,47 @@ map.on('style.load', function(e) {
     "data": 'data/cityfp.geojson'
   })
 
+//City Floodplain - 100-yr
 map.addLayer({
   'id':'cityFP',
-  'type':'fill',
+  'type':'line',
   'filter':['all',['==',"FP_NAME","WEST VINE"],['==',"FLOOD_TYPE","100 YEAR"]],
   'source':'cityFP',
   'paint':{
-    'fill-opacity':0.5
+    'line-color':'#993300',
+    'line-opacity':1
+  },
+  'layout':{
+    'visibility':'visible'
+  }
+});
+// City Floodplain - Floodway
+map.addLayer({
+  'id':'cityFW',
+  'type':'line',
+  'filter':['all',['==',"FP_NAME","WEST VINE"],['==',"FLOOD_TYPE","0.5 FOOT FLOODWAY"]],
+  'source':'cityFP',
+  'paint':{
+    'line-color':'#FF0000',
+    'line-opacity':1
+  },
+  'layout':{
+    'visibility':'visible'
+  }
+});
+
+// City Floodplain - Shallow Flooding
+map.addLayer({
+  'id':'citySF',
+  'type':'line',
+  'filter':['all',['==',"FP_NAME","WEST VINE"],['==',"FLOOD_TYPE","<= 1FT"]],
+  'source':'cityFP',
+  'paint':{
+    'line-color':'#800000',
+    'line-opacity':1
+  },
+  'layout':{
+    'visibility':'visible'
   }
 });
 

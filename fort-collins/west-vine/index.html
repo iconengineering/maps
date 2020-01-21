@@ -84,8 +84,8 @@
             <div class="row">
             </div>
             <p>
-              <input name="basins" type="checkbox" id="basins" class="layer-on" onclick="toggleSmooth('basinOutlines','line-opacity',1)" checked/>
-              <label for="basins" class="valign">Basins</label>
+              <input name="cityFP" type="checkbox" id="cityFP" class="layer-on" onclick="toggleThree('cityFP','cityFW','citySF')" checked/>
+              <label for="cityFP" class="valign">Existing City Floodplain</label>
             </p>
           </div>
         </li>
@@ -95,8 +95,21 @@
 
         <!-- BaseMap Subheading -->
         <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Map</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Information</div>
           <div class="collapsible-body white">
+            <p>
+              <input name="cityFP" type="checkbox" id="cityFP" class="layer-on" onclick="toggleThree('cityFP','cityFW','citySF')" checked/>
+              <label for="cityFP" class="valign">Existing City Floodplain</label>
+            </p>
+            <p>
+              <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)" />
+              <label for="contours" class="valign">Contours</label>
+            </p>
+            <p>
+              <input name="parcels" type="checkbox" id="parcels" class="layer-off" onclick="toggleSmooth('parcels','line-opacity',1)" />
+              <label for="parcels" class="valign">Parcels</label>
+            </p>
+            <hr>
             <div id="menu" class="demo-toggles">
               <p class="narrow">
                 <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked/>
@@ -107,15 +120,6 @@
                 <label for="test2">Light</label>
               </p>
             </div>
-            <hr>
-            <p>
-              <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)" />
-              <label for="contours" class="valign">Contours</label>
-            </p>
-            <p>
-              <input name="parcels" type="checkbox" id="parcels" class="layer-off" onclick="toggleSmooth('parcels','line-opacity',1)" />
-              <label for="parcels" class="valign">Parcels</label>
-            </p>
           </div>
         </li>
 
