@@ -29,9 +29,9 @@ $(document).ready(function() {
     map.setPaintProperty('basinOutlines', 'line-opacity', 0);
     map.setPaintProperty('draingeways', 'line-opacity', 0)
     map.setPaintProperty('flowDepth', 'visibility', 'none');
-    map.setPaintProperty('1ftContours', 'line-opacity', 0);
-    map.setPaintProperty('5ftContours', 'line-opacity', 0);
-    map.setPaintProperty('5ftLabels', 'text-opacity', 0);
+    map.setPaintProperty('contours-1ft', 'visibility', 'none');
+    map.setPaintProperty('contours-5ft', 'visibility', 'none');
+    map.setPaintProperty('contours-5ftLabels', 'visibility','none');
     map.setPaintProperty('parcels', 'line-opacity', 0);
     map.setPaintProperty('rasboudnary', 'line-opacity', 0);
   });
@@ -39,20 +39,20 @@ $(document).ready(function() {
 
 map.on('style.load', function(e) {
 
+  map.addSource('cityFP', {
+    type: 'geojson',
+    "data": 'data/cityfp.geojson'
+  });
   map.addSource('wvb-xs', {
     type: 'geojson',
     "data": 'data/xs.geojson'
   });
-
-  map.addSource('flowDepth', {
+  map.addSource('contours', {
     type: 'vector',
     url: 'mapbox://iconeng.7b288ff0'
   });
 
-  map.addSource('cityFP',{
-    type:'geojson',
-    "data": 'data/cityfp.geojson'
-  })
+
   //WEST VINE XS
   map.addLayer({
     'id': 'wvb-xs',
@@ -67,50 +67,131 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
-//City Floodplain - 100-yr
-map.addLayer({
-  'id':'cityFP',
-  'type':'line',
-  'filter':['all',['==',"FP_NAME","WEST VINE"],['==',"FLOOD_TYPE","100 YEAR"]],
-  'source':'cityFP',
-  'paint':{
-    'line-color':'#993300',
-    'line-opacity':1
-  },
-  'layout':{
-    'visibility':'visible'
-  }
-});
-// City Floodplain - Floodway
-map.addLayer({
-  'id':'cityFW',
-  'type':'line',
-  'filter':['all',['==',"FP_NAME","WEST VINE"],['==',"FLOOD_TYPE","0.5 FOOT FLOODWAY"]],
-  'source':'cityFP',
-  'paint':{
-    'line-color':'#FF0000',
-    'line-opacity':1
-  },
-  'layout':{
-    'visibility':'visible'
-  }
-});
-// City Floodplain - Shallow Flooding
-map.addLayer({
-  'id':'citySF',
-  'type':'line',
-  'filter':['all',['==',"FP_NAME","WEST VINE"],['==',"FLOOD_TYPE","<= 1FT"]],
-  'source':'cityFP',
-  'paint':{
-    'line-color':'#800000',
-    'line-opacity':1
-  },
-  'layout':{
-    'visibility':'visible'
-  }
-});
 
-
+  //City Floodplain - 100-yr
+  map.addLayer({
+    'id': 'cityFP',
+    'type': 'line',
+    'filter': ['all', ['==', "FP_NAME", "WEST VINE"],
+      ['==', "FLOOD_TYPE", "100 YEAR"]
+    ],
+    'source': 'cityFP',
+    'paint': {
+      'line-color': '#993300',
+      'line-opacity': 1
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  // City Floodplain - Floodway
+  map.addLayer({
+    'id': 'cityFW',
+    'type': 'line',
+    'filter': ['all', ['==', "FP_NAME", "WEST VINE"],
+      ['==', "FLOOD_TYPE", "0.5 FOOT FLOODWAY"]
+    ],
+    'source': 'cityFP',
+    'paint': {
+      'line-color': '#FF0000',
+      'line-opacity': 1
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  // City Floodplain - Shallow Flooding
+  map.addLayer({
+    'id': 'citySF',
+    'type': 'line',
+    'filter': ['all', ['==', "FP_NAME", "WEST VINE"],
+      ['==', "FLOOD_TYPE", "<= 1FT"]
+    ],
+    'source': 'cityFP',
+    'paint': {
+      'line-color': '#800000',
+      'line-opacity': 1
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+  //Contours - 1FT
+  map.addLayer({
+    'id': 'contour-1ft',
+    'type': 'line',
+    'source': 'contours',
+    'source-layer': 'wvb_contours',
+    'filter': ['all', ['==', 'Index', 0]],
+    'layout': {
+      'line-join': 'round',
+      'visibility': 'none',
+      'line-cap': 'round'
+    },
+    'paint': {
+      'line-width': {
+        "stops": [
+          [15, 0],
+          [17, .5],
+          [19, 1]
+        ]
+      },
+      'line-color': '#bd925a'
+    }
+  }, 'road_label');
+  //Contours - 5 ft
+  map.addLayer({
+    'id': 'contour-5ft',
+    'type': 'line',
+    'source': 'contours',
+    'source-layer': 'wvb_contours',
+    'filter': ['all', ['>=', 'Index', 5],
+      ['<=', 'Index', 10]
+    ],
+    'layout': {
+      'line-join': 'round',
+      'visibility': 'none',
+      'line-cap': 'round'
+    },
+    'paint': {
+      'line-width': {
+        "stops": [
+          [15, 1],
+          [17, 1.75],
+          [19, 2.5]
+        ]
+      },
+      'line-color': '#bd925a'
+    }
+  }, 'road_label');
+  //Contours - 5 ft Labels
+  map.addLayer({
+    'id': 'contour-5ftLabels',
+    'type': 'symbol',
+    'source': 'contours',
+    'source-layer': 'wvb_contours',
+    'filter': ['all', ['>=', 'Index', 5],
+      ['<=', 'Index', 10]
+    ],
+    'layout': {
+      'symbol-placement': 'line',
+      'visibility': 'none',
+      'text-field': '{CONTOUR}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      }
+    },
+    'paint': {
+      'text-color': '#bd925a',
+      'text-halo-color': '#F8F4F0',
+      'text-halo-width': 2,
+      'text-halo-blur': 0.5
+    }
+  });
 
 
 }); //end style load
