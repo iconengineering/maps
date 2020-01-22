@@ -69,6 +69,11 @@ map.on('style.load', function(e) {
     "data": 'data/lateralstructure.geojson'
   });
 
+  map.addSource('canals', {
+    type: 'vector',
+    url: 'mapbox://iconeng.8bkept6e'
+  });
+
 
 
   //West Vine 100 yr FP
@@ -422,6 +427,58 @@ map.on('style.load', function(e) {
         'text-halo-blur': 1
       }
     });
+
+
+    //CANAL
+    map.addLayer({
+      'id': 'canals',
+      'type': 'line',
+      'source': 'canals',
+      'source-layer': 'wvb_canals',
+      'layout': {
+        'line-join': 'round',
+        'visibility': 'none',
+        'line-cap': 'round'
+      },
+      'paint': {
+        'line-width': {
+          "stops": [
+            [15, 1],
+            [17, 2],
+            [19, 4]
+          ]
+        },
+        'line-color': '#33ffff'
+      }
+    });
+    //CANAL LABELS
+    map.addLayer({
+      'id': 'canalLabels',
+      'type': 'symbol',
+      'source': 'canals',
+      'source-layer': 'wvb_canals',
+      'layout': {
+        'symbol-placement': 'line',
+        'symbol-spacing': 100,
+        'visibility': 'none',
+        'text-field': '{Name}',
+        'text-size': {
+          "stops": [
+            [15, 12],
+            [17, 14],
+            [19, 16]
+          ]
+        },
+        "text-padding": 100,
+      },
+      'paint': {
+        'text-color': '#000',
+        'text-halo-color': 'rgba(75,255,255,0.9)',
+        'text-halo-width': 2,
+        'text-halo-blur': 1
+      }
+    });
+
 
 }); //end style load
 
