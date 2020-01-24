@@ -81,7 +81,7 @@ map.on('style.load', function(e) {
     'id': 'fp-100yr',
     'type': 'line',
     'source': 'fp',
-    'filter':['all',['==',"ZONE","100-Year Floodplain"]
+    'filter':['all',['==',"FLOOD_TYPE","100 YEAR FLOODPLAIN"]
   ],
     'paint': {
       'line-width': 1,
@@ -252,8 +252,7 @@ map.on('style.load', function(e) {
   map.addLayer({
     'id': 'cityFP',
     'type': 'line',
-    'filter': ['all', ['==', "FP_NAME", "WEST VINE"],
-      ['==', "FLOOD_TYPE", "100 YEAR"]
+    'filter': ['all', ['==', "FLOOD_TYPE", "100 YEAR FLOODPLAIN"]
     ],
     'source': 'cityFP',
     'paint': {
@@ -271,8 +270,7 @@ map.on('style.load', function(e) {
   map.addLayer({
     'id': 'cityFW',
     'type': 'line',
-    'filter': ['all', ['==', "FP_NAME", "WEST VINE"],
-      ['==', "FLOOD_TYPE", "0.5 FOOT FLOODWAY"]
+    'filter': ['all', ['==', "FLOOD_TYPE", "0.5 FOOT FLOODWAY"]
     ],
     'source': 'cityFP',
     'paint': {
