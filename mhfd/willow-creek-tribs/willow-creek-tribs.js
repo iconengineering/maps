@@ -185,7 +185,7 @@ map.on('style.load', function(e) {
       "text-padding": 100,
     },
     'paint': {
-      'text-color': '#000',
+      'text-color': '#FFFFFF',
       'text-halo-color': 'rgba(0,77,168,0.9)',
       'text-halo-width': 2,
       'text-halo-blur': 1
