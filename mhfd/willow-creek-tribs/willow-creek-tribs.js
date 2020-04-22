@@ -278,4 +278,4 @@ map.on('mousemove', function(e) {
 });
 
 
-map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
