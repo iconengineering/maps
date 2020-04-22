@@ -161,7 +161,7 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 2,
       'line-opacity': 1,
-      'line-color': 'rgba(75,255,255,0.9)',
+      'line-color': 'rgba(0,77,168,0.9)',
     }
   });
 
@@ -186,7 +186,7 @@ map.on('style.load', function(e) {
     },
     'paint': {
       'text-color': '#000',
-      'text-halo-color': 'rgba(75,255,255,0.9)',
+      'text-halo-color': 'rgba(0,77,168,0.9)',
       'text-halo-width': 2,
       'text-halo-blur': 1
     }
