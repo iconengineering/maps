@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
+  style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
   zoom: 13,
   center: [-104.8969, 39.5666],
   hash: true,
@@ -74,7 +74,7 @@ map.on('style.load', function(e) {
     'type': 'line',
     'source': 'basinOutlines',
     'paint': {
-      'line-width': 1,
+      'line-width': 2,
       'line-opacity': 0,
       'line-color': 'rgba(0,0,0,1)',
       'line-dasharray': [8, 4]
