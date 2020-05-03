@@ -51,6 +51,22 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'rasboundary.geojson'
   });
+  map.addSource('studyArea',{
+    type: 'geojson',
+    "data": 'StudyArea.geojson'
+  });
+
+  //Add Study Area
+  map.addLayer({
+    'id': 'studyArea',
+    'type': 'line',
+    'source': 'studyArea',
+    'paint': {
+      'line-width': 3,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,1)',
+      }
+  });
 
   //Add Basin Outlines
   map.addLayer({
@@ -59,7 +75,7 @@ map.on('style.load', function(e) {
     'source': 'basinOutlines',
     'paint': {
       'line-width': 1,
-      'line-opacity': 1,
+      'line-opacity': 0,
       'line-color': 'rgba(0,0,0,1)',
       'line-dasharray': [8, 4]
     }
