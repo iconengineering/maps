@@ -51,9 +51,13 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'rasboundary.geojson'
   });
-  map.addSource('studyArea',{
+  map.addSource('studyArea', {
     type: 'geojson',
     "data": 'StudyArea.geojson'
+  });
+  map.addSource('basinLabels', {
+    type: 'vector',
+    url: 'mapbox://iconeng.981hxzbm'
   });
 
   //Add Study Area
@@ -65,7 +69,7 @@ map.on('style.load', function(e) {
       'line-width': 3,
       'line-opacity': 1,
       'line-color': 'rgba(0,0,0,1)',
-      }
+    }
   });
 
   //Add Basin Outlines
@@ -238,16 +242,98 @@ map.on('style.load', function(e) {
 
   // Add RAS Boundary to mapbox
   map.addLayer({
-      'id': 'rasboundary',
-      'type': 'line',
-      'source': 'rasboundary',
-      'paint': {
-        'line-color': '#008000',
-        'line-width': 3,
-        'line-opacity': 0
-      },
+    'id': 'rasboundary',
+    'type': 'line',
+    'source': 'rasboundary',
+    'paint': {
+      'line-color': '#008000',
+      'line-width': 3,
+      'line-opacity': 0
+    },
   });
+
+  // Basin Label
+  map.addLayer({
+    'id': 'basinLabels',
+    'type': 'symbol',
+    'source': 'basinLabels',
+    'source-layer': 'basinCentroids-7mfays',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": {
+        "stops": [
+          [15, 10],
+          [17, 12],
+          [19, 14]
+        ]
+      },
+      "text-field": "{Area} Ac. | {Impervious}%",
+      'text-font': ['Roboto Medium', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": {
+        "stops": [
+          [13, [0, 0.25]],
+          [17, [0, 0.75]]
+        ]
+      },
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#F8F4F0",
+      "text-halo-color": "rgba(0,0,0,.87)",
+      "text-halo-width": {
+        "stops": [
+          [15, 1],
+          [17, 1.25]
+        ]
+      }
+    }
+  });
+
+  map.addLayer({
+    'id': 'basinLabels2',
+    'type': 'symbol',
+    'source': 'basinLabels',
+    'source-layer': 'basinCentroids-7mfays',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": {
+        "stops": [
+          [15, 10],
+          [17, 12],
+          [19, 14]
+        ]
+      },
+      "text-field": "{Basin_Name}",
+      "text-offset": {
+        "stops": [
+          [13, [0, -1]],
+          [17, [0, -1.5]]
+        ]
+      },
+      'text-font': ['Roboto Medium', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#F8F4F0",
+      "text-halo-color": "rgba(0,0,0,.87)",
+      "text-halo-width": {
+        "stops": [
+          [15, 1],
+          [17, 1.25]
+        ]
+      }
+    }
+  });
+
+
+
 }); //end style load
+
+
 
 // When a click event occurs near a marker icon, open a popup at the location of
 
