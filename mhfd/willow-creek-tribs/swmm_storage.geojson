@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "storage",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "ACR_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.89731380862591, 39.563424757119073 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "PHI_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.885004287827712, 39.569089818144953 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "PHI_S200" }, "geometry": { "type": "Point", "coordinates": [ -104.882448191274065, 39.569920982509693 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "SPC_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.908866677442873, 39.565648875275421 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "WCE_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.884602996784295, 39.578014668464078 ] } }
+]
+}
