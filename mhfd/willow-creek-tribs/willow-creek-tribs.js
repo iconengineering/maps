@@ -63,6 +63,10 @@ map.on('style.load', function(e) {
     type: 'vector',
     url: 'mapbox://iconeng.0ktyrwl1'
   });
+  map.addSource('swmm_conduits', {
+    type: 'vector',
+    url: 'mapbox://iconeng.528a8v67'
+  });
 
 
   //Add Study Area
@@ -201,7 +205,8 @@ map.on('style.load', function(e) {
       'text-color': '#FFFFFF',
       'text-halo-color': 'rgba(0,77,168,0.9)',
       'text-halo-width': 2,
-      'text-halo-blur': 1
+      'text-halo-blur': 1,
+      'text-opacity': 1,
     }
   });
 
@@ -370,6 +375,69 @@ map.addLayer({
      "text-halo-width": 1,
    }
 });
+
+// SWMM Conduits
+map.addLayer({
+    'id': 'swmm_conduits',
+    'type': 'line',
+    'source': 'swmm_conduits',
+    //'source-layer': 'ngd_conduits'
+    'source-layer': 'swmm_conduits-1xv9wd',
+    'layout': {
+      "visibility": 'none'
+     },
+    'paint': {
+        'line-width': 4,
+        'line-color': '#036180'
+    }
+});
+
+map.addLayer({
+    'id': 'conduitArrows',
+    'type': 'symbol',
+    'source': 'swmm_conduits',
+    'source-layer': 'swmm_conduits-1xv9wd',
+    'layout': {
+      "visibility": 'none',
+      'symbol-placement': 'line',
+      'symbol-spacing': 50,
+      "icon-image": "oneway-white-small",
+      "icon-allow-overlap": true,
+      "text-rotation-alignment": "map",
+      "icon-size": 1,
+      "text-keep-upright": false,
+      "icon-padding": 0,
+      "icon-ignore-placement": true
+    },
+    'paint': {
+    }
+});
+
+map.addLayer({
+    'id': 'conduitLabels',
+    'type': 'symbol',
+    'source': 'swmm_conduits',
+    //'source-layer': 'ngd_conduits'
+    'source-layer': 'swmm_conduits-1xv9wd',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{id}',
+      'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+      'text-size': 10,
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': '#F8F4F0',
+      'text-halo-color': '#036180',
+      'text-halo-width': 1
+    }
+});
+
+
+
 
 }); //end style load
 
