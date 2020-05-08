@@ -59,6 +59,11 @@ map.on('style.load', function(e) {
     type: 'vector',
     url: 'mapbox://iconeng.981hxzbm'
   });
+  map.addSource('swmm_junctions', {
+    type: 'vector',
+    url: 'mapbox://iconeng.0ktyrwl1'
+  });
+
 
   //Add Study Area
   map.addLayer({
@@ -329,7 +334,42 @@ map.on('style.load', function(e) {
     }
   });
 
+// SWMM Junctions
+map.addLayer({
+    'id': 'swmm_junctions',
+    'type': 'circle',
+    'source': 'swmm_junctions',
+    'source-layer': 'swmm_junctions-3gs2y9',
+    'layout': {
+       "visibility": 'none'
+     },
+    'paint': {
+        'circle-radius': 4,
+        'circle-color': '#ee4d5a'
+    }
+});
 
+map.addLayer({
+    'id': 'swmm_junctionLabels',
+    'type': 'symbol',
+    'source': 'swmm_junctions',
+    'source-layer': 'swmm_junctions-3gs2y9',
+    'layout': {
+       "visibility": 'none',
+       "text-optional": true,
+       "text-line-height": 1,
+       "text-size": 12,
+       "text-field": "{id}",
+       'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+       "text-offset": [0, 1],
+       "text-anchor": "top"
+   },
+   "paint": {
+     "text-color": "#ee4d5a",
+     "text-halo-color": "#F8F4F0",
+     "text-halo-width": 1,
+   }
+});
 
 }); //end style load
 
