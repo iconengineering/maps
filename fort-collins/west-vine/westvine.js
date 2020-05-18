@@ -198,7 +198,7 @@ map.on('style.load', function(e) {
     'layout': {
       'symbol-placement': 'line',
       'symbol-spacing': 100,
-      'text-field': '{RiverName}' + ' - ' + '{ReachName}',
+      'text-field': '{RiverCode}' + ' - ' + '{ReachCode}',
       'text-size': {
         "stops": [
           [15, 12],
@@ -397,8 +397,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
-
     //WEST VINE XS Labels
     map.addLayer({
       'id': 'wvb-xsLabels',
@@ -408,7 +406,7 @@ map.on('style.load', function(e) {
         'visibility': 'visible',
         'symbol-placement': 'line',
         'symbol-spacing': 100,
-        'text-field': '{XSName}',
+        'text-field': '{ProfileM}',
         'text-size': {
           "stops": [
             [15, 12],
@@ -425,7 +423,6 @@ map.on('style.load', function(e) {
         'text-halo-blur': 1
       }
     });
-
 
     //CANAL
     map.addLayer({
