@@ -59,6 +59,15 @@ map.on('style.load', function(e) {
     type: 'vector',
     url: 'mapbox://iconeng.981hxzbm'
   });
+  map.addSource('swmm_junctions', {
+    type: 'vector',
+    url: 'mapbox://iconeng.0ktyrwl1'
+  });
+  map.addSource('swmm_conduits', {
+    type: 'vector',
+    url: 'mapbox://iconeng.528a8v67'
+  });
+
 
   //Add Study Area
   map.addLayer({
@@ -196,7 +205,8 @@ map.on('style.load', function(e) {
       'text-color': '#FFFFFF',
       'text-halo-color': 'rgba(0,77,168,0.9)',
       'text-halo-width': 2,
-      'text-halo-blur': 1
+      'text-halo-blur': 1,
+      'text-opacity': 1,
     }
   });
 
@@ -328,6 +338,104 @@ map.on('style.load', function(e) {
       }
     }
   });
+
+
+// SWMM Conduits
+map.addLayer({
+    'id': 'swmm_conduits',
+    'type': 'line',
+    'source': 'swmm_conduits',
+    //'source-layer': 'ngd_conduits'
+    'source-layer': 'swmm_conduits-1xv9wd',
+    'layout': {
+      "visibility": 'none'
+     },
+    'paint': {
+        'line-width': 4,
+        'line-color': '#036180'
+    }
+});
+
+map.addLayer({
+    'id': 'conduitArrows',
+    'type': 'symbol',
+    'source': 'swmm_conduits',
+    'source-layer': 'swmm_conduits-1xv9wd',
+    'layout': {
+      "visibility": 'none',
+      'symbol-placement': 'line',
+      'symbol-spacing': 50,
+      "icon-image": "oneway-white-small",
+      "icon-allow-overlap": true,
+      "text-rotation-alignment": "map",
+      "icon-size": 1,
+      "text-keep-upright": false,
+      "icon-padding": 0,
+      "icon-ignore-placement": true
+    },
+    'paint': {
+    }
+});
+
+map.addLayer({
+    'id': 'conduitLabels',
+    'type': 'symbol',
+    'source': 'swmm_conduits',
+    //'source-layer': 'ngd_conduits'
+    'source-layer': 'swmm_conduits-1xv9wd',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{id}',
+      'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+      'text-size': 10,
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': '#F8F4F0',
+      'text-halo-color': '#036180',
+      'text-halo-width': 1
+    }
+});
+
+// SWMM Junctions
+map.addLayer({
+    'id': 'swmm_junctions',
+    'type': 'circle',
+    'source': 'swmm_junctions',
+    'source-layer': 'swmm_junctions-3gs2y9',
+    'layout': {
+       "visibility": 'none'
+     },
+    'paint': {
+        'circle-radius': 4,
+        'circle-color': '#ee4d5a'
+    }
+});
+
+map.addLayer({
+    'id': 'swmm_junctionLabels',
+    'type': 'symbol',
+    'source': 'swmm_junctions',
+    'source-layer': 'swmm_junctions-3gs2y9',
+    'layout': {
+       "visibility": 'none',
+       "text-optional": true,
+       "text-line-height": 1,
+       "text-size": 12,
+       "text-field": "{id}",
+       'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+       "text-offset": [0, 1],
+       "text-anchor": "top"
+   },
+   "paint": {
+     "text-color": "#ee4d5a",
+     "text-halo-color": "#F8F4F0",
+     "text-halo-width": 1,
+   }
+});
 
 
 
