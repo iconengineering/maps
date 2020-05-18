@@ -74,8 +74,6 @@ map.on('style.load', function(e) {
     "data": 'data/canals.geojson'
   });
 
-
-
   //West Vine 100 yr FP
   map.addLayer({
     'id': 'fp-100yr',
@@ -258,7 +256,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
   // City Floodplain - Floodway
   map.addLayer({
     'id': 'cityFW',
@@ -273,7 +270,6 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   });
-
 
   // City Floodplain - Shallow Flooding
   map.addLayer({
@@ -293,7 +289,6 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   });
-
 
   //Contours - 1FT
   map.addLayer({
@@ -319,7 +314,6 @@ map.on('style.load', function(e) {
     }
   }, 'road_label');
 
-
   //Contours - 5 ft
   map.addLayer({
     'id': 'contour-5ft',
@@ -343,7 +337,6 @@ map.on('style.load', function(e) {
       'line-color': '#bd925a'
     }
   }, 'road_label');
-
 
   //Contours - 5 ft Labels
   map.addLayer({
@@ -456,8 +449,6 @@ map.on('style.load', function(e) {
       'text-halo-blur': 1
     }
   });
-
-
 
 }); //end style load
 
