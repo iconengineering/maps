@@ -186,7 +186,7 @@ if (!mapboxgl.supported()) {
       'layerGroup': 1,
       'interactive': true,
       'layout': {
-        'visibility': 'true'
+        'visibility': 'visible'
       },
       'paint': {
         'fill-color': '#dc0714',
@@ -200,7 +200,7 @@ if (!mapboxgl.supported()) {
       "source": "mcb-basins",
       'source-layer': 'mcb_basins',
       "layout": {
-        'visibility': 'true'
+        'visibility': 'visible'
       },
       "paint": {
         "line-color": "#dc0714",
@@ -221,7 +221,7 @@ if (!mapboxgl.supported()) {
       'layerGroup': 1,
       'interactive': true,
       'layout': {
-        'visibility': 'true'
+        'visibility': 'visible'
       },
       'paint': {
         'fill-color': '#1407dc',
@@ -235,7 +235,7 @@ if (!mapboxgl.supported()) {
       "source": "wvb-basins",
       'source-layer': 'wvb_basins',
       "layout": {
-        'visibility': 'true'
+        'visibility': 'visible'
       },
       "paint": {
         "line-color": "#1407dc",
@@ -255,7 +255,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_canals',
       'layout': {
         'line-join': 'round',
-        'visibility': 'true',
+        'visibility': 'visible',
         'line-cap': 'round'
       },
       'paint': {
@@ -278,7 +278,7 @@ if (!mapboxgl.supported()) {
       'layout': {
         'symbol-placement': 'line',
         'symbol-spacing': 100,
-        'visibility': 'true',
+        'visibility': 'visible',
         'text-field': '{Name}',
         'text-size': {
           "stops": [
@@ -733,7 +733,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_junctions',
       'filter': ['all', ['==', 'Class', 'Basin']],
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       "paint": {
         "circle-color": "#1407dc",
@@ -755,7 +755,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_junctions',
       'filter': ['all', ['==', 'Class', 'Basin']],
       'layout': {
-        'visibility': 'none',
+        'visibility': 'visible',
         "text-optional": true,
         "text-line-height": 1,
         "text-size": {
@@ -780,7 +780,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'mcb_junctions',
       'filter': ['all', ['==', 'Type', 'Basin']],
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       "paint": {
         "circle-color": "#dc0714",
@@ -802,7 +802,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'mcb_junctions',
       'filter': ['all', ['==', 'Type', 'Basin']],
       'layout': {
-        'visibility': 'none',
+        'visibility': 'visible',
         "text-optional": true,
         "text-line-height": 1,
         "text-size": {
