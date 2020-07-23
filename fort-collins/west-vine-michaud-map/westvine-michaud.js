@@ -6,7 +6,7 @@ if (!mapboxgl.supported()) {
     container: 'map',
     style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 13,
-    center: [-105.11, 40.59],
+    center: [-105.13, 40.60],
   });
 
   map.on('style.load', function() {
