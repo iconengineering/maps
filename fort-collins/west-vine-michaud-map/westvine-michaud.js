@@ -186,7 +186,7 @@ if (!mapboxgl.supported()) {
       'layerGroup': 1,
       'interactive': true,
       'layout': {
-        'visibility': 'none'
+        'visibility': 'true'
       },
       'paint': {
         'fill-color': '#dc0714',
@@ -200,7 +200,7 @@ if (!mapboxgl.supported()) {
       "source": "mcb-basins",
       'source-layer': 'mcb_basins',
       "layout": {
-        'visibility': 'none'
+        'visibility': 'true'
       },
       "paint": {
         "line-color": "#dc0714",
@@ -221,7 +221,7 @@ if (!mapboxgl.supported()) {
       'layerGroup': 1,
       'interactive': true,
       'layout': {
-        'visibility': 'none'
+        'visibility': 'true'
       },
       'paint': {
         'fill-color': '#1407dc',
@@ -235,7 +235,7 @@ if (!mapboxgl.supported()) {
       "source": "wvb-basins",
       'source-layer': 'wvb_basins',
       "layout": {
-        'visibility': 'none'
+        'visibility': 'true'
       },
       "paint": {
         "line-color": "#1407dc",
@@ -255,7 +255,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_canals',
       'layout': {
         'line-join': 'round',
-        'visibility': 'none',
+        'visibility': 'true',
         'line-cap': 'round'
       },
       'paint': {
@@ -278,7 +278,7 @@ if (!mapboxgl.supported()) {
       'layout': {
         'symbol-placement': 'line',
         'symbol-spacing': 100,
-        'visibility': 'none',
+        'visibility': 'true',
         'text-field': '{Name}',
         'text-size': {
           "stops": [
@@ -819,73 +819,6 @@ if (!mapboxgl.supported()) {
         "text-color": "#fff"
       }
     });
-
-    map.addSource('wvb-stream', {
-      type: 'geojson',
-      "data": 'data/river.geojson'
-    });
-
-    //West Vine Stream centerline
-    map.addLayer({
-      'id': 'wvb-stream',
-      'type': 'line',
-      'source': 'wvb-stream',
-      'paint': {
-        'line-width': 1.5,
-        'line-opacity': 1,
-        'line-color': 'rgba(0,77,168,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    //West Vine Stream Centerline LABEL
-    map.addLayer({
-      'id': 'wvb-streamLabels',
-      'type': 'symbol',
-      'source': 'wvb-stream',
-      'layout': {
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'text-field': '{RiverName}' + ' - ' + '{ReachName}',
-        'text-size': {
-          "stops": [
-            [15, 12],
-            [17, 14],
-            [19, 16]
-          ]
-        },
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': 'rgba(0,77,168,1)',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 2,
-        'text-halo-blur': 1
-      }
-    });
-
-    map.addSource('wvb-roadway', {
-      type: 'geojson',
-      "data": 'data/roadwaycrossings.geojson'
-    });
-    //West Vine Stream centerline
-    map.addLayer({
-      'id': 'wvb-roadway',
-      'type': 'line',
-      'source': 'wvb-roadway',
-      'paint': {
-        'line-width': 1,
-        'line-opacity': 1,
-        'line-color': 'rgba(0,77,68,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-
 
   }); //end style load
 
