@@ -157,7 +157,7 @@ map.on('style.load', function(e) {
     'id': 'fldwy-fill',
     'type': 'fill',
     'source': 'fp',
-    'filter': ['all', ['==', "ZONE", "0.5' Floodway"]],
+    'filter': ['all', ['==', "FLOOD_TYPE", "0.5' Floodway"]],
     'layout': {
       'visibility': 'visible'
     },
