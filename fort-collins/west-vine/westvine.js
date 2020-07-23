@@ -79,7 +79,7 @@ map.on('style.load', function(e) {
     'id': 'fp-100yr',
     'type': 'line',
     'source': 'fp',
-    'filter': ['all', ['==', "FLOOD_TYPE", "100 YEAR FLOODPLAIN"]],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
@@ -95,7 +95,7 @@ map.on('style.load', function(e) {
     'id': 'fp-100yr-fill',
     'type': 'fill',
     'source': 'fp',
-    'filter': ['all', ['==', "ZONE", "100-Year Floodplain"]],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'layout': {
       'visibility': 'visible'
     },
@@ -110,7 +110,7 @@ map.on('style.load', function(e) {
     'id': 'fp-sf',
     'type': 'line',
     'source': 'fp',
-    'filter': ['all', ['==', "ZONE", "100-Year Shallow Flooding (1' Depth)"]],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Shallow Flooding (1' Depth)"]],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
@@ -126,7 +126,7 @@ map.on('style.load', function(e) {
     'id': 'fp-sf-fill',
     'type': 'fill',
     'source': 'fp',
-    'filter': ['all', ['==', "ZONE", "100-Year Shallow Flooding (1' Depth)"]],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Shallow Flooding (1' Depth)"]],
     'layout': {
       'visibility': 'visible'
     },
@@ -141,7 +141,7 @@ map.on('style.load', function(e) {
     'id': 'fldwy',
     'type': 'line',
     'source': 'fp',
-    'filter': ['all', ['==', "ZONE", "0.5' Floodway"]],
+    'filter': ['all', ['==', "FLOOD_TYPE", "0.5' Floodway"]],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.3,
