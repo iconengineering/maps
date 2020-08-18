@@ -69,20 +69,17 @@ map.on('style.load', function(e) {
     "data": 'data/lateralstructure.geojson'
   });
 
-  map.addSource('canals', {
-    type: 'vector',
-    url: 'mapbox://iconeng.8bkept6e'
+  map.addSource('wvb-canals', {
+    type: 'geojson',
+    "data": 'data/canals.geojson'
   });
-
-
 
   //West Vine 100 yr FP
   map.addLayer({
     'id': 'fp-100yr',
     'type': 'line',
     'source': 'fp',
-    'filter':['all',['==',"FLOOD_TYPE","100 YEAR FLOODPLAIN"]
-  ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
@@ -98,8 +95,7 @@ map.on('style.load', function(e) {
     'id': 'fp-100yr-fill',
     'type': 'fill',
     'source': 'fp',
-    'filter':['all',['==',"ZONE","100-Year Floodplain"]
-  ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'layout': {
       'visibility': 'visible'
     },
@@ -114,8 +110,7 @@ map.on('style.load', function(e) {
     'id': 'fp-sf',
     'type': 'line',
     'source': 'fp',
-    'filter':['all',['==',"ZONE","100-Year Shallow Flooding (1' Depth)"]
-  ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Shallow Flooding (1' Depth)"]],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.6,
@@ -131,8 +126,7 @@ map.on('style.load', function(e) {
     'id': 'fp-sf-fill',
     'type': 'fill',
     'source': 'fp',
-    'filter':['all',['==',"ZONE","100-Year Shallow Flooding (1' Depth)"]
-  ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Shallow Flooding (1' Depth)"]],
     'layout': {
       'visibility': 'visible'
     },
@@ -147,8 +141,7 @@ map.on('style.load', function(e) {
     'id': 'fldwy',
     'type': 'line',
     'source': 'fp',
-    'filter':['all',['==',"ZONE","0.5' Floodway"]
-  ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "0.5' Floodway"]],
     'paint': {
       'line-width': 1,
       'line-opacity': 0.3,
@@ -164,8 +157,7 @@ map.on('style.load', function(e) {
     'id': 'fldwy-fill',
     'type': 'fill',
     'source': 'fp',
-    'filter':['all',['==',"ZONE","0.5' Floodway"]
-  ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "0.5' Floodway"]],
     'layout': {
       'visibility': 'visible'
     },
@@ -198,7 +190,7 @@ map.on('style.load', function(e) {
     'layout': {
       'symbol-placement': 'line',
       'symbol-spacing': 100,
-      'text-field': '{RiverName}' + ' - ' + '{ReachName}',
+      'text-field': '{RiverCode}' + ' - ' + '{ReachCode}',
       'text-size': {
         "stops": [
           [15, 12],
@@ -252,8 +244,7 @@ map.on('style.load', function(e) {
   map.addLayer({
     'id': 'cityFP',
     'type': 'line',
-    'filter': ['all', ['==', "FLOOD_TYPE", "100 YEAR FLOODPLAIN"]
-    ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "100 YEAR FLOODPLAIN"]],
     'source': 'cityFP',
     'paint': {
       'line-color': "rgb(230,76,0)",
@@ -265,13 +256,11 @@ map.on('style.load', function(e) {
     }
   });
 
-
   // City Floodplain - Floodway
   map.addLayer({
     'id': 'cityFW',
     'type': 'line',
-    'filter': ['all', ['==', "FLOOD_TYPE", "0.5 FOOT FLOODWAY"]
-    ],
+    'filter': ['all', ['==', "FLOOD_TYPE", "0.5 FOOT FLOODWAY"]],
     'source': 'cityFP',
     'paint': {
       'line-color': 'rgb(230,76,0)',
@@ -281,7 +270,6 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   });
-
 
   // City Floodplain - Shallow Flooding
   map.addLayer({
@@ -295,13 +283,12 @@ map.on('style.load', function(e) {
       'line-color': 'rgb(230,76,0)',
       'line-opacity': 1,
       'line-dasharray': [4, 2],
-      'line-width':0.5
+      'line-width': 0.5
     },
     'layout': {
       'visibility': 'none'
     }
   });
-
 
   //Contours - 1FT
   map.addLayer({
@@ -327,7 +314,6 @@ map.on('style.load', function(e) {
     }
   }, 'road_label');
 
-
   //Contours - 5 ft
   map.addLayer({
     'id': 'contour-5ft',
@@ -351,7 +337,6 @@ map.on('style.load', function(e) {
       'line-color': '#bd925a'
     }
   }, 'road_label');
-
 
   //Contours - 5 ft Labels
   map.addLayer({
@@ -397,86 +382,73 @@ map.on('style.load', function(e) {
     }
   });
 
-
-
-    //WEST VINE XS Labels
-    map.addLayer({
-      'id': 'wvb-xsLabels',
-      'type': 'symbol',
-      'source': 'wvb-xs',
-      'layout': {
-        'visibility': 'visible',
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'text-field': '{XSName}',
-        'text-size': {
-          "stops": [
-            [15, 12],
-            [17, 14],
-            [19, 16]
-          ]
-        },
-        "text-padding": 100,
+  //WEST VINE XS Labels
+  map.addLayer({
+    'id': 'wvb-xsLabels',
+    'type': 'symbol',
+    'source': 'wvb-xs',
+    'layout': {
+      'visibility': 'visible',
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{ProfileM}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
       },
-      'paint': {
-        'text-color': '#000',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 2,
-        'text-halo-blur': 1
-      }
-    });
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': '#000',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
 
+  //canals
+  map.addLayer({
+    'id': 'wvb-canals',
+    'type': 'line',
+    'source': 'wvb-canals',
+    'paint': {
+      'line-width': 1.5,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
-    //CANAL
-    map.addLayer({
-      'id': 'canals',
-      'type': 'line',
-      'source': 'canals',
-      'source-layer': 'wvb_canals',
-      'layout': {
-        'line-join': 'round',
-        'visibility': 'none',
-        'line-cap': 'round'
+  //canalLabels
+  map.addLayer({
+    'id': 'wvb-canalLabels',
+    'type': 'symbol',
+    'source': 'wvb-canals',
+    'layout': {
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{NAME}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
       },
-      'paint': {
-        'line-width': {
-          "stops": [
-            [15, 1],
-            [17, 2],
-            [19, 4]
-          ]
-        },
-        'line-color': '#33ffff'
-      }
-    });
-    //CANAL LABELS
-    map.addLayer({
-      'id': 'canalLabels',
-      'type': 'symbol',
-      'source': 'canals',
-      'source-layer': 'wvb_canals',
-      'layout': {
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'visibility': 'none',
-        'text-field': '{Name}',
-        'text-size': {
-          "stops": [
-            [15, 12],
-            [17, 14],
-            [19, 16]
-          ]
-        },
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': '#000',
-        'text-halo-color': 'rgba(75,255,255,0.9)',
-        'text-halo-width': 2,
-        'text-halo-blur': 1
-      }
-    });
-
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
 
 }); //end style load
 
@@ -500,7 +472,7 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML(feature.properties.RiverName + ' ' + feature.properties.ReachName + '<br>' + 'XS: ' + feature.properties.XSName + '<br>' + 'WSEL:' + feature.properties.XSWSElev)
+    .setHTML(feature.properties.RiverCode + ' ' + feature.properties.ReachCode + '<br>' + 'XS: ' + feature.properties.ProfileM + '<br>' + 'WSEL:' + feature.properties.P001.toFixed(2))
     .addTo(map);
 });
 

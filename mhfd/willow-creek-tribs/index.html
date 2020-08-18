@@ -88,57 +88,18 @@
               <label for="basins" class="valign">Basins</label>
             </p>
             <p class="indent">
-                <input name="basinLabels" type="checkbox" id="basinLabels" class="layer-off filled-in small-checkbox" onclick="toggleTwo('basinLabels','basinLabels2')"/>
-                <label for="basinLabels" class="valign">Labels</label>
-              </p>
-            <!-- <p class="indent">
-                <input name="basinLabels" type="checkbox" id="basinLabels" class="layer-off filled-in small-checkbox" onclick="toggleTwo('basinLabels','basinLabels2')"/>
-                <label for="basinLabels" class="valign">Labels</label>
-              </p> -->
+              <input name="basinLabels" type="checkbox" id="basinLabels" class="layer-off filled-in small-checkbox" onclick="toggleTwo('basinLabels','basinLabels2')" />
+              <label for="basinLabels" class="valign">Labels</label>
+            </p>
+            <p>
+              <input name="swmm_junctions" type="checkbox" id="swmm_junctions" class="layer-off" onclick="toggleTwo('swmm_junctions','swmm_junctionLabels')" />
+              <label for="swmm_junctions" class="valign">SWMM Baseline Junctions</label>
+            </p>
 
-
-            <!-- <p>
-                <input name="conduits" type="checkbox" id="conduits" class="layer-off" onclick="toggleThree('conduits','conduitLabels','conduitArrows')"/>
-                <label for="conduits" class="valign">Conduits</label>
-              </p>
-
-             <div id="conduitsSwitch" style="padding-left: 3rem;"><small class="grey-text text-darken-2">Plan</small>
-
-                <p class="narrow">
-                  <input name="conduit2" type="radio" id="existingCond" class="layer-on" value='existing' checked/>
-                  <label for="existingCond">Existing</label>
-                </p>
-
-               <p class="narrow">
-                  <input name="conduit2" type="radio" id="recPlan" class="layer-off" value='recPlan'/>
-                  <label for="recPlan">Master Plan</label>
-                </p>
-
-              </div> -->
-
-
-
-            <!-- <p>
-                <input name="junctions" type="checkbox" id="junctions" class="layer-off" onclick="toggleTwo('junctions','junctionLabels')"/>
-                <label for="junctions" class="valign">Junctions</label>
-              </p>
-
-             <div id="junctionSwitch" style="padding-left: 3rem;"><small class="grey-text text-darken-2">Plan</small>
-
-                <p class="narrow">
-                  <input name="junction2" type="radio" id="existingCond2" class="layer-on" value='existing' checked/>
-                  <label for="existingCond2">Existing</label>
-                </p>
-
-                <p class="narrow">
-                  <input name="junction2" type="radio" id="recPlan2" class="layer-off" value='recPlan'/>
-                  <label for="recPlan2">Master Plan</label>
-                </p>
-
-              </div> -->
-
-
-
+            <p>
+              <input name="swmm_conduits" type="checkbox" id="swmm_conduits" class="layer-off" onclick="toggleThree('swmm_conduits','conduitLabels','conduitArrows')" />
+              <label for="swmm_conduits" class="valign">SWMM Baseline Conduits</label>
+            </p>
           </div>
         </li>
 
@@ -191,7 +152,7 @@
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydraulics</div>
           <div class="collapsible-body white">
             <p>
-              <input name="rasboundary" type="checkbox" id="rasboundary" class="layer-on" onclick="toggleSmooth('rasboundary','line-opacity',1)" />
+              <input name="rasboundary" type="checkbox" id="rasboundary" class="layer-off" onclick="toggleSmooth('rasboundary','line-opacity',1)" />
               <label for="rasboundary" class="valign">Limits of RAS-2D Analysis</label>
             </p>
             <p>
@@ -207,6 +168,10 @@
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Map</div>
           <div class="collapsible-body white">
+            <p>
+              <input name="drainageways" type="checkbox" id="drainageways" class="layer-on" onclick="smoothTwo('drainageways','line-opacity',1, 'dwayLabels', 'text-opacity',1)" checked/>
+              <label for="drainageways" class="valign">Drainageways</label>
+            </p>
             <p>
               <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)" />
               <label for="contours" class="valign">Contours</label>
@@ -229,9 +194,9 @@
               </li>
               <li class="collection-item">
                 <div>Study Area<a href="#!" class="secondary-content"><svg height="21" width="21">
-                      <rect x="0" y="0" width="21" height="21" style="fill:none;stroke:black;stroke-width:3;fill-opacity:0;stroke-opacity:1"  /></svg>
+                      <rect x="0" y="0" width="21" height="21" style="fill:none;stroke:black;stroke-width:3;fill-opacity:0;stroke-opacity:1" /></svg>
 
-                </a></div>
+                  </a></div>
               </li>
               <li class="collection-item">
                 <div>Basins<a href="#!" class="secondary-content"><img src="dashed-box.svg" style="height: 21px;"></a></div>

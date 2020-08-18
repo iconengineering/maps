@@ -6,7 +6,7 @@ if (!mapboxgl.supported()) {
     container: 'map',
     style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 13,
-    center: [-105.11, 40.59],
+    center: [-105.13, 40.60],
   });
 
   map.on('style.load', function() {
@@ -186,7 +186,7 @@ if (!mapboxgl.supported()) {
       'layerGroup': 1,
       'interactive': true,
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'paint': {
         'fill-color': '#dc0714',
@@ -200,7 +200,7 @@ if (!mapboxgl.supported()) {
       "source": "mcb-basins",
       'source-layer': 'mcb_basins',
       "layout": {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       "paint": {
         "line-color": "#dc0714",
@@ -221,7 +221,7 @@ if (!mapboxgl.supported()) {
       'layerGroup': 1,
       'interactive': true,
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       'paint': {
         'fill-color': '#1407dc',
@@ -235,7 +235,7 @@ if (!mapboxgl.supported()) {
       "source": "wvb-basins",
       'source-layer': 'wvb_basins',
       "layout": {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       "paint": {
         "line-color": "#1407dc",
@@ -255,7 +255,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_canals',
       'layout': {
         'line-join': 'round',
-        'visibility': 'none',
+        'visibility': 'visible',
         'line-cap': 'round'
       },
       'paint': {
@@ -278,7 +278,7 @@ if (!mapboxgl.supported()) {
       'layout': {
         'symbol-placement': 'line',
         'symbol-spacing': 100,
-        'visibility': 'none',
+        'visibility': 'visible',
         'text-field': '{Name}',
         'text-size': {
           "stops": [
@@ -297,59 +297,7 @@ if (!mapboxgl.supported()) {
       }
     });
 
-    map.addSource('xs', {
-      type: 'vector',
-      url: 'mapbox://iconeng.0n0c8e77'
-    });
-    //CANAL XS
-    map.addLayer({
-      'id': 'xs',
-      'type': 'line',
-      'source': 'xs',
-      'source-layer': 'wvb_xs',
-      'layout': {
-        'line-join': 'round',
-        'visibility': 'none',
-        'line-cap': 'round'
-      },
-      'paint': {
-        'line-width': {
-          "stops": [
-            [15, 1],
-            [17, 2],
-            [19, 4]
-          ]
-        },
-        'line-color': '#33ffff'
-      }
-    });
-    //CANAL XS LABELES
-    map.addLayer({
-      'id': 'xsLabels',
-      'type': 'symbol',
-      'source': 'xs',
-      'source-layer': 'wvb_xs',
-      'layout': {
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'visibility': 'none',
-        'text-field': '{Station}',
-        'text-size': {
-          "stops": [
-            [15, 12],
-            [17, 14],
-            [19, 16]
-          ]
-        },
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': '#000',
-        'text-halo-color': 'rgba(75,255,255,0.9)',
-        'text-halo-width': 2,
-        'text-halo-blur': 1
-      }
-    });
+
 
     map.addSource('wvb-routing', {
       type: 'vector',
@@ -785,7 +733,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_junctions',
       'filter': ['all', ['==', 'Class', 'Basin']],
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       "paint": {
         "circle-color": "#1407dc",
@@ -807,7 +755,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'wvb_junctions',
       'filter': ['all', ['==', 'Class', 'Basin']],
       'layout': {
-        'visibility': 'none',
+        'visibility': 'visible',
         "text-optional": true,
         "text-line-height": 1,
         "text-size": {
@@ -832,7 +780,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'mcb_junctions',
       'filter': ['all', ['==', 'Type', 'Basin']],
       'layout': {
-        'visibility': 'none'
+        'visibility': 'visible'
       },
       "paint": {
         "circle-color": "#dc0714",
@@ -854,7 +802,7 @@ if (!mapboxgl.supported()) {
       'source-layer': 'mcb_junctions',
       'filter': ['all', ['==', 'Type', 'Basin']],
       'layout': {
-        'visibility': 'none',
+        'visibility': 'visible',
         "text-optional": true,
         "text-line-height": 1,
         "text-size": {
@@ -871,230 +819,6 @@ if (!mapboxgl.supported()) {
         "text-color": "#fff"
       }
     });
-
-
-    map.addSource('wvb-xs', {
-      type: 'geojson',
-      "data": 'data/xs.geojson'
-    });
-    //WEST VINE XS
-    map.addLayer({
-      'id': 'wvb-xs',
-      'type': 'line',
-      'source': 'wvb-xs',
-      'paint': {
-        'line-width': 2,
-        'line-opacity': 1,
-        'line-color': 'rgba(0,0,0,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    //WEST VINE XS LABELS
-    map.addLayer({
-      'id': 'wvb-xsLabels',
-      'type': 'symbol',
-      'source': 'wvb-xs',
-      'layout': {
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'text-field': '{XSName}',
-        'text-size': {
-          "stops": [
-            [15, 12],
-            [17, 14],
-            [19, 16]
-          ]
-        },
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': '#000',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 2,
-        'text-halo-blur': 1
-      }
-    });
-
-    map.addSource('wvb-fp-100yr', {
-      type: 'geojson',
-      "data": 'data/fp-100yr-polygons.geojson'
-    });
-
-    //West Vine 100 yr FP
-    map.addLayer({
-      'id': 'wvb-fp-100yr',
-      'type': 'line',
-      'source': 'wvb-fp-100yr',
-      'paint': {
-        'line-width': 1,
-        'line-opacity': 0.6,
-        'line-color': 'rgba(0,230,255,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    //100-YR FLOODPLAIN FILL
-    map.addLayer({
-      'id': 'wvb-fp-100yr-fill',
-      'type': 'fill',
-      'source': 'wvb-fp-100yr',
-      'layerGroup': 1,
-      'interactive': true,
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-        'fill-color': 'rgba(0,230,255,1)',
-        'fill-opacity': 0.3
-      }
-    }, 'road_label');
-
-    map.addSource('wvb-fp-sf', {
-      type: 'geojson',
-      "data": "data/fp-shallow-flooding-polygons.geojson"
-    });
-
-    //Add shallow flooding
-    map.addLayer({
-      'id': 'wvb-fp-sf',
-      'type': 'line',
-      'source': 'wvb-fp-sf',
-      'paint': {
-        'line-width': 1,
-        'line-opacity': 0.6,
-        'line-color': 'rgb(255,128,0)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    //SHALLOW FLOODING FLOODPLAIN FILL
-    map.addLayer({
-      'id': 'wvb-fp-sf-fill',
-      'type': 'fill',
-      'source': 'wvb-fp-sf',
-      'layerGroup': 1,
-      'interactive': true,
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-        'fill-color': 'rgba(255,128,0,1)',
-        'fill-opacity': 0.3
-      }
-    }, 'road_label');
-
-    map.addSource('wvb-fldwy', {
-      type: 'geojson',
-      "data": "data/fldwy-polygons.geojson"
-    });
-
-    //FLOODWAY OUTLINE
-    map.addLayer({
-      'id': 'wvb-fldwy',
-      'type': 'line',
-      'source': 'wvb-fldwy',
-      'layerGroup': 1,
-      'interactive': true,
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-        'line-width': 1,
-        'line-opacity': 0.6,
-        'line-color': '#ff0000',
-      }
-    }, 'road_label');
-
-    //SHALLOW FLOODING FLOODPLAIN FILL
-    map.addLayer({
-      'id': 'wvb-fldwy-fill',
-      'type': 'fill',
-      'source': 'wvb-fldwy',
-      'layerGroup': 1,
-      'interactive': true,
-      'layout': {
-        'visibility': 'visible'
-      },
-      'paint': {
-        'fill-color': '#ff0000',
-        'fill-opacity': 0.3,
-        'fill-pattern': 'redstripe'
-      }
-    }, 'road_label');
-
-    map.addSource('wvb-stream', {
-      type: 'geojson',
-      "data": 'data/river.geojson'
-    });
-
-    //West Vine Stream centerline
-    map.addLayer({
-      'id': 'wvb-stream',
-      'type': 'line',
-      'source': 'wvb-stream',
-      'paint': {
-        'line-width': 1.5,
-        'line-opacity': 1,
-        'line-color': 'rgba(0,77,168,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-    //West Vine Stream Centerline LABEL
-    map.addLayer({
-      'id': 'wvb-streamLabels',
-      'type': 'symbol',
-      'source': 'wvb-stream',
-      'layout': {
-        'symbol-placement': 'line',
-        'symbol-spacing': 100,
-        'text-field': '{RiverName}' + ' - ' + '{ReachName}',
-        'text-size': {
-          "stops": [
-            [15, 12],
-            [17, 14],
-            [19, 16]
-          ]
-        },
-        "text-padding": 100,
-      },
-      'paint': {
-        'text-color': 'rgba(0,77,168,1)',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 2,
-        'text-halo-blur': 1
-      }
-    });
-
-    map.addSource('wvb-roadway', {
-      type: 'geojson',
-      "data": 'data/roadwaycrossings.geojson'
-    });
-    //West Vine Stream centerline
-    map.addLayer({
-      'id': 'wvb-roadway',
-      'type': 'line',
-      'source': 'wvb-roadway',
-      'paint': {
-        'line-width': 1,
-        'line-opacity': 1,
-        'line-color': 'rgba(0,77,68,1)'
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
-
-
 
   }); //end style load
 
