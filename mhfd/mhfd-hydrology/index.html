@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>MHFD Hydrology Development</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src="//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js"></script>
+  <link href="//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="//code.getmdl.io/1.1.3/material.lime-teal.min.css">
+  <script defer src="//code.getmdl.io/1.1.3/material.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="//d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="fixed-drawer.css">
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-66511604-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      height: calc(100vh);
+      width: calc(100vw - 320px);
+    }
+
+    .trend {
+      stroke-width: 4;
+      stroke-opacity: .12;
+      fill: none;
+    }
+
+    .recPlan {
+      stroke-width: 4;
+      stroke-opacity: .75;
+      stroke: #045275;
+      fill: none;
+    }
+
+    .tick line {
+      stroke: rgba(0, 0, 0, 0.1);
+      stroke-dasharray: 2;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      #map {
+        width: 100vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="mdl-layout__drawer white mdl-color-text--grey-800 mdl-shadow--2dp">
+      <span style="display: inline-block;text-align:center;"><img class="responsive-img" src="images\MHFD-logo.png" style="padding:2rem"></span>
+      <h5 style="padding:0 1rem; text-align:center; margin-top:0;">MHFD Hydrology Dataset</h5>
+      <img class="responsive-img" src="\images\ICON-logo.png" style="padding:0.2rem;margin-left:auto;margin-right:auto;max-width:80%;">
+      <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
+        <!-- Hydrology Subheading -->
+        <li>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Layers</div>
+          <div class="collapsible-body white">
+            <div class="row">
+            </div>
+            <p>
+              <input name="basins" type="checkbox" id="basins" class="layer-off" onclick="toggleSmooth('basinOutlines','line-opacity',1)" />
+              <label for="basins" class="valign">Junctions</label>
+            </p>
+            <p class="indent">
+              <input name="basinLabels" type="checkbox" id="basinLabels" class="layer-off filled-in small-checkbox" onclick="toggleTwo('basinLabels','basinLabels2')" />
+              <label for="basinLabels" class="valign">Labels</label>
+            </p>
+            <p>
+              <input name="swmm_junctions" type="checkbox" id="swmm_junctions" class="layer-off" onclick="toggleTwo('swmm_junctions','swmm_junctionLabels')" />
+              <label for="swmm_junctions" class="valign">SWMM Baseline Junctions</label>
+            </p>
+
+            <p>
+              <input name="swmm_conduits" type="checkbox" id="swmm_conduits" class="layer-off" onclick="toggleThree('swmm_conduits','conduitLabels','conduitArrows')" />
+              <label for="swmm_conduits" class="valign">SWMM Baseline Conduits</label>
+            </p>
+          </div>
+        </li>
+        <!-- Legend Subheading -->
+        <li>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Legend</div>
+          <div class="collapsible-body white">
+            <ul class="collection with-header grey-text text-darken-2">
+              <li class="collection-header">
+                <h6>Hydrology</h6>
+              </li>
+              <li class="collection-item">
+                <div>Study Area<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" style="fill:none;stroke:black;stroke-width:3;fill-opacity:0;stroke-opacity:1" /></svg>
+
+                  </a></div>
+              </li>
+              <li class="collection-item">
+                <div>Basins<a href="#!" class="secondary-content"><img src="dashed-box.svg" style="height: 21px;"></a></div>
+              </li>
+              <!-- <li class="collection-item"><div>Conduits<a href="#!" class="secondary-content"><svg width="21" height="21"><title>conduits</title><line x1="1" y1="12" x2="23" y2="12" fill="none" stroke="#2887a1" stroke-miterlimit="10" stroke-width="8"/><line x1="5.56" y1="12" x2="15.41" y2="12" fill="none" stroke="#fff" stroke-miterlimit="10"/><polygon points="14.68 14.49 19 12 14.68 9.51 14.68 14.49" fill="#fff"/></svg></a></div></li>
+                   <li class="collection-item"><div>Junctions<a href="#!" class="secondary-content"><svg height="21" width="21"><circle cx="10.5" cy="10.5" r="7.5" fill="#ee4d5a" /></svg></a></div></li>
+                 <li class="collection-header"><h6>Improvement Level</h6></li>
+                   <li class="collection-item"><div>2-year<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="rgb(199,101,134)" /></svg></a></div></li>
+                   <li class="collection-item"><div>5-year<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="rgb(161,59,139)" /></svg></a></div></li>
+                   <li class="collection-item"><div>10-year<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="rgb(109,23,143)" /></svg></a></div></li>
+                   <li class="collection-item"><div>Existing<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="6" stroke="rgb(14,9,135)" /></svg></a></div></li> -->
+              <li class="collection-header">
+                <h6>Hydraulics</h6>
+              </li>
+              <li class="collection-item">
+                <div>2D Limits<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='#008000' /></svg></a></div>
+              </li>
+              <li class="collection-header">
+                <h8>Maximum RAS-2D Flow Depth</h8>
+              </li>
+              <li class="collection-item">
+                <div>1" - 6"<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(252,244,182)" fill-opacity=".8" /></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>6" - 12"<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(245,194,152)" fill-opacity=".8" /></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>1' - 1.5'<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(227,147,138)" fill-opacity=".8" /></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>1.5' - 2'<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(199,101,134)" fill-opacity=".8" /></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>2' - 3'<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(161,59,139)" fill-opacity=".8" /></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>3' - 4'<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(109,23,143)" fill-opacity=".8" /></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>4'+'<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(14,9,135)" fill-opacity=".8" /></svg></a></div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div id="map"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="toggleLayer.js"></script>
+  <script src="mhfd-hydrology.js"></script>
+
+</body>
+
+</html>
