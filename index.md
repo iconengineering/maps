@@ -44,9 +44,6 @@ layout: default_mapList
 
 [Willow Creek Tribs MDP & FHAD](mhfd/willow-creek-tribs)
 
-[ICON & MHFD](MHFD_ICON)
-
-
 #### Others
 [Lyons- Stormwater Master Plan](http://www.iconeng.com/lyons-stormwater-masterplan/map)
 
