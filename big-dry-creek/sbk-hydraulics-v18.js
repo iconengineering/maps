@@ -6,7 +6,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
     zoom: 14,
-    center: [-105.27, 40]
+    center: [-104.936, 39.592]
 });
 
 var layerList = document.getElementById('menu');
