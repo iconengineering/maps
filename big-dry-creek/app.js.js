@@ -1,12 +1,10 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
-if (!mapboxgl.supported()) {
-    alert('Your browser does not support Mapbox GL');
-} else {
+
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    zoom: 14,
-    center: [-105.27, 40]
+    zoom: 10,
+    center: [-104.936, 38.572]
 });
 
 var layerList = document.getElementById('menu');
@@ -23,7 +21,7 @@ for (var i = 0; i < inputs.length; i++) {
     inputs[i].onclick = switchLayer;
 }
 
-map.on('style.load', function () {
+//map.on('style.load', function () {
 
     map.addSource('5ftContours', {
         type: 'vector',
