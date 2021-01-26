@@ -5,8 +5,8 @@ if (!mapboxgl.supported()) {
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-    zoom: 14,
-    center: [-104.936, 39.592]
+    zoom: 7,
+    center: [-104.936, 39.572]
 });
 
 var layerList = document.getElementById('menu');
