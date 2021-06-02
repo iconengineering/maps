@@ -426,51 +426,165 @@ map.addLayer({
  }
 });
 
-  //  Effective Floodplain 100yr Hatch
-    map.addLayer({
-      'id': 'eff-fp-100yr-hatch',
-      'type': 'fill',
-      'source': 'eff-fp',
-      'filter': ['in',"FLD_ZONE",'A','AE'],
-      'paint': {
-        'fill-color': 'rgb(0,230,255)',
-        'fill-opacity': 0.4,
-      },
-      'layout': {
-        'visibility': 'visible'
-      }
-    });
+  // //  Effective Floodplain 100yr Hatch
+  //   map.addLayer({
+  //     'id': 'eff-fp-100yr-hatch',
+  //     'type': 'fill',
+  //     'source': 'eff-fp',
+  //     'filter': ['in',"FLD_ZONE",'A','AE'],
+  //     'paint': {
+  //       'fill-color': 'rgb(0,230,255)',
+  //       'fill-opacity': 0.4,
+  //     },
+  //     'layout': {
+  //       'visibility': 'visible'
+  //     }
+  //   });
+  //
+  //   //  Effective Floodplain 500yr Hatch
+  //     map.addLayer({
+  //       'id': 'eff-fp-500yr-hatch',
+  //       'type': 'fill',
+  //       'source': 'eff-fp',
+  //       'filter': ['==',"ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+  //       'paint': {
+  //         'fill-color': 'rgb(255,128,0)',
+  //         'fill-opacity': 0.4,
+  //       },
+  //       'layout': {
+  //         'visibility': 'visible'
+  //       }
+  //     });
+  //
+  //     //  Effective Floodplain Outline
+  //       map.addLayer({
+  //         'id': 'eff-fp-line',
+  //         'type': 'line',
+  //         'source': 'eff-fp',
+  //         // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+  //         'paint': {
+  //           'line-width': 1,
+  //           'line-opacity': 0.4,
+  //           'line-color': 'black',
+  //         },
+  //         'layout': {
+  //           'visibility': 'visible'
+  //         }
+  //       });
 
-    //  Effective Floodplain 500yr Hatch
-      map.addLayer({
-        'id': 'eff-fp-500yr-hatch',
-        'type': 'fill',
-        'source': 'eff-fp',
-        'filter': ['==',"ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
-        'paint': {
-          'fill-color': 'rgb(255,128,0)',
-          'fill-opacity': 0.4,
-        },
-        'layout': {
-          'visibility': 'visible'
-        }
-      });
 
-      //  Effective Floodplain Outline
-        map.addLayer({
-          'id': 'eff-fp-line',
-          'type': 'line',
-          'source': 'eff-fp',
-          // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
-          'paint': {
-            'line-width': 1,
-            'line-opacity': 0.4,
-            'line-color': 'black',
-          },
-          'layout': {
-            'visibility': 'visible'
-          }
-        });
+        //  CWCB Floodplain 100yr Hatch
+          map.addLayer({
+            'id': 'cwcb-100yr-hatch',
+            'type': 'fill',
+            'source': 'cwcb-fp',
+            'filter': ["all",
+              ["!in","ZONE_SUBTY", "FLOODWAY"],
+              ["in","FLD_ZONE",'A','AE','AO']
+            ],
+            'paint': {
+              'fill-color': 'rgb(0,230,255)',
+              'fill-opacity': 0.4
+            },
+            'layout': {
+              'visibility': 'none',
+
+            }
+          });
+
+          //  CWCB Floodplain 500yr Hatch
+            map.addLayer({
+              'id': 'cwcb-500yr-hatch',
+              'type': 'fill',
+              'source': 'cwcb-fp',
+              'filter': ['==',"ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+              'paint': {
+                'fill-color': 'rgb(255,128,0)',
+                'fill-opacity': 0.4,
+              },
+              'layout': {
+                'visibility': 'none'
+              }
+            });
+
+            //  CWCB Floodplain Floodway Hatch
+              map.addLayer({
+                'id': 'cwcb-fldwy-hatch',
+                'type': 'fill',
+                'source': 'cwcb-fp',
+                'filter': ['in',"ZONE_SUBTY", "FLOODWAY"],
+                'paint': {
+                  'fill-color': 'purple',
+                  'fill-opacity': 0.4,
+                    },
+                'layout': {
+                  'visibility': 'none'
+                }
+              });
+
+            //  CWCB Floodplain Outline
+              map.addLayer({
+                'id': 'cwcb-fp-line',
+                'type': 'line',
+                'source': 'cwcb-fp',
+                // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+                'paint': {
+                  'line-width': 1,
+                  'line-opacity': 0.4,
+                  'line-color': 'black',
+                },
+                'layout': {
+                  'visibility': 'none'
+                }
+              });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // //CWCB Floodplain
   // map.addLayer({
