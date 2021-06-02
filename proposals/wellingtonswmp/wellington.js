@@ -89,11 +89,16 @@ map.on('style.load', function(e) {
     "data":'data/swmm_storages.geojson'
   });
 
-  //
-  // map.addSource('cityFP', {
-  //   type: 'geojson',
-  //   "data": 'data/cityfp.geojson'
-  // });
+  map.addSource('eff-fp', {
+    type: 'geojson',
+    "data": 'data/effectiveFloodplain.geojson'
+  });
+
+  map.addSource('cwcb-fp', {
+    type: 'geojson',
+    "data": 'data/cwcbFloodplain.geojson'
+  });
+
   // map.addSource('wvb-xs', {
   //   type: 'geojson',
   //   "data": 'data/xs.geojson'
@@ -206,7 +211,6 @@ map.on('style.load', function(e) {
   });
 
   //Basin Labels
-
   map.addLayer({
       'id': 'basinLabels',
       'type': 'symbol',
@@ -231,7 +235,7 @@ map.on('style.load', function(e) {
        "text-halo-width": {"stops": [[15,1],[17,1.25]]}
      }
   });
-
+  //Basins Label 2
   map.addLayer({
       'id': 'basinLabels2',
       'type': 'symbol',
@@ -257,10 +261,6 @@ map.on('style.load', function(e) {
      }
   });
 
-
-
-
-
   //SWMM Conduits
   map.addLayer({
     'id': 'conduits',
@@ -274,7 +274,6 @@ map.on('style.load', function(e) {
         'line-color': '#036180'
     }
 });
-
 
   //SWMM Conduits Labels
   map.addLayer({
@@ -298,7 +297,6 @@ map.on('style.load', function(e) {
       }
   });
 
-
   //SWMM Conduits Arrows
   map.addLayer({
       'id': 'conduitArrows',
@@ -319,7 +317,6 @@ map.on('style.load', function(e) {
       // 'paint': {
       // }
   });
-
 
   //SWMM Junctions
   map.addLayer({
@@ -429,24 +426,69 @@ map.addLayer({
  }
 });
 
+  //  Effective Floodplain 100yr Hatch
+    map.addLayer({
+      'id': 'eff-fp-100yr-hatch',
+      'type': 'fill',
+      'source': 'eff-fp',
+      'filter': ['in',"FLD_ZONE",'A','AE'],
+      'paint': {
+        'fill-color': 'rgb(0,230,255)',
+        'fill-opacity': 0.4,
+      },
+      'layout': {
+        'visibility': 'visible'
+      }
+    });
 
+    //  Effective Floodplain 500yr Hatch
+      map.addLayer({
+        'id': 'eff-fp-500yr-hatch',
+        'type': 'fill',
+        'source': 'eff-fp',
+        'filter': ['==',"ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+        'paint': {
+          'fill-color': 'rgb(255,128,0)',
+          'fill-opacity': 0.4,
+        },
+        'layout': {
+          'visibility': 'visible'
+        }
+      });
 
-  // //West Vine 100 yr FP
+      //  Effective Floodplain Outline
+        map.addLayer({
+          'id': 'eff-fp-line',
+          'type': 'line',
+          'source': 'eff-fp',
+          // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+          'paint': {
+            'line-width': 1,
+            'line-opacity': 0.4,
+            'line-color': 'black',
+          },
+          'layout': {
+            'visibility': 'visible'
+          }
+        });
+
+  // //CWCB Floodplain
   // map.addLayer({
-  //   'id': 'fp-100yr',
+  //   'id': 'cwcb-fp',
   //   'type': 'line',
-  //   'source': 'fp',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+  //   'source': 'cwcb-fp',
+  //   // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
   //   'paint': {
   //     'line-width': 1,
-  //     'line-opacity': 0.6,
-  //     'line-color': 'rgb(190,210,255)'
+  //     'line-opacity': 1,
+  //     'line-color': 'black',
   //   },
   //   'layout': {
   //     'visibility': 'visible'
   //   }
   // });
-  //
+
+
   // //100-YR FLOODPLAIN FILL
   // map.addLayer({
   //   'id': 'fp-100yr-fill',
