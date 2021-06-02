@@ -59,6 +59,11 @@ map.on('style.load', function(e) {
     "data":'data/swmm_basins.geojson'
   });
 
+  map.addSource('basinCentroid',{
+    type: 'geojson',
+    "data":'data/basinCentroids.geojson'
+  });
+
   map.addSource('swmmConduits',{
     type: 'geojson',
     "data":'data/swmm_routing.geojson'
@@ -196,6 +201,62 @@ map.on('style.load', function(e) {
           'line-dasharray': [8,4]
       }
   });
+
+  //Basin Labels
+
+  map.addLayer({
+      'id': 'basinLabels',
+      'type': 'symbol',
+      'source': 'basinCentroid',
+      'layout': {
+         // "visibility": 'none',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[15, 10], [17, 12], [19, 14]]
+         },
+         "text-field": "{acres} Ac. | {Imper}%",
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-offset": {
+             "stops": [[13, [0, 0.25]], [17, [0, 0.75]]]
+         },
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#F8F4F0",
+       "text-halo-color": "rgba(0,0,0,.87)",
+       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+     }
+  });
+
+  map.addLayer({
+      'id': 'basinLabels2',
+      'type': 'symbol',
+      'source': 'basinCentroid',
+      'layout': {
+         // "visibility": 'none',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[15, 10], [17, 12], [19, 14]]
+         },
+         "text-field": "{Basin_ID}",
+         "text-offset": {
+             "stops": [[13, [0, -1]], [17, [0, -1.5]]]
+         },
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#F8F4F0",
+       "text-halo-color": "rgba(0,0,0,.87)",
+       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+     }
+  });
+
+
+
+
 
   //SWMM Conduits
   map.addLayer({
