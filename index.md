@@ -70,6 +70,11 @@ layout: default_mapList
 
 [The Pinery](other/pinery)
 
+[Town of Wellington]
+
+#### Proposals
+[Town of Wellington SWMP] (proposals/wellingtonswmp)
+
 #### 2017 Proposals
 [Nissen Reservoir Channel](other/nissen-reservoir-channel)
 
