@@ -166,7 +166,7 @@ map.on('style.load', function(e) {
       'line-color': 'red'
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
 
