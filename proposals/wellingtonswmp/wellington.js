@@ -44,6 +44,11 @@ map.on('style.load', function(e) {
     "data": 'data/cityBoundary.geojson'
   });
 
+  map.addSource('growthBoundary', {
+    type: 'geojson',
+    "data": 'data/growthboundary.geojson'
+  });
+
   map.addSource('stormAlignment', {
     type: 'geojson',
     "data": 'data/stormAlignment.geojson'
@@ -99,10 +104,7 @@ map.on('style.load', function(e) {
     "data": 'data/cwcbFloodplain.geojson'
   });
 
-  // map.addSource('wvb-xs', {
-  //   type: 'geojson',
-  //   "data": 'data/xs.geojson'
-  // });
+
   // map.addSource('contours', {
   //   type: 'vector',
   //   url: 'mapbox://iconeng.aln7flwh'
@@ -132,7 +134,22 @@ map.on('style.load', function(e) {
     'source': 'cityBoundary',
     'paint': {
       'line-width': 2,
-      'line-color': 'black'
+      'line-color': 'yellow',
+      'line-dasharray': [4,2]
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  //Growth Boundary
+  map.addLayer({
+    'id': 'growthBoundary',
+    'type': 'line',
+    'source': 'growthBoundary',
+    'paint': {
+      'line-width': 2,
+      'line-color': 'green'
     },
     'layout': {
       'visibility': 'visible'
@@ -235,6 +252,7 @@ map.on('style.load', function(e) {
        "text-halo-width": {"stops": [[15,1],[17,1.25]]}
      }
   });
+
   //Basins Label 2
   map.addLayer({
       'id': 'basinLabels2',
@@ -543,174 +561,6 @@ map.addLayer({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // //CWCB Floodplain
-  // map.addLayer({
-  //   'id': 'cwcb-fp',
-  //   'type': 'line',
-  //   'source': 'cwcb-fp',
-  //   // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
-  //   'paint': {
-  //     'line-width': 1,
-  //     'line-opacity': 1,
-  //     'line-color': 'black',
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-
-
-  // //100-YR FLOODPLAIN FILL
-  // map.addLayer({
-  //   'id': 'fp-100yr-fill',
-  //   'type': 'fill',
-  //   'source': 'fp',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   },
-  //   'paint': {
-  //     'fill-color': 'rgb(190,210,255)',
-  //     'fill-opacity': 0.6
-  //   }
-  // }, 'road_label');
-  //
-  // //100-YR SHALLOW FLOODING
-  // map.addLayer({
-  //   'id': 'fp-sf',
-  //   'type': 'line',
-  //   'source': 'fp',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Shallow Flooding (1' Depth)"]],
-  //   'paint': {
-  //     'line-width': 1,
-  //     'line-opacity': 0.6,
-  //     'line-color': 'rgb(232,190,255)'
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-  //
-  // //100-YR SHALLOW FLOODING FLOODPLAIN FILL
-  // map.addLayer({
-  //   'id': 'fp-sf-fill',
-  //   'type': 'fill',
-  //   'source': 'fp',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Shallow Flooding (1' Depth)"]],
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   },
-  //   'paint': {
-  //     'fill-color': 'rgb(232,190,255)',
-  //     'fill-opacity': 0.6
-  //   }
-  // }, 'road_label');
-  //
-  // //100-YR FLOODWAY
-  // map.addLayer({
-  //   'id': 'fldwy',
-  //   'type': 'line',
-  //   'source': 'fp',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "0.5' Floodway"]],
-  //   'paint': {
-  //     'line-width': 1,
-  //     'line-opacity': 0.3,
-  //     'line-color': 'rgb(163,255,115)'
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-  //
-  // //100-YR FLOODWAY FILL
-  // map.addLayer({
-  //   'id': 'fldwy-fill',
-  //   'type': 'fill',
-  //   'source': 'fp',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "0.5' Floodway"]],
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   },
-  //   'paint': {
-  //     'fill-color': 'rgb(163,255,115)',
-  //     'fill-opacity': 0.5,
-  //   }
-  // }, 'road_label');
-
-
-
-  //West Vine Hydraulic Structures
-  // map.addLayer({
-  //   'id': 'wvb-hydStructure',
-  //   'type': 'line',
-  //   'source': 'wvb-hydStructure',
-  //   'paint': {
-  //     'line-width': 1,
-  //     'line-opacity': 1,
-  //     'line-color': 'rgba(0,77,68,1)'
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-
-  //West Vine Lateral Structures
-  // map.addLayer({
-  //   'id': 'latStructure',
-  //   'type': 'line',
-  //   'source': 'latStructure',
-  //   'paint': {
-  //     'line-width': 1,
-  //     'line-opacity': 1,
-  //     'line-color': 'rgba(0,77,68,1)'
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
 
   //City Floodplain - 100-yr
   // map.addLayer({
