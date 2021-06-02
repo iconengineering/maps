@@ -170,47 +170,6 @@ map.on('style.load', function(e) {
     }
   });
 
-  //Drainageway centerline
-  map.addLayer({
-    'id': 'drainageways',
-    'type': 'line',
-    'source': 'drainageways',
-    'paint': {
-      'line-width': 1.5,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,77,168,1)'
-    },
-    'layout': {
-      'visibility': 'visible'
-    }
-  });
-
-  //Drainageway Centerline LABEL
-  map.addLayer({
-    'id': 'drainageway-streamLabels',
-    'type': 'symbol',
-    'source': 'drainageways',
-    'layout': {
-      'symbol-placement': 'line',
-      'symbol-spacing': 100,
-      'text-field': '{GNIS_Name}',
-      'text-size': {
-        "stops": [
-          [15, 12],
-          [17, 14],
-          [19, 16]
-        ]
-      },
-      "text-padding": 100,
-    },
-    'paint': {
-      'text-color': 'rgba(0,77,168,1)',
-      'text-halo-color': '#ffffff',
-      'text-halo-width': 2,
-      'text-halo-blur': 1
-    }
-  });
-
   // SWMM Basins
   map.addLayer({
     'id': 'swmmBasins',
@@ -583,7 +542,46 @@ map.on('style.load', function(e) {
 
 
 
+  //Drainageway centerline
+  map.addLayer({
+    'id': 'drainageways',
+    'type': 'line',
+    'source': 'drainageways',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
+  //Drainageway Centerline LABEL
+  map.addLayer({
+    'id': 'drainageway-streamLabels',
+    'type': 'symbol',
+    'source': 'drainageways',
+    'layout': {
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{NAME}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
 
   //City Floodplain - 100-yr
   // map.addLayer({
