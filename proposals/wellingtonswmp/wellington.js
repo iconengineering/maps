@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-  zoom: 13.2,
-  center: [-104.9917,40.6978],
+  zoom: 11.5,
+  center: [-105.0052, 40.7083],
   hash: true,
   preserveDrawingBuffer: true
 });
@@ -59,39 +59,39 @@ map.on('style.load', function(e) {
     "data": 'data/drainageways.geojson'
   });
 
-  map.addSource('swmmBasins',{
+  map.addSource('swmmBasins', {
     type: 'geojson',
-    "data":'data/swmm_basins.geojson'
+    "data": 'data/swmm_basins.geojson'
   });
 
-  map.addSource('basinCentroid',{
+  map.addSource('basinCentroid', {
     type: 'geojson',
-    "data":'data/basinCentroids.geojson'
+    "data": 'data/basinCentroids.geojson'
   });
 
-  map.addSource('swmmConduits',{
+  map.addSource('swmmConduits', {
     type: 'geojson',
-    "data":'data/swmm_routing.geojson'
+    "data": 'data/swmm_routing.geojson'
   });
 
-  map.addSource('swmmJunctions',{
+  map.addSource('swmmJunctions', {
     type: 'geojson',
-    "data":'data/swmm_junc.geojson'
+    "data": 'data/swmm_junc.geojson'
   });
 
-  map.addSource('swmmDividers',{
+  map.addSource('swmmDividers', {
     type: 'geojson',
-    "data":'data/swmm_dividers.geojson'
+    "data": 'data/swmm_dividers.geojson'
   });
 
-  map.addSource('swmmOutfalls',{
+  map.addSource('swmmOutfalls', {
     type: 'geojson',
-    "data":'data/swmm_outfalls.geojson'
+    "data": 'data/swmm_outfalls.geojson'
   });
 
-  map.addSource('swmmStorages',{
+  map.addSource('swmmStorages', {
     type: 'geojson',
-    "data":'data/swmm_storages.geojson'
+    "data": 'data/swmm_storages.geojson'
   });
 
   map.addSource('eff-fp', {
@@ -135,7 +135,7 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 2,
       'line-color': 'yellow',
-      'line-dasharray': [4,2]
+      'line-dasharray': [4, 2]
     },
     'layout': {
       'visibility': 'visible'
@@ -213,70 +213,94 @@ map.on('style.load', function(e) {
 
   // SWMM Basins
   map.addLayer({
-      'id': 'swmmBasins',
-      'type': 'line',
-      'source': 'swmmBasins',
-      'layout': {
-        "visibility": 'none',
-      },
-      'paint': {
-          'line-width': 1,
-          'line-opacity': 1,
-          'line-color': 'rgba(0,0,0,1)',
-          'line-dasharray': [8,4]
-      }
+    'id': 'swmmBasins',
+    'type': 'line',
+    'source': 'swmmBasins',
+    'layout': {
+      "visibility": 'none',
+    },
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,1)',
+      'line-dasharray': [8, 4]
+    }
   });
 
   //Basin Labels
   map.addLayer({
-      'id': 'basinLabels',
-      'type': 'symbol',
-      'source': 'basinCentroid',
-      'layout': {
-         "visibility": 'none',
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": {
-             "stops": [[15, 10], [17, 12], [19, 14]]
-         },
-         "text-field": "{acres} Ac. | {Imper}%",
-         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
-         "text-offset": {
-             "stops": [[13, [0, 0.25]], [17, [0, 0.75]]]
-         },
-         "text-anchor": "top"
-     },
-     "paint": {
-       "text-color": "#F8F4F0",
-       "text-halo-color": "rgba(0,0,0,.87)",
-       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-     }
+    'id': 'basinLabels',
+    'type': 'symbol',
+    'source': 'basinCentroid',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": {
+        "stops": [
+          [15, 10],
+          [17, 12],
+          [19, 14]
+        ]
+      },
+      "text-field": "{acres} Ac. | {Imper}%",
+      'text-font': ['Roboto Medium', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": {
+        "stops": [
+          [13, [0, 0.25]],
+          [17, [0, 0.75]]
+        ]
+      },
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#F8F4F0",
+      "text-halo-color": "rgba(0,0,0,.87)",
+      "text-halo-width": {
+        "stops": [
+          [15, 1],
+          [17, 1.25]
+        ]
+      }
+    }
   });
 
   //Basins Label 2
   map.addLayer({
-      'id': 'basinLabels2',
-      'type': 'symbol',
-      'source': 'basinCentroid',
-      'layout': {
-         "visibility": 'none',
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": {
-             "stops": [[15, 10], [17, 12], [19, 14]]
-         },
-         "text-field": "{Basin_ID}",
-         "text-offset": {
-             "stops": [[13, [0, -1]], [17, [0, -1.5]]]
-         },
-         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
-         "text-anchor": "top"
-     },
-     "paint": {
-       "text-color": "#F8F4F0",
-       "text-halo-color": "rgba(0,0,0,.87)",
-       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-     }
+    'id': 'basinLabels2',
+    'type': 'symbol',
+    'source': 'basinCentroid',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": {
+        "stops": [
+          [15, 10],
+          [17, 12],
+          [19, 14]
+        ]
+      },
+      "text-field": "{Basin_ID}",
+      "text-offset": {
+        "stops": [
+          [13, [0, -1]],
+          [17, [0, -1.5]]
+        ]
+      },
+      'text-font': ['Roboto Medium', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#F8F4F0",
+      "text-halo-color": "rgba(0,0,0,.87)",
+      "text-halo-width": {
+        "stops": [
+          [15, 1],
+          [17, 1.25]
+        ]
+      }
+    }
   });
 
   //SWMM Conduits
@@ -286,68 +310,68 @@ map.on('style.load', function(e) {
     'source': 'swmmConduits',
     'layout': {
       "visibility": 'none'
-     },
+    },
     'paint': {
-        'line-width': 4,
-        'line-color': '#036180'
+      'line-width': 4,
+      'line-color': '#036180'
     }
-});
+  });
 
   //SWMM Conduits Labels
   map.addLayer({
-      'id': 'conduitLabels',
-      'type': 'symbol',
-      'source': 'swmmConduits',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        'symbol-placement': 'line',
-        'symbol-spacing': 200,
-        'text-field': '{CE}',
-        'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-        'text-size': 14,
-        "text-padding": 200,
-      },
-      'paint': {
-        'text-color': '#F8F4F0',
-        'text-halo-color': '#036180',
-        'text-halo-width': 1
-      }
+    'id': 'conduitLabels',
+    'type': 'symbol',
+    'source': 'swmmConduits',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      'symbol-placement': 'line',
+      'symbol-spacing': 200,
+      'text-field': '{CE}',
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      'text-size': 14,
+      "text-padding": 200,
+    },
+    'paint': {
+      'text-color': '#F8F4F0',
+      'text-halo-color': '#036180',
+      'text-halo-width': 1
+    }
   });
 
   //SWMM Conduits Arrows
   map.addLayer({
-      'id': 'conduitArrows',
-      'type': 'symbol',
-      'source': 'swmmConduits',
-      'layout': {
-        "visibility": 'none',
-        'symbol-placement': 'line',
-        'symbol-spacing': 50,
-        "icon-image": "oneway-white-small",
-        "icon-allow-overlap": true,
-        "text-rotation-alignment": "map",
-        "icon-size": 1,
-        "text-keep-upright": false,
-        "icon-padding": 0,
-        "icon-ignore-placement": true
-      },
-      // 'paint': {
-      // }
+    'id': 'conduitArrows',
+    'type': 'symbol',
+    'source': 'swmmConduits',
+    'layout': {
+      "visibility": 'none',
+      'symbol-placement': 'line',
+      'symbol-spacing': 50,
+      "icon-image": "oneway-white-small",
+      "icon-allow-overlap": true,
+      "text-rotation-alignment": "map",
+      "icon-size": 1,
+      "text-keep-upright": false,
+      "icon-padding": 0,
+      "icon-ignore-placement": true
+    },
+    // 'paint': {
+    // }
   });
 
   //SWMM Junctions
   map.addLayer({
-      'id': 'junctions',
-      'type': 'circle',
-      'source': 'swmmJunctions',
-      'layout': {
-         "visibility": 'none'
-       },
-      'paint': {
-          'circle-radius': 4,
-          'circle-color': '#ee4d5a'
-      }
+    'id': 'junctions',
+    'type': 'circle',
+    'source': 'swmmJunctions',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
+    }
   });
 
   //SWMM Junction LABEL
@@ -356,205 +380,204 @@ map.on('style.load', function(e) {
     'type': 'symbol',
     'source': 'swmmJunctions',
     'layout': {
-       "visibility": 'none',
-       "text-optional": true,
-       "text-line-height": 1,
-       "text-size": 12,
-       "text-field": "{Node}",
-       'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-       "text-offset": [0, 1],
-       "text-anchor": "top"
-   },
-   "paint": {
-     "text-color": "#ee4d5a",
-     "text-halo-color": "#F8F4F0",
-     "text-halo-width": 1,
-   }
-});
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{Node}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
 
-//SWMM Dividers
-map.addLayer({
+  //SWMM Dividers
+  map.addLayer({
     'id': 'dividers',
     'type': 'circle',
     'source': 'swmmDividers',
     'layout': {
-       "visibility": 'none'
-     },
+      "visibility": 'none'
+    },
     'paint': {
-        'circle-radius': 4,
-        'circle-color': '#ee4d5a'
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
     }
-});
+  });
 
-//SWMM Dividers LABEL
-map.addLayer({
-  'id': 'dividersLabels',
-  'type': 'symbol',
-  'source': 'swmmDividers',
-  'layout': {
-     "visibility": 'none',
-     "text-optional": true,
-     "text-line-height": 1,
-     "text-size": 12,
-     "text-field": "{Node}",
-     'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-     "text-offset": [0, 1],
-     "text-anchor": "top"
- },
- "paint": {
-   "text-color": "#ee4d5a",
-   "text-halo-color": "#F8F4F0",
-   "text-halo-width": 1,
- }
-});
+  //SWMM Dividers LABEL
+  map.addLayer({
+    'id': 'dividersLabels',
+    'type': 'symbol',
+    'source': 'swmmDividers',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{Node}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
 
-//SWMM Storages
-map.addLayer({
+  //SWMM Storages
+  map.addLayer({
     'id': 'storages',
     'type': 'circle',
     'source': 'swmmStorages',
     'layout': {
-       "visibility": 'none'
-     },
+      "visibility": 'none'
+    },
     'paint': {
-        'circle-radius': 4,
-        'circle-color': '#ee4d5a'
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
     }
-});
+  });
 
-//SWMM Storages LABEL
-map.addLayer({
-  'id': 'storagesLabels',
-  'type': 'symbol',
-  'source': 'swmmStorages',
-  'layout': {
-     "visibility": 'none',
-     "text-optional": true,
-     "text-line-height": 1,
-     "text-size": 12,
-     "text-field": "{Node}",
-     'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-     "text-offset": [0, 1],
-     "text-anchor": "top"
- },
- "paint": {
-   "text-color": "#ee4d5a",
-   "text-halo-color": "#F8F4F0",
-   "text-halo-width": 1,
- }
-});
+  //SWMM Storages LABEL
+  map.addLayer({
+    'id': 'storagesLabels',
+    'type': 'symbol',
+    'source': 'swmmStorages',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{Node}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
 
-  // //  Effective Floodplain 100yr Hatch
-  //   map.addLayer({
-  //     'id': 'eff-fp-100yr-hatch',
-  //     'type': 'fill',
-  //     'source': 'eff-fp',
-  //     'filter': ['in',"FLD_ZONE",'A','AE'],
-  //     'paint': {
-  //       'fill-color': 'rgb(0,230,255)',
-  //       'fill-opacity': 0.4,
-  //     },
-  //     'layout': {
-  //       'visibility': 'visible'
-  //     }
-  //   });
-  //
-  //   //  Effective Floodplain 500yr Hatch
-  //     map.addLayer({
-  //       'id': 'eff-fp-500yr-hatch',
-  //       'type': 'fill',
-  //       'source': 'eff-fp',
-  //       'filter': ['==',"ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
-  //       'paint': {
-  //         'fill-color': 'rgb(255,128,0)',
-  //         'fill-opacity': 0.4,
-  //       },
-  //       'layout': {
-  //         'visibility': 'visible'
-  //       }
-  //     });
-  //
-  //     //  Effective Floodplain Outline
-  //       map.addLayer({
-  //         'id': 'eff-fp-line',
-  //         'type': 'line',
-  //         'source': 'eff-fp',
-  //         // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
-  //         'paint': {
-  //           'line-width': 1,
-  //           'line-opacity': 0.4,
-  //           'line-color': 'black',
-  //         },
-  //         'layout': {
-  //           'visibility': 'visible'
-  //         }
-  //       });
+  //  Effective Floodplain 100yr Hatch
+  map.addLayer({
+    'id': 'eff-fp-100yr-hatch',
+    'type': 'fill',
+    'source': 'eff-fp',
+    'filter': ['in', "FLD_ZONE", 'A', 'AE'],
+    'paint': {
+      'fill-color': 'rgb(0,230,255)',
+      'fill-opacity': 0.4,
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
+  //  Effective Floodplain 500yr Hatch
+  map.addLayer({
+    'id': 'eff-fp-500yr-hatch',
+    'type': 'fill',
+    'source': 'eff-fp',
+    'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+    'paint': {
+      'fill-color': 'rgb(255,128,0)',
+      'fill-opacity': 0.4,
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
-        //  CWCB Floodplain 100yr Hatch
-          map.addLayer({
-            'id': 'cwcb-100yr-hatch',
-            'type': 'fill',
-            'source': 'cwcb-fp',
-            'filter': ["all",
-              ["!in","ZONE_SUBTY", "FLOODWAY"],
-              ["in","FLD_ZONE",'A','AE','AO']
-            ],
-            'paint': {
-              'fill-color': 'rgb(0,230,255)',
-              'fill-opacity': 0.4
-            },
-            'layout': {
-              'visibility': 'none',
+  //  Effective Floodplain Outline
+  map.addLayer({
+    'id': 'eff-fp-line',
+    'type': 'line',
+    'source': 'eff-fp',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.4,
+      'line-color': 'black',
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
-            }
-          });
+  //  CWCB Floodplain 100yr Hatch
+  map.addLayer({
+    'id': 'cwcb-100yr-hatch',
+    'type': 'fill',
+    'source': 'cwcb-fp',
+    'filter': ["all",
+      ["!in", "ZONE_SUBTY", "FLOODWAY"],
+      ["in", "FLD_ZONE", 'A', 'AE', 'AO']
+    ],
+    'paint': {
+      'fill-color': 'rgb(0,230,255)',
+      'fill-opacity': 0.4
+    },
+    'layout': {
+      'visibility': 'none',
 
-          //  CWCB Floodplain 500yr Hatch
-            map.addLayer({
-              'id': 'cwcb-500yr-hatch',
-              'type': 'fill',
-              'source': 'cwcb-fp',
-              'filter': ['==',"ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
-              'paint': {
-                'fill-color': 'rgb(255,128,0)',
-                'fill-opacity': 0.4,
-              },
-              'layout': {
-                'visibility': 'none'
-              }
-            });
+    }
+  });
 
-            //  CWCB Floodplain Floodway Hatch
-              map.addLayer({
-                'id': 'cwcb-fldwy-hatch',
-                'type': 'fill',
-                'source': 'cwcb-fp',
-                'filter': ['in',"ZONE_SUBTY", "FLOODWAY"],
-                'paint': {
-                  'fill-color': 'purple',
-                  'fill-opacity': 0.4,
-                    },
-                'layout': {
-                  'visibility': 'none'
-                }
-              });
+  //  CWCB Floodplain 500yr Hatch
+  map.addLayer({
+    'id': 'cwcb-500yr-hatch',
+    'type': 'fill',
+    'source': 'cwcb-fp',
+    'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+    'paint': {
+      'fill-color': 'rgb(255,128,0)',
+      'fill-opacity': 0.4,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
-            //  CWCB Floodplain Outline
-              map.addLayer({
-                'id': 'cwcb-fp-line',
-                'type': 'line',
-                'source': 'cwcb-fp',
-                // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
-                'paint': {
-                  'line-width': 1,
-                  'line-opacity': 0.4,
-                  'line-color': 'black',
-                },
-                'layout': {
-                  'visibility': 'none'
-                }
-              });
+  //  CWCB Floodplain Floodway Hatch
+  map.addLayer({
+    'id': 'cwcb-fldwy-hatch',
+    'type': 'fill',
+    'source': 'cwcb-fp',
+    'filter': ['in', "ZONE_SUBTY", "FLOODWAY"],
+    'paint': {
+      'fill-color': 'purple',
+      'fill-opacity': 0.4,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  //  CWCB Floodplain Outline
+  map.addLayer({
+    'id': 'cwcb-fp-line',
+    'type': 'line',
+    'source': 'cwcb-fp',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.4,
+      'line-color': 'black',
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
 
@@ -614,50 +637,50 @@ map.addLayer({
 
   //Contours - 1FT
   // map.addLayer({
-    // 'id': 'contour-1ft',
-    // 'type': 'line',
-    // 'source': 'contours',
-    // 'source-layer': 'contour_100-70zk0h',
-    // 'filter': ['all', ['==', 'INDEX', 0]],
-    // 'layout': {
-    //   'line-join': 'round',
-    //   'visibility': 'none',
-    //   'line-cap': 'round'
-    // },
-    // 'paint': {
-    //   'line-width': {
-    //     "stops": [
-    //       [15, 0],
-    //       [17, .5],
-    //       [19, 1]
-    //     ]
-    //   },
-    //   'line-color': '#bd925a'
-    // }
+  // 'id': 'contour-1ft',
+  // 'type': 'line',
+  // 'source': 'contours',
+  // 'source-layer': 'contour_100-70zk0h',
+  // 'filter': ['all', ['==', 'INDEX', 0]],
+  // 'layout': {
+  //   'line-join': 'round',
+  //   'visibility': 'none',
+  //   'line-cap': 'round'
+  // },
+  // 'paint': {
+  //   'line-width': {
+  //     "stops": [
+  //       [15, 0],
+  //       [17, .5],
+  //       [19, 1]
+  //     ]
+  //   },
+  //   'line-color': '#bd925a'
+  // }
   // }, 'road_label');
 
   //Contours - 5 ft
   // map.addLayer({
-    // 'id': 'contour-5ft',
-    // 'type': 'line',
-    // 'source': 'contours',
-    // 'source-layer': 'contour_100-70zk0h',
-    // 'filter': ['all', ['==', 'INDEX', 5]],
-    // 'layout': {
-    //   'line-join': 'round',
-    //   'visibility': 'none',
-    //   'line-cap': 'round'
-    // },
-    // 'paint': {
-    //   'line-width': {
-    //     "stops": [
-    //       [15, 1],
-    //       [17, 1.75],
-    //       [19, 2.5]
-    //     ]
-    //   },
-    //   'line-color': '#bd925a'
-    // }
+  // 'id': 'contour-5ft',
+  // 'type': 'line',
+  // 'source': 'contours',
+  // 'source-layer': 'contour_100-70zk0h',
+  // 'filter': ['all', ['==', 'INDEX', 5]],
+  // 'layout': {
+  //   'line-join': 'round',
+  //   'visibility': 'none',
+  //   'line-cap': 'round'
+  // },
+  // 'paint': {
+  //   'line-width': {
+  //     "stops": [
+  //       [15, 1],
+  //       [17, 1.75],
+  //       [19, 2.5]
+  //     ]
+  //   },
+  //   'line-color': '#bd925a'
+  // }
   // }, 'road_label');
 
   //Contours - 5 ft Labels
@@ -774,9 +797,9 @@ map.addLayer({
 
   var style = map.getStyle();
 
-      if (style.name != 'Outdoors'){
-        map.setLayoutProperty('conduitArrows','icon-image','oneway-spaced-white-small');
-      }
+  if (style.name != 'Outdoors') {
+    map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
+  }
 
 
 }); //end style load
