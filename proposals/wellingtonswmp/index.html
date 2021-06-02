@@ -79,24 +79,21 @@
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
 
 
-        <!-- Hydraulics Subheading -->
+        <!-- SWMM Subheading -->
         <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydraulic Analysis</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydrology Analysis</div>
           <div class="collapsible-body white">
             <div class="row">
+
+            <p>
+              <input name="SWMMJ" type="checkbox" id="SWMMJ" class="layer-off" onclick="toggleSix('junctions','junctionLabels','dividers','dividersLabels','storages','storagesLabels')" />
+              <label for="SWMMJ" class="valign">SWMM Junctions</label>
+            </p>
+            <p>
+              <input name="SWMMR" type="checkbox" id="SWMMR" class="layer-off" onclick="toggleThree('conduits','conduitLabels','conduitArrows')"/>
+              <label for="SWMMR" class="valign">SWMM Routing</label>
+            </p>
             </div>
-            <p>
-              <input name="wvbXS" type="checkbox" id="wvbXS" class="layer-on" onclick="toggleTwo('wvb-xs','wvb-xsLabels')" checked/>
-              <label for="wvbXS" class="valign">Cross Sections</label>
-            </p>
-            <p>
-              <input name="FP" type="checkbox" id="FP" class="layer-on" onclick="toggleSix('fp-100yr','fp-100yr-fill','fp-sf','fp-sf-fill','fldwy','fldwy-fill')" checked/>
-              <label for="FP" class="valign">Floodplain</label>
-            </p>
-            <p>
-              <input name="hydStructure" type="checkbox" id="hydStructure" class="layer-on" onclick="toggleTwo('wvb-hydStructure','latStructure')" checked/>
-              <label for="hydStructure" class="valign">Hydraulic Structures</label>
-            </p>
           </div>
         </li>
 
@@ -105,10 +102,10 @@
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Information</div>
           <div class="collapsible-body white">
-            <p>
+            <!-- <p>
               <input name="cityFP" type="checkbox" id="cityFP" class="layer-off" onclick="toggleThree('cityFP','cityFW','citySF')" />
               <label for="cityFP" class="valign">Existing City Floodplain</label>
-            </p>
+            </p> -->
             <p>
               <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="toggleThree('contour-1ft','contour-5ft','contour-5ftLabels')" />
               <label for="contours" class="valign">Contours (Zoom in to render)</label>
@@ -131,7 +128,7 @@
         <!-- Legend Subheading -->
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Legend</div>
-          <div class="collapsible-body white">
+          <!-- <div class="collapsible-body white">
             <ul class="collection with-header grey-text text-darken-2">
               <li class="collection-item">
                 <div>Cross Sections<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='rgb(0,0,0)'/></svg></a></div>
@@ -155,7 +152,7 @@
                 <div>Ex. City Floodplain (Shallow Flooding)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1"  stroke="rgb(230,76,0)"/></svg></a></div>
               </li>
             </ul>
-          </div>
+          </div> -->
         </li>
       </ul>
     </div>
