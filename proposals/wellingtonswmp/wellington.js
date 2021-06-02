@@ -435,7 +435,7 @@ map.on('style.load', function(e) {
     'filter': ['in', "FLD_ZONE", 'A', 'AE'],
     'paint': {
       'fill-color': 'rgb(0,230,255)',
-      'fill-opacity': 0.4,
+      'fill-opacity': 0.3,
     },
     'layout': {
       'visibility': 'visible'
@@ -450,7 +450,7 @@ map.on('style.load', function(e) {
     'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
     'paint': {
       'fill-color': 'rgb(255,128,0)',
-      'fill-opacity': 0.4,
+      'fill-opacity': 0.3,
     },
     'layout': {
       'visibility': 'visible'
@@ -464,8 +464,8 @@ map.on('style.load', function(e) {
     'source': 'eff-fp',
     // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'paint': {
-      'line-width': 1,
-      'line-opacity': 0.4,
+      'line-width': 0.5,
+      'line-opacity': 0.3,
       'line-color': 'black',
     },
     'layout': {
@@ -484,7 +484,7 @@ map.on('style.load', function(e) {
     ],
     'paint': {
       'fill-color': 'rgb(0,230,255)',
-      'fill-opacity': 0.4
+      'fill-opacity': 0.3,
     },
     'layout': {
       'visibility': 'none',
@@ -500,7 +500,7 @@ map.on('style.load', function(e) {
     'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
     'paint': {
       'fill-color': 'rgb(255,128,0)',
-      'fill-opacity': 0.4,
+      'fill-opacity': 0.3,
     },
     'layout': {
       'visibility': 'none'
@@ -515,7 +515,7 @@ map.on('style.load', function(e) {
     'filter': ['in', "ZONE_SUBTY", "FLOODWAY"],
     'paint': {
       'fill-color': 'purple',
-      'fill-opacity': 0.4,
+      'fill-opacity': 0.3,
     },
     'layout': {
       'visibility': 'none'
@@ -529,8 +529,8 @@ map.on('style.load', function(e) {
     'source': 'cwcb-fp',
     // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'paint': {
-      'line-width': 1,
-      'line-opacity': 0.4,
+      'line-width': 0.5,
+      'line-opacity': 0.3,
       'line-color': 'black',
     },
     'layout': {
