@@ -194,6 +194,9 @@ map.on('style.load', function(e) {
       'id': 'swmmBasins',
       'type': 'line',
       'source': 'swmmBasins',
+      'layout': {
+        "visibility": 'none',
+      },
       'paint': {
           'line-width': 1,
           'line-opacity': 1,
@@ -209,7 +212,7 @@ map.on('style.load', function(e) {
       'type': 'symbol',
       'source': 'basinCentroid',
       'layout': {
-         // "visibility": 'none',
+         "visibility": 'none',
          "text-optional": true,
          "text-line-height": 1,
          "text-size": {
@@ -234,7 +237,7 @@ map.on('style.load', function(e) {
       'type': 'symbol',
       'source': 'basinCentroid',
       'layout': {
-         // "visibility": 'none',
+         "visibility": 'none',
          "text-optional": true,
          "text-line-height": 1,
          "text-size": {

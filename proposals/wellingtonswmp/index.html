@@ -81,10 +81,16 @@
 
         <!-- SWMM Subheading -->
         <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Hydrology Analysis</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Hydrology Analysis</div>
           <div class="collapsible-body white">
             <div class="row">
-
+              <p>
+                <input name="SWMMB" type="checkbox" id="SWMMB" class="layer-off" onclick="toggleLayer('swmmBasins')" />
+                <label for="SWMMB" class="valign">SWMM Basins</label>
+              </p>
+              <p class="indent">
+                <input name="SWMMBL" type="checkbox" id="SWMMBL" class="layer-off" onclick="toggleTwo('basinLabels','basinLabels2')" />
+                <label for="SWMMBL" class="valign">Basin Labels</label>
             <p>
               <input name="SWMMJ" type="checkbox" id="SWMMJ" class="layer-off" onclick="toggleSix('junctions','junctionLabels','dividers','dividersLabels','storages','storagesLabels')" />
               <label for="SWMMJ" class="valign">SWMM Junctions</label>
