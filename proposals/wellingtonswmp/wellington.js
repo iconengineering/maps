@@ -104,6 +104,11 @@ map.on('style.load', function(e) {
     "data": 'data/cwcbFloodplain.geojson'
   });
 
+  map.addSource('flo2d-ex',{
+    type:'vector',
+    url:'mapbox://iconeng.4zi0234i'
+  });
+
 
   // map.addSource('contours', {
   //   type: 'vector',
@@ -579,55 +584,38 @@ map.on('style.load', function(e) {
     }
   });
 
-  //City Floodplain - 100-yr
-  // map.addLayer({
-  //   'id': 'cityFP',
-  //   'type': 'line',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "100 YEAR FLOODPLAIN"]],
-  //   'source': 'cityFP',
-  //   'paint': {
-  //     'line-color': "rgb(230,76,0)",
-  //     'line-opacity': 1,
-  //     'line-dasharray': [8, 4]
-  //   },
-  //   'layout': {
-  //     'visibility': 'none'
-  //   }
-  // });
+  // Flow Depth Grids - Existing
+  map.addLayer({
+      'id': 'flo2d-ex',
+      'type': 'fill',
+      'source': 'flo2d-ex',
+      'source-layer': 'Wellington_001_Existing-8enlus',
+      'filter': ["all",['>', 'Var', 0.25]],
+      'paint': {
+          'fill-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, 'rgb(252,244,182)'],
+                  [.5, 'rgb(245,194,152)'],
+                  [1, 'rgb(227,147,138)'],
+                  [1.5, 'rgb(199,101,134)'],
+                  [2, 'rgb(161,59,139)'],
+                  [3, 'rgb(109,23,143)'],
+                  [4, 'rgb(14,9,135)']
+                  ]
+          },
+          'fill-opacity': 1
+      },
+      'layout':{
+        'visibility':'none'
+      }
+  },);
 
-  // City Floodplain - Floodway
-  // map.addLayer({
-  //   'id': 'cityFW',
-  //   'type': 'line',
-  //   'filter': ['all', ['==', "FLOOD_TYPE", "0.5 FOOT FLOODWAY"]],
-  //   'source': 'cityFP',
-  //   'paint': {
-  //     'line-color': 'rgb(230,76,0)',
-  //     'line-opacity': 1
-  //   },
-  //   'layout': {
-  //     'visibility': 'none'
-  //   }
-  // });
 
-  // City Floodplain - Shallow Flooding
-  // map.addLayer({
-  //   'id': 'citySF',
-  //   'type': 'line',
-  //   'filter': ['all', ['==', "FP_NAME", "WEST VINE"],
-  //     ['==', "FLOOD_TYPE", "<= 1FT"]
-  //   ],
-  //   'source': 'cityFP',
-  //   'paint': {
-  //     'line-color': 'rgb(230,76,0)',
-  //     'line-opacity': 1,
-  //     'line-dasharray': [4, 2],
-  //     'line-width': 0.5
-  //   },
-  //   'layout': {
-  //     'visibility': 'none'
-  //   }
-  // });
+
+
+
 
   //Contours - 1FT
   // map.addLayer({
