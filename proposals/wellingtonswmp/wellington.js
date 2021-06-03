@@ -538,10 +538,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
-
-
-
   //Drainageway centerline
   map.addLayer({
     'id': 'drainageways',

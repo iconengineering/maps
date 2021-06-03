@@ -120,14 +120,26 @@
           </div>
         </li>
 
-        <!-- Proposed Improvements -->
+        <!-- Flooding Hazards & Alternatives -->
         <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Improvements</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>FLO-2D Rain-On-Grid</div>
           <div class="collapsible-body white">
             <div class = "row">
             <p>
-              <input name="strm" type="checkbox" id="strm" class="layer-off" onclick="toggleLayer('stormAlignment')" />
-              <label for="strm" class="valign">Proposed Storm Improvements</label>
+              <input name="fldhzd" type="checkbox" id="fldhzd" class="layer-off" onclick="toggleLayer('stormAlignment')" />
+              <label for="fldhzd" class="valign">Existing Flooding Hazards</label>
+            </p>
+            <p>
+              <input name="altStrm" type="checkbox" id="altStrm" class="layer-off" onclick="toggleLayer('stormAlignment')" />
+              <label for="altStrm" class="valign">Alt 1 - Storm Drain</label>
+            </p>
+            <p>
+              <input name="altDet" type="checkbox" id="altDet" class="layer-off" onclick="toggleLayer('stormAlignment')" />
+              <label for="altDet" class="valign">Alt 2 - Detention</label>
+            </p>
+            <p>
+              <input name="altCombo" type="checkbox" id="altCombo" class="layer-off" onclick="toggleLayer('stormAlignment')" />
+              <label for="altCombo" class="valign">Alt 3 - Combination</label>
             </p>
             </div>
           </div>
@@ -164,31 +176,25 @@
         <!-- Legend Subheading -->
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Legend</div>
-          <!-- <div class="collapsible-body white">
+          <div class="collapsible-body white">
             <ul class="collection with-header grey-text text-darken-2">
               <li class="collection-item">
-                <div>Cross Sections<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='rgb(0,0,0)'/></svg></a></div>
+                <div>Town Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='yellow'/></svg></a></div>
               </li>
               <li class="collection-item">
-                <div>100-yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(190,210,255)" fill-opacity="0.6" /></svg></a></div>
+                <div>Growth Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='green'/></svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(163,255,115)" fill-opacity="0.5" /></svg></a></div>
+                <div>100-yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(0,230,255)" fill-opacity="0.6" /></svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Shallow Flooding<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(232,190,255)" fill-opacity="0.6" /></svg></a></div>
+                <div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="purple" fill-opacity="0.5" /></svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Ex. City Floodplain (100-yr)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="10" y2="10.5" stroke-width="2"  stroke="rgb(230,76,0)"/></svg></a></div>
-              </li>
-              <li class="collection-item">
-                <div>Ex. City Floodplain (Floodway)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2"  stroke="rgb(230,76,0)"/></svg></a></div>
-              </li>
-              <li class="collection-item">
-                <div>Ex. City Floodplain (Shallow Flooding)<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="1"  stroke="rgb(230,76,0)"/></svg></a></div>
+                <div>Shallow Flooding<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(255,128,0)" fill-opacity="0.6" /></svg></a></div>
               </li>
             </ul>
-          </div> -->
+          </div>
         </li>
       </ul>
     </div>
