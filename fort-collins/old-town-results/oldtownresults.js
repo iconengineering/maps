@@ -94,7 +94,7 @@ map.on('style.load', function (e) {
   });
   map.addSource('flowDepth', {            //combined ROG & AOI
       type: 'vector',
-      url: 'mapbox://iconeng.7zwtc3ix'    
+      url: 'mapbox://iconeng.7zwtc3ix'
   });
   map.addSource('contours', {
       type: 'vector',
@@ -573,7 +573,7 @@ map.on('style.load', function (e) {
      },
      "paint": {
        "text-color": "#754A3F",
-       "text-halo-color": "#eee", 
+       "text-halo-color": "#eee",
        "text-halo-width": {"stops": [[15,2],[17,2.5]]},
        "text-opacity":1
      }
@@ -591,7 +591,7 @@ map.on('style.load', function (e) {
 
 
 /*
-//Radio Button for Flow Depth 
+//Radio Button for Flow Depth
 var depthList = document.getElementById('flowDepthSwitch');
 var depthRadio = depthList.getElementsByTagName('input');
 
@@ -614,7 +614,7 @@ var velocityRadio = velocityList.getElementsByTagName('input');
 function switchVelocity() {
   var value = document.querySelector('input[name="switchV"]:checked').value;
     map.setFilter('velocity', ['==', 'Type', value]);
-   
+
 }
 
 for (var i = 0; i < velocityRadio.length; i++) {

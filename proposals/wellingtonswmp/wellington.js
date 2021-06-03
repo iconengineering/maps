@@ -129,6 +129,14 @@ map.on('style.load', function(e) {
     url:'mapbox://iconeng.3re6dt84'
   });
 
+  map.addSource('velo-ex',{
+    type:'vector',
+    url:'mapbox://iconeng.2i3tfsvz'
+  });
+
+
+
+
   // map.addSource('contours', {
   //   type: 'vector',
   //   url: 'mapbox://iconeng.aln7flwh'
@@ -617,6 +625,45 @@ map.on('style.load', function(e) {
       }
   },);
 
+  // Velocity Grid - Existing
+  map.addLayer({
+      'id': 'velo-ex',
+      'type': 'line',
+      'source': 'velo-ex',
+      'source-layer': 'Wellington_001_Existing_Velo-2ywg3y',
+      'layout':{
+        'visibility':'visible'
+      },
+      'filter': ["all",['>', 'Var', 0.25], ['==', 'Type', 'AOI']],
+          'paint': {
+          'line-width': 1.2,
+          'line-opacity': 0,
+          'line-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, '#cfd8dc'],
+                  [.5, '#acbbc1'],
+                  [1, '#8c9ea6'],
+                  [1.5, '#6e828b'],
+                  [2, '#53666f'],
+                  [3, '#3b4c54'],
+                  [4, '#263238']
+                  ]
+          }
+      }
+  },'road-label-small'
+);
+
+
+  // Velocity Grid - Alt 1
+
+
+
+    // Velocity Grid - Alt 2
+
+
+
   // Flow Depth Grids - Alt1
   map.addLayer({
       'id': 'flo2d-alt1',
@@ -673,7 +720,6 @@ map.on('style.load', function(e) {
       }
   },);
 
-
   // Proposed Storm Improvement Alignments
   map.addLayer({
     'id': 'stormAlignment',
@@ -703,83 +749,82 @@ map.on('style.load', function(e) {
   });
 
 
-// //  Contours - 2FT
-//   map.addLayer({
-//   'id': 'contour-2ft',
-//   'type': 'line',
-//   'source': 'contours',
-//   'source-layer': 'clipped_contours-2tvf5k',
-//   // 'filter': ['all', ['==', 'INDEX', 0]],
-//   'layout': {
-//     'line-join': 'round',
-//     'visibility': 'visible',
-//     'line-cap': 'round'
-//   },
-//   'paint': {
-//     'line-width': {
-//       "stops": [
-//         [15, 0],
-//         [17, .5],
-//         [19, 1]
-//       ]
-//     },
-//     'line-color': '#bd925a'
-//   }
-//   }, 'road_label');
-//
-// //  Contours - 5 ft
-//   map.addLayer({
-//   'id': 'contour-5ft',
-//   'type': 'line',
-//   'source': 'contours',
-//   'source-layer': 'clipped_contours-2tvf5k',
-//   'filter': ['all', ['>','INDEX',0]],
-//   'layout': {
-//     'line-join': 'round',
-//     'visibility': 'visible',
-//     'line-cap': 'round'
-//   },
-//   'paint': {
-//     'line-width': {
-//       "stops": [
-//         [15, 1],
-//         [17, 1.75],
-//         [19, 2.5]
-//       ]
-//     },
-//     'line-color': '#bd925a'
-//   }
-//   }, 'road_label');
-//
-// //  Contours - 5 ft Labels
-//   map.addLayer({
-//     'id': 'contour-5ftLabels',
-//     'type': 'symbol',
-//     'source': 'contours',
-//     'source-layer': 'clipped_contours-2tvf5k',
-//     'filter': ['all', ['>=', 'INDEX', 5],
-//       ['<=', 'Index', 10]
-//     ],
-//     'layout': {
-//       'symbol-placement': 'line',
-//       'visibility': 'none',
-//       'text-field': '{CONTOUR}',
-//       'text-size': {
-//         "stops": [
-//           [15, 12],
-//           [17, 14],
-//           [19, 16]
-//         ]
-//       }
-//     },
-//     'paint': {
-//       'text-color': '#bd925a',
-//       'text-halo-color': '#F8F4F0',
-//       'text-halo-width': 2,
-//       'text-halo-blur': 0.5
-//     }
-//   });
-//
+//  Contours - 2FT
+  map.addLayer({
+  'id': 'contour-2ft',
+  'type': 'line',
+  'source': 'contours',
+  'source-layer': 'clipped_contours-2tvf5k',
+  'filter': ['all', ['==', 'INDEX', 0]],
+  'layout': {
+    'line-join': 'round',
+    'visibility': 'none',
+    'line-cap': 'round'
+  },
+  'paint': {
+    'line-width': {
+      "stops": [
+        [13, 1],
+        [17, 1.75],
+        [19, 2.5]
+      ]
+    },
+    'line-color': 'gray'
+  }
+  }, 'road_label');
+
+//  Contours - 5 ft
+  map.addLayer({
+  'id': 'contour-5ft',
+  'type': 'line',
+  'source': 'contours',
+  'source-layer': 'clipped_contours-2tvf5k',
+  'filter': ['all', ['>','INDEX',0]],
+  'layout': {
+    'line-join': 'round',
+    'visibility': 'none',
+    'line-cap': 'round'
+  },
+  'paint': {
+    'line-width': {
+      "stops": [
+        [13, 1],
+        [17, 1.75],
+        [19, 2.5]
+      ]
+    },
+    'line-color': 'black'
+  }
+  }, 'road_label');
+
+//  Contours - 5 ft Labels
+  map.addLayer({
+    'id': 'contour-5ftLabels',
+    'type': 'symbol',
+    'source': 'contours',
+    'source-layer': 'clipped_contours-2tvf5k',
+    'filter': ['all', ['>', 'INDEX', 0],
+    ],
+    'layout': {
+      'symbol-placement': 'line',
+      'visibility': 'none',
+      'text-field': '{CONTOUR}',
+      'text-size': {
+        "stops": [
+          [13, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      }
+    },
+    'paint': {
+      'text-color': 'black',
+      'text-halo-color': '#F8F4F0',
+      'text-halo-width': 2,
+      'text-halo-blur': 0.5
+    }
+  });
+
 
 
   //canals
