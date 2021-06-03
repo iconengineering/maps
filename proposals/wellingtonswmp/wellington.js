@@ -121,7 +121,12 @@ map.on('style.load', function(e) {
 
   map.addSource('flo2d-alt2',{
     type:'vector',
-    url:'mapbox://iconeng.all0dtsq'
+    url:'mapbox://iconeng.6e17ijjd'
+  });
+
+  map.addSource('contours',{
+    type:'vector',
+    url:'mapbox://iconeng.3re6dt84'
   });
 
   // map.addSource('contours', {
@@ -645,7 +650,7 @@ map.on('style.load', function(e) {
       'id': 'flo2d-alt2',
       'type': 'fill',
       'source': 'flo2d-alt2',
-      'source-layer': 'Wellington_003_Pond-6041kd',
+      'source-layer':'Well_003_Pond-9ixhpg',
       'filter': ["all",['>', 'Var', 0.1]],
       'paint': {
           'fill-color': {
@@ -698,83 +703,83 @@ map.on('style.load', function(e) {
   });
 
 
-  //Contours - 1FT
-  // map.addLayer({
-  // 'id': 'contour-1ft',
-  // 'type': 'line',
-  // 'source': 'contours',
-  // 'source-layer': 'contour_100-70zk0h',
-  // 'filter': ['all', ['==', 'INDEX', 0]],
-  // 'layout': {
-  //   'line-join': 'round',
-  //   'visibility': 'none',
-  //   'line-cap': 'round'
-  // },
-  // 'paint': {
-  //   'line-width': {
-  //     "stops": [
-  //       [15, 0],
-  //       [17, .5],
-  //       [19, 1]
-  //     ]
-  //   },
-  //   'line-color': '#bd925a'
-  // }
-  // }, 'road_label');
-
-  //Contours - 5 ft
-  // map.addLayer({
-  // 'id': 'contour-5ft',
-  // 'type': 'line',
-  // 'source': 'contours',
-  // 'source-layer': 'contour_100-70zk0h',
-  // 'filter': ['all', ['==', 'INDEX', 5]],
-  // 'layout': {
-  //   'line-join': 'round',
-  //   'visibility': 'none',
-  //   'line-cap': 'round'
-  // },
-  // 'paint': {
-  //   'line-width': {
-  //     "stops": [
-  //       [15, 1],
-  //       [17, 1.75],
-  //       [19, 2.5]
-  //     ]
-  //   },
-  //   'line-color': '#bd925a'
-  // }
-  // }, 'road_label');
-
-  //Contours - 5 ft Labels
-  // map.addLayer({
-  //   'id': 'contour-5ftLabels',
-  //   'type': 'symbol',
-  //   'source': 'contours',
-  //   'source-layer': 'contour_100-70zk0h',
-  //   'filter': ['all', ['>=', 'INDEX', 5],
-  //     ['<=', 'Index', 10]
-  //   ],
-  //   'layout': {
-  //     'symbol-placement': 'line',
-  //     'visibility': 'none',
-  //     'text-field': '{CONTOUR}',
-  //     'text-size': {
-  //       "stops": [
-  //         [15, 12],
-  //         [17, 14],
-  //         [19, 16]
-  //       ]
-  //     }
-  //   },
-  //   'paint': {
-  //     'text-color': '#bd925a',
-  //     'text-halo-color': '#F8F4F0',
-  //     'text-halo-width': 2,
-  //     'text-halo-blur': 0.5
-  //   }
-  // });
-
+// //  Contours - 2FT
+//   map.addLayer({
+//   'id': 'contour-2ft',
+//   'type': 'line',
+//   'source': 'contours',
+//   'source-layer': 'clipped_contours-2tvf5k',
+//   // 'filter': ['all', ['==', 'INDEX', 0]],
+//   'layout': {
+//     'line-join': 'round',
+//     'visibility': 'visible',
+//     'line-cap': 'round'
+//   },
+//   'paint': {
+//     'line-width': {
+//       "stops": [
+//         [15, 0],
+//         [17, .5],
+//         [19, 1]
+//       ]
+//     },
+//     'line-color': '#bd925a'
+//   }
+//   }, 'road_label');
+//
+// //  Contours - 5 ft
+//   map.addLayer({
+//   'id': 'contour-5ft',
+//   'type': 'line',
+//   'source': 'contours',
+//   'source-layer': 'clipped_contours-2tvf5k',
+//   'filter': ['all', ['>','INDEX',0]],
+//   'layout': {
+//     'line-join': 'round',
+//     'visibility': 'visible',
+//     'line-cap': 'round'
+//   },
+//   'paint': {
+//     'line-width': {
+//       "stops": [
+//         [15, 1],
+//         [17, 1.75],
+//         [19, 2.5]
+//       ]
+//     },
+//     'line-color': '#bd925a'
+//   }
+//   }, 'road_label');
+//
+// //  Contours - 5 ft Labels
+//   map.addLayer({
+//     'id': 'contour-5ftLabels',
+//     'type': 'symbol',
+//     'source': 'contours',
+//     'source-layer': 'clipped_contours-2tvf5k',
+//     'filter': ['all', ['>=', 'INDEX', 5],
+//       ['<=', 'Index', 10]
+//     ],
+//     'layout': {
+//       'symbol-placement': 'line',
+//       'visibility': 'none',
+//       'text-field': '{CONTOUR}',
+//       'text-size': {
+//         "stops": [
+//           [15, 12],
+//           [17, 14],
+//           [19, 16]
+//         ]
+//       }
+//     },
+//     'paint': {
+//       'text-color': '#bd925a',
+//       'text-halo-color': '#F8F4F0',
+//       'text-halo-width': 2,
+//       'text-halo-blur': 0.5
+//     }
+//   });
+//
 
 
   //canals
