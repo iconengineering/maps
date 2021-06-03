@@ -176,19 +176,7 @@ map.on('style.load', function(e) {
     }
   });
 
-  // Proposed Storm Improvement Alignments
-  map.addLayer({
-    'id': 'stormAlignment',
-    'type': 'line',
-    'source': 'stormAlignment',
-    'paint': {
-      'line-width': 2,
-      'line-color': 'red'
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
+
 
   // SWMM Basins
   map.addLayer({
@@ -605,7 +593,7 @@ map.on('style.load', function(e) {
       'type': 'fill',
       'source': 'flo2d-ex',
       'source-layer': 'Wellington_001_Existing-8enlus',
-      'filter': ["all",['>', 'Var', 0.25]],
+      'filter': ["all",['>', 'Var', 0.1]],
       'paint': {
           'fill-color': {
               property: 'Var',
@@ -633,7 +621,7 @@ map.on('style.load', function(e) {
       'type': 'fill',
       'source': 'flo2d-alt1',
       'source-layer': 'Wellington_002_PrStorm-ae4dow',
-      'filter': ["all",['>', 'Var', 0.25]],
+      'filter': ["all",['>', 'Var', 0.1]],
       'paint': {
           'fill-color': {
               property: 'Var',
@@ -661,7 +649,7 @@ map.on('style.load', function(e) {
       'type': 'fill',
       'source': 'flo2d-alt2',
       'source-layer': 'Wellington_002_PrStorm-ae4dow',
-      'filter': ["all",['>', 'Var', 0.25]],
+      'filter': ["all",['>', 'Var', 0.1]],
       'paint': {
           'fill-color': {
               property: 'Var',
@@ -689,7 +677,7 @@ map.on('style.load', function(e) {
       'type': 'fill',
       'source': 'flo2d-alt3',
       'source-layer': 'Wellington_002_PrStorm-ae4dow',
-      'filter': ["all",['>', 'Var', 0.25]],
+      'filter': ["all",['>', 'Var', 0.1]],
       'paint': {
           'fill-color': {
               property: 'Var',
@@ -711,6 +699,19 @@ map.on('style.load', function(e) {
       }
   },);
 
+  // Proposed Storm Improvement Alignments
+  map.addLayer({
+    'id': 'stormAlignment',
+    'type': 'line',
+    'source': 'stormAlignment',
+    'paint': {
+      'line-width': 5,
+      'line-color': 'red'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
   //Contours - 1FT
