@@ -109,6 +109,21 @@ map.on('style.load', function(e) {
     url:'mapbox://iconeng.4zi0234i'
   });
 
+  map.addSource('flo2d-alt1',{
+    type:'vector',
+    url:'mapbox://iconeng.965d9b50'
+  });
+
+  map.addSource('flo2d-alt2',{
+    type:'vector',
+    url:'mapbox://iconeng.965d9b50'
+  });
+
+  map.addSource('flo2d-alt3',{
+    type:'vector',
+    url:'mapbox://iconeng.965d9b50'
+  });
+
 
   // map.addSource('contours', {
   //   type: 'vector',
@@ -612,8 +627,89 @@ map.on('style.load', function(e) {
       }
   },);
 
+  // Flow Depth Grids - Alt1
+  map.addLayer({
+      'id': 'flo2d-alt1',
+      'type': 'fill',
+      'source': 'flo2d-alt1',
+      'source-layer': 'Wellington_002_PrStorm-ae4dow',
+      'filter': ["all",['>', 'Var', 0.25]],
+      'paint': {
+          'fill-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, 'rgb(252,244,182)'],
+                  [.5, 'rgb(245,194,152)'],
+                  [1, 'rgb(227,147,138)'],
+                  [1.5, 'rgb(199,101,134)'],
+                  [2, 'rgb(161,59,139)'],
+                  [3, 'rgb(109,23,143)'],
+                  [4, 'rgb(14,9,135)']
+                  ]
+          },
+          'fill-opacity': 1
+      },
+      'layout':{
+        'visibility':'none'
+      }
+  },);
 
+  // Flow Depth Grids - Alt 2
+  map.addLayer({
+      'id': 'flo2d-alt2',
+      'type': 'fill',
+      'source': 'flo2d-alt2',
+      'source-layer': 'Wellington_002_PrStorm-ae4dow',
+      'filter': ["all",['>', 'Var', 0.25]],
+      'paint': {
+          'fill-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, 'rgb(252,244,182)'],
+                  [.5, 'rgb(245,194,152)'],
+                  [1, 'rgb(227,147,138)'],
+                  [1.5, 'rgb(199,101,134)'],
+                  [2, 'rgb(161,59,139)'],
+                  [3, 'rgb(109,23,143)'],
+                  [4, 'rgb(14,9,135)']
+                  ]
+          },
+          'fill-opacity': 1
+      },
+      'layout':{
+        'visibility':'none'
+      }
+  },);
 
+  // Flow Depth Grids - Alt3
+  map.addLayer({
+      'id': 'flo2d-alt3',
+      'type': 'fill',
+      'source': 'flo2d-alt3',
+      'source-layer': 'Wellington_002_PrStorm-ae4dow',
+      'filter': ["all",['>', 'Var', 0.25]],
+      'paint': {
+          'fill-color': {
+              property: 'Var',
+              type: 'interval',
+              stops: [
+                  [.25, 'rgb(252,244,182)'],
+                  [.5, 'rgb(245,194,152)'],
+                  [1, 'rgb(227,147,138)'],
+                  [1.5, 'rgb(199,101,134)'],
+                  [2, 'rgb(161,59,139)'],
+                  [3, 'rgb(109,23,143)'],
+                  [4, 'rgb(14,9,135)']
+                  ]
+          },
+          'fill-opacity': 1
+      },
+      'layout':{
+        'visibility':'none'
+      }
+  },);
 
 
 
