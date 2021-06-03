@@ -54,6 +54,11 @@ map.on('style.load', function(e) {
     "data": 'data/stormAlignment.geojson'
   });
 
+  map.addSource('pond', {
+    type: 'geojson',
+    "data": 'data/pond.geojson'
+  });
+
   map.addSource('drainageways', {
     type: 'geojson',
     "data": 'data/drainageways.geojson'
@@ -119,12 +124,6 @@ map.on('style.load', function(e) {
     url:'mapbox://iconeng.965d9b50'
   });
 
-  map.addSource('flo2d-alt3',{
-    type:'vector',
-    url:'mapbox://iconeng.965d9b50'
-  });
-
-
   // map.addSource('contours', {
   //   type: 'vector',
   //   url: 'mapbox://iconeng.aln7flwh'
@@ -175,8 +174,6 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
-
-
 
   // SWMM Basins
   map.addLayer({
@@ -671,33 +668,6 @@ map.on('style.load', function(e) {
       }
   },);
 
-  // Flow Depth Grids - Alt3
-  map.addLayer({
-      'id': 'flo2d-alt3',
-      'type': 'fill',
-      'source': 'flo2d-alt3',
-      'source-layer': 'Wellington_002_PrStorm-ae4dow',
-      'filter': ["all",['>', 'Var', 0.1]],
-      'paint': {
-          'fill-color': {
-              property: 'Var',
-              type: 'interval',
-              stops: [
-                  [.25, 'rgb(252,244,182)'],
-                  [.5, 'rgb(245,194,152)'],
-                  [1, 'rgb(227,147,138)'],
-                  [1.5, 'rgb(199,101,134)'],
-                  [2, 'rgb(161,59,139)'],
-                  [3, 'rgb(109,23,143)'],
-                  [4, 'rgb(14,9,135)']
-                  ]
-          },
-          'fill-opacity': 1
-      },
-      'layout':{
-        'visibility':'none'
-      }
-  },);
 
   // Proposed Storm Improvement Alignments
   map.addLayer({
@@ -707,6 +677,20 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 5,
       'line-color': 'red'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  // Proposed Storm Improvement Alignments
+  map.addLayer({
+    'id': 'pond',
+    'type': 'line',
+    'source': 'pond',
+    'paint': {
+      'line-width': 3,
+      'line-color': 'blue'
     },
     'layout': {
       'visibility': 'none'
@@ -791,47 +775,7 @@ map.on('style.load', function(e) {
   //   }
   // });
 
-  //WEST VINE XS
-  // map.addLayer({
-  //   'id': 'wvb-xs',
-  //   'type': 'line',
-  //   'source': 'wvb-xs',
-  //   'paint': {
-  //     'line-width': 2,
-  //     'line-opacity': 1,
-  //     'line-color': 'rgba(0,0,0,1)'
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
 
-  //WEST VINE XS Labels
-  // map.addLayer({
-  //   'id': 'wvb-xsLabels',
-  //   'type': 'symbol',
-  //   'source': 'wvb-xs',
-  //   'layout': {
-  //     'visibility': 'visible',
-  //     'symbol-placement': 'line',
-  //     'symbol-spacing': 100,
-  //     'text-field': '{ProfileM}',
-  //     'text-size': {
-  //       "stops": [
-  //         [15, 12],
-  //         [17, 14],
-  //         [19, 16]
-  //       ]
-  //     },
-  //     "text-padding": 100,
-  //   },
-  //   'paint': {
-  //     'text-color': '#000',
-  //     'text-halo-color': '#ffffff',
-  //     'text-halo-width': 2,
-  //     'text-halo-blur': 1
-  //   }
-  // });
 
   //canals
   // map.addLayer({
