@@ -121,7 +121,7 @@ map.on('style.load', function(e) {
 
   map.addSource('flo2d-alt2',{
     type:'vector',
-    url:'mapbox://iconeng.965d9b50'
+    url:'mapbox://iconeng.all0dtsq'
   });
 
   // map.addSource('contours', {
@@ -645,7 +645,7 @@ map.on('style.load', function(e) {
       'id': 'flo2d-alt2',
       'type': 'fill',
       'source': 'flo2d-alt2',
-      'source-layer': 'Wellington_002_PrStorm-ae4dow',
+      'source-layer': 'Wellington_003_Pond-6041kd',
       'filter': ["all",['>', 'Var', 0.1]],
       'paint': {
           'fill-color': {
