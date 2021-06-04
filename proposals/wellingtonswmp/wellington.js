@@ -144,32 +144,11 @@ map.on('style.load', function(e) {
     url: 'mapbox://iconeng.3re6dt84'
   });
 
+  map.addSource('surveyPts', {
+    type: 'geojson',
+    "data": 'data/surveypts.geojson'
+  });
 
-
-
-
-
-  // map.addSource('contours', {
-  //   type: 'vector',
-  //   url: 'mapbox://iconeng.aln7flwh'
-  //   // Old MP Smoothed iconeng.7b288ff0
-  // });
-  // map.addSource('fp', {
-  //   type: 'geojson',
-  //   "data": 'data/fp.geojson'
-  // });
-  // map.addSource('wvb-hydStructure', {
-  //   type: 'geojson',
-  //   "data": 'data/roadwaycrossings.geojson'
-  // });
-  // map.addSource('latStructure', {
-  //   type: 'geojson',
-  //   "data": 'data/lateralstructure.geojson'
-  // });
-  // map.addSource('wvb-canals', {
-  //   type: 'geojson',
-  //   "data": 'data/canals.geojson'
-  // });
 
   //Town Boundary
   map.addLayer({
@@ -850,48 +829,20 @@ map.on('style.load', function(e) {
     }
   });
 
+  // Proposed Survey Points
+  map.addLayer({
+    'id': 'surveyPts',
+    'type': 'circle',
+    'source': 'surveyPts',
+    'paint': {
+      'circle-radius': 3,
+      'circle-color': 'white'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
-
-  //canals
-  // map.addLayer({
-  //   'id': 'wvb-canals',
-  //   'type': 'line',
-  //   'source': 'wvb-canals',
-  //   'paint': {
-  //     'line-width': 1.5,
-  //     'line-opacity': 1,
-  //     'line-color': 'rgba(0,77,168,1)'
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-
-  //canalLabels
-  // map.addLayer({
-  //   'id': 'wvb-canalLabels',
-  //   'type': 'symbol',
-  //   'source': 'wvb-canals',
-  //   'layout': {
-  //     'symbol-placement': 'line',
-  //     'symbol-spacing': 100,
-  //     'text-field': '{NAME}',
-  //     'text-size': {
-  //       "stops": [
-  //         [15, 12],
-  //         [17, 14],
-  //         [19, 16]
-  //       ]
-  //     },
-  //     "text-padding": 100,
-  //   },
-  //   'paint': {
-  //     'text-color': 'rgba(0,77,168,1)',
-  //     'text-halo-color': '#ffffff',
-  //     'text-halo-width': 2,
-  //     'text-halo-blur': 1
-  //   }
-  // });
 
   var style = map.getStyle();
 
