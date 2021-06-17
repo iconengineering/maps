@@ -72,6 +72,7 @@ layout: default_mapList
 
 #### Proposals
 [Town of Wellington SWMP](proposals/wellingtonswmp)
+[Lena Gulch Stream Restoration](proposals/lenagulch)
 
 #### 2017 Proposals
 [Nissen Reservoir Channel](other/nissen-reservoir-channel)

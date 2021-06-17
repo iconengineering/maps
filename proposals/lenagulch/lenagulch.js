@@ -26,105 +26,97 @@ $(document).ready(function() {
   $("#clear").click(function() {
     var checkBoxes = $("input[type=checkbox]");
     checkBoxes.prop("checked", false);
-    map.setPaintProperty('contours-1ft', 'visibility', 'none');
-    map.setPaintProperty('contours-5ft', 'visibility', 'none');
-    map.setPaintProperty('contours-5ftLabels', 'visibility', 'none');
-    map.setPaintProperty('cityFP', 'visibility', 'none');
-    map.setPaintProperty('cityFW', 'visibility', 'none');
-    map.setPaintProperty('citySF', 'visibility', 'none');
-    map.setPaintProperty('wvb-fp-100yr', 'visibility', 'none');
-    map.setPaintProperty('wvb-fp-100yr-fill', 'visibility', 'none');
   });
 });
 
 map.on('style.load', function(e) {
 
-  map.addSource('nfhl', {
+  // map.addSource('nfhl', {
+  //   type: 'geojson',
+  //   "data": 'data/nfhl.geojson'
+  // });
+  //
+  //
+  // //  NHFL Floodplain Outline
+  // map.addLayer({
+  //   'id': 'nfhl-fp-line',
+  //   'type': 'line',
+  //   'source': 'nfhl',
+  //   'paint': {
+  //     'line-width': 0.5,
+  //     'line-opacity': 0.3,
+  //     'line-color': 'black',
+  //   },
+  //   'layout': {
+  //     'visibility': 'visible'
+  //   }
+  // });
+  //
+  // //  NFHL Floodplain 100yr Hatch
+  // map.addLayer({
+  //   'id': 'nfhl-100yr-hatch',
+  //   'type': 'fill',
+  //   'source': 'nfhl',
+  //   'filter': ["all",
+  //     ["!in", "ZONE_SUBTY", "FLOODWAY"],
+  //     ["in", "FLD_ZONE", 'A', 'AE', 'AO']
+  //   ],
+  //   'paint': {
+  //     'fill-color': 'rgb(0,230,255)',
+  //     'fill-opacity': 0.3,
+  //   },
+  //   'layout': {
+  //     'visibility': 'visible',
+  //   }
+  // });
+  //
+  // //  CWCB Floodplain 500yr Hatch
+  // map.addLayer({
+  //   'id': 'nfhl-500yr-hatch',
+  //   'type': 'fill',
+  //   'source': 'nfhl',
+  //   'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+  //   'paint': {
+  //     'fill-color': 'rgb(255,128,0)',
+  //     'fill-opacity': 0.3,
+  //   },
+  //   'layout': {
+  //     'visibility': 'visible'
+  //   }
+  // });
+  //
+  // map.addSource('crossStructure', {
+  //   type: 'geojson',
+  //   "data": 'data/crossingstructures.geojson'
+  // });
+  //
+  // //  NHFL Floodplain Outline
+  // map.addLayer({
+  //   'id': 'crossStructure-outline',
+  //   'type': 'line',
+  //   'source': 'crossStructure',
+  //
+  // });
+
+  map.addSource('drainageways', {
     type: 'geojson',
-    "data": 'data\nfhl.geojson'
+    "data": 'data/drainageways.geojson'
   });
 
-
-  //  NHFL Floodplain Outline
+  //Drainageway centerline
   map.addLayer({
-    'id': 'nfhl-fp-line',
+    'id': 'drainageways',
     'type': 'line',
-    'source': 'nfhl',
+    'source': 'drainageways',
     'paint': {
-      'line-width': 0.5,
-      'line-opacity': 0.3,
-      'line-color': 'black',
-    },
-    'layout': {
-      'visibility': 'visible'
-    }
-  });
-
-  //  NFHL Floodplain 100yr Hatch
-  map.addLayer({
-    'id': 'nfhl-100yr-hatch',
-    'type': 'fill',
-    'source': 'nfhl',
-    'filter': ["all",
-      ["!in", "ZONE_SUBTY", "FLOODWAY"],
-      ["in", "FLD_ZONE", 'A', 'AE', 'AO']
-    ],
-    'paint': {
-      'fill-color': 'rgb(0,230,255)',
-      'fill-opacity': 0.3,
-    },
-    'layout': {
-      'visibility': 'visible',
-    }
-  });
-
-  //  CWCB Floodplain 500yr Hatch
-  map.addLayer({
-    'id': 'nfhl-500yr-hatch',
-    'type': 'fill',
-    'source': 'nfhl',
-    'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
-    'paint': {
-      'fill-color': 'rgb(255,128,0)',
-      'fill-opacity': 0.3,
-    },
-    'layout': {
-      'visibility': 'visible'
-    }
-  });
-
-  map.addSource('crossStructure', {
-    type: 'geojson',
-    "data": 'data\crossingstructures.geojson'
-  });
-
-  //  NHFL Floodplain Outline
-  map.addLayer({
-    'id': 'crossStructure-outline',
-    'type': 'line',
-    'source': 'crossStructure',
-    'paint': {
-      'line-width': 2,
+      'line-width': 1,
       'line-opacity': 1,
-      'line-color': 'black',
+      'line-color': 'rgba(0,77,168,1)'
     },
     'layout': {
       'visibility': 'visible'
     }
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }); //end map load
