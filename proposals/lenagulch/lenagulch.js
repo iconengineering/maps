@@ -44,7 +44,7 @@ map.on('style.load', function(e) {
     'source': 'nfhl',
     'paint': {
       'line-width': 0.5,
-      'line-opacity': 0.3,
+      'line-opacity': 0.5,
       'line-color': 'black',
     },
     'layout': {
@@ -70,7 +70,7 @@ map.on('style.load', function(e) {
     }
   });
 
-  //  CWCB Floodplain 500yr Hatch
+  // NFHL Floodplain 500yr Hatch
   map.addLayer({
     'id': 'nfhl-500yr-hatch',
     'type': 'fill',
@@ -85,17 +85,43 @@ map.on('style.load', function(e) {
     }
   });
 
+  //  NFHL Floodplain Floodway Hatch
+  map.addLayer({
+    'id': 'nfhl-fldwy',
+    'type': 'fill',
+    'source': 'nfhl',
+    'filter': ['in', "ZONE_SUBTY", "FLOODWAY"],
+    'paint': {
+      'fill-color': 'purple',
+      'fill-opacity': 0.3,
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+
+
+
   map.addSource('crossStructure', {
     type: 'geojson',
     "data": 'data/crossingstructures.geojson'
   });
 
-  //  NHFL Floodplain Outline
+  // Crossing STructures
   map.addLayer({
     'id': 'crossStructure-outline',
     'type': 'line',
     'source': 'crossStructure',
+  });
 
+  map.addLayer({
+    'id': 'crossStructure-fill',
+    'type': 'fill',
+    'source': 'crossStructure',
+    'paint': {
+      'fill-opacity': 0.5,
+    },
   });
 
 
@@ -116,31 +142,30 @@ map.on('style.load', function(e) {
 // When a click event occurs near a marker icon, open a popup at the location of the feature, with description HTML from its properties.
 
 
-//Cross Section Labels
-// map.on('click', function(e) {
-//   var features = map.queryRenderedFeatures(e.point, {
-//     layers: ['wvb-xs']
-//   });
-//   if (!features.length) {
-//     return;
-//   }
-//
-//   var feature = features[0];
-//
-//   var popup = new mapboxgl.Popup()
-//     .setLngLat(e.lngLat)
-//     .setHTML(feature.properties.RiverCode + ' ' + feature.properties.ReachCode + '<br>' + 'XS: ' + feature.properties.ProfileM + '<br>' + 'WSEL:' + feature.properties.P001.toFixed(2))
-//     .addTo(map);
-// });
+//Structure Labels
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['crossStructure-fill']
+  });
+  if (!features.length) {
+    return;
+  }
 
-// Use the same approach as above to indicate that the symbols are clickable
-// by changing the cursor style to 'pointer'.
-// map.on('mousemove', function(e) {
-//   var features = map.queryRenderedFeatures(e.point, {
-//     layers: ['wvb-xs']
-//   });
-//   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-// });
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML(feature.properties.Label)
+    .addTo(map);
+});
+
+//Use the same approach as above to indicate that the symbols are clickable by changing the cursor style to 'pointer'.
+map.on('mousemove', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['crossStructure-fill']
+  });
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+});
 
 
 

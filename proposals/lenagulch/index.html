@@ -78,52 +78,57 @@
         <img class="responsive-img" src="images\mhfd.jpg" style="padding:1rem;max-width:45%;">
       </span>
       <h4 style="padding:0 1rem; text-align:center; margin-top:0; margin-bottom:0;"><b>Lena Gulch Channel Restoration</b></h5>
-      <span style="display: inline-block;text-align:center;">
-        <img class="responsive-img" src="images\icon.jpg" style="padding:1rem;max-width:45%;">
-        <img class="responsive-img" src="images\Valerian.png" style="padding:1rem;max-width:30%;">
-      </span>
-      <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
+        <span style="display: inline-block;text-align:center;">
+          <img class="responsive-img" src="images\icon.jpg" style="padding:1rem;max-width:45%;">
+          <img class="responsive-img" src="images\Valerian.png" style="padding:1rem;max-width:30%;">
+        </span>
+        <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
 
 
-        <!-- SWMM Subheading -->
-        <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Drainage</div>
-          <div class="collapsible-body white">
-            <div class="row">
-              <p>
-                <input name="NFHL" type="checkbox" id="NFHL" class="layer-off" onclick="toggleLayer('drainageways')" />
-                <label for="NFHL" class="valign">NHFL</label>
-              </p>
+          <!-- SWMM Subheading -->
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Drainage</div>
+            <div class="collapsible-body white">
+              <div class="row">
+                <p>
+                  <input name="NFHL" type="checkbox" id="NFHL" class="layer-off" onclick="toggleFour('nfhl-fp-line','nfhl-100yr-hatch','nfhl-500yr-hatch','nfhl-fldwy')" checked />
+                  <label for="NFHL" class="valign">NHFL</label>
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Land Ownership</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Transportation</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Drainage</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Transportation Improvements</div>
+          <!-- Base Information Subheading -->
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Mapping</div>
+            <div class="collapsible-body white">
+              <p>
+                <input name="crossStructure" type="checkbox" id="NFHL" class="layer-off" onclick="toggleTwo('crossStructure-outline','crossStructure-fill')" checked />
+                <label for="crossStructure" class="valign">Crossing Structures</label>
+              </p>
+              <div id="menu" class="demo-toggles">
+                <p class="narrow">
+                  <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked />
+                  <label for="test1">Satellite</label>
+                </p>
+                <p class="narrow">
+                  <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" />
+                  <label for="test2">Light</label>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
     </div>
 
-    <!-- Base Information Subheading -->
-    <li>
-      <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Mapping</div>
-      <div class="collapsible-body white">
-        <p>
-          <input name="surveypts" type="checkbox" id="surveypts" class="layer-off" onclick="toggleLayer('surveyPts')" />
-          <label for="surveypts" class="valign">Survey Points</label>
-        </p>
-        <p>
-          <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="toggleThree('contour-2ft','contour-5ft','contour-5ftLabels')" />
-          <label for="contours" class="valign">Contours</label>
-        </p>
-        <div id="menu" class="demo-toggles">
-          <p class="narrow">
-            <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked/>
-            <label for="test1">Satellite</label>
-          </p>
-          <p class="narrow">
-            <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" />
-            <label for="test2">Light</label>
-          </p>
-        </div>
-      </div>
-    </li>
+
+
+
+
 
     <main class="mdl-layout__content">
       <div class="page-content">
