@@ -100,9 +100,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
-
-
   map.addSource('crossStructure', {
     type: 'geojson',
     "data": 'data/crossingstructures.geojson'
@@ -113,6 +110,9 @@ map.on('style.load', function(e) {
     'id': 'crossStructure-outline',
     'type': 'line',
     'source': 'crossStructure',
+    'layout': {
+      'visibility': 'visible'
+    }
   });
 
   map.addLayer({
@@ -122,17 +122,16 @@ map.on('style.load', function(e) {
     'paint': {
       'fill-opacity': 0.5,
     },
+    'layout': {
+      'visibility': 'visible'
+    }
   });
-
 
   var style = map.getStyle();
 
   if (style.name != 'Outdoors') {
     map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
   }
-
-
-
 
 
 }); //end map load
