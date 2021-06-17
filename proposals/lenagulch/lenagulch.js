@@ -31,92 +31,82 @@ $(document).ready(function() {
 
 map.on('style.load', function(e) {
 
-  // map.addSource('nfhl', {
-  //   type: 'geojson',
-  //   "data": 'data/nfhl.geojson'
-  // });
-  //
-  //
-  // //  NHFL Floodplain Outline
-  // map.addLayer({
-  //   'id': 'nfhl-fp-line',
-  //   'type': 'line',
-  //   'source': 'nfhl',
-  //   'paint': {
-  //     'line-width': 0.5,
-  //     'line-opacity': 0.3,
-  //     'line-color': 'black',
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-  //
-  // //  NFHL Floodplain 100yr Hatch
-  // map.addLayer({
-  //   'id': 'nfhl-100yr-hatch',
-  //   'type': 'fill',
-  //   'source': 'nfhl',
-  //   'filter': ["all",
-  //     ["!in", "ZONE_SUBTY", "FLOODWAY"],
-  //     ["in", "FLD_ZONE", 'A', 'AE', 'AO']
-  //   ],
-  //   'paint': {
-  //     'fill-color': 'rgb(0,230,255)',
-  //     'fill-opacity': 0.3,
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible',
-  //   }
-  // });
-  //
-  // //  CWCB Floodplain 500yr Hatch
-  // map.addLayer({
-  //   'id': 'nfhl-500yr-hatch',
-  //   'type': 'fill',
-  //   'source': 'nfhl',
-  //   'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
-  //   'paint': {
-  //     'fill-color': 'rgb(255,128,0)',
-  //     'fill-opacity': 0.3,
-  //   },
-  //   'layout': {
-  //     'visibility': 'visible'
-  //   }
-  // });
-  //
-  // map.addSource('crossStructure', {
-  //   type: 'geojson',
-  //   "data": 'data/crossingstructures.geojson'
-  // });
-  //
-  // //  NHFL Floodplain Outline
-  // map.addLayer({
-  //   'id': 'crossStructure-outline',
-  //   'type': 'line',
-  //   'source': 'crossStructure',
-  //
-  // });
-
-  map.addSource('drainageways', {
+  map.addSource('nfhl', {
     type: 'geojson',
-    "data": 'data/drainageways.geojson'
+    "data": 'data/nfhl.geojson'
   });
 
-  //Drainageway centerline
+
+  //  NHFL Floodplain Outline
   map.addLayer({
-    'id': 'drainageways',
+    'id': 'nfhl-fp-line',
     'type': 'line',
-    'source': 'drainageways',
+    'source': 'nfhl',
     'paint': {
-      'line-width': 1,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,77,168,1)'
+      'line-width': 0.5,
+      'line-opacity': 0.3,
+      'line-color': 'black',
     },
     'layout': {
       'visibility': 'visible'
     }
   });
+
+  //  NFHL Floodplain 100yr Hatch
+  map.addLayer({
+    'id': 'nfhl-100yr-hatch',
+    'type': 'fill',
+    'source': 'nfhl',
+    'filter': ["all",
+      ["!in", "ZONE_SUBTY", "FLOODWAY"],
+      ["in", "FLD_ZONE", 'A', 'AE', 'AO']
+    ],
+    'paint': {
+      'fill-color': 'rgb(0,230,255)',
+      'fill-opacity': 0.3,
+    },
+    'layout': {
+      'visibility': 'visible',
+    }
+  });
+
+  //  CWCB Floodplain 500yr Hatch
+  map.addLayer({
+    'id': 'nfhl-500yr-hatch',
+    'type': 'fill',
+    'source': 'nfhl',
+    'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+    'paint': {
+      'fill-color': 'rgb(255,128,0)',
+      'fill-opacity': 0.3,
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  map.addSource('crossStructure', {
+    type: 'geojson',
+    "data": 'data/crossingstructures.geojson'
+  });
+
+  //  NHFL Floodplain Outline
+  map.addLayer({
+    'id': 'crossStructure-outline',
+    'type': 'line',
+    'source': 'crossStructure',
+
+  });
+
+
+  var style = map.getStyle();
+
+  if (style.name != 'Outdoors') {
+    map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
+  }
+
+
+
 
 
 }); //end map load
