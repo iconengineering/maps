@@ -39,53 +39,126 @@ $(document).ready(function() {
 
 map.on('style.load', function(e) {
 
-  map.addSource('cityBoundary', {
+  map.addSource('nfhl', {
     type: 'geojson',
-    "data": 'data/cityBoundary.geojson'
+    "data": 'data\nfhl.geojson'
   });
 
 
-  map.addSource('velo-ex', {
-    type: 'vector',
-    url: 'mapbox://iconeng.2i3tfsvz'
+  //  NHFL Floodplain Outline
+  map.addLayer({
+    'id': 'nfhl-fp-line',
+    'type': 'line',
+    'source': 'nfhl',
+    'paint': {
+      'line-width': 0.5,
+      'line-opacity': 0.3,
+      'line-color': 'black',
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  //  NFHL Floodplain 100yr Hatch
+  map.addLayer({
+    'id': 'nfhl-100yr-hatch',
+    'type': 'fill',
+    'source': 'nfhl',
+    'filter': ["all",
+      ["!in", "ZONE_SUBTY", "FLOODWAY"],
+      ["in", "FLD_ZONE", 'A', 'AE', 'AO']
+    ],
+    'paint': {
+      'fill-color': 'rgb(0,230,255)',
+      'fill-opacity': 0.3,
+    },
+    'layout': {
+      'visibility': 'visible',
+    }
+  });
+
+  //  CWCB Floodplain 500yr Hatch
+  map.addLayer({
+    'id': 'nfhl-500yr-hatch',
+    'type': 'fill',
+    'source': 'nfhl',
+    'filter': ['==', "ZONE_SUBTY", "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"],
+    'paint': {
+      'fill-color': 'rgb(255,128,0)',
+      'fill-opacity': 0.3,
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  map.addSource('crossStructure', {
+    type: 'geojson',
+    "data": 'data\crossingstructures.geojson'
+  });
+
+  //  NHFL Floodplain Outline
+  map.addLayer({
+    'id': 'crossStructure-outline',
+    'type': 'line',
+    'source': 'crossStructure',
+    'paint': {
+      'line-width': 2,
+      'line-opacity': 1,
+      'line-color': 'black',
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
   });
 
 
 
-}); //end style load
 
-// When a click event occurs near a marker icon, open a popup at the location of
 
-// the feature, with description HTML from its properties.
 
-// When a click event occurs near a marker icon, open a popup at the location of
-// the feature, with description HTML from its properties.
+
+
+
+
+
+
+
+
+
+}); //end map load
+
+
+
+// When a click event occurs near a marker icon, open a popup at the location of the feature, with description HTML from its properties.
+
 
 //Cross Section Labels
-map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['wvb-xs']
-  });
-  if (!features.length) {
-    return;
-  }
-
-  var feature = features[0];
-
-  var popup = new mapboxgl.Popup()
-    .setLngLat(e.lngLat)
-    .setHTML(feature.properties.RiverCode + ' ' + feature.properties.ReachCode + '<br>' + 'XS: ' + feature.properties.ProfileM + '<br>' + 'WSEL:' + feature.properties.P001.toFixed(2))
-    .addTo(map);
-});
+// map.on('click', function(e) {
+//   var features = map.queryRenderedFeatures(e.point, {
+//     layers: ['wvb-xs']
+//   });
+//   if (!features.length) {
+//     return;
+//   }
+//
+//   var feature = features[0];
+//
+//   var popup = new mapboxgl.Popup()
+//     .setLngLat(e.lngLat)
+//     .setHTML(feature.properties.RiverCode + ' ' + feature.properties.ReachCode + '<br>' + 'XS: ' + feature.properties.ProfileM + '<br>' + 'WSEL:' + feature.properties.P001.toFixed(2))
+//     .addTo(map);
+// });
 
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
-map.on('mousemove', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['wvb-xs']
-  });
-  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-});
+// map.on('mousemove', function(e) {
+//   var features = map.queryRenderedFeatures(e.point, {
+//     layers: ['wvb-xs']
+//   });
+//   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+// });
 
 
 
