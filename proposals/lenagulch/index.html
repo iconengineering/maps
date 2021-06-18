@@ -85,7 +85,7 @@
         <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
 
 
-          <!-- SWMM Subheading -->
+          <!-- Existing Drainage Subheading -->
           <li>
             <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Drainage</div>
             <div class="collapsible-body white">
@@ -101,8 +101,50 @@
               </div>
             </div>
           </li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Land Ownership</div>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Transportation</div>
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Land Ownership</div>
+            <div class="collapsible-body white">
+              <p>
+                <input name="allparcels" type="checkbox" id="allparcels" class="layer-off" onclick="toggleFive('parcel-golden', 'parcel-jeffco','parcel-mm','parcel-private','parcel-row')" />
+                <label for="allparcels" class="valign">Parcel Information</label>
+              </p>
+              <p class="indent">
+                <input name="parcels-golden" type="checkbox" id="parcels-golden" class="layer-off" onclick="toggleLayer('parcel-golden')" />
+                <label for="parcels-golden" class="valign">City of Golden Parcels</label>
+              </p>
+              <p class="indent">
+                <input name="parcels-jeffco" type="checkbox" id="parcels-jeffco" class="layer-off" onclick="toggleLayer('parcel-jeffco')" />
+                <label for="parcels-jeffco" class="valign">Jefferson County Parcels</label>
+              </p>
+              <p class="indent">
+                <input name="parcels-mm" type="checkbox" id="parcels-mm" class="layer-off" onclick="toggleLayer('parcel-mm')" />
+                <label for="parcels-mm" class="valign">Martin Marietta Parcels</label>
+              </p>
+              <p class="indent">
+                <input name="parcels-private" type="checkbox" id="parcels-private" class="layer-off" onclick="toggleLayer('parcel-private')" />
+                <label for="parcels-private" class="valign">Private Parcels</label>
+              </p>
+              <p class="indent">
+                <input name="parcels-row" type="checkbox" id="parcels-row" class="layer-off" onclick="toggleLayer('parcel-row')" />
+                <label for="parcels-row" class="valign">Right-of-way Parcels</label>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Transportation</div>
+            <div class="collapsible-body white">
+              <p>
+                <input name="regionalparks" type="checkbox" id="regionalparks" class="layer-off" onclick="toggleTwo('regionalparks', 'regionalparks-label')" />
+                <label for="regionalparks" class="valign">Regional Parks</label>
+              </p>
+              <p>
+                <input name="sidewalkAccess" type="checkbox" id="sidewalkAccess" class="layer-off" onclick="toggleLayer('sidewalkAccess')" />
+                <label for="sidewalkAccess" class="valign">Trail Access</label>
+              </p>
+            </div>
+          </li>
+
+
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Drainage</div>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Transportation Improvements</div>
 
@@ -119,7 +161,7 @@
                 <input name="prjLimits" type="checkbox" id="prjLimits" class="layer-off" onclick="toggleLayer('prj-limits')" checked />
                 <label for="prjLimits" class="valign">Project Limits</label>
               </p>
-            
+
               <div id="menu" class="demo-toggles">
                 <p class="narrow">
                   <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked />
@@ -139,7 +181,7 @@
 
     <div class="row">
 
-  </div>
+    </div>
 
 
 

@@ -259,15 +259,194 @@ map.on('style.load', function(e) {
     }
   });
 
+  //Load all parcels
+
+  map.addSource('parcel-golden', {
+    type: 'geojson',
+    "data": 'data/parcels-golden.geojson'
+  });
+  map.addSource('parcel-jeffco', {
+    type: 'geojson',
+    "data": 'data/parcels-jeffco.geojson'
+  });
+  map.addSource('parcel-mm', {
+    type: 'geojson',
+    "data": 'data/parcels-mm.geojson'
+  });
+  map.addSource('parcel-private', {
+    type: 'geojson',
+    "data": 'data/parcels-private.geojson'
+  });
+  map.addSource('parcel-row', {
+    type: 'geojson',
+    "data": 'data/parcels-row.geojson'
+  });
 
 
+  // City of Golden Parcels
+  map.addLayer({
+    'id': 'parcel-golden',
+    'type': 'line',
+    'source': 'parcel-golden',
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addLayer({
+    'id': 'parcel-golden',
+    'type': 'fill',
+    'source': 'parcel-golden',
+    'paint': {
+      'fill-opacity': 0.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  // Jefferson County Parcels
+  map.addLayer({
+    'id': 'parcel-jeffco',
+    'type': 'line',
+    'source': 'parcel-jeffco',
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addLayer({
+    'id': 'parcel-jeffco',
+    'type': 'fill',
+    'source': 'parcel-jeffco',
+    'paint': {
+      'fill-opacity': 0.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  // Martin Marietta Parcels
+  map.addLayer({
+    'id': 'parcel-mm',
+    'type': 'line',
+    'source': 'parcel-mm',
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addLayer({
+    'id': 'parcel-mm',
+    'type': 'fill',
+    'source': 'parcel-mm',
+    'paint': {
+      'fill-opacity': 0.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  // Private Parcels
+  map.addLayer({
+    'id': 'parcel-private',
+    'type': 'line',
+    'source': 'parcel-private',
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addLayer({
+    'id': 'parcel-private',
+    'type': 'fill',
+    'source': 'parcel-private',
+    'paint': {
+      'fill-opacity': 0.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  // Private Parcels
+  map.addLayer({
+    'id': 'parcel-row',
+    'type': 'line',
+    'source': 'parcel-row',
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addLayer({
+    'id': 'parcel-row',
+    'type': 'fill',
+    'source': 'parcel-row',
+    'paint': {
+      'fill-opacity': 0.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
+  //Regional Parks
+  map.addSource('regionalparks', {
+    type: 'geojson',
+    "data": 'data/regionalparks.geojson'
+  });
+
+  map.addLayer({
+    'id': 'regionalparks',
+    'type': 'circle',
+    'source': 'regionalparks',
+    'paint': {
+      'circle-radius': 5.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
+  //Drainageway Centerline LABEL
+  map.addLayer({
+    'id': 'regionalparks-labels',
+    'type': 'symbol',
+    'source': 'regionalparks',
+    'layout': {
+      'text-field': '{name}',
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
 
 
+  //Regional Parks
+  map.addSource('sidewalkAccess', {
+    type: 'geojson',
+    "data": 'data/sidewalkaccess.geojson'
+  });
 
+  map.addLayer({
+    'id': 'sidewalkAccess',
+    'type': 'circle',
+    'source': 'sidewalkAccess',
+    'paint': {
+      'circle-radius': 5.5,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
   var style = map.getStyle();
@@ -283,7 +462,7 @@ map.on('style.load', function(e) {
 //Use the same approach as above to indicate that the symbols are clickable by changing the cursor style to 'pointer'.
 map.on('mousemove', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['crossStructure-fill','eff-discharges','prj-limits']
+    layers: ['crossStructure-fill', 'eff-discharges', 'prj-limits']
   });
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
@@ -304,7 +483,7 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8>Street: '+feature.properties.Street+'<br>Size: '+feature.properties.Label+'</h8>')
+    .setHTML('<h8>Street: ' + feature.properties.Street + '<br>Size: ' + feature.properties.Label + '</h8>')
     .addTo(map);
 });
 
@@ -321,7 +500,7 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8>'+'Q-100: '+feature.properties.Q100 +' cfs</h8>')
+    .setHTML('<h8>' + 'Q-100: ' + feature.properties.Q100 + ' cfs</h8>')
     .addTo(map);
 });
 
@@ -338,7 +517,7 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8>'+feature.properties.Descriptio +'</h8>')
+    .setHTML('<h8>' + feature.properties.Descriptio + '</h8>')
     .addTo(map);
 });
 
