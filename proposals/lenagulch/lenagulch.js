@@ -127,6 +127,113 @@ map.on('style.load', function(e) {
     }
   });
 
+  map.addSource('lena-cl', {
+    type: 'geojson',
+    "data": 'data/lenagulch-cl.geojson'
+  });
+
+  //Drainageway centerline
+  map.addLayer({
+    'id': 'lena-cl',
+    'type': 'line',
+    'source': 'lena-cl',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  //Drainageway Centerline LABEL
+  map.addLayer({
+    'id': 'lena-cl-labels',
+    'type': 'symbol',
+    'source': 'lena-cl',
+    'layout': {
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{DWAY_NAME}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
+
+  map.addSource('apex-cl', {
+    type: 'geojson',
+    "data": 'data/apex-cl.geojson'
+  });
+
+  //Drainageway centerline
+  map.addLayer({
+    'id': 'apex-cl',
+    'type': 'line',
+    'source': 'apex-cl',
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  //Drainageway Centerline LABEL
+  map.addLayer({
+    'id': 'apex-cl-labels',
+    'type': 'symbol',
+    'source': 'apex-cl',
+    'layout': {
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{DWAY_NAME}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   var style = map.getStyle();
 
   if (style.name != 'Outdoors') {
