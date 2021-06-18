@@ -138,7 +138,7 @@ map.on('style.load', function(e) {
     'type': 'line',
     'source': 'lena-cl',
     'paint': {
-      'line-width': 1,
+      'line-width': 2,
       'line-opacity': 1,
       'line-color': 'rgba(0,77,168,1)'
     },
@@ -232,7 +232,7 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 3,
       'line-opacity': 1,
-      'line-color': 'rgba(0,77,168,1)'
+      'line-color': '#000000'
     },
     'layout': {
       'visibility': 'visible'
@@ -280,6 +280,13 @@ map.on('style.load', function(e) {
 }); //end map load
 
 
+//Use the same approach as above to indicate that the symbols are clickable by changing the cursor style to 'pointer'.
+map.on('mousemove', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['crossStructure-fill','eff-discharges','prj-limits']
+  });
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+});
 
 // When a click event occurs near a marker icon, open a popup at the location of the feature, with description HTML from its properties.
 
@@ -297,18 +304,43 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML(feature.properties.Label)
+    .setHTML('<h8>Street: '+feature.properties.Street+'<br>Size: '+feature.properties.Label+'</h8>')
     .addTo(map);
 });
 
-//Use the same approach as above to indicate that the symbols are clickable by changing the cursor style to 'pointer'.
-map.on('mousemove', function(e) {
+//Effective Discharge click
+map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['crossStructure-fill']
+    layers: ['eff-discharges']
   });
-  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML('<h8>'+'Q-100: '+feature.properties.Q100 +' cfs</h8>')
+    .addTo(map);
 });
 
+//Project Limits Label
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['prj-limits']
+  });
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML('<h8>'+feature.properties.Descriptio +'</h8>')
+    .addTo(map);
+});
 
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
