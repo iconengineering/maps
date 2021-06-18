@@ -219,9 +219,45 @@ map.on('style.load', function(e) {
     }
   });
 
+  map.addSource('prj-limits', {
+    type: 'geojson',
+    "data": 'data/prjlimits.geojson'
+  });
 
+  //Drainageway centerline
+  map.addLayer({
+    'id': 'prj-limits',
+    'type': 'line',
+    'source': 'prj-limits',
+    'paint': {
+      'line-width': 3,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
+  map.addSource('eff-discharges', {
+    type: 'geojson',
+    "data": 'data/eff-discharges.geojson'
+  });
 
+  //Effective Discharges
+  map.addLayer({
+    'id': 'eff-discharges',
+    'type': 'line',
+    'source': 'eff-discharges',
+    'paint': {
+      'line-width': 7,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
 
