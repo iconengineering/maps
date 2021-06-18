@@ -475,7 +475,20 @@ map.on('style.load', function(e) {
     "data": 'data/futureTrails.geojson'
   });
 
-
+// Future Lena Gulch CL
+  map.addLayer({
+    'id': 'futureLenaCL',
+    'type': 'line',
+    'source': 'futureLenaCL',
+    'paint': {
+      'line-width': 7,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
 
 
