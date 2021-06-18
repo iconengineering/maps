@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "futureCrossing",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Desc_": "Future Heritage Road Crossing Structure" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -105.208003177625642, 39.717430068487445 ], [ -105.207923477378543, 39.717180320892389 ], [ -105.208053273026522, 39.717150411432698 ], [ -105.208145214608379, 39.71739829982937 ], [ -105.208003177625642, 39.717430068487445 ] ] ] ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Desc_": "Future Zeta Street Crossing Structure" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -105.205079162122416, 39.719827930493018 ], [ -105.20483208562473, 39.719817863782033 ], [ -105.204830004278705, 39.71973094306815 ], [ -105.205077096341356, 39.719737230889066 ], [ -105.205079162122416, 39.719827930493018 ] ] ] ] } }
+]
+}

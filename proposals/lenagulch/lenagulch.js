@@ -449,6 +449,38 @@ map.on('style.load', function(e) {
   });
 
 
+  //Regional Parks
+  map.addSource('futureCrossings', {
+    type: 'geojson',
+    "data": 'data/futureCrossing.geojson'
+  });
+  //Regional Parks
+  map.addSource('futureDetention', {
+    type: 'geojson',
+    "data": 'data/futureDetention.geojson'
+  });
+  //Regional Parks
+  map.addSource('futureLenaCL', {
+    type: 'geojson',
+    "data": 'data/futureLenaCL.geojson'
+  });
+  //Regional Parks
+  map.addSource('futureRemovals', {
+    type: 'geojson',
+    "data": 'data/futureRemovals.geojson'
+  });
+  //Regional Parks
+  map.addSource('futureTrails', {
+    type: 'geojson',
+    "data": 'data/futureTrails.geojson'
+  });
+
+
+
+
+
+
+
   var style = map.getStyle();
 
   if (style.name != 'Outdoors') {
