@@ -298,7 +298,8 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-golden',
     'paint': {
-      'fill-opacity': 0.5,
+      'fill-opacity': 0.3,
+      'fill-color':'rgb(56,168,0)',
     },
     'layout': {
       'visibility': 'none'
@@ -320,7 +321,8 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-jeffco',
     'paint': {
-      'fill-opacity': 0.5,
+      'fill-opacity': 0.3,
+      'fill-color':'rgb(38,115,0)'
     },
     'layout': {
       'visibility': 'none'
@@ -342,7 +344,8 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-mm',
     'paint': {
-      'fill-opacity': 0.5,
+      'fill-opacity': 0.3,
+      'fill-color':'rgb(198,225,245)'
     },
     'layout': {
       'visibility': 'none'
@@ -364,14 +367,15 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-private',
     'paint': {
-      'fill-opacity': 0.5,
+      'fill-opacity': 0.3,
+      'fill-color':'rgb(247,239,208)'
     },
     'layout': {
       'visibility': 'none'
     }
   });
 
-  // Private Parcels
+  // R-O-W Parcels
   map.addLayer({
     'id': 'parcel-row',
     'type': 'line',
@@ -386,7 +390,8 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-row',
     'paint': {
-      'fill-opacity': 0.5,
+      'fill-opacity': 0.3,
+      'fill-color':'rgb(255,190,190)'
     },
     'layout': {
       'visibility': 'none'
