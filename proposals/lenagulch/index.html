@@ -87,28 +87,67 @@
 
           <!-- Existing Drainage Subheading -->
           <li>
-            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Drainage</div>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Drainage</div>
             <div class="collapsible-body white">
               <div class="row">
-                <p>
+                <h7>Existing</h7>
+                <p class="indent">
                   <input name="NFHL" type="checkbox" id="NFHL" class="layer-off" onclick="toggleFour('nfhl-fp-line','nfhl-100yr-hatch','nfhl-500yr-hatch','nfhl-fldwy')" checked />
                   <label for="NFHL" class="valign">NHFL</label>
                 </p>
-                <p>
+                <p class="indent">
                   <input name="effDischarge" type="checkbox" id="effDischarge" class="layer-off" onclick="toggleLayer('eff-discharges')" />
                   <label for="effDischarge" class="valign">Effective Discharge</label>
+                </p>
+                <h7>Proposed Improvements </h7>
+                <p class="indent">
+                  <input name="futureCL" type="checkbox" id="futureCL" class="layer-off" onclick="toggleLayer('futureLenaCL')" />
+                  <label for="futureCL" class="valign">Proposed Stream Centerline</label>
+                </p>
+                <p class="indent">
+                  <input name="futureDet" type="checkbox" id="futureDet" class="layer-off" onclick="toggleLayer('futureDetention')" />
+                  <label for="futureDet" class="valign">Proposed Detention</label>
+                </p>
+                <p class="indent">
+                  <input name="futRemovals" type="checkbox" id="futRemovals" class="layer-off" onclick="toggleLayer('futRemovals')" />
+                  <label for="futRemovals" class="valign">Proposed Removals</label>
                 </p>
               </div>
             </div>
           </li>
 
+
           <li>
-            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Land Ownership</div>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Recreation</div>
+            <div class="collapsible-body white">
+              <div class="row">
+                <h7> Existing Recreation</h7>
+                <p class="indent">
+                  <input name="regionalparks" type="checkbox" id="regionalparks" class="layer-off" onclick="toggleTwo('regionalparks', 'regionalparks-label')" />
+                  <label for="regionalparks" class="valign">Regional Parks</label>
+                </p>
+                <p class="indent">
+                  <input name="sidewalkAccess" type="checkbox" id="sidewalkAccess" class="layer-off" onclick="toggleLayer('sidewalkAccess')" />
+                  <label for="sidewalkAccess" class="valign">Trail Access</label>
+                </p>
+                <h7> Proposed Recreation </h7>
+                <p class="indent">
+                  <input name="futureTrails" type="checkbox" id="futureTrails" class="layer-off" onclick="toggleLayer('futureTrails')" />
+                  <label for="futureTrails" class="valign">Proposed Trail Improvements</label>
+                </p>
+
+
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Land Ownership</div>
             <div class="collapsible-body white">
               <div class="row">
                 <p>
                   <input name="allparcels" type="checkbox" id="allparcels" class="layer-off" onclick="toggleFive('parcel-golden', 'parcel-jeffco','parcel-mm','parcel-private','parcel-row')" />
-                  <label for="allparcels" class="valign">Parcel Information</label>
+                  <label for="allparcels" class="valign">Existing</label>
                 </p>
                 <p class="indent">
                   <input name="parcels-golden" type="checkbox" id="parcels-golden" class="layer-off" onclick="toggleLayer('parcel-golden')" />
@@ -132,7 +171,7 @@
                 </p>
                 <p>
                   <input name="allfutparcels" type="checkbox" id="allfutparcels" class="layer-off" onclick="toggleFive('parcel-fut-golden', 'parcel-fut-jeffco','parcel-fut-mm','parcel-fut-private','parcel-fut-row')" />
-                  <label for="allfutparcels" class="valign">Future Parcel Information</label>
+                  <label for="allfutparcels" class="valign">Future</label>
                 </p>
                 <p class="indent">
                   <input name="parcels-fut-golden" type="checkbox" id="parcels-fut-golden" class="layer-off" onclick="toggleLayer('parcel-fut-golden')" />
@@ -154,72 +193,9 @@
                   <input name="parcels-fut-row" type="checkbox" id="parcels-fut-row" class="layer-off" onclick="toggleLayer('parcel-fut-row')" />
                   <label for="parcels-futrow" class="valign">Future Right-of-way Parcels</label>
                 </p>
-
-
-
               </div>
             </div>
           </li>
-
-
-          <li>
-            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Transportation</div>
-            <div class="collapsible-body white">
-              <div class="row">
-                <p>
-                  <input name="regionalparks" type="checkbox" id="regionalparks" class="layer-off" onclick="toggleTwo('regionalparks', 'regionalparks-label')" />
-                  <label for="regionalparks" class="valign">Regional Parks</label>
-                </p>
-                <p>
-                  <input name="sidewalkAccess" type="checkbox" id="sidewalkAccess" class="layer-off" onclick="toggleLayer('sidewalkAccess')" />
-                  <label for="sidewalkAccess" class="valign">Trail Access</label>
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <!-- Proposed Drainage Improvements  Subheading -->
-          <li>
-            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Drainage Improvements</div>
-            <div class="collapsible-body white">
-              <p>
-                <input name="futureCL" type="checkbox" id="futureCL" class="layer-off" onclick="toggleLayer('futureLenaCL')" />
-                <label for="futureCL" class="valign">Proposed Lena Gulch Centerline</label>
-              </p>
-              <p>
-                <input name="futureDet" type="checkbox" id="futureDet" class="layer-off" onclick="toggleLayer('futureDetention')" />
-                <label for="futureDet" class="valign">Proposed Detention</label>
-              </p>
-              <p>
-                <input name="futRemovals" type="checkbox" id="futRemovals" class="layer-off" onclick="toggleLayer('futRemovals')" />
-                <label for="futRemovals" class="valign">Proposed Removals</label>
-              </p>
-
-
-
-
-              </div>
-          </li>
-
-
-
-          <!-- Proposed Transportation Improvements  Subheading -->
-          <li>
-            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Transportation Improvements</div>
-            <div class="collapsible-body white">
-              <p>
-                <input name="futureTrails" type="checkbox" id="futureTrails" class="layer-off" onclick="toggleLayer('futureTrails')" />
-                <label for="futureTrails" class="valign">Proposed Trail Improvements</label>
-              </p>
-
-
-
-
-
-              </div>
-          </li>
-
-
 
           <!-- Base Information Subheading -->
           <li>
