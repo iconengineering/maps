@@ -130,6 +130,33 @@
                   <input name="parcels-row" type="checkbox" id="parcels-row" class="layer-off" onclick="toggleLayer('parcel-row')" />
                   <label for="parcels-row" class="valign">Right-of-way Parcels</label>
                 </p>
+                <p>
+                  <input name="allfutparcels" type="checkbox" id="allfutparcels" class="layer-off" onclick="toggleFive('parcel-fut-golden', 'parcel-fut-jeffco','parcel-fut-mm','parcel-fut-private','parcel-fut-row')" />
+                  <label for="allfutparcels" class="valign">Future Parcel Information</label>
+                </p>
+                <p class="indent">
+                  <input name="parcels-fut-golden" type="checkbox" id="parcels-fut-golden" class="layer-off" onclick="toggleLayer('parcel-fut-golden')" />
+                  <label for="parcels-fut-golden" class="valign">Future City of Golden Parcels</label>
+                </p>
+                <p class="indent">
+                  <input name="parcels-fut-jeffco" type="checkbox" id="parcels-fut-jeffco" class="layer-off" onclick="toggleLayer('parcel-fut-jeffco')" />
+                  <label for="parcels-fut-jeffco" class="valign">Jefferson County Parcels</label>
+                </p>
+                <p class="indent">
+                  <input name="parcels-fut-mm" type="checkbox" id="parcels-fut-mm" class="layer-off" onclick="toggleLayer('parcel-fut-mm')" />
+                  <label for="parcels-fut-mm" class="valign">Martin Marietta Parcels</label>
+                </p>
+                <p class="indent">
+                  <input name="parcels-fut-private" type="checkbox" id="parcels-fut-private" class="layer-off" onclick="toggleLayer('parcel-fut-private')" />
+                  <label for="parcels-fut-private" class="valign">Private Parcels</label>
+                </p>
+                <p class="indent">
+                  <input name="parcels-fut-row" type="checkbox" id="parcels-fut-row" class="layer-off" onclick="toggleLayer('parcel-fut-row')" />
+                  <label for="parcels-futrow" class="valign">Future Right-of-way Parcels</label>
+                </p>
+
+
+
               </div>
             </div>
           </li>
@@ -167,6 +194,24 @@
                 <input name="futRemovals" type="checkbox" id="futRemovals" class="layer-off" onclick="toggleLayer('futRemovals')" />
                 <label for="futRemovals" class="valign">Proposed Removals</label>
               </p>
+
+
+
+
+              </div>
+          </li>
+
+
+
+          <!-- Proposed Transportation Improvements  Subheading -->
+          <li>
+            <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Proposed Transportation Improvements</div>
+            <div class="collapsible-body white">
+              <p>
+                <input name="futureTrails" type="checkbox" id="futureTrails" class="layer-off" onclick="toggleLayer('futureTrails')" />
+                <label for="futureTrails" class="valign">Proposed Trail Improvements</label>
+              </p>
+
 
 
 

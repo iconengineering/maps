@@ -298,7 +298,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-golden',
     'paint': {
-      'fill-opacity': 0.3,
+      'fill-opacity': 0.5,
       'fill-color':'rgb(56,168,0)',
     },
     'layout': {
@@ -321,7 +321,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-jeffco',
     'paint': {
-      'fill-opacity': 0.3,
+      'fill-opacity': 0.5,
       'fill-color':'rgb(38,115,0)'
     },
     'layout': {
@@ -344,7 +344,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-mm',
     'paint': {
-      'fill-opacity': 0.3,
+      'fill-opacity': 0.5,
       'fill-color':'rgb(198,225,245)'
     },
     'layout': {
@@ -367,7 +367,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-private',
     'paint': {
-      'fill-opacity': 0.3,
+      'fill-opacity': 0.5,
       'fill-color':'rgb(247,239,208)'
     },
     'layout': {
@@ -390,7 +390,7 @@ map.on('style.load', function(e) {
     'type': 'fill',
     'source': 'parcel-row',
     'paint': {
-      'fill-opacity': 0.3,
+      'fill-opacity': 0.5,
       'fill-color':'rgb(255,190,190)'
     },
     'layout': {
@@ -511,7 +511,7 @@ map.on('style.load', function(e) {
     }
   });
 
-  //Regional Parks
+  //Future Trail
   map.addSource('futureTrails', {
     type: 'geojson',
     "data": 'data/futureTrails.geojson'
@@ -527,15 +527,109 @@ map.on('style.load', function(e) {
       'line-color': 'green'
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
 
 
+//Future parcels
+
+//Load all parcels
+
+map.addSource('parcel-fut-golden', {
+  type: 'geojson',
+  "data": 'data/parcels-fut-golden.geojson'
+});
+map.addSource('parcel-fut-jeffco', {
+  type: 'geojson',
+  "data": 'data/parcels-fut-jeffco.geojson'
+});
+map.addSource('parcel-fut-mm', {
+  type: 'geojson',
+  "data": 'data/parcels-fut-mm.geojson'
+});
+map.addSource('parcel-fut-private', {
+  type: 'geojson',
+  "data": 'data/parcels-fut-private.geojson'
+});
+map.addSource('parcel-fut-row', {
+  type: 'geojson',
+  "data": 'data/parcels-fut-row.geojson'
+});
+
+// Future City of Golden Parcels
+map.addLayer({
+  'id': 'parcel-fut-golden',
+  'type': 'fill',
+  'source': 'parcel-fut-golden',
+  'paint': {
+    'fill-opacity': 0.5,
+    'fill-color':'rgb(56,168,0)',
+  },
+  'layout': {
+    'visibility': 'none'
+  }
+});
+
+// Future Jefferson County Parcels
+
+map.addLayer({
+  'id': 'parcel-fut-jeffco',
+  'type': 'fill',
+  'source': 'parcel-fut-jeffco',
+  'paint': {
+    'fill-opacity': 0.5,
+    'fill-color':'rgb(38,115,0)'
+  },
+  'layout': {
+    'visibility': 'none'
+  }
+});
+
+// Martin Marietta Parcels
+map.addLayer({
+  'id': 'parcel-fut-mm',
+  'type': 'fill',
+  'source': 'parcel-fut-mm',
+  'paint': {
+    'fill-opacity': 0.5,
+    'fill-color':'rgb(198,225,245)'
+  },
+  'layout': {
+    'visibility': 'none'
+  }
+});
+
+// Private Parcels
+map.addLayer({
+  'id': 'parcel-fut-private',
+  'type': 'fill',
+  'source': 'parcel-fut-private',
+  'paint': {
+    'fill-opacity': 0.5,
+    'fill-color':'rgb(247,239,208)'
+  },
+  'layout': {
+    'visibility': 'none'
+  }
+});
+
+// R-O-W Parcels
+map.addLayer({
+  'id': 'parcel-fut-row',
+  'type': 'fill',
+  'source': 'parcel-fut-row',
+  'paint': {
+    'fill-opacity': 0.5,
+    'fill-color':'rgb(255,190,190)'
+  },
+  'layout': {
+    'visibility': 'none'
+  }
+});
 
 
-
-  var style = map.getStyle();
+var style = map.getStyle();
 
   if (style.name != 'Outdoors') {
     map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
