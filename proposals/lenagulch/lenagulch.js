@@ -663,7 +663,8 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8>Street: ' + feature.properties.Street + '<br>Size: ' + feature.properties.Label + '</h8>')
+    .setHTML('<h8><b>' + feature.properties.Street + ' Street</b>'+'<br><h8>Size: ' +
+    feature.properties.Label + '</h8><br>'+ '<img src = https://iconeng.s3.us-west-2.amazonaws.com/maps/images/coalcreek-erie/20131009_parker-jordan-131.jpg alt="Rutherford" width=240px height=160px>')
     .addTo(map);
 });
 
