@@ -453,31 +453,10 @@ map.on('style.load', function(e) {
     }
   });
 
-
-  //Regional Parks
-  map.addSource('futureCrossings', {
-    type: 'geojson',
-    "data": 'data/futureCrossing.geojson'
-  });
-  //Regional Parks
-  map.addSource('futureDetention', {
-    type: 'geojson',
-    "data": 'data/futureDetention.geojson'
-  });
   //Regional Parks
   map.addSource('futureLenaCL', {
     type: 'geojson',
     "data": 'data/futureLenaCL.geojson'
-  });
-  //Regional Parks
-  map.addSource('futureRemovals', {
-    type: 'geojson',
-    "data": 'data/futureRemovals.geojson'
-  });
-  //Regional Parks
-  map.addSource('futureTrails', {
-    type: 'geojson',
-    "data": 'data/futureTrails.geojson'
   });
 
 // Future Lena Gulch CL
@@ -492,6 +471,63 @@ map.on('style.load', function(e) {
     },
     'layout': {
       'visibility': 'none'
+    }
+  });
+
+  //Future Detention
+  map.addSource('futureDetention', {
+    type: 'geojson',
+    "data": 'data/futureDetention.geojson'
+  });
+
+  map.addLayer({
+    'id': 'futureDetention',
+    'type': 'fill',
+    'source': 'futureDetention',
+    'paint': {
+      'fill-opacity': 0.3,
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  //Future Removals
+  map.addSource('futRemovals', {
+    type: 'geojson',
+    "data": 'data/futureRemovals.geojson'
+  });
+
+  map.addLayer({
+    'id': 'futRemovals',
+    'type': 'circle',
+    'source': 'futRemovals',
+    'paint': {
+      'circle-radius': 5.5,
+      'circle-color':'red'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  //Regional Parks
+  map.addSource('futureTrails', {
+    type: 'geojson',
+    "data": 'data/futureTrails.geojson'
+  });
+
+  map.addLayer({
+    'id': 'futureTrails',
+    'type': 'line',
+    'source': 'futureTrails',
+    'paint': {
+      'line-width': 3,
+      'line-opacity': 1,
+      'line-color': 'green'
+    },
+    'layout': {
+      'visibility': 'visible'
     }
   });
 
