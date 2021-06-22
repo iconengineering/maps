@@ -525,21 +525,23 @@ map.on('style.load', function(e) {
   });
 
 
-  // //Regional Park LABEL
-  // map.addLayer({
-  //   'id': 'regionalparks-labels',
-  //   'type': 'symbol',
-  //   'source': 'regionalparks',
-  //   'layout': {
-  //     'text-field': '{Label}',
-  //   },
-  //   'paint': {
-  //     'text-color': 'rgba(0,77,168,1)',
-  //     'text-halo-color': '#ffffff',
-  //     'text-halo-width': 2,
-  //     'text-halo-blur': 1
-  //   }
-  // });
+  //Regional Park LABEL
+  map.addLayer({
+    'id': 'regionalparks-labels',
+    'type': 'symbol',
+    'source': 'regionalparks',
+    'layout': {
+      'text-field': '{Label}',
+      'text-size':10,
+      'text-offset':[0,2]
+    },
+    'paint': {
+      'text-color': '#355e3b',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
 
 
   //Regional Parks
