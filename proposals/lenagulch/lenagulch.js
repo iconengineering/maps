@@ -364,7 +364,7 @@ map.on('style.load', function(e) {
     }
   });
 
-//Jefferson County Label
+  //Jefferson County Label
   map.addSource('parcel-jeffco-cent', {
     type: 'geojson',
     "data": 'data/parcels-jeffco-cent.geojson'
@@ -515,32 +515,32 @@ map.on('style.load', function(e) {
 
   map.addLayer({
     'id': 'regionalparks',
-    'type': 'circle',
-    'source': 'regionalparks',
-    'paint': {
-      'circle-radius': 5.5,
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-
-  //Drainageway Centerline LABEL
-  map.addLayer({
-    'id': 'regionalparks-labels',
     'type': 'symbol',
     'source': 'regionalparks',
     'layout': {
-      'text-field': '{name}',
-    },
-    'paint': {
-      'text-color': 'rgba(0,77,168,1)',
-      'text-halo-color': '#ffffff',
-      'text-halo-width': 2,
-      'text-halo-blur': 1
+      'visibility': 'visible',
+      "icon-image": 'park-15',
+      "icon-size":1
     }
   });
+
+
+  // //Regional Park LABEL
+  // map.addLayer({
+  //   'id': 'regionalparks-labels',
+  //   'type': 'symbol',
+  //   'source': 'regionalparks',
+  //   'layout': {
+  //     'text-field': '{Label}',
+  //   },
+  //   'paint': {
+  //     'text-color': 'rgba(0,77,168,1)',
+  //     'text-halo-color': '#ffffff',
+  //     'text-halo-width': 2,
+  //     'text-halo-blur': 1
+  //   }
+  // });
+
 
   //Regional Parks
   map.addSource('sidewalkAccess', {
@@ -759,170 +759,140 @@ map.on('style.load', function(e) {
 
 
   //Jefferson County Label
-    map.addSource('parcel-fut-jeffco-cent', {
-      type: 'geojson',
-      "data": 'data/parcels-fut-jeffco-cent.geojson'
-    });
+  map.addSource('parcel-fut-jeffco-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-jeffco-cent.geojson'
+  });
 
-    map.addLayer({
-      'id': 'parcel-fut-jeffco-label',
-      'type': 'symbol',
-      'source': 'parcel-fut-jeffco-cent',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        "text-line-height": 1,
-        "text-size": 12,
-        "text-field": "{OWNNAM}",
-        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-        "text-offset": [0, 1],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": 'rgb(38,115,0)',
-        "text-halo-color": "#000000",
-        "text-halo-width": 1.5,
-      }
-    });
-
-
-    //City of Golden Labels
-    map.addSource('parcel-fut-golden-cent', {
-      type: 'geojson',
-      "data": 'data/parcels-fut-golden-cent.geojson'
-    });
-
-    map.addLayer({
-      'id': 'parcel-fut-golden-label',
-      'type': 'symbol',
-      'source': 'parcel-fut-golden-cent',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        "text-line-height": 1,
-        "text-size": 12,
-        "text-field": "{OWNNAM}",
-        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-        "text-offset": [0, 1],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": 'rgb(56,168,0)',
-        "text-halo-color": "#000000",
-        "text-halo-width": 1.5,
-      }
-    });
-
-    //MM Labels
-    map.addSource('parcel-fut-mm-cent', {
-      type: 'geojson',
-      "data": 'data/parcels-fut-mm-cent.geojson'
-    });
-
-    map.addLayer({
-      'id': 'parcel-fut-mm-label',
-      'type': 'symbol',
-      'source': 'parcel-fut-mm-cent',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        "text-line-height": 1,
-        "text-size": 12,
-        "text-field": "{OWNNAME}",
-        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-        "text-offset": [0, 1],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": 'rgb(198,225,245)',
-        "text-halo-color": "#000000",
-        "text-halo-width": 1.5,
-      }
-    });
-
-    //Private Labels
-    map.addSource('parcel-fut-private-cent', {
-      type: 'geojson',
-      "data": 'data/parcels-fut-private-cent.geojson'
-    });
-
-    map.addLayer({
-      'id': 'parcel-fut-private-label',
-      'type': 'symbol',
-      'source': 'parcel-fut-private-cent',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        "text-line-height": 1,
-        "text-size": 12,
-        "text-field": "{OWNNAM}",
-        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-        "text-offset": [0, 1],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": 'rgb(255,190,190)',
-        "text-halo-color": "#000000",
-        "text-halo-width": 1.5,
-      }
-    });
-
-    //Right of way Labels
-    map.addSource('parcel-fut-row-cent', {
-      type: 'geojson',
-      "data": 'data/parcels-fut-row-cent.geojson'
-    });
-
-    map.addLayer({
-      'id': 'parcel-fut-row-label',
-      'type': 'symbol',
-      'source': 'parcel-fut-row-cent',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        "text-line-height": 1,
-        "text-size": 12,
-        "text-field": "{OWNNAM}",
-        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-        "text-offset": [0, 1],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": 'rgb(255,190,190)',
-        "text-halo-color": "#000000",
-        "text-halo-width": 1.5,
-      }
-    });
+  map.addLayer({
+    'id': 'parcel-fut-jeffco-label',
+    'type': 'symbol',
+    'source': 'parcel-fut-jeffco-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(38,115,0)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
 
 
+  //City of Golden Labels
+  map.addSource('parcel-fut-golden-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-golden-cent.geojson'
+  });
 
+  map.addLayer({
+    'id': 'parcel-fut-golden-label',
+    'type': 'symbol',
+    'source': 'parcel-fut-golden-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(56,168,0)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
 
+  //MM Labels
+  map.addSource('parcel-fut-mm-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-mm-cent.geojson'
+  });
 
+  map.addLayer({
+    'id': 'parcel-fut-mm-label',
+    'type': 'symbol',
+    'source': 'parcel-fut-mm-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAME}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(198,225,245)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
 
+  //Private Labels
+  map.addSource('parcel-fut-private-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-private-cent.geojson'
+  });
 
+  map.addLayer({
+    'id': 'parcel-fut-private-label',
+    'type': 'symbol',
+    'source': 'parcel-fut-private-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(255,190,190)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
 
+  //Right of way Labels
+  map.addSource('parcel-fut-row-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-row-cent.geojson'
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  map.addLayer({
+    'id': 'parcel-fut-row-label',
+    'type': 'symbol',
+    'source': 'parcel-fut-row-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(255,190,190)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
 
 
   var style = map.getStyle();
