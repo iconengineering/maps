@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"name": "parcels-mm-cent",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.208582534570169, 39.715441771371289 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.213351788535263, 39.714522161089732 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.210064430259465, 39.714558504135034 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.211854049291077, 39.713215538989218 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.209323476585553, 39.712944827706004 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.207840198968626, 39.711615372377892 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.206708908856257, 39.71191167115267 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.210234068703286, 39.709898535436615 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.208835852634934, 39.71011103101722 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.208545767855782, 39.710861548608996 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.208007317938382, 39.710277861768745 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.212694523417667, 39.710905679710841 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.214749274599768, 39.711672056383215 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.21336659798601, 39.706852758607276 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.213141616999053, 39.711183912473643 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.215986213447309, 39.702497545187548 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.207314434073595, 39.713545215529962 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.20752909349352, 39.718950786877912 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "MARTIN MARIETTA" }, "geometry": { "type": "Point", "coordinates": [ -105.207832386083339, 39.718458274306236 ] } }
+]
+}

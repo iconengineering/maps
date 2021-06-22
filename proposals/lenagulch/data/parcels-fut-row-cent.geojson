@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "parcels-fut-row-cent",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.208013118403656, 39.715689325720625 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207067888251586, 39.715382425255747 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207311481996356, 39.714052080150452 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207591464216605, 39.714684191326469 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.204160169092347, 39.71931514027299 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20755984423397, 39.72207541816519 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.206069912591474, 39.718613249823385 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.209393883115581, 39.720053469494339 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20513982797155, 39.711174069543347 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.204366923115757, 39.707203061609768 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207413100516661, 39.717684024987989 ] } }
+]
+}

@@ -286,25 +286,17 @@ map.on('style.load', function(e) {
   // City of Golden Parcels
   map.addLayer({
     'id': 'parcel-golden',
-    'type': 'line',
-    'source': 'parcel-golden',
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-  map.addLayer({
-    'id': 'parcel-golden',
     'type': 'fill',
     'source': 'parcel-golden',
     'paint': {
       'fill-opacity': 0.5,
-      'fill-color':'rgb(56,168,0)',
+      'fill-color': 'rgb(56,168,0)',
     },
     'layout': {
       'visibility': 'none'
     }
   });
+
 
   // Jefferson County Parcels
   map.addLayer({
@@ -322,30 +314,22 @@ map.on('style.load', function(e) {
     'source': 'parcel-jeffco',
     'paint': {
       'fill-opacity': 0.5,
-      'fill-color':'rgb(38,115,0)'
+      'fill-color': 'rgb(38,115,0)'
     },
     'layout': {
       'visibility': 'none'
     }
   });
 
-  // Martin Marietta Parcels
-  map.addLayer({
-    'id': 'parcel-mm',
-    'type': 'line',
-    'source': 'parcel-mm',
-    'layout': {
-      'visibility': 'none'
-    }
-  });
 
+  // Martin Marietta Parcels
   map.addLayer({
     'id': 'parcel-mm',
     'type': 'fill',
     'source': 'parcel-mm',
     'paint': {
       'fill-opacity': 0.5,
-      'fill-color':'rgb(198,225,245)'
+      'fill-color': 'rgb(198,225,245)'
     },
     'layout': {
       'visibility': 'none'
@@ -355,20 +339,11 @@ map.on('style.load', function(e) {
   // Private Parcels
   map.addLayer({
     'id': 'parcel-private',
-    'type': 'line',
-    'source': 'parcel-private',
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-  map.addLayer({
-    'id': 'parcel-private',
     'type': 'fill',
     'source': 'parcel-private',
     'paint': {
       'fill-opacity': 0.5,
-      'fill-color':'rgb(247,239,208)'
+      'fill-color': 'rgb(247,239,208)'
     },
     'layout': {
       'visibility': 'none'
@@ -378,25 +353,158 @@ map.on('style.load', function(e) {
   // R-O-W Parcels
   map.addLayer({
     'id': 'parcel-row',
-    'type': 'line',
-    'source': 'parcel-row',
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-  map.addLayer({
-    'id': 'parcel-row',
     'type': 'fill',
     'source': 'parcel-row',
     'paint': {
       'fill-opacity': 0.5,
-      'fill-color':'rgb(255,190,190)'
+      'fill-color': 'rgb(255,190,190)'
     },
     'layout': {
       'visibility': 'none'
     }
   });
+
+//Jefferson County Label
+  map.addSource('parcel-jeffco-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-jeffco-cent.geojson'
+  });
+
+  map.addLayer({
+    'id': 'parcel-jeffco-label',
+    'type': 'symbol',
+    'source': 'parcel-jeffco-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(38,115,0)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
+
+  //City of Golden Labels
+  map.addSource('parcel-golden-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-golden-cent.geojson'
+  });
+
+  map.addLayer({
+    'id': 'parcel-golden-label',
+    'type': 'symbol',
+    'source': 'parcel-golden-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(56,168,0)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
+
+  //City of Golden Labels
+  map.addSource('parcel-mm-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-mm-cent.geojson'
+  });
+
+  map.addLayer({
+    'id': 'parcel-mm-label',
+    'type': 'symbol',
+    'source': 'parcel-mm-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(198,225,245)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
+
+  //Right of way Labels
+  map.addSource('parcel-private-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-private-cent.geojson'
+  });
+
+  map.addLayer({
+    'id': 'parcel-private-label',
+    'type': 'symbol',
+    'source': 'parcel-private-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(255,190,190)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
+
+  //Right of way Labels
+  map.addSource('parcel-row-cent', {
+    type: 'geojson',
+    "data": 'data/parcels-row-cent.geojson'
+  });
+
+  map.addLayer({
+    'id': 'parcel-row-label',
+    'type': 'symbol',
+    'source': 'parcel-row-cent',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{OWNNAM}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": 'rgb(255,190,190)',
+      "text-halo-color": "#000000",
+      "text-halo-width": 1.5,
+    }
+  });
+
+
+
+
+
+
+
 
 
   //Regional Parks
@@ -434,7 +542,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
   //Regional Parks
   map.addSource('sidewalkAccess', {
     type: 'geojson',
@@ -459,7 +566,7 @@ map.on('style.load', function(e) {
     "data": 'data/futureLenaCL.geojson'
   });
 
-// Future Lena Gulch CL
+  // Future Lena Gulch CL
   map.addLayer({
     'id': 'futureLenaCL',
     'type': 'line',
@@ -504,7 +611,7 @@ map.on('style.load', function(e) {
     'source': 'futRemovals',
     'paint': {
       'circle-radius': 5.5,
-      'circle-color':'red'
+      'circle-color': 'red'
     },
     'layout': {
       'visibility': 'none'
@@ -524,7 +631,126 @@ map.on('style.load', function(e) {
     'paint': {
       'line-width': 3,
       'line-opacity': 1,
-      'line-color': 'green'
+      'line-color': 'green',
+      'line-dasharray': [4, 2]
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  //Adding a arrow along the trail line
+
+  // map.addLayer({
+  //   'id': 'trailArrows',
+  //   'type': 'symbol',
+  //   'source': 'futureTrails',
+  //   'layout': {
+  //     "visibility": 'visible',
+  //     'symbol-placement': 'line',
+  //     'symbol-spacing': 100,
+  //     "icon-image": 'oneway-spaced-white-small',
+  //     "icon-allow-overlap": true,
+  //     "text-rotation-alignment": "map",
+  //     "icon-size": 2,
+  //     "text-keep-upright": false,
+  //     "icon-padding": 0,
+  //     "icon-ignore-placement": true
+  //   },
+  //   // 'paint': {
+  //   // }
+  // });
+
+  map.addSource('parcel-fut-golden', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-golden.geojson'
+  });
+
+  // Future City of Golden Parcels
+  map.addLayer({
+    'id': 'parcel-fut-golden',
+    'type': 'fill',
+    'source': 'parcel-fut-golden',
+    'paint': {
+      'fill-opacity': 0.5,
+      'fill-color': 'rgb(56,168,0)',
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addSource('parcel-fut-jeffco', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-jeffco.geojson'
+  });
+
+  // Future Jefferson County Parcels
+  map.addLayer({
+    'id': 'parcel-fut-jeffco',
+    'type': 'fill',
+    'source': 'parcel-fut-jeffco',
+    'paint': {
+      'fill-opacity': 0.5,
+      'fill-color': 'rgb(38,115,0)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addSource('parcel-fut-mm', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-mm.geojson'
+  });
+
+  // Martin Marietta Parcels
+  map.addLayer({
+    'id': 'parcel-fut-mm',
+    'type': 'fill',
+    'source': 'parcel-fut-mm',
+    'paint': {
+      'fill-opacity': 0.5,
+      'fill-color': 'rgb(198,225,245)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addSource('parcel-fut-private', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-private.geojson'
+  });
+
+  // Private Parcels
+  map.addLayer({
+    'id': 'parcel-fut-private',
+    'type': 'fill',
+    'source': 'parcel-fut-private',
+    'paint': {
+      'fill-opacity': 0.5,
+      'fill-color': 'rgb(247,239,208)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  map.addSource('parcel-fut-row', {
+    type: 'geojson',
+    "data": 'data/parcels-fut-row.geojson'
+  });
+
+
+  // R-O-W Parcels
+  map.addLayer({
+    'id': 'parcel-fut-row',
+    'type': 'fill',
+    'source': 'parcel-fut-row',
+    'paint': {
+      'fill-opacity': 0.5,
+      'fill-color': 'rgb(255,190,190)'
     },
     'layout': {
       'visibility': 'none'
@@ -532,104 +758,174 @@ map.on('style.load', function(e) {
   });
 
 
-//Future parcels
+  //Jefferson County Label
+    map.addSource('parcel-fut-jeffco-cent', {
+      type: 'geojson',
+      "data": 'data/parcels-fut-jeffco-cent.geojson'
+    });
 
-//Load all parcels
-
-map.addSource('parcel-fut-golden', {
-  type: 'geojson',
-  "data": 'data/parcels-fut-golden.geojson'
-});
-map.addSource('parcel-fut-jeffco', {
-  type: 'geojson',
-  "data": 'data/parcels-fut-jeffco.geojson'
-});
-map.addSource('parcel-fut-mm', {
-  type: 'geojson',
-  "data": 'data/parcels-fut-mm.geojson'
-});
-map.addSource('parcel-fut-private', {
-  type: 'geojson',
-  "data": 'data/parcels-fut-private.geojson'
-});
-map.addSource('parcel-fut-row', {
-  type: 'geojson',
-  "data": 'data/parcels-fut-row.geojson'
-});
-
-// Future City of Golden Parcels
-map.addLayer({
-  'id': 'parcel-fut-golden',
-  'type': 'fill',
-  'source': 'parcel-fut-golden',
-  'paint': {
-    'fill-opacity': 0.5,
-    'fill-color':'rgb(56,168,0)',
-  },
-  'layout': {
-    'visibility': 'none'
-  }
-});
-
-// Future Jefferson County Parcels
-
-map.addLayer({
-  'id': 'parcel-fut-jeffco',
-  'type': 'fill',
-  'source': 'parcel-fut-jeffco',
-  'paint': {
-    'fill-opacity': 0.5,
-    'fill-color':'rgb(38,115,0)'
-  },
-  'layout': {
-    'visibility': 'none'
-  }
-});
-
-// Martin Marietta Parcels
-map.addLayer({
-  'id': 'parcel-fut-mm',
-  'type': 'fill',
-  'source': 'parcel-fut-mm',
-  'paint': {
-    'fill-opacity': 0.5,
-    'fill-color':'rgb(198,225,245)'
-  },
-  'layout': {
-    'visibility': 'none'
-  }
-});
-
-// Private Parcels
-map.addLayer({
-  'id': 'parcel-fut-private',
-  'type': 'fill',
-  'source': 'parcel-fut-private',
-  'paint': {
-    'fill-opacity': 0.5,
-    'fill-color':'rgb(247,239,208)'
-  },
-  'layout': {
-    'visibility': 'none'
-  }
-});
-
-// R-O-W Parcels
-map.addLayer({
-  'id': 'parcel-fut-row',
-  'type': 'fill',
-  'source': 'parcel-fut-row',
-  'paint': {
-    'fill-opacity': 0.5,
-    'fill-color':'rgb(255,190,190)'
-  },
-  'layout': {
-    'visibility': 'none'
-  }
-});
+    map.addLayer({
+      'id': 'parcel-fut-jeffco-label',
+      'type': 'symbol',
+      'source': 'parcel-fut-jeffco-cent',
+      'layout': {
+        "visibility": 'none',
+        "text-optional": true,
+        "text-line-height": 1,
+        "text-size": 12,
+        "text-field": "{OWNNAM}",
+        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+        "text-offset": [0, 1],
+        "text-anchor": "top"
+      },
+      "paint": {
+        "text-color": 'rgb(38,115,0)',
+        "text-halo-color": "#000000",
+        "text-halo-width": 1.5,
+      }
+    });
 
 
-var style = map.getStyle();
+    //City of Golden Labels
+    map.addSource('parcel-fut-golden-cent', {
+      type: 'geojson',
+      "data": 'data/parcels-fut-golden-cent.geojson'
+    });
+
+    map.addLayer({
+      'id': 'parcel-fut-golden-label',
+      'type': 'symbol',
+      'source': 'parcel-fut-golden-cent',
+      'layout': {
+        "visibility": 'none',
+        "text-optional": true,
+        "text-line-height": 1,
+        "text-size": 12,
+        "text-field": "{OWNNAM}",
+        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+        "text-offset": [0, 1],
+        "text-anchor": "top"
+      },
+      "paint": {
+        "text-color": 'rgb(56,168,0)',
+        "text-halo-color": "#000000",
+        "text-halo-width": 1.5,
+      }
+    });
+
+    //MM Labels
+    map.addSource('parcel-fut-mm-cent', {
+      type: 'geojson',
+      "data": 'data/parcels-fut-mm-cent.geojson'
+    });
+
+    map.addLayer({
+      'id': 'parcel-fut-mm-label',
+      'type': 'symbol',
+      'source': 'parcel-fut-mm-cent',
+      'layout': {
+        "visibility": 'none',
+        "text-optional": true,
+        "text-line-height": 1,
+        "text-size": 12,
+        "text-field": "{OWNNAME}",
+        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+        "text-offset": [0, 1],
+        "text-anchor": "top"
+      },
+      "paint": {
+        "text-color": 'rgb(198,225,245)',
+        "text-halo-color": "#000000",
+        "text-halo-width": 1.5,
+      }
+    });
+
+    //Private Labels
+    map.addSource('parcel-fut-private-cent', {
+      type: 'geojson',
+      "data": 'data/parcels-fut-private-cent.geojson'
+    });
+
+    map.addLayer({
+      'id': 'parcel-fut-private-label',
+      'type': 'symbol',
+      'source': 'parcel-fut-private-cent',
+      'layout': {
+        "visibility": 'none',
+        "text-optional": true,
+        "text-line-height": 1,
+        "text-size": 12,
+        "text-field": "{OWNNAM}",
+        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+        "text-offset": [0, 1],
+        "text-anchor": "top"
+      },
+      "paint": {
+        "text-color": 'rgb(255,190,190)',
+        "text-halo-color": "#000000",
+        "text-halo-width": 1.5,
+      }
+    });
+
+    //Right of way Labels
+    map.addSource('parcel-fut-row-cent', {
+      type: 'geojson',
+      "data": 'data/parcels-fut-row-cent.geojson'
+    });
+
+    map.addLayer({
+      'id': 'parcel-fut-row-label',
+      'type': 'symbol',
+      'source': 'parcel-fut-row-cent',
+      'layout': {
+        "visibility": 'none',
+        "text-optional": true,
+        "text-line-height": 1,
+        "text-size": 12,
+        "text-field": "{OWNNAM}",
+        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+        "text-offset": [0, 1],
+        "text-anchor": "top"
+      },
+      "paint": {
+        "text-color": 'rgb(255,190,190)',
+        "text-halo-color": "#000000",
+        "text-halo-width": 1.5,
+      }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var style = map.getStyle();
 
   if (style.name != 'Outdoors') {
     map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
@@ -663,8 +959,8 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8><b>' + feature.properties.Street + ' Street</b>'+'<br><h8>Size: ' +
-    feature.properties.Label + '</h8><br>'+ '<img src = https://iconeng.s3.us-west-2.amazonaws.com/maps/images/coalcreek-erie/20131009_parker-jordan-131.jpg alt="Rutherford" width=240px height=160px>')
+    .setHTML('<h8><b>' + feature.properties.Street + ' Street</b>' + '<br><h8>Size: ' +
+      feature.properties.Label + '</h8><br>' + '<img src = https://iconeng.s3.us-west-2.amazonaws.com/maps/images/coalcreek-erie/20131009_parker-jordan-131.jpg alt="Rutherford" width=240px height=160px>')
     .addTo(map);
 });
 

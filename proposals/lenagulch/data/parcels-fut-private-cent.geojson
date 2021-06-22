@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"name": "parcels-fut-private-cent",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.204884140145367, 39.70237631366242 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.204912024880201, 39.703205930135496 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205321278801975, 39.705220015152896 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206496806156323, 39.704637845574794 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205878989113074, 39.704234902941302 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206002596998061, 39.703469652370231 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205907156393636, 39.702610278960968 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.204837381873716, 39.704081339481327 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.20642919807041, 39.702432165765828 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206318592052071, 39.702025406382873 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.204366715485747, 39.704754383725749 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205027134075195, 39.706135086124981 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.209323475460224, 39.712944828523675 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206708929492081, 39.711911679250797 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.211854053943256, 39.713215539662883 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.213351779824009, 39.714522161984043 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.210064440882888, 39.714558502328345 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.208582537646407, 39.71544177632849 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.207314438086215, 39.713545216094943 ] } }
+]
+}
