@@ -3,17 +3,6 @@
 "name": "parcels-private-cent",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.20488414056139, 39.702376313701073 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.2049120247502, 39.703205930075107 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205321278352002, 39.705220015054344 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.20649680615152, 39.704637841732463 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205878989001178, 39.704234902538204 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206002596970933, 39.703469653250764 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205907156408401, 39.702610277876765 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.204837380984287, 39.704081338938103 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206429196717863, 39.70243216291621 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.206318592052412, 39.702025406408303 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.204366711093598, 39.704754374796991 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205027134060643, 39.706135086347089 ] } }
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "PRIVATE" }, "geometry": { "type": "Point", "coordinates": [ -105.205484511845427, 39.703801516436329 ] } }
 ]
 }

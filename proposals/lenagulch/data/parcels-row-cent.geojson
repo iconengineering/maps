@@ -4,15 +4,9 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.208013116806413, 39.715689323030084 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207067849702909, 39.715382356613858 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207311480537328, 39.714052078954943 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20759146414413, 39.714684191347949 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20416017283226, 39.719315144043492 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20755976963838, 39.722075406526905 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.206069914991346, 39.718613249848055 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207569015443809, 39.721867214288956 ] } },
 { "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.209393866641079, 39.720053457031781 ] } },
 { "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.205139827677556, 39.711174069239455 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20436690424161, 39.707203004881741 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.207413101177835, 39.717684024775188 ] } }
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "RIGHT-OF-WAY" }, "geometry": { "type": "Point", "coordinates": [ -105.20436690424161, 39.707203004881741 ] } }
 ]
 }

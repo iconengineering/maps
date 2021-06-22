@@ -920,14 +920,12 @@ map.on('click', function(e) {
   }
 
   var feature = features[0];
+  // var photoPath = path.join("images/"+feature.properties.Photo+".jpg");
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
     .setHTML('<h8><b>' + feature.properties.Street + ' Street</b>' + '<br><h8>Size: ' +
-      feature.properties.Label + '</h8> <br>' + '<img src= "images/Photo1.jpg" height=240px>'+ feature.properties.Photo)
-
-
-      // https://iconeng.s3.us-west-2.amazonaws.com/maps/images/lenagulch/ >" + feature.properties.Photo )
+      feature.properties.Label + '</h8> <br>' + '<img src= "images/Photo1.jpg" height=240px>'+ feature.properties.Photo.toString())
     .addTo(map);
 });
 

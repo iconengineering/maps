@@ -6,7 +6,6 @@
 { "type": "Feature", "properties": { "Id": 0, "OWNNAM": "JEFFERSON COUNTY" }, "geometry": { "type": "Point", "coordinates": [ -105.202585785009958, 39.713067808856358 ] } },
 { "type": "Feature", "properties": { "Id": 0, "OWNNAM": "JEFFERSON COUNTY" }, "geometry": { "type": "Point", "coordinates": [ -105.215048255130611, 39.714724314507727 ] } },
 { "type": "Feature", "properties": { "Id": 0, "OWNNAM": "JEFFERSON COUNTY" }, "geometry": { "type": "Point", "coordinates": [ -105.209128958242587, 39.716466072841698 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "JEFFERSON COUNTY" }, "geometry": { "type": "Point", "coordinates": [ -105.213966124010724, 39.699163924642725 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "JEFFERSON COUNTY" }, "geometry": { "type": "Point", "coordinates": [ -105.207524763709785, 39.702155329203421 ] } }
+{ "type": "Feature", "properties": { "Id": 0, "OWNNAM": "JEFFERSON COUNTY" }, "geometry": { "type": "Point", "coordinates": [ -105.209941379062826, 39.701297630566366 ] } }
 ]
 }
