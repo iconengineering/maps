@@ -629,7 +629,7 @@ map.on('style.load', function(e) {
       'line-dasharray': [4, 2]
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
 
@@ -925,7 +925,7 @@ map.on('click', function(e) {
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
     .setHTML('<h8><b>' + feature.properties.Street + ' Street</b>' + '<br><h8>Size: ' +
-      feature.properties.Label + '</h8> <br>' + '<img src= "images/Photo1.jpg" height=240px>'+ feature.properties.Photo.toString())
+      feature.properties.Label + '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>')
     .addTo(map);
 });
 
