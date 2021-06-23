@@ -536,6 +536,43 @@ map.on('style.load', function(e) {
   });
 
 
+    //WQ
+    map.addSource('futWQ', {
+      type: 'geojson',
+      "data": 'data/futWQ.geojson'
+    });
+
+    map.addLayer({
+      'id': 'futWQ',
+      'type': 'symbol',
+      'source': 'futWQ',
+      'layout': {
+        'visibility': 'visible',
+        "icon-image": 'garden-15',
+        "icon-size":1
+      }
+    });
+
+    //
+    // //WQ LABEL
+    // map.addLayer({
+    //   'id': 'futWQ-labels',
+    //   'type': 'symbol',
+    //   'source': 'futWQ',
+    //   'layout': {
+    //     'text-field': '{Label}',
+    //     'text-size':10,
+    //     'text-offset':[0,2]
+    //   },
+    //   'paint': {
+    //     'text-color': '#355e3b',
+    //     'text-halo-color': '#ffffff',
+    //     'text-halo-width': 2,
+    //     'text-halo-blur': 1
+    //   }
+    // });
+
+
   //Regional Parks
   map.addSource('sidewalkAccess', {
     type: 'geojson',
