@@ -117,7 +117,7 @@
                   <label for="futRemovals" class="valign">Proposed Removals</label>
                 </p>
                 <p class="indent">
-                  <input name="futWQ" type="checkbox" id="futWQ" class="layer-off" onclick="toggleTwo('futWQ','futWQ-labels')" checked />
+                  <input name="futWQ" type="checkbox" id="futWQ" class="layer-off" onclick="toggleLayer('futWQ')" checked />
                   <label for="futWQ" class="valign">Proposed Water Quality</label>
                 </p>
               </div>
@@ -155,7 +155,7 @@
               <div class="row">
                 <h8> Existing Land Ownership </h8>
                 <p class="indent">
-                  <input name="parcels-golden" type="checkbox" id="parcels-golden" class="layer-off" onclick="toggleTwo('parcel-golden','parcel-golden-label')"/>
+                  <input name="parcels-golden" type="checkbox" id="parcels-golden" class="layer-off" onclick="toggleTwo('parcel-golden','parcel-golden-label')" />
                   <label for="parcels-golden" class="valign">City of Golden Parcels</label>
                 </p>
                 <p class="indent">
@@ -175,7 +175,6 @@
                   <label for="parcels-row" class="valign">Right-of-way Parcels</label>
                 </p>
                 <h8> Future Land Ownership </h8>
-
                 <p class="indent">
                   <input name="parcels-fut-golden" type="checkbox" id="parcels-fut-golden" class="layer-off" onclick="toggleTwo('parcel-fut-golden','parcel-fut-golden-label')" />
                   <label for="parcels-fut-golden" class="valign">City of Golden Parcels</label>
@@ -208,8 +207,7 @@
                 <input name="prjLimits" type="checkbox" id="prjLimits" class="layer-off" onclick="toggleLayer('prj-limits')" checked />
                 <label for="prjLimits" class="valign">Project Limits</label>
               </p>
-
-              <div id="menu" class="demo-toggles">
+              <!-- <div id="menu" class="demo-toggles">
                 <p class="narrow">
                   <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked />
                   <label for="test1">Satellite</label>
@@ -218,9 +216,14 @@
                   <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" />
                   <label for="test2">Light</label>
                 </p>
-              </div>
+                <p class="narrow">
+                  <input name="group3" type="radio" id="test3" value="cjahqpuz797612sqajznqxkyw"/>
+                  <label for="test3">Satellite2</label>
+                </p>
+              </div> -->
             </div>
           </li>
+
 
         </ul>
     </div>

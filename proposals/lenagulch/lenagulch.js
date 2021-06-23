@@ -1,26 +1,26 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
+  style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
   zoom: 14.5,
   center: [-105.2071, 39.7163],
   hash: true,
   preserveDrawingBuffer: true
 });
 
-var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
+// var layerList = document.getElementById('menu');
+// var inputs = layerList.getElementsByTagName('input');
 
-function switchLayer(layer) {
-  var layerId = layer.target.value;
-  map.setStyle('mapbox://styles/iconeng/' + layerId);
-  $('.layer-off').prop('checked', false);
-  $('.layer-on').prop('checked', true);
-}
+// function switchLayer(layer) {
+//   var layerId = layer.target.value;
+//   map.setStyle('mapbox://styles/iconeng/' + layerId);
+//   $('.layer-off').prop('checked', false);
+//   $('.layer-on').prop('checked', true);
+// }
 
-for (var i = 0; i < inputs.length; i++) {
-  inputs[i].onclick = switchLayer;
-}
+// for (var i = 0; i < inputs.length; i++) {
+//   inputs[i].onclick = switchLayer;
+// }
 
 $(document).ready(function() {
   $("#clear").click(function() {
@@ -35,7 +35,6 @@ map.on('style.load', function(e) {
     type: 'geojson',
     "data": 'data/nfhl.geojson'
   });
-
 
   //  NHFL Floodplain Outline
   map.addLayer({
@@ -243,7 +242,7 @@ map.on('style.load', function(e) {
     "data": 'data/prjlimits.geojson'
   });
 
-  //Drainageway centerline
+  //Project Limits
   map.addLayer({
     'id': 'prj-limits',
     'type': 'line',
@@ -316,17 +315,7 @@ map.on('style.load', function(e) {
     }
   });
 
-
   // Jefferson County Parcels
-  map.addLayer({
-    'id': 'parcel-jeffco',
-    'type': 'line',
-    'source': 'parcel-jeffco',
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
   map.addLayer({
     'id': 'parcel-jeffco',
     'type': 'fill',
@@ -339,7 +328,6 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   });
-
 
   // Martin Marietta Parcels
   map.addLayer({
@@ -464,7 +452,7 @@ map.on('style.load', function(e) {
     }
   });
 
-  //Right of way Labels
+  //Private Labels
   map.addSource('parcel-private-cent', {
     type: 'geojson',
     "data": 'data/parcels-private-cent.geojson'
@@ -535,7 +523,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
   //Regional Park LABEL
   map.addLayer({
     'id': 'regionalparks-labels',
@@ -554,7 +541,6 @@ map.on('style.load', function(e) {
     }
   });
 
-
   //WQ
   map.addSource('futWQ', {
     type: 'geojson',
@@ -572,27 +558,7 @@ map.on('style.load', function(e) {
     }
   });
 
-  //
-  // //WQ LABEL
-  // map.addLayer({
-  //   'id': 'futWQ-labels',
-  //   'type': 'symbol',
-  //   'source': 'futWQ',
-  //   'layout': {
-  //     'text-field': '{Label}',
-  //     'text-size':10,
-  //     'text-offset':[0,2]
-  //   },
-  //   'paint': {
-  //     'text-color': '#355e3b',
-  //     'text-halo-color': '#ffffff',
-  //     'text-halo-width': 2,
-  //     'text-halo-blur': 1
-  //   }
-  // });
-
-
-  //Regional Parks
+  //Sidewalk Access
   map.addSource('sidewalkAccess', {
     type: 'geojson',
     "data": 'data/sidewalkaccess.geojson'
@@ -610,13 +576,12 @@ map.on('style.load', function(e) {
     }
   });
 
-  //Regional Parks
+  //Future Lena CL
   map.addSource('futureLenaCL', {
     type: 'geojson',
     "data": 'data/futureLenaCL.geojson'
   });
 
-  // Future Lena Gulch CL
   map.addLayer({
     'id': 'futureLenaCL',
     'type': 'line',
@@ -732,7 +697,7 @@ map.on('style.load', function(e) {
     "data": 'data/parcels-fut-mm.geojson'
   });
 
-  // Martin Marietta Parcels
+  // Future Martin Marietta Parcels
   map.addLayer({
     'id': 'parcel-fut-mm',
     'type': 'fill',
@@ -751,7 +716,7 @@ map.on('style.load', function(e) {
     "data": 'data/parcels-fut-private.geojson'
   });
 
-  // Private Parcels
+  // Future Private Parcels
   map.addLayer({
     'id': 'parcel-fut-private',
     'type': 'fill',
