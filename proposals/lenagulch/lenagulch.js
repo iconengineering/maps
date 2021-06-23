@@ -518,7 +518,7 @@ map.on('style.load', function(e) {
     'source': 'regionalparks',
     'layout': {
       'visibility': 'visible',
-      "icon-image": 'park-15',
+      "icon-image": 'park2-24',
       "icon-size": 1
     }
   });
