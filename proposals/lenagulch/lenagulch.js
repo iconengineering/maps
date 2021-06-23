@@ -105,20 +105,13 @@ map.on('style.load', function(e) {
     "data": 'data/crossingstructures.geojson'
   });
 
-  // Crossing STructures
-  map.addLayer({
-    'id': 'crossStructure-outline',
-    'type': 'line',
-    'source': 'crossStructure',
-    'layout': {
-      'visibility': 'visible'
-    }
-  });
 
+  //Other crossings that aren't yellow from filter below
   map.addLayer({
     'id': 'crossStructure-fill',
     'type': 'fill',
     'source': 'crossStructure',
+    'filter': ['!in', "Photo", 'Photo1', 'Photo2'],
     'paint': {
       'fill-opacity': 0.5,
     },
@@ -126,6 +119,32 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
+  //Highlight features with yellow fill for Photo 1 and Photo 2
+  map.addLayer({
+    'id': 'crossStructure-fill-yellow',
+    'type': 'fill',
+    'source': 'crossStructure',
+    'filter': ['in', "Photo", 'Photo1', 'Photo2'],
+    'paint': {
+      'fill-opacity': 0.5,
+      'fill-color': '#FFFF00',
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+
+    // Crossing STructures
+    map.addLayer({
+      'id': 'crossStructure-outline',
+      'type': 'line',
+      'source': 'crossStructure',
+      'layout': {
+        'visibility': 'visible'
+      }
+    });
 
   map.addSource('lena-cl', {
     type: 'geojson',
@@ -512,7 +531,7 @@ map.on('style.load', function(e) {
     'layout': {
       'visibility': 'visible',
       "icon-image": 'park-15',
-      "icon-size":1
+      "icon-size": 1
     }
   });
 
@@ -524,8 +543,8 @@ map.on('style.load', function(e) {
     'source': 'regionalparks',
     'layout': {
       'text-field': '{Label}',
-      'text-size':16,
-      'text-offset':[0,2]
+      'text-size': 16,
+      'text-offset': [0, 2]
     },
     'paint': {
       'text-color': '#355e3b',
@@ -536,41 +555,41 @@ map.on('style.load', function(e) {
   });
 
 
-    //WQ
-    map.addSource('futWQ', {
-      type: 'geojson',
-      "data": 'data/futWQ.geojson'
-    });
+  //WQ
+  map.addSource('futWQ', {
+    type: 'geojson',
+    "data": 'data/futWQ.geojson'
+  });
 
-    map.addLayer({
-      'id': 'futWQ',
-      'type': 'symbol',
-      'source': 'futWQ',
-      'layout': {
-        'visibility': 'visible',
-        "icon-image": 'plant-svgrepo-com',
-        "icon-size":2
-      }
-    });
+  map.addLayer({
+    'id': 'futWQ',
+    'type': 'symbol',
+    'source': 'futWQ',
+    'layout': {
+      'visibility': 'visible',
+      "icon-image": 'plant-svgrepo-com',
+      "icon-size": 0.075
+    }
+  });
 
-    //
-    // //WQ LABEL
-    // map.addLayer({
-    //   'id': 'futWQ-labels',
-    //   'type': 'symbol',
-    //   'source': 'futWQ',
-    //   'layout': {
-    //     'text-field': '{Label}',
-    //     'text-size':10,
-    //     'text-offset':[0,2]
-    //   },
-    //   'paint': {
-    //     'text-color': '#355e3b',
-    //     'text-halo-color': '#ffffff',
-    //     'text-halo-width': 2,
-    //     'text-halo-blur': 1
-    //   }
-    // });
+  //
+  // //WQ LABEL
+  // map.addLayer({
+  //   'id': 'futWQ-labels',
+  //   'type': 'symbol',
+  //   'source': 'futWQ',
+  //   'layout': {
+  //     'text-field': '{Label}',
+  //     'text-size':10,
+  //     'text-offset':[0,2]
+  //   },
+  //   'paint': {
+  //     'text-color': '#355e3b',
+  //     'text-halo-color': '#ffffff',
+  //     'text-halo-width': 2,
+  //     'text-halo-blur': 1
+  //   }
+  // });
 
 
   //Regional Parks
@@ -669,28 +688,6 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   });
-
-  //Adding a arrow along the trail line
-
-  // map.addLayer({
-  //   'id': 'trailArrows',
-  //   'type': 'symbol',
-  //   'source': 'futureTrails',
-  //   'layout': {
-  //     "visibility": 'visible',
-  //     'symbol-placement': 'line',
-  //     'symbol-spacing': 100,
-  //     "icon-image": 'oneway-spaced-white-small',
-  //     "icon-allow-overlap": true,
-  //     "text-rotation-alignment": "map",
-  //     "icon-size": 2,
-  //     "text-keep-upright": false,
-  //     "icon-padding": 0,
-  //     "icon-ignore-placement": true
-  //   },
-  //   // 'paint': {
-  //   // }
-  // });
 
   map.addSource('parcel-fut-golden', {
     type: 'geojson',
@@ -939,7 +936,7 @@ map.on('style.load', function(e) {
 //Use the same approach as above to indicate that the symbols are clickable by changing the cursor style to 'pointer'.
 map.on('mousemove', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['crossStructure-fill', 'eff-discharges', 'prj-limits']
+    layers: ['crossStructure-fill', 'crossStructure-fill-yellow', 'eff-discharges', 'prj-limits']
   });
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 });
@@ -950,7 +947,7 @@ map.on('mousemove', function(e) {
 //Structure Labels
 map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['crossStructure-fill']
+    layers: ['crossStructure-fill','crossStructure-fill-yellow']
   });
   if (!features.length) {
     return;

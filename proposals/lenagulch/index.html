@@ -100,7 +100,7 @@
                   <label for="effDischarge" class="valign">Effective Discharge</label>
                 </p>
                 <p class="indent">
-                  <input name="crossingStructures" type="checkbox" id="crossingStructures" class="layer-off" onclick="toggleTwo('crossStructure-outline','crossStructure-fill')" checked />
+                  <input name="crossingStructures" type="checkbox" id="crossingStructures" class="layer-off" onclick="toggleThree('crossStructure-outline','crossStructure-fill','crossStructure-fill-yellow')" checked />
                   <label for="crossingStructures" class="valign">Crossing Structures</label>
                 </p>
                 <h7>Proposed Improvements </h7>
@@ -155,7 +155,7 @@
               <div class="row">
                 <h8> Existing Land Ownership </h8>
                 <p class="indent">
-                  <input name="parcels-golden" type="checkbox" id="parcels-golden" class="layer-off" onclick="toggleTwo('parcel-golden','parcel-golden-label')" checked />
+                  <input name="parcels-golden" type="checkbox" id="parcels-golden" class="layer-off" onclick="toggleTwo('parcel-golden','parcel-golden-label')"/>
                   <label for="parcels-golden" class="valign">City of Golden Parcels</label>
                 </p>
                 <p class="indent">
@@ -204,10 +204,6 @@
           <li>
             <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Mapping</div>
             <div class="collapsible-body white">
-              <p>
-                <input name="crossStructure" type="checkbox" id="crossStructure" class="layer-off" onclick="toggleTwo('crossStructure-fill','crossStructure-outline')" checked />
-                <label for="crossStructure" class="valign">Crossing Structures</label>
-              </p>
               <p>
                 <input name="prjLimits" type="checkbox" id="prjLimits" class="layer-off" onclick="toggleLayer('prj-limits')" checked />
                 <label for="prjLimits" class="valign">Project Limits</label>
