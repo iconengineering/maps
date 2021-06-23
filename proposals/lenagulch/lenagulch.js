@@ -524,7 +524,7 @@ map.on('style.load', function(e) {
     'source': 'regionalparks',
     'layout': {
       'text-field': '{Label}',
-      'text-size':10,
+      'text-size':16,
       'text-offset':[0,2]
     },
     'paint': {
@@ -548,8 +548,8 @@ map.on('style.load', function(e) {
       'source': 'futWQ',
       'layout': {
         'visibility': 'visible',
-        "icon-image": 'garden-15',
-        "icon-size":1
+        "icon-image": 'plant-svgrepo-com',
+        "icon-size":2
       }
     });
 
