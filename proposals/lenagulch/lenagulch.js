@@ -928,6 +928,9 @@ map.on('click', function(e) {
     .addTo(map);
 });
 
+
+
+
 //Effective Discharge click
 map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
