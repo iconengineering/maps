@@ -49,12 +49,26 @@ map.on('style.load',function(e){
   });
   map.addSource('outfalls', {
       type: 'geojson',
-      "data": 'outfalls.geojson'
+      "data": 'geojson/outfalls.geojson'
   });
-  // map.addSource('flowDepthOver', {        //combined ROG & AOI
-  //     type: 'vector',
-  //     url: 'mapbox://iconeng.92452b9f'
-  // });
+  map.addSource('storages', {
+      type: 'geojson',
+      "data": 'geojson/storages.geojson'
+  });
+  map.addSource('basins', {
+      type: 'vector',
+      url: 'mapbox://iconeng.cm3pqji3'
+  });
+  map.addSource('basins_pts', {
+      type: 'vector',
+      url: 'mapbox://iconeng.9jscoexe'
+  });
+  map.addSource('mhfd-streams', {
+      type: 'vector',
+      url: 'mapbox://iconeng.d9coogno'
+  });
+
+
 
   map.addLayer({
       'id': 'conduits',
@@ -69,6 +83,46 @@ map.on('style.load',function(e){
       }
   });
 
+  map.addLayer({
+      'id': 'conduitArrows',
+      'type': 'symbol',
+      'source': 'conveyance',
+      'layout': {
+        "visibility": 'none',
+        'symbol-placement': 'line',
+        'symbol-spacing': 50,
+        "icon-image": "oneway-white-small",
+        "icon-allow-overlap": true,
+        "text-rotation-alignment": "map",
+        "icon-size": 1,
+        "text-keep-upright": false,
+        "icon-padding": 0,
+        "icon-ignore-placement": true
+      },
+      'paint': {
+      }
+  });
+
+  map.addLayer({
+      'id': 'conduitLabels',
+      'type': 'symbol',
+      'source': 'conveyance',
+      'layout': {
+        "visibility": 'visible',
+        "text-optional": true,
+        'symbol-placement': 'line',
+        'symbol-spacing': 100,
+        'text-field': '{NAME}',
+        'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+        'text-size': 10,
+        "text-padding": 100,
+      },
+      'paint': {
+        'text-color': '#F8F4F0',
+        'text-halo-color': '#089099',
+        'text-halo-width': 1
+      }
+  });
 
   map.addLayer({
       'id': 'dividers',
@@ -138,157 +192,187 @@ map.on('style.load',function(e){
      }
   });
 
+  map.addLayer({
+    'id': 'outfalls',
+    'type': 'circle',
+    'source': 'outfalls',
+    'layout': {
+       "visibility": 'visible'
+     },
+    'paint': {
+        'circle-radius': 5,
+        'circle-color': '#f7945d'
+    }
+  });
 
+  map.addLayer({
+      'id': 'outfallsLabels',
+      'type': 'symbol',
+      'source': 'outfalls',
+      'layout': {
+         "visibility": 'visible',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": 12,
+         "text-field": "{NAME}",
+         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-offset": [0, 1],
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#f7945d",
+       "text-halo-color": "#F8F4F0",
+       "text-halo-width": 1,
+     }
+  });
 
+  map.addLayer({
+    'id': 'storages',
+    'type': 'circle',
+    'source': 'storages',
+    'layout': {
+       "visibility": 'visible'
+     },
+    'paint': {
+        'circle-radius': 5,
+        'circle-color': '#f7945d'
+    }
+  });
 
+  map.addLayer({
+      'id': 'storageLabels',
+      'type': 'symbol',
+      'source': 'storages',
+      'layout': {
+         "visibility": 'visible',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": 12,
+         "text-field": "{NAME}",
+         'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-offset": [0, 1],
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#f7945d",
+       "text-halo-color": "#F8F4F0",
+       "text-halo-width": 1,
+     }
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-  // map.addLayer({
-  //     'id': 'ponds',
-  //     'type': 'fill',
-  //     'source': 'ponds',
-  //     'filter': ['==', 'Show', "1"],
-  //     'paint': {
-  //         'fill-opacity': 0,
-  //         'fill-color': '#1D6996'
-  //     }
-  // }, 'road-label-small');
-
-  // map.addLayer({
-  //     'id': 'basinOutlines',
-  //     'type': 'line',
-  //     'source': 'basinOutlines',
-  //     'paint': {
-  //         'line-width': 1,
-  //         'line-opacity': 1,
-  //         'line-color': 'rgba(0,0,0,1)',
-  //         'line-dasharray': [8,4]
-  //     }
-  // });
-
-  // map.addLayer({
-  //     'id': 'basinConnections',
-  //     'type': 'line',
-  //     'source': 'basinConnections',
-  //     'paint': {
-  //         'line-width': 1.5,
-  //         'line-opacity': 1,
-  //         'line-color': 'rgba(0,0,0,.62)',
-  //         'line-dasharray': [3,1]
-  //     }
-  // });
-
-  // map.addLayer({
-  //     'id': 'basinCircles',
-  //     'type': 'circle',
-  //     'source': 'basinPoints',
-  //     'paint': {
-  //       'circle-opacity': 1,
-  //         'circle-radius': {
-  //             "stops": [[13, 1.5], [15, 3], [17, 4]]
-  //         },
-  //         'circle-color': 'rgba(0,0,0,.62)'
-  //     }
-  // });
-
-  // map.addLayer({
-  //     'id': 'outfalls',
-  //     'type': 'line',
-  //     'source': 'outfalls',
-  //     'paint': {
-  //         'line-width': 2.5,
-  //         'line-opacity': 0,
-  //         'line-color': '#5F4690'
-  //     }
-  // });
-
-
-
-  // map.addLayer({
-  //     'id': 'conduitComps',
-  //     'type': 'line',
-  //     'source': 'conveyance',
-  //     'filter': ['!=', 'ACE05_Q2', -9999],
-  //     'layout': {
-  //       "visibility": 'none'
-  //       },
-  //     'paint': {
-  //         'line-width': 6,
-  //         'line-color': '#045275'
-  //     }
-  // });
+  map.addLayer({
+      'id': 'basinOutlines',
+      'type': 'line',
+      'source': 'basins',
+      'source-layer': 'basins-amk86j',
+      'paint': {
+          'line-width': 1,
+          'line-opacity': 1,
+          'line-color': 'rgba(0,0,0,1)',
+          'line-dasharray': [8,4]
+      }
+  });
 
   // map.addLayer({
-  //     'id': 'conduitArrows',
+  //     'id': 'basinLabels',
   //     'type': 'symbol',
-  //     'source': 'conveyance',
+  //     'source': 'basins_pts',
+  //     'source-layer':'basins_pts-57794c',
   //     'layout': {
-  //       "visibility": 'none',
-  //       'symbol-placement': 'line',
-  //       'symbol-spacing': 50,
-  //       "icon-image": "oneway-white-small",
-  //       "icon-allow-overlap": true,
-  //       "text-rotation-alignment": "map",
-  //       "icon-size": 1,
-  //       "text-keep-upright": false,
-  //       "icon-padding": 0,
-  //       "icon-ignore-placement": true
-  //     },
-  //     'paint': {
-  //     }
+  //        "visibility": 'visible',
+  //        "text-optional": true,
+  //        "text-line-height": 1,
+  //        "text-size": {
+  //            "stops": [[15, 10], [17, 12], [19, 14]]
+  //        },
+  //        "text-field": "{Area_AC} Ac. | {E_Per_Imp}%| {F_Per_Imp}%",
+  //        'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+  //        "text-offset": {
+  //            "stops": [[13, [0, .25]], [17, [0, .75]]]
+  //        },
+  //        "text-anchor": "top"
+  //    },
+  //    "paint": {
+  //      "text-color": "#F8F4F0",
+  //      "text-halo-color": "rgba(0,0,0,.87)",
+  //      "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+  //    }
   // });
 
-  // map.addLayer({
-  //     'id': 'conduitCompsArrows',
-  //     'type': 'symbol',
-  //     'source': 'conveyance',
-  //     "filter": ['!=', 'ACE05_Q2', -9999],
-  //     'layout': {
-  //       "visibility": 'none',
-  //       'symbol-placement': 'line',
-  //       'symbol-spacing': 50,
-  //       "icon-image": "oneway-white-small",
-  //       "icon-allow-overlap": true,
-  //       "text-rotation-alignment": "map",
-  //       "icon-size": 1,
-  //       "text-keep-upright": false,
-  //       "icon-padding": 0,
-  //       "icon-ignore-placement": true
-  //     },
-  //     'paint': {
-  //     }
-  // });
+  map.addLayer({
+      'id': 'basinLabels2',
+      'type': 'symbol',
+      'source': 'basins_pts',
+      'source-layer':'basins_pts-57794c',
+      'layout': {
+         "visibility": 'visible',
+         "text-optional": true,
+         "text-line-height": 1,
+         "text-size": {
+             "stops": [[15, 10], [17, 12], [19, 14]]
+         },
+         "text-field": "{Basin_Name}",
+         "text-offset": {
+             "stops": [[13, [0, -1]], [17, [0, -1.5]]]
+         },
+         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+         "text-anchor": "top"
+     },
+     "paint": {
+       "text-color": "#F8F4F0",
+       "text-halo-color": "rgba(0,0,0,.87)",
+       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+     }
+  });
 
-  // map.addLayer({
-  //     'id': 'conduitLabels',
-  //     'type': 'symbol',
-  //     'source': 'conveyance',
-  //     'layout': {
-  //       "visibility": 'none',
-  //       "text-optional": true,
-  //       'symbol-placement': 'line',
-  //       'symbol-spacing': 100,
-  //       'text-field': '{Name}',
-  //       'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
-  //       'text-size': 10,
-  //       "text-padding": 100,
-  //     },
-  //     'paint': {
-  //       'text-color': '#F8F4F0',
-  //       'text-halo-color': '#089099',
-  //       'text-halo-width': 1
-  //     }
-  // });
+
+  map.addLayer({
+    'id': 'mhfd-streams',
+    'type': 'line',
+    'source': 'mhfd-streams',
+    'source-layer':'mhfd_streams-dbmy0f',
+    'paint': {
+      'line-width': 2,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,77,168,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
+
+  //Drainageway Centerline LABEL
+  map.addLayer({
+    'id': 'lena-cl-labels',
+    'type': 'symbol',
+    'source': 'mhfd-streams',
+    'source-layer':'mhfd_streams-dbmy0f',
+    'layout': {
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{Str_Name}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
+
+
+
+
+
+
 
   // map.addLayer({
   //     'id': 'conduitCompsLabels',
@@ -351,55 +435,7 @@ map.on('style.load',function(e){
   //    }
   // });
 
-  // map.addLayer({
-  //     'id': 'basinLabels',
-  //     'type': 'symbol',
-  //     'source': 'basinPoints',
-  //     'layout': {
-  //        "visibility": 'none',
-  //        "text-optional": true,
-  //        "text-line-height": 1,
-  //        "text-size": {
-  //            "stops": [[15, 10], [17, 12], [19, 14]]
-  //        },
-  //        "text-field": "{Area_Ac} Ac. | {Imperv}%",
-  //        'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
-  //        "text-offset": {
-  //            "stops": [[13, [0, .25]], [17, [0, .75]]]
-  //        },
-  //        "text-anchor": "top"
-  //    },
-  //    "paint": {
-  //      "text-color": "#F8F4F0",
-  //      "text-halo-color": "rgba(0,0,0,.87)",
-  //      "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-  //    }
-  // });
 
-  // map.addLayer({
-  //     'id': 'basinLabels2',
-  //     'type': 'symbol',
-  //     'source': 'basinPoints',
-  //     'layout': {
-  //        "visibility": 'none',
-  //        "text-optional": true,
-  //        "text-line-height": 1,
-  //        "text-size": {
-  //            "stops": [[15, 10], [17, 12], [19, 14]]
-  //        },
-  //        "text-field": "{Name}",
-  //        "text-offset": {
-  //            "stops": [[13, [0, -1]], [17, [0, -1.5]]]
-  //        },
-  //        'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
-  //        "text-anchor": "top"
-  //    },
-  //    "paint": {
-  //      "text-color": "#F8F4F0",
-  //      "text-halo-color": "rgba(0,0,0,.87)",
-  //      "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-  //    }
-  // });
 
   // map.addLayer({
   //     'id': 'watershedLabels',
@@ -433,42 +469,6 @@ map.on('style.load',function(e){
 
 });
 
-
-
-/*
-//Radio Button for Flow Depth
-var depthList = document.getElementById('flowDepthSwitch');
-var depthRadio = depthList.getElementsByTagName('input');
-
-function switchDepth() {
-  var value = document.querySelector('input[name="switchFD"]:checked').value;
-    map.setFilter('flowDepth', ['==', 'Type', value]);
-    //map.setFilter('flowDepthOver', ['==', 'type', value]);
-}
-
-for (var i = 0; i < depthRadio.length; i++) {
-    depthRadio[i].onclick = switchDepth;
-}
-
-
-
-//Radio Button for Velocity
-var velocityList = document.getElementById('velocitySwitch');
-var velocityRadio = velocityList.getElementsByTagName('input');
-
-function switchVelocity() {
-  var value = document.querySelector('input[name="switchV"]:checked').value;
-    map.setFilter('velocity', ['==', 'Type', value]);
-
-}
-
-for (var i = 0; i < velocityRadio.length; i++) {
-    velocityRadio[i].onclick = switchVelocity;
-}
-
-
-
-*/
 
 
 
@@ -743,12 +743,12 @@ for (var i = 0; i < velocityRadio.length; i++) {
 //         } else { return; }
 //     });
 
-// map.on('mousemove', function (e) {
-//     var features = map.queryRenderedFeatures(e.point, { layers: ['conduits','junctions','conduitComps','junctionComps'] });
-//
-//     map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-//
-// });
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['conduits','junctions'] });
+
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+
+});
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
