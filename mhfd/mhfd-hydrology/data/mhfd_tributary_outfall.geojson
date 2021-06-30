@@ -1,9 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "mhfd_tributary_outfall",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "fid": 1.0, "SOURCE": "Leyden Creek MDP 2015", "MHFD_Name": "Barbara Gulch", "MHFD_ID": "1.4300.60.50", "STUDY_YR": "2015", "SWMM_INP": "LCM.inp", "SWMM_VER": "5.0.022", "CUHP_VER": "1.4.3", "Name": "501", "Q_WQ": null, "Q_001": null, "Q_002": 512.71, "Q_005": 888.22, "Q_010": 1147.06, "Q_025": 1611.78, "Q_050": 1993.24, "Q_100": 2330.56, "Q_500": null, "LAST_EDITO": "Darren Harder", "LAST_DATE": "2020-06-16" }, "geometry": { "type": "Point", "coordinates": [ -105.187622068291589, 39.84408000736007 ] } },
-{ "type": "Feature", "properties": { "fid": 2.0, "SOURCE": "Leyden Creek MDP 2015", "MHFD_Name": "Leyden Creek", "MHFD_ID": "1.4300.60.50.35", "STUDY_YR": "2015", "SWMM_INP": "LCM.inp", "SWMM_VER": "5.0.022", "CUHP_VER": "1.4.3", "Name": "100", "Q_WQ": null, "Q_001": null, "Q_002": 38.58, "Q_005": 61.48, "Q_010": 77.51, "Q_025": 100.12, "Q_050": 121.52, "Q_100": 137.09, "Q_500": null, "LAST_EDITO": "Darren Harder", "LAST_DATE": "2020-06-16" }, "geometry": { "type": "Point", "coordinates": [ -105.126573598455579, 39.822040484065823 ] } }
-]
-}
