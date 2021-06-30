@@ -814,7 +814,24 @@ map.on('mousemove', function (e) {
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-document.getElementById('LeydenCreekMDP').addEventListener('click',function() {
-  var bbox = [[-105.275, 39.99],[-105.245,40]];
+// document.getElementById('LeaydenCreekMDP').addEventListener('click',function() {
+//   var bbox = [[-105.255,39.882],[-105.116,39.809]];
+//   map.fitBounds(bbox,{padding: 10});
+// });
+
+document.getElementById('LeydenCreekMDP').addEventListener('click', function() {
+
+  var bbox = [[-105.275,39.9901], [-105.245,40.0089]];
+  map.fitBounds(bbox, { padding: 10 });
+
+});
+document.getElementById('SloanLakeMDP').addEventListener('click',function() {
+
+  var bbox = [[-105.12845,39.79245], [-104.98130,39.70633]];
+  map.fitBounds(bbox, { padding: 10 });
+
+});
+document.getElementById('NiverCreekMDP').addEventListener('click',function() {
+  var bbox = [[-105.02748,39.88331],[-104.94248,39.82989]];
   map.fitBounds(bbox,{padding: 10});
 });
