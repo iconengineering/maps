@@ -65,33 +65,31 @@
           <div class="collapsible-header black"><i class="material-icons right">keyboard_arrow_down</i>Hydrology</div>
           <div class="collapsible-body white">
             <p>
-              <input name="watersheds" type="checkbox" id="watersheds" class="layer-on" onclick="toggleTwo('watersheds','watershedLabels')" checked />
-              <label for="watersheds" class="valign">Watersheds</label>
-            </p>
-            <p>
-              <input name="basins" type="checkbox" id="basins" class="layer-on" onclick="toggleSmooth('basinOutlines','line-opacity',1)" checked />
-              <label for="basins" class="valign">Basins</label>
-            </p>
-            <p class="indent">
-              <input name="basinLabels" type="checkbox" id="basinLabels" class="layer-off filled-in small-checkbox" onclick="toggleTwo('basinLabels','basinLabels2')" />
-              <label for="basinLabels" class="valign">Labels</label>
-            </p>
-            <p>
-              <input name="basinConnections" type="checkbox" id="basinConnections" class="layer-on" onclick="smoothTwo('basinConnections','line-opacity',1,'basinCircles','circle-opacity',1)" checked />
-              <label for="basinConnections" class="valign">Basin Connections</label>
-            </p>
-            <p>
-              <input name="conduits" type="checkbox" id="conduits" class="layer-off" onclick="toggleThree('conduits','conduitLabels','conduitArrows')" />
-              <label for="conduits" class="valign">Conduits</label>
-            </p>
-            <p>
-              <input name="junctions" type="checkbox" id="junctions" class="layer-off" onclick="toggleTwo('junctions','junctionLabels')" />
+              <input name="junctions" type="checkbox" id="junctions" class="layer-on" onclick="toggleTwo('junctions','junctionLabels')" checked/>
               <label for="junctions" class="valign">Junctions</label>
             </p>
             <p>
-              <input name="ponds" type="checkbox" id="ponds" class="layer-off" onclick="toggleSmooth('ponds','fill-opacity',.75)" />
-              <label for="ponds" class="valign">Ponds</label>
+              <input name="dividers" type="checkbox" id="dividers" class="layer-on" onclick="toggleTwo('dividers','dividerLabels')" checked/>
+              <label for="dividers" class="valign">Dividers</label>
             </p>
+            <p>
+              <input name="outfalls" type="checkbox" id="outfalls" class="layer-on" onclick="toggleTwo('outfalls','outfallsLabels')" checked/>
+              <label for="outfalls" class="valign">Outfalls</label>
+            </p>
+            <p>
+              <input name="storages" type="checkbox" id="storages" class="layer-on" onclick="toggleTwo('storages','storageLabels')" checked/>
+              <label for="storages" class="valign">Storages</label>
+            </p>
+            <p>
+              <input name="conduits" type="checkbox" id="conduits" class="layer-on" onclick="toggleThree('conduits','conduitLabels')" checked />
+              <label for="conduits" class="valign">Conduits</label>
+            </p>
+            <p>
+              <input name="outlets" type="checkbox" id="outlets" class="layer-on" onclick="toggleTwo('outlets','outletLabels')" checked />
+              <label for="outlets" class="valign">Outlets</label>
+            </p>
+
+
           </div>
         </li>
 
@@ -111,12 +109,16 @@
             </div>
             <hr>
             <p>
-              <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="smoothThree('1ftContours','line-opacity',1,'5ftContours','line-opacity',1,'5ftLabels','text-opacity',1)" />
-              <label for="contours" class="valign">MHFD Streams</label>
+              <input name="stream" type="checkbox" id="stream" class="layer-off" onclick="toggleTwo('mhfd-streams','mhfd-stream-labels')" />
+              <label for="stream" class="valign">MHFD Streams</label>
             </p>
             <p>
-              <input name="outfalls" type="checkbox" id="outfalls" class="layer-off" onclick="toggleSmooth('outfalls','line-opacity',1)" />
-              <label for="outfalls" class="valign">MHFD Basins</label>
+              <input name="basins" type="checkbox" id="basins" class="layer-off" onclick="toggleLayer('basinOutlines')" />
+              <label for="basins" class="valign">MHFD Basins</label>
+            </p>
+            <p class="indent">
+              <input name="basinLabels" type="checkbox" id="basinLabels" class="layer-off filled-in small-checkbox" onclick="toggleLayer('basinLabels2')" />
+              <label for="basinLabels" class="valign">Labels</label>
             </p>
           </div>
         </li>

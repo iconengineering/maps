@@ -39,6 +39,10 @@ map.on('style.load',function(e){
       type: 'geojson',
       "data": 'geojson/conduits.geojson'
   });
+  map.addSource('outlets', {
+      type: 'geojson',
+      "data": 'geojson/outlets.geojson'
+  });
   map.addSource('dividers', {
       type: 'geojson',
       "data": 'geojson/dividers.geojson'
@@ -83,30 +87,84 @@ map.on('style.load',function(e){
       }
   });
 
-  map.addLayer({
-      'id': 'conduitArrows',
-      'type': 'symbol',
-      'source': 'conveyance',
-      'layout': {
-        "visibility": 'none',
-        'symbol-placement': 'line',
-        'symbol-spacing': 50,
-        "icon-image": "oneway-white-small",
-        "icon-allow-overlap": true,
-        "text-rotation-alignment": "map",
-        "icon-size": 1,
-        "text-keep-upright": false,
-        "icon-padding": 0,
-        "icon-ignore-placement": true
-      },
-      'paint': {
-      }
-  });
+  // map.addLayer({
+  //     'id': 'conduitArrows',
+  //     'type': 'symbol',
+  //     'source': 'conveyance',
+  //     'layout': {
+  //       "visibility": 'none',
+  //       'symbol-placement': 'line',
+  //       'symbol-spacing': 50,
+  //       "icon-image": "oneway-white-small",
+  //       "icon-allow-overlap": true,
+  //       "text-rotation-alignment": "map",
+  //       "icon-size": 1,
+  //       "text-keep-upright": false,
+  //       "icon-padding": 0,
+  //       "icon-ignore-placement": true
+  //     },
+  //     'paint': {
+  //     }
+  // });
 
   map.addLayer({
       'id': 'conduitLabels',
       'type': 'symbol',
       'source': 'conveyance',
+      'layout': {
+        "visibility": 'visible',
+        "text-optional": true,
+        'symbol-placement': 'line',
+        'symbol-spacing': 100,
+        'text-field': '{NAME}',
+        'text-font': ['Roboto Bold','Open Sans Regular','Arial Unicode MS Regular'],
+        'text-size': 10,
+        "text-padding": 100,
+      },
+      'paint': {
+        'text-color': '#F8F4F0',
+        'text-halo-color': '#089099',
+        'text-halo-width': 1
+      }
+  });
+
+  map.addLayer({
+      'id': 'outlets',
+      'type': 'line',
+      'source': 'outlets',
+      'layout': {
+        "visibility": 'visible'
+        },
+      'paint': {
+          'line-width': 3,
+          'line-color': '#089099'
+      }
+  });
+
+  // map.addLayer({
+  //     'id': 'conduitArrows',
+  //     'type': 'symbol',
+  //     'source': 'conveyance',
+  //     'layout': {
+  //       "visibility": 'none',
+  //       'symbol-placement': 'line',
+  //       'symbol-spacing': 50,
+  //       "icon-image": "oneway-white-small",
+  //       "icon-allow-overlap": true,
+  //       "text-rotation-alignment": "map",
+  //       "icon-size": 1,
+  //       "text-keep-upright": false,
+  //       "icon-padding": 0,
+  //       "icon-ignore-placement": true
+  //     },
+  //     'paint': {
+  //     }
+  // });
+
+  map.addLayer({
+      'id': 'outletLabels',
+      'type': 'symbol',
+      'source': 'outlets',
       'layout': {
         "visibility": 'visible',
         "text-optional": true,
@@ -265,6 +323,9 @@ map.on('style.load',function(e){
       'type': 'line',
       'source': 'basins',
       'source-layer': 'basins-amk86j',
+      'layout':{
+        'visibility':'none',
+      },
       'paint': {
           'line-width': 1,
           'line-opacity': 1,
@@ -305,7 +366,7 @@ map.on('style.load',function(e){
       'source': 'basins_pts',
       'source-layer':'basins_pts-57794c',
       'layout': {
-         "visibility": 'visible',
+         "visibility": 'none',
          "text-optional": true,
          "text-line-height": 1,
          "text-size": {
@@ -337,17 +398,18 @@ map.on('style.load',function(e){
       'line-color': 'rgba(0,77,168,1)'
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   });
 
   //Drainageway Centerline LABEL
   map.addLayer({
-    'id': 'lena-cl-labels',
+    'id': 'mhfd-stream-labels',
     'type': 'symbol',
     'source': 'mhfd-streams',
     'source-layer':'mhfd_streams-dbmy0f',
     'layout': {
+      'visibility':'none',
       'symbol-placement': 'line',
       'symbol-spacing': 100,
       'text-field': '{Str_Name}',
