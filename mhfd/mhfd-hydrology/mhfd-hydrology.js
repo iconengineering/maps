@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/iconeng/cikh67rk8004n9vkouhls14s4',
-    zoom: 13.25,
-    center: [-105.0833, 40.5834],
+    zoom: 10,
+    center: [-104.9729, 39.7839],
     hash: true,
     preserveDrawingBuffer: true
 });
@@ -819,19 +819,20 @@ map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 //   map.fitBounds(bbox,{padding: 10});
 // });
 
+//SW to NE Coordinates
 document.getElementById('LeydenCreekMDP').addEventListener('click', function() {
 
-  var bbox = [[-105.275,39.9901], [-105.245,40.0089]];
-  map.fitBounds(bbox, { padding: 10 });
+  var bbox = [[-105.25114,39.80655], [-105.12183,39.87196]];
+  map.fitBounds(bbox, { padding: 50 });
 
 });
 document.getElementById('SloanLakeMDP').addEventListener('click',function() {
 
-  var bbox = [[-105.12845,39.79245], [-104.98130,39.70633]];
-  map.fitBounds(bbox, { padding: 10 });
+  var bbox = [[-105.10186,39.73217], [-105.01699,39.76711]];
+  map.fitBounds(bbox, { padding: 50 });
 
 });
 document.getElementById('NiverCreekMDP').addEventListener('click',function() {
-  var bbox = [[-105.02748,39.88331],[-104.94248,39.82989]];
-  map.fitBounds(bbox,{padding: 10});
+  var bbox = [[-105.02498,39.83351],[-104.94610,39.88893]];
+  map.fitBounds(bbox, { padding: 50 });
 });
