@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
+    style: 'mapbox://styles/iconeng/cikh67rk8004n9vkouhls14s4',
     zoom: 13,
     center: [-104.705, 40.42],
     hash: true,
@@ -54,7 +54,7 @@ map.on('style.load', function (e) {
       type: 'vector',
       //merged file
       url: 'mapbox://iconeng.1x8kd1vy'
-      //url: 'mapbox://iconeng.2w7cnk9w' original 
+      //url: 'mapbox://iconeng.2w7cnk9w' original
   });
 
 
@@ -196,7 +196,7 @@ map.on('style.load', function (e) {
       }
   });
 
-  
+
 
 
   // EXISTING CONVEYANCE
@@ -299,7 +299,7 @@ map.on('style.load', function (e) {
         "icon-ignore-placement": true
       },
       'paint': {
-        'icon-opacity': 0 
+        'icon-opacity': 0
       }
   });
 
