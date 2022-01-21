@@ -2,9 +2,9 @@
 layout: default_mapList
 ---
 
-## List of ICON's Web Maps
+# ICON Web Map Directory
 
-#### Boulder
+### Boulder
 
 [Skunk, Bluebell, King](boulder/sbk-map)
 
@@ -22,7 +22,7 @@ layout: default_mapList
 
 [Flood Mitigation Comments](boulder/flood-mitigation-comments)
 
-#### Fort Collins
+### Fort Collins
 
 [Old Town Results](fort-collins/old-town-results)
 
@@ -32,11 +32,11 @@ layout: default_mapList
 
 [West Vine](fort-collins/west-vine)
 
-#### Greeley
+### Greeley
 
-[North Greeley and Downtown](greeley/ngd-update)
+[North Greeley and Downtown Masterplan](greeley/ngd-update)
 
-#### Mile High Flood District
+### Mile High Flood District
 
 [Clear Creek DFIRM](clear-creek-dfirm)
 
@@ -48,11 +48,18 @@ layout: default_mapList
 
 [ICON & MHFD](MHFD_ICON)
 
+### Stormwater Master Plans
 
-#### Others
+#### Active
+
+[Town of Wellington SWMP](wellingtonswmp)
+
+#### Completed Projects
 [Lyons- Stormwater Master Plan](http://www.iconeng.com/lyons-stormwater-masterplan/map)
 
 [Milliken - Stormwater Master Plan](http://www.iconeng.com/project/milliken-stormwater)
+
+### Others
 
 [Coal Creek - Town of Erie](other/coalcreek-erie)
 
@@ -72,15 +79,14 @@ layout: default_mapList
 
 [The Pinery](other/pinery)
 
-#### Proposals
-[Town of Wellington SWMP](proposals/wellingtonswmp)
+### Proposals
 
 [Lena Gulch Stream Restoration](proposals/lenagulch)
 
-#### 2017 Proposals
 [Nissen Reservoir Channel](other/nissen-reservoir-channel)
 
-#### Testing
+
+### Testing
 
 [Data Collector](test/data-collector)
 
