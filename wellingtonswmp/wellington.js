@@ -49,16 +49,6 @@ map.on('style.load', function(e) {
     "data": 'data/growthboundary.geojson'
   });
 
-  map.addSource('stormAlignment', {
-    type: 'geojson',
-    "data": 'data/stormAlignment.geojson'
-  });
-
-  map.addSource('pond', {
-    type: 'geojson',
-    "data": 'data/pond.geojson'
-  });
-
   map.addSource('drainageways', {
     type: 'geojson',
     "data": 'data/drainageways.geojson'
@@ -142,11 +132,6 @@ map.on('style.load', function(e) {
   map.addSource('contours', {
     type: 'vector',
     url: 'mapbox://iconeng.3re6dt84'
-  });
-
-  map.addSource('surveyPts', {
-    type: 'geojson',
-    "data": 'data/surveypts.geojson'
   });
 
   map.addSource('fieldVisit', {
@@ -729,34 +714,6 @@ map.on('style.load', function(e) {
     }
   }, );
 
-  // Proposed Storm Improvement Alignments
-  map.addLayer({
-    'id': 'stormAlignment',
-    'type': 'line',
-    'source': 'stormAlignment',
-    'paint': {
-      'line-width': 5,
-      'line-color': 'red'
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-  // Proposed Storm Improvement Alignments
-  map.addLayer({
-    'id': 'pond',
-    'type': 'line',
-    'source': 'pond',
-    'paint': {
-      'line-width': 3,
-      'line-color': 'blue'
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
 
   //  Contours - 2FT
   map.addLayer({
@@ -835,21 +792,6 @@ map.on('style.load', function(e) {
 
   // Proposed Survey Points
   map.addLayer({
-    'id': 'surveyPts',
-    'type': 'circle',
-    'source': 'surveyPts',
-    'paint': {
-      'circle-radius': 3,
-      'circle-color': 'white'
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-
-  // Proposed Survey Points
-  map.addLayer({
     'id': 'fieldVisit',
     'type': 'circle',
     'source': 'fieldVisit',
@@ -861,6 +803,57 @@ map.on('style.load', function(e) {
       'visibility': 'visible'
     }
   });
+
+  map.addSource('SWMM_Junctions', {
+    type: 'geojson',
+    "data": 'data/SWMM_junctions.geojson'
+  });
+
+
+
+  //SWMM Junctions
+  map.addLayer({
+    'id': 'SWMM_junctions',
+    'type': 'circle',
+    'source': 'SWMM_Junctions',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
+    }
+  });
+
+  //SWMM Junction LABEL
+  map.addLayer({
+    'id': 'SWMM_junctionLabels',
+    'type': 'symbol',
+    'source': 'SWMM_Junctions',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{id}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
+
+
+
+
+
+
+
+
 
 
   var style = map.getStyle();

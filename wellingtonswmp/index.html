@@ -78,77 +78,51 @@
       <img class="responsive-img" src="ICON-logo.png" style="padding:0.2rem;margin-left:auto;margin-right:auto;max-width:75%;">
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
 
-
-        <!-- SWMM Subheading -->
         <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Hydrology Analysis</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>SWMP Hydrology</div>
           <div class="collapsible-body white">
             <div class="row">
               <p>
-                <input name="SWMMB" type="checkbox" id="SWMMB" class="layer-off" onclick="toggleLayer('swmmBasins')" />
-                <label for="SWMMB" class="valign">SWMM Basins</label>
+                <input name="SWMM_junctions" type="checkbox" id="SWMM_junctions" class="layer-off" onclick="toggleTwo('SWMM_junctions','SWMM_junctionLabels')" />
+                <label for="SWMM_junctions" class="valign">SWMM Nodes</label>
               </p>
-              <p class="indent">
-                <input name="SWMMBL" type="checkbox" id="SWMMBL" class="layer-off" onclick="toggleTwo('basinLabels','basinLabels2')" />
-                <label for="SWMMBL" class="valign">Basin Labels</label>
-            <p>
-              <input name="SWMMJ" type="checkbox" id="SWMMJ" class="layer-off" onclick="toggleSix('junctions','junctionLabels','dividers','dividersLabels','storages','storagesLabels')" />
-              <label for="SWMMJ" class="valign">SWMM Junctions</label>
-            </p>
-            <p>
-              <input name="SWMMR" type="checkbox" id="SWMMR" class="layer-off" onclick="toggleThree('conduits','conduitLabels','conduitArrows')"/>
-              <label for="SWMMR" class="valign">SWMM Routing</label>
-            </p>
             </div>
           </div>
+
         </li>
 
-        <!-- Existing Hydraulic Information Subheading -->
-        <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Hydraulic Information</div>
-          <div class="collapsible-body white">
-            <div class = "row">
-            <p>
-              <input name="cityFP" type="checkbox" id="cityFP" class="layer-off" onclick="toggleFour('eff-fp-500yr-hatch','eff-fp-100yr-hatch','eff-fp-line')" checked/>
-              <label for="cityFP" class="valign">Effective Floodplain</label>
-            </p>
-            <p>
-              <input name="cwcbFP" type="checkbox" id="cwcbFP" class="layer-off" onclick="toggleFour('cwcb-100yr-hatch','cwcb-500yr-hatch','cwcb-fldwy-hatch','cwcb-fp-line')" />
-              <label for="cwcbFP" class="valign">CWCB Preliminary Floodplain</label>
-            </p>
-            </div>
-          </div>
-        </li>
+
+
 
         <!-- Flooding Hazards & Alternatives -->
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>FLO-2D Rain-On-Grid</div>
           <div class="collapsible-body white">
-            <div class = "row">
-            <p>
-              <input name="fldhzd" type="checkbox" id="fldhzd" class="layer-off" onclick="toggleLayer('flo2d-ex')" />
-              <label for="fldhzd" class="valign">Existing Flooding Hazards</label>
-            </p>
-            <p class="indent">
-              <input name="fldhzd-velo" type="checkbox" id="fldhzd-velo" class="layer-off" onclick="toggleLayer('velo-ex')" />
-              <label for="fldhzd-velo" class="valign">Velocity</label>
-          </p>
-            <p>
-              <input name="altStrm" type="checkbox" id="altStrm" class="layer-off" onclick="toggleTwo('flo2d-alt1','stormAlignment')" />
-              <label for="altStrm" class="valign">Alt 1 - Storm Drain</label>
-            </p>
-            <p class="indent">
-              <input name="fldhzd-alt1" type="checkbox" id="fldhzd-alt1" class="layer-off" onclick="toggleLayer('velo-alt1')" />
-              <label for="fldhzd-alt1" class="valign">Velocity</label>
-          </p>
-            <p>
-              <input name="altDet" type="checkbox" id="altDet" class="layer-off" onclick="toggleTwo('flo2d-alt2','pond')" />
-              <label for="altDet" class="valign">Alt 2 - Detention</label>
-            </p>
-            <p class="indent">
-              <input name="fldhzd-alt2" type="checkbox" id="fldhzd-alt2" class="layer-off" onclick="toggleLayer('velo-alt2')" />
-              <label for="fldhzd-alt2" class="valign">Velocity</label>
-          </p>
+            <div class="row">
+              <p>
+                <input name="fldhzd" type="checkbox" id="fldhzd" class="layer-off" onclick="toggleLayer('flo2d-ex')" />
+                <label for="fldhzd" class="valign">Existing Flooding Hazards</label>
+              </p>
+              <p class="indent">
+                <input name="fldhzd-velo" type="checkbox" id="fldhzd-velo" class="layer-off" onclick="toggleLayer('velo-ex')" />
+                <label for="fldhzd-velo" class="valign">Velocity</label>
+              </p>
+              <p>
+                <input name="altStrm" type="checkbox" id="altStrm" class="layer-off" onclick="toggleTwo('flo2d-alt1','stormAlignment')" />
+                <label for="altStrm" class="valign">Alt 1 - Storm Drain</label>
+              </p>
+              <p class="indent">
+                <input name="fldhzd-alt1" type="checkbox" id="fldhzd-alt1" class="layer-off" onclick="toggleLayer('velo-alt1')" />
+                <label for="fldhzd-alt1" class="valign">Velocity</label>
+              </p>
+              <p>
+                <input name="altDet" type="checkbox" id="altDet" class="layer-off" onclick="toggleTwo('flo2d-alt2','pond')" />
+                <label for="altDet" class="valign">Alt 2 - Detention</label>
+              </p>
+              <p class="indent">
+                <input name="fldhzd-alt2" type="checkbox" id="fldhzd-alt2" class="layer-off" onclick="toggleLayer('velo-alt2')" />
+                <label for="fldhzd-alt2" class="valign">Velocity</label>
+              </p>
             </div>
           </div>
         </li>
@@ -156,19 +130,32 @@
 
         <!-- Base Information Subheading -->
         <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Mapping</div>
+          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Map Layers</div>
           <div class="collapsible-body white">
             <p>
-              <input name="surveypts" type="checkbox" id="surveypts" class="layer-off" onclick="toggleLayer('surveyPts')" />
-              <label for="surveypts" class="valign">Survey Points</label>
+              <input name="SWMMB" type="checkbox" id="SWMMB" class="layer-off" onclick="toggleThree('swmmBasins''basinLabels','basinLabels2')" />
+              <label for="SWMMB" class="valign">Box Elder Basins</label>
+            </p>
+            <p>
+              <input name="SWMMJ" type="checkbox" id="SWMMJ" class="layer-off" onclick="toggleNine('junctions','junctionLabels','dividers','dividersLabels','storages','storagesLabels','conduits','conduitLabels','conduitArrows')" />
+              <label for="SWMMJ" class="valign">Box Elder SWMM</label>
+            </p>
+            <p>
+              <input name="cityFP" type="checkbox" id="cityFP" class="layer-off" onclick="toggleFour('eff-fp-500yr-hatch','eff-fp-100yr-hatch','eff-fp-line')" checked />
+              <label for="cityFP" class="valign">Effective Floodplain</label>
+            </p>
+            <p>
+              <input name="cwcbFP" type="checkbox" id="cwcbFP" class="layer-off" onclick="toggleFour('cwcb-100yr-hatch','cwcb-500yr-hatch','cwcb-fldwy-hatch','cwcb-fp-line')" />
+              <label for="cwcbFP" class="valign">CWCB Preliminary Floodplain</label>
             </p>
             <p>
               <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="toggleThree('contour-2ft','contour-5ft','contour-5ftLabels')" />
               <label for="contours" class="valign">Contours</label>
             </p>
+            <h7>Basemap</h7>
             <div id="menu" class="demo-toggles">
               <p class="narrow">
-                <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked/>
+                <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked />
                 <label for="test1">Satellite</label>
               </p>
               <p class="narrow">
@@ -177,6 +164,7 @@
               </p>
             </div>
           </div>
+
         </li>
 
 
@@ -186,19 +174,29 @@
           <div class="collapsible-body white">
             <ul class="collection with-header grey-text text-darken-2">
               <li class="collection-item">
-                <div>Town Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='yellow'/></svg></a></div>
+                <div>Town Boundary<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='yellow' />
+                    </svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Growth Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='green'/></svg></a></div>
+                <div>Growth Boundary<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='green' />
+                    </svg></a></div>
               </li>
               <li class="collection-item">
-                <div>100-yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(0,230,255)" fill-opacity="0.6" /></svg></a></div>
+                <div>100-yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(0,230,255)" fill-opacity="0.6" />
+                    </svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="purple" fill-opacity="0.5" /></svg></a></div>
+                <div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="purple" fill-opacity="0.5" />
+                    </svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Shallow Flooding<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(255,128,0)" fill-opacity="0.6" /></svg></a></div>
+                <div>Shallow Flooding<a href="#!" class="secondary-content"><svg height="21" width="21">
+                      <rect x="0" y="0" width="21" height="21" fill="rgb(255,128,0)" fill-opacity="0.6" />
+                    </svg></a></div>
               </li>
             </ul>
           </div>
