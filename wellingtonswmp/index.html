@@ -83,16 +83,12 @@
           <div class="collapsible-body white">
             <div class="row">
               <p>
-                <input name="SWMM_junctions" type="checkbox" id="SWMM_junctions" class="layer-off" onclick="toggleTwo('SWMM_junctions','SWMM_junctionLabels')" />
-                <label for="SWMM_junctions" class="valign">SWMM Nodes</label>
+                <input name="SWMP_SWMM_junctions" type="checkbox" id="SWMP_SWMM_junctions" class="layer-off" onclick="toggleEight('SWMP_SWMM_junctions','SWMP_SWMM_junctionLabels','SWMP_SWMM_Dividers','SWMP_SWMM_DividersLabels','SWMP_SWMM_Outfalls','SWMP_SWMM_OutfallsLabels','SWMP_SWMM_Conduits','SWMP_SWMM_ConduitLabels')"/>
+                <label for="SWMP_SWMM_junctions" class="valign">SWMM Nodes</label>
               </p>
             </div>
           </div>
-
         </li>
-
-
-
 
         <!-- Flooding Hazards & Alternatives -->
         <li>
@@ -127,13 +123,12 @@
           </div>
         </li>
 
-
         <!-- Base Information Subheading -->
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Map Layers</div>
           <div class="collapsible-body white">
             <p>
-              <input name="SWMMB" type="checkbox" id="SWMMB" class="layer-off" onclick="toggleThree('swmmBasins''basinLabels','basinLabels2')" />
+              <input name="SWMMB" type="checkbox" id="SWMMB" class="layer-off" onclick="toggleThree('swmmBasins','basinLabels','basinLabels2')" />
               <label for="SWMMB" class="valign">Box Elder Basins</label>
             </p>
             <p>
@@ -141,7 +136,7 @@
               <label for="SWMMJ" class="valign">Box Elder SWMM</label>
             </p>
             <p>
-              <input name="cityFP" type="checkbox" id="cityFP" class="layer-off" onclick="toggleFour('eff-fp-500yr-hatch','eff-fp-100yr-hatch','eff-fp-line')" checked />
+              <input name="cityFP" type="checkbox" id="cityFP" class="layer-off" onclick="toggleFour('eff-fp-500yr-hatch','eff-fp-100yr-hatch','eff-fp-line')"/>
               <label for="cityFP" class="valign">Effective Floodplain</label>
             </p>
             <p>
