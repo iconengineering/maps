@@ -83,14 +83,14 @@
           <div class="collapsible-body white">
             <div class="row">
               <p>
-                <input name="SWMP_SWMM_junctions" type="checkbox" id="SWMP_SWMM_junctions" class="layer-off" onclick="toggleEight('SWMP_SWMM_junctions','SWMP_SWMM_junctionLabels','SWMP_SWMM_Dividers','SWMP_SWMM_DividersLabels','SWMP_SWMM_Outfalls','SWMP_SWMM_OutfallsLabels','SWMP_SWMM_Conduits','SWMP_SWMM_ConduitLabels')"/>
+                <input name="SWMP_SWMM_junctions" type="checkbox" id="SWMP_SWMM_junctions" class="layer-off" onclick="toggleFourteen('SWMP_SWMM_junctions','SWMP_SWMM_junctionLabels','SWMP_SWMM_Dividers','SWMP_SWMM_DividersLabels','SWMP_SWMM_Outfalls','SWMP_SWMM_OutfallsLabels','SWMP_SWMM_Conduits','SWMP_SWMM_ConduitLabels','SWMP_SWMM_conduitArrows','SWMP_SWMM_StorageLabels','SWMP_SWMM_Storage','SWMP_SWMM_Outlets','SWMP_SWMM_OutletsLabels')"/>
                 <label for="SWMP_SWMM_junctions" class="valign">SWMM Nodes</label>
               </p>
             </div>
           </div>
         </li>
 
-        <!-- Flooding Hazards & Alternatives -->
+        <!-- Flooding Hazards -->
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>FLO-2D Rain-On-Grid</div>
           <div class="collapsible-body white">
@@ -102,22 +102,6 @@
               <p class="indent">
                 <input name="fldhzd-velo" type="checkbox" id="fldhzd-velo" class="layer-off" onclick="toggleLayer('velo-ex')" />
                 <label for="fldhzd-velo" class="valign">Velocity</label>
-              </p>
-              <p>
-                <input name="altStrm" type="checkbox" id="altStrm" class="layer-off" onclick="toggleTwo('flo2d-alt1','stormAlignment')" />
-                <label for="altStrm" class="valign">Alt 1 - Storm Drain</label>
-              </p>
-              <p class="indent">
-                <input name="fldhzd-alt1" type="checkbox" id="fldhzd-alt1" class="layer-off" onclick="toggleLayer('velo-alt1')" />
-                <label for="fldhzd-alt1" class="valign">Velocity</label>
-              </p>
-              <p>
-                <input name="altDet" type="checkbox" id="altDet" class="layer-off" onclick="toggleTwo('flo2d-alt2','pond')" />
-                <label for="altDet" class="valign">Alt 2 - Detention</label>
-              </p>
-              <p class="indent">
-                <input name="fldhzd-alt2" type="checkbox" id="fldhzd-alt2" class="layer-off" onclick="toggleLayer('velo-alt2')" />
-                <label for="fldhzd-alt2" class="valign">Velocity</label>
               </p>
             </div>
           </div>

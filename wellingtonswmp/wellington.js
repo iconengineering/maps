@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-  zoom: 11.5,
-  center: [-105.0052, 40.7083],
+  zoom: 13.0,
+  center: [-104.9997, 40.7001],
   hash: true,
   preserveDrawingBuffer: true
 });
@@ -22,124 +22,28 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].onclick = switchLayer;
 }
 
-$(document).ready(function() {
-  $("#clear").click(function() {
-    var checkBoxes = $("input[type=checkbox]");
-    checkBoxes.prop("checked", false);
-    map.setPaintProperty('contours-1ft', 'visibility', 'none');
-    map.setPaintProperty('contours-5ft', 'visibility', 'none');
-    map.setPaintProperty('contours-5ftLabels', 'visibility', 'none');
-    map.setPaintProperty('cityFP', 'visibility', 'none');
-    map.setPaintProperty('cityFW', 'visibility', 'none');
-    map.setPaintProperty('citySF', 'visibility', 'none');
-    map.setPaintProperty('wvb-fp-100yr', 'visibility', 'none');
-    map.setPaintProperty('wvb-fp-100yr-fill', 'visibility', 'none');
-  });
-});
+// $(document).ready(function() {
+//   $("#clear").click(function() {
+//     var checkBoxes = $("input[type=checkbox]");
+//     checkBoxes.prop("checked", false);
+//     map.setPaintProperty('contours-1ft', 'visibility', 'none');
+//     map.setPaintProperty('contours-5ft', 'visibility', 'none');
+//     map.setPaintProperty('contours-5ftLabels', 'visibility', 'none');
+//     map.setPaintProperty('cityFP', 'visibility', 'none');
+//     map.setPaintProperty('cityFW', 'visibility', 'none');
+//     map.setPaintProperty('citySF', 'visibility', 'none');
+//     map.setPaintProperty('wvb-fp-100yr', 'visibility', 'none');
+//     map.setPaintProperty('wvb-fp-100yr-fill', 'visibility', 'none');
+//   });
+// });
 
 map.on('style.load', function(e) {
 
+  //Town Boundary
   map.addSource('cityBoundary', {
     type: 'geojson',
     "data": 'data/cityBoundary.geojson'
   });
-
-  map.addSource('growthBoundary', {
-    type: 'geojson',
-    "data": 'data/growthboundary.geojson'
-  });
-
-  map.addSource('drainageways', {
-    type: 'geojson',
-    "data": 'data/drainageways.geojson'
-  });
-
-  map.addSource('swmmBasins', {
-    type: 'geojson',
-    "data": 'data/swmm_basins.geojson'
-  });
-
-  map.addSource('basinCentroid', {
-    type: 'geojson',
-    "data": 'data/basinCentroids.geojson'
-  });
-
-  map.addSource('swmmConduits', {
-    type: 'geojson',
-    "data": 'data/swmm_routing.geojson'
-  });
-
-  map.addSource('swmmJunctions', {
-    type: 'geojson',
-    "data": 'data/swmm_junc.geojson'
-  });
-
-  map.addSource('swmmDividers', {
-    type: 'geojson',
-    "data": 'data/swmm_dividers.geojson'
-  });
-
-  map.addSource('swmmOutfalls', {
-    type: 'geojson',
-    "data": 'data/swmm_outfalls.geojson'
-  });
-
-  map.addSource('swmmStorages', {
-    type: 'geojson',
-    "data": 'data/swmm_storages.geojson'
-  });
-
-  map.addSource('eff-fp', {
-    type: 'geojson',
-    "data": 'data/effectiveFloodplain.geojson'
-  });
-
-  map.addSource('cwcb-fp', {
-    type: 'geojson',
-    "data": 'data/cwcbFloodplain.geojson'
-  });
-
-  map.addSource('velo-ex', {
-    type: 'vector',
-    url: 'mapbox://iconeng.2i3tfsvz'
-  });
-
-  map.addSource('velo-alt1', {
-    type: 'vector',
-    url: 'mapbox://iconeng.0ao5at0y'
-  });
-
-  map.addSource('velo-alt2', {
-    type: 'vector',
-    url: 'mapbox://iconeng.3ilu8zzh'
-  });
-
-  map.addSource('flo2d-ex', {
-    type: 'vector',
-    url: 'mapbox://iconeng.4zi0234i'
-  });
-
-  map.addSource('flo2d-alt1', {
-    type: 'vector',
-    url: 'mapbox://iconeng.965d9b50'
-  });
-
-  map.addSource('flo2d-alt2', {
-    type: 'vector',
-    url: 'mapbox://iconeng.6e17ijjd'
-  });
-
-  map.addSource('contours', {
-    type: 'vector',
-    url: 'mapbox://iconeng.3re6dt84'
-  });
-
-  map.addSource('fieldVisit', {
-    type: 'geojson',
-    "data": 'data\QuestionsForTown.geojson'
-  });
-
-  //Town Boundary
   map.addLayer({
     'id': 'cityBoundary',
     'type': 'line',
@@ -155,6 +59,10 @@ map.on('style.load', function(e) {
   });
 
   //Growth Boundary
+  map.addSource('growthBoundary', {
+    type: 'geojson',
+    "data": 'data/growthboundary.geojson'
+  });
   map.addLayer({
     'id': 'growthBoundary',
     'type': 'line',
@@ -169,6 +77,10 @@ map.on('style.load', function(e) {
   });
 
   // SWMM Basins
+  map.addSource('swmmBasins', {
+    type: 'geojson',
+    "data": 'data/swmm_basins.geojson'
+  });
   map.addLayer({
     'id': 'swmmBasins',
     'type': 'line',
@@ -185,10 +97,14 @@ map.on('style.load', function(e) {
   });
 
   //Basin Labels
+  map.addSource('BECbasinCentroid', {
+    type: 'geojson',
+    "data": 'data/basinCentroids.geojson'
+  });
   map.addLayer({
     'id': 'basinLabels',
     'type': 'symbol',
-    'source': 'basinCentroid',
+    'source': 'BECbasinCentroid',
     'layout': {
       "visibility": 'none',
       "text-optional": true,
@@ -226,7 +142,7 @@ map.on('style.load', function(e) {
   map.addLayer({
     'id': 'basinLabels2',
     'type': 'symbol',
-    'source': 'basinCentroid',
+    'source': 'BECbasinCentroid',
     'layout': {
       "visibility": 'none',
       "text-optional": true,
@@ -260,11 +176,15 @@ map.on('style.load', function(e) {
     }
   });
 
-  //SWMM Conduits
+  //Box Elder SWMM Conduits
+  map.addSource('BECswmmConduits', {
+    type: 'geojson',
+    "data": 'data/swmm_routing.geojson'
+  });
   map.addLayer({
     'id': 'conduits',
     'type': 'line',
-    'source': 'swmmConduits',
+    'source': 'BECswmmConduits',
     'layout': {
       "visibility": 'none'
     },
@@ -274,11 +194,11 @@ map.on('style.load', function(e) {
     }
   });
 
-  //SWMM Conduits Labels
+  //Box Elder SWMM Conduits Labels
   map.addLayer({
     'id': 'conduitLabels',
     'type': 'symbol',
-    'source': 'swmmConduits',
+    'source': 'BECswmmConduits',
     'layout': {
       "visibility": 'none',
       "text-optional": true,
@@ -296,11 +216,11 @@ map.on('style.load', function(e) {
     }
   });
 
-  //SWMM Conduits Arrows
+  //Box Elder SWMM Conduits Arrows
   map.addLayer({
     'id': 'conduitArrows',
     'type': 'symbol',
-    'source': 'swmmConduits',
+    'source': 'BECswmmConduits',
     'layout': {
       "visibility": 'none',
       'symbol-placement': 'line',
@@ -317,11 +237,15 @@ map.on('style.load', function(e) {
     // }
   });
 
-  //SWMM Junctions
+  //Box Elder SWMM Junctions
+  map.addSource('BECswmmJunctions', {
+    type: 'geojson',
+    "data": 'data/swmm_junc.geojson'
+  });
   map.addLayer({
     'id': 'junctions',
     'type': 'circle',
-    'source': 'swmmJunctions',
+    'source': 'BECswmmJunctions',
     'layout': {
       "visibility": 'none'
     },
@@ -335,7 +259,7 @@ map.on('style.load', function(e) {
   map.addLayer({
     'id': 'junctionLabels',
     'type': 'symbol',
-    'source': 'swmmJunctions',
+    'source': 'BECswmmJunctions',
     'layout': {
       "visibility": 'none',
       "text-optional": true,
@@ -354,10 +278,14 @@ map.on('style.load', function(e) {
   });
 
   //SWMM Dividers
+  map.addSource('BECswmmDividers', {
+    type: 'geojson',
+    "data": 'data/swmm_dividers.geojson'
+  });
   map.addLayer({
     'id': 'dividers',
     'type': 'circle',
-    'source': 'swmmDividers',
+    'source': 'BECswmmDividers',
     'layout': {
       "visibility": 'none'
     },
@@ -390,6 +318,10 @@ map.on('style.load', function(e) {
   });
 
   //SWMM Storages
+  map.addSource('swmmStorages', {
+    type: 'geojson',
+    "data": 'data/swmm_storages.geojson'
+  });
   map.addLayer({
     'id': 'storages',
     'type': 'circle',
@@ -426,6 +358,10 @@ map.on('style.load', function(e) {
   });
 
   //  Effective Floodplain 100yr Hatch
+  map.addSource('eff-fp', {
+    type: 'geojson',
+    "data": 'data/effectiveFloodplain.geojson'
+  });
   map.addLayer({
     'id': 'eff-fp-100yr-hatch',
     'type': 'fill',
@@ -472,6 +408,10 @@ map.on('style.load', function(e) {
   });
 
   //  CWCB Floodplain 100yr Hatch
+  map.addSource('cwcb-fp', {
+    type: 'geojson',
+    "data": 'data/cwcbFloodplain.geojson'
+  });
   map.addLayer({
     'id': 'cwcb-100yr-hatch',
     'type': 'fill',
@@ -537,6 +477,10 @@ map.on('style.load', function(e) {
   });
 
   //Drainageway centerline
+  map.addSource('drainageways', {
+    type: 'geojson',
+    "data": 'data/drainageways.geojson'
+  });
   map.addLayer({
     'id': 'drainageways',
     'type': 'line',
@@ -578,6 +522,10 @@ map.on('style.load', function(e) {
   });
 
   // Flow Depth Grids - Existing
+  map.addSource('flo2d-ex', {
+    type: 'vector',
+    url: 'mapbox://iconeng.4zi0234i'
+  });
   map.addLayer({
     'id': 'flo2d-ex',
     'type': 'fill',
@@ -603,9 +551,13 @@ map.on('style.load', function(e) {
     'layout': {
       'visibility': 'none'
     }
-  },);
+  }, );
 
   // Velocity Grid - Existing
+  map.addSource('velo-ex', {
+    type: 'vector',
+    url: 'mapbox://iconeng.2i3tfsvz'
+  });
   map.addLayer({
     'id': 'velo-ex',
     'type': 'line',
@@ -622,100 +574,12 @@ map.on('style.load', function(e) {
     }
   });
 
-  // Velocity Grid - Alt 1
-  map.addLayer({
-    'id': 'velo-alt1',
-    'type': 'line',
-    'source': 'velo-alt1',
-    'source-layer': 'Wellington_002_PrStorm_Velo-8t0etl',
-    'layout': {
-      'visibility': 'none'
-    },
-    'filter': ["all", ['>', 'Var', 0.25]],
-    'paint': {
-      'line-width': 1.2,
-      'line-opacity': 1,
-      'line-color': 'black',
-    }
-  });
-
-
-  // Velocity Grid - Alt 2
-  map.addLayer({
-    'id': 'velo-alt2',
-    'type': 'line',
-    'source': 'velo-alt2',
-    'source-layer': 'Wellington_003_Pond_Velo-7l1y34',
-    'layout': {
-      'visibility': 'none'
-    },
-    'filter': ["all", ['>', 'Var', 0.25]],
-    'paint': {
-      'line-width': 1.2,
-      'line-opacity': 1,
-      'line-color': 'black',
-    }
-  });
-
-
-  // Flow Depth Grids - Alt1
-  map.addLayer({
-    'id': 'flo2d-alt1',
-    'type': 'fill',
-    'source': 'flo2d-alt1',
-    'source-layer': 'Wellington_002_PrStorm-ae4dow',
-    'filter': ["all", ['>', 'Var', 0.1]],
-    'paint': {
-      'fill-color': {
-        property: 'Var',
-        type: 'interval',
-        stops: [
-          [.25, 'rgb(252,244,182)'],
-          [.5, 'rgb(245,194,152)'],
-          [1, 'rgb(227,147,138)'],
-          [1.5, 'rgb(199,101,134)'],
-          [2, 'rgb(161,59,139)'],
-          [3, 'rgb(109,23,143)'],
-          [4, 'rgb(14,9,135)']
-        ]
-      },
-      'fill-opacity': 0.7
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  }, );
-
-  // Flow Depth Grids - Alt 2
-  map.addLayer({
-    'id': 'flo2d-alt2',
-    'type': 'fill',
-    'source': 'flo2d-alt2',
-    'source-layer': 'Well_003_Pond-9ixhpg',
-    'filter': ["all", ['>', 'Var', 0.1]],
-    'paint': {
-      'fill-color': {
-        property: 'Var',
-        type: 'interval',
-        stops: [
-          [.25, 'rgb(252,244,182)'],
-          [.5, 'rgb(245,194,152)'],
-          [1, 'rgb(227,147,138)'],
-          [1.5, 'rgb(199,101,134)'],
-          [2, 'rgb(161,59,139)'],
-          [3, 'rgb(109,23,143)'],
-          [4, 'rgb(14,9,135)']
-        ]
-      },
-      'fill-opacity': 0.5
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  }, );
-
-
   //  Contours - 2FT
+  map.addSource('contours', {
+    type: 'vector',
+    url: 'mapbox://iconeng.3re6dt84'
+  });
+
   map.addLayer({
     'id': 'contour-2ft',
     'type': 'line',
@@ -790,67 +654,114 @@ map.on('style.load', function(e) {
     }
   });
 
-  // Proposed Survey Points
+  // ICON ROUTING CONDUITS
+  map.addSource('SWMP_SWMM_Conduits', {
+    type: 'geojson',
+    "data": 'data/SWMP_SWMM_conduits.geojson'
+  });
+
+  //ICON SWMM Conduits
   map.addLayer({
-    'id': 'fieldVisit',
-    'type': 'circle',
-    'source': 'fieldVisit',
-    'paint': {
-      'circle-radius': 3,
-      'circle-color': 'red'
-    },
+    'id': 'SWMP_SWMM_Conduits',
+    'type': 'line',
+    'source': 'SWMP_SWMM_Conduits',
     'layout': {
-      'visibility': 'visible'
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 4,
+      'line-color': '#036180'
     }
   });
 
+  //BEC SWMM Conduits Labels
+  map.addLayer({
+    'id': 'SWMP_SWMM_ConduitLabels',
+    'type': 'symbol',
+    'source': 'SWMP_SWMM_Conduits',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": false,
+      'symbol-placement': 'line',
+      'symbol-spacing': 200,
+      'text-field': '{id}',
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      'text-size': 14,
+      "text-padding": 200,
+    },
+    'paint': {
+      'text-color': '#F8F4F0',
+      'text-halo-color': '#036180',
+      'text-halo-width': 1
+    }
+  });
 
-  // ICON ROUTING CONDUITS
-        map.addSource('SWMP_SWMM_Conduits', {
-          type: 'geojson',
-          "data": 'data/SWMP_SWMM_conduits.geojson'
-        });
+  map.addLayer({
+    'id': 'SWMP_SWMM_conduitArrows',
+    'type': 'symbol',
+    'source': 'SWMP_SWMM_Conduits',
+    'layout': {
+      "visibility": 'none',
+      'symbol-placement': 'line',
+      'symbol-spacing': 50,
+      "icon-image": "oneway-white-small",
+      "icon-allow-overlap": true,
+      "text-rotation-alignment": "map",
+      "icon-size": 1,
+      "text-keep-upright": false,
+      "icon-padding": 0,
+      "icon-ignore-placement": true
+    },
+    'paint': {}
+  });
 
-        //SWMM Conduits
-        map.addLayer({
-          'id': 'SWMP_SWMM_Conduits',
-          'type': 'line',
-          'source': 'SWMP_SWMM_Conduits',
-          'layout': {
-            "visibility": 'none'
-          },
-          'paint': {
-            'line-width': 4,
-            'line-color': '#036180'
-          }
-        });
+      // ICON ROUTING CONDUITS
+      map.addSource('SWMP_SWMM_Outlets', {
+        type: 'geojson',
+        "data": 'data/SWMP_SWMM_outlets.geojson'
+      });
 
-        //SWMM Conduits Labels
-        map.addLayer({
-          'id': 'SWMP_SWMM_ConduitLabels',
-          'type': 'symbol',
-          'source': 'SWMP_SWMM_Conduits',
-          'layout': {
-            "visibility": 'none',
-            "text-optional": true,
-            'symbol-placement': 'line',
-            'symbol-spacing': 200,
-            'text-field': '{id}',
-            'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-            'text-size': 14,
-            "text-padding": 200,
-          },
-          'paint': {
-            'text-color': '#F8F4F0',
-            'text-halo-color': '#036180',
-            'text-halo-width': 1
-          }
-        });
+      //ICON SWMM Outlets
+      map.addLayer({
+        'id': 'SWMP_SWMM_Outlets',
+        'type': 'line',
+        'source': 'SWMP_SWMM_Outlets',
+        'layout': {
+          "visibility": 'none'
+        },
+        'paint': {
+          'line-width': 4,
+          'line-color': '#036180'
+        }
+      });
+
+      //ICON SWMM Outlets
+      map.addLayer({
+        'id': 'SWMP_SWMM_OutletsLabels',
+        'type': 'symbol',
+        'source': 'SWMP_SWMM_Outlets',
+        'layout': {
+          "visibility": 'none',
+          "text-optional": false,
+          'symbol-placement': 'line',
+          'symbol-spacing': 200,
+          'text-field': '{id}',
+          'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+          'text-size': 14,
+          "text-padding": 200,
+        },
+        'paint': {
+          'text-color': '#F8F4F0',
+          'text-halo-color': '#036180',
+          'text-halo-width': 1
+        }
+      });
 
   // ICON ROUTING
   map.addSource('SWMP_SWMM_Junctions', {
     type: 'geojson',
     "data": 'data/SWMP_SWMM_junctions.geojson'
+
   });
 
   //SWMM Junctions
@@ -889,91 +800,132 @@ map.on('style.load', function(e) {
     }
   });
 
+  // ICON ROUTING Dividers
+  map.addSource('SWMP_SWMM_Dividers', {
+    type: 'geojson',
+    "data": 'data/SWMP_SWMM_dividers.geojson'
+  });
 
-    // ICON ROUTING Dividers
-    map.addSource('SWMP_SWMM_Dividers', {
-      type: 'geojson',
-      "data": 'data/SWMP_SWMM_dividers.geojson'
-    });
+  //SWMM Dividers
+  map.addLayer({
+    'id': 'SWMP_SWMM_Dividers',
+    'type': 'circle',
+    'source': 'SWMP_SWMM_Dividers',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
+    }
+  });
 
-    //SWMM Junctions
-    map.addLayer({
-      'id': 'SWMP_SWMM_Dividers',
-      'type': 'circle',
-      'source': 'SWMP_SWMM_Dividers',
-      'layout': {
-        "visibility": 'none'
-      },
-      'paint': {
-        'circle-radius': 4,
-        'circle-color': '#ee4d5a'
-      }
-    });
+  //SWMM Dividers LABEL
+  map.addLayer({
+    'id': 'SWMP_SWMM_DividersLabels',
+    'type': 'symbol',
+    'source': 'SWMP_SWMM_Dividers',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{id}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
 
-    //SWMM Junction LABEL
-    map.addLayer({
-      'id': 'SWMP_SWMM_DividersLabels',
-      'type': 'symbol',
-      'source': 'SWMP_SWMM_Dividers',
-      'layout': {
-        "visibility": 'none',
-        "text-optional": true,
-        "text-line-height": 1,
-        "text-size": 12,
-        "text-field": "{id}",
-        'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-        "text-offset": [0, 1],
-        "text-anchor": "top"
-      },
-      "paint": {
-        "text-color": "#ee4d5a",
-        "text-halo-color": "#F8F4F0",
-        "text-halo-width": 1,
-      }
-    });
+  // ICON ROUTING Outfalls
+  map.addSource('SWMP_SWMM_Outfalls', {
+    type: 'geojson',
+    "data": 'data/SWMP_SWMM_outfalls.geojson'
+  });
+
+  //SWMM Outfalls
+  map.addLayer({
+    'id': 'SWMP_SWMM_Outfalls',
+    'type': 'circle',
+    'source': 'SWMP_SWMM_Outfalls',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
+    }
+  });
+
+  //SWMM Outfall LABEL
+  map.addLayer({
+    'id': 'SWMP_SWMM_OutfallsLabels',
+    'type': 'symbol',
+    'source': 'SWMP_SWMM_Outfalls',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{id}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
 
 
-      // ICON ROUTING Outfalls
-      map.addSource('SWMP_SWMM_Outfalls', {
-        type: 'geojson',
-        "data": 'data/SWMP_SWMM_outfalls.geojson'
-      });
+  // ICON ROUTING Storage
+  map.addSource('SWMP_SWMM_Storage', {
+    type: 'geojson',
+    "data": 'data/SWMP_SWMM_storages.geojson'
+  });
 
-      //SWMM Junctions
-      map.addLayer({
-        'id': 'SWMP_SWMM_Outfalls',
-        'type': 'circle',
-        'source': 'SWMP_SWMM_Outfalls',
-        'layout': {
-          "visibility": 'none'
-        },
-        'paint': {
-          'circle-radius': 4,
-          'circle-color': '#ee4d5a'
-        }
-      });
+  //SWMM Outfalls
+  map.addLayer({
+    'id': 'SWMP_SWMM_Storage',
+    'type': 'circle',
+    'source': 'SWMP_SWMM_Storage',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'circle-radius': 4,
+      'circle-color': '#ee4d5a'
+    }
+  });
 
-      //SWMM Junction LABEL
-      map.addLayer({
-        'id': 'SWMP_SWMM_OutfallsLabels',
-        'type': 'symbol',
-        'source': 'SWMP_SWMM_Outfalls',
-        'layout': {
-          "visibility": 'none',
-          "text-optional": true,
-          "text-line-height": 1,
-          "text-size": 12,
-          "text-field": "{id}",
-          'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-          "text-offset": [0, 1],
-          "text-anchor": "top"
-        },
-        "paint": {
-          "text-color": "#ee4d5a",
-          "text-halo-color": "#F8F4F0",
-          "text-halo-width": 1,
-        }
-      });
+  //SWMM Outfall LABEL
+  map.addLayer({
+    'id': 'SWMP_SWMM_StorageLabels',
+    'type': 'symbol',
+    'source': 'SWMP_SWMM_Storage',
+    'layout': {
+      "visibility": 'none',
+      "text-optional": true,
+      "text-line-height": 1,
+      "text-size": 12,
+      "text-field": "{id}",
+      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
+      "text-offset": [0, 1],
+      "text-anchor": "top"
+    },
+    "paint": {
+      "text-color": "#ee4d5a",
+      "text-halo-color": "#F8F4F0",
+      "text-halo-width": 1,
+    }
+  });
 
 
 
