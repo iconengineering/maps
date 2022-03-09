@@ -927,7 +927,25 @@ map.on('style.load', function(e) {
     }
   });
 
+  map.addSource('SWMP_Subwatersheds', {
+      type: 'geojson',
+      data: 'data/SWMP_subwatersheds.geojson'
+  });
 
+  map.addLayer({
+      'id': 'SWMP_Subwatersheds',
+      'type': 'line',
+      'source': 'SWMP_Subwatersheds',
+      'paint': {
+          'line-width': 1,
+          'line-opacity': 1,
+          'line-color': 'rgba(0,0,0,1)',
+          'line-dasharray': [8,4]
+      },
+      'layout':{
+        'visibility':'none'
+      }
+  });
 
 
 
