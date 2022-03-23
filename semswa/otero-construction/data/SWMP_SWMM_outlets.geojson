@@ -1,0 +1,29 @@
+{
+"type": "FeatureCollection",
+"name": "SWMP_SWMM_outlets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "BUC_O100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.010278266532765, 40.711669049566787 ], [ -105.009802493880713, 40.711448028885805 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "C102" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.011165154212406, 40.713856649516039 ], [ -105.010711507803407, 40.71362043450042 ], [ -105.010711507803407, 40.71362043450042 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_BCOM_J115" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.006807150536673, 40.689913593547402 ], [ -105.007071959824245, 40.689902460996379 ], [ -105.007071960391471, 40.689902381424616 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_BCOM_S1050" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.007726395086038, 40.693244386067796 ], [ -105.007945863212242, 40.69307512390202 ], [ -105.007945863778488, 40.693075044330392 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_CPATM_J100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -104.994911219129563, 40.693375532792061 ], [ -104.995051656259363, 40.693352589921005 ], [ -104.995051656259363, 40.693352589921005 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_J100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.001537307762874, 40.683511160087278 ], [ -105.001505123469471, 40.683617660889013 ], [ -105.001402715313745, 40.683730818611451 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_J150" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.002763256384128, 40.684509598645143 ], [ -105.0022834096346, 40.684769188927575 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_J200" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.004038327622808, 40.685701009327488 ], [ -105.003828857569829, 40.685824112400084 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_J250" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.004965241153869, 40.686542867491497 ], [ -105.004787770772992, 40.686496537600171 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_J550" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.007630306482184, 40.682735562860138 ], [ -105.007634397272355, 40.682698133081274 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_J750" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.001888187882813, 40.686121615358502 ], [ -105.001756324473376, 40.685406607696727 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_KAWS_S350" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.007010371112983, 40.687694969558983 ], [ -105.006889333708443, 40.687559862628632 ], [ -105.006269914078445, 40.687468141880302 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_MER_J100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.018860762826009, 40.704245417613052 ], [ -105.019307785081736, 40.704052190605836 ], [ -105.019340043231182, 40.704047096158639 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_OLT_J150" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.001656269398708, 40.696803132273253 ], [ -105.001652366137165, 40.696714939989448 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_SME_J100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.010768007290707, 40.68280675901795 ], [ -105.01064091349194, 40.682668395500734 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_SME_J200" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.010237976272052, 40.689361886566644 ], [ -105.010118608188208, 40.689486978185442 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_WDO_J100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -104.995823848900017, 40.693048522221943 ], [ -104.995613806480293, 40.692923421989505 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_WDO_J300" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -104.999712086656714, 40.693021270039331 ], [ -104.999475813440426, 40.6929083292369 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "L_WPT_J100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.01069996124582, 40.707069710006678 ], [ -105.010320401885636, 40.70691774036343 ], [ -105.010320402449267, 40.706917660792541 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "MEA_O100" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -104.99297769594375, 40.682658325506708 ], [ -104.991065995788546, 40.682673010332699 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "OF_STD246" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -105.010084392710425, 40.68998899706331 ], [ -105.009959795572868, 40.689877150173004 ] ] ] } },
+{ "type": "Feature", "properties": { "element_ty": "Outlet", "id": "PME_S100_Primary" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -104.991255775684778, 40.690014953638858 ], [ -104.990878912351704, 40.689753903656808 ] ] ] } }
+]
+}

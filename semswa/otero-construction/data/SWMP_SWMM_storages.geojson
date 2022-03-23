@@ -1,0 +1,32 @@
+{
+"type": "FeatureCollection",
+"name": "SWMP_SWMM_storages",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "BCOM_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.006807150536673, 40.689913593547402 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "BCOM_S1050" }, "geometry": { "type": "Point", "coordinates": [ -105.007726395086038, 40.693244386067796 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "BUC_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.010278266532765, 40.711669049566787 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "BUC_S200" }, "geometry": { "type": "Point", "coordinates": [ -105.011165154212406, 40.713856649516039 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "COLE_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.002518863766738, 40.676065301139872 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "CPATM_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.994911219129563, 40.693375532792061 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.001537307762874, 40.683511160087278 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S150" }, "geometry": { "type": "Point", "coordinates": [ -105.002763256384128, 40.684509598645143 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S200" }, "geometry": { "type": "Point", "coordinates": [ -105.004038327622808, 40.685701009327488 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S250" }, "geometry": { "type": "Point", "coordinates": [ -105.004965241153869, 40.686542867491497 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S350" }, "geometry": { "type": "Point", "coordinates": [ -105.007010371112983, 40.687694969558983 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S500" }, "geometry": { "type": "Point", "coordinates": [ -105.007630306482184, 40.682735562860138 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "KAWS_S750" }, "geometry": { "type": "Point", "coordinates": [ -105.001888187882813, 40.686121615358502 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "MEA_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.99297769594375, 40.682658325506708 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "MEA_S200" }, "geometry": { "type": "Point", "coordinates": [ -104.995814814751256, 40.682809728771602 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "OLT_S0150" }, "geometry": { "type": "Point", "coordinates": [ -105.001656269398708, 40.696803132273253 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "PME_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.991255775684778, 40.690014953638858 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "PME_S200" }, "geometry": { "type": "Point", "coordinates": [ -104.995514978885296, 40.689944578978448 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "SME_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.010768007290707, 40.68280675901795 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "SME_S200" }, "geometry": { "type": "Point", "coordinates": [ -105.010237976272052, 40.689361886566644 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "VPT_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.010084392710425, 40.68998899706331 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "WDO_S100" }, "geometry": { "type": "Point", "coordinates": [ -104.995823848900017, 40.693048522221943 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "WDO_S300" }, "geometry": { "type": "Point", "coordinates": [ -104.999712086656714, 40.693021270039331 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "WPT_S100" }, "geometry": { "type": "Point", "coordinates": [ -105.01069996124582, 40.707069710006678 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "WPT_S850" }, "geometry": { "type": "Point", "coordinates": [ -105.018860762826009, 40.704245417613052 ] } }
+]
+}
