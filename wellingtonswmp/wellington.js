@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
 // Set bounds to Wellington
-const bounds = [
+var bounds = [
 [-105.034, 40.665] // SW coordinates
 [-104.928, 40.729] // NE coordinates
 ];
