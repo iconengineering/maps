@@ -11,9 +11,9 @@ var map = new mapboxgl.Map({
   style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
   zoom: 13.0,
   center: [-104.9997, 40.7001],
-  maxBounds: bounds, // Set max boundaries
   hash: true,
-  preserveDrawingBuffer: true
+  preserveDrawingBuffer: true,
+  maxBounds: bounds // Set max boundaries
 });
 
 var layerList = document.getElementById('menu');
