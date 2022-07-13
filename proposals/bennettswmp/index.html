@@ -73,35 +73,11 @@
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer white mdl-color-text--grey-800 mdl-shadow--2dp">
-      <span style="display: inline-block;text-align:center;"><img class="responsive-img" src="wellington-logo.png" style="padding:1rem;max-width:80%;"></span>
-      <h5 style="padding:0 1rem; text-align:center; margin-top:0;">Town of Wellington Stormwater Master Plan</h5>
+      <span style="display: inline-block;text-align:center;"><img class="responsive-img" src="bennett-logo.png" style="padding:1rem;max-width:60%;"></span>
+      <h5 style="padding:0 1rem; text-align:center; margin-top:0;">Town of Bennett Stormwater Master Plan</h5>
       <img class="responsive-img" src="ICON-logo.png" style="padding:0.2rem;margin-left:auto;margin-right:auto;max-width:75%;">
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
 
-
-        <!-- SWMM Subheading -->
-        <li>
-          <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Existing Hydrology Analysis</div>
-          <div class="collapsible-body white">
-            <div class="row">
-              <p>
-                <input name="SWMMB" type="checkbox" id="SWMMB" class="layer-off" onclick="toggleLayer('swmmBasins')" />
-                <label for="SWMMB" class="valign">SWMM Basins</label>
-              </p>
-              <p class="indent">
-                <input name="SWMMBL" type="checkbox" id="SWMMBL" class="layer-off" onclick="toggleTwo('basinLabels','basinLabels2')" />
-                <label for="SWMMBL" class="valign">Basin Labels</label>
-            <p>
-              <input name="SWMMJ" type="checkbox" id="SWMMJ" class="layer-off" onclick="toggleSix('junctions','junctionLabels','dividers','dividersLabels','storages','storagesLabels')" />
-              <label for="SWMMJ" class="valign">SWMM Junctions</label>
-            </p>
-            <p>
-              <input name="SWMMR" type="checkbox" id="SWMMR" class="layer-off" onclick="toggleThree('conduits','conduitLabels','conduitArrows')"/>
-              <label for="SWMMR" class="valign">SWMM Routing</label>
-            </p>
-            </div>
-          </div>
-        </li>
 
         <!-- Existing Hydraulic Information Subheading -->
         <li>
@@ -111,10 +87,6 @@
             <p>
               <input name="cityFP" type="checkbox" id="cityFP" class="layer-off" onclick="toggleFour('eff-fp-500yr-hatch','eff-fp-100yr-hatch','eff-fp-line')" checked/>
               <label for="cityFP" class="valign">Effective Floodplain</label>
-            </p>
-            <p>
-              <input name="cwcbFP" type="checkbox" id="cwcbFP" class="layer-off" onclick="toggleFour('cwcb-100yr-hatch','cwcb-500yr-hatch','cwcb-fldwy-hatch','cwcb-fp-line')" />
-              <label for="cwcbFP" class="valign">CWCB Preliminary Floodplain</label>
             </p>
             </div>
           </div>
@@ -158,24 +130,10 @@
         <li>
           <div class="collapsible-header indigo-alt"><i class="material-icons right">keyboard_arrow_down</i>Base Mapping</div>
           <div class="collapsible-body white">
-            <p>
-              <input name="surveypts" type="checkbox" id="surveypts" class="layer-off" onclick="toggleLayer('surveyPts')" />
-              <label for="surveypts" class="valign">Survey Points</label>
-            </p>
-            <p>
+                      <p>
               <input name="contours" type="checkbox" id="contours" class="layer-off" onclick="toggleThree('contour-2ft','contour-5ft','contour-5ftLabels')" />
               <label for="contours" class="valign">Contours</label>
             </p>
-            <div id="menu" class="demo-toggles">
-              <p class="narrow">
-                <input name="group1" type="radio" id="test1" value="cixrrcbd1000r2ro6dj7z1fot" checked/>
-                <label for="test1">Satellite</label>
-              </p>
-              <p class="narrow">
-                <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd" />
-                <label for="test2">Light</label>
-              </p>
-            </div>
           </div>
         </li>
 
@@ -189,13 +147,13 @@
                 <div>Town Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='yellow'/></svg></a></div>
               </li>
               <li class="collection-item">
-                <div>Growth Boundary<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='green'/></svg></a></div>
+                <div>Study Area<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke='green'/></svg></a></div>
+              </li>
+              <li class="collection-item">
+                <div>Planned Development<a href="#!" class="secondary-content"><svg height="21" width="21"><line x1="1" y1="10.5" x2="20" y2="10.5" stroke-width="2" stroke="#ee4d5a"/></svg></a></div>
               </li>
               <li class="collection-item">
                 <div>100-yr Floodplain<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(0,230,255)" fill-opacity="0.6" /></svg></a></div>
-              </li>
-              <li class="collection-item">
-                <div>Floodway<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="purple" fill-opacity="0.5" /></svg></a></div>
               </li>
               <li class="collection-item">
                 <div>Shallow Flooding<a href="#!" class="secondary-content"><svg height="21" width="21"><rect x="0" y="0" width="21" height="21" fill="rgb(255,128,0)" fill-opacity="0.6" /></svg></a></div>
@@ -215,7 +173,7 @@
   </div>
 
   <script src="toggleLayer.js"></script>
-  <script src="wellington.js"></script>
+  <script src="bennett.js"></script>
 
 </body>
 
