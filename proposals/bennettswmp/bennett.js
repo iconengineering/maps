@@ -64,39 +64,14 @@ map.on('style.load', function(e) {
     "data": 'data/developments.geojson'
   });
 
-  map.addSource('velo-ex', {
-    type: 'vector',
-    url: 'mapbox://iconeng.2i3tfsvz'
-  });
-
-  map.addSource('velo-alt1', {
-    type: 'vector',
-    url: 'mapbox://iconeng.0ao5at0y'
-  });
-
-  map.addSource('velo-alt2', {
-    type: 'vector',
-    url: 'mapbox://iconeng.3ilu8zzh'
-  });
-
   map.addSource('flo2d-ex', {
     type: 'vector',
-    url: 'mapbox://iconeng.4zi0234i'
-  });
-
-  map.addSource('flo2d-alt1', {
-    type: 'vector',
-    url: 'mapbox://iconeng.965d9b50'
-  });
-
-  map.addSource('flo2d-alt2', {
-    type: 'vector',
-    url: 'mapbox://iconeng.6e17ijjd'
+    url: 'mapbox://iconeng.8yo158yo'
   });
 
   map.addSource('contours', {
     type: 'vector',
-    url: 'mapbox://iconeng.3re6dt84'
+    url: 'mapbox://iconeng.7v0nx2ye'
   });
 
   //Town Boundary
@@ -257,20 +232,20 @@ map.on('style.load', function(e) {
     'id': 'flo2d-ex',
     'type': 'fill',
     'source': 'flo2d-ex',
-    'source-layer': 'Wellington_001_Existing-8enlus',
+    'source-layer': 'ras2d_rog-bcuk4q',
     'filter': ["all", ['>', 'Var', 0.1]],
     'paint': {
       'fill-color': {
         property: 'Var',
         type: 'interval',
         stops: [
-          [.25, 'rgb(252,244,182)'],
-          [.5, 'rgb(245,194,152)'],
-          [1, 'rgb(227,147,138)'],
-          [1.5, 'rgb(199,101,134)'],
-          [2, 'rgb(161,59,139)'],
-          [3, 'rgb(109,23,143)'],
-          [4, 'rgb(14,9,135)']
+          [25, 'rgb(252,244,182)'],
+          [50, 'rgb(245,194,152)'],
+          [75, 'rgb(227,147,138)'],
+          [100, 'rgb(199,101,134)'],
+          [250, 'rgb(161,59,139)'],
+          [500, 'rgb(109,23,143)'],
+          [800, 'rgb(14,9,135)']
         ]
       },
       'fill-opacity': 0.5
@@ -279,115 +254,6 @@ map.on('style.load', function(e) {
       'visibility': 'none'
     }
   },);
-
-  // Velocity Grid - Existing
-  map.addLayer({
-    'id': 'velo-ex',
-    'type': 'line',
-    'source': 'velo-ex',
-    'source-layer': 'Wellington_001_Existing_Velo-2ywg3y',
-    'layout': {
-      'visibility': 'none'
-    },
-    'filter': ["all", ['>', 'Var', 0.25]],
-    'paint': {
-      'line-width': 1.2,
-      'line-opacity': 1,
-      'line-color': 'black',
-    }
-  });
-
-  // Velocity Grid - Alt 1
-  map.addLayer({
-    'id': 'velo-alt1',
-    'type': 'line',
-    'source': 'velo-alt1',
-    'source-layer': 'Wellington_002_PrStorm_Velo-8t0etl',
-    'layout': {
-      'visibility': 'none'
-    },
-    'filter': ["all", ['>', 'Var', 0.25]],
-    'paint': {
-      'line-width': 1.2,
-      'line-opacity': 1,
-      'line-color': 'black',
-    }
-  });
-
-
-  // Velocity Grid - Alt 2
-  map.addLayer({
-    'id': 'velo-alt2',
-    'type': 'line',
-    'source': 'velo-alt2',
-    'source-layer': 'Wellington_003_Pond_Velo-7l1y34',
-    'layout': {
-      'visibility': 'none'
-    },
-    'filter': ["all", ['>', 'Var', 0.25]],
-    'paint': {
-      'line-width': 1.2,
-      'line-opacity': 1,
-      'line-color': 'black',
-    }
-  });
-
-
-  // Flow Depth Grids - Alt1
-  map.addLayer({
-    'id': 'flo2d-alt1',
-    'type': 'fill',
-    'source': 'flo2d-alt1',
-    'source-layer': 'Wellington_002_PrStorm-ae4dow',
-    'filter': ["all", ['>', 'Var', 0.1]],
-    'paint': {
-      'fill-color': {
-        property: 'Var',
-        type: 'interval',
-        stops: [
-          [.25, 'rgb(252,244,182)'],
-          [.5, 'rgb(245,194,152)'],
-          [1, 'rgb(227,147,138)'],
-          [1.5, 'rgb(199,101,134)'],
-          [2, 'rgb(161,59,139)'],
-          [3, 'rgb(109,23,143)'],
-          [4, 'rgb(14,9,135)']
-        ]
-      },
-      'fill-opacity': 0.7
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  }, );
-
-  // Flow Depth Grids - Alt 2
-  map.addLayer({
-    'id': 'flo2d-alt2',
-    'type': 'fill',
-    'source': 'flo2d-alt2',
-    'source-layer': 'Well_003_Pond-9ixhpg',
-    'filter': ["all", ['>', 'Var', 0.1]],
-    'paint': {
-      'fill-color': {
-        property: 'Var',
-        type: 'interval',
-        stops: [
-          [.25, 'rgb(252,244,182)'],
-          [.5, 'rgb(245,194,152)'],
-          [1, 'rgb(227,147,138)'],
-          [1.5, 'rgb(199,101,134)'],
-          [2, 'rgb(161,59,139)'],
-          [3, 'rgb(109,23,143)'],
-          [4, 'rgb(14,9,135)']
-        ]
-      },
-      'fill-opacity': 0.5
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  }, );
 
   // Proposed Storm Improvement Alignments
   map.addLayer({
@@ -409,8 +275,8 @@ map.on('style.load', function(e) {
     'id': 'contour-2ft',
     'type': 'line',
     'source': 'contours',
-    'source-layer': 'clipped_contours-2tvf5k',
-    'filter': ['all', ['==', 'INDEX', 0]],
+    'source-layer': 'contours_1ft-89zxyr',
+    'filter': ['all', ['==', 'INDEX', 1]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
@@ -433,8 +299,8 @@ map.on('style.load', function(e) {
     'id': 'contour-5ft',
     'type': 'line',
     'source': 'contours',
-    'source-layer': 'clipped_contours-2tvf5k',
-    'filter': ['all', ['>', 'INDEX', 0]],
+    'source-layer': 'contours_1ft-89zxyr',
+    'filter': ['all', ['>', 'INDEX', 5]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
@@ -457,12 +323,12 @@ map.on('style.load', function(e) {
     'id': 'contour-5ftLabels',
     'type': 'symbol',
     'source': 'contours',
-    'source-layer': 'clipped_contours-2tvf5k',
-    'filter': ['all', ['>', 'INDEX', 0], ],
+    'source-layer': 'contours_1ft-89zxyr',
+    'filter': ['all', ['>', 'INDEX', 5], ],
     'layout': {
       'symbol-placement': 'line',
       'visibility': 'none',
-      'text-field': '{CONTOUR}',
+      'text-field': '{ELEV}',
       'text-size': {
         "stops": [
           [13, 12],
