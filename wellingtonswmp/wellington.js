@@ -1,10 +1,10 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 
-// Set bounds to Wellington
-var bounds = [
-[-105.200, 40.520], // SW coordinates
-[-104.900, 40.895] // NE coordinates
-];
+// // Set bounds to Wellington
+// var bounds = [
+// [-105.200, 40.520], // SW coordinates
+// [-104.900, 40.895] // NE coordinates
+// ];
 
 var map = new mapboxgl.Map({
   container: 'map',
@@ -13,22 +13,12 @@ var map = new mapboxgl.Map({
   center: [-104.9997, 40.7001],
   hash: true,
   preserveDrawingBuffer: true,
-  maxBounds: bounds // Set max boundaries
+  // maxBounds: bounds // Set max boundaries
 });
 
 var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
+// var inputs = layerList.getElementsByTagName('input');
 
-function switchLayer(layer) {
-  var layerId = layer.target.value;
-  map.setStyle('mapbox://styles/iconeng/' + layerId);
-  $('.layer-off').prop('checked', false);
-  $('.layer-on').prop('checked', true);
-}
-
-for (var i = 0; i < inputs.length; i++) {
-  inputs[i].onclick = switchLayer;
-}
 
 // $(document).ready(function() {
 //   $("#clear").click(function() {
@@ -307,7 +297,7 @@ map.on('style.load', function(e) {
   map.addLayer({
     'id': 'dividersLabels',
     'type': 'symbol',
-    'source': 'swmmDividers',
+    'source': 'BECswmmDividers',
     'layout': {
       "visibility": 'none',
       "text-optional": true,
@@ -956,14 +946,6 @@ map.on('style.load', function(e) {
   });
 
 
-
-  var style = map.getStyle();
-
-  if (style.name != 'Outdoors') {
-    map.setLayoutProperty('conduitArrows', 'icon-image', 'oneway-spaced-white-small');
-  }
-
-
 }); //end style load
 
 // When a click event occurs near a marker icon, open a popup at the location of
@@ -974,21 +956,21 @@ map.on('style.load', function(e) {
 // the feature, with description HTML from its properties.
 
 
-map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['fieldVisit']
-  });
-  if (!features.length) {
-    return;
-  }
-
-  var feature = features[0];
-
-  var popup = new mapboxgl.Popup()
-    .setLngLat(e.lngLat)
-    .setHTML(feature.properties.Number + '<br>' + feature.properties.Descr)
-    .addTo(map);
-});
+// map.on('click', function(e) {
+//   var features = map.queryRenderedFeatures(e.point, {
+//     layers: ['fieldVisit']
+//   });
+//   if (!features.length) {
+//     return;
+//   }
+//
+//   var feature = features[0];
+//
+//   var popup = new mapboxgl.Popup()
+//     .setLngLat(e.lngLat)
+//     .setHTML(feature.properties.Number + '<br>' + feature.properties.Descr)
+//     .addTo(map);
+// });
 
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
@@ -998,7 +980,5 @@ map.on('click', function(e) {
 //   });
 //   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 // });
-
-
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');

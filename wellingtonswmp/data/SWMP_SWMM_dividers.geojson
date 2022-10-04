@@ -1,6 +1,7 @@
 {
 "type": "FeatureCollection",
 "name": "SWMP_SWMM_dividers",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2877" } },
 "features": [
 { "type": "Feature", "properties": { "element_ty": "Divider", "id": "AOMI_D600" }, "geometry": { "type": "Point", "coordinates": [ 3133293.557, 2053374.313 ] } },
 { "type": "Feature", "properties": { "element_ty": "Divider", "id": "BCOM_D100" }, "geometry": { "type": "Point", "coordinates": [ 3137021.558000000193715, 2041315.026 ] } },
