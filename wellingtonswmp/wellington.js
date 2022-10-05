@@ -8,8 +8,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
-  zoom: 13.0,
+  style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
+  zoom: 13,
   center: [-104.9997, 40.7001],
   hash: true,
   preserveDrawingBuffer: true,
@@ -18,22 +18,6 @@ var map = new mapboxgl.Map({
 
 var layerList = document.getElementById('menu');
 // var inputs = layerList.getElementsByTagName('input');
-
-
-// $(document).ready(function() {
-//   $("#clear").click(function() {
-//     var checkBoxes = $("input[type=checkbox]");
-//     checkBoxes.prop("checked", false);
-//     map.setPaintProperty('contours-1ft', 'visibility', 'none');
-//     map.setPaintProperty('contours-5ft', 'visibility', 'none');
-//     map.setPaintProperty('contours-5ftLabels', 'visibility', 'none');
-//     map.setPaintProperty('cityFP', 'visibility', 'none');
-//     map.setPaintProperty('cityFW', 'visibility', 'none');
-//     map.setPaintProperty('citySF', 'visibility', 'none');
-//     map.setPaintProperty('wvb-fp-100yr', 'visibility', 'none');
-//     map.setPaintProperty('wvb-fp-100yr-fill', 'visibility', 'none');
-//   });
-// });
 
 map.on('style.load', function(e) {
 
@@ -572,70 +556,58 @@ map.on('style.load', function(e) {
     }
   });
 
-  //  Contours - 2FT
-  map.addSource('contours', {
+  //  Contours - 1ft within Town Limits
+  map.addSource('contours-town', {
     type: 'vector',
-    url: 'mapbox://iconeng.3re6dt84'
+    url: 'mapbox://iconeng.64fnp3dg'
   });
 
   map.addLayer({
-    'id': 'contour-2ft',
+    'id': 'contours-town',
     'type': 'line',
-    'source': 'contours',
-    'source-layer': 'clipped_contours-2tvf5k',
-    'filter': ['all', ['==', 'INDEX', 0]],
+    'source': 'contours-town',
+    'source-layer': 'Well_contours_1ft_town-8f03w2',
+    'filter': ['all', ['!=', 'INDEX', 5]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
       'line-cap': 'round'
     },
     'paint': {
-      'line-width': {
-        "stops": [
-          [13, 1],
-          [17, 1.75],
-          [19, 2.5]
-        ]
-      },
-      'line-color': 'gray'
+      'line-width': 1,
+      'line-color': '#333'
     }
   }, 'road_label');
 
   //  Contours - 5 ft
   map.addLayer({
-    'id': 'contour-5ft',
+    'id': 'contours-town-5ft',
     'type': 'line',
-    'source': 'contours',
-    'source-layer': 'clipped_contours-2tvf5k',
-    'filter': ['all', ['>', 'INDEX', 0]],
+    'source': 'contours-town',
+    'source-layer': 'Well_contours_1ft_town-8f03w2',
+    'filter': ['all', ['==', 'INDEX', 5]],
     'layout': {
       'line-join': 'round',
       'visibility': 'none',
       'line-cap': 'round'
     },
     'paint': {
-      'line-width': {
-        "stops": [
-          [13, 1],
-          [17, 1.75],
-          [19, 2.5]
-        ]
-      },
-      'line-color': 'black'
-    }
+        'line-width': 2,
+        'line-color': '#111'
+      }
   }, 'road_label');
 
   //  Contours - 5 ft Labels
   map.addLayer({
-    'id': 'contour-5ftLabels',
+    'id': 'contours-5ftLabels',
     'type': 'symbol',
-    'source': 'contours',
-    'source-layer': 'clipped_contours-2tvf5k',
-    'filter': ['all', ['>', 'INDEX', 0], ],
+    'source': 'contours-town',
+    'source-layer': 'Well_contours_1ft_town-8f03w2',
+    'filter': ['all', ['==', 'INDEX', 5]],
     'layout': {
       'symbol-placement': 'line',
       'visibility': 'none',
-      'text-field': '{CONTOUR}',
+      'text-field': '{ELEV}',
       'text-size': {
         "stops": [
           [13, 12],
@@ -645,11 +617,11 @@ map.on('style.load', function(e) {
       }
     },
     'paint': {
-      'text-color': 'black',
-      'text-halo-color': '#F8F4F0',
-      'text-halo-width': 2,
-      'text-halo-blur': 0.5
-    }
+        'text-color': '#000',
+        'text-halo-color': 'rgba(255,255,255,0.9)',
+        'text-halo-width': 1,
+        'text-halo-blur': 1
+      }
   });
 
   // ICON ROUTING CONDUITS
@@ -756,17 +728,17 @@ map.on('style.load', function(e) {
       });
 
   // ICON ROUTING
-  map.addSource('SWMP_SWMM_Junctions', {
+  map.addSource('SWMP_SWMM_Nodes', {
     type: 'geojson',
-    "data": 'data/SWMP_SWMM_junctions.geojson'
+    "data": 'data/SWMP_SWMM_nodes.geojson'
 
   });
 
   //SWMM Junctions
   map.addLayer({
-    'id': 'SWMP_SWMM_junctions',
+    'id': 'SWMP_SWMM_Nodes',
     'type': 'circle',
-    'source': 'SWMP_SWMM_Junctions',
+    'source': 'SWMP_SWMM_Nodes',
     'layout': {
       "visibility": 'none'
     },
@@ -778,9 +750,9 @@ map.on('style.load', function(e) {
 
   //SWMM Junction LABEL
   map.addLayer({
-    'id': 'SWMP_SWMM_junctionLabels',
+    'id': 'SWMP_SWMM_NodeLabels',
     'type': 'symbol',
-    'source': 'SWMP_SWMM_Junctions',
+    'source': 'SWMP_SWMM_Nodes',
     'layout': {
       "visibility": 'none',
       "text-optional": true,
@@ -798,132 +770,6 @@ map.on('style.load', function(e) {
     }
   });
 
-  // ICON ROUTING Dividers
-  map.addSource('SWMP_SWMM_Dividers', {
-    type: 'geojson',
-    "data": 'data/SWMP_SWMM_dividers.geojson'
-  });
-
-  //SWMM Dividers
-  map.addLayer({
-    'id': 'SWMP_SWMM_Dividers',
-    'type': 'circle',
-    'source': 'SWMP_SWMM_Dividers',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'circle-radius': 4,
-      'circle-color': '#ee4d5a'
-    }
-  });
-
-  //SWMM Dividers LABEL
-  map.addLayer({
-    'id': 'SWMP_SWMM_DividersLabels',
-    'type': 'symbol',
-    'source': 'SWMP_SWMM_Dividers',
-    'layout': {
-      "visibility": 'none',
-      "text-optional": true,
-      "text-line-height": 1,
-      "text-size": 12,
-      "text-field": "{id}",
-      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-      "text-offset": [0, 1],
-      "text-anchor": "top"
-    },
-    "paint": {
-      "text-color": "#ee4d5a",
-      "text-halo-color": "#F8F4F0",
-      "text-halo-width": 1,
-    }
-  });
-
-  // ICON ROUTING Outfalls
-  map.addSource('SWMP_SWMM_Outfalls', {
-    type: 'geojson',
-    "data": 'data/SWMP_SWMM_outfalls.geojson'
-  });
-
-  //SWMM Outfalls
-  map.addLayer({
-    'id': 'SWMP_SWMM_Outfalls',
-    'type': 'circle',
-    'source': 'SWMP_SWMM_Outfalls',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'circle-radius': 4,
-      'circle-color': '#ee4d5a'
-    }
-  });
-
-  //SWMM Outfall LABEL
-  map.addLayer({
-    'id': 'SWMP_SWMM_OutfallsLabels',
-    'type': 'symbol',
-    'source': 'SWMP_SWMM_Outfalls',
-    'layout': {
-      "visibility": 'none',
-      "text-optional": true,
-      "text-line-height": 1,
-      "text-size": 12,
-      "text-field": "{id}",
-      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-      "text-offset": [0, 1],
-      "text-anchor": "top"
-    },
-    "paint": {
-      "text-color": "#ee4d5a",
-      "text-halo-color": "#F8F4F0",
-      "text-halo-width": 1,
-    }
-  });
-
-
-  // ICON ROUTING Storage
-  map.addSource('SWMP_SWMM_Storage', {
-    type: 'geojson',
-    "data": 'data/SWMP_SWMM_storages.geojson'
-  });
-
-  //SWMM Outfalls
-  map.addLayer({
-    'id': 'SWMP_SWMM_Storage',
-    'type': 'circle',
-    'source': 'SWMP_SWMM_Storage',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'circle-radius': 4,
-      'circle-color': '#ee4d5a'
-    }
-  });
-
-  //SWMM Outfall LABEL
-  map.addLayer({
-    'id': 'SWMP_SWMM_StorageLabels',
-    'type': 'symbol',
-    'source': 'SWMP_SWMM_Storage',
-    'layout': {
-      "visibility": 'none',
-      "text-optional": true,
-      "text-line-height": 1,
-      "text-size": 12,
-      "text-field": "{id}",
-      'text-font': ['Roboto Bold', 'Open Sans Regular', 'Arial Unicode MS Regular'],
-      "text-offset": [0, 1],
-      "text-anchor": "top"
-    },
-    "paint": {
-      "text-color": "#ee4d5a",
-      "text-halo-color": "#F8F4F0",
-      "text-halo-width": 1,
-    }
-  });
 
   map.addSource('SWMP_Subwatersheds', {
       type: 'geojson',
@@ -944,9 +790,144 @@ map.on('style.load', function(e) {
         'visibility':'none'
       }
   });
-
-
 }); //end style load
+
+
+map.on('click', function (e) {
+  var features = map.queryRenderedFeatures(e.point, { layers: ['SWMP_SWMM_Conduits','SWMP_SWMM_Nodes'] });
+  if (!features.length) {
+      return;
+  }
+
+  var feature = features[0];
+  var id = feature.layer.id
+
+// add id == 'SWMP_SWMM_Conduits' ||
+
+    if (id == 'SWMP_SWMM_Nodes'){
+
+      var data = [{name: "2-yr", value: feature.properties.Q_Ex_002},
+                  {name: "10-yr", value: feature.properties.Q_Ex_010},
+                  {name: "100-yr", value: feature.properties.Q_Ex_100}];
+
+    var	margin = {top: 10, right: 40, bottom: 30, left: 50},
+        width = 240 - margin.left - margin.right,
+        height = 240 - margin.top - margin.bottom;
+
+        var x = d3.scaleBand()
+            .rangeRound([0, width])
+            .paddingInner(0.1);
+
+        var y = d3.scaleLinear()
+            .range([height, 0]);
+
+        var z = d3.scaleOrdinal()
+            .range(['#089099','#00718b','#045275']);
+
+      var div = window.document.createElement('div');
+      if (id == 'SWMP_SWMM_Conduits' && feature.properties.Shape1 == 'IRREGULAR') {
+        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.NAME + '</b><br />Irregular</div>';
+      } else if (id == 'SWMP_SWMM_Conduits' && feature.properties.Shape1 == 'CIRCULAR') {
+        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.NAME + '</b><br />' + feature.properties.Geom1 + 'ft Circular</div>';
+      } else if (id == 'SWMP_SWMM_Conduits' && feature.properties.Shape1 == 'RECT_CLOSED') {
+        div.innerHTML = '<div class="row"><b>Conduit ' + feature.properties.NAME + '</b><br />' + feature.properties.Geom1 + 'ft x ' + feature.properties.Geom2 + 'ft Box</div>';
+      } else {
+        div.innerHTML = '<div class="row"><b>SWMM Node ' + '<br>' + feature.properties.id + '</b></div>';
+      };
+
+      var	svg = d3.select(div)
+        .append("svg")
+          .attr("class", "xs")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+          d3.select(".xs").selectAll(".bar").remove()
+
+          x.domain(data.map(function(d) { return d.name; }));
+          y.domain([0, d3.max(data, function(d) {
+            if (d.value <= 25) {return 25}
+else if (d.value <= 50) {return 50}
+else if (d.value <= 75) {return 75}
+            else if (d.value <= 250) {return 250}
+            else if (d.value <= 500) {return 500}
+else if (d.value <= 1000) {return 1000}
+else if (d.value <= 2500) {return 2500}
+            else 	{ return 5000 }
+            ;})
+          ]);
+
+          svg.selectAll(".bar")
+              .data(data)
+            .enter().append("rect")
+              .attr("x", function(d) { return x(d.name); })
+              .attr("width", x.bandwidth())
+              .attr("y", function(d) { return height; })
+              .attr("height", 0)
+              .attr("fill", function(d) { return z(d.name); })
+              .transition()
+              .delay(function (d, i) { return i*100; })
+              .attr("height", function(d) { return height - y(d.value); })
+              .attr("y", function(d) { return y(d.value); });
+
+          svg.selectAll("text.bar")
+              .data(data)
+            .enter().append("text")
+              .attr("class", "bar")
+              .attr("text-anchor", "middle")
+              .attr("x", function(d) { return x(d.name) + 23; })
+              .attr("y", function(d) {
+                if (height - y(d.value) < 20) { return y(d.value) - 5; }
+                else { return y(d.value) + 12; }
+                ;})
+              .attr("fill", function(d) {
+                if (height - y(d.value) < 20) { return '#000' }
+                else { return '#fff' }
+                ;})
+              .attr('font-size', '10px')
+              .attr('font-weight', 'bold')
+              .text(function(d) { return Math.round(d.value); });
+
+          // Add the X Axis
+          svg.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(x).tickSizeOuter(0));
+
+          // Add the Y Axis
+          svg.append("g")
+              .call(d3.axisLeft(y).ticks(4))
+            .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 3)
+              .attr("dy", ".71em")
+              .attr("font-size", 8)
+              .attr("fill", "#000")
+              .style("text-anchor", "end")
+              .text("cfs");
+
+        function type(d) {
+          d.value = +d.value;
+          return d;
+        }
+
+      var d3popup = new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setDOMContent(div)
+          .addTo(map);
+    } else { return; }
+    });
+
+map.on('mousemove', function (e) {
+
+// add conduits 'SWMP_SWMM_Conduits',
+
+    var features = map.queryRenderedFeatures(e.point, { layers: ['SWMP_SWMM_Nodes'] });
+
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+
+});
+
 
 // When a click event occurs near a marker icon, open a popup at the location of
 
