@@ -1,4 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
+<<<<<<< HEAD
 
 // Set bounds to Wellington
 var bounds = [
@@ -6,6 +7,8 @@ var bounds = [
 [-104.900, 40.895] // NE coordinates
 ];
 
+=======
+>>>>>>> parent of b8374cd (set max bounds for Wellington SDMBP)
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
