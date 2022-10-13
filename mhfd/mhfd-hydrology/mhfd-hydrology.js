@@ -1,26 +1,27 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cikh67rk8004n9vkouhls14s4',
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 10,
     center: [-104.9729, 39.7839],
     hash: true,
     preserveDrawingBuffer: true
 });
 
+
 var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
-
-function switchLayer(layer) {
-    var layerId = layer.target.value;
-    map.setStyle('mapbox://styles/iconeng/' + layerId);
-    $('.layer-off').prop('checked', false);
-    $('.layer-on').prop('checked', true);
-}
-
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].onclick = switchLayer;
-}
+// var inputs = layerList.getElementsByTagName('input');
+//
+// function switchLayer(layer) {
+//     var layerId = layer.target.value;
+//     map.setStyle('mapbox://styles/iconeng/' + layerId);
+//     $('.layer-off').prop('checked', false);
+//     $('.layer-on').prop('checked', true);
+// }
+//
+// for (var i = 0; i < inputs.length; i++) {
+//     inputs[i].onclick = switchLayer;
+// }
 
 $(document).ready(function() {
     $("#clear").click(function() {
@@ -63,10 +64,10 @@ map.on('style.load',function(e){
       type: 'vector',
       url: 'mapbox://iconeng.cm3pqji3'
   });
-  map.addSource('basins_pts', {
-      type: 'vector',
-      url: 'mapbox://iconeng.9jscoexe'
-  });
+  // map.addSource('basins_pts', {
+  //     type: 'vector',
+  //     url: 'mapbox://iconeng.9jscoexe'
+  // });
   map.addSource('mhfd-streams', {
       type: 'vector',
       url: 'mapbox://iconeng.d9coogno'
@@ -359,32 +360,32 @@ map.on('style.load',function(e){
   //      "text-halo-width": {"stops": [[15,1],[17,1.25]]}
   //    }
   // });
-
-  map.addLayer({
-      'id': 'basinLabels2',
-      'type': 'symbol',
-      'source': 'basins_pts',
-      'source-layer':'basins_pts-57794c',
-      'layout': {
-         "visibility": 'none',
-         "text-optional": true,
-         "text-line-height": 1,
-         "text-size": {
-             "stops": [[15, 10], [17, 12], [19, 14]]
-         },
-         "text-field": "{Basin_Name}",
-         "text-offset": {
-             "stops": [[13, [0, -1]], [17, [0, -1.5]]]
-         },
-         'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
-         "text-anchor": "top"
-     },
-     "paint": {
-       "text-color": "#F8F4F0",
-       "text-halo-color": "rgba(0,0,0,.87)",
-       "text-halo-width": {"stops": [[15,1],[17,1.25]]}
-     }
-  });
+  //
+  // map.addLayer({
+  //     'id': 'basinLabels2',
+  //     'type': 'symbol',
+  //     'source': 'basins_pts',
+  //     'source-layer':'basins_pts-57794c',
+  //     'layout': {
+  //        "visibility": 'none',
+  //        "text-optional": true,
+  //        "text-line-height": 1,
+  //        "text-size": {
+  //            "stops": [[15, 10], [17, 12], [19, 14]]
+  //        },
+  //        "text-field": "{Basin_Name}",
+  //        "text-offset": {
+  //            "stops": [[13, [0, -1]], [17, [0, -1.5]]]
+  //        },
+  //        'text-font': ['Roboto Medium','Open Sans Regular','Arial Unicode MS Regular'],
+  //        "text-anchor": "top"
+  //    },
+  //    "paint": {
+  //      "text-color": "#F8F4F0",
+  //      "text-halo-color": "rgba(0,0,0,.87)",
+  //      "text-halo-width": {"stops": [[15,1],[17,1.25]]}
+  //    }
+  // });
 
 
   map.addLayer({
@@ -522,12 +523,12 @@ map.on('style.load',function(e){
   //    }
   // });
 
-    var style = map.getStyle();
-
-    if (style.name != 'Light'){
-      map.setLayoutProperty('conduitArrows','icon-image','oneway-spaced-white-small');
-      map.setLayoutProperty('conduitCompsArrows','icon-image','oneway-spaced-white-small');
-    };
+    // var style = map.getStyle();
+    //
+    // if (style.name != 'Light'){
+    //   map.setLayoutProperty('conduitArrows','icon-image','oneway-spaced-white-small');
+    //   map.setLayoutProperty('conduitCompsArrows','icon-image','oneway-spaced-white-small');
+    // };
 
 });
 
