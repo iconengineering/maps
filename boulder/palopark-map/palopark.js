@@ -5,7 +5,7 @@ if (!mapboxgl.supported()) {
 } else {
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cikh67rk8004n9vkouhls14s4',
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 15.15,
     center: [-105.2513, 40.0447],
     hash: true,
@@ -604,7 +604,7 @@ map.on('style.load', function () {
     },'road-label-sm');
 
 // Floodplains
-    
+
     map.addLayer({
         'id': 'effective',
         'type': 'line',
@@ -694,7 +694,7 @@ map.on('style.load', function () {
                     [{zoom: 22, value: 0}, 4],
                     [{zoom: 22, value: 50}, 50]
                     ]
-            },            
+            },
         'circle-opacity': 0.3,
         'circle-color': 'mediumseagreen'
       }
