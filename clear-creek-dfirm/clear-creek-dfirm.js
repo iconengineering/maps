@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/civjrd2la004z2immqynhr4fd',
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 11,
     hash: true,
     center: [-105.4073, 39.7768]
