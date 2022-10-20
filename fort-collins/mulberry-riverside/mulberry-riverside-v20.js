@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/iconeng/cihxv74vo00oynpm48wsujwo3',
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
     zoom: 15,
     center: [-105.0615, 40.5810],
     hash: true,
@@ -627,7 +627,7 @@ map.on('click', function (e) {
             .setLngLat(e.lngLat)
             .setHTML('<span>' + feature.properties.Descr + '</span><br />' +
                     '<span>Alternative 1: ' + feature.properties.Alt01_T + ' cfs</span>')
-            .addTo(map);    
+            .addTo(map);
     } else if (feature.layer.id == 'alt1Inlet'){
         var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
@@ -698,4 +698,3 @@ map.on('mousemove', function (e) {
 });
 
 map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
-

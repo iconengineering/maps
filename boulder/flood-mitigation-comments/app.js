@@ -116,7 +116,7 @@ var bounds = [
 // Init Map
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot', //hosted style id
+    style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw', //hosted style id
     center: [-105.2715,40.0184], // starting position
     zoom: 12.5, // starting zoom,
     hash: true,
