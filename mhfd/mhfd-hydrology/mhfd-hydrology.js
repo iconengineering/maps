@@ -586,9 +586,13 @@ map.on('click', function (e) {
           x.domain(data.map(function(d) { return d.name; }));
           y.domain([0, d3.max(data, function(d) {
             if (d.value <= 100) {return 100}
+            else if (d.value <= 50) {return 50}
+            else if (d.value <= 75) {return 75}
+            else if (d.value <= 250) {return 250}
             else if (d.value <= 500) {return 500}
             else if (d.value <= 1000) {return 1000}
-            else 	{ return 1500 }
+            else if (d.value <= 2500) {return 2500}
+            else 	{ return 5000 }
             ;})
           ]);
 
