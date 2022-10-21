@@ -585,7 +585,7 @@ map.on('click', function (e) {
 
           x.domain(data.map(function(d) { return d.name; }));
           y.domain([0, d3.max(data, function(d) {
-            if (d.value <= 100) {return 100}
+            if (d.value <= 25) {return 25}
             else if (d.value <= 50) {return 50}
             else if (d.value <= 75) {return 75}
             else if (d.value <= 250) {return 250}
