@@ -1,14 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
-<<<<<<< HEAD
 
-// // Set bounds to Wellington
-// var bounds = [
-// [-105.200, 40.520], // SW coordinates
-// [-104.900, 40.895] // NE coordinates
-// ];
-
-=======
->>>>>>> parent of b8374cd (set max bounds for Wellington SDMBP)
+// parent of b8374cd (set max bounds for Wellington SDMBP)
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
@@ -839,27 +831,27 @@ map.on('click', function (e) {
       };
 
       var	svg = d3.select(div)
-        .append("svg")
-          .attr("class", "xs")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+              .append("svg")
+                .attr("class", "xs")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-          d3.select(".xs").selectAll(".bar").remove()
+                d3.select(".xs").selectAll(".bar").remove()
 
-          x.domain(data.map(function(d) { return d.name; }));
-          y.domain([0, d3.max(data, function(d) {
-            if (d.value <= 25) {return 25}
-            else if (d.value <= 50) {return 50}
-            else if (d.value <= 75) {return 75}
-            else if (d.value <= 250) {return 250}
-            else if (d.value <= 500) {return 500}
-            else if (d.value <= 1000) {return 1000}
-            else if (d.value <= 2500) {return 2500}
-            else 	{ return 5000 }
-            ;})
-          ]);
+                x.domain(data.map(function(d) { return d.name; }));
+                y.domain([0, d3.max(data, function(d) {
+                  if (d.value <= 100) {return 100}
+                  else if (d.value <= 50) {return 50}
+                  else if (d.value <= 75) {return 75}
+                  else if (d.value <= 250) {return 250}
+                  else if (d.value <= 500) {return 500}
+                  else if (d.value <= 1000) {return 1000}
+                  else if (d.value <= 2500) {return 2500}
+                  else 	{ return 5000 }
+                  ;})
+                ]);
 
           svg.selectAll(".bar")
               .data(data)
