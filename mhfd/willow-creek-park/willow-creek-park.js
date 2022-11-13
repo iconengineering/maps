@@ -68,7 +68,7 @@ map.on('style.load',function(e){
       'fill-opacity': 0.5
     },
     'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
     }
   }, 'road-label-small');
   
