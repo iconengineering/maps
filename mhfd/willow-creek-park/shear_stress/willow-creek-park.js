@@ -69,6 +69,25 @@ map.on('style.load',function(e){
   }, 'road-label-small');
   
   
+
+map.addSource('drops',{
+  type: 'geojson',
+  "data": 'drops.geojson'
+});
+
+
+map.addLayer({
+  'id': 'drops',
+  'type': 'line',
+  'source': 'drops',
+  'paint': {
+      'line-width': 1.5,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,.62)',
+      'line-dasharray': [3,1]
+  }
+});
+
   // map.addLayer({
   //   'id': 'mhfd-streams',
   //   'type': 'line',
