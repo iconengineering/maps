@@ -22,7 +22,7 @@
 { "type": "Feature", "properties": { "Elev": 5055.39, "Node": "7244", "Peak_Inflo": 309.68, "Total_Infl": 38.150739 }, "geometry": { "type": "Point", "coordinates": [ -105.019410974641076, 40.634764475239528 ] } },
 { "type": "Feature", "properties": { "Elev": 5059.28, "Node": "744", "Peak_Inflo": 324.14, "Total_Infl": 38.046393 }, "geometry": { "type": "Point", "coordinates": [ -105.022211578809717, 40.63724918566421 ] } },
 { "type": "Feature", "properties": { "Elev": 5063.26, "Node": "7249", "Peak_Inflo": 247.37, "Total_Infl": 26.758611 }, "geometry": { "type": "Point", "coordinates": [ -105.023783794391989, 40.639244394896572 ] } },
-{ "type": "Feature", "properties": { "Elev": 5090.01, "Node": "49", "Peak_Inflo": 274.73, "Total_Infl": 26.525367 }, "geometry": { "type": "Point", "coordinates": [ -105.026408971496153, 40.643213356242768 ] } },
+{ "type": "Feature", asdfasdfsdafsd "properties": { "Elev": 5090.01, "Node": "49", "Peak_Inflo": 274.73, "Total_Infl": 26.525367 }, "geometry": { "type": "Point", "coordinates": [ -105.026408971496153, 40.643213356242768 ] } },
 { "type": "Feature", "properties": { "Elev": 5032.56, "Node": "37", "Peak_Inflo": 147.82, "Total_Infl": 6.892974 }, "geometry": { "type": "Point", "coordinates": [ -105.020577838788554, 40.626516158398566 ] } },
 { "type": "Feature", "properties": { "Elev": 5037.85, "Node": "38", "Peak_Inflo": 469.06, "Total_Infl": 44.159841 }, "geometry": { "type": "Point", "coordinates": [ -105.027236459558083, 40.631539475016545 ] } },
 { "type": "Feature", "properties": { "Elev": 5073.53, "Node": "748", "Peak_Inflo": 418.88, "Total_Infl": 62.490978 }, "geometry": { "type": "Point", "coordinates": [ -105.013286691551727, 40.64662055591662 ] } },
