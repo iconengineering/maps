@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "mdp_swmm_storage",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "Ritchey_Park_Pond" }, "geometry": { "type": "Point", "coordinates": [ -105.092124475864509, 39.737376578554368 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "Idlewild_Pond" }, "geometry": { "type": "Point", "coordinates": [ -105.114654445363158, 39.73896987037417 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "Fatima_Pond" }, "geometry": { "type": "Point", "coordinates": [ -105.116095280431907, 39.746510344116267 ] } },
+{ "type": "Feature", "properties": { "element_ty": "StorageUnit", "id": "Kipling_Pond" }, "geometry": { "type": "Point", "coordinates": [ -105.110025133874913, 39.74174736755414 ] } }
+]
+}
