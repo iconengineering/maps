@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"name": "mdp_swmm_junctions",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "131", "elevation": "5270", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.044178106128086, 39.734925637305182 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "130", "elevation": "5284", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.048760089855278, 39.735223474013416 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "129", "elevation": "5306", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.053479373280268, 39.73496128998319 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "128", "elevation": "5328", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.058602427143768, 39.736164740584549 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "1271", "elevation": "5364", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.067476342180129, 39.734898864436865 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "127a", "elevation": "5348", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.062953627677217, 39.735594559079793 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "126", "elevation": "5390", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.072139920913017, 39.733706539110088 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "122", "elevation": "5434", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.084522715119661, 39.736725334537162 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "112", "elevation": "5604", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.123922618096444, 39.740402147087735 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "125", "elevation": "5396", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.075678289786993, 39.733671701303898 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "194", "elevation": "5400", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.077407310031674, 39.73336758641328 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "121a", "elevation": "5458", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.092682837322101, 39.737282362149507 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "192", "elevation": "5482", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.096406218307465, 39.738272030752036 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "109", "elevation": "5544", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.105096835881199, 39.736771886995463 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "113", "elevation": "5614", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.12038021490342, 39.747466891114257 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "114a", "elevation": "5604", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.116584496368716, 39.745942588798606 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "127b", "elevation": "5348", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.062335987682815, 39.736548364303296 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "NorthDryGulch", "elevation": "5348", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.063240572800851, 39.737291288968201 ] } },
+{ "type": "Feature", "properties": { "element_ty": "Junction", "id": "117", "elevation": "5544.68", "max_depth": "0", "surcharge_": "0", "ponded_are": "0" }, "geometry": { "type": "Point", "coordinates": [ -105.110336477149289, 39.741637485008056 ] } }
+]
+}
