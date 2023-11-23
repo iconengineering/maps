@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
-  zoom: 13,
-  center: [-105.0818, 39.7364],
+  zoom: 11,
+  center: [-104.8821, 39.7684],
   hash: true,
   preserveDrawingBuffer: true
 });
@@ -698,17 +698,40 @@ map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 //   map.fitBounds(bbox,{padding: 10});
 // });
 
-//SW to NE Coordinates
+
+
+//Reach buttons use coordinates SW to NE Coordinates
 
 document.getElementById('Reach1').addEventListener('click', function () {
-  var bbox = [[-105.0451, 39.7335], [-105.0361, 39.7356]];
+  var bbox = [[-104.960, 39.804], [-104.936, 39.815]];
   map.fitBounds(bbox, { padding: 50 });
 });
 
-
-
-document.getElementById('UpstreamOfKipling').addEventListener('click', function () {
+document.getElementById('Reach2').addEventListener('click', function () {
+  var bbox = [[-104.946, 39.796], [-104.926, 39.806]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach3').addEventListener('click', function () {
+  var bbox = [[-104.932, 39.790], [-104.911, 39.797]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach4').addEventListener('click', function () {
+  var bbox = [[-104.919, 39.784], [-104.902, 39.793]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach5').addEventListener('click', function () {
   var bbox = [[-105.1305, 39.7359], [-105.1069, 39.7435]];
   map.fitBounds(bbox, { padding: 50 });
 });
-
+document.getElementById('Reach6').addEventListener('click', function () {
+  var bbox = [[-105.1305, 39.7359], [-105.1069, 39.7435]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach7').addEventListener('click', function () {
+  var bbox = [[-105.1305, 39.7359], [-105.1069, 39.7435]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach8').addEventListener('click', function () {
+  var bbox = [[-105.1305, 39.7359], [-105.1069, 39.7435]];
+  map.fitBounds(bbox, { padding: 50 });
+});
