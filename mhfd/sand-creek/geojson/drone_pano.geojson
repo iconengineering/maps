@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "drone_pano",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "Descr": "Quebec Street Drop", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach05_47thAve_to_I70/quebec-drop/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.902773074703092, 39.78237901193625 ] } }
+]
+}

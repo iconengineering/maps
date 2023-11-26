@@ -1,20 +1,25 @@
-html, body, .mapboxgl-map {
+html,
+body,
+.mapboxgl-map {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 .link {
-color: #dd686c;
-transition: all 0.2s linear;
+  color: #dd686c;
+  transition: all 0.2s linear;
 }
-.link:hover, .link:focus {
-color: #F78286;
+
+.link:hover,
+.link:focus {
+  color: #F78286;
 }
 
 .btn {
   background-color: #dd686c;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   background-color: #F78286;
 }
 
@@ -39,7 +44,9 @@ color: #F78286;
   margin-left: 0 !important;
 }
 
-[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after, [type="checkbox"].filled-in:checked+label:after {
+[type="radio"]:checked+label:after,
+[type="radio"].with-gap:checked+label:after,
+[type="checkbox"].filled-in:checked+label:after {
   background-color: #dd686c;
   border: 2px solid #dd686c;
 }
@@ -49,8 +56,9 @@ color: #F78286;
   border-bottom-color: #dd686c;
 }
 
-[type="checkbox"]+label, [type="radio"]+label {
-  color: rgba(0,0,0,.87);
+[type="checkbox"]+label,
+[type="radio"]+label {
+  color: rgba(0, 0, 0, .87);
   font-size: 14px;
   letter-spacing: .04em;
 }
@@ -64,7 +72,7 @@ color: #F78286;
 }
 
 .secondary {
-  color: rgba(0,0,0,.62);
+  color: rgba(0, 0, 0, .62);
   font-size: 11px;
   line-height: 11px;
 }
@@ -87,7 +95,7 @@ color: #F78286;
 
 .collapsible-body p {
   padding: 0 0 .5rem 0;
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, .87);
 }
 
 .collapsible-body p.narrow {
@@ -102,15 +110,17 @@ color: #F78286;
   max-width: 300px;
 }
 
+
 .note {
   font-size: small;
   line-height: 18px;
 }
 
-.domain, .tick line{
-	fill: none;
-	stroke: grey;
-	stroke-width: 1;
+.domain,
+.tick line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
 }
 
 .line {

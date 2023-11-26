@@ -37,7 +37,6 @@ $(document).ready(function () {
 
 map.on('style.load', function (e) {
 
-
   map.addSource('reaches', {
     type: 'geojson',
     "data": 'geojson/reaches.geojson'
@@ -142,12 +141,43 @@ map.on('style.load', function (e) {
   });
 
 
+  map.addSource('drone_pano', {
+    type: 'geojson',
+    "data": 'geojson/drone_pano.geojson'
+  });
+
+  map.addLayer({
+    'id': 'drone_pano',
+    'type': 'circle',
+    'source': 'drone_pano',
+    'layout': {
+      "visibility": 'visible'
+    },
+    'paint': {
+      'circle-radius': 5,
+      'circle-color': '#f7945d'
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 
 map.on('click', function (e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['reaches',]
+    layers: ['reaches']
   });
   if (!features.length) {
     return;
@@ -168,10 +198,38 @@ map.on('click', function (e) {
 });
 
 
+// Drone Panoramic Popup
+
+
+map.on('click', function (e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['drone_pano']
+  });
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+  // var photoPath = path.join("images/"+feature.properties.Photo+".jpg");
+
+  var popup = new mapboxgl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML('<h8><b>' + feature.properties.Descr + '</b>' +
+      '<br> Open in new tab: <br>' + '<a href="' + feature.properties.URL + '" target="_blank">' + feature.properties.Descr + '</a>' +
+      '<br>' + '<iframe width="5000" height="300" src=' + feature.properties.URL + '" allowfullscreen>' +
+
+      // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
+      '<br> Videos: <br>' + '<a href="' + feature.properties.Youtube1 + '" target="_blank">' + 'Reach 1 Comparison Video' + '</a>'
+
+    )
+    .addTo(map);
+});
+
+
 // .setHTML('<h3><a href="' + feature.properties.URL + '">' + feature.properties.Company + '</a></h3>')
 
 map.on('mousemove', function (e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['reaches'] });
+  var features = map.queryRenderedFeatures(e.point, { layers: ['reaches', 'drone_pano'] });
 
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
