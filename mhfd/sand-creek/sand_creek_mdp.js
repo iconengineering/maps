@@ -159,13 +159,105 @@ map.on('style.load', function (e) {
     }
   });
 
+  map.addSource('fp-100yr', {
+    type: 'geojson',
+    "data": 'geojson/fp_100yr.geojson'
+  });
+
+  //100 yr FP Outline
+  map.addLayer({
+    'id': 'fp-100yr',
+    'type': 'line',
+    'source': 'fp-100yr',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.6,
+      'line-color': 'rgb(190,210,255)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  //100-YR FLOODPLAIN FILL
+  map.addLayer({
+    'id': 'fp-100yr-fill',
+    'type': 'fill',
+    'source': 'fp-100yr',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+    'layout': {
+      'visibility': 'none'
+    },
+    'paint': {
+      'fill-color': 'rgb(190,210,255)',
+      'fill-opacity': 0.4
+    }
+  });
 
 
+  map.addSource('fp-fldwy', {
+    type: 'geojson',
+    "data": 'geojson/fp_fldwy.geojson'
+  });
 
+  //Floodway Outline
+  map.addLayer({
+    'id': 'fp-fldwy',
+    'type': 'line',
+    'source': 'fp-fldwy',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.6,
+      'line-color': '#000000'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
 
+  map.addSource('fp-xs', {
+    type: 'geojson',
+    "data": 'geojson/fp_xs.geojson'
+  });
 
+  //XS
+  map.addLayer({
+    'id': 'fp-xs',
+    'type': 'line',
+    'source': 'fp-xs',
+    'paint': {
+      'line-width': 2,
+      'line-opacity': 1,
+      'line-color': 'rgba(0,0,0,1)'
+    },
+    'layout': {
+      'visibility': 'visible'
+    }
+  });
 
-
+  //XS Labels
+  map.addLayer({
+    'id': 'fp-xsLabels',
+    'type': 'symbol',
+    'source': 'fp-xs',
+    'layout': {
+      'visibility': 'visible',
+      // 'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{XSEC_ID}',
+      'text-size': 12,
+      "text-padding": 10,
+      'text-anchor': 'right',
+    },
+    'paint': {
+      'text-color': '#000',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
 
 
 
@@ -225,11 +317,29 @@ map.on('click', function (e) {
     .addTo(map);
 });
 
+//Cross Section Labels
+map.on('click', function (e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['fp-xs']
+  });
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML('<b> XS: ' + feature.properties.XSEC_ID + '</b > <br>' + feature.properties.DWAY_NAME + '<br>' + '100-YR WSEL: ' + feature.properties.WSEL.toFixed(2))
+    .addTo(map);
+});
+
+
 
 // .setHTML('<h3><a href="' + feature.properties.URL + '">' + feature.properties.Company + '</a></h3>')
 
 map.on('mousemove', function (e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['reaches', 'drone_pano'] });
+  var features = map.queryRenderedFeatures(e.point, { layers: ['reaches', 'drone_pano', 'fp-xs'] });
 
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
 
