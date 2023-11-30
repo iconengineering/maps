@@ -1,21 +1,21 @@
 {
 "type": "FeatureCollection",
-"name": "drone_pano",
+"name": "drone_pano_v2",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "id": null, "Descr": "Downstream of Montview Blvd", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/01_Montview_Bridge/" }, "geometry": { "type": "Point", "coordinates": [ -104.879973884046962, 39.747733345650161 ] } },
 { "type": "Feature", "properties": { "id": null, "Descr": "Ex Ped Bridge", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/02_Ped_Bridge/" }, "geometry": { "type": "Point", "coordinates": [ -104.879940529052263, 39.749039749609139 ] } },
 { "type": "Feature", "properties": { "id": null, "Descr": "Confluence with Easterly Creek", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/03_Easterly_Confluence/" }, "geometry": { "type": "Point", "coordinates": [ -104.880107304025756, 39.749826371567416 ] } },
 { "type": "Feature", "properties": { "id": null, "Descr": "Easterly Creek Outfall", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879495795789637, 39.749423332048153 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "2201 Clinton", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.880096185694171, 39.750187717343309 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "23rd Ave Outfall", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879317902484559, 39.751116098029051 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "SW", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879893276143093, 39.751335685077471 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "MW1", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879887716977336, 39.752233490351422 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "2201 Clinton", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/05_Mid_2201/" }, "geometry": { "type": "Point", "coordinates": [ -104.880096185694171, 39.750187717343309 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "23rd Ave Outfall", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/06_23rd_Avenue/" }, "geometry": { "type": "Point", "coordinates": [ -104.879317902484559, 39.751116098029051 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "SW", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/07_Stanley_SW/" }, "geometry": { "type": "Point", "coordinates": [ -104.879893276143093, 39.751335685077471 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "MW1", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/08_Stanley_MW/" }, "geometry": { "type": "Point", "coordinates": [ -104.879887716977336, 39.752233490351422 ] } },
 { "type": "Feature", "properties": { "id": null, "Descr": "MW2", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879909953640464, 39.75302845105837 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "NW", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879898835308893, 39.753879003423158 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "NW", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/09_Stanley_NW/" }, "geometry": { "type": "Point", "coordinates": [ -104.879898835308893, 39.753879003423158 ] } },
 { "type": "Feature", "properties": { "id": null, "Descr": "N", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.879481897875181, 39.75422923086748 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "NE", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.878614668013057, 39.754034660065081 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "ME1", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.878447893039564, 39.752644868619356 ] } },
-{ "type": "Feature", "properties": { "id": null, "Descr": "SE", "URL": null }, "geometry": { "type": "Point", "coordinates": [ -104.878825916312806, 39.751405174649769 ] } }
+{ "type": "Feature", "properties": { "id": null, "Descr": "NE", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/10_Stanley_NE/" }, "geometry": { "type": "Point", "coordinates": [ -104.878614668013057, 39.754034660065081 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "ME1", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/11_Stanley_ME/" }, "geometry": { "type": "Point", "coordinates": [ -104.878447893039564, 39.752644868619356 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "SE", "URL": "https://www.iconeng.com/dronesites/westerly-creek-stanley-marketplace/12_Stanley_SE/" }, "geometry": { "type": "Point", "coordinates": [ -104.878825916312806, 39.751405174649769 ] } }
 ]
 }
