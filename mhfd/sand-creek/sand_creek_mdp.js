@@ -57,16 +57,16 @@ map.on('style.load', function (e) {
         stops: [
           ['Reach 1', '#FF5733'],
           ['Reach 2', '#9e0142'],
-          ['Reach 3', '#d53e4f'],
-          ['Reach 4', '#f46d43'],
-          ['Reach 5', '#fdae61'],
-          ['Reach 6', '#fee08b'],
+          ['Reach 3', '#ffe066'],
+          ['Reach 4', '#00bd9d'],
+          ['Reach 5', '#e67f0d'],
+          ['Reach 6', '#3d314a'],
           ['Reach 7', '#abdda4'],
-          ['Reach 8', '#3288bd'],
-          ['Reach 9', '#66c2a5'],
+          ['Reach 8', '#78cdd7'],
+          ['Reach 9', '#f79d84'],
           ['Reach 10', '#5e4fa2'],
           ['Reach 11', '#8c510a'],
-          ['Reach 12', '#762a83'],
+          ['Reach 12', '#762a83'],  
           ['Reach 13', '#00441b']
         ]
       }
