@@ -41,7 +41,7 @@ map.on('style.load', function (e) {
     type: 'geojson',
     "data": 'geojson/reaches.geojson'
   });
-
+//Map reach colors
   map.addLayer({
     'id': 'reaches',
     'type': 'line',
@@ -55,11 +55,19 @@ map.on('style.load', function (e) {
         property: 'Reach_Name',
         type: 'categorical',
         stops: [
-          ['Reach1', '#FF5733'],
-          ['Reach2', '#FF5733'],
-          ['Reach3', '#FF5733'],
-          ['Reach4', '#FF5733'],
-          ['Reach5', '#FF5733']
+          ['Reach 1', '#FF5733'],
+          ['Reach 2', '#9e0142'],
+          ['Reach 3', '#d53e4f'],
+          ['Reach 4', '#f46d43'],
+          ['Reach 5', '#fdae61'],
+          ['Reach 6', '#fee08b'],
+          ['Reach 7', '#abdda4'],
+          ['Reach 8', '#3288bd'],
+          ['Reach 9', '#66c2a5'],
+          ['Reach 10', '#5e4fa2'],
+          ['Reach 11', '#8c510a'],
+          ['Reach 12', '#762a83'],
+          ['Reach 13', '#00441b']
         ]
       }
     }
@@ -347,7 +355,7 @@ map.on('mousemove', function (e) {
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-
+//Zoom to Reach
 //Reach buttons use coordinates SW to NE Coordinates
 
 document.getElementById('Reach1').addEventListener('click', function () {
@@ -365,5 +373,41 @@ document.getElementById('Reach3').addEventListener('click', function () {
 });
 document.getElementById('Reach4').addEventListener('click', function () {
   var bbox = [[-104.919, 39.784], [-104.902, 39.793]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach5').addEventListener('click', function () {
+  var bbox = [[-104.908, 39.778], [-104.893, 39.786]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach6').addEventListener('click', function () {
+  var bbox = [[-104.902, 39.772], [-104.887, 39.779]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach7').addEventListener('click', function () {
+  var bbox = [[-104.890, 39.766], [-104.877, 39.774]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach8').addEventListener('click', function () {
+  var bbox = [[-104.878, 39.762], [-104.865, 39.769]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach9').addEventListener('click', function () {
+  var bbox = [[-104.866, 39.758], [-104.853, 39.765]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach10').addEventListener('click', function () {
+  var bbox = [[-104.854, 39.752], [-104.837, 39.761]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach11').addEventListener('click', function () {
+  var bbox = [[-104.839, 39.751], [-104.816, 39.762]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach12').addEventListener('click', function () {
+  var bbox = [[-104.817, 39.744], [-104.790, 39.759]];
+  map.fitBounds(bbox, { padding: 50 });
+});
+document.getElementById('Reach13').addEventListener('click', function () {
+  var bbox = [[-104.792, 39.736], [-104.768, 39.748]];
   map.fitBounds(bbox, { padding: 50 });
 });
