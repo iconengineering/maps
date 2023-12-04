@@ -198,7 +198,7 @@ map.on('style.load', function (e) {
       'visibility': 'none'
     },
     'paint': {
-      'fill-color': 'rgb(190,210,255)',
+      'fill-color': '#00e6ff',
       'fill-opacity': 0.4
     }
   });
@@ -216,9 +216,9 @@ map.on('style.load', function (e) {
     'source': 'fp-fldwy',
     // 'filter': ['all', ['==', "FLOOD_TYPE", "100-Year Floodplain"]],
     'paint': {
-      'line-width': 1,
+      'line-width': 1.5,
       'line-opacity': 0.6,
-      'line-color': '#000000'
+      'line-color': '#ff8000'
     },
     'layout': {
       'visibility': 'none'
