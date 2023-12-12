@@ -80,7 +80,7 @@ map.on('style.load', function (e) {
     'layout': {
       'visibility': 'none',
       'symbol-placement': 'line',
-      'symbol-spacing': 300,
+      'symbol-spacing': 100,
       'text-field': '{Reach_Name}',
       'text-size': {
         "stops": [
