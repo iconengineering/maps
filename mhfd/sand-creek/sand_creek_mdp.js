@@ -47,7 +47,7 @@ map.on('style.load', function (e) {
     'type': 'line',
     'source': 'reaches',
     'layout': {
-      "visibility": 'visible'
+      "visibility": 'none'
     },
     'paint': {
       'line-width': 3,
@@ -78,9 +78,9 @@ map.on('style.load', function (e) {
     'type': 'symbol',
     'source': 'reaches',
     'layout': {
-      'visibility': 'visible',
+      'visibility': 'none',
       'symbol-placement': 'line',
-      'symbol-spacing': 100,
+      'symbol-spacing': 400,
       'text-field': '{Reach_Name}',
       'text-size': {
         "stops": [
@@ -99,28 +99,28 @@ map.on('style.load', function (e) {
     }
   });
 
+//MHFD Stream 
+map.addSource('mhfd-streams', {
+  type: 'vector',
+  url: 'mapbox://iconeng.d9coogno'
+});
 
-  map.addSource('mhfd-streams', {
-    type: 'vector',
-    url: 'mapbox://iconeng.d9coogno'
-  });
+map.addLayer({
+  'id': 'mhfd-streams',
+  'type': 'line',
+  'source': 'mhfd-streams',
+  'source-layer': 'mhfd_streams-dbmy0f',
+  'paint': {
+    'line-width': 2,
+    'line-opacity': 1,
+    'line-color': '#0000ff'
+  },
+  'layout': {
+    'visibility': 'none'
+  }
+});
 
-  map.addLayer({
-    'id': 'mhfd-streams',
-    'type': 'line',
-    'source': 'mhfd-streams',
-    'source-layer': 'mhfd_streams-dbmy0f',
-    'paint': {
-      'line-width': 2,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,77,168,1)'
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-  //Drainageway Centerline LABEL
+  //MHFD Stream Centerline LABEL
   map.addLayer({
     'id': 'mhfd-stream-labels',
     'type': 'symbol',
@@ -148,7 +148,53 @@ map.on('style.load', function (e) {
     }
   });
 
+ //Hydraulic Centerline 
+ map.addSource('ras-reaches', {
+  type: 'geojson',
+  "data": 'geojson/centerline.geojson'
+});
 
+map.addLayer({
+  'id': 'ras-reaches',
+  'type': 'line',
+  'source': 'ras-reaches',
+  'layout': {
+    "visibility": 'visible'
+  },
+  'paint': {
+    'line-width': 3,
+    'line-color': '#0000ff'
+  }
+});
+
+  //Hydraulic Centerline LABEL
+  map.addLayer({
+    'id': 'ras-reaches-label',
+    'type': 'symbol',
+    'source': 'ras-reaches',
+    'layout': {
+      'visibility': 'visible',
+      'symbol-placement': 'line',
+      'symbol-spacing': 100,
+      'text-field': '{DWAY_NAME}',
+      'text-size': {
+        "stops": [
+          [15, 12],
+          [17, 14],
+          [19, 16]
+        ]
+      },
+      "text-padding": 100,
+    },
+    'paint': {
+      'text-color': 'rgba(0,77,168,1)',
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 2,
+      'text-halo-blur': 1
+    }
+  });
+
+//Drone Pano
   map.addSource('drone_pano', {
     type: 'geojson',
     "data": 'geojson/drone_pano.geojson'
@@ -202,7 +248,41 @@ map.on('style.load', function (e) {
       'fill-opacity': 0.4
     }
   });
+  map.addSource('fp-500yr', {
+    type: 'geojson',
+    "data": 'geojson/fp_500yr.geojson'
+  });
 
+  //500 yr FP Outline
+  map.addLayer({
+    'id': 'fp-500yr',
+    'type': 'line',
+    'source': 'fp-500yr',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "500-Year Floodplain"]],
+    'paint': {
+      'line-width': 1,
+      'line-opacity': 0.6,
+      'line-color': 'rgb(190,210,255)'
+    },
+    'layout': {
+      'visibility': 'none'
+    }
+  });
+
+  //500-YR FLOODPLAIN FILL
+  map.addLayer({
+    'id': 'fp-500yr-fill',
+    'type': 'fill',
+    'source': 'fp-500yr',
+    // 'filter': ['all', ['==', "FLOOD_TYPE", "500-Year Floodplain"]],
+    'layout': {
+      'visibility': 'none'
+    },
+    'paint': {
+      'fill-color': '#ff8000',
+      'fill-opacity': 0.4
+    }
+  });
 
   map.addSource('fp-fldwy', {
     type: 'geojson',

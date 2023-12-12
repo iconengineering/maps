@@ -65,6 +65,21 @@
 
 
         <li>
+          <div class="collapsible-header grey black"><i class="material-icons right">keyboard_arrow_down</i>Flood Documentation
+          </div>
+          <div class="collapsible-body white">
+
+            <p>
+              <input name="reaches" type="checkbox" id="reaches" class="layer-off"
+                onclick="toggleTwo('reaches','reaches-label')" />
+              <label for="reaches" class="valign">Reaches</label>
+            </p>
+          </div>
+        </li>
+
+
+
+        <li>
           <div class="collapsible-header black"><i class="material-icons right">keyboard_arrow_down</i>FHAD Hydraulics
           </div>
           <div class="collapsible-body white">
@@ -74,6 +89,11 @@
               <label for="fp-100yr" class="valign">100-yr Floodplain</label>
             </p>
             <p>
+              <input name="fp-500yr" type="checkbox" id="fp-500yr" class="layer-on"
+                onclick="toggleTwo('fp-500yr','fp-500yr-fill')" />
+              <label for="fp-500yr" class="valign">500-yr Floodplain</label>
+            </p>
+            <p>
               <input name="fp-fldwy" type="checkbox" id="fp-fldwy" class="layer-on" onclick="toggleLayer('fp-fldwy')" />
               <label for="fp-fldwy" class="valign">Floodway Outline</label>
             </p>
@@ -81,6 +101,11 @@
               <input name="fp-xs" type="checkbox" id="fp-xs" class="layer-on"
                 onclick="toggleTwo('fp-xs','fp-xsLabels')" checked/>
               <label for="fp-xs" class="valign">Cross Sections</label>
+            </p>
+            <p>
+              <input name="centerline" type="checkbox" id="ras-reaches" class="layer-on"
+                onclick="toggleTwo('ras-reaches','ras-reaches-label')" checked/>
+              <label for="ras-reaches" class="valign">Hydraulic Centerline</label>
             </p>
           </div>
         </li>
