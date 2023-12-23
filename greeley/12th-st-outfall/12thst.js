@@ -37,19 +37,50 @@ $(document).ready(function () {
 
 map.on('style.load', function (e) {
 
-  map.addSource('20230220', {
+
+  map.addSource('20221111', {
     type: 'raster',
-    url: 'mapbox://iconeng.wcsr_20230220_byte'
+    url: 'mapbox://iconeng.12thSt_2022_11_11'
   });
 
   map.addLayer({
-    'id': '20230220',
-    'source': '20230220',
+    'id': '20221111',
+    'source': '20221111',
     'type': 'raster',
     'layout': {
       'visibility': 'none',
     }
   });
+
+  map.addSource('20230702', {
+    type: 'raster',
+    url: 'mapbox://iconeng.12thSt_2023_07_02'
+  });
+
+  map.addLayer({
+    'id': '20230702',
+    'source': '20230702',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+
+  map.addSource('20230819', {
+    type: 'raster',
+    url: 'mapbox://iconeng.12thSt_2023-08-19'
+  });
+
+  map.addLayer({
+    'id': '20230819',
+    'source': '20230819',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+
+
 });
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
