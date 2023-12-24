@@ -35,6 +35,7 @@ $(document).ready(function () {
   });
 });
 
+
 map.on('style.load', function (e) {
 
 
@@ -82,6 +83,7 @@ map.on('style.load', function (e) {
 
 
 });
+
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
