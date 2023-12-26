@@ -205,7 +205,7 @@ map.addLayer({
     'type': 'circle',
     'source': 'drone_pano',
     'layout': {
-      "visibility": 'visible'
+      "visibility": 'none'
     },
     'paint': {
       'circle-radius': 5,
