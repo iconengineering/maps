@@ -3,7 +3,7 @@
 
 <head>
   <meta charset='utf-8' />
-  <title>Willow Creek Sterling Ranch</title>
+  <title>12th Street Outfall</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <script src='//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
   <link href='//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
@@ -65,8 +65,8 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer mdl-color--grey-700 mdl-color-text--grey-50 mdl-shadow--2dp">
       <span style="display: inline-block; text-align:center;">
-        <img src="images\MHFD-logo.png" class="demo-avatar" style="padding:1rem;max-width:80%;">
-        <h5 style="padding:0 1rem; text-align:center; margin-top:0;">Willow Creek Sterling Ranch</h5>
+        <img src="images\city-of-greeley-logo.png" class="demo-avatar" style="padding:1rem;max-width:80%;">
+        <h5 style="padding:0 1rem; text-align:center; margin-top:0;">12th Street Outfall</h5>
       </span>
 
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
@@ -77,8 +77,16 @@
           </div>
           <div class="collapsible-body white">
             <p>
-              <input name="20230220" type="checkbox" id="20230220" class="layer-off" onclick="toggleLayer('20230220')">
-              <label for="20230220" class="valign">Aerial - 2023-12-21</label>
+              <input name="aerial" type="checkbox" id="20221111" class="layer-off" onclick="toggleLayer('20221111')">
+              <label for="20221111" class="valign">Aerial - 2022-11-11</label>
+            </p>
+            <p>
+              <input name="aerial" type="checkbox" id="20230702" class="layer-off" onclick="toggleLayer('20230702')">
+              <label for="20230702" class="valign">Aerial - 2023-07-02</label>
+            </p>
+            <p>
+              <input name="aerial" type="checkbox" id="20230819" class="layer-off"onclick="toggleLayer('20230819')">
+              <label for="20230819" class="valign">Aerial - 2023-08-19</label>
             </p>
           </div>
         </li>
@@ -94,9 +102,7 @@
   </div>
 
   <script src="toggleLayer.js"></script>
-  <script src="wcsr.js"></script>
-
-
+  <script src="12thst.js"></script>
 
 </body>
 
