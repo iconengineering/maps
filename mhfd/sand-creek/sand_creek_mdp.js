@@ -368,10 +368,10 @@ map.on('click', function (e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8><b>' + feature.properties.Reach_Name + '</b>' +
-      '<br><h8>Confluence to Brighton Blvd ' + feature.properties.color +
+    .setHTML('<h8><b>' + feature.properties.Reach_Name + '</b>' + '<br>' +
+      feature.properties.Description +
       // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
-      '<br> Videos: <br>' + '<a href="' + feature.properties.Youtube1 + '" target="_blank">' + 'Reach 1 Comparison Video' + '</a>'
+      '<br> Videos: <br>' + '<a href="' + feature.properties.Youtube1 + '" target="_blank">' + feature.properties.Reach_Name + ' Comparison Video' + '</a>'
 
     )
     .addTo(map);
