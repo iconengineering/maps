@@ -132,3 +132,7 @@ body,
 .collection.with-header .collection-item {
   padding-left: .5em;
 }
+
+a {
+  color: #00009c
+}
