@@ -364,17 +364,35 @@ map.on('click', function (e) {
   }
 
   var feature = features[0];
-  // var photoPath = path.join("images/"+feature.properties.Photo+".jpg");
 
+  // Check if Youtube1 is present
+  var youtubeLink = feature.properties.Youtube1 ? '<br> Videos: <br><a href="' + feature.properties.Youtube1 + '" target="_blank">' + feature.properties.Reach_Name + ' Comparison Video' + '</a>' : '';
+  
+  // Create the popup content
+  var popupContent = '<h8><b>' + feature.properties.Reach_Name + '</b>' + '<br>' +
+    feature.properties.Description +
+    youtubeLink +
+    '</h8>';
+  
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8><b>' + feature.properties.Reach_Name + '</b>' + '<br>' +
-      feature.properties.Description +
-      // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
-      '<br> Videos: <br>' + '<a href="' + feature.properties.Youtube1 + '" target="_blank">' + feature.properties.Reach_Name + ' Comparison Video' + '</a>'
-
-    )
+    .setHTML(popupContent)
     .addTo(map);
+  
+
+
+  // var feature = features[0];
+  // // var photoPath = path.join("images/"+feature.properties.Photo+".jpg");
+
+  // var popup = new mapboxgl.Popup()
+  //   .setLngLat(e.lngLat)
+  //   .setHTML('<h8><b>' + feature.properties.Reach_Name + '</b>' + '<br>' +
+  //     feature.properties.Description +
+  //     // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
+  //     '<br> Videos: <br>' + '<a href="' + feature.properties.Youtube1 + '" target="_blank">' + feature.properties.Reach_Name + ' Comparison Video' + '</a>'
+
+  //   )
+  //   .addTo(map);
 });
 
 
@@ -427,11 +445,17 @@ map.on('click', function (e) {
 // .setHTML('<h3><a href="' + feature.properties.URL + '">' + feature.properties.Company + '</a></h3>')
 
 map.on('mousemove', function (e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['reaches', 'drone_pano', 'fp-xs'] });
+  // Increase the tolerance to make features clickable over a larger area
+  var tolerance = 10; // You can adjust this value based on your needs
+
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['reaches', 'drone_pano', 'fp-xs'],
+    tolerance: tolerance
+  });
 
   map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
-
 });
+
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
