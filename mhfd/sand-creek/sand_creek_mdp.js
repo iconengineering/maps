@@ -305,12 +305,13 @@ map.addLayer({
     }
   });
 
+  //XS
   map.addSource('fp-xs', {
     type: 'geojson',
     "data": 'geojson/fp_xs.geojson'
   });
 
-  //XS
+  
   map.addLayer({
     'id': 'fp-xs',
     'type': 'line',
@@ -446,7 +447,7 @@ map.on('click', function (e) {
 
 map.on('mousemove', function (e) {
   // Increase the tolerance to make features clickable over a larger area
-  var tolerance = 10; // You can adjust this value based on your needs
+  var tolerance = 10; // You can adjust this value based on your needs- but not sure this has made any difference 
 
   var features = map.queryRenderedFeatures(e.point, {
     layers: ['reaches', 'drone_pano', 'fp-xs'],

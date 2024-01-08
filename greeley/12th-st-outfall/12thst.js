@@ -36,6 +36,7 @@ $(document).ready(function () {
 });
 
 
+//Aerials
 map.on('style.load', function (e) {
 
 
@@ -81,6 +82,97 @@ map.on('style.load', function (e) {
     }
   });
 
+  //URL will need to be updated once mapbox is completed
+  map.addSource('20231231', {
+    type: 'raster',
+    url: 'mapbox://iconeng.12thSt_2023-12-31'
+  });
+
+  map.addLayer({
+    'id': '20231231',
+    'source': '20231231',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+
+//Design Shapefiles
+//Boulder Line- 
+map.addSource('12thSt_Boulder_Line', {
+  type: 'geojson',
+  "data": 'geojson/12thSt_Boulder_Line.geojson'
+});
+
+map.addLayer({
+  'id': '12thSt_Boulder_Line',
+  'type': 'line',
+  'source': '12thSt_Boulder_Line',
+  'layout': {
+    "visibility": 'visible'
+  },
+  'paint': {
+    'line-width': 3,
+    'line-color': '#44362F'
+  }
+});
+
+//Boulder Hatch- 
+map.addSource('12thSt_Boulder_Hatch', {
+  type: 'geojson',
+  "data": 'geojson/12thSt_Boulder_Hatch.geojson'
+});
+
+map.addLayer({
+  'id': '12thSt_Boulder_Hatch',
+  'type': 'fill',
+  'source': '12thSt_Boulder_Hatch',
+  'layout': {
+    "visibility": 'visible'
+  },
+  'paint': {
+    'fill-color': '#B56917',
+    'fill-opacity': 0.4
+  }
+});
+
+//Grading- 
+map.addSource('12thst_Grading', {
+  type: 'geojson',
+  "data": 'geojson/12thst_Grading.geojson'
+});
+
+map.addLayer({
+  'id': '12thst_Grading',
+  'type': 'line',
+  'source': '12thst_Grading',
+  'layout': {
+    "visibility": 'visible'
+  },
+  'paint': {
+    'line-width': 3,
+    'line-color': '#353839'
+  }
+});
+
+//Planimetrics- WORK IN PROGRESS
+map.addSource('12St_Planimetrics', {
+  type: 'geojson',
+  "data": 'geojson/12St_Planimetrics.geojson'
+});
+
+map.addLayer({
+  'id': '12St_Planimetrics',
+  'type': 'line',
+  'source': '12St_Planimetrics',
+  'layout': {
+    "visibility": 'visible'
+  },
+  'paint': {
+    'line-width': 3,
+    'line-color': '#CC3333'
+  }
+});
 
 });
 
