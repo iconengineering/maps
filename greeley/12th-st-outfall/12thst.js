@@ -164,7 +164,7 @@ map.on('style.load', function (e) {
     },
     'paint': {
       'fill-color': '#B56917',
-      'fill-opacity': 0.8
+      'fill-opacity': 0.7
     }
 
   });
