@@ -97,84 +97,98 @@ map.on('style.load', function (e) {
     }
   });
 
-//Design Shapefiles
-//Boulder Line- 
-map.addSource('12thSt_Boulder_Line', {
-  type: 'geojson',
-  "data": '.geojson/12thSt_Boulder_Line.geojson'
-});
-
-map.addLayer({
-  'id': '12thSt_Boulder_Line',
-  'type': 'line',
-  'source': '12thSt_Boulder_Line',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'line-width': 3,
-    'line-color': '#242124'
-  }
-});
-
-//Boulder Hatch- 
-map.addSource('12thSt_Boulder_Hatch', {
-  type: 'geojson',
-  "data": '.geojson/12thSt_Boulder_Hatch.geojson'
-});
-
-map.addLayer({
-  'id': '12thSt_Boulder_Hatch',
-  'type': 'fill',
-  'source': '12thSt_Boulder_Hatch',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'fill-color': '#B56917',
-    'fill-opacity': 0.4
-  }
-  
-});
-
-// Planimetrics
-map.addSource('12St_Planimetrics', {
-  type: 'geojson',
-  "data": '.geojson/12St_Planimetrics.geojson'
-});
-
-map.addLayer({
-  'id': '12St_Planimetrics',
-  'type': 'line',
-  'source': '12St_Planimetrics',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'line-width': 2,
-    'line-color': '#CC3333'
-  }
-}, ); 
 
 
-//Grading- 
-map.addSource('12thst_Grading', {
-  type: 'geojson',
-  "data": '.geojson/12thst_Grading.geojson'
-});
 
-map.addLayer({
-  'id': '12thst_Grading',
-  'type': 'line',
-  'source': '12thst_Grading',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'line-width': 2,
-    'line-color': '#353839'
-  }
-}, null);  // Set 'before' to null to place the layer at the bottom of the stack?
+
+
+
+  // Planimetrics
+  map.addSource('12St_Planimetrics', {
+    type: 'geojson',
+    "data": '.geojson/12St_Planimetrics.geojson'
+  });
+
+  map.addLayer({
+    'id': '12St_Planimetrics',
+    'type': 'line',
+    'source': '12St_Planimetrics',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 2,
+      'line-color': '#CC3333'
+    }
+  },);
+
+
+
+  //Grading- 
+  map.addSource('12thst_Grading', {
+    type: 'geojson',
+    "data": '.geojson/12thst_Grading.geojson'
+  });
+
+  map.addLayer(
+    {
+      'id': '12thst_Grading',
+      'type': 'line',
+      'source': '12thst_Grading',
+      'layout': {
+        "visibility": 'none'
+      },
+      'paint': {
+        'line-width': 2,
+        'line-color': '#353839'
+      }
+    }, '12thst_Grading.cold');  // Set 'before' to null to place the layer at the bottom of the stack?
+
+
+
+
+
+
+  //Boulder Hatch- 
+  map.addSource('12thSt_Boulder_Hatch', {
+    type: 'geojson',
+    "data": '.geojson/12thSt_Boulder_Hatch.geojson'
+  });
+
+  map.addLayer({
+    'id': '12thSt_Boulder_Hatch',
+    'type': 'fill',
+    'source': '12thSt_Boulder_Hatch',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'fill-color': '#B56917',
+      'fill-opacity': 0.8
+    }
+
+  });
+
+  //Design Shapefiles
+  //Boulder Line- 
+  map.addSource('12thSt_Boulder_Line', {
+    type: 'geojson',
+    "data": '.geojson/12thSt_Boulder_Line.geojson'
+  });
+
+  map.addLayer({
+    'id': '12thSt_Boulder_Line',
+    'type': 'line',
+    'source': '12thSt_Boulder_Line',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1,
+      'line-color': '#242124'
+    }
+  });
+
 
 });
 
