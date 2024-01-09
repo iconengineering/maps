@@ -85,7 +85,7 @@ map.on('style.load', function (e) {
   //URL will need to be updated once mapbox is completed
   map.addSource('20231231', {
     type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2023-12-31'
+    url: 'mapbox://iconeng.12thSt_2023-08-19'
   });
 
   map.addLayer({
@@ -101,7 +101,7 @@ map.on('style.load', function (e) {
 //Boulder Line- 
 map.addSource('12thSt_Boulder_Line', {
   type: 'geojson',
-  "data": 'geojson/12thSt_Boulder_Line.geojson'
+  "data": '.geojson/12thSt_Boulder_Line.geojson'
 });
 
 map.addLayer({
@@ -109,7 +109,7 @@ map.addLayer({
   'type': 'line',
   'source': '12thSt_Boulder_Line',
   'layout': {
-    "visibility": 'visible'
+    "visibility": 'none'
   },
   'paint': {
     'line-width': 3,
@@ -120,7 +120,7 @@ map.addLayer({
 //Boulder Hatch- 
 map.addSource('12thSt_Boulder_Hatch', {
   type: 'geojson',
-  "data": 'geojson/12thSt_Boulder_Hatch.geojson'
+  "data": '.geojson/12thSt_Boulder_Hatch.geojson'
 });
 
 map.addLayer({
@@ -128,7 +128,7 @@ map.addLayer({
   'type': 'fill',
   'source': '12thSt_Boulder_Hatch',
   'layout': {
-    "visibility": 'visible'
+    "visibility": 'none'
   },
   'paint': {
     'fill-color': '#B56917',
@@ -136,29 +136,10 @@ map.addLayer({
   }
 });
 
-//Grading- 
-map.addSource('12thst_Grading', {
-  type: 'geojson',
-  "data": 'geojson/12thst_Grading.geojson'
-});
-
-map.addLayer({
-  'id': '12thst_Grading',
-  'type': 'line',
-  'source': '12thst_Grading',
-  'layout': {
-    "visibility": 'visible'
-  },
-  'paint': {
-    'line-width': 3,
-    'line-color': '#353839'
-  }
-});
-
-//Planimetrics- WORK IN PROGRESS
+//Planimetrics- 
 map.addSource('12St_Planimetrics', {
   type: 'geojson',
-  "data": 'geojson/12St_Planimetrics.geojson'
+  "data": '.geojson/12St_Planimetrics.geojson'
 });
 
 map.addLayer({
@@ -166,11 +147,30 @@ map.addLayer({
   'type': 'line',
   'source': '12St_Planimetrics',
   'layout': {
-    "visibility": 'visible'
+    "visibility": 'none'
   },
   'paint': {
     'line-width': 3,
     'line-color': '#CC3333'
+  }
+});
+
+//Grading- 
+map.addSource('12thst_Grading', {
+  type: 'geojson',
+  "data": '.geojson/12thst_Grading.geojson'
+});
+
+map.addLayer({
+  'id': '12thst_Grading',
+  'type': 'line',
+  'source': '12thst_Grading',
+  'layout': {
+    "visibility": 'none'
+  },
+  'paint': {
+    'line-width': 3,
+    'line-color': '#353839'
   }
 });
 
