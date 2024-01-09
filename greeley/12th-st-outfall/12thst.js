@@ -113,7 +113,7 @@ map.addLayer({
   },
   'paint': {
     'line-width': 3,
-    'line-color': '#44362F'
+    'line-color': '#242124'
   }
 });
 
@@ -134,9 +134,10 @@ map.addLayer({
     'fill-color': '#B56917',
     'fill-opacity': 0.4
   }
+  
 });
 
-//Planimetrics- 
+// Planimetrics
 map.addSource('12St_Planimetrics', {
   type: 'geojson',
   "data": '.geojson/12St_Planimetrics.geojson'
@@ -150,10 +151,11 @@ map.addLayer({
     "visibility": 'none'
   },
   'paint': {
-    'line-width': 3,
+    'line-width': 2,
     'line-color': '#CC3333'
   }
-});
+}, ); 
+
 
 //Grading- 
 map.addSource('12thst_Grading', {
@@ -169,10 +171,10 @@ map.addLayer({
     "visibility": 'none'
   },
   'paint': {
-    'line-width': 3,
+    'line-width': 2,
     'line-color': '#353839'
   }
-});
+}, null);  // Set 'before' to null to place the layer at the bottom of the stack?
 
 });
 
