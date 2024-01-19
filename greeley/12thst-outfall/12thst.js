@@ -70,7 +70,7 @@ map.on('style.load', function (e) {
 
   map.addSource('20230819', {
     type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2023-08-19'
+    url: 'mapbox://iconeng.12thSt_2023_08_19'
   });
 
   map.addLayer({
@@ -85,7 +85,7 @@ map.on('style.load', function (e) {
   //URL will need to be updated once mapbox is completed
   map.addSource('20231231', {
     type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2023-08-19'
+    url: 'mapbox://iconeng.12thSt_2023_12_31'
   });
 
   map.addLayer({
