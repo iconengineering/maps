@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Johnstown SWMP</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="//code.getmdl.io/1.1.3/material.lime-teal.min.css">
+  <script defer src="//code.getmdl.io/1.1.3/material.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="//d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="fixed-drawer.css">
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-66511604-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      height: calc(100vh);
+      width: calc(100vw - 320px);
+    }
+
+    @media only screen and (max-width: 1024px) {
+      #map {
+        width: 100vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="mdl-layout__drawer mdl-color--grey-700 mdl-color-text--grey-50 mdl-shadow--2dp">
+      <span style="display: inline-block; text-align:center;">
+        <img src="images\MHFD-logo.png" class="demo-avatar" style="padding:1rem;max-width:80%;">
+        <h5 style="padding:0 1rem; text-align:center; margin-top:0;">Johnstown SWMP</h5>
+      </span>
+
+      <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
+
+
+        <li>
+          <div class="collapsible-header grey black"><i class="material-icons right">keyboard_arrow_down</i>Flood
+            Documentation
+          </div>
+          <div class="collapsible-body white">
+
+            <p>
+              <input name="reaches" type="checkbox" id="reaches" class="layer-off"
+                onclick="toggleTwo('reaches','reaches-label')" />
+              <label for="reaches" class="valign">Reaches</label>
+            </p>
+            <p>
+              <input name="drone_pano" type="checkbox" id="drone_pano" class="layer-off"
+                onclick="toggleLayer('drone_pano')" />
+              <label for="drone_pano" class="valign">Drone Panos</label>
+            </p>
+          </div>
+        </li>
+
+
+
+        <li>
+          <div class="collapsible-header black"><i class="material-icons right">keyboard_arrow_down</i>FHAD Hydraulics
+          </div>
+          <div class="collapsible-body white">
+            <p>
+              <input name="fp-100yr" type="checkbox" id="fp-100yr" class="layer-on"
+                onclick="toggleTwo('fp-100yr','fp-100yr-fill')" />
+              <label for="fp-100yr" class="valign">100-yr Floodplain</label>
+            </p>
+            <p>
+              <input name="fp-500yr" type="checkbox" id="fp-500yr" class="layer-on"
+                onclick="toggleTwo('fp-500yr','fp-500yr-fill')" />
+              <label for="fp-500yr" class="valign">500-yr Floodplain</label>
+            </p>
+            <p>
+              <input name="fp-fldwy" type="checkbox" id="fp-fldwy" class="layer-on" onclick="toggleLayer('fp-fldwy')" />
+              <label for="fp-fldwy" class="valign">Floodway Outline</label>
+            </p>
+            <p>
+              <input name="fp-xs" type="checkbox" id="fp-xs" class="layer-on" onclick="toggleTwo('fp-xs','fp-xsLabels')"
+                checked />
+              <label for="fp-xs" class="valign">Cross Sections</label>
+            </p>
+            <p>
+              <input name="centerline" type="checkbox" id="ras-reaches" class="layer-on"
+                onclick="toggleTwo('ras-reaches','ras-reaches-label')" checked />
+              <label for="ras-reaches" class="valign">Hydraulic Centerline</label>
+            </p>
+          </div>
+        </li>
+
+
+        <li>
+          <div class="collapsible-header grey black"><i class="material-icons right">keyboard_arrow_down</i>Base Map
+          </div>
+          <div class="collapsible-body white">
+
+            <p>
+              <input name="stream" type="checkbox" id="stream" class="layer-off"
+                onclick="toggleLayer('mhfd-streams','mhfd-stream-labels')" />
+              <label for="stream" class="valign">MHFD Streams</label>
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <div class="collapsible-header grey black"><i class="material-icons right">keyboard_arrow_down</i>Zoom to
+            Reach</div>
+          <div class="collapsible-body white">
+            <a href="#!" id="Reach1">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 1 - Confluence - Brighton Blvd</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach2">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 2 - Brighton Blvd - 56th Ave</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach3">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 3 - 56th Ave - Front Range Trailhead</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach4">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 4 - Front Range Trailhead - 47th Ave</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach5">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 5 - 47th Ave - I-70</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach6">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 6 - I-70 - Central Park</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach7">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 7 - Central Park - Smith Rd Trailhead</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach8">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 8 - Smith Rd Trailhead - Havana St</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach9">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 9 - Havana St - Baranmoor Ditch</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach10">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 10 - Baranmoor Ditch - Toll Gate</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach11">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 11 - Toll Gate - Sable Blvd</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach12">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 12 - Sable Blvd - Airport Blvd</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+            <a href="#!" id="Reach13">
+              <p class="blue-grey-text note" style="margin-top:-7px; margin-bottom: 7px; ">
+                <b>Reach 13 - Airport Blvd - Colfax Ave</b> <i style="vertical-align: text-bottom;"
+                  class="smaller material-icons blue-grey-text">zoom_in</i>
+              </p>
+            </a>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div id='map'></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="toggleLayer.js"></script>
+  <script src="johnstown_swmp.js"></script>
+
+</body>
+
+</html>
