@@ -82,6 +82,22 @@ map.on('style.load', function (e) {
     }
   });
 
+
+  map.addSource('20240309', {
+    type: 'raster',
+    url: 'mapbox://iconeng.12thSt_2024-03-09'
+  });
+
+  map.addLayer({
+    'id': '20240309',
+    'source': '20240309',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+
+
   //URL will need to be updated once mapbox is completed
   map.addSource('20231231', {
     type: 'raster',
