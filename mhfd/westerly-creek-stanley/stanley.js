@@ -159,7 +159,51 @@ map.on('style.load', function (e) {
     }
   });
 
+
+  //DESIGN LINEWORK
+  //LINEWORK- 
+  map.addSource('CP-SITE-GRID-LINEWORK', {
+    type: 'geojson',
+    "data": 'geojson/CP-SITE-GRID-LINEWORK.geojson'
+  });
+
+  map.addLayer({
+    'id': 'CP-SITE-GRID-LINEWORK',
+    'type': 'line',
+    'source': 'CP-SITE-GRID-LINEWORK',
+    'layout': {
+      "visibility": 'visible'
+    },
+    'paint': {
+      'line-width': 3,
+      'line-color': '#0000ff'
+    }
+  });
+
+
+  //Topo 
+  map.addSource('CP-TOPO-GROUND', {
+    type: 'geojson',
+    "data": 'geojson/CP-TOPO-GROUND.geojson'
+  });
+
+  map.addLayer({
+    'id': 'CP-TOPO-GROUND',
+    'type': 'line',
+    'source': 'CP-TOPO-GROUND',
+    'layout': {
+      "visibility": 'visible'
+    },
+    'paint': {
+      'line-width': 3,
+      'line-color': '#0000ff'
+    }
+  });
+
+
 });
+
+
 
 
 
@@ -189,46 +233,6 @@ map.on('click', function (e) {
     .addTo(map);
 });
 
-
-//DESIGN LINEWORK
- //LINEWORK- 
- map.addSource('A', {
-  type: 'geojson',
-  "data": 'geojson/CP-SITE-GRID-LINEWORK.geojson'
-});
-
-map.addLayer({
-  'id': 'A',
-  'type': 'line',
-  'source': 'A',
-  'layout': {
-    "visibility": 'visible'
-  },
-  'paint': {
-    'line-width': 3,
-    'line-color': '#0000ff'
-  }
-});
-
-//GRADING
-map.addSource('CP-TOPO-GROUND', {
-  type: 'geojson',
-  "data": '.geojson/CP-TOPO-GROUND.geojson'
-});
-
-map.addLayer(
-  {
-    'id': 'CP-TOPO-GROUND',
-    'type': 'line',
-    'source': 'CP-TOPO-GROUND',
-    'layout': {
-      "visibility": 'visible'
-    },
-    'paint': {
-      'line-width': 2,
-      'line-color': '#353839'
-    }
-  },);
 
 
 
