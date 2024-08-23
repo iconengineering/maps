@@ -178,7 +178,7 @@ map.on('click', function (e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('<h8><b>' + feature.properties.Descr + '</b>' +
+    .setHTML('<h8><b style="color:black;">' + feature.properties.Descr + '</b>' +
       '<br> Open in new tab: <br>' + '<a href="' + feature.properties.URL + '" target="_blank">' + feature.properties.Descr + '</a>' +
       '<br>' + '<iframe width="5000" height="300" src=' + feature.properties.URL + '" allowfullscreen>' +
 
@@ -188,6 +188,48 @@ map.on('click', function (e) {
     )
     .addTo(map);
 });
+
+
+//DESIGN LINEWORK
+ //LINEWORK- 
+ map.addSource('A', {
+  type: 'geojson',
+  "data": 'geojson/CP-SITE-GRID-LINEWORK.geojson'
+});
+
+map.addLayer({
+  'id': 'A',
+  'type': 'line',
+  'source': 'A',
+  'layout': {
+    "visibility": 'visible'
+  },
+  'paint': {
+    'line-width': 3,
+    'line-color': '#0000ff'
+  }
+});
+
+//GRADING
+map.addSource('CP-TOPO-GROUND', {
+  type: 'geojson',
+  "data": '.geojson/CP-TOPO-GROUND.geojson'
+});
+
+map.addLayer(
+  {
+    'id': 'CP-TOPO-GROUND',
+    'type': 'line',
+    'source': 'CP-TOPO-GROUND',
+    'layout': {
+      "visibility": 'visible'
+    },
+    'paint': {
+      'line-width': 2,
+      'line-color': '#353839'
+    }
+  },);
+
 
 
 // .setHTML('<h3><a href="' + feature.properties.URL + '">' + feature.properties.Company + '</a></h3>')
