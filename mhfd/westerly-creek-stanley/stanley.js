@@ -151,10 +151,10 @@ map.on('style.load', function (e) {
     'type': 'circle',
     'source': 'drone_pano',
     'layout': {
-      "visibility": 'visible'
+      "visibility": 'none'
     },
     'paint': {
-      'circle-radius': 5,
+      'circle-radius': 7,
       'circle-color': '#f7945d'
     }
   });
@@ -236,6 +236,24 @@ map.on('style.load', function (e) {
     }
   });
 
+ //VEGETATION POINTS 
+ map.addSource('CP-SITE-REVEG-POINTS', {
+  type: 'geojson',
+  "data": 'geojson/CP-SITE-REVEG-POINTS.geojson'
+});
+
+map.addLayer({
+  'id': 'CP-SITE-REVEG-POINTS',
+  'type': 'circle',
+  'source': 'CP-SITE-REVEG-POINTS',
+  'layout': {
+    "visibility": 'none'
+  },
+ 'paint': {
+      'circle-radius': 3,
+      'circle-color': '#93DC5C'
+  }
+});
 
 });
 
