@@ -172,15 +172,51 @@ map.on('style.load', function (e) {
     'type': 'line',
     'source': 'CP-SITE-GRID-LINEWORK',
     'layout': {
-      "visibility": 'visible'
+      "visibility": 'none'
     },
     'paint': {
-      'line-width': 3,
-      'line-color': '#0000ff'
+      'line-width': 1.5,
+      'line-color': '#CC3333'
     }
   });
 
+  //revegetation hatch ground linework 
+  map.addSource('CP-SITE-REVEG-HATCH', {
+    type: 'geojson',
+    "data": 'geojson/CP-SITE-REVEG-HATCH.geojson'
+  });
 
+  map.addLayer({
+    'id': 'CP-SITE-REVEG-HATCH',
+    'type': 'line',
+    'source': 'CP-SITE-REVEG-HATCH',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#006400'
+    }
+  });
+  
+   //revegetation grid linework 
+   map.addSource('CP-SITE-REVEG-GRID', {
+    type: 'geojson',
+    "data": 'geojson/CP-SITE-REVEG-GRID.geojson'
+  });
+
+  map.addLayer({
+    'id': 'CP-SITE-REVEG-GRID',
+    'type': 'line',
+    'source': 'CP-SITE-REVEG-GRID',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#00008B'
+    }
+  });
   //Topo 
   map.addSource('CP-TOPO-GROUND', {
     type: 'geojson',
@@ -192,11 +228,11 @@ map.on('style.load', function (e) {
     'type': 'line',
     'source': 'CP-TOPO-GROUND',
     'layout': {
-      "visibility": 'visible'
+      "visibility": 'none'
     },
     'paint': {
-      'line-width': 3,
-      'line-color': '#0000ff'
+      'line-width': 1.5,
+      'line-color': '#353839'
     }
   });
 
