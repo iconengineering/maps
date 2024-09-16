@@ -81,7 +81,21 @@ map.on('style.load', function (e) {
       'visibility': 'none',
     }
   });
+  
+  map.addSource('20240913', {
+    type: 'raster',
+    url: 'mapbox://iconeng.12th_2024-09-13'
+  });
 
+  map.addLayer({
+    'id': '20240913',
+    'source': '20240913',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  
   //URL will need to be updated once mapbox is completed
   map.addSource('20231231', {
     type: 'raster',
