@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
-  zoom: 20.1,
-  center: [-104.679, 40.4215],
+  zoom: 15.5,
+  center: [-105.8325,39.9189],
   hash: true,
   preserveDrawingBuffer: true
 });
@@ -40,14 +40,14 @@ $(document).ready(function () {
 map.on('style.load', function (e) {
 
 
-  map.addSource('20221111', {
+  map.addSource('PreProject', {
     type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2022_11_11'
+    url: 'mapbox://iconeng.8gredtez'
   });
 
   map.addLayer({
-    'id': '20221111',
-    'source': '20221111',
+    'id': 'PreProject',
+    'source': 'PreProject',
     'type': 'raster',
     'layout': {
       'visibility': 'none',
