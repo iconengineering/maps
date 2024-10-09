@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
-  zoom: 200.5,
+  zoom: 30.5,
   center: [-105.36679,39.65423],
   hash: true,
   preserveDrawingBuffer: true
@@ -96,47 +96,20 @@ map.on('style.load', function (e) {
     }
   });
   
-  //URL will need to be updated once mapbox is completed
-  map.addSource('20231231', {
-    type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2023_12_31'
-  });
+  
 
-  map.addLayer({
-    'id': '20231231',
-    'source': '20231231',
-    'type': 'raster',
-    'layout': {
-      'visibility': 'none',
-    }
-  });
-
-
-  map.addSource('20240309', {
-    type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2024-03-09'
-  });
-
-  map.addLayer({
-    'id': '20240309',
-    'source': '20240309',
-    'type': 'raster',
-    'layout': {
-      'visibility': 'none',
-    }
-  });
 
 
   // Planimetrics
-  map.addSource('12St_Planimetrics', {
+  map.addSource('PR_linework', {
     type: 'geojson',
-    "data": '.geojson/12St_Planimetrics.geojson'
+    "data": '.geojson/ElkMeadows_linework.geojson'
   });
 
   map.addLayer({
-    'id': '12St_Planimetrics',
+    'id': 'PR_linework',
     'type': 'line',
-    'source': '12St_Planimetrics',
+    'source': 'PR_linework',
     'layout': {
       "visibility": 'none'
     },
@@ -149,16 +122,16 @@ map.on('style.load', function (e) {
 
 
   //Grading- 
-  map.addSource('12thst_Grading', {
+  map.addSource('PR_Grading', {
     type: 'geojson',
-    "data": '.geojson/12thst_Grading.geojson'
+    "data": '.geojson/ElkMeadows_grading.geojson'
   });
 
   map.addLayer(
     {
-      'id': '12thst_Grading',
+      'id': 'PR_Grading',
       'type': 'line',
-      'source': '12thst_Grading',
+      'source': 'PR_Grading',
       'layout': {
         "visibility": 'none'
       },
@@ -173,7 +146,7 @@ map.on('style.load', function (e) {
 
 
 
-  //Boulder Hatch- 
+  //Boulder Hatch- HAVENT UPDATED
   map.addSource('12thSt_Boulder_Hatch', {
     type: 'geojson',
     "data": '.geojson/12thSt_Boulder_Hatch.geojson'
@@ -193,7 +166,7 @@ map.on('style.load', function (e) {
 
   });
 
-  //Design Shapefiles
+  //Design Shapefiles- HAVENT UPDATED
   //Boulder Line- 
   map.addSource('12thSt_Boulder_Line', {
     type: 'geojson',
