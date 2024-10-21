@@ -63,21 +63,29 @@
 
       <ul class="collapsible" data-collapsible="expandable" style="border-right: none; border-left: none;">
 
+
         <li>
-          <div class="collapsible-header grey "><i class="material-icons right">keyboard_arrow_down</i>Base Map
+          <div class="collapsible-header grey black">
+            <i class="material-icons right">keyboard_arrow_down</i>Drone Aerial
           </div>
           <div class="collapsible-body white">
-
             <p>
-              <input name="stream" type="checkbox" id="stream" class="layer-off"
-                onclick="toggleTwo('mhfd-streams','mhfd-stream-labels')" />
-              <label for="stream" class="valign">MHFD Streams</label>
+              <input name="aerial_2022_08_05" type="checkbox" id="20220805" class="layer-off"
+                onclick="toggleLayer('20220805')">
+              <label for="20220805" class="valign">Aerial - 2022-08-05</label>
             </p>
+            <p>
+              <input name="aerial_2024_04_05" type="checkbox" id="20240405" class="layer-off"
+                onclick="toggleLayer('20240405')">
+              <label for="20240405" class="valign">Aerial - 2024-04-05</label>
+            </p>
+        
+            
           </div>
         </li>
+
         <li>
-          <div class="collapsible-header grey "><i class="material-icons right">keyboard_arrow_down</i>Flood
-            Documentation
+          <div class="collapsible-header grey "><i class="material-icons right">keyboard_arrow_down</i>360 Photos
           </div>
           <div class="collapsible-body white">
             <p>
@@ -85,18 +93,14 @@
                 onclick="toggleLayer('drone_pano')" />
               <label for="drone_pano" class="valign">Drone Panos</label>
             </p>
-            <p>
-              <input name="reaches" type="checkbox" id="reaches" class="layer-off"
-                onclick="toggleTwo('reaches','reaches-label')" />
-              <label for="reaches" class="valign">Place Holder</label>
-            </p>
+
            
           </div>
         </li>
 
         <li>
           <div class="collapsible-header grey">
-            <i class="material-icons right">keyboard_arrow_down</i>Design Work
+            <i class="material-icons right">keyboard_arrow_down</i>Design Linework
           </div>
           <div class="collapsible-body white">
             <p>
@@ -123,6 +127,19 @@
               <input name="CP-SITE-REVEG-POINTS" type="checkbox" id="CP-SITE-REVEG-POINTS" class="layer-off"
                 onclick="toggleLayer('CP-SITE-REVEG-POINTS')">
               <label for="CP-SITE-REVEG-POINTS" class="valign">Re-Vegetation Points</label>
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <div class="collapsible-header grey "><i class="material-icons right">keyboard_arrow_down</i>Base Map
+          </div>
+          <div class="collapsible-body white">
+
+            <p>
+              <input name="stream" type="checkbox" id="stream" class="layer-off"
+                onclick="toggleTwo('mhfd-streams','mhfd-stream-labels')" />
+              <label for="stream" class="valign">MHFD Streams</label>
             </p>
           </div>
         </li>

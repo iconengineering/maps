@@ -255,6 +255,34 @@ map.addLayer({
   }
 });
 
+map.addSource('20220805', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stan_2022-08-05'
+});
+
+map.addLayer({
+  'id': '20220805',
+  'source': '20220805',
+  'type': 'raster',
+  'layout': {
+    'visibility': 'none',
+  }
+});
+
+map.addSource('20240405', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stan_2024-04-05'
+});
+
+map.addLayer({
+  'id': '202404050',
+  'source': '20240405',
+  'type': 'raster',
+  'layout': {
+    'visibility': 'none',
+  }
+});
+
 });
 
 
