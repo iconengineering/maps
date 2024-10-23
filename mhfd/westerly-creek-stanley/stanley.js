@@ -160,101 +160,7 @@ map.on('style.load', function (e) {
   });
 
 
-  //DESIGN LINEWORK
-  //LINEWORK- 
-  map.addSource('CP-SITE-GRID-LINEWORK', {
-    type: 'geojson',
-    "data": 'geojson/CP-SITE-GRID-LINEWORK.geojson'
-  });
-
-  map.addLayer({
-    'id': 'CP-SITE-GRID-LINEWORK',
-    'type': 'line',
-    'source': 'CP-SITE-GRID-LINEWORK',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'line-width': 1.5,
-      'line-color': '#CC3333'
-    }
-  });
-
-  //revegetation hatch ground linework 
-  map.addSource('CP-SITE-REVEG-HATCH', {
-    type: 'geojson',
-    "data": 'geojson/CP-SITE-REVEG-HATCH.geojson'
-  });
-
-  map.addLayer({
-    'id': 'CP-SITE-REVEG-HATCH',
-    'type': 'line',
-    'source': 'CP-SITE-REVEG-HATCH',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'line-width': 1.5,
-      'line-color': '#006400'
-    }
-  });
-  
-   //revegetation grid linework 
-   map.addSource('CP-SITE-REVEG-GRID', {
-    type: 'geojson',
-    "data": 'geojson/CP-SITE-REVEG-GRID.geojson'
-  });
-
-  map.addLayer({
-    'id': 'CP-SITE-REVEG-GRID',
-    'type': 'line',
-    'source': 'CP-SITE-REVEG-GRID',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'line-width': 1.5,
-      'line-color': '#00008B'
-    }
-  });
-  //Topo 
-  map.addSource('CP-TOPO-GROUND', {
-    type: 'geojson',
-    "data": 'geojson/CP-TOPO-GROUND.geojson'
-  });
-
-  map.addLayer({
-    'id': 'CP-TOPO-GROUND',
-    'type': 'line',
-    'source': 'CP-TOPO-GROUND',
-    'layout': {
-      "visibility": 'none'
-    },
-    'paint': {
-      'line-width': 1.5,
-      'line-color': '#353839'
-    }
-  });
-
- //VEGETATION POINTS 
- map.addSource('CP-SITE-REVEG-POINTS', {
-  type: 'geojson',
-  "data": 'geojson/CP-SITE-REVEG-POINTS.geojson'
-});
-
-map.addLayer({
-  'id': 'CP-SITE-REVEG-POINTS',
-  'type': 'circle',
-  'source': 'CP-SITE-REVEG-POINTS',
-  'layout': {
-    "visibility": 'none'
-  },
- 'paint': {
-      'circle-radius': 3,
-      'circle-color': '#93DC5C'
-  }
-});
-
+//Aerials
 map.addSource('20220805', {
   type: 'raster',
   url: 'mapbox://iconeng.Stan_2022-08-05'
@@ -282,6 +188,118 @@ map.addLayer({
     'visibility': 'none',
   }
 });
+
+
+  //DESIGN LINEWORK
+  //LINEWORK- 
+  map.addSource('Site_Linework', {
+    type: 'geojson',
+    "data": 'geojson/Site_Linework.geojson'
+  });
+
+  map.addLayer({
+    'id': 'Site_Linework',
+    'type': 'line',
+    'source': 'Site_Linework',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#CC3333'
+    }
+  });
+
+  //HATCHING
+  map.addSource('Site_Hatching', {
+    type: 'geojson',
+    "data": 'geojson/Site_Hatching.geojson'
+  });
+
+  map.addLayer({
+    'id': 'Site_Hatching',
+    'type': 'line',
+    'source': 'Site_Hatching',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#964B00'
+    }
+  });
+  
+   //REVEGETATION- Trees
+   map.addSource('Trees', {
+    type: 'geojson',
+    "data": 'geojson/Trees.geojson'
+  });
+
+  map.addLayer({
+    'id': 'Trees',
+    'type': 'symbol',
+  'source': 'Trees',
+  'layout': {
+    "visibility": 'none',
+    "icon-image": 'icon-park-outline--tree',
+    "icon-size": 1
+  }
+  });
+
+  //Topo- Site Grading 
+  map.addSource('Site_Grading', {
+    type: 'geojson',
+    "data": 'geojson/Site_Grading.geojson'
+  });
+
+  map.addLayer({
+    'id': 'Site_Grading',
+    'type': 'line',
+    'source': 'Site_Grading',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#4f4f4f'
+    }
+  });
+
+ //VEGETATION- Shrubs
+ map.addSource('Shrubs', {
+  type: 'geojson',
+  "data": 'geojson/Shrubs.geojson'
+});
+
+map.addLayer({
+  'id': 'Shrubs',
+  'type': 'symbol',
+  'source': 'Shrubs',
+  'layout': {
+    "visibility": 'none', 
+    "icon-image": 'streamline--tree-2',
+    "icon-size": 1.5
+  }
+});
+
+//Re-vegetation- Grasses
+map.addSource('Grasses', {
+  type: 'geojson',
+  "data": 'geojson/Grasses.geojson'
+});
+
+map.addLayer({
+  'id': 'Grasses',
+  'type': 'symbol',
+'source': 'Grasses',
+'layout': {
+  "visibility": 'none',
+  "icon-image": 'game-icons--high-grass',
+  "icon-size": .05
+}
+});
+
+
 
 });
 
