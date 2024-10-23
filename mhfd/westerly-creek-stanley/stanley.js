@@ -242,7 +242,7 @@ map.addLayer({
   'layout': {
     "visibility": 'none',
     "icon-image": 'icon-park-outline--tree',
-    "icon-size": 1
+    "icon-size": .9
   }
   });
 
