@@ -181,7 +181,7 @@ map.addSource('20240405', {
 });
 
 map.addLayer({
-  'id': '202404050',
+  'id': '20240405',
   'source': '20240405',
   'type': 'raster',
   'layout': {
