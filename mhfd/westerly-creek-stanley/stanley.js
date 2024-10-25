@@ -282,6 +282,23 @@ map.addLayer({
   }
 });
 
+//VEGETATION- Shrubs Phase 2
+map.addSource('Shrubs_Phase2', {
+  type: 'geojson',
+  "data": 'geojson/Shrubs_Phase2.geojson'
+});
+
+map.addLayer({
+  'id': 'Shrubs_Phase2',
+  'type': 'symbol',
+  'source': 'Shrubs_Phase2',
+  'layout': {
+    "visibility": 'none', 
+    "icon-image": 'streamline--tree-2',
+    "icon-size": 1.5
+  }
+});
+
 //Re-vegetation- Grasses
 map.addSource('Grasses', {
   type: 'geojson',
@@ -302,7 +319,6 @@ map.addLayer({
 
 
 });
-
 
 
 

@@ -37,6 +37,17 @@ function smoothTwo(layer, property, reset, layer2, property2, reset2) {
           }
       };
 
+ //testing the toggle for re-vegetation
+//function toggleChildLayers(parentCheckbox) 
+ // const childLayerIds = ["Trees", "Shrubs", "Grasses"];
+  
+ //   childLayerIds.forEach(id => {
+ //     const checkbox = document.getElementById(id);
+//      checkbox.checked = parentCheckbox.checked;
+ //     toggleLayer(id);
+ //   });
+
+  
 function toggleLayer(layer) {
 
         var visibility = map.getLayoutProperty(layer, 'visibility');
