@@ -155,7 +155,7 @@ map.on('style.load', function (e) {
     },
     'paint': {
       'circle-radius': 7,
-      'circle-color': '#f7945d'
+      'circle-color': '#141038'
     }
   });
 
