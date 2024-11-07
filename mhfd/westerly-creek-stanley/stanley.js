@@ -242,6 +242,7 @@ map.addLayer({
   'layout': {
     "visibility": 'none',
     "icon-image": 'icon-park-outline--tree',
+    "icon-allow-overlap": true,
     "icon-size": .9
   }
   });
@@ -278,6 +279,7 @@ map.addLayer({
   'layout': {
     "visibility": 'none', 
     "icon-image": 'streamline--tree-2',
+    "icon-allow-overlap": true,
     "icon-size": 1.5
   }
 });
@@ -295,6 +297,7 @@ map.addLayer({
   'layout': {
     "visibility": 'none', 
     "icon-image": 'streamline--tree-2',
+    "icon-allow-overlap": true,
     "icon-size": 1.5
   }
 });
@@ -312,6 +315,7 @@ map.addLayer({
 'layout': {
   "visibility": 'none',
   "icon-image": 'game-icons--high-grass',
+  "icon-allow-overlap": true,
   "icon-size": .05
 }
 });
