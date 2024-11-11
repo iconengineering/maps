@@ -161,6 +161,7 @@ map.on('style.load', function (e) {
 
 
 //Aerials
+//August
 map.addSource('20220805', {
   type: 'raster',
   url: 'mapbox://iconeng.Stan_2022-08-05'
@@ -174,7 +175,7 @@ map.addLayer({
     'visibility': 'none',
   }
 });
-
+//April
 map.addSource('20240405', {
   type: 'raster',
   url: 'mapbox://iconeng.Stan_2024-04-05'
@@ -183,6 +184,20 @@ map.addSource('20240405', {
 map.addLayer({
   'id': '20240405',
   'source': '20240405',
+  'type': 'raster',
+  'layout': {
+    'visibility': 'none',
+  }
+});
+//October
+map.addSource('20241018', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stanley_2024-10-18'
+});
+
+map.addLayer({
+  'id': '20241018',
+  'source': '20241018',
   'type': 'raster',
   'layout': {
     'visibility': 'none',
