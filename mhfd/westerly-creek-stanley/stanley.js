@@ -295,7 +295,7 @@ map.addLayer({
     "visibility": 'none', 
     "icon-image": 'streamline--tree-2',
     "icon-allow-overlap": true,
-    "icon-size": 1.5
+    "icon-size": 1
   }
 });
 
@@ -313,7 +313,7 @@ map.addLayer({
     "visibility": 'none', 
     "icon-image": 'streamline--tree-2',
     "icon-allow-overlap": true,
-    "icon-size": 1.5
+    "icon-size": 1
   }
 });
 
@@ -335,7 +335,81 @@ map.addLayer({
 }
 });
 
+//VEGETATION- Wetland FIX 
+map.addSource('Wetland', {
+  type: 'geojson',
+  "data": 'geojson/Wetland.geojson'
+});
 
+map.addLayer({
+  'id': 'Wetland',
+  'type': 'line',
+  'source': 'Wetland',
+  'layout': {
+    "visibility": 'none'
+  },
+  'paint': {
+    'line-width': 1.5,
+    'line-color': '#363636'
+  }
+});
+
+//VEGETATION- Upland 
+map.addSource('Upland', {
+  type: 'geojson',
+  "data": 'geojson/Upland.geojson'
+});
+
+map.addLayer({
+  'id': 'Upland',
+  'type': 'line',
+  'source': 'Upland',
+  'layout': {
+    "visibility": 'none'
+  },
+  'paint': {
+    'line-width': 1.5,
+    'line-color': '#4f7942'
+  }
+});
+
+//VEGETATION- SOD 
+map.addSource('Sod', {
+  type: 'geojson',
+  "data": 'geojson/Sod.geojson'
+});
+
+map.addLayer({
+  'id': 'Sod',
+  'type': 'line',
+  'source': 'Sod',
+  'layout': {
+    "visibility": 'none', 
+  },
+  'paint': {
+    'line-width': 1.5,
+    'line-color': '#de5655'
+  }
+});
+
+ //VEGETATION- RIPARIAN 
+ map.addSource('RIPARIAN', {
+  type: 'geojson',
+  "data": 'geojson/RIPARIAN.geojson'
+});
+
+map.addLayer({
+  'id': 'RIPARIAN',
+  'type': 'line',
+  'source': 'RIPARIAN',
+  'layout': {
+    "visibility": 'none'
+  },
+  'paint': {
+    'line-width': 1.5,
+    'line-color': '#003400'
+  }
+});
 
 });
 
