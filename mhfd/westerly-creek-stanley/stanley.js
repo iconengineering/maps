@@ -10,18 +10,6 @@ var map = new mapboxgl.Map({
 
 
 var layerList = document.getElementById('menu');
-// var inputs = layerList.getElementsByTagName('input');
-//
-// function switchLayer(layer) {
-//     var layerId = layer.target.value;
-//     map.setStyle('mapbox://styles/iconeng/' + layerId);
-//     $('.layer-off').prop('checked', false);
-//     $('.layer-on').prop('checked', true);
-// }
-//
-// for (var i = 0; i < inputs.length; i++) {
-//     inputs[i].onclick = switchLayer;
-// }
 
 $(document).ready(function () {
   $("#clear").click(function () {
@@ -385,10 +373,8 @@ map.on('click', function (e) {
     .setHTML('<h8><b style="color:black;">' + feature.properties.Descr + '</b>' +
       '<br> Click Link Below to Open in New Tab: <br>' + '<a href="' + feature.properties.URL + '" target="_blank">' + feature.properties.Descr + '</a>' +
       '<br>' + '<iframe width="5000" height="300" src=' + feature.properties.URL + '" allowfullscreen>' +
-
       // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
-      '<br> Videos: <br>' + '<a href="' + feature.properties.Youtube1 + '" target="_blank">' + 'Reach 1 Comparison Video' + '</a>'
-
+      '<a href="' + feature.properties.Youtube1 + '" target="_blank" style="color:black;">' + 'Reach 1 Comparison Video' + '</a>'
     )
     .addTo(map);
 });
