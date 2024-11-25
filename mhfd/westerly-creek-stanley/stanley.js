@@ -371,7 +371,7 @@ map.on('click', function (e) {
   var popup = new mapboxgl.Popup()
     .setLngLat(e.lngLat)
     .setHTML('<h8><b style="color:black;">' + feature.properties.Descr + '</b>' +
-      '<br> Click Link Below to Open in New Tab: <br>' + '<a href="' + feature.properties.URL + '" target="_blank">' + feature.properties.Descr + '</a>' +
+      '<br> Click Link Below to Open in New Tab: <br>' + '<a href="' + feature.properties.URL + '" target="_blank" style="color:blue;">' + feature.properties.Descr + '</a>' +
       '<br>' + '<iframe width="5000" height="300" src=' + feature.properties.URL + '" allowfullscreen>' +
       // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
       '<a href="' + feature.properties.Youtube1 + '" target="_blank" style="color:black;">' + 'Reach 1 Comparison Video' + '</a>'
