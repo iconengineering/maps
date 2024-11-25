@@ -91,56 +91,7 @@ map.on('style.load', function (e) {
     }
   });
 
-
-  map.addSource('mhfd-streams', {
-    type: 'vector',
-    url: 'mapbox://iconeng.d9coogno'
-  });
-
-  map.addLayer({
-    'id': 'mhfd-streams',
-    'type': 'line',
-    'source': 'mhfd-streams',
-    'source-layer': 'mhfd_streams-dbmy0f',
-    'paint': {
-      'line-width': 2,
-      'line-opacity': 1,
-      'line-color': 'rgba(0,77,168,1)'
-    },
-    'layout': {
-      'visibility': 'none'
-    }
-  });
-
-  //Drainageway Centerline LABEL
-  map.addLayer({
-    'id': 'mhfd-stream-labels',
-    'type': 'symbol',
-    'source': 'mhfd-streams',
-    'source-layer': 'mhfd_streams-dbmy0f',
-    'layout': {
-      'visibility': 'none',
-      'symbol-placement': 'line',
-      'symbol-spacing': 100,
-      'text-field': '{Str_Name}',
-      'text-size': {
-        "stops": [
-          [15, 12],
-          [17, 14],
-          [19, 16]
-        ]
-      },
-      "text-padding": 100,
-    },
-    'paint': {
-      'text-color': 'rgba(0,77,168,1)',
-      'text-halo-color': '#ffffff',
-      'text-halo-width': 2,
-      'text-halo-blur': 1
-    }
-  });
-
-
+//DRONE PANO DOTS
   map.addSource('drone_pano', {
     type: 'geojson',
     "data": 'geojson/drone_pano.geojson'
@@ -154,7 +105,7 @@ map.on('style.load', function (e) {
       "visibility": 'none'
     },
     'paint': {
-      'circle-radius': 7,
+      'circle-radius': 8,
       'circle-color': '#141038'
     }
   });
@@ -277,7 +228,7 @@ map.addLayer({
     },
     'paint': {
       'line-width': 1.5,
-      'line-color': '#4f4f4f'
+      'line-color': '#010101'
     }
   });
 
@@ -369,7 +320,7 @@ map.addLayer({
   },
   'paint': {
     'line-width': 1.5,
-    'line-color': '#4f7942'
+    'line-color': '#0c2d1c'
   }
 });
 
