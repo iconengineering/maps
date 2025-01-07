@@ -142,7 +142,20 @@ map.addLayer({
     'visibility': 'none',
   }
 });
+//December
+map.addSource('20241229', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stanley_2024-12-29'
+});
 
+map.addLayer({
+  'id': '20241229',
+  'source': '20241229',
+  'type': 'raster',
+  'layout': {
+    'visibility': 'none',
+  }
+});
 
   //DESIGN LINEWORK
   //LINEWORK- 
