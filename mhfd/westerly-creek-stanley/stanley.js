@@ -79,7 +79,7 @@ map.on('style.load', function (e) {
     }
   });
 
-//DRONE PANO DOTS
+  //DRONE PANO DOTS
   map.addSource('drone_pano', {
     type: 'geojson',
     "data": 'geojson/drone_pano.geojson'
@@ -99,77 +99,77 @@ map.on('style.load', function (e) {
   });
 
 
-//Aerials
-//August
-map.addSource('20220805', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stan_2022-08-05'
-});
+  //Aerials
+  //August
+  map.addSource('20220805', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stan_2022-08-05'
+  });
 
-map.addLayer({
-  'id': '20220805',
-  'source': '20220805',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
-//April
-map.addSource('20240405', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stan_2024-04-05'
-});
+  map.addLayer({
+    'id': '20220805',
+    'source': '20220805',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //April
+  map.addSource('20240405', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stan_2024-04-05'
+  });
 
-map.addLayer({
-  'id': '20240405',
-  'source': '20240405',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
-//October
-map.addSource('20241018', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2024-10-18'
-});
+  map.addLayer({
+    'id': '20240405',
+    'source': '20240405',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //October
+  map.addSource('20241018', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2024-10-18'
+  });
 
-map.addLayer({
-  'id': '20241018',
-  'source': '20241018',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
-//December
-map.addSource('20241229', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2024-12-29'
-});
+  map.addLayer({
+    'id': '20241018',
+    'source': '20241018',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //December
+  map.addSource('20241229', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2024-12-29'
+  });
 
-map.addLayer({
-  'id': '20241229',
-  'source': '20241229',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
-//Jan 8th
-map.addSource('20250108', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-01-08'
-});
+  map.addLayer({
+    'id': '20241229',
+    'source': '20241229',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Jan 8th
+  map.addSource('20250108', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-01-08'
+  });
 
-map.addLayer({
-  'id': '20250108',
-  'source': '20250108',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
+  map.addLayer({
+    'id': '20250108',
+    'source': '20250108',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
 
   //DESIGN LINEWORK
   //LINEWORK- 
@@ -209,9 +209,9 @@ map.addLayer({
       'line-color': '#964B00'
     }
   });
-  
-   //REVEGETATION- Trees
-   map.addSource('Trees', {
+
+  //REVEGETATION- Trees
+  map.addSource('Trees', {
     type: 'geojson',
     "data": 'geojson/Trees.geojson'
   });
@@ -219,13 +219,13 @@ map.addLayer({
   map.addLayer({
     'id': 'Trees',
     'type': 'symbol',
-  'source': 'Trees',
-  'layout': {
-    "visibility": 'none',
-    "icon-image": 'icon-park-outline--tree',
-    "icon-allow-overlap": true,
-    "icon-size": .9
-  }
+    'source': 'Trees',
+    'layout': {
+      "visibility": 'none',
+      "icon-image": 'icon-park-outline--tree',
+      "icon-allow-overlap": true,
+      "icon-size": .9
+    }
   });
 
   //Topo- Site Grading 
@@ -247,135 +247,135 @@ map.addLayer({
     }
   });
 
- //VEGETATION- Shrubs
- map.addSource('Shrubs', {
-  type: 'geojson',
-  "data": 'geojson/Shrubs.geojson'
-});
+  //VEGETATION- Shrubs
+  map.addSource('Shrubs', {
+    type: 'geojson',
+    "data": 'geojson/Shrubs.geojson'
+  });
 
-map.addLayer({
-  'id': 'Shrubs',
-  'type': 'symbol',
-  'source': 'Shrubs',
-  'layout': {
-    "visibility": 'none', 
-    "icon-image": 'streamline--tree-2',
-    "icon-allow-overlap": true,
-    "icon-size": 1
-  }
-});
+  map.addLayer({
+    'id': 'Shrubs',
+    'type': 'symbol',
+    'source': 'Shrubs',
+    'layout': {
+      "visibility": 'none',
+      "icon-image": 'streamline--tree-2',
+      "icon-allow-overlap": true,
+      "icon-size": 1
+    }
+  });
 
-//VEGETATION- Shrubs Phase 2
-map.addSource('Shrubs_Phase2', {
-  type: 'geojson',
-  "data": 'geojson/Shrubs_Phase2.geojson'
-});
+  //VEGETATION- Shrubs Phase 2
+  map.addSource('Shrubs_Phase2', {
+    type: 'geojson',
+    "data": 'geojson/Shrubs_Phase2.geojson'
+  });
 
-map.addLayer({
-  'id': 'Shrubs_Phase2',
-  'type': 'symbol',
-  'source': 'Shrubs_Phase2',
-  'layout': {
-    "visibility": 'none', 
-    "icon-image": 'streamline--tree-2',
-    "icon-allow-overlap": true,
-    "icon-size": 1
-  }
-});
+  map.addLayer({
+    'id': 'Shrubs_Phase2',
+    'type': 'symbol',
+    'source': 'Shrubs_Phase2',
+    'layout': {
+      "visibility": 'none',
+      "icon-image": 'streamline--tree-2',
+      "icon-allow-overlap": true,
+      "icon-size": 1
+    }
+  });
 
-//Re-vegetation- Grasses
-map.addSource('Grasses', {
-  type: 'geojson',
-  "data": 'geojson/Grasses.geojson'
-});
+  //Re-vegetation- Grasses
+  map.addSource('Grasses', {
+    type: 'geojson',
+    "data": 'geojson/Grasses.geojson'
+  });
 
-map.addLayer({
-  'id': 'Grasses',
-  'type': 'symbol',
-'source': 'Grasses',
-'layout': {
-  "visibility": 'none',
-  "icon-image": 'game-icons--high-grass',
-  "icon-allow-overlap": true,
-  "icon-size": .05
-}
-});
+  map.addLayer({
+    'id': 'Grasses',
+    'type': 'symbol',
+    'source': 'Grasses',
+    'layout': {
+      "visibility": 'none',
+      "icon-image": 'game-icons--high-grass',
+      "icon-allow-overlap": true,
+      "icon-size": .05
+    }
+  });
 
-//VEGETATION- Wetland FIX 
-map.addSource('Wetland', {
-  type: 'geojson',
-  "data": 'geojson/Wetland.geojson'
-});
+  //VEGETATION- Wetland FIX 
+  map.addSource('Wetland', {
+    type: 'geojson',
+    "data": 'geojson/Wetland.geojson'
+  });
 
-map.addLayer({
-  'id': 'Wetland',
-  'type': 'line',
-  'source': 'Wetland',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'line-width': 1.5,
-    'line-color': '#363636'
-  }
-});
+  map.addLayer({
+    'id': 'Wetland',
+    'type': 'line',
+    'source': 'Wetland',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#363636'
+    }
+  });
 
-//VEGETATION- Upland 
-map.addSource('Upland', {
-  type: 'geojson',
-  "data": 'geojson/Upland.geojson'
-});
+  //VEGETATION- Upland 
+  map.addSource('Upland', {
+    type: 'geojson',
+    "data": 'geojson/Upland.geojson'
+  });
 
-map.addLayer({
-  'id': 'Upland',
-  'type': 'line',
-  'source': 'Upland',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'line-width': 1.5,
-    'line-color': '#0c2d1c'
-  }
-});
+  map.addLayer({
+    'id': 'Upland',
+    'type': 'line',
+    'source': 'Upland',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#0c2d1c'
+    }
+  });
 
-//VEGETATION- SOD 
-map.addSource('Sod', {
-  type: 'geojson',
-  "data": 'geojson/Sod.geojson'
-});
+  //VEGETATION- SOD 
+  map.addSource('Sod', {
+    type: 'geojson',
+    "data": 'geojson/Sod.geojson'
+  });
 
-map.addLayer({
-  'id': 'Sod',
-  'type': 'line',
-  'source': 'Sod',
-  'layout': {
-    "visibility": 'none', 
-  },
-  'paint': {
-    'line-width': 1.5,
-    'line-color': '#de5655'
-  }
-});
+  map.addLayer({
+    'id': 'Sod',
+    'type': 'line',
+    'source': 'Sod',
+    'layout': {
+      "visibility": 'none',
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#de5655'
+    }
+  });
 
- //VEGETATION- RIPARIAN 
- map.addSource('RIPARIAN', {
-  type: 'geojson',
-  "data": 'geojson/RIPARIAN.geojson'
-});
+  //VEGETATION- RIPARIAN 
+  map.addSource('RIPARIAN', {
+    type: 'geojson',
+    "data": 'geojson/RIPARIAN.geojson'
+  });
 
-map.addLayer({
-  'id': 'RIPARIAN',
-  'type': 'line',
-  'source': 'RIPARIAN',
-  'layout': {
-    "visibility": 'none'
-  },
-  'paint': {
-    'line-width': 1.5,
-    'line-color': '#003400'
-  }
-});
+  map.addLayer({
+    'id': 'RIPARIAN',
+    'type': 'line',
+    'source': 'RIPARIAN',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#003400'
+    }
+  });
 
 });
 
@@ -399,9 +399,7 @@ map.on('click', function (e) {
     .setLngLat(e.lngLat)
     .setHTML('<h8><b style="color:black;">' + feature.properties.Descr + '</b>' +
       '<br> Click Link Below to Open in New Tab: <br>' + '<a href="' + feature.properties.URL + '" target="_blank" style="color:blue;">' + feature.properties.Descr + '</a>' +
-      '<br>' + '<iframe width="5000" height="300" src=' + feature.properties.URL + '" allowfullscreen>' +
-      // '</h8> <br>' + '<img src= "images/' + feature.properties.Photo + '.jpg" height=240px>' +
-      '<a href="' + feature.properties.Youtube1 + '" target="_blank" style="color:black;">' + 'Reach 1 Comparison Video' + '</a>'
+      '<br>' + '<iframe width="5000" height="300" src=' + feature.properties.URL + ' allowfullscreen>'
     )
     .addTo(map);
 });
