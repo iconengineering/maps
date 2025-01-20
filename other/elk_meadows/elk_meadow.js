@@ -39,7 +39,7 @@ $(document).ready(function () {
 //Aerials
 map.on('style.load', function (e) {
 
-
+//Pre Project
   map.addSource('PreProject', {
     type: 'raster',
     url: 'mapbox://iconeng.8gredtez'
@@ -53,43 +53,15 @@ map.on('style.load', function (e) {
       'visibility': 'none',
     }
   });
-
-  map.addSource('20230702', {
+//Jan 7th 2025
+  map.addSource('20250107', {
     type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2023_07_02'
+    url: 'mapbox://iconeng.ElkMeadows_2025-01-17'
   });
 
   map.addLayer({
-    'id': '20230702',
-    'source': '20230702',
-    'type': 'raster',
-    'layout': {
-      'visibility': 'none',
-    }
-  });
-
-  map.addSource('20230819', {
-    type: 'raster',
-    url: 'mapbox://iconeng.12thSt_2023_08_19'
-  });
-
-  map.addLayer({
-    'id': '20230819',
-    'source': '20230819',
-    'type': 'raster',
-    'layout': {
-      'visibility': 'none',
-    }
-  });
-  
-  map.addSource('20240913', {
-    type: 'raster',
-    url: 'mapbox://iconeng.12th_2024-09-13'
-  });
-
-  map.addLayer({
-    'id': '20240913',
-    'source': '20240913',
+    'id': '20250107',
+    'source': '20250107',
     'type': 'raster',
     'layout': {
       'visibility': 'none',
