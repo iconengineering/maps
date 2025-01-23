@@ -75,7 +75,7 @@ map.on('style.load', function (e) {
   // Planimetrics
   map.addSource('PR_linework', {
     type: 'geojson',
-    "data": '.geojson/ElkMeadows_linework.geojson'
+    "data": 'geojson/ElkMeadows_linework.geojson'
   });
 
   map.addLayer({
@@ -96,7 +96,7 @@ map.on('style.load', function (e) {
   //Grading- 
   map.addSource('PR_Grading', {
     type: 'geojson',
-    "data": '.geojson/ElkMeadows_grading.geojson'
+    "data": 'geojson/ElkMeadows_grading.geojson'
   });
 
   map.addLayer(
