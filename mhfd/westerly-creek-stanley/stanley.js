@@ -170,6 +170,20 @@ map.on('style.load', function (e) {
       'visibility': 'none',
     }
   });
+  //Jan 22
+  map.addSource('20250122', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-01-22'
+  });
+
+  map.addLayer({
+    'id': '20250122',
+    'source': '20250122',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
 
   //DESIGN LINEWORK
   //LINEWORK- 
