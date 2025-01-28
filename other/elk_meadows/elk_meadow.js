@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3Z
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
-  zoom: 8.5,
-  center: [-105.36679,39.65423],
+  zoom: 17,
+  center: [-105.3663, 39.6542],
   hash: true,
   preserveDrawingBuffer: true
 });
@@ -39,7 +39,7 @@ $(document).ready(function () {
 //Aerials
 map.on('style.load', function (e) {
 
-//Pre Project
+  //Pre Project
   map.addSource('PreProject', {
     type: 'raster',
     url: 'mapbox://iconeng.8gredtez'
@@ -53,7 +53,7 @@ map.on('style.load', function (e) {
       'visibility': 'none',
     }
   });
-//Jan 7th 2025
+  //Jan 7th 2025
   map.addSource('20250107', {
     type: 'raster',
     url: 'mapbox://iconeng.ElkMeadows_2025-01-17'
@@ -67,8 +67,8 @@ map.on('style.load', function (e) {
       'visibility': 'none',
     }
   });
-  
-  
+
+
 
 
 
