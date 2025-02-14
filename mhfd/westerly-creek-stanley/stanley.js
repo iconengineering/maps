@@ -187,7 +187,7 @@ map.on('style.load', function (e) {
   //Feb 5
   map.addSource('20250205', {
     type: 'raster',
-    url: 'mapbox://iconeng.Stanley_2025-02-05'
+    url: 'mapbox://iconeng.Stanley_2025-02-14'
   });
 
   map.addLayer({
