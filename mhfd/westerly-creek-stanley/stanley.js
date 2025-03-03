@@ -195,7 +195,7 @@ map.on('style.load', function (e) {
     'source': '20250205',
     'type': 'raster',
     'layout': {
-      'visibility': 'visible',
+      'visibility': 'none',
     }
   });
  //Feb 26
