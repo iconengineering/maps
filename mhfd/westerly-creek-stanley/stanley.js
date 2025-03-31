@@ -223,9 +223,24 @@ map.addLayer({
   'source': '20250311',
   'type': 'raster',
   'layout': {
+    'visibility': 'none',
+  }
+});
+ //Mar 26
+ map.addSource('20250326', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stanley_2025-03-26'
+});
+
+map.addLayer({
+  'id': '20250326',
+  'source': '20250326',
+  'type': 'raster',
+  'layout': {
     'visibility': 'visible',
   }
 });
+
 
   //DESIGN LINEWORK
   //LINEWORK- 
