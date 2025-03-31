@@ -281,6 +281,25 @@ map.addLayer({
     }
   });
 
+  //RIPRAP HATCH
+  map.addSource('CP-RIPRAP-HATCH', {
+    type: 'geojson',
+    "data": 'geojson/CP-RIPRAP-HATCH.geojson'
+  });
+
+  map.addLayer({
+    'id': 'CP-RIPRAP-HATCH',
+    'type': 'line',
+    'source': 'CP-RIPRAP-HATCH',
+    'layout': {
+      "visibility": 'none'
+    },
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#444C38'
+    }
+  });
+
   //REVEGETATION- Trees
   map.addSource('Trees', {
     type: 'geojson',
