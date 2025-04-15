@@ -262,6 +262,25 @@ map.addLayer({
     }
   });
 
+ //Construction Progress
+  map.addSource('Construction_Progress', {
+    type: 'geojson',
+    "data": 'geojson/Construction_Progress.geojson'
+   });
+
+   map.addLayer({
+    'id': 'Construction_Progress',
+    'type': 'line',
+    'source': 'Construction_Progress',
+    'layout': {
+     "visibility": 'none'
+    },
+   'paint': {
+     'line-width': 1.5,
+     'line-color': '#ffffff'
+  }
+ });
+
   //HATCHING
   map.addSource('Site_Hatching', {
     type: 'geojson',
