@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWNvbmVuZyIsImEiOiJjaXBwc2V1ZnMwNGY3ZmptMzQ3ZmJ0ZXE1In0.mo_STWygoqFqRI-od05qFg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/iconeng/cixrrcbd1000r2ro6dj7z1fot',
+  style: 'mapbox://styles/iconeng/cjahqpuz797612sqajznqxkyw',
   zoom: 13.75,
   center: [-105.1122, 40.5920],
   hash: true,
@@ -22,8 +22,8 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].onclick = switchLayer;
 }
 
-$(document).ready(function() {
-  $("#clear").click(function() {
+$(document).ready(function () {
+  $("#clear").click(function () {
     var checkBoxes = $("input[type=checkbox]");
     checkBoxes.prop("checked", false);
     map.setPaintProperty('contours-1ft', 'visibility', 'none');
@@ -37,7 +37,7 @@ $(document).ready(function() {
   });
 });
 
-map.on('style.load', function(e) {
+map.on('style.load', function (e) {
 
   map.addSource('cityFP', {
     type: 'geojson',
@@ -460,7 +460,7 @@ map.on('style.load', function(e) {
 // the feature, with description HTML from its properties.
 
 //Cross Section Labels
-map.on('click', function(e) {
+map.on('click', function (e) {
   var features = map.queryRenderedFeatures(e.point, {
     layers: ['wvb-xs']
   });
@@ -478,7 +478,7 @@ map.on('click', function(e) {
 
 // Use the same approach as above to indicate that the symbols are clickable
 // by changing the cursor style to 'pointer'.
-map.on('mousemove', function(e) {
+map.on('mousemove', function (e) {
   var features = map.queryRenderedFeatures(e.point, {
     layers: ['wvb-xs']
   });
