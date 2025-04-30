@@ -240,10 +240,10 @@ map.addLayer({
     'visibility': 'none',
   }
 });
-//Apri 23
+//Apri 23- adjusted 4/29
 map.addSource('20250423', {
   type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-04-23'
+  url: 'mapbox://iconeng.Stanley-Adj-2025-04-29'
 });
 
 map.addLayer({
