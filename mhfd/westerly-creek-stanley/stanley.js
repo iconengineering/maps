@@ -243,7 +243,7 @@ map.addLayer({
 //Apri 23- adjusted 4/29
 map.addSource('20250423', {
   type: 'raster',
-  url: 'mapbox://iconeng.Stanley-Adj-2025-04-29'
+  url: 'mapbox://iconeng.Stanley_2025-04-23'
 });
 
 map.addLayer({
@@ -253,7 +253,26 @@ map.addLayer({
   'layout': {
     'visibility': 'visible',
   }
-});
+ });
+
+//4/23 Blur
+ map.addSource('Blur', {
+  type: 'geojson',
+  "data": 'geojson/Blur.geojson'
+ });
+ map.addLayer({
+  'id': 'Blur',
+  'type': 'fill',
+  'source': 'Blur',
+  'layout': {
+      'visibility': 'visible'
+  },
+  'paint':{
+    'fill-color':'#909090',
+    'fill-opacity':0.95
+  }
+ });
+
 
   //DESIGN LINEWORK
   //LINEWORK- 
