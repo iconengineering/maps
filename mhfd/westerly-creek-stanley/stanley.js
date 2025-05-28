@@ -251,7 +251,7 @@ map.addLayer({
   'source': '20250423',
   'type': 'raster',
   'layout': {
-    'visibility': 'visible',
+    'visibility': 'none',
   }
  });
 
@@ -265,14 +265,27 @@ map.addLayer({
   'type': 'fill',
   'source': 'Blur',
   'layout': {
-      'visibility': 'visible'
+      'visibility': 'none'
   },
   'paint':{
     'fill-color':'#909090',
     'fill-opacity':0.95
   }
  });
+//May 23
+map.addSource('20250523', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stanley_2025-05-23'
+});
 
+map.addLayer({
+  'id': '20250523',
+  'source': '20250523',
+  'type': 'raster',
+  'layout': {
+    'visibility': 'visible',
+  }
+ });
 
   //DESIGN LINEWORK
   //LINEWORK- 
