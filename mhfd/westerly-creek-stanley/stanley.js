@@ -283,6 +283,21 @@ map.addLayer({
   'source': '20250523',
   'type': 'raster',
   'layout': {
+    'visibility': 'none',
+  }
+ });
+
+ //June 11th 2025
+ map.addSource('20250611', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stanley_2025-06-11'
+});
+
+map.addLayer({
+  'id': '20250611',
+  'source': '20250611',
+  'type': 'raster',
+  'layout': {
     'visibility': 'visible',
   }
  });
