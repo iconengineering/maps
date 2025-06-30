@@ -298,6 +298,21 @@ map.addLayer({
   'source': '20250611',
   'type': 'raster',
   'layout': {
+    'visibility': 'none',
+  }
+ });
+
+//June 25th 2025
+ map.addSource('20250625', {
+  type: 'raster',
+  url: 'mapbox://iconeng.Stanley_2025-06-25'
+});
+
+map.addLayer({
+  'id': '20250625',
+  'source': '20250625',
+  'type': 'raster',
+  'layout': {
     'visibility': 'visible',
   }
  });
