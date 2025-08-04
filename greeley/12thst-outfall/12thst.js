@@ -96,6 +96,20 @@ map.on('style.load', function (e) {
     }
   });
   
+   map.addSource('20250704', {
+    type: 'raster',
+    url: 'mapbox://iconeng.12th_2025-07-04'
+  });
+
+  map.addLayer({
+    'id': '20250704',
+    'source': '20250704',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+
   //URL will need to be updated once mapbox is completed
   map.addSource('20231231', {
     type: 'raster',
