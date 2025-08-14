@@ -106,7 +106,7 @@ map.on('style.load', function (e) {
     'source': '20250704',
     'type': 'raster',
     'layout': {
-      'visibility': 'none',
+      'visibility': 'visible',
     }
   });
 
