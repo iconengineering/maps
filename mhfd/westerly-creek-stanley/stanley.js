@@ -198,153 +198,153 @@ map.on('style.load', function (e) {
       'visibility': 'none',
     }
   });
- //Feb 26
- map.addSource('20250226', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-02-26'
-});
+  //Feb 26
+  map.addSource('20250226', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-02-26'
+  });
 
-map.addLayer({
-  'id': '20250226',
-  'source': '20250226',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
- //Mar 11
- map.addSource('20250311', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-03-11'
-});
+  map.addLayer({
+    'id': '20250226',
+    'source': '20250226',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Mar 11
+  map.addSource('20250311', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-03-11'
+  });
 
-map.addLayer({
-  'id': '20250311',
-  'source': '20250311',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
- //Mar 26
- map.addSource('20250326', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-03-26'
-});
+  map.addLayer({
+    'id': '20250311',
+    'source': '20250311',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Mar 26
+  map.addSource('20250326', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-03-26'
+  });
 
-map.addLayer({
-  'id': '20250326',
-  'source': '20250326',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
-});
-//Apri 23- adjusted 4/29
-map.addSource('20250423', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-04-23'
-});
+  map.addLayer({
+    'id': '20250326',
+    'source': '20250326',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Apri 23- adjusted 4/29
+  map.addSource('20250423', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-04-23'
+  });
 
-map.addLayer({
-  'id': '20250423',
-  'source': '20250423',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
- });
+  map.addLayer({
+    'id': '20250423',
+    'source': '20250423',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
 
-//4/23 Blur
- map.addSource('Blur', {
-  type: 'geojson',
-  "data": 'geojson/Blur.geojson'
- });
- map.addLayer({
-  'id': 'Blur',
-  'type': 'fill',
-  'source': 'Blur',
-  'layout': {
+  //4/23 Blur
+  map.addSource('Blur', {
+    type: 'geojson',
+    "data": 'geojson/Blur.geojson'
+  });
+  map.addLayer({
+    'id': 'Blur',
+    'type': 'fill',
+    'source': 'Blur',
+    'layout': {
       'visibility': 'none'
-  },
-  'paint':{
-    'fill-color':'#909090',
-    'fill-opacity':0.95
-  }
- });
-//May 23
-map.addSource('20250523', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-05-23'
-});
+    },
+    'paint': {
+      'fill-color': '#909090',
+      'fill-opacity': 0.95
+    }
+  });
+  //May 23
+  map.addSource('20250523', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-05-23'
+  });
 
-map.addLayer({
-  'id': '20250523',
-  'source': '20250523',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
- });
+  map.addLayer({
+    'id': '20250523',
+    'source': '20250523',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
 
- //June 11th 2025
- map.addSource('20250611', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-06-11'
-});
+  //June 11th 2025
+  map.addSource('20250611', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-06-11'
+  });
 
-map.addLayer({
-  'id': '20250611',
-  'source': '20250611',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
- });
+  map.addLayer({
+    'id': '20250611',
+    'source': '20250611',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
 
-//June 25th 2025
- map.addSource('20250625', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-06-25'
-});
+  //June 25th 2025
+  map.addSource('20250625', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-06-25'
+  });
 
-map.addLayer({
-  'id': '20250625',
-  'source': '20250625',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
- });
+  map.addLayer({
+    'id': '20250625',
+    'source': '20250625',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
 
-//July 23th 2025
- map.addSource('20250723', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-07-23'
-});
+  //July 23th 2025
+  map.addSource('20250723', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-07-23'
+  });
 
-map.addLayer({
-  'id': '20250723',
-  'source': '20250723',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'none',
-  }
- });
- //Aug-16 2025
+  map.addLayer({
+    'id': '20250723',
+    'source': '20250723',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Aug-16 2025
   map.addSource('20250816', {
-  type: 'raster',
-  url: 'mapbox://iconeng.Stanley_2025-08-16'
-});
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-08-16'
+  });
 
-map.addLayer({
-  'id': '20250816',
-  'source': '20250816',
-  'type': 'raster',
-  'layout': {
-    'visibility': 'visible',
-  }
- });
+  map.addLayer({
+    'id': '20250816',
+    'source': '20250816',
+    'type': 'raster',
+    'layout': {
+      'visibility': 'visible',
+    }
+  });
 
   //DESIGN LINEWORK
   //LINEWORK- 
@@ -366,24 +366,24 @@ map.addLayer({
     }
   });
 
- //Construction Progress
+  //Construction Progress
   map.addSource('Construction_Progress', {
     type: 'geojson',
     "data": 'geojson/Construction_Progress.geojson'
-   });
+  });
 
-   map.addLayer({
+  map.addLayer({
     'id': 'Construction_Progress',
     'type': 'line',
     'source': 'Construction_Progress',
     'layout': {
-     "visibility": 'none'
+      "visibility": 'none'
     },
-   'paint': {
-     'line-width': 1.5,
-     'line-color': '#ffffff'
-  }
- });
+    'paint': {
+      'line-width': 1.5,
+      'line-color': '#ffffff'
+    }
+  });
 
   //HATCHING
   map.addSource('Site_Hatching', {
