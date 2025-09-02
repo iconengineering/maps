@@ -342,6 +342,20 @@ map.on('style.load', function (e) {
     'source': '20250816',
     'type': 'raster',
     'layout': {
+      'visibility': 'none',
+    }
+  });
+ //Aug-28 2025
+  map.addSource('20250828', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-08-28'
+  });
+
+  map.addLayer({
+    'id': '20250828',
+    'source': '20250828',
+    'type': 'raster',
+    'layout': {
       'visibility': 'visible',
     }
   });
