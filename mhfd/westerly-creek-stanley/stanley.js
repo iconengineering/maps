@@ -370,6 +370,20 @@ map.on('style.load', function (e) {
     'source': '20250922',
     'type': 'raster',
     'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Oct 23 2025
+  map.addSource('20251023', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-10-23'
+  });
+
+  map.addLayer({
+    'id': '20251023',
+    'source': '20251023',
+    'type': 'raster',
+    'layout': {
       'visibility': 'visible',
     }
   });
