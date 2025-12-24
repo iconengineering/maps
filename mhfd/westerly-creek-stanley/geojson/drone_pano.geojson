@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"name": "drone_pano",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Montview Bridge", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/Montview_Bridge/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879973884046962, 39.747733345650161 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Pedestrian Bridge", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/Pedestrian_Bridge/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879940529052263, 39.749039749609139 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Alexan Westerly Creek", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/Alexan_Westerly_Creek/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.880107304025756, 39.749826371567416 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Easterly Creek Outfall", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/Easterly_Creek_Outfall/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879495795789637, 39.749423332048153 ] } },
+{ "type": "Feature", "properties": { "id": "CHECK 18TH PANO", "Descr": "23rd Avenue Outfall", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/23rd_ave_outfall/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879317902484559, 39.751116098029051 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "23rd Avenue West", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/23rd_Avenue_West/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879893276143093, 39.751335685077471 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "West Boundary (S)", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/west_boundary_s/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879887716977336, 39.752233490351422 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "West Boundary (N)", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/west_boundary_n/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879909953640464, 39.75302845105837 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Northwest Corner", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/northwest_corner/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.879898835308893, 39.753879003423158 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Northeast Corner", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/northeast_corner/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.878614668013057, 39.754034660065081 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Stanley Marketplace", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/stanley_marketplace/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.878447893039564, 39.752644868619356 ] } },
+{ "type": "Feature", "properties": { "id": "good", "Descr": "Stanley House", "URL": "https://iconengineering.github.io/project/drone/westerly-creek-stanley-marketplace/2025_Q2_Update/stanley_house/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.878825916312806, 39.751405174649769 ] } }
+]
+}
