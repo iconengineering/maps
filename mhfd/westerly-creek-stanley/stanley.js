@@ -398,6 +398,20 @@ map.on('style.load', function (e) {
     'source': '20251125',
     'type': 'raster',
     'layout': {
+      'visibility': 'none',
+    }
+  });
+//Dec 30 2025
+  map.addSource('20251230', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2025-12-30'
+  });
+
+  map.addLayer({
+    'id': '20251230',
+    'source': '20251230',
+    'type': 'raster',
+    'layout': {
       'visibility': 'visible',
     }
   });
