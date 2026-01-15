@@ -1,0 +1,133 @@
+---
+layout: map
+title: Beers Sisters Reservoir
+script: assets/maps/beers-sisters.js
+---
+<style>
+#menu {
+			position: absolute;
+			bottom: 2em;
+			right: 1em;
+			z-index:99;
+			background: #fff;
+			padding: 10px;
+	}
+.bar {
+  fill: #69D2E7;
+}
+
+.bar:hover {
+  fill: #1B55C0;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font: 1em;
+		font-style: bold;
+    background: white;
+    border: 0px;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.d3-tip {
+	font-size: .9em;
+  line-height: 1;
+  padding: 5px 10px;
+  background: rgba(250, 250, 250, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(250, 250, 250, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js'></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css' type='text/css' />
+
+<!-- Header -->
+	<header id="header">
+    <h1><a href="{{site.url}}/index.html">ICON <span>Engineering, Inc.</span></a></h1>
+    <nav id="nav">
+      <ul>
+				<li><a href="#"><h1 style="left:0">Beers Sisters Reservoir</h1></a></li>
+        <li><a href="{{site.url}}/index.html">Home</a></li>
+				<li>
+					<a href="#" class="button submenu fa-angle-down">Layers</a>
+					<ul id="navButtons">
+						<li id="100yr" class="display"><a href="#" id="100yrM" class="display" onclick="toggleLayer('100yr', '100yrMobile','100yr')">100-Year Floodplain</a></li>
+						<li id="contours" class="display"><a href="#" id="contoursM" class="display" onclick="toggleThree('contours', 'contoursMobile', '5ftContours', '1ftContours', '5ftLabels')">Contours</a></li>
+						<li id="property-lines" class="display"><a href="#" id="property-linesM" class="display" onclick="toggleLayer('property-lines', 'property-linesMobile','property-lines')">Property Lines</a></li>
+						<li id="proposed-contours" class="display"><a href="#" id="proposed-contoursM" class="display" onclick="toggleLayer('proposed-contours', 'proposed-contoursMobile', 'proposed-contours')">Proposed Contours</a></li>
+						<li id="proposed-pond" class="display"><a href="#" id="proposed-pondM" class="display" onclick="toggleTwo('proposed-pond', 'proposed-pondMobile','proposed-pond','proposed-pipe')">Proposed Pond Improvements</a></li>
+						<li id="ex-trail" class="display"><a href="#" id="ex-trailM" class="display" onclick="toggleLayer('ex-trail', 'ex-trailMobile','ex-trail')">Existing Trails</a></li>
+						<li id="proposed-trail" class="display"><a href="#" id="proposed-trailM" class="display" onclick="toggleLayer('proposed-trail', 'proposed-trailMobile','proposed-trail')">Proposed Trails</a></li>
+					</ul>
+				</li>
+      </ul>
+    </nav>
+  </header>
+
+	<div id='menu'>
+	    <input id='basic' type='radio' name='rtoggle' value='cihxv74vo00oynpm48wsujwo3'>
+	    <label for='basic'>Satellite</label>
+	    <input id='light' type='radio' name='rtoggle' value='cikh67rk8004n9vkouhls14s4' checked='checked'>
+	    <label for='light'>Light</label>
+	</div>
+
+<div id="legendContainer">
+	<div id="legend" class='my-legend'>
+		<h6>Legend</h6>
+			<div class='legend-scale2'>
+				<div class="legend-item"><b>Beers Sisters Reservoir</b></div>
+					<ul class='legend-labels2'>
+						<li><i class="fa fa-minus fa-lg" style="color:#20b2aa;"></i>&nbsp; Existing Trails</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#9932CC;"></i>&nbsp; Proposed Trails</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#EEC900;"></i>&nbsp; Proposed Pond Improvements</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#EE9900;"></i>&nbsp; Proposed 24" Pipe</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#DC143C;"></i>&nbsp; Proposed Contours</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#222222;"></i>&nbsp; Property Lines</li>
+						<li><i class="fa fa-minus fa-lg" style="color:#b68054;"></i>&nbsp; Existing Contours</li>
+						<li><i class="fa fa-square fa-lg" style="color:#9edff4;"></i>&nbsp; 100-Year Floodplain</li>
+					</ul>
+			</div>
+				<div class='legend-source'>Source: <a href="http://www.iconeng.com">ICON Engineering</a></div>
+	</div>
+</div>
+
+<div id="map"></div>

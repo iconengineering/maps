@@ -1,0 +1,25 @@
+{
+"type": "FeatureCollection",
+"name": "swmm_outfalls",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Elev": 4972.52, "Node": "907", "Peak_Inflo": 564.76, "Total_Infl": 362.87856 }, "geometry": { "type": "Point", "coordinates": [ -105.007308971790437, 40.604136455425305 ] } },
+{ "type": "Feature", "properties": { "Elev": 4974.02, "Node": "901", "Peak_Inflo": 278.09, "Total_Infl": 167.297328 }, "geometry": { "type": "Point", "coordinates": [ -105.027146015268329, 40.602297736914558 ] } },
+{ "type": "Feature", "properties": { "Elev": 4977.4, "Node": "903", "Peak_Inflo": 314.6, "Total_Infl": 36.714447 }, "geometry": { "type": "Point", "coordinates": [ -105.034597946418089, 40.603055712649564 ] } },
+{ "type": "Feature", "properties": { "Elev": 4973.21, "Node": "902", "Peak_Inflo": 332.72, "Total_Infl": 627.306669 }, "geometry": { "type": "Point", "coordinates": [ -105.024318217489551, 40.601242997087169 ] } },
+{ "type": "Feature", "properties": { "Elev": 4973.14, "Node": "904", "Peak_Inflo": 660.5, "Total_Infl": 1221.081444 }, "geometry": { "type": "Point", "coordinates": [ -105.010198296002798, 40.603341998608229 ] } },
+{ "type": "Feature", "properties": { "Elev": 4972.72, "Node": "913", "Peak_Inflo": 539.52, "Total_Infl": 178.594317 }, "geometry": { "type": "Point", "coordinates": [ -105.001430612072497, 40.604367283947759 ] } },
+{ "type": "Feature", "properties": { "Elev": 4972.49, "Node": "914", "Peak_Inflo": 3079.55, "Total_Infl": 813.321828 }, "geometry": { "type": "Point", "coordinates": [ -104.998684044651185, 40.603538342195819 ] } },
+{ "type": "Feature", "properties": { "Elev": 4969.18, "Node": "919", "Peak_Inflo": 129.99, "Total_Infl": 11.011572 }, "geometry": { "type": "Point", "coordinates": [ -104.985816099562669, 40.593174893953787 ] } },
+{ "type": "Feature", "properties": { "Elev": 4968.54, "Node": "922", "Peak_Inflo": 150.52, "Total_Infl": 13.264218 }, "geometry": { "type": "Point", "coordinates": [ -104.982188473793158, 40.586357960252442 ] } },
+{ "type": "Feature", "properties": { "Elev": 4970.28, "Node": "916", "Peak_Inflo": 2963.67, "Total_Infl": 3881.628234 }, "geometry": { "type": "Point", "coordinates": [ -104.991240403170863, 40.599708636037008 ] } },
+{ "type": "Feature", "properties": { "Elev": 4970.28, "Node": "917", "Peak_Inflo": 49.18, "Total_Infl": 4.115529 }, "geometry": { "type": "Point", "coordinates": [ -104.995428796974068, 40.600989969950227 ] } },
+{ "type": "Feature", "properties": { "Elev": 4989.42, "Node": "421", "Peak_Inflo": 62.49, "Total_Infl": 3.940596 }, "geometry": { "type": "Point", "coordinates": [ -105.026546540506772, 40.609011209550111 ] } },
+{ "type": "Feature", "properties": { "Elev": 4947.03, "Node": "411", "Peak_Inflo": 194.67, "Total_Infl": 51.844617 }, "geometry": { "type": "Point", "coordinates": [ -105.025935358029599, 40.592363851332344 ] } },
+{ "type": "Feature", "properties": { "Elev": 4931.98, "Node": "408", "Peak_Inflo": 331.69, "Total_Infl": 9.142551 }, "geometry": { "type": "Point", "coordinates": [ -105.021847300282701, 40.586729102159303 ] } },
+{ "type": "Feature", "properties": { "Elev": 5010.89, "Node": "419", "Peak_Inflo": 127.68, "Total_Infl": 12.300552 }, "geometry": { "type": "Point", "coordinates": [ -105.032244781875846, 40.608117887931783 ] } },
+{ "type": "Feature", "properties": { "Elev": 4980.32, "Node": "417", "Peak_Inflo": 139.52, "Total_Infl": 9.05355 }, "geometry": { "type": "Point", "coordinates": [ -105.013418105802842, 40.601935954047988 ] } },
+{ "type": "Feature", "properties": { "Elev": 4967.82, "Node": "908", "Peak_Inflo": 107.7, "Total_Infl": 11.548647 }, "geometry": { "type": "Point", "coordinates": [ -105.027758529795065, 40.59927258008539 ] } },
+{ "type": "Feature", "properties": { "Elev": 5072.27, "Node": "443", "Peak_Inflo": 146.16, "Total_Infl": 8.154333 }, "geometry": { "type": "Point", "coordinates": [ -105.039162137915739, 40.632516915142475 ] } }
+]
+}

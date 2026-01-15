@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "drone_pano",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "Descr": "Reach 7 - Central Park Blvd", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach07-%20Central%20Park%20Blvd/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.886222805597569, 39.770601421388662 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "Reach 5 - Quebec Street", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach05_47thAve_to_I70/quebec-drop/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.902662778666226, 39.782282805903776 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "Reach 2 - Near Railroad", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach02-%20Near%20RR/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.939827788777976, 39.801307156077641 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "Reach 2 - Vasquez Blvd", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach02-%20Vasquez%20Blvd/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.935822837935092, 39.798019161463884 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "Reach 3 - Sloping Drop", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach03_Sloping%20Drop/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.923014331534063, 39.793940847657993 ] } },
+{ "type": "Feature", "properties": { "id": null, "Descr": "Reach 8 - Eroded Bank", "URL": "https://www.iconeng.com/dronesites/sand-creek/Reach08-%20Eroded%20Bank/index.html" }, "geometry": { "type": "Point", "coordinates": [ -104.873065825122325, 39.767283414653676 ] } }
+]
+}

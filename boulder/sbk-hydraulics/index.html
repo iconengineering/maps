@@ -1,0 +1,89 @@
+---
+layout: default-map
+title: Skunk Bluebell King's Gulch Hydraulics
+version: v0.18.0
+script: sbk-hydraulics-v18.js
+extra-js:
+  - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.js
+  - //d3js.org/d3.v3.min.js
+extra-css:
+  - sbk.css
+  - //api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v0.0.0/mapbox-gl-geocoder.css
+  - //maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+---
+
+<ul id="slide-out" class="side-nav fixed">
+  <a href="#" class="brand-logo center hide-on-med-and-up">{{ page.title }}</a>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <a class="collapsible-header white">Basemap<i class="material-icons">arrow_drop_down</i></a>
+        <div class="collapsible-body">
+          <form id="menu">
+            <p class="narrow">
+              <input name="group1" type="radio" id="test1" value='cixrrcbd1000r2ro6dj7z1fot' checked/>
+              <label for="test1">Satellite</label>
+            </p>
+            <p class="narrow">
+              <input name="group1" type="radio" id="test2" value="civjrd2la004z2immqynhr4fd"/>
+              <label for="test2">Light</label>
+            </p>
+          </form>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header white">Layers<i class="material-icons">arrow_drop_down</i></a>
+        <div class="collapsible-body">
+          <p>
+            <input name="contour" type="checkbox" id="contour" class="layer-on" onclick="toggleThree('5ftContours', '5ftLabels', '1ftContours')" checked>
+  					<label for='contour' class="valign">Contours</label>
+          </p>
+          <p>
+            <input name="floodExtents" type="checkbox" id="floodExtents" class="layer-off" onclick="toggleLayer('floodExtents')">
+  					<label for="floodExtents" class="valign">2013 Flood Extents</label>
+          </p>
+          <p>
+            <input name="floodZones" type="checkbox" id="floodZones" class="layer-on" onclick="toggleSix('zoneX','zoneAO1','zoneAO2','zoneAE','gutter','floodway')" checked>
+  					<label for="floodZones" class="valign" >Existing Conditions Floodplain</label>
+          </p>
+          <p>
+            <input name="hhz" type="checkbox" id="hhz" class="layer-on" onclick="toggleLayer('hhz')" checked>
+  					<label for="hhz" class="valign">High Hazard Zone</label>
+          </p>
+          <p>
+            <input name="centerline" type="checkbox" id="centerline" class="layer-on" onclick="toggleLayer('flowpath')" checked>
+  					<label for="centerline" class="valign">Stream Centerline</label>
+          </p>
+          <p>
+            <input name="bfe" type="checkbox" id="bfe" class="layer-on" onclick="toggleTwo('bfe','bfeLabels')" checked>
+  					<label for="bfe" class="valign">Base Flood Elevations</label>
+          </p>
+  				<p>
+  					<input name="xs" type="checkbox" id="xs" class="layer-on" onclick="toggleTwo('xs', 'xsLabels')" checked>
+  					<label for="xs" class="valign">Cross Sections</label>
+  				</p>
+        </div>
+      </li>
+  		<li>
+        <a class="collapsible-header white">Legend<i class="material-icons">arrow_drop_down</i></a>
+        <div class="collapsible-body">
+  				<ul class="collection">
+  					<li class="collection-item">Conveyance Zone (Floodway)<i class="secondary-content fa fa-minus fa-fw" style="color:#DDD92A;"></i></li>
+  					<li class="collection-item">1% Annual Chance Floodplain (Zone AE)<i class="secondary-content fa fa-minus fa-fw" style="color:#4056f4;"></i></li>
+  					<li class="collection-item">Zone AO (1ft)<i class="secondary-content fa fa-square fa-fw" style="color:#b8f3ff;"></i></li>
+  					<li class="collection-item">Zone AO (2ft)<i class="secondary-content fa fa-square fa-fw" style="color:#e980fc;"></i></li>
+  					<li class="collection-item">Zone AO (3ft)<i class="secondary-content fa fa-square fa-fw" style="color:#324A5F;"></i></li>
+  					<li class="collection-item">500-Year Floodplain<i class="secondary-content fa fa-square fa-fw" style="color:#FF8C00;"></i></li>
+  					<li class="collection-item">High Hazard Zone<i class="secondary-content fa fa-square fa-fw" style="color:#DC0714;"></i></li>
+  					<li class="collection-item">Flow Path<i class="secondary-content fa fa-minus fa-fw" style="color:#150578;"></i></li>
+  					<li class="collection-item">HEC-RAS Cross Section<i class="secondary-content fa fa-minus fa-fw" style="color:#0f0;"></i></li>
+  					<li class="collection-item">Base Flood Elevation (BFE)<i class="secondary-content fa fa-minus fa-fw" style="color:#333;"></i></li>
+  					<li class="collection-item">Gutter Lines<i class="secondary-content fa fa-minus fa-fw" style="color:#92140C;"></i></li>
+  					<li class="collection-item">Existing Contours<i class="secondary-content fa fa-minus fa-fw" style="color:#b68054;"></i></li>
+  				</ul>
+  				<div class='legend-source'><small>Source: ICON Engineering</small></div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
