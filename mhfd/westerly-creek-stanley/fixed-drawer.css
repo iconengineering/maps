@@ -1,9 +1,79 @@
+/* ---------- Base ---------- */
 html,
-body,
-.mapboxgl-map {
+body {
+  height: 100%;
+  margin: 0;
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
+/* ---------- MDL Layout ---------- */
+.mdl-layout {
+  height: 100vh;
+}
+
+/* ---------- Drawer ---------- */
+.mdl-layout__drawer {
+  width: 320px !important;
+  height: 100vh !important;
+  background-color: #25858C;
+  overflow-y: auto;
+}
+
+/* ---------- Main Content ---------- */
+.mdl-layout--fixed-drawer>.mdl-layout__content {
+  margin-left: 320px !important;
+  padding: 0 !important;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Small screens */
+.is-small-screen>.mdl-layout__content {
+  margin-left: 0 !important;
+}
+
+/* ---------- Map ---------- */
+#map {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* ---------- Drawer UI ---------- */
+.indent {
+  padding-left: 50px !important;
+}
+
+.collapsible-header {
+  color: #fafafa;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 13px 14px;
+  letter-spacing: 0.04em;
+}
+
+.collapsible-header i {
+  line-height: 16px;
+}
+
+.collapsible-body {
+  padding: 1rem;
+}
+
+.collapsible-body p {
+  padding: 0 0 0.5rem 0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.collapsible-body p:last-child {
+  padding: 0;
+}
+
+/* ---------- Buttons / Links ---------- */
 .link {
   color: #dd686c;
   transition: all 0.2s linear;
@@ -23,27 +93,7 @@ body,
   background-color: #F78286;
 }
 
-.mdl-layout__drawer {
-  width: 320px !important;
-}
-
-.mdl-layout__content {
-  margin-left: 320px !important;
-}
-
-.is-small-screen>.mdl-layout__drawer {
-  width: 240px !important;
-  left: -120px !important;
-}
-
-.is-small-screen>.mdl-layout__drawer.is-visible {
-  left: 0 !important;
-}
-
-.is-small-screen>.mdl-layout__content {
-  margin-left: 0 !important;
-}
-
+/* ---------- Form Controls ---------- */
 [type="radio"]:checked+label:after,
 [type="radio"].with-gap:checked+label:after,
 [type="checkbox"].filled-in:checked+label:after {
@@ -58,77 +108,7 @@ body,
 
 [type="checkbox"]+label,
 [type="radio"]+label {
-  color: rgba(0, 0, 0, .87);
+  color: rgba(0, 0, 0, 0.87);
   font-size: 14px;
-  letter-spacing: .04em;
-}
-
-.indent {
-  padding-left: 50px !important;
-}
-
-[type="checkbox"]+label.multiline {
-  line-height: 14px;
-}
-
-.secondary {
-  color: rgba(0, 0, 0, .62);
-  font-size: 11px;
-  line-height: 11px;
-}
-
-.collapsible-header {
-  color: #fafafa;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 13px 14px;
-  letter-spacing: .04em;
-}
-
-.collapsible-header i {
-  line-height: 16px;
-}
-
-.collapsible-body {
-  padding: 1rem;
-}
-
-.collapsible-body p {
-  padding: 0 0 .5rem 0;
-  color: rgba(0, 0, 0, .87);
-}
-
-.collapsible-body p.narrow {
-  padding: 0 0 .25rem 0;
-}
-
-.collapsible-body p:last-child {
-  padding: 0;
-}
-
-.popup-content {
-  max-width: 300px;
-}
-
-
-.note {
-  font-size: small;
-  line-height: 18px;
-}
-
-.domain,
-.tick line {
-  fill: none;
-  stroke: grey;
-  stroke-width: 1;
-}
-
-.line {
-  fill: none;
-  stroke-width: 2px;
-  stroke: #ac0000;
-}
-
-.collection.with-header .collection-item {
-  padding-left: .5em;
+  letter-spacing: 0.04em;
 }
