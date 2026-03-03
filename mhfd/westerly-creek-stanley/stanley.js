@@ -412,6 +412,20 @@ map.on('style.load', function (e) {
     'source': '20251230',
     'type': 'raster',
     'layout': {
+      'visibility': 'none',
+    }
+  });
+  //Feb 26 2026
+  map.addSource('20260226', {
+    type: 'raster',
+    url: 'mapbox://iconeng.Stanley_2026-02-26'
+  });
+
+  map.addLayer({
+    'id': '20260226',
+    'source': '20260226',
+    'type': 'raster',
+    'layout': {
       'visibility': 'visible',
     }
   });
